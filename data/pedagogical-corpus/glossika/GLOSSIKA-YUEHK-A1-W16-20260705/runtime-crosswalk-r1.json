@@ -1,0 +1,962 @@
+{
+  "schema": "canto-span-pedagogical-runtime-crosswalk-v1",
+  "source_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+  "source_payload_hash": "sha256:79aaf70c47b4cbe42e98c72d62889fffd89ff41961178e5d11efa8b6434749ae",
+  "record_count": 35,
+  "runtime_pull_request": 121,
+  "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+  "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+  "evidence_boundary": "implementation and lexical coverage only; source readings, glosses, segmentation, naturalness, and duplicate identity require separate review",
+  "records": [
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I009",
+      "source_hash": "sha256:5f9c6c6b0417f0fb86021041501dd4662b5ae65d23421b79e6608d3c3f561280",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "docs/research/PRQ2-011-M4DAAN1ZI2-ZUNG6-ADDITIVE-CORRELATIVE-COLLISION-AUDIT-R1.tsv",
+        "docs/research/PRQ2-011-M4DAAN1ZI2-ZUNG6-ADDITIVE-CORRELATIVE-RESEARCH-R1.md",
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "main.js",
+        "src/runtime-resources/lexicon/productive-vo.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I010",
+      "source_hash": "sha256:4a37257ff9ad62235da8aa13c90d7f52bf592646c8bca5a57fbd07a648d04494",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "docs/research/CP024-P0-L45-VERB-VALENCY-INVENTORY-R1.tsv",
+        "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "main.js",
+        "src/runtime-resources/lexicon/token-lexicon/study-suite.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I011",
+      "source_hash": "sha256:58042f064853c59020879d75988fa1fe95174ef3391ec51d13a12935feda9fde",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R14-ADDITIONS.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R14.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R15.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R16.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R17.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R18.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R19.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R20.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R21.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R22.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R23-ADDITIONS.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R23.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R24.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R25.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R26.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R27.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R28.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R29.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R30.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R31.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R32.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R33.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R34.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R35.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R36.tsv",
+        "docs/research/COVERB-MANNER-EVENT-MODIFICATION-SOURCE-MAP-CP021B-R23.md",
+        "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "main.js",
+        "src/runtime-resources/lexicon/productive-vo.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I012",
+      "source_hash": "sha256:fdf7a04eedd7b229f72de30e92259d7bd59b4fc1e15c9104ff60a35b8ecdd808",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "archive/documentation-pre-DOC1/docs-current/IMPACT-BACKLOG.json",
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "main.js",
+        "src/runtime-resources/lexicon/productive-vo.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-corpus-semantic-disposition.tsv",
+        "test-data/w17-functional-corpus.tsv",
+        "test-data/w17-glossika-corpus.tsv",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I013",
+      "source_hash": "sha256:faa482957182a2c91138570250aa025bdc8958fca83b79fa98e8a32aa89a15ee",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "archive/research-history/docs/research/LANE-01-RENDERED-SPATIAL-KINSHIP-ROLE-FULL-REVIEW-CP020R2.md",
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-query-summary.json",
+        "main.js",
+        "src/runtime-resources/lexicon/productive-vo.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I014",
+      "source_hash": "sha256:dfed353a4e5a0b0bca39b62386f01db60d710bb9fb498c88d7cd41a12df38504",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "docs/research/CP024-P0-L45-CODE-REFERENCE-INVENTORY-R1.tsv",
+        "docs/research/CP024-P0-L45-PRODUCTIVE-VO-SEED-INVENTORY-R1.tsv",
+        "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "main.js",
+        "src/runtime-resources/lexicon/productive-vo.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "test-data/pre-intermediate-gold-corpus.tsv",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+        "validation/cp022-i1a-i01-a1/rendered-review/CP022-I1A-I01-R1-FOCUSED-RENDER-REVIEW.canto-span-acceptance-summary.json",
+        "validation/cp022-i1a-i01-a1/rendered-review/CP022-I1A-I01-R1-FOCUSED-RENDER-REVIEW.canto-span-full-diagnostics.json"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I015",
+      "source_hash": "sha256:e1452fbfd32d0cefe584610558e575d06aaf111883213fb4bf1134863c8176cd",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R13-ADDITIONS.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R13.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R14.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R15.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R16.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R17.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R18.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R19.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R20.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R21.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R22.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R23.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R24.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R25.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R26.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R27.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R28.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R29.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R30.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R31.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R32.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R33.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R34.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R35.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R36.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/source.json",
+        "docs/research/AB30-ZO-R-HKCANCOR-CLAIM-CROSS-REFERENCE-R2.md",
+        "docs/research/CP024-P0-L45-CODE-REFERENCE-INVENTORY-R1.tsv",
+        "docs/research/CP024-P0-L45-PRODUCTIVE-VO-SEED-INVENTORY-R1.tsv",
+        "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv",
+        "docs/research/UC-RQ-029-ZYU6-DURATIVE-COLLISION-AUDIT-R1.tsv",
+        "docs/research/UC-RQ-029-ZYU6-DURATIVE-DISPOSITION-R1.md",
+        "docs/research/UC-RQ-029-ZYU6-DURATIVE-SOURCE-VERIFICATION-R1.tsv",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.tsv",
+        "main.js",
+        "review-packets/corpus-review/AB30/hkcancor-zo-r-decisions-r2.json",
+        "review-packets/native-panel/active-v2/followup-draft-v1-item-crosswalk.tsv",
+        "review-packets/native-panel/active-v2/followup-draft-v1-items.tsv",
+        "src/runtime-resources/lexicon/productive-vo.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "test-data/CP023-P1-PROG01-visible-research-packet.tsv",
+        "test-data/pre-intermediate-gold-corpus.tsv",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+        "validation/cp022-i1a-i01-a1/rendered-review/CP022-I1A-I01-R1-FOCUSED-RENDER-REVIEW.canto-span-acceptance-summary.json",
+        "validation/cp022-i1a-i01-a1/rendered-review/CP022-I1A-I01-R1-FOCUSED-RENDER-REVIEW.canto-span-full-diagnostics.json",
+        "validation/cp023-p1-prog01/current-baseline-observation.json"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I016",
+      "source_hash": "sha256:5be044b099d2f022fbbd727ab14bb24971dc10e0c49a2e8e8f0926d43c1e8a3c",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "main.js",
+        "src/runtime-resources/lexicon/productive-vo.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I017",
+      "source_hash": "sha256:458fc644d91ddfe316fec1d55554233edb3728a343fa0446a14f94a29b0a1653",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [
+        {
+          "type": "tokenization_boundary",
+          "status": "merged_pr_121",
+          "note": "Phrase-local food-object handling preserves existing 有冇嘢食 behavior."
+        }
+      ],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "main.js",
+        "src/plugin-entry.js",
+        "src/runtime-resources/lexicon/productive-vo.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I018",
+      "source_hash": "sha256:799e1e12f5309591493a9a4fe99c01b41c6a55da9965d29558420c32c8cb5124",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "main.js",
+        "src/runtime-resources/lexicon/productive-vo.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I019",
+      "source_hash": "sha256:77c02eeaf78e2033b5f03a61af9ec56caed9e78b81e913e0605e828149eb9894",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "docs/research/PRQ2-011-M4DAAN1ZI2-ZUNG6-ADDITIVE-CORRELATIVE-COLLISION-AUDIT-R1.tsv",
+        "docs/research/PRQ2-011-M4DAAN1ZI2-ZUNG6-ADDITIVE-CORRELATIVE-RESEARCH-R1.md",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "main.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I020",
+      "source_hash": "sha256:7a3ad91a48edc930a3172ae229dbba86f795944022f1ec074b4cc16d96b7275a",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "main.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I021",
+      "source_hash": "sha256:dc60df40c87d549307b74f316d98971e77dd16224937c8124a4e09153b08bb0a",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "main.js",
+        "src/runtime-resources/lexicon/productive-vo.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I022",
+      "source_hash": "sha256:e46f72386f9bf3c58e7f09c2905ad40615a612e2e9291eacd047ab74f554e14f",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [
+        {
+          "type": "reading_collision",
+          "sourceValue": "waak6 waa2",
+          "reviewedRuntimeValue": "waak6 waa2",
+          "status": "merged_pr_121",
+          "note": "PR #121 corrected the drawing verb reading while preserving noun 畫 waa2."
+        }
+      ],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json",
+        "archive/release-history/CHANGELOG-FULL-through-v0.5.182.md",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R23-ADDITIONS.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R23.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R24.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R25.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R26.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R27.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R28.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R29.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R30.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R31.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R32.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R33.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R34.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R35.tsv",
+        "archive/research-history/docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R36.tsv",
+        "data/construction-adjudication-batches/batch-03.json",
+        "data/construction-identities.json",
+        "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-03.md",
+        "docs/research/CP024-P0-L45-VERB-VALENCY-INVENTORY-R1.tsv",
+        "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv",
+        "docs/research/UC-RQ-026-DI1-DEGREE-DISPOSITION-R1.md",
+        "grammar/research_pending/DegreeMannerAdverbial.md",
+        "grammar/research_pending/DegreeMannerModifiedVP.md",
+        "main.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js",
+        "tests/constructions/DegreeMannerModifiedVP.json",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I023",
+      "source_hash": "sha256:84899ea145d588f9108887b4f8387ce57f8b5a9de2546b1fd9b0520a53bc80e4",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "main.js",
+        "src/runtime-resources/lexicon/productive-vo.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I024",
+      "source_hash": "sha256:8277bb23321cea4b9e150796d5fb8b2131abe7339f7a6d22b39c885236e166f0",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "main.js",
+        "src/runtime-resources/lexicon/productive-vo.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I025",
+      "source_hash": "sha256:694e7fef89a4f76ecb06089b7e90c00a1ab93baa88552cdec8d9617ade37a546",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "docs/research/PRQ2-010-CEOI4ZO2-ZI1NGOI6-EXCLUSION-ADDITION-COLLISION-AUDIT-R1.tsv",
+        "main.js",
+        "src/runtime-resources/lexicon/productive-vo.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I026",
+      "source_hash": "sha256:d5debf821bb940ebd0b0e7ffda9c2c4b7763993b6f12a3bbb55a9b8f7fd04007",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [
+        {
+          "type": "jyutping_review",
+          "sourceValue": "diu3 jyu2",
+          "reviewedRuntimeValue": "diu3 jyu4",
+          "status": "merged_pr_121",
+          "note": "PR #121 retains the reviewed lexical reading 魚 jyu4 and does not import the source tone."
+        }
+      ],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "main.js",
+        "src/runtime-resources/lexicon/productive-vo.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I027",
+      "source_hash": "sha256:eee1984294cfce4c4ebbdce46bd622e22ccd93648c85adbbccb356c81bf0d637",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "archive/research-history/docs/research/LANE-01-RENDERED-SPATIAL-KINSHIP-ROLE-FULL-REVIEW-CP020R2.md",
+        "docs/research/PRQ2-010-CEOI4ZO2-ZI1NGOI6-EXCLUSION-ADDITION-COLLISION-AUDIT-R1.tsv",
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-query-summary.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-query-summary.json",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.tsv",
+        "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-query-summary.json",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.tsv",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+        "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.tsv",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.tsv",
+        "main.js",
+        "review-packets/corpus-review/AB30/hkcancor-zo-m-decisions-r1.json",
+        "src/parser/detectors/transfer/passive-permissive.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I028",
+      "source_hash": "sha256:8e464878f92543c5ebc10ddf6421fc48f65600b8bbc22921fb9b9a433fbe942f",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "docs/research/UC-RQ-004-005-COMPARISON-HKCANCOR-ATTESTATION-R1.md",
+        "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-candidate-inventory.tsv",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.json",
+        "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.json",
+        "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+        "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-candidate-inventory.tsv",
+        "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-query-summary.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.json",
+        "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.tsv",
+        "main.js",
+        "src/runtime-resources/lexicon/productive-vo.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I029",
+      "source_hash": "sha256:8db61f1d6d9d46e40ff6ff7ec6860f18ee3cdc043f9cadbcf6b9c9d7acd31fdb",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+        "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv",
+        "main.js",
+        "src/runtime-resources/lexicon/productive-vo.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I030",
+      "source_hash": "sha256:d11be6b8a071f00d0e7803f04f47c9471f9703cff0aa71ef1b15d3e089d0b888",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "main.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I031",
+      "source_hash": "sha256:ed1ca89e3122d23832e3f7c0767f7be8baa0d1ac4a1db6636831b326691a837f",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "main.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/lexicon/token-lexicon/verbs.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "src/runtime-resources/pronunciation/jyutping-review-expectations.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I032",
+      "source_hash": "sha256:eac16a150b6ee5464ba30bad44fae71742bbdca03c1b0ffbb30d6bcb7b426d11",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [
+        {
+          "type": "reading_boundary",
+          "sourceValue": "haa5 kei2",
+          "reviewedRuntimeValue": "haa5 kei2",
+          "status": "merged_pr_121"
+        }
+      ],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "main.js",
+        "src/plugin-entry.js",
+        "src/runtime-resources/lexicon/productive-vo.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I033",
+      "source_hash": "sha256:5de89fc86ab06b2bb16a7e2b9ff0360c7d9bc8779c4e00f0db5d460498729013",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "main.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "src/runtime-resources/presentation/learner-glosses.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I034",
+      "source_hash": "sha256:abc17c2e798ef312a5f1a89165dc0dc509dce4d5acfc1bfe22f22c494a1b715d",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/items.tsv",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/review.json",
+        "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/source.json",
+        "data/research-ledgers/glossika-week15-claim-source.json",
+        "data/research-ledgers/glossika-week15-followup-candidates.json",
+        "data/research-ledgers/glossika-week15-lexical-ingress.json",
+        "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-CORPUS-INGRESS.md",
+        "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+        "main.js",
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I035",
+      "source_hash": "sha256:07f1afd84f82505110a1cb755d926c554085329b92f0f9ca22056a1a9bc9ea6b",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "main.js",
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I036",
+      "source_hash": "sha256:4ffca500578a3d5796b0b1abab9aeba65266e2fdc4a0f0c22906a72ed1ac6bf0",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "main.js",
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I037",
+      "source_hash": "sha256:d3456f59d91b02d7c4496bb51aca2056f8db1d4f1a730f60ea27081702702547",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "main.js",
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I038",
+      "source_hash": "sha256:43593e06304448fd35c1a189ed45bdfcc4e8041b7e7b8f8fc35c5e1f866d5fca",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "main.js",
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I039",
+      "source_hash": "sha256:607e482c874f514103dd32dbdff345568ad6ee87236ad245730a6f2db1d49411",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "main.js",
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I040",
+      "source_hash": "sha256:77e4226b40da1dd442c4d9ed032871fe2a85f3a2508ea381155fede7d3dcbfa3",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "main.js",
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I041",
+      "source_hash": "sha256:c4a5ae8035e0df376977fb44d0b326d59d79fdaa6ca7d0f4b50054aafbf97621",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "main.js",
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I042",
+      "source_hash": "sha256:83769b610be62a418d10d5f9db86086071bea33e8edefa5699b4904a7b4ecaf4",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "main.js",
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I043",
+      "source_hash": "sha256:daffeeb416b16e16f2e8fa9444f23991da1b89d020a1a05209cf46cedad3359d",
+      "runtime_crosswalk": {
+        "status": "merged_runtime_crosswalk",
+        "intakeIssue": 119,
+        "pullRequest": 121,
+        "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+        "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+      },
+      "source_discrepancies": [],
+      "reviewed_values": {},
+      "legacy_duplicate_candidates": [
+        "archive/abandoned-demo01/v0.5.184/validation/v0.5.183-cp024-p1-demo01-r1/review-readiness-console.json",
+        "archive/abandoned-demo01/v0.5.184/validation/v0.5.183-cp024-p1-demo01-r1/review-readiness.json",
+        "archive/documentation-pre-DOC1/docs-current/IMPACT-BACKLOG.json",
+        "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+        "main.js",
+        "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+        "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+        "test-data/review-only-readiness.tsv",
+        "test-data/w17-lexicon-role-review.tsv",
+        "test-data/w17-lexicon.tsv",
+        "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+        "validation/cp022-p1-pfv01-r1/review-only-readiness.json"
+      ]
+    }
+  ]
+}

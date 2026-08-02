@@ -1,22 +1,40 @@
-# Glossika Cantonese (HK) A1 Week 16 corpus package
+# Glossika Cantonese (HK) A1 Week 16 corpus ingress
 
-- Source ID: `GLOSSIKA-YUEHK-A1-W16-20260705`
-- Lesson: Hobbies & Free Time
-- Source date: 2026-07-05
-- Gmail message: `19f3100f131df130`
-- Intake issue: #133
-- Work claim: #274
-- Runtime crosswalk: #119 / PR #121
-- Record count: 59
-- Types: 14 sentences, 4 dialog turns, 35 lexical entries, 6 phonics pairs
-- Source payload hash: `sha256:79aaf70c47b4cbe42e98c72d62889fffd89ff41961178e5d11efa8b6434749ae`
+Source ID: `GLOSSIKA-YUEHK-A1-W16-20260705`  
+Source date: `2026-07-05`  
+Ingress issue: `#133`  
+Original source-ingress claim: `#274`  
+Runtime lexical work: `#119` / PR `#121`  
+Completed review claim: `#475`
+
+This directory preserves the authorized Glossika lesson “Hobbies & Free Time,” its 35-record implementation crosswalk, and its completed corpus review.
 
 ## Files
 
-- `source.json`: immutable source values and order.
-- `items.tsv`: review-oriented flat rendering.
-- `review.json`: mechanical duplicate candidates, PR #121 crosswalks, source discrepancies, and empty reviewed-value fields.
+- `source.json` and `items.tsv` — immutable source projections.
+- `package-integrity-r1.json` — local immutable-file bindings.
+- `runtime-crosswalk-r1.json` — preserved PR #121 implementation provenance and source/runtime differences.
+- `mechanical-cross-reference-r1.json` — current candidates and crosswalk links; no expert decisions.
+- `review.json` and `expert-review-r1.tsv` — completed expert review.
+- `research-summary.md` — review result and evidence boundary.
 
-## Boundary
+## Coverage and status
 
-PR #121 already owns runtime lexical integration. This corpus package does not modify it, count evidence, infer productivity, accept register labels, or promote grammar.
+- 14 sentences;
+- 4 dialog turns;
+- 35 lexical entries;
+- 6 phonics pairs;
+- 59 total records;
+- 0 unreviewed records;
+- 35 lexical-only attestations with separate runtime crosswalk targets;
+- 20 new sentence/dialog/pronunciation attestations;
+- 4 naturalness/register review candidates;
+- 0 silent source replacements.
+
+Runtime representation is not corpus duplicate identity and does not validate every source reading, gloss, segmentation, category, or naturalness claim.
+
+Run:
+
+```bash
+npm run verify:pedagogical-corpus-review
+```

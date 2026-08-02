@@ -1,172 +1,83 @@
 name: Research provenance
 
 on:
+  push:
+    paths:
+      - "data/construction-identities.json"
+      - "data/construction-identity-lock.json"
+      - "data/construction-adjudications.json"
+      - "data/construction-adjudication-batches/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/**"
+      - "docs/research/**"
+      - "external-evidence/**"
+      - "grammar/**"
+      - "review-packets/**"
+      - "config/pedagogical-corpus-source-locks.json"
+      - "config/research-provenance-baseline.json"
+      - "config/research-evidence-grades.json"
+      - "config/verification-profiles.json"
+      - "tools/build-pedagogical-corpus-review-candidates.py"
+      - "tools/research-provenance-lib.js"
+      - "tools/verify-pedagogical-corpus-review.py"
+      - "tools/verify-research-provenance.js"
+      - "tools/verify-native-panel-lifecycle.js"
+      - "tools/verify-interim-pilot-public-package.py"
+      - "tests/tooling/native-panel/native-panel-lifecycle.test.js"
+      - "tests/tooling/research/ab30-aggregate-integrity.test.py"
+      - "tests/tooling/research/interim-pilot-public-package.test.py"
+      - "tests/tooling/research/pedagogical-corpus-review.test.py"
+      - "package.json"
+      - ".github/workflows/research-provenance.yml"
   pull_request:
     paths:
+      - "data/construction-identities.json"
+      - "data/construction-identity-lock.json"
+      - "data/construction-adjudications.json"
+      - "data/construction-adjudication-batches/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/**"
+      - "docs/research/**"
+      - "external-evidence/**"
+      - "grammar/**"
+      - "review-packets/**"
+      - "config/pedagogical-corpus-source-locks.json"
+      - "config/research-provenance-baseline.json"
+      - "config/research-evidence-grades.json"
+      - "config/verification-profiles.json"
+      - "tools/build-pedagogical-corpus-review-candidates.py"
+      - "tools/research-provenance-lib.js"
+      - "tools/verify-pedagogical-corpus-review.py"
+      - "tools/verify-research-provenance.js"
+      - "tools/verify-native-panel-lifecycle.js"
+      - "tools/verify-interim-pilot-public-package.py"
+      - "tests/tooling/native-panel/native-panel-lifecycle.test.js"
+      - "tests/tooling/research/ab30-aggregate-integrity.test.py"
+      - "tests/tooling/research/interim-pilot-public-package.test.py"
+      - "tests/tooling/research/pedagogical-corpus-review.test.py"
+      - "package.json"
       - ".github/workflows/research-provenance.yml"
+  workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  generate-week16-review:
+  verify-research:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          ref: agent/week16-ingress-review
-          fetch-depth: 0
-
-      - name: Prepare runtime crosswalk and live candidate builder
-        run: |
-          python3 - <<'PY'
-          import json
-          from pathlib import Path
-
-          package = Path('data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705')
-          old_review = json.loads((package / 'review.json').read_text(encoding='utf-8'))
-          records = []
-          for row in old_review['records']:
-              if row.get('runtimeCrosswalk') is None:
-                  continue
-              records.append({
-                  'id': row['id'],
-                  'source_hash': row['sourceHash'],
-                  'runtime_crosswalk': row['runtimeCrosswalk'],
-                  'source_discrepancies': row.get('sourceDiscrepancies', []),
-                  'reviewed_values': row.get('reviewedValues', {}),
-                  'legacy_duplicate_candidates': row.get('duplicateOf', []),
-              })
-          if len(records) != 35:
-              raise SystemExit(f'expected 35 runtime crosswalk records, got {len(records)}')
-
-          runtime_crosswalk = {
-              'schema': 'canto-span-pedagogical-runtime-crosswalk-v1',
-              'source_id': old_review['sourceId'],
-              'source_payload_hash': old_review['sourcePayloadHash'],
-              'record_count': len(records),
-              'runtime_pull_request': 121,
-              'runtime_merge_commit': '252f8e432bfc2b2f37e25514c940d959580a548e',
-              'provenance_path': 'docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md',
-              'evidence_boundary': 'implementation and lexical coverage only; source readings, glosses, segmentation, naturalness, and duplicate identity require separate review',
-              'records': records,
-          }
-          (package / 'runtime-crosswalk-r1.json').write_text(
-              json.dumps(runtime_crosswalk, ensure_ascii=False, indent=2) + '\n',
-              encoding='utf-8',
-          )
-
-          builder = Path('tools/build-pedagogical-corpus-review-candidates.py')
-          text = builder.read_text(encoding='utf-8')
-          if '"runtime-crosswalk-r1.json"' not in text:
-              text = text.replace(
-                  '    "package-integrity-r1.json",\n}',
-                  '    "package-integrity-r1.json",\n    "runtime-crosswalk-r1.json",\n}',
-                  1,
-              )
-              text = text.replace(
-                  '    "crosswalk.json",\n}',
-                  '    "crosswalk.json",\n    "runtime-crosswalk-r1.json",\n}',
-                  1,
-              )
-
-          if '"kind": "runtime_crosswalk"' not in text:
-              marker = (
-                  '    stem = research_ledger_stem(source_id)\n'
-                  '    if stem is None:\n'
-                  '        return by_item\n'
-              )
-              if marker not in text:
-                  raise SystemExit('live builder stem marker not found')
-              runtime_block = (
-                  '    runtime_crosswalk_path = root / f"data/pedagogical-corpus/glossika/{source_id}/runtime-crosswalk-r1.json"\n'
-                  '    if runtime_crosswalk_path.exists():\n'
-                  '        runtime_crosswalk = read_json(runtime_crosswalk_path)\n'
-                  '        if runtime_crosswalk.get("source_id") == source_id:\n'
-                  '            for entry in runtime_crosswalk.get("records", []):\n'
-                  '                item_id = entry.get("id")\n'
-                  '                if item_id:\n'
-                  '                    by_item[item_id].append({\n'
-                  '                        "packet": "runtime-crosswalk-r1",\n'
-                  '                        "kind": "runtime_crosswalk",\n'
-                  '                        "runtime_pull_request": runtime_crosswalk.get("runtime_pull_request"),\n'
-                  '                        "runtime_merge_commit": runtime_crosswalk.get("runtime_merge_commit"),\n'
-                  '                        "provenance_path": runtime_crosswalk.get("provenance_path"),\n'
-                  '                        "runtime_crosswalk": entry.get("runtime_crosswalk"),\n'
-                  '                        "source_discrepancies": entry.get("source_discrepancies", []),\n'
-                  '                        "reviewed_values": entry.get("reviewed_values", {}),\n'
-                  '                    })\n'
-                  '\n'
-              )
-              text = text.replace(marker, runtime_block + marker, 1)
-
-          builder.write_text(text, encoding='utf-8')
-          PY
-          python3 -m py_compile tools/build-pedagogical-corpus-review-candidates.py
-
-      - name: Execute checked-in Week 16 review generation
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-
-          workflow = Path('.github/workflows/build-week16-review.yml')
-          lines = workflow.read_text(encoding='utf-8').splitlines()
-          selected = [
-              '      - name: Build immutable locks and mechanical cross-reference',
-              '      - name: Generate expert review and projections',
-              '      - name: Write package documentation',
-          ]
-          scripts = []
-          for marker in selected:
-              step = lines.index(marker)
-              start = lines.index('        run: |', step) + 1
-              end = next(
-                  (index for index in range(start, len(lines)) if lines[index].startswith('      - name: ')),
-                  len(lines),
-              )
-              body = [line[10:] if line.startswith('          ') else line for line in lines[start:end]]
-              scripts.append('\n'.join(body))
-          Path('/tmp/week16-review.sh').write_text('\n\n'.join(scripts) + '\n', encoding='utf-8')
-          PY
-          bash -euxo pipefail /tmp/week16-review.sh
-
-      - name: Validate generated review summary
-        run: |
-          python3 - <<'PY'
-          import json
-          from pathlib import Path
-
-          package = Path('data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705')
-          review = json.loads((package / 'review.json').read_text(encoding='utf-8'))
-          summary = review['summary']
-          status_counts = summary.get('review_status_counts', {})
-          if review.get('record_count') != 59:
-              raise SystemExit(f"unexpected record count: {review.get('record_count')}")
-          if status_counts.get('reviewed') != 59 or status_counts.get('unreviewed') != 0:
-              raise SystemExit(f"review is not terminal: {summary}")
-          if summary.get('records_with_runtime_crosswalk') != 35:
-              raise SystemExit(f"unexpected reviewed runtime crosswalk count: {summary}")
-          crosswalk = json.loads((package / 'runtime-crosswalk-r1.json').read_text(encoding='utf-8'))
-          if crosswalk.get('record_count') != 35:
-              raise SystemExit(f"unexpected runtime crosswalk count: {crosswalk.get('record_count')}")
-          PY
-
-      - name: Commit generated review and restore permanent workflow
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git show origin/agent/week15-ingress-review:.github/workflows/research-provenance.yml > .github/workflows/research-provenance.yml
-          git add .github/workflows/research-provenance.yml \
-            tools/build-pedagogical-corpus-review-candidates.py \
-            config/pedagogical-corpus-source-locks.json \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/README.md \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/runtime-crosswalk-r1.json \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/mechanical-cross-reference-r1.json \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/package-integrity-r1.json \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/review.json \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/expert-review-r1.tsv \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/research-summary.md
-          git rm -f --ignore-unmatch .github/workflows/build-week16-review.yml \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/.review-claim
-          git commit -m "Complete Week 16 record-level ingress review"
-          git push origin HEAD:agent/week16-ingress-review
+          node-version: 24
+          package-manager-cache: false
+      - name: Test native-panel lifecycle verifier
+        run: node --test tests/tooling/native-panel/native-panel-lifecycle.test.js
+      - name: Test AB30 aggregate integrity verifier
+        run: python3 tests/tooling/research/ab30-aggregate-integrity.test.py
+      - name: Test interim pilot public-package verifier
+        run: python3 tests/tooling/research/interim-pilot-public-package.test.py
+      - name: Test reviewed pedagogical corpus packages
+        run: python3 tests/tooling/research/pedagogical-corpus-review.test.py
+      - name: Verify durable research provenance and lifecycle state
+        run: npm run verify:research

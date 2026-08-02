@@ -40,6 +40,7 @@ PACKAGE_REVIEW_FILES = {
     "research-summary.md",
     "expert-review-r1.tsv",
     "package-integrity-r1.json",
+    "runtime-crosswalk-r1.json",
 }
 GLOBAL_PEDAGOGICAL_DERIVED_FILES = {
     "review.json",
@@ -49,6 +50,7 @@ GLOBAL_PEDAGOGICAL_DERIVED_FILES = {
     "package-integrity-r1.json",
     "mechanical-cross-reference-r1.json",
     "crosswalk.json",
+    "runtime-crosswalk-r1.json",
 }
 
 
@@ -162,6 +164,24 @@ def research_ledger_stem(source_id: str) -> str | None:
 
 def load_later_research(root: Path, source_id: str) -> dict[str, list[dict[str, Any]]]:
     by_item: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    runtime_crosswalk_path = root / f"data/pedagogical-corpus/glossika/{source_id}/runtime-crosswalk-r1.json"
+    if runtime_crosswalk_path.exists():
+        runtime_crosswalk = read_json(runtime_crosswalk_path)
+        if runtime_crosswalk.get("source_id") == source_id:
+            for entry in runtime_crosswalk.get("records", []):
+                item_id = entry.get("id")
+                if item_id:
+                    by_item[item_id].append({
+                        "packet": "runtime-crosswalk-r1",
+                        "kind": "runtime_crosswalk",
+                        "runtime_pull_request": runtime_crosswalk.get("runtime_pull_request"),
+                        "runtime_merge_commit": runtime_crosswalk.get("runtime_merge_commit"),
+                        "provenance_path": runtime_crosswalk.get("provenance_path"),
+                        "runtime_crosswalk": entry.get("runtime_crosswalk"),
+                        "source_discrepancies": entry.get("source_discrepancies", []),
+                        "reviewed_values": entry.get("reviewed_values", {}),
+                    })
+
     stem = research_ledger_stem(source_id)
     if stem is None:
         return by_item

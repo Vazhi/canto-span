@@ -1,0 +1,3446 @@
+{
+  "schema": "canto-span-pedagogical-corpus-review-candidates-v1",
+  "source_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+  "source_path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/source.json",
+  "source_payload_hash": "sha256:79aaf70c47b4cbe42e98c72d62889fffd89ff41961178e5d11efa8b6434749ae",
+  "record_count": 59,
+  "scan_policy": {
+    "roots": [
+      "src",
+      "data",
+      "tests",
+      "docs",
+      "grammar",
+      "review-packets",
+      "external-evidence"
+    ],
+    "excluded_package_files": [
+      "README.md",
+      "expert-review-r1.tsv",
+      "items.tsv",
+      "mechanical-cross-reference-r1.json",
+      "package-integrity-r1.json",
+      "research-summary.md",
+      "review.json",
+      "runtime-crosswalk-r1.json",
+      "source.json"
+    ],
+    "excluded_path_parts": [
+      ".git",
+      "archive",
+      "archives",
+      "build",
+      "dist",
+      "node_modules",
+      "recovery",
+      "validation"
+    ],
+    "maximum_file_bytes": 2000000,
+    "generated_bundle_excluded": true,
+    "matches_are_file_level_candidates_not_decisions": true,
+    "maximum_paths_per_match_type": 24,
+    "minimum_normalized_match_length": 6,
+    "layer_priority": {
+      "runtime_lexicon": 0,
+      "runtime_source": 1,
+      "current_grammar_note": 2,
+      "executable_test_or_fixture": 3,
+      "canonical_or_research_data": 4,
+      "pedagogical_corpus": 5,
+      "review_packet": 6,
+      "external_evidence": 7,
+      "research_ledger": 8,
+      "research_report": 9,
+      "current_documentation": 10,
+      "other": 11
+    }
+  },
+  "summary": {
+    "item_type_counts": {
+      "dialog_turn": 4,
+      "lexical_entry": 35,
+      "phonics_pair": 6,
+      "sentence": 14
+    },
+    "records_with_exact_candidates": 35,
+    "records_with_normalized_candidates": 0,
+    "records_with_later_research": 35,
+    "retained_file_match_counts": {
+      "exact_surface_file": 273
+    },
+    "candidate_layer_counts": {
+      "canonical_or_research_data": 18,
+      "current_grammar_note": 2,
+      "executable_test_or_fixture": 37,
+      "external_evidence": 34,
+      "pedagogical_corpus": 36,
+      "research_ledger": 3,
+      "research_report": 42,
+      "review_packet": 21,
+      "runtime_lexicon": 48,
+      "runtime_source": 32
+    },
+    "omitted_exact_paths": 6,
+    "omitted_normalized_paths": 0,
+    "expert_reviewed": 0
+  },
+  "records": [
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I001",
+      "ordinal": 1,
+      "section": "functional_language",
+      "subsection": "address_people",
+      "item_type": "sentence",
+      "source_traditional": "阿哥/阿姐",
+      "source_jyutping": "Aa3 go1 / aa3 ze2",
+      "source_english": "Bro / Sis (familiar address to strangers)",
+      "source_hash": "sha256:f2ca15a40c5d8bca9ffc6805c560e6dfe4495bac6906e2c2fbf069dc8314d105",
+      "normalized_surface": "阿哥/阿姐",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I002",
+      "ordinal": 2,
+      "section": "functional_language",
+      "subsection": "address_people",
+      "item_type": "sentence",
+      "source_traditional": "先生/小姐/女士",
+      "source_jyutping": "Sin1 saang1 / siu2 ze2 / neoi5 si6",
+      "source_english": "Sir / Miss / Madam",
+      "source_hash": "sha256:0df390465c9cb78ab204cf5b1dbfcd8e19d4cfdf445306b63ecd687f341c3f6d",
+      "normalized_surface": "先生/小姐/女士",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I003",
+      "ordinal": 3,
+      "section": "functional_language",
+      "subsection": "address_people",
+      "item_type": "sentence",
+      "source_traditional": "陳太",
+      "source_jyutping": "Can4 taai3",
+      "source_english": "Mrs. Chan",
+      "source_hash": "sha256:df549165686eab081806a9c8b7285f5329c3ea7eb731456e8a51aae2982c604d",
+      "normalized_surface": "陳太",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I004",
+      "ordinal": 4,
+      "section": "functional_language",
+      "subsection": "address_people",
+      "item_type": "sentence",
+      "source_traditional": "各位",
+      "source_jyutping": "Gok3 wai2",
+      "source_english": "Ladies and gentlemen / Everyone",
+      "source_hash": "sha256:7b79cf937ad2dd85bde2ccc0f5692ca7960d349ccac00252866215a28d14f149",
+      "normalized_surface": "各位",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I005",
+      "ordinal": 5,
+      "section": "functional_language",
+      "subsection": "open_close_conversations",
+      "item_type": "sentence",
+      "source_traditional": "喂，你得唔得閒呀？",
+      "source_jyutping": "Wai2, nei5 dak1 m4 dak1 haan4 aa3?",
+      "source_english": "Hey, are you free?",
+      "source_hash": "sha256:400d146c986e148219d5aa3a6e0d025c6b9ed874fcc4698db72f905e0ea16b3e",
+      "normalized_surface": "喂你得唔得閒呀",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I006",
+      "ordinal": 6,
+      "section": "functional_language",
+      "subsection": "open_close_conversations",
+      "item_type": "sentence",
+      "source_traditional": "噉就講到呢度先喇。",
+      "source_jyutping": "Gam2 zau6 gong2 dou3 ni1 dou6 sin1 laa3.",
+      "source_english": "Let's stop here for now.",
+      "source_hash": "sha256:1653bed3bb8a1610da98f7a938076a89d696a6749e2eb46af608cf884380cd4a",
+      "normalized_surface": "噉就講到呢度先喇",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I007",
+      "ordinal": 7,
+      "section": "functional_language",
+      "subsection": "open_close_conversations",
+      "item_type": "sentence",
+      "source_traditional": "唔該，我想同你傾件事。",
+      "source_jyutping": "M4 goi1, ngo5 soeng2 tung4 nei5 king1 gin6 si6.",
+      "source_english": "Excuse me, I'd like to discuss something with you.",
+      "source_hash": "sha256:cddb1330342bf780e01a0f164166e688fa3e01c148e62ed2ca92ec1052a82e75",
+      "normalized_surface": "唔該我想同你傾件事",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I008",
+      "ordinal": 8,
+      "section": "functional_language",
+      "subsection": "open_close_conversations",
+      "item_type": "sentence",
+      "source_traditional": "噉我哋就講到呢度喇。",
+      "source_jyutping": "Gam2 ngo5 dei6 zau6 gong2 dou3 ni1 dou6 laa3.",
+      "source_english": "Then let's wrap up here.",
+      "source_hash": "sha256:6a341204aeb22e1c5afa111860146529b3e84670fa8cbaaaa77f27d249948249",
+      "normalized_surface": "噉我哋就講到呢度喇",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I009",
+      "ordinal": 9,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "睇戲",
+      "source_jyutping": "tai2 hei3",
+      "source_english": "to watch a movie",
+      "source_hash": "sha256:5f9c6c6b0417f0fb86021041501dd4662b5ae65d23421b79e6608d3c3f561280",
+      "normalized_surface": "睇戲",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/productive-vo.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/research/GLOSSIKA-CONTEXT-LINKED-RESPONSE-DECISIONS-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-018-20260405/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-018-20260405/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "review-packets/corpus-review/AA56/bounded-review-decisions-r1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/corpus-review/AA56/bounded-review-packet-r1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/corpus-review/GLOSSIKA-CONTEXT/context-linked-response-decisions-r1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/corpus-review/NOMINAL-MODIFICATION/issue-315/AA07-compact-review.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "docs/research/PRQ2-011-M4DAAN1ZI2-ZUNG6-ADDITIVE-CORRELATIVE-COLLISION-AUDIT-R1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/PRQ2-011-M4DAAN1ZI2-ZUNG6-ADDITIVE-CORRELATIVE-RESEARCH-R1.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I010",
+      "ordinal": 10,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "行山",
+      "source_jyutping": "haang4 saan1",
+      "source_english": "to hike",
+      "source_hash": "sha256:4a37257ff9ad62235da8aa13c90d7f52bf592646c8bca5a57fbd07a648d04494",
+      "normalized_surface": "行山",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/study-suite.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-018-20260405/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-018-20260405/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "docs/research/CP024-P0-L45-VERB-VALENCY-INVENTORY-R1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I011",
+      "ordinal": 11,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "游水",
+      "source_jyutping": "jau4 seoi2",
+      "source_english": "to swim",
+      "source_hash": "sha256:58042f064853c59020879d75988fa1fe95174ef3391ec51d13a12935feda9fde",
+      "normalized_surface": "游水",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/productive-vo.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "tests/tooling/runtime/aa82-matrix-parent-force.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "data/corpus-reviews/AA82-ATTESTED-BOUNDARY-PACKET-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/research/GLOSSIKA-CONTEXT-LINKED-RESPONSE-DECISIONS-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-014-20260308/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-014-20260308/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-018-20260405/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-018-20260405/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "review-packets/corpus-review/GLOSSIKA-CONTEXT/context-linked-response-decisions-r1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "docs/research/AA82-ATTESTED-BOUNDARY-PACKET-R1.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/AA82-BIN-DOU-WH-PLACE-BOUNDARIES-R1.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/COVERB-MANNER-EVENT-MODIFICATION-SOURCE-MAP-CP021B-R23.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-DLG-012-20260222-CORPUS-INGRESS.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I012",
+      "ordinal": 12,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "跑步",
+      "source_jyutping": "paau2 bou6",
+      "source_english": "to run",
+      "source_hash": "sha256:fdf7a04eedd7b229f72de30e92259d7bd59b4fc1e15c9104ff60a35b8ecdd808",
+      "normalized_surface": "跑步",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/productive-vo.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-018-20260405/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-018-20260405/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "review-packets/corpus-review/NOMINAL-MODIFICATION/AA07-selected-review-r1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/corpus-review/NOMINAL-MODIFICATION/issue-315/AA07-compact-review.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I013",
+      "ordinal": 13,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "影相",
+      "source_jyutping": "jing2 soeng2",
+      "source_english": "to take photos",
+      "source_hash": "sha256:faa482957182a2c91138570250aa025bdc8958fca83b79fa98e8a32aa89a15ee",
+      "normalized_surface": "影相",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/productive-vo.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "review-packets/corpus-review/NOMINAL-MODIFICATION/issue-315/AA07-compact-review.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-query-summary.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "docs/research/AA82-BIN-DOU-WH-PLACE-BOUNDARIES-R1.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/ISSUE-443-SUBJECTLESS-JUNG-LAI-FRAGMENTS-PREAUDIT-R1/controlled-contrasts.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I014",
+      "ordinal": 14,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "聽歌",
+      "source_jyutping": "teng1 go1",
+      "source_english": "to listen to music",
+      "source_hash": "sha256:dfed353a4e5a0b0bca39b62386f01db60d710bb9fb498c88d7cd41a12df38504",
+      "normalized_surface": "聽歌",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/productive-vo.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "docs/research/CP024-P0-L45-CODE-REFERENCE-INVENTORY-R1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/CP024-P0-L45-PRODUCTIVE-VO-SEED-INVENTORY-R1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I015",
+      "ordinal": 15,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "睇書",
+      "source_jyutping": "tai2 syu1",
+      "source_english": "to read",
+      "source_hash": "sha256:e1452fbfd32d0cefe584610558e575d06aaf111883213fb4bf1134863c8176cd",
+      "normalized_surface": "睇書",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/productive-vo.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "review-packets/corpus-review/AB30/hkcancor-zo-r-decisions-r2.json",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/native-panel/active-v2/followup-draft-v1-items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "docs/research/AB30-ZO-R-HKCANCOR-CLAIM-CROSS-REFERENCE-R2.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/CP024-P0-L45-CODE-REFERENCE-INVENTORY-R1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/CP024-P0-L45-PRODUCTIVE-VO-SEED-INVENTORY-R1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/UC-RQ-029-ZYU6-DURATIVE-COLLISION-AUDIT-R1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/UC-RQ-029-ZYU6-DURATIVE-DISPOSITION-R1.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/UC-RQ-029-ZYU6-DURATIVE-SOURCE-VERIFICATION-R1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I016",
+      "ordinal": 16,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "打機",
+      "source_jyutping": "daa2 gei1",
+      "source_english": "to play video games",
+      "source_hash": "sha256:5be044b099d2f022fbbd727ab14bb24971dc10e0c49a2e8e8f0926d43c1e8a3c",
+      "normalized_surface": "打機",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/productive-vo.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "review-packets/corpus-review/JAU-MOU-DAK/full-review-packet-r1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/jau-mou-dak-hkcancor/hkcancor-jau-mou-dak-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I017",
+      "ordinal": 17,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "煮嘢食",
+      "source_jyutping": "zyu2 je5 sik6",
+      "source_english": "to cook",
+      "source_hash": "sha256:458fc644d91ddfe316fec1d55554233edb3728a343fa0446a14f94a29b0a1653",
+      "normalized_surface": "煮嘢食",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/productive-vo.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/plugin-entry.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [
+            {
+              "type": "tokenization_boundary",
+              "status": "merged_pr_121",
+              "note": "Phrase-local food-object handling preserves existing 有冇嘢食 behavior."
+            }
+          ],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I018",
+      "ordinal": 18,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "唱K",
+      "source_jyutping": "coeng3 kei1",
+      "source_english": "to do karaoke",
+      "source_hash": "sha256:799e1e12f5309591493a9a4fe99c01b41c6a55da9965d29558420c32c8cb5124",
+      "normalized_surface": "唱k",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/productive-vo.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I019",
+      "ordinal": 19,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "行街",
+      "source_jyutping": "haang4 gaai1",
+      "source_english": "to go shopping (browsing)",
+      "source_hash": "sha256:77c02eeaf78e2033b5f03a61af9ec56caed9e78b81e913e0605e828149eb9894",
+      "normalized_surface": "行街",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "data/corpus-reviews/AA82-ATTESTED-BOUNDARY-PACKET-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "docs/research/AA82-ATTESTED-BOUNDARY-PACKET-R1.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/PRQ2-011-M4DAAN1ZI2-ZUNG6-ADDITIVE-CORRELATIVE-COLLISION-AUDIT-R1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/PRQ2-011-M4DAAN1ZI2-ZUNG6-ADDITIVE-CORRELATIVE-RESEARCH-R1.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I020",
+      "ordinal": 20,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "去沙灘",
+      "source_jyutping": "heoi3 saa1 taan1",
+      "source_english": "to go to the beach",
+      "source_hash": "sha256:7a3ad91a48edc930a3172ae229dbba86f795944022f1ec074b4cc16d96b7275a",
+      "normalized_surface": "去沙灘",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I021",
+      "ordinal": 21,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "做運動",
+      "source_jyutping": "zou6 wan6 dung6",
+      "source_english": "to exercise",
+      "source_hash": "sha256:dc60df40c87d549307b74f316d98971e77dd16224937c8124a4e09153b08bb0a",
+      "normalized_surface": "做運動",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/productive-vo.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-018-20260405/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-018-20260405/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "docs/research/AA84-MANNER-PROFILE-RECONCILIATION-R1.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I022",
+      "ordinal": 22,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "畫畫",
+      "source_jyutping": "waak6 waa2",
+      "source_english": "to draw/paint",
+      "source_hash": "sha256:e46f72386f9bf3c58e7f09c2905ad40615a612e2e9291eacd047ab74f554e14f",
+      "normalized_surface": "畫畫",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/verbs.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "src/runtime-resources/pronunciation/jyutping-review-expectations.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "grammar/research_pending/DegreeMannerAdverbial.md",
+          "match_type": "exact_surface_file",
+          "layer": "current_grammar_note"
+        },
+        {
+          "path": "grammar/research_pending/DegreeMannerModifiedVP.md",
+          "match_type": "exact_surface_file",
+          "layer": "current_grammar_note"
+        },
+        {
+          "path": "tests/constructions/DegreeMannerModifiedVP.json",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "data/construction-adjudication-batches/batch-03.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/construction-identities.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-006-20260104/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-006-20260104/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-03.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/CP024-P0-L45-VERB-VALENCY-INVENTORY-R1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/UC-RQ-026-DI1-DEGREE-DISPOSITION-R1.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [
+            {
+              "type": "reading_collision",
+              "sourceValue": "waak6 waa2",
+              "reviewedRuntimeValue": "waak6 waa2",
+              "status": "merged_pr_121",
+              "note": "PR #121 corrected the drawing verb reading while preserving noun 畫 waa2."
+            }
+          ],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I023",
+      "ordinal": 23,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "踢波",
+      "source_jyutping": "tek3 bo1",
+      "source_english": "to play football",
+      "source_hash": "sha256:84899ea145d588f9108887b4f8387ce57f8b5a9de2546b1fd9b0520a53bc80e4",
+      "normalized_surface": "踢波",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/productive-vo.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I024",
+      "ordinal": 24,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "打波",
+      "source_jyutping": "daa2 bo1",
+      "source_english": "to play ball",
+      "source_hash": "sha256:8277bb23321cea4b9e150796d5fb8b2131abe7339f7a6d22b39c885236e166f0",
+      "normalized_surface": "打波",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/productive-vo.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/research/GLOSSIKA-CONTEXT-LINKED-RESPONSE-DECISIONS-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-014-20260308/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-014-20260308/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "review-packets/corpus-review/GLOSSIKA-CONTEXT/context-linked-response-decisions-r1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I025",
+      "ordinal": 25,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "彈琴",
+      "source_jyutping": "taan4 kam4",
+      "source_english": "to play piano",
+      "source_hash": "sha256:694e7fef89a4f76ecb06089b7e90c00a1ab93baa88552cdec8d9617ade37a546",
+      "normalized_surface": "彈琴",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/productive-vo.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/research/GLOSSIKA-CONTEXT-LINKED-RESPONSE-DECISIONS-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-014-20260308/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-014-20260308/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "review-packets/corpus-review/GLOSSIKA-CONTEXT/context-linked-response-decisions-r1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "docs/research/PRQ2-010-CEOI4ZO2-ZI1NGOI6-EXCLUSION-ADDITION-COLLISION-AUDIT-R1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I026",
+      "ordinal": 26,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "釣魚",
+      "source_jyutping": "diu3 jyu2",
+      "source_english": "to fish",
+      "source_hash": "sha256:d5debf821bb940ebd0b0e7ffda9c2c4b7763993b6f12a3bbb55a9b8f7fd04007",
+      "normalized_surface": "釣魚",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/productive-vo.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [
+            {
+              "type": "jyutping_review",
+              "sourceValue": "diu3 jyu2",
+              "reviewedRuntimeValue": "diu3 jyu4",
+              "status": "merged_pr_121",
+              "note": "PR #121 retains the reviewed lexical reading 魚 jyu4 and does not import the source tone."
+            }
+          ],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I027",
+      "ordinal": 27,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "旅行",
+      "source_jyutping": "leoi5 hang4",
+      "source_english": "to travel",
+      "source_hash": "sha256:eee1984294cfce4c4ebbdce46bd622e22ccd93648c85adbbccb356c81bf0d637",
+      "normalized_surface": "旅行",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/parser/detectors/transfer/passive-permissive.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "src/runtime-resources/pronunciation/jyutping-review-expectations.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "data/corpus-reviews/AA82-ATTESTED-BOUNDARY-PACKET-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "review-packets/corpus-review/AA56/bounded-review-decisions-r1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/corpus-review/AA56/bounded-review-packet-r1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/corpus-review/AA84/bare-redup-decisions-r2.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/corpus-review/AA84/bare-redup-packet-r2.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/corpus-review/AA84/bare-redup-review-view-r2.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/corpus-review/AB30/hkcancor-zo-m-decisions-r1.json",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/corpus-review/NOMINAL-MODIFICATION/issue-315/AA07-compact-review.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-query-summary.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-query-summary.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-query-summary.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        }
+      ],
+      "exact_match_paths_omitted": 6,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I028",
+      "ordinal": 28,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "唱歌",
+      "source_jyutping": "coeng3 go1",
+      "source_english": "to sing",
+      "source_hash": "sha256:8e464878f92543c5ebc10ddf6421fc48f65600b8bbc22921fb9b9a433fbe942f",
+      "normalized_surface": "唱歌",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/productive-vo.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "review-packets/corpus-review/NOMINAL-MODIFICATION/issue-315/AA07-compact-review.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa89-hkcancor/hkcancor-aa89-modal-lexeme-query-summary.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "docs/research/UC-RQ-004-005-COMPARISON-HKCANCOR-ATTESTATION-R1.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I029",
+      "ordinal": 29,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "睇波",
+      "source_jyutping": "tai2 bo1",
+      "source_english": "to watch a game",
+      "source_hash": "sha256:8db61f1d6d9d46e40ff6ff7ec6860f18ee3cdc043f9cadbcf6b9c9d7acd31fdb",
+      "normalized_surface": "睇波",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/productive-vo.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I030",
+      "ordinal": 30,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "瑜伽",
+      "source_jyutping": "jyu4 gaa1",
+      "source_english": "yoga",
+      "source_hash": "sha256:d11be6b8a071f00d0e7803f04f47c9471f9703cff0aa71ef1b15d3e089d0b888",
+      "normalized_surface": "瑜伽",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "src/runtime-resources/pronunciation/jyutping-review-expectations.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I031",
+      "ordinal": 31,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "露營",
+      "source_jyutping": "lou6 jing4",
+      "source_english": "to camp",
+      "source_hash": "sha256:ed1ca89e3122d23832e3f7c0767f7be8baa0d1ac4a1db6636831b326691a837f",
+      "normalized_surface": "露營",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/verbs.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "src/runtime-resources/pronunciation/jyutping-review-expectations.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I032",
+      "ordinal": 32,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "下棋",
+      "source_jyutping": "haa5 kei2",
+      "source_english": "to play chess",
+      "source_hash": "sha256:eac16a150b6ee5464ba30bad44fae71742bbdca03c1b0ffbb30d6bcb7b426d11",
+      "normalized_surface": "下棋",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/productive-vo.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/plugin-entry.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [
+            {
+              "type": "reading_boundary",
+              "sourceValue": "haa5 kei2",
+              "reviewedRuntimeValue": "haa5 kei2",
+              "status": "merged_pr_121"
+            }
+          ],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I033",
+      "ordinal": 33,
+      "section": "vocabulary_and_situations",
+      "subsection": "hobbies_free_time",
+      "item_type": "lexical_entry",
+      "source_traditional": "行公園",
+      "source_jyutping": "haang4 gung1 jyun2",
+      "source_english": "to walk in the park",
+      "source_hash": "sha256:5de89fc86ab06b2bb16a7e2b9ff0360c7d9bc8779c4e00f0db5d460498729013",
+      "normalized_surface": "行公園",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I034",
+      "ordinal": 34,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "item_type": "lexical_entry",
+      "source_traditional": "一百萬",
+      "source_jyutping": "jat1 baak3 maan6",
+      "source_english": "1 million",
+      "source_hash": "sha256:abc17c2e798ef312a5f1a89165dc0dc509dce4d5acfc1bfe22f22c494a1b715d",
+      "normalized_surface": "一百萬",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-claim-source.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-followup-candidates.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-CORPUS-INGRESS.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I035",
+      "ordinal": 35,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "item_type": "lexical_entry",
+      "source_traditional": "二百萬",
+      "source_jyutping": "ji6 baak3 maan6",
+      "source_english": "2 million",
+      "source_hash": "sha256:07f1afd84f82505110a1cb755d926c554085329b92f0f9ca22056a1a9bc9ea6b",
+      "normalized_surface": "二百萬",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I036",
+      "ordinal": 36,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "item_type": "lexical_entry",
+      "source_traditional": "三百萬",
+      "source_jyutping": "saam1 baak3 maan6",
+      "source_english": "3 million",
+      "source_hash": "sha256:4ffca500578a3d5796b0b1abab9aeba65266e2fdc4a0f0c22906a72ed1ac6bf0",
+      "normalized_surface": "三百萬",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I037",
+      "ordinal": 37,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "item_type": "lexical_entry",
+      "source_traditional": "四百萬",
+      "source_jyutping": "sei3 baak3 maan6",
+      "source_english": "4 million",
+      "source_hash": "sha256:d3456f59d91b02d7c4496bb51aca2056f8db1d4f1a730f60ea27081702702547",
+      "normalized_surface": "四百萬",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I038",
+      "ordinal": 38,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "item_type": "lexical_entry",
+      "source_traditional": "五百萬",
+      "source_jyutping": "ng5 baak3 maan6",
+      "source_english": "5 million",
+      "source_hash": "sha256:43593e06304448fd35c1a189ed45bdfcc4e8041b7e7b8f8fc35c5e1f866d5fca",
+      "normalized_surface": "五百萬",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I039",
+      "ordinal": 39,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "item_type": "lexical_entry",
+      "source_traditional": "六百萬",
+      "source_jyutping": "luk6 baak3 maan6",
+      "source_english": "6 million",
+      "source_hash": "sha256:607e482c874f514103dd32dbdff345568ad6ee87236ad245730a6f2db1d49411",
+      "normalized_surface": "六百萬",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I040",
+      "ordinal": 40,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "item_type": "lexical_entry",
+      "source_traditional": "七百萬",
+      "source_jyutping": "cat1 baak3 maan6",
+      "source_english": "7 million",
+      "source_hash": "sha256:77e4226b40da1dd442c4d9ed032871fe2a85f3a2508ea381155fede7d3dcbfa3",
+      "normalized_surface": "七百萬",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I041",
+      "ordinal": 41,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "item_type": "lexical_entry",
+      "source_traditional": "八百萬",
+      "source_jyutping": "baat3 baak3 maan6",
+      "source_english": "8 million",
+      "source_hash": "sha256:c4a5ae8035e0df376977fb44d0b326d59d79fdaa6ca7d0f4b50054aafbf97621",
+      "normalized_surface": "八百萬",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I042",
+      "ordinal": 42,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "item_type": "lexical_entry",
+      "source_traditional": "九百萬",
+      "source_jyutping": "gau2 baak3 maan6",
+      "source_english": "9 million",
+      "source_hash": "sha256:83769b610be62a418d10d5f9db86086071bea33e8edefa5699b4904a7b4ecaf4",
+      "normalized_surface": "九百萬",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I043",
+      "ordinal": 43,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "item_type": "lexical_entry",
+      "source_traditional": "一千萬",
+      "source_jyutping": "jat1 cin1 maan6",
+      "source_english": "10 million",
+      "source_hash": "sha256:daffeeb416b16e16f2e8fa9444f23991da1b89d020a1a05209cf46cedad3359d",
+      "normalized_surface": "一千萬",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "runtime-crosswalk-r1",
+          "kind": "runtime_crosswalk",
+          "runtime_pull_request": 121,
+          "runtime_merge_commit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+          "provenance_path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "runtime_crosswalk": {
+            "status": "merged_runtime_crosswalk",
+            "intakeIssue": 119,
+            "pullRequest": 121,
+            "mergeCommit": "252f8e432bfc2b2f37e25514c940d959580a548e",
+            "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+            "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
+          },
+          "source_discrepancies": [],
+          "reviewed_values": {}
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I044",
+      "ordinal": 44,
+      "section": "vocabulary_and_situations",
+      "subsection": "situation_patterns",
+      "item_type": "sentence",
+      "source_traditional": "我放假鍾意去行山。",
+      "source_jyutping": "ngo5 fong3 gaa3 zung1 ji3 heoi3 haang4 saan1",
+      "source_english": "On holidays I like to go hiking.",
+      "source_hash": "sha256:3303b186f92c5088928775cb99cab27883e4e487201d7c83fdd7f3dfc788aa18",
+      "normalized_surface": "我放假鍾意去行山",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I045",
+      "ordinal": 45,
+      "section": "vocabulary_and_situations",
+      "subsection": "situation_patterns",
+      "item_type": "sentence",
+      "source_traditional": "不如聽日去睇戲啦。",
+      "source_jyutping": "bat1 jyu4 ting1 jat6 heoi3 tai2 hei3 laa1",
+      "source_english": "Why don't we go see a movie tomorrow?",
+      "source_hash": "sha256:876705e321f17c5ccf0907f590669c5551fc780913977c5844b826ac272ffcaf",
+      "normalized_surface": "不如聽日去睇戲啦",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I046",
+      "ordinal": 46,
+      "section": "vocabulary_and_situations",
+      "subsection": "situation_patterns",
+      "item_type": "sentence",
+      "source_traditional": "佢鍾意游水同跑步。",
+      "source_jyutping": "keoi5 zung1 ji3 jau4 seoi2 tung4 paau2 bou6",
+      "source_english": "He likes to swim and run.",
+      "source_hash": "sha256:c0b2f66a3905a212ee7e1b03364b42d38ceaf8cd90c5fab673569f79a4b56b22",
+      "normalized_surface": "佢鍾意游水同跑步",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I047",
+      "ordinal": 47,
+      "section": "vocabulary_and_situations",
+      "subsection": "situation_patterns",
+      "item_type": "sentence",
+      "source_traditional": "你平時有咩嗜好？",
+      "source_jyutping": "nei5 ping4 si4 jau5 me1 si3 hou3",
+      "source_english": "What hobbies do you usually have?",
+      "source_hash": "sha256:3d02a4c9a2c6875d1ed2c509485f08626870c93434320d3e7da585e053228d29",
+      "normalized_surface": "你平時有咩嗜好",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I048",
+      "ordinal": 48,
+      "section": "vocabulary_and_situations",
+      "subsection": "mini_dialog",
+      "item_type": "dialog_turn",
+      "source_traditional": "你放假鍾意做咩？",
+      "source_jyutping": "nei5 fong3 gaa3 zung1 ji3 zou6 me1",
+      "source_english": "What do you like to do on holidays?",
+      "source_hash": "sha256:6b6f190592c2952f2426859c01ab74f55fe5554857e167f58fc7347711b57c80",
+      "normalized_surface": "你放假鍾意做咩",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I049",
+      "ordinal": 49,
+      "section": "vocabulary_and_situations",
+      "subsection": "mini_dialog",
+      "item_type": "dialog_turn",
+      "source_traditional": "我鍾意睇戲同行街。",
+      "source_jyutping": "ngo5 zung1 ji3 tai2 hei3 tung4 haang4 gaai1",
+      "source_english": "I like to watch movies and go shopping.",
+      "source_hash": "sha256:36ee8f50277fc1033c39947e4e187ccd7f3e4c5edcf8388a2da8196f212f34c9",
+      "normalized_surface": "我鍾意睇戲同行街",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I050",
+      "ordinal": 50,
+      "section": "vocabulary_and_situations",
+      "subsection": "mini_dialog",
+      "item_type": "dialog_turn",
+      "source_traditional": "今個星期六有時間嗎？",
+      "source_jyutping": "gam1 go3 sing1 kei4 luk6 jau5 si4 gaan3 maa3",
+      "source_english": "Do you have time this Saturday?",
+      "source_hash": "sha256:15975f854ee81c97845dfe80c5e511f78c95c2f4bed255a3f3607ebb50f13faf",
+      "normalized_surface": "今個星期六有時間嗎",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I051",
+      "ordinal": 51,
+      "section": "vocabulary_and_situations",
+      "subsection": "mini_dialog",
+      "item_type": "dialog_turn",
+      "source_traditional": "有呀，不如一齊去唱K啦！",
+      "source_jyutping": "jau5 aa3 bat1 jyu4 jat1 cai4 heoi3 coeng3 kei1 laa1",
+      "source_english": "Yes, why don't we go do karaoke together!",
+      "source_hash": "sha256:c95e887fc63f6b8411d3356d2e5a831b13d1e0d2666d9d8533e2423d75390aef",
+      "normalized_surface": "有呀不如一齊去唱k啦",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I052",
+      "ordinal": 52,
+      "section": "grammar_patterns",
+      "subsection": "negation",
+      "item_type": "sentence",
+      "source_traditional": "我唔食肉。",
+      "source_jyutping": "ngo5 m4 sik6 juk6",
+      "source_english": "I don't eat meat.",
+      "source_hash": "sha256:070c69da4103e606ed6cd07975bae5eee63f983f4dc6c82d62bffd734dffbffb",
+      "normalized_surface": "我唔食肉",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I053",
+      "ordinal": 53,
+      "section": "grammar_patterns",
+      "subsection": "negation",
+      "item_type": "sentence",
+      "source_traditional": "佢唔係醫生。",
+      "source_jyutping": "keoi5 m4 hai6 ji1 sang1",
+      "source_english": "He/She is not a doctor.",
+      "source_hash": "sha256:b34febef20eca04b98961874b36159f73244a1fac9d8a2d9fddb436c5d2012c2",
+      "normalized_surface": "佢唔係醫生",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I054",
+      "ordinal": 54,
+      "section": "phonics_drill",
+      "subsection": "o_vs_u",
+      "item_type": "phonics_pair",
+      "source_traditional": "",
+      "source_jyutping": null,
+      "source_english": null,
+      "source_hash": "sha256:a51c9e5127e15a258b99f1aab5df3b0fc7a54546371cc5cecfa5c8ea75c18fd5",
+      "normalized_surface": "",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I055",
+      "ordinal": 55,
+      "section": "phonics_drill",
+      "subsection": "o_vs_u",
+      "item_type": "phonics_pair",
+      "source_traditional": "",
+      "source_jyutping": null,
+      "source_english": null,
+      "source_hash": "sha256:1b6bd8a3b795e5aa2326acbc1b2f92ef68faa420c98b37b01338fb9e27fb6471",
+      "normalized_surface": "",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I056",
+      "ordinal": 56,
+      "section": "phonics_drill",
+      "subsection": "o_vs_u",
+      "item_type": "phonics_pair",
+      "source_traditional": "",
+      "source_jyutping": null,
+      "source_english": null,
+      "source_hash": "sha256:bb4ced1e725d37742f944e098e8612a0071f2e262dbcc59153d7708f08ee7665",
+      "normalized_surface": "",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I057",
+      "ordinal": 57,
+      "section": "phonics_drill",
+      "subsection": "o_vs_u",
+      "item_type": "phonics_pair",
+      "source_traditional": "",
+      "source_jyutping": null,
+      "source_english": null,
+      "source_hash": "sha256:2b85a24ca7ffba210f5c0ea78ff53226a3db022b2c6330c6eb8d22e224aa6764",
+      "normalized_surface": "",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I058",
+      "ordinal": 58,
+      "section": "phonics_drill",
+      "subsection": "o_vs_u",
+      "item_type": "phonics_pair",
+      "source_traditional": "",
+      "source_jyutping": null,
+      "source_english": null,
+      "source_hash": "sha256:72db396dae8899c9c6d77da2b102e1783abb20c956cec87e0fbcf76e1ce4384b",
+      "normalized_surface": "",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W16-20260705-I059",
+      "ordinal": 59,
+      "section": "phonics_drill",
+      "subsection": "o_vs_u",
+      "item_type": "phonics_pair",
+      "source_traditional": "",
+      "source_jyutping": null,
+      "source_english": null,
+      "source_hash": "sha256:6a72b1c994ce62a999678c6abcaeebe8c6e968129c312908349848caaa42dec4",
+      "normalized_surface": "",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    }
+  ]
+}
