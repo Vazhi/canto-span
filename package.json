@@ -26,7 +26,7 @@
     "verify:native-panel-lifecycle": "node tools/verify-native-panel-lifecycle.js",
     "verify:ab30-aggregate": "python3 review-packets/corpus-review/AB30/verify-aggregate-corpus-evidence-manifest-r1.py",
     "verify:interim-pilot-export": "python3 tools/verify-interim-pilot-public-package.py",
-    "verify:pedagogical-corpus-review": "python3 tools/verify-pedagogical-corpus-review.py --package data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621 --check-deterministic-crossref",
+    "verify:pedagogical-corpus-review": "python3 tools/verify-pedagogical-corpus-review.py --package data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621 --package data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628 --check-deterministic-crossref",
     "verify:runtime": "node tools/verify-current-state.js --profile runtime",
     "verify:release": "node tools/verify-current-state.js --profile release",
     "verify:all": "node tools/verify-current-state.js --profile all",
