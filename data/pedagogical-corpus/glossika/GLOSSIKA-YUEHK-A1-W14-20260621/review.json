@@ -1,764 +1,2521 @@
 {
-  "schema": "canto-span-pedagogical-corpus-review-v1",
-  "sourceId": "GLOSSIKA-YUEHK-A1-W14-20260621",
-  "sourcePayloadHash": "sha256:8b539f409e0cd61bea4832edfa6ec1c607e8d18cd9f429ddbab954b36920102f",
-  "policy": {
-    "sourceLayer": "source.json is immutable.",
-    "normalization": "normalizedCantonese is mechanical and must not replace source orthography.",
-    "classification": "Every record remains unreviewed until exact/normalized duplicate scan and expert review are complete.",
-    "evidenceBoundary": "Pedagogical attestation does not establish productivity, frequency, construction identity, dialect-wide naturalness, preferred Jyutping, parser correctness, or status."
+  "schema": "canto-span-pedagogical-corpus-review-v2",
+  "source_id": "GLOSSIKA-YUEHK-A1-W14-20260621",
+  "source_path": "source.json",
+  "source_payload_hash": "sha256:8b539f409e0cd61bea4832edfa6ec1c607e8d18cd9f429ddbab954b36920102f",
+  "mechanical_cross_reference": "mechanical-cross-reference-r1.json",
+  "reviewed_on": "2026-08-02",
+  "review_authority": "project_expert_systematic_review",
+  "record_count": 61,
+  "review_policy": {
+    "source_values_immutable": true,
+    "mechanical_matches_are_candidates_only": true,
+    "terminal_classification_required": true,
+    "accepted_duplicate_target_required_for_exact_or_normalized_duplicate": true,
+    "unresolved_discrepancies_do_not_fabricate_replacements": true,
+    "pedagogical_attestation_has_zero_independent_grammar_weight": true
   },
+  "allowed_terminal_classifications": [
+    "exact_duplicate",
+    "normalized_duplicate",
+    "new_corpus_attestation",
+    "lexical_only_attestation",
+    "pronunciation_discrepancy",
+    "translation_discrepancy",
+    "naturalness_review_candidate",
+    "unusable"
+  ],
   "summary": {
-    "recordCount": 61,
-    "reviewedCount": 0,
-    "unreviewedCount": 61,
-    "knownSourceAlerts": [
-      {
-        "scope": "lesson-wide",
-        "type": "pedagogical_register_labels",
-        "status": "requires_external_verification",
-        "note": "Casual, polite, and standard labels are preserved from the source and are not accepted as sociolinguistic conclusions."
-      },
-      {
-        "scope": "phonics_drill",
-        "type": "pronunciation_material",
-        "status": "requires_independent_verification",
-        "note": "IPA, lexical choices, and claimed minimal-pair status are preserved but not adopted as reviewed pronunciation evidence."
-      }
-    ]
+    "review_status_counts": {
+      "reviewed": 61,
+      "unreviewed": 0
+    },
+    "terminal_classification_counts": {
+      "exact_duplicate": 5,
+      "lexical_only_attestation": 27,
+      "new_corpus_attestation": 23,
+      "pronunciation_discrepancy": 2,
+      "translation_discrepancy": 4
+    },
+    "duplicate_status_counts": {
+      "accepted_exact_duplicate": 5,
+      "no_accepted_duplicate": 56
+    },
+    "evidence_use_counts": {
+      "compositional_numeral_attestation_no_opaque_lexicon_entry": 9,
+      "duplicate_compositional_numeral_attestation": 1,
+      "duplicate_pedagogical_attestation_no_new_runtime_owner": 4,
+      "lexical_ingress_candidate_not_implemented": 18,
+      "pedagogical_attestation_plus_bounded_followup_research": 13,
+      "pedagogical_corpus_attestation_only": 4,
+      "pronunciation_candidate_not_adopted": 6,
+      "source_discrepancy_preserved_unresolved": 6
+    },
+    "records_with_source_discrepancies": 6,
+    "records_with_reviewed_replacements": 0
   },
   "records": [
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I001",
-      "sourceHash": "sha256:736ef622b8ec4eb73920ea43ccbbb1c36b2bf57fa9f078e890e21daadbb48790",
-      "normalizedCantonese": "唔好意思",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:736ef622b8ec4eb73920ea43ccbbb1c36b2bf57fa9f078e890e21daadbb48790",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "pronunciation_discrepancy",
+      "evidence_use_disposition": "source_discrepancy_preserved_unresolved",
+      "source_discrepancies": [
+        {
+          "field": "source.jyutping",
+          "issue": "Later Week 14 research flags the source-final si1 reading in 唔好意思 for independent lexical verification.",
+          "status": "conflict_detected_no_replacement_accepted"
+        }
+      ],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F01",
+          "cluster": "apology_pragmatics",
+          "priority": "medium",
+          "next_method": "direct_pragmatics_review_then_role_neutral_panel_if_needed",
+          "reason": "Direct research rejects a one-dimensional casual/polite scale but does not fully classify the four lesson items."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I001",
+      "review_note": "The source value is preserved unchanged. No corrected reading is asserted in this ingress review.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I002",
-      "sourceHash": "sha256:66f4aa19f7ed4d71c15aec3e8d4dc8a1171b9fc0ab9dbf3ce8d4df44ad2967c8",
-      "normalizedCantonese": "對唔住呀",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:66f4aa19f7ed4d71c15aec3e8d4dc8a1171b9fc0ab9dbf3ce8d4df44ad2967c8",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "new_corpus_attestation",
+      "evidence_use_disposition": "pedagogical_attestation_plus_bounded_followup_research",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F01",
+          "cluster": "apology_pragmatics",
+          "priority": "medium",
+          "next_method": "direct_pragmatics_review_then_role_neutral_panel_if_needed",
+          "reason": "Direct research rejects a one-dimensional casual/polite scale but does not fully classify the four lesson items."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I002",
+      "review_note": "Retained as a source attestation and linked to bounded later research; it does not establish productivity, identity, or parser behavior.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I003",
-      "sourceHash": "sha256:dd84be403ff72057c94bf8c160f269241ea369f16619b197b3cf80077b20b4c2",
-      "normalizedCantonese": "對唔住我遲咗",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:dd84be403ff72057c94bf8c160f269241ea369f16619b197b3cf80077b20b4c2",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "new_corpus_attestation",
+      "evidence_use_disposition": "pedagogical_attestation_plus_bounded_followup_research",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F01",
+          "cluster": "apology_pragmatics",
+          "priority": "medium",
+          "next_method": "direct_pragmatics_review_then_role_neutral_panel_if_needed",
+          "reason": "Direct research rejects a one-dimensional casual/polite scale but does not fully classify the four lesson items."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I003",
+      "review_note": "Retained as a source attestation and linked to bounded later research; it does not establish productivity, identity, or parser behavior.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I004",
-      "sourceHash": "sha256:38735c3a5d3fffa8b7a52f50e29ed1a8562019ca9051f6da95de6945b9f152f3",
-      "normalizedCantonese": "好對唔住係我唔啱",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:38735c3a5d3fffa8b7a52f50e29ed1a8562019ca9051f6da95de6945b9f152f3",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "new_corpus_attestation",
+      "evidence_use_disposition": "pedagogical_attestation_plus_bounded_followup_research",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F01",
+          "cluster": "apology_pragmatics",
+          "priority": "medium",
+          "next_method": "direct_pragmatics_review_then_role_neutral_panel_if_needed",
+          "reason": "Direct research rejects a one-dimensional casual/polite scale but does not fully classify the four lesson items."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I004",
+      "review_note": "Retained as a source attestation and linked to bounded later research; it does not establish productivity, identity, or parser behavior.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I005",
-      "sourceHash": "sha256:67b3ac5dbade5b89e8b45c1b2b4fe61735e040242a5899350a40f351bdaef627",
-      "normalizedCantonese": "多謝",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:67b3ac5dbade5b89e8b45c1b2b4fe61735e040242a5899350a40f351bdaef627",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "new_corpus_attestation",
+      "evidence_use_disposition": "pedagogical_attestation_plus_bounded_followup_research",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F02",
+          "cluster": "gratitude_semantics",
+          "priority": "high",
+          "next_method": "lexical_semantics_and_contextual_example_design",
+          "reason": "The distinction is directly supported and has immediate learner value, but implementation requires a separate lexical/presentation claim."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I005",
+      "review_note": "Retained as a source attestation and linked to bounded later research; it does not establish productivity, identity, or parser behavior.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I006",
-      "sourceHash": "sha256:a4e6e1c10527f4716df8f61bb71a14c4b15496b850b983040c32a6dcd8c5dc52",
-      "normalizedCantonese": "唔該晒",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:a4e6e1c10527f4716df8f61bb71a14c4b15496b850b983040c32a6dcd8c5dc52",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "new_corpus_attestation",
+      "evidence_use_disposition": "pedagogical_attestation_plus_bounded_followup_research",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F02",
+          "cluster": "gratitude_semantics",
+          "priority": "high",
+          "next_method": "lexical_semantics_and_contextual_example_design",
+          "reason": "The distinction is directly supported and has immediate learner value, but implementation requires a separate lexical/presentation claim."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I006",
+      "review_note": "Retained as a source attestation and linked to bounded later research; it does not establish productivity, identity, or parser behavior.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I007",
-      "sourceHash": "sha256:8690f121c80b67c1265b061e142d7c60175d22e9cc51c0e0a75a788d7b0539bc",
-      "normalizedCantonese": "多謝你嘅幫忙",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:8690f121c80b67c1265b061e142d7c60175d22e9cc51c0e0a75a788d7b0539bc",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "new_corpus_attestation",
+      "evidence_use_disposition": "pedagogical_attestation_plus_bounded_followup_research",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F02",
+          "cluster": "gratitude_semantics",
+          "priority": "high",
+          "next_method": "lexical_semantics_and_contextual_example_design",
+          "reason": "The distinction is directly supported and has immediate learner value, but implementation requires a separate lexical/presentation claim."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I007",
+      "review_note": "Retained as a source attestation and linked to bounded later research; it does not establish productivity, identity, or parser behavior.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I008",
-      "sourceHash": "sha256:d4df9dffdfc162c899fa6e5261a05d3916054f17609ed281d37cef7c913d8b49",
-      "normalizedCantonese": "真係好多謝你",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:d4df9dffdfc162c899fa6e5261a05d3916054f17609ed281d37cef7c913d8b49",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "new_corpus_attestation",
+      "evidence_use_disposition": "pedagogical_attestation_plus_bounded_followup_research",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F02",
+          "cluster": "gratitude_semantics",
+          "priority": "high",
+          "next_method": "lexical_semantics_and_contextual_example_design",
+          "reason": "The distinction is directly supported and has immediate learner value, but implementation requires a separate lexical/presentation claim."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I008",
+      "review_note": "Retained as a source attestation and linked to bounded later research; it does not establish productivity, identity, or parser behavior.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I009",
-      "sourceHash": "sha256:297ee25808233f10e66ad8954ce376c116696fafe75dcae479dc92f59c4bd6d2",
-      "normalizedCantonese": "返工",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:297ee25808233f10e66ad8954ce376c116696fafe75dcae479dc92f59c4bd6d2",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "lexical_ingress_candidate_not_implemented",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I009",
+      "review_note": "Retained as lexical attestation and later ingress candidate; no runtime insertion or grammar inference occurs here.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I010",
-      "sourceHash": "sha256:d1b2447f00d7276dea3d9a1339ad7b328986461e6b01eea3546f4aff9e3d6358",
-      "normalizedCantonese": "放工",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:d1b2447f00d7276dea3d9a1339ad7b328986461e6b01eea3546f4aff9e3d6358",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "lexical_ingress_candidate_not_implemented",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I010",
+      "review_note": "Retained as lexical attestation and later ingress candidate; no runtime insertion or grammar inference occurs here.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I011",
-      "sourceHash": "sha256:4cffb39f9ba1db8fc45ae3679b18c7ceff332ec931e899c61fa9235182453d0e",
-      "normalizedCantonese": "公司",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:4cffb39f9ba1db8fc45ae3679b18c7ceff332ec931e899c61fa9235182453d0e",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "accepted_exact_duplicate",
+      "accepted_duplicate_targets": [
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon",
+          "basis": "accepted_later_runtime_owner"
+        }
+      ],
+      "terminal_ingress_classification": "exact_duplicate",
+      "evidence_use_disposition": "duplicate_pedagogical_attestation_no_new_runtime_owner",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "already_covered_exact",
+          "exact_runtime_owners": [
+            "src/runtime-resources/lexicon/token-lexicon"
+          ],
+          "canonical_mentions": [
+            "src/runtime-resources/lexicon/token-lexicon/people-and-address.js"
+          ],
+          "recommendation": "no_duplicate_ingress"
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I011",
+      "review_note": "A canonical runtime owner or independent exact pedagogical source already preserves the form; this source remains provenance only.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I012",
-      "sourceHash": "sha256:f76e961c5b662ca63aa1eb97d0e7ee0fa35fde3574835f824408cd40962ecc82",
-      "normalizedCantonese": "辦公室",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:f76e961c5b662ca63aa1eb97d0e7ee0fa35fde3574835f824408cd40962ecc82",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "lexical_ingress_candidate_not_implemented",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I012",
+      "review_note": "Retained as lexical attestation and later ingress candidate; no runtime insertion or grammar inference occurs here.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I013",
-      "sourceHash": "sha256:a2e423bcc2258f62c53e4d83ff9a43b915e97cc66b3c003388eeb28577e62310",
-      "normalizedCantonese": "老闆",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:a2e423bcc2258f62c53e4d83ff9a43b915e97cc66b3c003388eeb28577e62310",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "accepted_exact_duplicate",
+      "accepted_duplicate_targets": [
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon",
+          "basis": "accepted_later_runtime_owner"
+        }
+      ],
+      "terminal_ingress_classification": "exact_duplicate",
+      "evidence_use_disposition": "duplicate_pedagogical_attestation_no_new_runtime_owner",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "already_covered_exact",
+          "exact_runtime_owners": [
+            "src/runtime-resources/lexicon/token-lexicon"
+          ],
+          "canonical_mentions": [
+            "src/runtime-resources/lexicon/token-lexicon/people-and-address.js"
+          ],
+          "recommendation": "no_duplicate_ingress"
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I013",
+      "review_note": "A canonical runtime owner or independent exact pedagogical source already preserves the form; this source remains provenance only.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I014",
-      "sourceHash": "sha256:8cd21bd6d69d03fadee7d3ee02400dd470dbd5deda1eddd5c70fdec4050e49e3",
-      "normalizedCantonese": "開會",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:8cd21bd6d69d03fadee7d3ee02400dd470dbd5deda1eddd5c70fdec4050e49e3",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "lexical_ingress_candidate_not_implemented",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I014",
+      "review_note": "Retained as lexical attestation and later ingress candidate; no runtime insertion or grammar inference occurs here.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I015",
-      "sourceHash": "sha256:f71a29861767504b74aa6bd951b9bb2ca2831a481b47396297730d319ca63caf",
-      "normalizedCantonese": "出糧",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:f71a29861767504b74aa6bd951b9bb2ca2831a481b47396297730d319ca63caf",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "translation_discrepancy",
+      "evidence_use_disposition": "source_discrepancy_preserved_unresolved",
+      "source_discrepancies": [
+        {
+          "field": "source.english",
+          "issue": "The gloss “to get paid” is perspective-bound and later research requires broader lexical verification before reuse.",
+          "status": "scope_alert_no_replacement_accepted"
+        }
+      ],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F08",
+          "cluster": "lexical_gloss_review",
+          "priority": "high",
+          "next_method": "dictionary_corpus_and_native_usage_review",
+          "reason": "The source glosses may be perspective-bound or narrower than the Cantonese forms; no correction is asserted here."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I015",
+      "review_note": "The source wording is preserved unchanged. No replacement gloss or orthography is asserted in this ingress review.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I016",
-      "sourceHash": "sha256:bd0a01c33586fe473af369b50b6a8d12a2853112d809b9374dff5f03d60d54f2",
-      "normalizedCantonese": "放假",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:bd0a01c33586fe473af369b50b6a8d12a2853112d809b9374dff5f03d60d54f2",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "lexical_ingress_candidate_not_implemented",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I016",
+      "review_note": "Retained as lexical attestation and later ingress candidate; no runtime insertion or grammar inference occurs here.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I017",
-      "sourceHash": "sha256:1c7aca90b205aa6d561d1a33baedb8cac85b66f65e753be9a586867869ac141b",
-      "normalizedCantonese": "打工",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:1c7aca90b205aa6d561d1a33baedb8cac85b66f65e753be9a586867869ac141b",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "translation_discrepancy",
+      "evidence_use_disposition": "source_discrepancy_preserved_unresolved",
+      "source_discrepancies": [
+        {
+          "field": "source.english",
+          "issue": "The parenthetical restriction “part-time” is narrower than the later Week 14 research disposition supports.",
+          "status": "scope_alert_no_replacement_accepted"
+        }
+      ],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F08",
+          "cluster": "lexical_gloss_review",
+          "priority": "high",
+          "next_method": "dictionary_corpus_and_native_usage_review",
+          "reason": "The source glosses may be perspective-bound or narrower than the Cantonese forms; no correction is asserted here."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I017",
+      "review_note": "The source wording is preserved unchanged. No replacement gloss or orthography is asserted in this ingress review.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I018",
-      "sourceHash": "sha256:4c616b2f11e5420db607ff59ce2211218fb87171a2d67564e5cadac8156fb3c9",
-      "normalizedCantonese": "人工",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:4c616b2f11e5420db607ff59ce2211218fb87171a2d67564e5cadac8156fb3c9",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "lexical_ingress_candidate_not_implemented",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I018",
+      "review_note": "Retained as lexical attestation and later ingress candidate; no runtime insertion or grammar inference occurs here.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I019",
-      "sourceHash": "sha256:d34138ce53f76170b824e4726e213e5fca5495482fac390937413da11bca723a",
-      "normalizedCantonese": "加班",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:d34138ce53f76170b824e4726e213e5fca5495482fac390937413da11bca723a",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "lexical_ingress_candidate_not_implemented",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I019",
+      "review_note": "Retained as lexical attestation and later ingress candidate; no runtime insertion or grammar inference occurs here.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I020",
-      "sourceHash": "sha256:ba843dd303c3cd7bf48d9c0caa756e217c64a4b76598fd2b8ab8945df79615a2",
-      "normalizedCantonese": "辭職",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:ba843dd303c3cd7bf48d9c0caa756e217c64a4b76598fd2b8ab8945df79615a2",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "lexical_ingress_candidate_not_implemented",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I020",
+      "review_note": "Retained as lexical attestation and later ingress candidate; no runtime insertion or grammar inference occurs here.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I021",
-      "sourceHash": "sha256:c5a8528b539fe2ae5f356bd8478342d20dc8a7dba26e2989fe1c30787d65bb0a",
-      "normalizedCantonese": "見工",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:c5a8528b539fe2ae5f356bd8478342d20dc8a7dba26e2989fe1c30787d65bb0a",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "translation_discrepancy",
+      "evidence_use_disposition": "source_discrepancy_preserved_unresolved",
+      "source_discrepancies": [
+        {
+          "field": "source.english",
+          "issue": "The gloss “to have a job interview” fixes one participant perspective and requires direct lexical verification.",
+          "status": "perspective_alert_no_replacement_accepted"
+        }
+      ],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F08",
+          "cluster": "lexical_gloss_review",
+          "priority": "high",
+          "next_method": "dictionary_corpus_and_native_usage_review",
+          "reason": "The source glosses may be perspective-bound or narrower than the Cantonese forms; no correction is asserted here."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I021",
+      "review_note": "The source wording is preserved unchanged. No replacement gloss or orthography is asserted in this ingress review.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I022",
-      "sourceHash": "sha256:dba07cf19ef200f00c50d74d9da8b93d5de43432631c76c85d46e3a0d6fc8794",
-      "normalizedCantonese": "履歷",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:dba07cf19ef200f00c50d74d9da8b93d5de43432631c76c85d46e3a0d6fc8794",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "lexical_ingress_candidate_not_implemented",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I022",
+      "review_note": "Retained as lexical attestation and later ingress candidate; no runtime insertion or grammar inference occurs here.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I023",
-      "sourceHash": "sha256:f05a6927031d701c7e1ae8d3736d1ad6303d2a78196d56232bbc5fa2abe407f3",
-      "normalizedCantonese": "職位",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:f05a6927031d701c7e1ae8d3736d1ad6303d2a78196d56232bbc5fa2abe407f3",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "lexical_ingress_candidate_not_implemented",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I023",
+      "review_note": "Retained as lexical attestation and later ingress candidate; no runtime insertion or grammar inference occurs here.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I024",
-      "sourceHash": "sha256:4b1043c05bf296fa9bcd44855f3ad170e18dbfa264b3fb3a593ca96a673fe256",
-      "normalizedCantonese": "合約",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:4b1043c05bf296fa9bcd44855f3ad170e18dbfa264b3fb3a593ca96a673fe256",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "lexical_ingress_candidate_not_implemented",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I024",
+      "review_note": "Retained as lexical attestation and later ingress candidate; no runtime insertion or grammar inference occurs here.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I025",
-      "sourceHash": "sha256:5e6dc4e530c494f653fb271efd281c233622d6f51c6538faa9b54977ca82caa3",
-      "normalizedCantonese": "遲到",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:5e6dc4e530c494f653fb271efd281c233622d6f51c6538faa9b54977ca82caa3",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "lexical_ingress_candidate_not_implemented",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I025",
+      "review_note": "Retained as lexical attestation and later ingress candidate; no runtime insertion or grammar inference occurs here.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I026",
-      "sourceHash": "sha256:59cc97bf4af5403a187dba6b097e2d0bdf9d52ce26c664466310674c94e1083c",
-      "normalizedCantonese": "準時",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:59cc97bf4af5403a187dba6b097e2d0bdf9d52ce26c664466310674c94e1083c",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "accepted_exact_duplicate",
+      "accepted_duplicate_targets": [
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon",
+          "basis": "accepted_later_runtime_owner"
+        }
+      ],
+      "terminal_ingress_classification": "exact_duplicate",
+      "evidence_use_disposition": "duplicate_pedagogical_attestation_no_new_runtime_owner",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "already_covered_exact",
+          "exact_runtime_owners": [
+            "src/runtime-resources/lexicon/token-lexicon"
+          ],
+          "canonical_mentions": [
+            "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+          ],
+          "recommendation": "no_duplicate_ingress"
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I026",
+      "review_note": "A canonical runtime owner or independent exact pedagogical source already preserves the form; this source remains provenance only.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I027",
-      "sourceHash": "sha256:d06ab9a5a66d8c49b70cf802da5234a97704907d0f587bb46386f6f6df4e4173",
-      "normalizedCantonese": "電腦",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:d06ab9a5a66d8c49b70cf802da5234a97704907d0f587bb46386f6f6df4e4173",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "lexical_ingress_candidate_not_implemented",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I027",
+      "review_note": "Retained as lexical attestation and later ingress candidate; no runtime insertion or grammar inference occurs here.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I028",
-      "sourceHash": "sha256:90740090379faea82a4c62eeff9b3435a0928605e8588405db3765dce302253f",
-      "normalizedCantonese": "電郵",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:90740090379faea82a4c62eeff9b3435a0928605e8588405db3765dce302253f",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "lexical_ingress_candidate_not_implemented",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I028",
+      "review_note": "Retained as lexical attestation and later ingress candidate; no runtime insertion or grammar inference occurs here.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I029",
-      "sourceHash": "sha256:d8c2b210120d91bff3f573abd8b7aefd7a4bfbe8c0ab61ed566d75dd2304fe18",
-      "normalizedCantonese": "傳真",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:d8c2b210120d91bff3f573abd8b7aefd7a4bfbe8c0ab61ed566d75dd2304fe18",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "lexical_ingress_candidate_not_implemented",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I029",
+      "review_note": "Retained as lexical attestation and later ingress candidate; no runtime insertion or grammar inference occurs here.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I030",
-      "sourceHash": "sha256:3f7b476bf76b32d019d681198322cade2a8dc8bebcb06b1d7eadc69263799688",
-      "normalizedCantonese": "影印",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:3f7b476bf76b32d019d681198322cade2a8dc8bebcb06b1d7eadc69263799688",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "lexical_ingress_candidate_not_implemented",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I030",
+      "review_note": "Retained as lexical attestation and later ingress candidate; no runtime insertion or grammar inference occurs here.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I031",
-      "sourceHash": "sha256:4a80c5d1285ec7bc849eec794cfd40390efddc68da0f3fc21e6e9349d394ac56",
-      "normalizedCantonese": "文件",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:4a80c5d1285ec7bc849eec794cfd40390efddc68da0f3fc21e6e9349d394ac56",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "accepted_exact_duplicate",
+      "accepted_duplicate_targets": [
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon",
+          "basis": "accepted_later_runtime_owner"
+        }
+      ],
+      "terminal_ingress_classification": "exact_duplicate",
+      "evidence_use_disposition": "duplicate_pedagogical_attestation_no_new_runtime_owner",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "already_covered_exact",
+          "exact_runtime_owners": [
+            "src/runtime-resources/lexicon/token-lexicon"
+          ],
+          "canonical_mentions": [
+            "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+          ],
+          "recommendation": "no_duplicate_ingress"
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I031",
+      "review_note": "A canonical runtime owner or independent exact pedagogical source already preserves the form; this source remains provenance only.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I032",
-      "sourceHash": "sha256:79dbea065692b6302b69e83b0ab98c08ac0e8939056544f7f54518c2c9b12fea",
-      "normalizedCantonese": "客戶",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:79dbea065692b6302b69e83b0ab98c08ac0e8939056544f7f54518c2c9b12fea",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "lexical_ingress_candidate_not_implemented",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I032",
+      "review_note": "Retained as lexical attestation and later ingress candidate; no runtime insertion or grammar inference occurs here.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I033",
-      "sourceHash": "sha256:f3352a73f57647640c534709994cdc043e03dc4acff94d13a03124bb76def389",
-      "normalizedCantonese": "實習生",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:f3352a73f57647640c534709994cdc043e03dc4acff94d13a03124bb76def389",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "lexical_ingress_candidate_not_implemented",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I033",
+      "review_note": "Retained as lexical attestation and later ingress candidate; no runtime insertion or grammar inference occurs here.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I034",
-      "sourceHash": "sha256:ccc92b52a7dfcaf45215fdecacf8d5a704780e9ee5985ab7e156d31dc9e22b65",
-      "normalizedCantonese": "一萬",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:ccc92b52a7dfcaf45215fdecacf8d5a704780e9ee5985ab7e156d31dc9e22b65",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "compositional_numeral_attestation_no_opaque_lexicon_entry",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "compositional_numeral_no_opaque_entry",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_non_candidate",
+          "cluster": "large_numerals",
+          "disposition": "retain_compositional_numeral_analysis",
+          "reason": "No opaque whole-form lexical ingress or new construction is warranted."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I034",
+      "review_note": "Retained as compositional numeral evidence; no opaque whole-form lexicon entry is justified.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I035",
-      "sourceHash": "sha256:4fc8d4019f083da0d78c1b6508184008f4e8a8094df9424402f5d645b5df4d9f",
-      "normalizedCantonese": "二萬",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:4fc8d4019f083da0d78c1b6508184008f4e8a8094df9424402f5d645b5df4d9f",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "compositional_numeral_attestation_no_opaque_lexicon_entry",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "compositional_numeral_no_opaque_entry",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_non_candidate",
+          "cluster": "large_numerals",
+          "disposition": "retain_compositional_numeral_analysis",
+          "reason": "No opaque whole-form lexical ingress or new construction is warranted."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I035",
+      "review_note": "Retained as compositional numeral evidence; no opaque whole-form lexicon entry is justified.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I036",
-      "sourceHash": "sha256:3a4a0650853ee5d5073d1c8d995945e6b10d3742ec9496461feacfd955f9ea26",
-      "normalizedCantonese": "三萬",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:3a4a0650853ee5d5073d1c8d995945e6b10d3742ec9496461feacfd955f9ea26",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "compositional_numeral_attestation_no_opaque_lexicon_entry",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "compositional_numeral_no_opaque_entry",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_non_candidate",
+          "cluster": "large_numerals",
+          "disposition": "retain_compositional_numeral_analysis",
+          "reason": "No opaque whole-form lexical ingress or new construction is warranted."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I036",
+      "review_note": "Retained as compositional numeral evidence; no opaque whole-form lexicon entry is justified.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I037",
-      "sourceHash": "sha256:70517f1c62bec15e4b363407fb80b905868dd9c03b9a7602b06dc7b0a5d47848",
-      "normalizedCantonese": "四萬",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:70517f1c62bec15e4b363407fb80b905868dd9c03b9a7602b06dc7b0a5d47848",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "compositional_numeral_attestation_no_opaque_lexicon_entry",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "compositional_numeral_no_opaque_entry",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_non_candidate",
+          "cluster": "large_numerals",
+          "disposition": "retain_compositional_numeral_analysis",
+          "reason": "No opaque whole-form lexical ingress or new construction is warranted."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I037",
+      "review_note": "Retained as compositional numeral evidence; no opaque whole-form lexicon entry is justified.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I038",
-      "sourceHash": "sha256:8fd4c08246f6cde8dff90df6e420c9787340c6ba4524d392dc3c299d5a81ebeb",
-      "normalizedCantonese": "五萬",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:8fd4c08246f6cde8dff90df6e420c9787340c6ba4524d392dc3c299d5a81ebeb",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "compositional_numeral_attestation_no_opaque_lexicon_entry",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "compositional_numeral_no_opaque_entry",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_non_candidate",
+          "cluster": "large_numerals",
+          "disposition": "retain_compositional_numeral_analysis",
+          "reason": "No opaque whole-form lexical ingress or new construction is warranted."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I038",
+      "review_note": "Retained as compositional numeral evidence; no opaque whole-form lexicon entry is justified.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I039",
-      "sourceHash": "sha256:65a092c50e12a31d6a15c4cc3e9c3e9c5b645377292db2ad6293224d6b6e087a",
-      "normalizedCantonese": "六萬",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:65a092c50e12a31d6a15c4cc3e9c3e9c5b645377292db2ad6293224d6b6e087a",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "compositional_numeral_attestation_no_opaque_lexicon_entry",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "compositional_numeral_no_opaque_entry",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_non_candidate",
+          "cluster": "large_numerals",
+          "disposition": "retain_compositional_numeral_analysis",
+          "reason": "No opaque whole-form lexical ingress or new construction is warranted."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I039",
+      "review_note": "Retained as compositional numeral evidence; no opaque whole-form lexicon entry is justified.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I040",
-      "sourceHash": "sha256:7b7d3ddc446e1aa8be0829c3d8ba5d1adc2d553b1b855664a690e04a9216671c",
-      "normalizedCantonese": "七萬",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:7b7d3ddc446e1aa8be0829c3d8ba5d1adc2d553b1b855664a690e04a9216671c",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "compositional_numeral_attestation_no_opaque_lexicon_entry",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "compositional_numeral_no_opaque_entry",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_non_candidate",
+          "cluster": "large_numerals",
+          "disposition": "retain_compositional_numeral_analysis",
+          "reason": "No opaque whole-form lexical ingress or new construction is warranted."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I040",
+      "review_note": "Retained as compositional numeral evidence; no opaque whole-form lexicon entry is justified.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I041",
-      "sourceHash": "sha256:fce34cc4e941d1e5b81bd68fef0351bba41a377bfc95aeaa2db2e6b04bc2124e",
-      "normalizedCantonese": "八萬",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:fce34cc4e941d1e5b81bd68fef0351bba41a377bfc95aeaa2db2e6b04bc2124e",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "compositional_numeral_attestation_no_opaque_lexicon_entry",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "compositional_numeral_no_opaque_entry",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_non_candidate",
+          "cluster": "large_numerals",
+          "disposition": "retain_compositional_numeral_analysis",
+          "reason": "No opaque whole-form lexical ingress or new construction is warranted."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I041",
+      "review_note": "Retained as compositional numeral evidence; no opaque whole-form lexicon entry is justified.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I042",
-      "sourceHash": "sha256:542223e91f584c23cb6c079d2129fa6e45af82ba716afedf74ceebb221c6e281",
-      "normalizedCantonese": "九萬",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:542223e91f584c23cb6c079d2129fa6e45af82ba716afedf74ceebb221c6e281",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "lexical_only_attestation",
+      "evidence_use_disposition": "compositional_numeral_attestation_no_opaque_lexicon_entry",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "compositional_numeral_no_opaque_entry",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_non_candidate",
+          "cluster": "large_numerals",
+          "disposition": "retain_compositional_numeral_analysis",
+          "reason": "No opaque whole-form lexical ingress or new construction is warranted."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I042",
+      "review_note": "Retained as compositional numeral evidence; no opaque whole-form lexicon entry is justified.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I043",
-      "sourceHash": "sha256:05dd5e51ff1df5764a695b998e121fb51b291624dcb673e7e2f23a69faae9cb7",
-      "normalizedCantonese": "十萬",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:05dd5e51ff1df5764a695b998e121fb51b291624dcb673e7e2f23a69faae9cb7",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "accepted_exact_duplicate",
+      "accepted_duplicate_targets": [
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/source.json",
+          "basis": "exact_independent_pedagogical_source"
+        }
+      ],
+      "terminal_ingress_classification": "exact_duplicate",
+      "evidence_use_disposition": "duplicate_compositional_numeral_attestation",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "compositional_numeral_no_opaque_entry",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_non_candidate",
+          "cluster": "large_numerals",
+          "disposition": "retain_compositional_numeral_analysis",
+          "reason": "No opaque whole-form lexical ingress or new construction is warranted."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I043",
+      "review_note": "A canonical runtime owner or independent exact pedagogical source already preserves the form; this source remains provenance only.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I044",
-      "sourceHash": "sha256:85f0bc2ea215e827c5290e09af7fe0292d71ad71691d9d28e1a465f26b98b1da",
-      "normalizedCantonese": "你做咩工",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:85f0bc2ea215e827c5290e09af7fe0292d71ad71691d9d28e1a465f26b98b1da",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "new_corpus_attestation",
+      "evidence_use_disposition": "pedagogical_attestation_plus_bounded_followup_research",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F05",
+          "cluster": "occupational_predication",
+          "priority": "medium",
+          "next_method": "direct_grammar_and_corpus_inventory_before_panel",
+          "reason": "The lesson supplies attestation but no independent construction analysis or negative boundaries."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I044",
+      "review_note": "Retained as a source attestation and linked to bounded later research; it does not establish productivity, identity, or parser behavior.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I045",
-      "sourceHash": "sha256:297a751233bab1c59d6609f985b4bc30fb29603a1768d5f4d9a1e70eacec1262",
-      "normalizedCantonese": "我喺銀行返工",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:297a751233bab1c59d6609f985b4bc30fb29603a1768d5f4d9a1e70eacec1262",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "new_corpus_attestation",
+      "evidence_use_disposition": "pedagogical_attestation_plus_bounded_followup_research",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F06",
+          "cluster": "workplace_locative",
+          "priority": "low",
+          "next_method": "parser_and_canonical_source_audit_only_if_existing_composition_fails",
+          "reason": "The conservative analysis is already compositional; a new construction is not justified by these items."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I045",
+      "review_note": "Retained as a source attestation and linked to bounded later research; it does not establish productivity, identity, or parser behavior.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I046",
-      "sourceHash": "sha256:4be27e299b54070c4e0f078b733c9a83faf1077f3180194cf37c66a34c887c4d",
-      "normalizedCantonese": "幾點放工",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:4be27e299b54070c4e0f078b733c9a83faf1077f3180194cf37c66a34c887c4d",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "new_corpus_attestation",
+      "evidence_use_disposition": "pedagogical_corpus_attestation_only",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I046",
+      "review_note": "Retained as source attestation only; no independent grammar or naturalness conclusion is drawn.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I047",
-      "sourceHash": "sha256:fc702361fb95b7590f6a71656c2e86867632e0e31eb44c2cede901f1e46c1a1b",
-      "normalizedCantonese": "今日要加班",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:fc702361fb95b7590f6a71656c2e86867632e0e31eb44c2cede901f1e46c1a1b",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "new_corpus_attestation",
+      "evidence_use_disposition": "pedagogical_corpus_attestation_only",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I047",
+      "review_note": "Retained as source attestation only; no independent grammar or naturalness conclusion is drawn.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I048",
-      "sourceHash": "sha256:4414b5bb4f4dd00cd56ad77de54cc3331d840d6252182e1b1a89f925ae5b2677",
-      "normalizedCantonese": "你做咩工㗎",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:4414b5bb4f4dd00cd56ad77de54cc3331d840d6252182e1b1a89f925ae5b2677",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "new_corpus_attestation",
+      "evidence_use_disposition": "pedagogical_attestation_plus_bounded_followup_research",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F03",
+          "cluster": "sentence_final_particles",
+          "priority": "medium",
+          "next_method": "particle_context_analysis_with_minimal_contrasts",
+          "reason": "Direct grammar supports gaa3 across clause types but not one generic meaning for all three lesson contexts."
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F05",
+          "cluster": "occupational_predication",
+          "priority": "medium",
+          "next_method": "direct_grammar_and_corpus_inventory_before_panel",
+          "reason": "The lesson supplies attestation but no independent construction analysis or negative boundaries."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I048",
+      "review_note": "Retained as a source attestation and linked to bounded later research; it does not establish productivity, identity, or parser behavior.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I049",
-      "sourceHash": "sha256:1b547d15d28d4c26cd8b77ec573290bd11d58321767ade34c2ae818cca38e361",
-      "normalizedCantonese": "我做會計嘅你呢",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:1b547d15d28d4c26cd8b77ec573290bd11d58321767ade34c2ae818cca38e361",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "new_corpus_attestation",
+      "evidence_use_disposition": "pedagogical_attestation_plus_bounded_followup_research",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F04",
+          "cluster": "sentence_final_ge3",
+          "priority": "high",
+          "next_method": "direct_syntax_review_plus_corpus_contrasts",
+          "reason": "The source gloss ATTR is too coarse and risks conflating attributive and sentence-final uses."
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F05",
+          "cluster": "occupational_predication",
+          "priority": "medium",
+          "next_method": "direct_grammar_and_corpus_inventory_before_panel",
+          "reason": "The lesson supplies attestation but no independent construction analysis or negative boundaries."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I049",
+      "review_note": "Retained as a source attestation and linked to bounded later research; it does not establish productivity, identity, or parser behavior.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I050",
-      "sourceHash": "sha256:fb04a4fb105a8c89ddfc81bf1e6162db579863d082da76d770a728faab6dc749",
-      "normalizedCantonese": "我喺酒店返工幾辛苦㗎",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:fb04a4fb105a8c89ddfc81bf1e6162db579863d082da76d770a728faab6dc749",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "new_corpus_attestation",
+      "evidence_use_disposition": "pedagogical_attestation_plus_bounded_followup_research",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F03",
+          "cluster": "sentence_final_particles",
+          "priority": "medium",
+          "next_method": "particle_context_analysis_with_minimal_contrasts",
+          "reason": "Direct grammar supports gaa3 across clause types but not one generic meaning for all three lesson contexts."
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F06",
+          "cluster": "workplace_locative",
+          "priority": "low",
+          "next_method": "parser_and_canonical_source_audit_only_if_existing_composition_fails",
+          "reason": "The conservative analysis is already compositional; a new construction is not justified by these items."
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F07",
+          "cluster": "degree_gei2",
+          "priority": "medium",
+          "next_method": "canonical_parser_and_test_audit",
+          "reason": "The narrow degree use is externally supported; implementation adequacy is a separate question."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I050",
+      "review_note": "Retained as a source attestation and linked to bounded later research; it does not establish productivity, identity, or parser behavior.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I051",
-      "sourceHash": "sha256:d58e4eef126270f604c24a175dab740b19edebab7bf5edbcf9d175bb42ca037a",
-      "normalizedCantonese": "係呀不過人工OK嘅",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:d58e4eef126270f604c24a175dab740b19edebab7bf5edbcf9d175bb42ca037a",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "new_corpus_attestation",
+      "evidence_use_disposition": "pedagogical_attestation_plus_bounded_followup_research",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F03",
+          "cluster": "sentence_final_particles",
+          "priority": "medium",
+          "next_method": "particle_context_analysis_with_minimal_contrasts",
+          "reason": "Direct grammar supports gaa3 across clause types but not one generic meaning for all three lesson contexts."
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F04",
+          "cluster": "sentence_final_ge3",
+          "priority": "high",
+          "next_method": "direct_syntax_review_plus_corpus_contrasts",
+          "reason": "The source gloss ATTR is too coarse and risks conflating attributive and sentence-final uses."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I051",
+      "review_note": "Retained as a source attestation and linked to bounded later research; it does not establish productivity, identity, or parser behavior.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I052",
-      "sourceHash": "sha256:7a10a13b942a8e12cd5bac57194a1b4886a38a49ab3b15dabcff85ee4cedd7c6",
-      "normalizedCantonese": "我食飯",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:7a10a13b942a8e12cd5bac57194a1b4886a38a49ab3b15dabcff85ee4cedd7c6",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "new_corpus_attestation",
+      "evidence_use_disposition": "pedagogical_corpus_attestation_only",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I052",
+      "review_note": "Retained as source attestation only; no independent grammar or naturalness conclusion is drawn.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I053",
-      "sourceHash": "sha256:50a3f9d585fd7b6014351ae5e3934947720a0a2c3adea4253af10612c5235e33",
-      "normalizedCantonese": "佢睇書",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:50a3f9d585fd7b6014351ae5e3934947720a0a2c3adea4253af10612c5235e33",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "new_corpus_attestation",
+      "evidence_use_disposition": "pedagogical_corpus_attestation_only",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I053",
+      "review_note": "Retained as source attestation only; no independent grammar or naturalness conclusion is drawn.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I054",
-      "sourceHash": "sha256:21fdcded02f546e3f169b7da312b8bcf68603d1dfa63fe9934a99a37b9b2a0e0",
-      "normalizedCantonese": "三|心",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:21fdcded02f546e3f169b7da312b8bcf68603d1dfa63fe9934a99a37b9b2a0e0",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "new_corpus_attestation",
+      "evidence_use_disposition": "pronunciation_candidate_not_adopted",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F09",
+          "cluster": "vowel_length",
+          "priority": "medium",
+          "next_method": "item_level_phonological_and_lexical_verification",
+          "reason": "The general contrast is supported, but duration and quality contributions differ across vowel pairs."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I054",
+      "review_note": "Retained as pedagogical pronunciation attestation only; direct lexical-source verification remains required before learner-facing adoption.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I055",
-      "sourceHash": "sha256:e02d66b503e1014ac92afd13e8b124326d3d05aef2cca505e576fb0fa7947bb6",
-      "normalizedCantonese": "間|根",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:e02d66b503e1014ac92afd13e8b124326d3d05aef2cca505e576fb0fa7947bb6",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "new_corpus_attestation",
+      "evidence_use_disposition": "pronunciation_candidate_not_adopted",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F09",
+          "cluster": "vowel_length",
+          "priority": "medium",
+          "next_method": "item_level_phonological_and_lexical_verification",
+          "reason": "The general contrast is supported, but duration and quality contributions differ across vowel pairs."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I055",
+      "review_note": "Retained as pedagogical pronunciation attestation only; direct lexical-source verification remains required before learner-facing adoption.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I056",
-      "sourceHash": "sha256:8b59b5b0e1c774538e364b480eccc8228b2548fe18c186e4e6bca0d6e6b065d3",
-      "normalizedCantonese": "擔|耽",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:8b59b5b0e1c774538e364b480eccc8228b2548fe18c186e4e6bca0d6e6b065d3",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "new_corpus_attestation",
+      "evidence_use_disposition": "pronunciation_candidate_not_adopted",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F09",
+          "cluster": "vowel_length",
+          "priority": "medium",
+          "next_method": "item_level_phonological_and_lexical_verification",
+          "reason": "The general contrast is supported, but duration and quality contributions differ across vowel pairs."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I056",
+      "review_note": "Retained as pedagogical pronunciation attestation only; direct lexical-source verification remains required before learner-facing adoption.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I057",
-      "sourceHash": "sha256:19ff2156e2e75e77f561b530c5a5582509fd4fbe6cf1a7eae2437d834ad8e3f8",
-      "normalizedCantonese": "生|聲",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:19ff2156e2e75e77f561b530c5a5582509fd4fbe6cf1a7eae2437d834ad8e3f8",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "pronunciation_discrepancy",
+      "evidence_use_disposition": "source_discrepancy_preserved_unresolved",
+      "source_discrepancies": [
+        {
+          "field": "phonicsPair.b.ipa",
+          "issue": "The source labels 聲 seng1 as the short-/ɐ/ member but gives IPA /sɐŋ/, which does not align with the supplied Jyutping vowel.",
+          "status": "internal_source_mismatch_no_replacement_accepted"
+        }
+      ],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F09",
+          "cluster": "vowel_length",
+          "priority": "medium",
+          "next_method": "item_level_phonological_and_lexical_verification",
+          "reason": "The general contrast is supported, but duration and quality contributions differ across vowel pairs."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I057",
+      "review_note": "The source value is preserved unchanged. No corrected reading is asserted in this ingress review.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I058",
-      "sourceHash": "sha256:3a8ac17fb2dc0498fb61cdc809e0626d072473abe9e42a13c36827e9714258b7",
-      "normalizedCantonese": "殺|失",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:3a8ac17fb2dc0498fb61cdc809e0626d072473abe9e42a13c36827e9714258b7",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "new_corpus_attestation",
+      "evidence_use_disposition": "pronunciation_candidate_not_adopted",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F09",
+          "cluster": "vowel_length",
+          "priority": "medium",
+          "next_method": "item_level_phonological_and_lexical_verification",
+          "reason": "The general contrast is supported, but duration and quality contributions differ across vowel pairs."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I058",
+      "review_note": "Retained as pedagogical pronunciation attestation only; direct lexical-source verification remains required before learner-facing adoption.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I059",
-      "sourceHash": "sha256:fd471a10da932ef06b20be77c16484e73af10503e75ecfca81698f5aeb7d00c8",
-      "normalizedCantonese": "夾|急",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:fd471a10da932ef06b20be77c16484e73af10503e75ecfca81698f5aeb7d00c8",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "new_corpus_attestation",
+      "evidence_use_disposition": "pronunciation_candidate_not_adopted",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F09",
+          "cluster": "vowel_length",
+          "priority": "medium",
+          "next_method": "item_level_phonological_and_lexical_verification",
+          "reason": "The general contrast is supported, but duration and quality contributions differ across vowel pairs."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I059",
+      "review_note": "Retained as pedagogical pronunciation attestation only; direct lexical-source verification remains required before learner-facing adoption.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I060",
-      "sourceHash": "sha256:c6f71830a1ace7ca9b307bfb9c0b535f4abf25f56b91c547c513d0838a4fd548",
-      "normalizedCantonese": "翻|分",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:c6f71830a1ace7ca9b307bfb9c0b535f4abf25f56b91c547c513d0838a4fd548",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "translation_discrepancy",
+      "evidence_use_disposition": "source_discrepancy_preserved_unresolved",
+      "source_discrepancies": [
+        {
+          "field": "phonicsPair.a.traditional_and_english",
+          "issue": "The source pairs 翻 faan1 with the English gloss “to return”; orthographic and lexical-sense verification is required before learner-facing reuse.",
+          "status": "lexical_gloss_alert_no_replacement_accepted"
+        }
+      ],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F09",
+          "cluster": "vowel_length",
+          "priority": "medium",
+          "next_method": "item_level_phonological_and_lexical_verification",
+          "reason": "The general contrast is supported, but duration and quality contributions differ across vowel pairs."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I060",
+      "review_note": "The source wording is preserved unchanged. No replacement gloss or orthography is asserted in this ingress review.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     },
     {
       "id": "GLOSSIKA-YUEHK-A1-W14-20260621-I061",
-      "sourceHash": "sha256:7cd218361db385712463aa6f70d6dc0cc8f0b271f39257a6d3b55b16dbe97403",
-      "normalizedCantonese": "藍|林",
-      "duplicateStatus": "unreviewed",
-      "duplicateOf": [],
-      "ingressClassification": "unreviewed",
-      "sourceDiscrepancies": [],
-      "reviewedValues": {},
-      "reviewerNote": "",
-      "evidenceUse": "not_authorized"
+      "source_hash": "sha256:7cd218361db385712463aa6f70d6dc0cc8f0b271f39257a6d3b55b16dbe97403",
+      "review_status": "reviewed",
+      "reviewed_on": "2026-08-02",
+      "review_authority": "project_expert_systematic_review",
+      "expert_duplicate_status": "no_accepted_duplicate",
+      "accepted_duplicate_targets": [],
+      "terminal_ingress_classification": "new_corpus_attestation",
+      "evidence_use_disposition": "pronunciation_candidate_not_adopted",
+      "source_discrepancies": [],
+      "reviewed_values": {
+        "traditional": null,
+        "jyutping": null,
+        "english": null,
+        "phonics_pair": null
+      },
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W14-20260621-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W14-F09",
+          "cluster": "vowel_length",
+          "priority": "medium",
+          "next_method": "item_level_phonological_and_lexical_verification",
+          "reason": "The general contrast is supported, but duration and quality contributions differ across vowel pairs."
+        }
+      ],
+      "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I061",
+      "review_note": "Retained as pedagogical pronunciation attestation only; direct lexical-source verification remains required before learner-facing adoption.",
+      "not_claims": [
+        "not_grammar_proof",
+        "not_productivity_evidence",
+        "not_dialect_wide_naturalness",
+        "not_parser_acceptance",
+        "not_linguistic_status_change"
+      ]
     }
   ]
 }
