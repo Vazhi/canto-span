@@ -1,8 +1,8 @@
 # Bounded paired-clause relation identity specification R1
 
-Date: 2026-08-02  
-Parent issue: #430  
-Work claim: #441  
+Date: 2026-08-02
+Parent issue: #430
+Work claim: #441
 Pull request: #450
 
 ## Decision
