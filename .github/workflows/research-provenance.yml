@@ -7,20 +7,25 @@ on:
       - "data/construction-identity-lock.json"
       - "data/construction-adjudications.json"
       - "data/construction-adjudication-batches/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/**"
       - "docs/research/**"
       - "external-evidence/**"
       - "grammar/**"
       - "review-packets/**"
+      - "config/pedagogical-corpus-source-locks.json"
       - "config/research-provenance-baseline.json"
       - "config/research-evidence-grades.json"
       - "config/verification-profiles.json"
+      - "tools/build-pedagogical-corpus-review-candidates.py"
       - "tools/research-provenance-lib.js"
+      - "tools/verify-pedagogical-corpus-review.py"
       - "tools/verify-research-provenance.js"
       - "tools/verify-native-panel-lifecycle.js"
       - "tools/verify-interim-pilot-public-package.py"
       - "tests/tooling/native-panel/native-panel-lifecycle.test.js"
       - "tests/tooling/research/ab30-aggregate-integrity.test.py"
       - "tests/tooling/research/interim-pilot-public-package.test.py"
+      - "tests/tooling/research/pedagogical-corpus-review.test.py"
       - "package.json"
       - ".github/workflows/research-provenance.yml"
   pull_request:
@@ -29,20 +34,25 @@ on:
       - "data/construction-identity-lock.json"
       - "data/construction-adjudications.json"
       - "data/construction-adjudication-batches/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/**"
       - "docs/research/**"
       - "external-evidence/**"
       - "grammar/**"
       - "review-packets/**"
+      - "config/pedagogical-corpus-source-locks.json"
       - "config/research-provenance-baseline.json"
       - "config/research-evidence-grades.json"
       - "config/verification-profiles.json"
+      - "tools/build-pedagogical-corpus-review-candidates.py"
       - "tools/research-provenance-lib.js"
+      - "tools/verify-pedagogical-corpus-review.py"
       - "tools/verify-research-provenance.js"
       - "tools/verify-native-panel-lifecycle.js"
       - "tools/verify-interim-pilot-public-package.py"
       - "tests/tooling/native-panel/native-panel-lifecycle.test.js"
       - "tests/tooling/research/ab30-aggregate-integrity.test.py"
       - "tests/tooling/research/interim-pilot-public-package.test.py"
+      - "tests/tooling/research/pedagogical-corpus-review.test.py"
       - "package.json"
       - ".github/workflows/research-provenance.yml"
   workflow_dispatch:
@@ -65,5 +75,7 @@ jobs:
         run: python3 tests/tooling/research/ab30-aggregate-integrity.test.py
       - name: Test interim pilot public-package verifier
         run: python3 tests/tooling/research/interim-pilot-public-package.test.py
+      - name: Test pedagogical corpus review verifier
+        run: python3 tests/tooling/research/pedagogical-corpus-review.test.py
       - name: Verify durable research provenance and lifecycle state
         run: npm run verify:research
