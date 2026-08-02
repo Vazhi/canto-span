@@ -66,4 +66,4 @@ have `partial_only` readiness effect and do not satisfy the diverse-corpus gate.
 
 ## Interim survey exports
 
-- [`YUE-JUDGMENT-PILOT-01` — 2026-07-31 aggregate snapshot](interim-exports/YUE-JUDGMENT-PILOT-01-2026-07-31/) preserves privacy-safe condition, item, and interpretation statistics plus a descriptive pilot report and source hashes. The raw participant-level export and open text remain private. This snapshot does not change the current `active` / `not_started` / `draft` lifecycle or count as final adjudicated panel evidence.
+- [`YUE-JUDGMENT-PILOT-01` — 2026-07-31 aggregate snapshot](interim-exports/YUE-JUDGMENT-PILOT-01-2026-07-31/) preserves disclosure-controlled condition and item summaries, a revised descriptive report, public hashes, and explicit reproducibility limits. The raw participant-level export and open text remain private. This snapshot does not change the current `active` / `not_started` / `draft` lifecycle or count as final adjudicated panel evidence.

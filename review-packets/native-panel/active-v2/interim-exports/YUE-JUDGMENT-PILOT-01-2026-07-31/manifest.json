@@ -1,14 +1,16 @@
 {
-  "schema": "canto-span-native-panel-interim-export-v1",
+  "schema": "canto-span-native-panel-interim-export-v2",
   "instrument_id": "YUE-JUDGMENT-PILOT-01",
   "instrument_version": "0.1.0-pilot",
   "platform": "SoSci Survey",
   "export_label": "2026-07-31_11-04",
   "export_timestamp_as_supplied": "2026-07-31 11:04",
-  "snapshot_kind": "interim_privacy_safe_aggregate",
+  "snapshot_kind": "interim_disclosure_controlled_aggregate",
+  "snapshot_state": "frozen_historical_derivative",
   "collection_state": "active",
   "item_level_audit_state": "not_started",
   "evidence_status": "descriptive_pilot_only_not_adjudicated",
+  "analytic_subset_status": "provisionally_retained_for_interim_description",
   "rating_scale": {
     "direction": "1_most_natural_5_most_unnatural",
     "labels": {
@@ -19,9 +21,17 @@
       "5": "明顯唔自然"
     },
     "summary_groups": {
-      "natural_or_acceptable": [1, 2],
-      "uncertain_or_context_dependent": [3],
-      "unnatural": [4, 5]
+      "natural_or_acceptable": [
+        1,
+        2
+      ],
+      "uncertain_or_context_dependent": [
+        3
+      ],
+      "unnatural": [
+        4,
+        5
+      ]
     }
   },
   "screening_totals": {
@@ -29,10 +39,8 @@
     "incomplete_starts": 66,
     "finished_cases": 47,
     "screened_out_finished_cases": 11,
-    "screened_out_no_childhood_acquisition": 8,
-    "screened_out_under_18": 3,
-    "eligible_retained_cases": 36,
-    "retained_cases_with_exactly_32_ratings": 36
+    "provisionally_retained_for_interim_description": 36,
+    "provisional_cases_with_exactly_32_ratings": 36
   },
   "counterbalanced_list_counts": {
     "LIST_A": 9,
@@ -85,52 +93,82 @@
   "public_package_files": [
     {
       "path": "README.md",
-      "bytes": 1613,
-      "sha256": "f376a49cba13a23f73bdf1210b9883eab8957b446042bb60a86f017b17c58640"
+      "bytes": 2290,
+      "sha256": "7834a0aa4f9595d17abc30d5ab6fc026f3ae0ebe6f96418f30376f6d56ac7636"
+    },
+    {
+      "path": "PUBLIC-DISCLOSURE-POLICY.md",
+      "bytes": 2592,
+      "sha256": "5f6a85f410c9d883b246d49af567ca79f419e4d554afafe787f3ca31dd736c01"
+    },
+    {
+      "path": "OFFLINE-REPRODUCIBILITY.md",
+      "bytes": 1723,
+      "sha256": "c4a04273b0330a7e7619a6c9436a5d2fde674fe738fa3d6ff92bc77d9c771fa4"
     },
     {
       "path": "pilot-analysis-report.md",
-      "bytes": 15485,
-      "sha256": "b2760e160b44fcd75a0b40dcb11eee346030256136f827c2206ad11fc78e6c55"
+      "bytes": 5699,
+      "sha256": "59b759886e7b44b607abbc5e88284bf355a78775c46d06fc2ff91d5316573fb9"
     },
     {
       "path": "condition-statistics.csv",
-      "bytes": 1358,
-      "sha256": "38c4e9bcc4f67931eedca96df77a44aec5f1b008b30cd88904b5b52192fad106",
+      "bytes": 993,
+      "sha256": "74e655ce6bc96245a72e1db4b92d17461eb35bcf068574f1ae6d408745cf877e",
       "data_rows": 20
     },
     {
       "path": "item-statistics.csv",
-      "bytes": 7765,
-      "sha256": "657dec9a4fdc036d48ebd6dc4e0d7be25f551be57ba2c364d356120db653e939",
+      "bytes": 5153,
+      "sha256": "048baea4978b089ac0203bfc2c10b9aa0f7f141486b34ca92a84250c49d6ee84",
       "data_rows": 92
     },
     {
-      "path": "interpretation-statistics.csv",
-      "bytes": 5319,
-      "sha256": "4aad8b9f85eedbdf7a32e8aa8ea8b1e63e9fc43f7e97996db71e6dc0fd460bf9",
-      "data_rows": 101
+      "path": "qualitative-theme-disposition.csv",
+      "bytes": 452,
+      "sha256": "31083f887ff04115612f6c9366d9d5afcc904126a9f1c18133e54f2712dbc126",
+      "data_rows": 4
     }
   ],
+  "disclosure_control": {
+    "policy_file": "PUBLIC-DISCLOSURE-POLICY.md",
+    "minimum_sensitive_cell_size": 5,
+    "minimum_statistical_summary_denominator": 8,
+    "complementary_suppression_required": true,
+    "linked_table_review_required": true,
+    "participant_characteristics_public": false,
+    "cross_tabs_public": false,
+    "completion_time_extremes_public": false,
+    "exact_rating_category_counts_public": false,
+    "correction_counts_public": false,
+    "fixed_choice_interpretation_counts_public": false,
+    "participant_derived_qualitative_themes_public": false,
+    "qualitative_theme_minimum_support": 5
+  },
   "privacy_disposition": {
     "participant_level_export_public": false,
     "open_text_public": false,
     "exact_timestamps_public": false,
     "case_and_serial_identifiers_public": false,
     "recruitment_reference_public": false,
-    "reason": "The public repository is not an appropriate location for row-level survey data containing open text and potentially identifying or re-identifiable metadata. Only aggregate tables and aggregate thematic summaries are published.",
-    "future_requirement": "A final frozen export must receive documented eligibility, duplicate, quality, free-text privacy, and adjudication review before any participant-level release decision."
+    "claim": "disclosure_controlled_not_risk_free",
+    "future_requirement": "A final frozen export requires complete screening, private-text coding, linked-table disclosure review, and source-to-output reproduction documentation before any release decision."
   },
-  "validation": {
-    "raw_export_rows": 113,
-    "raw_export_columns": 904,
-    "finished_count_recomputed": 47,
-    "eligible_count_recomputed": 36,
-    "retained_rating_count_check": "36_of_36_retained_cases_have_32_nonmissing_scale_responses",
+  "public_validation": {
     "condition_statistics_rows": 20,
     "item_statistics_rows": 92,
-    "interpretation_statistics_rows": 101,
-    "aggregate_files_utf8": true
+    "qualitative_theme_disposition_rows": 4,
+    "condition_denominator": 36,
+    "item_denominator_min": 8,
+    "item_denominator_max": 36,
+    "aggregate_files_utf8": true,
+    "interpretation_statistics_withdrawn": true
+  },
+  "source_to_aggregate_reproducibility": {
+    "status": "not_reproducible_historical_script_and_environment_not_retained",
+    "documentation": "OFFLINE-REPRODUCIBILITY.md",
+    "script_sha256": null,
+    "environment_lock_sha256": null
   },
   "protected_state_unchanged": [
     "live survey instrument",
