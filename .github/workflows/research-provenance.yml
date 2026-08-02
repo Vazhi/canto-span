@@ -17,8 +17,10 @@ on:
       - "tools/research-provenance-lib.js"
       - "tools/verify-research-provenance.js"
       - "tools/verify-native-panel-lifecycle.js"
+      - "tools/verify-interim-pilot-public-package.py"
       - "tests/tooling/native-panel/native-panel-lifecycle.test.js"
       - "tests/tooling/research/ab30-aggregate-integrity.test.py"
+      - "tests/tooling/research/interim-pilot-public-package.test.py"
       - "package.json"
       - ".github/workflows/research-provenance.yml"
   pull_request:
@@ -37,8 +39,10 @@ on:
       - "tools/research-provenance-lib.js"
       - "tools/verify-research-provenance.js"
       - "tools/verify-native-panel-lifecycle.js"
+      - "tools/verify-interim-pilot-public-package.py"
       - "tests/tooling/native-panel/native-panel-lifecycle.test.js"
       - "tests/tooling/research/ab30-aggregate-integrity.test.py"
+      - "tests/tooling/research/interim-pilot-public-package.test.py"
       - "package.json"
       - ".github/workflows/research-provenance.yml"
   workflow_dispatch:
@@ -59,5 +63,7 @@ jobs:
         run: node --test tests/tooling/native-panel/native-panel-lifecycle.test.js
       - name: Test AB30 aggregate integrity verifier
         run: python3 tests/tooling/research/ab30-aggregate-integrity.test.py
+      - name: Test interim pilot public-package verifier
+        run: python3 tests/tooling/research/interim-pilot-public-package.test.py
       - name: Verify durable research provenance and lifecycle state
         run: npm run verify:research
