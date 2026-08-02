@@ -1,6 +1,6 @@
 # Issue #442 pre-audit research: human-NP `用嚟` role boundaries
 
-**State:** source-first work in progress  
+**State:** source-first pre-audit packet  
 **Parent issue:** #442  
 **Work claim:** #446  
 **Survey dependency:** `YUE-JUDGMENT-PILOT-01` remains active; no final audit is available.
@@ -19,6 +19,8 @@ The packet separates four evidence types:
 ## Current source-supported core
 
 The strongest checked source for the narrow surface is Wong (2023), which classifies `呢個用嚟切嘢` as an instrumental serial-verb construction and says that an instrument may be omitted or moved to subject position with `用嚟`. Cheung (2018) describes broader `V1 + 嚟 + V2` material as purposive and treats `用來／用嚟` as conventionalized. Chor (2018) supplies the important broader frame `啲錢我用嚟買晒嗰堆嘢`, where a resource topic and an overt human user are separately expressed.
+
+A deeper full-text review of Francis and Matthews (2006) adds a structural constraint. Their coverb template is `subject + V1 + NP1 + V2 (+ NP2)`: the V1 phrase expresses a relation such as instrument, location, direction, beneficiary, or accompaniment and modifies the main V2. In an analysis where the initial human NP is the user/agent and `用` is V1-like, an isolated string such as `阿明用嚟切方包` leaves the resource argument of `用` unexpressed. That is an omitted-resource analysis, not evidence that `阿明` is itself the instrument or resource.
 
 These sources support a nonhuman instrument/resource core and a distinct resource-plus-user frame. They do **not** directly establish that a bare human NP in `Human NP + 用嚟 + VP` is productively interpreted as the resource or instrument.
 
@@ -49,6 +51,7 @@ The official topic-chain example also shows that Cantonese can continue across c
 - A nonhuman instrument can occupy the preverbal position in an instrumental analysis.
 - A separate overt human user may occur after a fronted resource/topic in broader purposive actual-use material.
 - Cantonese independently permits topicalization and context-sensitive omission.
+- Coverb-like V1 structures preserve a separate relational argument after V1; an agent-initial analysis without that argument is an omission analysis.
 
 ### Not yet supported
 
@@ -74,7 +77,9 @@ The interim split is best treated as an **analysis-identification problem**, not
 
 - `source-ledger.tsv` — checked sources and exact claim limits;
 - `claim-matrix.tsv` — competing analyses and current support;
-- `controlled-contrasts.tsv` — proposed matched contrasts for the frozen-audit/follow-up stage.
+- `controlled-contrasts.tsv` — proposed matched contrasts for the frozen-audit/follow-up stage;
+- `source-review-addendum.md` — full-text coverb review and its consequence for human-NP ambiguity;
+- `corpus-review-schema.tsv` — auditable coding fields for future context-bearing corpus candidates.
 
 ## Protected state
 
