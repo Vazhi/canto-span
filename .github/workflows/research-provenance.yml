@@ -32,7 +32,11 @@ jobs:
           python3 -m py_compile tools/finalize-week19-review-temporary.py
 
       - name: Generate final Week 19 review state
-        run: python3 tools/finalize-week19-review-temporary.py
+        run: |
+          python3 tools/finalize-week19-review-temporary.py
+          sed -i 's/[[:space:]]\+$//' \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/README.md \
+            docs/research/GLOSSIKA-YUEHK-A1-W19-20260726-CORPUS-INGRESS.md
 
       - name: Validate final Week 19 state
         run: |
