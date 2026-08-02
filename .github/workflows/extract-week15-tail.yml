@@ -1,0 +1,62 @@
+name: Extract Week 15 review tail
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/extract-week15-tail.yml
+
+permissions:
+  contents: write
+
+jobs:
+  execute-week16-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/week16-ingress-review
+          fetch-depth: 0
+      - name: Execute checked-in Week 16 generation steps
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          workflow = Path('.github/workflows/build-week16-review.yml')
+          lines = workflow.read_text(encoding='utf-8').splitlines()
+          selected = [
+              '      - name: Preserve runtime crosswalk and extend candidate builder',
+              '      - name: Build immutable locks and mechanical cross-reference',
+              '      - name: Generate expert review and projections',
+              '      - name: Write package documentation',
+          ]
+          scripts = []
+          for marker in selected:
+              step = lines.index(marker)
+              start = lines.index('        run: |', step) + 1
+              end = next(
+                  (index for index in range(start, len(lines)) if lines[index].startswith('      - name: ')),
+                  len(lines),
+              )
+              body = [line[10:] if line.startswith('          ') else line for line in lines[start:end]]
+              scripts.append('\n'.join(body))
+          Path('/tmp/week16-review.sh').write_text('\n\n'.join(scripts) + '\n', encoding='utf-8')
+          PY
+          bash -euxo pipefail /tmp/week16-review.sh
+      - name: Commit generated review and remove temporary files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tools/build-pedagogical-corpus-review-candidates.py \
+            config/pedagogical-corpus-source-locks.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/README.md \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/runtime-crosswalk-r1.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/mechanical-cross-reference-r1.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/package-integrity-r1.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/review.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/expert-review-r1.tsv \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/research-summary.md
+          git rm -f .github/workflows/extract-week15-tail.yml \
+            .github/workflows/build-week16-review.yml \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/.review-claim
+          git commit -m "Complete Week 16 record-level ingress review"
+          git push origin HEAD:agent/week16-ingress-review
