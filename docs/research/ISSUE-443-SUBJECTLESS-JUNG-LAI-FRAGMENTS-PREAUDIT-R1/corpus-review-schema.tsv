@@ -1,0 +1,35 @@
+field	allowed_values_or_format	purpose
+candidate_id	stable packet-local ID	Preserve one reviewable unit across revisions
+source_id	repository-authorized corpus or source ID	Keep provenance explicit
+source_location	file/turn/line/timecode or stable locator	Allow independent reopening
+medium	spoken|written|caption|label|instruction|chat|other	Separate register and layout effects
+preceding_context	overt source text or scene description only	Record antecedents without reconstructing hidden words
+target_clause	overt Cantonese clause	Preserve the actual 用嚟 surface
+following_context	overt source text only	Record repair, clarification, continuation, or uptake
+visible_or_jointly_attended_referent	present|absent|uncertain	Separate situational context from genuine antecedentless use
+overt_linguistic_antecedent	present|absent|uncertain	Record whether a resource/topic was linguistically introduced
+antecedent_form	NP|pronoun|demonstrative|question_variable|visual_only|none|other	Classify how the referent is supplied
+antecedent_distance	immediate|one_turn|multiple_turns|same_caption|visual_only|none|uncertain	Test locality and topic-chain persistence
+antecedent_uniqueness	unique|multiple_possible|generic|none|uncertain	Distinguish unambiguous recovery from accommodation
+antecedent_semantic_class	tool|container|software|document|person|institution|location|event|other|uncertain	Track lexical and referent effects
+discourse_relation	answer|correction|explanation|definition|instruction|caption|topic_continuation|event_report|other	Identify fragment-licensing environments
+question_type	wh_purpose|yes_no|who|what_object|none|other	Test question-answer congruence
+prompt_contains_yung_lai	yes|no|uncertain|not_applicable	Separate lexical or structural echo from independent discourse licensing
+response_marker	none|hai_affirmative|m_hai_correction|hai_inside_integrated_ge_frame|other|uncertain	Keep independent response material separate from the integrated 係…嘅 surface
+construction_surface	bare_yung_lai_vp|integrated_hai_yung_lai_ge_frame|overt_np_yung_lai_vp|actual_use_yung_np_lai_vp|other	Keep sibling structures separate without assigning a unique analysis
+purpose_predicate	verbatim VP	Preserve lexical material
+predicate_class	physical_action|storage|recording|communication|service|other	Track predicate-class effects
+clause_position	root|embedded_non_speech|reported_speech_or_quotation|caption|label|uncertain	Test root and embedding diagnostics without conflating 話 with clean complementation
+embedding_predicate	yiwai|waa|other|none|uncertain	Record complement type and reported-speech ambiguity explicitly
+target_boundary_position	utterance_final|nonfinal_continuing|embedded_final|caption_final|uncertain|not_available	Record where the target occurs prosodically or graphically
+prosody_available	yes|no	Record whether acoustic judgments are possible
+pause_before_target_ms	numeric|not_measured|not_available	Record separation from response markers or prior material
+pause_after_target_ms	numeric|not_measured|not_available	Record utterance completion or continuation
+prosody_profile	standalone_final|continuing_nonfinal|integrated_overt_np|integrated_hai_ge|uncertain|not_available	Describe the observed production condition without assigning a syntactic identity
+acoustic_measures	F0 onset/offset, range, duration, boundary movement, or repository measurement record	Preserve measurable evidence rather than punctuation-based inference
+repair_or_paraphrase	overt source material only	Use explicit interpretation evidence
+interpretation_evidence	referent_recovery|generic_reading|predicate_response|ellipsis_paraphrase|correction|continuation|none	Record what the source actually shows
+classification	context_licensed_resource_omission|topic_chain_candidate|question_linked_predicate_response|situational_fragment|caption_or_label|antecedentless_candidate|reported_speech_ambiguity|false_positive|ambiguous|unusable	Review disposition
+classification_reason	concise evidence-based explanation	Make decisions auditable
+hidden_word_reconstruction	prohibited	Prevent fabricated Cantonese material from becoming evidence
+reviewer_notes	free text	Preserve unresolved questions without promotion
