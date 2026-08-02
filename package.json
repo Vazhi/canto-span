@@ -25,6 +25,7 @@
     "verify:research": "node tools/verify-current-state.js --profile research",
     "verify:native-panel-lifecycle": "node tools/verify-native-panel-lifecycle.js",
     "verify:ab30-aggregate": "python3 review-packets/corpus-review/AB30/verify-aggregate-corpus-evidence-manifest-r1.py",
+    "verify:interim-pilot-export": "python3 tools/verify-interim-pilot-public-package.py",
     "verify:runtime": "node tools/verify-current-state.js --profile runtime",
     "verify:release": "node tools/verify-current-state.js --profile release",
     "verify:all": "node tools/verify-current-state.js --profile all",
