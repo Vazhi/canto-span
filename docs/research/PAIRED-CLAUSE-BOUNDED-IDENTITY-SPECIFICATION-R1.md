@@ -3,7 +3,7 @@
 Date: 2026-08-02  
 Parent issue: #430  
 Work claim: #441  
-Pull request: pending
+Pull request: #450
 
 ## Decision
 
