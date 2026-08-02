@@ -16,6 +16,8 @@ on:
       - "config/verification-profiles.json"
       - "tools/research-provenance-lib.js"
       - "tools/verify-research-provenance.js"
+      - "tools/verify-native-panel-lifecycle.js"
+      - "tests/tooling/native-panel/native-panel-lifecycle.test.js"
       - "package.json"
       - ".github/workflows/research-provenance.yml"
   pull_request:
@@ -33,6 +35,8 @@ on:
       - "config/verification-profiles.json"
       - "tools/research-provenance-lib.js"
       - "tools/verify-research-provenance.js"
+      - "tools/verify-native-panel-lifecycle.js"
+      - "tests/tooling/native-panel/native-panel-lifecycle.test.js"
       - "package.json"
       - ".github/workflows/research-provenance.yml"
   workflow_dispatch:
@@ -49,5 +53,7 @@ jobs:
         with:
           node-version: 24
           package-manager-cache: false
-      - name: Verify durable research provenance
+      - name: Test native-panel lifecycle verifier
+        run: node --test tests/tooling/native-panel/native-panel-lifecycle.test.js
+      - name: Verify durable research provenance and lifecycle state
         run: npm run verify:research
