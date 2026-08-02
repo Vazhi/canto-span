@@ -6,6 +6,9 @@ on:
       - agent/ab30-aggregate-integrity
     paths:
       - ".github/workflows/ab30-integrity-probe.yml"
+  pull_request:
+    paths:
+      - ".github/workflows/ab30-integrity-probe.yml"
   workflow_dispatch:
 
 permissions:
