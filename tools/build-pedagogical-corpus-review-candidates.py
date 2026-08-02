@@ -79,10 +79,15 @@ def read_json(path: Path) -> dict[str, Any]:
     return value
 
 
+def derived_report_path(package_relative: Path) -> Path:
+    return Path("docs/research") / f"{package_relative.name}-CORPUS-INGRESS.md"
+
+
 def candidate_files(root: Path, package_relative: Path, output_relative: Path) -> list[Path]:
-    output = []
-    excluded_package_files = {package_relative / name for name in PACKAGE_REVIEW_FILES}
-    excluded_package_files.add(output_relative)
+    output: list[Path] = []
+    excluded_files = {package_relative / name for name in PACKAGE_REVIEW_FILES}
+    excluded_files.update({output_relative, derived_report_path(package_relative)})
+
     for scan_root in SCAN_ROOTS:
         base = root / scan_root
         if not base.exists():
@@ -91,7 +96,7 @@ def candidate_files(root: Path, package_relative: Path, output_relative: Path) -
             if not path.is_file() or path.suffix.lower() not in TEXT_SUFFIXES:
                 continue
             relative = path.relative_to(root)
-            if relative in excluded_package_files:
+            if relative in excluded_files:
                 continue
             if relative.parent == package_relative and (
                 relative.name.startswith("expert-review-brief.")
@@ -108,7 +113,7 @@ def candidate_files(root: Path, package_relative: Path, output_relative: Path) -
 
 
 def load_documents(root: Path, paths: list[Path]) -> list[tuple[str, str, list[str]]]:
-    documents = []
+    documents: list[tuple[str, str, list[str]]] = []
     for path in paths:
         relative = str(path.relative_to(root))
         try:
@@ -132,6 +137,7 @@ def ranked_matches(paths: set[str], match_type: str) -> tuple[list[dict[str, Any
 
 def load_later_research(root: Path, source_id: str) -> dict[str, list[dict[str, Any]]]:
     by_item: dict[str, list[dict[str, Any]]] = defaultdict(list)
+
     lexical_path = root / "data/research-ledgers/glossika-week14-lexical-ingress.json"
     if lexical_path.exists():
         lexical = read_json(lexical_path)
@@ -147,6 +153,7 @@ def load_later_research(root: Path, source_id: str) -> dict[str, list[dict[str, 
                         "canonical_mentions": entry.get("rawCanonicalMentions", []),
                         "recommendation": entry.get("recommendation"),
                     })
+
     followup_path = root / "data/research-ledgers/glossika-week14-followup-candidates.json"
     if followup_path.exists():
         followup = read_json(followup_path)
@@ -178,17 +185,16 @@ def build(root: Path, package_relative: Path, output_relative: Path) -> dict[str
     source = read_json(root / package_relative / "source.json")
     if source.get("schema") != "canto-span-pedagogical-corpus-source-v1":
         raise ValueError("unsupported pedagogical source schema")
-    source_meta = source.get("source") or {}
-    source_id = source_meta.get("sourceId")
+    source_id = (source.get("source") or {}).get("sourceId")
     items = source.get("items")
     if not isinstance(items, list):
         raise ValueError("source items must be an array")
 
     documents = load_documents(root, candidate_files(root, package_relative, output_relative))
     later = load_later_research(root, str(source_id))
-    records = []
-    match_counts = Counter()
-    layer_counts = Counter()
+    records: list[dict[str, Any]] = []
+    match_counts: Counter[str] = Counter()
+    layer_counts: Counter[str] = Counter()
 
     for item in items:
         item_id = item.get("id")
@@ -197,6 +203,7 @@ def build(root: Path, package_relative: Path, output_relative: Path) -> dict[str
         normalized = normalize_surface(traditional)
         exact_paths: set[str] = set()
         normalized_paths: set[str] = set()
+
         if traditional:
             for path, text, normalized_lines in documents:
                 if traditional in text:
@@ -205,6 +212,7 @@ def build(root: Path, package_relative: Path, output_relative: Path) -> dict[str
                     normalized == line or normalized in line for line in normalized_lines
                 ):
                     normalized_paths.add(path)
+
         exact, exact_omitted = ranked_matches(exact_paths, "exact_surface_file")
         normalized_only, normalized_omitted = ranked_matches(normalized_paths, "normalized_surface_file")
         for match in exact + normalized_only:
@@ -243,6 +251,7 @@ def build(root: Path, package_relative: Path, output_relative: Path) -> dict[str
         "scan_policy": {
             "roots": SCAN_ROOTS,
             "excluded_package_files": sorted(PACKAGE_REVIEW_FILES | {output_relative.name}),
+            "excluded_derived_reports": [str(derived_report_path(package_relative))],
             "excluded_path_parts": sorted(EXCLUDED_PARTS),
             "maximum_file_bytes": 2_000_000,
             "generated_bundle_excluded": True,
