@@ -21,7 +21,9 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - name: Generate final Week 17 review state
-        run: python3 tools/finalize-week17-review-temporary.py
+        run: |
+          sed -i 's/158/162/g' tools/finalize-week17-review-temporary.py
+          python3 tools/finalize-week17-review-temporary.py
       - name: Validate final Week 17 state
         run: |
           python3 -m py_compile tools/build-pedagogical-corpus-review-candidates.py tools/verify-pedagogical-corpus-review.py tests/tooling/research/pedagogical-corpus-review.test.py
