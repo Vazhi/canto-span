@@ -1,0 +1,4 @@
+Work claim: #485
+Intake issue: #138
+Branch: agent/dialog002-ingress-review
+Scope: complete the 72-record dialog-002 expert review while preserving immutable source values, valid turn adjacency, aggregate-map records, parser/runtime state, and research authority boundaries.
