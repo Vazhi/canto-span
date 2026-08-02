@@ -30,7 +30,25 @@ The full text also explicitly sets aside verb-only short answers. This matters d
 
 The packet must not label a Cantonese wh-purpose response as movement-and-ellipsis merely because it answers a wh-question. It must also not label a yes/no or correction response as `pro + copula + fragment` merely because Mandarin nominal fragments can have that analysis.
 
-## 3. Response `係／唔係` must be separated from copular `係用嚟`
+## 3. Prompt priming must be separated from discourse licensing
+
+A question such as:
+
+```text
+呢把刀係用嚟做咩㗎？
+```
+
+already supplies the lexical sequence `用嚟`. A response `用嚟切方包` may therefore be facilitated by direct structural or lexical echo rather than by the wh-purpose discourse relation alone.
+
+The controlled design pairs this prompt with a non-priming counterpart:
+
+```text
+呢把刀有咩用㗎？
+```
+
+The same distinction applies to yes/no and correction contexts. Primed and non-primed prompts must be coded separately and must not be pooled when evaluating independent licensing of the target.
+
+## 4. Response `係／唔係` must be separated from the integrated `係…嘅` frame
 
 The following three profiles are not equivalent:
 
@@ -40,25 +58,27 @@ The following three profiles are not equivalent:
 係用嚟記低開支嘅。
 ```
 
-In the first two, initial `係` or `唔係` may be an affirmative or corrective response unit followed by a purpose response. In the third, `係` is overtly integrated into the copular/predicative surface.
+In the first two, initial `係` or `唔係` may be an affirmative or corrective response unit followed by a purpose response. In the third, `係` and `嘅` occur inside one integrated surface frame.
 
-Written punctuation cannot by itself prove the prosodic or syntactic boundary. The controlled design therefore records the response marker separately and includes a true-copular sibling. No occurrence of response `係／唔係` may be counted as evidence that bare `用嚟 VP` contains a copula.
+The packet does not assign that integrated frame a unique copular, cleft, focus, or other analysis. Written punctuation cannot by itself prove the prosodic or syntactic boundary. The controlled design therefore records the response marker separately and includes an analysis-neutral integrated `係…嘅` sibling. No occurrence of response `係／唔係` may be counted as evidence that bare `用嚟 VP` contains a copula or any other specific hidden structure.
 
-## 4. Root and embedded tests diagnose analyses only when alternatives are controlled
+## 5. Root and embedded tests diagnose analyses only when alternatives are controlled
 
 Huang and Yang (2024) argue that Chinese-type null topics show root/CP-edge and locality restrictions, while also distinguishing null topics from other forms of argument drop.
 
-For issue #443, an embedded target such as `阿明話用嚟切方包` is not a decisive test by itself. Acceptance could reflect:
+A target after `話`, such as `阿明話用嚟切方包`, is not a clean embedding diagnostic because `話` can support quotation-like or loose reported-speech readings. The controlled design therefore uses the non-speech predicate `以為` for the primary complement test:
 
-- an embedded null resource licensed by discourse;
-- pro or argument ellipsis;
-- a quotation-like or report structure;
-- accommodation of a generic resource;
-- a different parse or repair.
+```text
+阿明以為呢把刀用嚟切方包。
+講到呢把刀，阿明以為用嚟切方包。
+阿明以為用嚟切方包。
+```
 
-The revised contrasts therefore compare root and embedded targets with the same active antecedent, an overt-resource embedded baseline, and a no-antecedent embedded boundary. Embedded acceptance cannot be promoted directly to evidence for null-topic structure, and embedded rejection cannot by itself disprove every omission analysis.
+These compare an overt-resource complement, an active-antecedent omitted-resource target, and a no-context boundary. Even here, acceptance may reflect pro, argument ellipsis, accommodation, or another analysis rather than null-topic structure alone.
 
-## 5. Prosody must be measured rather than assigned
+The `話` example is retained only as a separately labeled reported-speech ambiguity test. Embedded acceptance cannot be promoted directly to evidence for null-topic structure, and embedded rejection cannot by itself disprove every omission analysis.
+
+## 6. Prosody must be measured rather than assigned
 
 Xu and Mok (2011) show that Cantonese question intonation has strong localized utterance-final effects in their materials. Their study establishes that boundary position and acoustic realization matter in Cantonese, but it does not identify a special fragment contour and does not analyze `用嚟`.
 
@@ -67,7 +87,7 @@ The audio stage should therefore compare:
 1. standalone utterance-final `用嚟 VP`;
 2. the same target words in nonfinal continuing position;
 3. the target sequence inside an overt-resource clause;
-4. the target inside a true-copular clause.
+4. the target inside an integrated `係…嘅` frame.
 
 Record at minimum:
 
@@ -79,7 +99,7 @@ Record at minimum:
 
 These measurements may reveal prosodic profiles, but they cannot independently prove ellipsis, null-topic structure, or construction identity.
 
-## 6. Revised pre-audit decision rule
+## 7. Revised pre-audit decision rule
 
 A subjectless `用嚟 VP` token may be described as context-licensed only when the record preserves the relevant linguistic, visual, or situational context. It may be classified more narrowly only when explicit evidence supports that classification.
 
@@ -96,10 +116,13 @@ The packet does not authorize:
 
 - reconstruction of a specific hidden Cantonese noun phrase;
 - direct transfer of Mandarin fragment derivations;
-- treating response `係／唔係` as an internal copula;
+- pooling primed and non-primed prompts;
+- treating response `係／唔係` as structurally contained inside the following target;
+- assigning a unique analysis to the integrated `係…嘅` frame;
+- treating `話` as a clean complement diagnostic;
 - inferring prosody from punctuation;
 - assigning a construction identity from naturalness alone.
 
 ## Working conclusion
 
-The stronger source review narrows the research question. The central contrast is not simply “fragment versus full sentence.” It is whether the same predicate-like surface receives stable licensing from an overt antecedent, a discourse question, a visual anchor, a topic chain, or no recoverable context, and whether those environments produce distinct interpretation and prosodic profiles. The final survey audit and controlled audio judgments remain necessary before any identity or runtime decision.
+The stronger source review narrows the research question. The central contrast is not simply “fragment versus full sentence.” It is whether the same predicate-like surface receives stable licensing from an overt antecedent, a discourse question, a visual anchor, a topic chain, or no recoverable context, and whether priming, complement type, and prosodic position alter that profile. The final survey audit and controlled audio judgments remain necessary before any identity or runtime decision.
