@@ -9,25 +9,27 @@ permissions:
   contents: read
 
 jobs:
-  export-week18-review-inputs:
+  export-week18-review-tooling:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: Stage exact Week 18 review inputs
+      - name: Stage exact shared review tooling
         run: |
-          mkdir -p /tmp/week18-review-inputs/package /tmp/week18-review-inputs/ledgers
-          cp data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/source.json /tmp/week18-review-inputs/package/
-          cp data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/items.tsv /tmp/week18-review-inputs/package/
-          cp data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/review.json /tmp/week18-review-inputs/package/
-          cp data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/crosswalk.json /tmp/week18-review-inputs/package/
-          cp data/research-ledgers/glossika-week18-claim-source.json /tmp/week18-review-inputs/ledgers/
-          cp data/research-ledgers/glossika-week18-common-verb-audit.json /tmp/week18-review-inputs/ledgers/
-          cp data/research-ledgers/glossika-week18-temporal-lexicon.json /tmp/week18-review-inputs/ledgers/
-          cp data/research-ledgers/glossika-week18-followup-candidates.json /tmp/week18-review-inputs/ledgers/
-          find /tmp/week18-review-inputs -type f -print0 | sort -z | xargs -0 sha256sum > /tmp/week18-review-inputs/SHA256SUMS
+          mkdir -p /tmp/week18-review-tooling/.github/workflows \
+            /tmp/week18-review-tooling/tools \
+            /tmp/week18-review-tooling/tests/tooling/research \
+            /tmp/week18-review-tooling/config
+          cp .github/workflows/research-provenance.yml /tmp/week18-review-tooling/.github/workflows/
+          cp tools/build-pedagogical-corpus-review-candidates.py /tmp/week18-review-tooling/tools/
+          cp tools/verify-pedagogical-corpus-review.py /tmp/week18-review-tooling/tools/
+          cp tests/tooling/research/pedagogical-corpus-review.test.py /tmp/week18-review-tooling/tests/tooling/research/
+          cp config/verification-profiles.json /tmp/week18-review-tooling/config/
+          cp config/pedagogical-corpus-source-locks.json /tmp/week18-review-tooling/config/
+          cp package.json /tmp/week18-review-tooling/
+          find /tmp/week18-review-tooling -type f -print0 | sort -z | xargs -0 sha256sum > /tmp/week18-review-tooling/SHA256SUMS
       - uses: actions/upload-artifact@v4
         with:
-          name: week18-review-inputs
-          path: /tmp/week18-review-inputs
+          name: week18-review-tooling
+          path: /tmp/week18-review-tooling
           if-no-files-found: error
           retention-days: 1
