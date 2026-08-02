@@ -1,0 +1,104 @@
+{
+  "schema": "canto-span-pedagogical-corpus-project-only-review-v1",
+  "source_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+  "source_payload_hash": "sha256:1ece0875ae59d215fbc1f09ad8b5b648ad80e448fadaf89d72f019208be28ea7",
+  "record_count": 5,
+  "policy": "These are project-created historical probes with no original lesson row. REVIEW_ONLY is preserved as history and does not authorize evidence or runtime promotion.",
+  "records": [
+    {
+      "id": "W17-PROJECT-ONLY-001",
+      "classification": "project_only_item",
+      "missingSourceItem": true,
+      "sourceProjectRecord": {
+        "path": "test-data/w17-naturalized-alternatives.tsv",
+        "id": null
+      },
+      "relatedSourceProjectId": "COR-W17-009",
+      "traditional": "我最近壓力好大。",
+      "jyutping": "ngo5 zeoi3 gan6 aat3 lik6 hou2 daai6.",
+      "english": "I've been under a lot of stress lately.",
+      "lifecycleStatus": "REVIEW_ONLY",
+      "reason": "Project-created naturalized alternative; no corresponding original lesson row.",
+      "review_status": "reviewed_as_project_history",
+      "authority_status": "unverified_project_probe",
+      "evidence_use_disposition": "not_source_attestation",
+      "runtime_or_status_authorization": "none"
+    },
+    {
+      "id": "W17-PROJECT-ONLY-002",
+      "classification": "project_only_item",
+      "missingSourceItem": true,
+      "sourceProjectRecord": {
+        "path": "test-data/w17-naturalized-alternatives.tsv",
+        "id": null
+      },
+      "relatedSourceProjectId": "COR-W17-009",
+      "traditional": "我最近有好大壓力。",
+      "jyutping": "ngo5 zeoi3 gan6 jau5 hou2 daai6 aat3 lik6.",
+      "english": "I've been under a lot of stress lately.",
+      "lifecycleStatus": "REVIEW_ONLY",
+      "reason": "Project-created naturalized alternative; no corresponding original lesson row.",
+      "review_status": "reviewed_as_project_history",
+      "authority_status": "unverified_project_probe",
+      "evidence_use_disposition": "not_source_attestation",
+      "runtime_or_status_authorization": "none"
+    },
+    {
+      "id": "W17-PROJECT-ONLY-003",
+      "classification": "project_only_item",
+      "missingSourceItem": true,
+      "sourceProjectRecord": {
+        "path": "test-data/w17-naturalized-alternatives.tsv",
+        "id": null
+      },
+      "relatedSourceProjectId": "COR-W17-013",
+      "traditional": "你好似唔開心噃。",
+      "jyutping": "nei5 hou2 ci5 m4 hoi1 sam1 bo3.",
+      "english": "You seem unhappy.",
+      "lifecycleStatus": "REVIEW_ONLY",
+      "reason": "Project-created naturalized alternative; no corresponding original lesson row.",
+      "review_status": "reviewed_as_project_history",
+      "authority_status": "unverified_project_probe",
+      "evidence_use_disposition": "not_source_attestation",
+      "runtime_or_status_authorization": "none"
+    },
+    {
+      "id": "W17-PROJECT-ONLY-004",
+      "classification": "project_only_item",
+      "missingSourceItem": true,
+      "sourceProjectRecord": {
+        "path": "test-data/w17-naturalized-alternatives.tsv",
+        "id": null
+      },
+      "relatedSourceProjectId": "COR-W17-014",
+      "traditional": "係呀，我最近壓力好大。",
+      "jyutping": "hai6 aa3, ngo5 zeoi3 gan6 aat3 lik6 hou2 daai6.",
+      "english": "Yeah, I've been under a lot of stress lately.",
+      "lifecycleStatus": "REVIEW_ONLY",
+      "reason": "Project-created naturalized alternative; no corresponding original lesson row.",
+      "review_status": "reviewed_as_project_history",
+      "authority_status": "unverified_project_probe",
+      "evidence_use_disposition": "not_source_attestation",
+      "runtime_or_status_authorization": "none"
+    },
+    {
+      "id": "W17-PROJECT-ONLY-005",
+      "classification": "project_only_item",
+      "missingSourceItem": true,
+      "sourceProjectRecord": {
+        "path": "test-data/w17-naturalized-alternatives.tsv",
+        "id": null
+      },
+      "relatedSourceProjectId": "COR-W17-016",
+      "traditional": "係呀，日日加班到好夜。",
+      "jyutping": "hai6 aa3, jat6 jat6 gaa1 baan1 dou3 hou2 je6.",
+      "english": "Yeah, I work overtime until very late every day.",
+      "lifecycleStatus": "REVIEW_ONLY",
+      "reason": "Project-created naturalized alternative; no corresponding original lesson row.",
+      "review_status": "reviewed_as_project_history",
+      "authority_status": "unverified_project_probe",
+      "evidence_use_disposition": "not_source_attestation",
+      "runtime_or_status_authorization": "none"
+    }
+  ]
+}

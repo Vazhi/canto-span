@@ -22,10 +22,12 @@ SPEC.loader.exec_module(VERIFIER)
 WEEK14 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621")
 WEEK15 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628")
 WEEK16 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705")
+WEEK17 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712")
 REGISTERED = {
-    WEEK14: {"records": 61, "discrepancies": 6, "exact": 5, "runtime": 0},
-    WEEK15: {"records": 65, "discrepancies": 4, "exact": 10, "runtime": 0},
-    WEEK16: {"records": 59, "discrepancies": 11, "exact": 0, "runtime": 35},
+    WEEK14: {"records": 61, "discrepancies": 6, "exact": 5, "runtime": 0, "legacy": 0},
+    WEEK15: {"records": 65, "discrepancies": 4, "exact": 10, "runtime": 0, "legacy": 0},
+    WEEK16: {"records": 59, "discrepancies": 11, "exact": 0, "runtime": 35, "legacy": 0},
+    WEEK17: {"records": 75, "discrepancies": 39, "exact": 3, "runtime": 0, "legacy": 75},
 }
 
 def write_json(path: Path, value: object) -> None:
@@ -47,6 +49,7 @@ class RegisteredPedagogicalCorpusReviewTest(unittest.TestCase):
                     expected["exact"],
                 )
                 self.assertEqual(result["runtime_crosswalk_records"], expected["runtime"])
+                self.assertEqual(result["legacy_reconciliation_records"], expected["legacy"])
                 self.assertEqual(result["reviewed_replacements"], 0)
 
     def test_week15_terminal_projection(self) -> None:
@@ -117,6 +120,34 @@ class RegisteredPedagogicalCorpusReviewTest(unittest.TestCase):
         self.assertEqual(difference_surfaces, {"煮嘢食", "畫畫", "釣魚", "下棋", "行公園"})
         park = next(row for row in review["records"] if row["id"].endswith("I033"))
         self.assertEqual(park["source_discrepancies"][0]["status"], 'source_runtime_component_default_reading_difference')
+
+    def test_week17_legacy_authority_is_not_independent_evidence(self) -> None:
+        review = json.loads((ROOT / WEEK17 / "review.json").read_text(encoding="utf-8"))
+        legacy = json.loads((ROOT / WEEK17 / "legacy-reconciliation-r1.json").read_text(encoding="utf-8"))
+        project_only = json.loads((ROOT / WEEK17 / "project-only-review-r1.json").read_text(encoding="utf-8"))
+        self.assertEqual(review["summary"]["review_status_counts"], {"reviewed": 75, "unreviewed": 0})
+        self.assertEqual(review["summary"]["project_only_historical_records"], 5)
+        self.assertEqual(legacy["summary"]["legacy_pass_cells"], 162)
+        self.assertEqual(legacy["summary"]["legacy_promoted_accepted_cells"], 131)
+        self.assertTrue(all(row["inherited_authority_status"] == "unverified_project_history" for row in legacy["records"]))
+        self.assertTrue(all(row["authority_status"] == "unverified_project_probe" for row in project_only["records"]))
+
+    def test_week17_only_kwut_has_independent_evidence(self) -> None:
+        source = json.loads((ROOT / WEEK17 / "source.json").read_text(encoding="utf-8"))
+        review = json.loads((ROOT / WEEK17 / "review.json").read_text(encoding="utf-8"))
+        evidence = json.loads((ROOT / WEEK17 / "evidence-sources-r1.json").read_text(encoding="utf-8"))
+        linked = [row for row in review["records"] if row["independent_evidence_ids"]]
+        self.assertEqual([row["id"] for row in linked], ["GLOSSIKA-YUEHK-A1-W17-20260712-I074"])
+        self.assertEqual(evidence["decision"]["source_value"], "hyut3|kut3")
+        self.assertEqual(evidence["decision"]["reviewed_value"], "hyut3|fut3")
+        source_row = next(row for row in source["items"] if row["id"] == "GLOSSIKA-YUEHK-A1-W17-20260712-I074")
+        self.assertIn("kut3", json.dumps(source_row, ensure_ascii=False))
+
+    def test_week17_only_source_repeats_are_accepted_duplicates(self) -> None:
+        review = json.loads((ROOT / WEEK17 / "review.json").read_text(encoding="utf-8"))
+        exact = [row for row in review["records"] if row["terminal_ingress_classification"] == "exact_duplicate"]
+        self.assertEqual([row["id"].rsplit("-", 1)[-1] for row in exact], ["I024", "I025", "I026"])
+        self.assertTrue(all(row["accepted_duplicate_targets"][0]["path"].endswith("source.json") for row in exact))
 
 class PedagogicalCorpusReviewMutationTest(unittest.TestCase):
     def setUp(self) -> None:
@@ -248,6 +279,50 @@ class Week16RuntimeCrosswalkMutationTest(unittest.TestCase):
         row["implementation_crosswalk_targets"][0]["path"] = "data/invented-runtime-owner.json"
         write_json(path, review)
         with self.assertRaisesRegex(AssertionError, "implementation crosswalk target is not evidence-backed"):
+            self.verify()
+
+class Week17LegacyAuthorityMutationTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.temp = tempfile.TemporaryDirectory()
+        self.root = Path(self.temp.name)
+        shutil.copytree(ROOT / WEEK17, self.root / WEEK17, dirs_exist_ok=True)
+        lock_target = self.root / VERIFIER.SOURCE_LOCKS_RELATIVE
+        lock_target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(ROOT / VERIFIER.SOURCE_LOCKS_RELATIVE, lock_target)
+        legacy = json.loads((ROOT / WEEK17 / "legacy-reconciliation-r1.json").read_text(encoding="utf-8"))
+        for row in legacy["legacy_files"]:
+            target = self.root / row["path"]
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(ROOT / row["path"], target)
+
+    def tearDown(self) -> None:
+        self.temp.cleanup()
+
+    def verify(self):
+        return VERIFIER.verify(self.root, WEEK17, check_deterministic_crossref=False)
+
+    def test_inherited_project_assertion_cannot_self_promote(self) -> None:
+        path = self.root / WEEK17 / "legacy-reconciliation-r1.json"
+        packet = json.loads(path.read_text(encoding="utf-8"))
+        packet["records"][0]["inherited_authority_status"] = "independently_verified"
+        write_json(path, packet)
+        with self.assertRaisesRegex(AssertionError, "elevated without evidence"):
+            self.verify()
+
+    def test_kwut_independent_value_is_locked(self) -> None:
+        path = self.root / WEEK17 / "evidence-sources-r1.json"
+        packet = json.loads(path.read_text(encoding="utf-8"))
+        packet["decision"]["reviewed_value"] = "hyut3|kut3"
+        write_json(path, packet)
+        with self.assertRaisesRegex(AssertionError, "pronunciation value drift"):
+            self.verify()
+
+    def test_project_only_probe_cannot_authorize_runtime(self) -> None:
+        path = self.root / WEEK17 / "project-only-review-r1.json"
+        packet = json.loads(path.read_text(encoding="utf-8"))
+        packet["records"][0]["runtime_or_status_authorization"] = "runtime_acceptance"
+        write_json(path, packet)
+        with self.assertRaisesRegex(AssertionError, "authorizes runtime or status change"):
             self.verify()
 
 if __name__ == "__main__":

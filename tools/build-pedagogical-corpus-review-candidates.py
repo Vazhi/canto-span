@@ -41,6 +41,9 @@ PACKAGE_REVIEW_FILES = {
     "expert-review-r1.tsv",
     "package-integrity-r1.json",
     "runtime-crosswalk-r1.json",
+    "legacy-reconciliation-r1.json",
+    "project-only-review-r1.json",
+    "evidence-sources-r1.json",
 }
 GLOBAL_PEDAGOGICAL_DERIVED_FILES = {
     "review.json",
@@ -51,6 +54,9 @@ GLOBAL_PEDAGOGICAL_DERIVED_FILES = {
     "mechanical-cross-reference-r1.json",
     "crosswalk.json",
     "runtime-crosswalk-r1.json",
+    "legacy-reconciliation-r1.json",
+    "project-only-review-r1.json",
+    "evidence-sources-r1.json",
 }
 
 
@@ -91,8 +97,12 @@ def read_json(path: Path) -> dict[str, Any]:
     return value
 
 
-def derived_report_path(package_relative: Path) -> Path:
-    return Path("docs/research") / f"{package_relative.name}-CORPUS-INGRESS.md"
+def derived_report_paths(package_relative: Path) -> set[Path]:
+    stem = package_relative.name
+    return {
+        Path("docs/research") / f"{stem}-CORPUS-INGRESS.md",
+        Path("docs/research") / f"{stem}-CORPUS-RECONCILIATION.md",
+    }
 
 
 def is_global_pedagogical_derived(relative: Path) -> bool:
@@ -106,7 +116,8 @@ def is_global_pedagogical_derived(relative: Path) -> bool:
 def candidate_files(root: Path, package_relative: Path, output_relative: Path) -> list[Path]:
     output: list[Path] = []
     excluded_files = {package_relative / name for name in PACKAGE_REVIEW_FILES}
-    excluded_files.update({output_relative, derived_report_path(package_relative)})
+    excluded_files.add(output_relative)
+    excluded_files.update(derived_report_paths(package_relative))
 
     for scan_root in SCAN_ROOTS:
         base = root / scan_root
@@ -164,6 +175,29 @@ def research_ledger_stem(source_id: str) -> str | None:
 
 def load_later_research(root: Path, source_id: str) -> dict[str, list[dict[str, Any]]]:
     by_item: dict[str, list[dict[str, Any]]] = defaultdict(list)
+
+    legacy_path = root / f"data/pedagogical-corpus/glossika/{source_id}/legacy-reconciliation-r1.json"
+    if legacy_path.exists():
+        legacy = read_json(legacy_path)
+        if legacy.get("source_id") == source_id:
+            for entry in legacy.get("records", []):
+                item_id = entry.get("id")
+                if item_id:
+                    by_item[item_id].append({
+                        "packet": "legacy-reconciliation-r1",
+                        "kind": "legacy_project_reconciliation",
+                        "legacy_classification": entry.get("legacy_classification"),
+                        "source_repeat_of": entry.get("source_repeat_of"),
+                        "source_repeat_target_path": entry.get("source_repeat_target_path"),
+                        "existing_project_records": entry.get("existing_project_records", []),
+                        "canonical_lexicon_owners": entry.get("canonical_lexicon_owners", []),
+                        "parser_owner_candidates": entry.get("parser_owner_candidates", []),
+                        "reviewed_utterance_type": entry.get("reviewed_utterance_type"),
+                        "inherited_discrepancies": entry.get("inherited_discrepancies", []),
+                        "inherited_authority_status": entry.get("inherited_authority_status"),
+                        "independent_evidence_ids": entry.get("independent_evidence_ids", []),
+                    })
+
     runtime_crosswalk_path = root / f"data/pedagogical-corpus/glossika/{source_id}/runtime-crosswalk-r1.json"
     if runtime_crosswalk_path.exists():
         runtime_crosswalk = read_json(runtime_crosswalk_path)

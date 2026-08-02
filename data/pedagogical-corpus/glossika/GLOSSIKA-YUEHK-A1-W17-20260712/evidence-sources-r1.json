@@ -1,0 +1,50 @@
+{
+  "schema": "canto-span-pedagogical-corpus-independent-evidence-v1",
+  "source_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+  "review_date": "2026-08-03",
+  "claims": [
+    {
+      "id": "W17-PRON-CUHK-FUT3",
+      "source_type": "cantonese_pronunciation_database",
+      "publisher": "Chinese University of Hong Kong, Research Centre for Humanities Computing",
+      "title": "粵語審音配詞字庫",
+      "url": "https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/pho-rel.php?s2=ut",
+      "accessed_on": "2026-08-03",
+      "evidence_grade": "LEXICAL_OR_PRONUNCIATION_ONLY",
+      "supported_claim": "闊 is listed with Cantonese reading fut3.",
+      "does_not_support": [
+        "phonics_heading_scope",
+        "construction_naturalness",
+        "parser_behavior"
+      ]
+    },
+    {
+      "id": "W17-PRON-CTEXT-FUT3",
+      "source_type": "character_dictionary",
+      "publisher": "Chinese Text Project",
+      "title": "闊 dictionary entry",
+      "url": "https://ctext.org/dictionary.pl?char=%E9%97%8A&if=en",
+      "accessed_on": "2026-08-03",
+      "evidence_grade": "LEXICAL_OR_PRONUNCIATION_ONLY",
+      "supported_claim": "The dictionary entry gives Cantonese fut3 for 闊.",
+      "does_not_support": [
+        "phonics_heading_scope",
+        "construction_naturalness",
+        "parser_behavior"
+      ]
+    }
+  ],
+  "decision": {
+    "source_item_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I074",
+    "source_value": "hyut3|kut3",
+    "reviewed_value": "hyut3|fut3",
+    "corrected_component": "闊",
+    "corrected_reading": "fut3",
+    "supporting_claim_ids": [
+      "W17-PRON-CUHK-FUT3",
+      "W17-PRON-CTEXT-FUT3"
+    ],
+    "scope": "pronunciation_only",
+    "source_mutated": false
+  }
+}

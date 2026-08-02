@@ -114,6 +114,8 @@
           "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628",
           "--package",
           "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705",
+          "--package",
+          "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712",
           "--check-deterministic-crossref"
         ],
         "reason": "Keep reviewed pedagogical source archives, deterministic repository cross-references, terminal expert dispositions, duplicate targets, discrepancy records, and tabular projections synchronized across all registered packages.",

@@ -268,6 +268,168 @@ def verify_runtime_crosswalk(
     return set(ids)
 
 
+def verify_legacy_reconciliation(
+    root: Path,
+    package: Path,
+    source_id: str,
+    payload_hash: str,
+    source_items: list[dict[str, Any]],
+    review: dict[str, Any],
+) -> set[str]:
+    path = package / "legacy-reconciliation-r1.json"
+    if not path.exists():
+        return set()
+    for required in ["crosswalk.json", "project-only-review-r1.json", "evidence-sources-r1.json"]:
+        if not (package / required).is_file():
+            fail(f"legacy reconciliation companion missing: {required}")
+    packet = load_json(path)
+    if packet.get("schema") != "canto-span-pedagogical-corpus-legacy-reconciliation-v1":
+        fail("unexpected legacy reconciliation schema")
+    if packet.get("source_id") != source_id or packet.get("source_payload_hash") != payload_hash:
+        fail("legacy reconciliation source identity mismatch")
+    if packet.get("origin_pull_request") != 277 or packet.get("origin_merge_commit") != "18e285c92b639f56e6b0eb08543e42ce7c66151e":
+        fail("legacy reconciliation origin identity mismatch")
+
+    crosswalk_data = read_bytes(package / "crosswalk.json")
+    crosswalk = load_json(package / "crosswalk.json")
+    crosswalk_lock = packet.get("original_crosswalk") or {}
+    expected_crosswalk = {
+        "path": "crosswalk.json",
+        "bytes": len(crosswalk_data),
+        "sha256": sha256_hex(crosswalk_data),
+        "git_blob_sha": git_blob_sha(crosswalk_data),
+    }
+    if crosswalk_lock != expected_crosswalk:
+        fail("legacy crosswalk lock drift")
+    if crosswalk.get("sourceId") != source_id or crosswalk.get("sourcePayloadHash") != payload_hash:
+        fail("original legacy crosswalk identity mismatch")
+
+    legacy_files = packet.get("legacy_files")
+    if not isinstance(legacy_files, list) or len(legacy_files) != 8:
+        fail("legacy file snapshot must contain eight files")
+    registered_paths = set((crosswalk.get("existingWeek17Inputs") or {}).values())
+    snapshot_paths = {row.get("path") for row in legacy_files if isinstance(row, dict)}
+    if snapshot_paths != registered_paths:
+        fail("legacy file snapshot path set mismatch")
+    table_ids: dict[str, set[str]] = {}
+    pass_cells = 0
+    promoted_cells = 0
+    for row in legacy_files:
+        path_value = row["path"]
+        data = read_bytes(root / path_value)
+        fields, rows = load_tsv(root / path_value)
+        expected = {
+            "path": path_value,
+            "bytes": len(data),
+            "sha256": sha256_hex(data),
+            "git_blob_sha": git_blob_sha(data),
+            "row_count": len(rows),
+            "fields": fields,
+        }
+        if row != expected:
+            fail(f"legacy project file drift: {path_value}")
+        table_ids[path_value] = {value["id"] for value in rows if value.get("id")}
+        for value in rows:
+            pass_cells += sum(cell == "PASS" for cell in value.values())
+            promoted_cells += sum(cell == "PROMOTED_ACCEPTED" for cell in value.values())
+    if pass_cells != 162 or promoted_cells != 131:
+        fail("legacy status-cell baseline drift")
+
+    records = packet.get("records")
+    if not isinstance(records, list):
+        fail("legacy reconciliation records must be an array")
+    ids = stable_ids(records, "legacy reconciliation records")
+    source_ids = [row["id"] for row in source_items]
+    if ids != source_ids or packet.get("record_count") != len(source_ids):
+        fail("legacy reconciliation IDs/order/count mismatch")
+    crosswalk_rows = crosswalk.get("records")
+    if not isinstance(crosswalk_rows, list):
+        fail("original legacy crosswalk records missing")
+    original_by_id = {row["sourceItemId"]: row for row in crosswalk_rows}
+    source_by_id = {row["id"]: row for row in source_items}
+    for row in records:
+        item_id = row["id"]
+        original = original_by_id.get(item_id)
+        if original is None:
+            fail(f"legacy reconciliation record lacks original crosswalk row: {item_id}")
+        if row.get("source_hash") != source_by_id[item_id].get("sourceHash"):
+            fail(f"legacy reconciliation source hash drift: {item_id}")
+        comparisons = {
+            "legacy_classification": original.get("classification"),
+            "source_repeat_of": original.get("sourceRepeatOf"),
+            "existing_project_records": original.get("existingProjectRecords", []),
+            "canonical_lexicon_owners": original.get("canonicalLexiconOwners", []),
+            "parser_owner_candidates": original.get("canonicalParserOwnerCandidates", []),
+            "reviewed_utterance_type": original.get("reviewedUtteranceType"),
+            "inherited_discrepancies": original.get("discrepancies", []),
+        }
+        for field, expected in comparisons.items():
+            if row.get(field) != expected:
+                fail(f"legacy reconciliation projection drift: {item_id}: {field}")
+        repeat_of = row.get("source_repeat_of")
+        expected_target = str(Path("data/pedagogical-corpus/glossika") / source_id / "source.json") if repeat_of else None
+        if row.get("source_repeat_target_path") != expected_target:
+            fail(f"legacy source-repeat target drift: {item_id}")
+        for ref in row.get("existing_project_records", []):
+            if ref.get("path") not in table_ids or ref.get("id") not in table_ids[ref["path"]]:
+                fail(f"legacy project record reference is unresolved: {item_id}: {ref}")
+        if row.get("inherited_authority_status") != "unverified_project_history":
+            fail(f"legacy project assertion was elevated without evidence: {item_id}")
+        evidence_ids = row.get("independent_evidence_ids")
+        expected_ids = ["W17-PRON-CUHK-FUT3", "W17-PRON-CTEXT-FUT3"] if item_id.endswith("I074") else []
+        if evidence_ids != expected_ids:
+            fail(f"legacy independent-evidence linkage drift: {item_id}")
+
+    evidence = load_json(package / "evidence-sources-r1.json")
+    if evidence.get("schema") != "canto-span-pedagogical-corpus-independent-evidence-v1":
+        fail("unexpected Week 17 independent-evidence schema")
+    claims = evidence.get("claims")
+    if not isinstance(claims, list) or {row.get("id") for row in claims} != {"W17-PRON-CUHK-FUT3", "W17-PRON-CTEXT-FUT3"}:
+        fail("Week 17 independent pronunciation sources changed")
+    for claim in claims:
+        if claim.get("evidence_grade") != "LEXICAL_OR_PRONUNCIATION_ONLY" or "fut3" not in str(claim.get("supported_claim")):
+            fail("Week 17 independent evidence exceeds pronunciation scope")
+    decision = evidence.get("decision") or {}
+    if decision.get("source_item_id") != f"{source_id}-I074" or decision.get("source_value") != "hyut3|kut3":
+        fail("Week 17 pronunciation decision source projection drift")
+    if decision.get("reviewed_value") != "hyut3|fut3" or decision.get("corrected_reading") != "fut3":
+        fail("Week 17 independently verified pronunciation value drift")
+    if decision.get("source_mutated") is not False or decision.get("scope") != "pronunciation_only":
+        fail("Week 17 pronunciation correction exceeded its evidence boundary")
+
+    project_only = load_json(package / "project-only-review-r1.json")
+    raw_project_only = crosswalk.get("projectOnlyRecords") or crosswalk.get("projectOnlyItems") or []
+    project_rows = project_only.get("records")
+    if project_only.get("schema") != "canto-span-pedagogical-corpus-project-only-review-v1":
+        fail("unexpected project-only review schema")
+    if not isinstance(project_rows, list) or len(project_rows) != 5 or project_only.get("record_count") != 5:
+        fail("Week 17 project-only review count mismatch")
+    if [row.get("id") for row in project_rows] != [row.get("id") for row in raw_project_only]:
+        fail("Week 17 project-only IDs/order drift")
+    for reviewed, original in zip(project_rows, raw_project_only):
+        for key, value in original.items():
+            if reviewed.get(key) != value:
+                fail(f"project-only historical projection drift: {reviewed.get('id')}: {key}")
+        if reviewed.get("authority_status") != "unverified_project_probe" or reviewed.get("evidence_use_disposition") != "not_source_attestation":
+            fail(f"project-only probe was elevated without evidence: {reviewed.get('id')}")
+        if reviewed.get("runtime_or_status_authorization") != "none":
+            fail(f"project-only probe authorizes runtime or status change: {reviewed.get('id')}")
+
+    review_rows = review.get("records")
+    if not isinstance(review_rows, list):
+        fail("review rows missing for legacy linkage")
+    for row in review_rows:
+        item_id = row["id"]
+        if row.get("legacy_reconciliation_status") != original_by_id[item_id].get("classification"):
+            fail(f"review legacy classification drift: {item_id}")
+        if row.get("inherited_project_authority") != "unverified_project_history":
+            fail(f"review inherited project authority was elevated: {item_id}")
+        expected_ids = ["W17-PRON-CUHK-FUT3", "W17-PRON-CTEXT-FUT3"] if item_id.endswith("I074") else []
+        if row.get("independent_evidence_ids") != expected_ids:
+            fail(f"review independent-evidence linkage drift: {item_id}")
+    return set(ids)
+
+
 def allowed_duplicate_paths(crossref_row: dict[str, Any], normalized: bool) -> set[str]:
     field = "normalized_match_candidates" if normalized else "exact_match_candidates"
     output = {
@@ -279,6 +441,8 @@ def allowed_duplicate_paths(crossref_row: dict[str, Any], normalized: bool) -> s
         for link in crossref_row.get("later_research_links", []):
             if isinstance(link, dict):
                 output.update(owner for owner in link.get("exact_runtime_owners", []) if isinstance(owner, str))
+                if link.get("kind") == "legacy_project_reconciliation" and isinstance(link.get("source_repeat_target_path"), str):
+                    output.add(link["source_repeat_target_path"])
     return output
 
 
@@ -650,6 +814,7 @@ def verify(
         fail("source payload hash missing or malformed")
     verify_integrity(root, package, package_relative, integrity, source_id, payload_hash)
     runtime_crosswalk_ids = verify_runtime_crosswalk(root, package, source_id, payload_hash, source_items)
+    legacy_reconciliation_ids = verify_legacy_reconciliation(root, package, source_id, payload_hash, source_items, review)
     verify_review(source, review, crossref, source_items, source_ids)
     reviewed_crosswalk_ids = {
         row["id"] for row in review["records"] if row.get("implementation_crosswalk_targets")
@@ -674,6 +839,8 @@ def verify(
         "source_discrepancies": review["summary"]["records_with_source_discrepancies"],
         "reviewed_replacements": review["summary"]["records_with_reviewed_replacements"],
         "runtime_crosswalk_records": len(runtime_crosswalk_ids),
+        "legacy_reconciliation_records": len(legacy_reconciliation_ids),
+        "project_only_historical_records": review["summary"].get("project_only_historical_records", 0),
         "deterministic_crossref_checked": check_deterministic_crossref,
         "status": "PASS",
     }

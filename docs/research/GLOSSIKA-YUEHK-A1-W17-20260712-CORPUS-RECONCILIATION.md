@@ -1,36 +1,31 @@
-# Glossika Week 17 corpus reconciliation
+# Glossika Week 17 corpus reconciliation — final expert review
 
 - Source ID: `GLOSSIKA-YUEHK-A1-W17-20260712`
 - Intake: #134
-- Work claim: #276
-- PR: #277
-- Status: source preserved and reconciled; no runtime or promotion change
+- Original reconciliation: #276 / merged PR #277
+- Completed review: #477 / PR #478
+- Status: 75-record expert review complete; awaiting merge approval
 
-## Result
+## Terminal result
 
-- 75 source records preserved in email order.
-- 3 repeated source lexical rows retained rather than silently deduplicated.
-- 19 sentence/dialog records crosswalked to the existing corpus and semantic-disposition files.
-- 50 source lexical rows crosswalked to the 59-entry deduplicated project lexicon, including grammar and phonics records where relevant.
-- 6 phonics pairs crosswalked to reviewed project pairs.
-- 5 naturalized alternatives retained as project-only records with no source-row claim.
-- Crosswalk classifications: `{"exact_duplicate":3,"normalized_duplicate":50,"partial_match":22}`.
-- Discrepancy flags: `{"project_review_note":23,"pronunciation_discrepancy":1,"translation_discrepancy":22}`.
-- Unmatched source rows: 0.
+- 75 of 75 source rows reviewed;
+- three accepted exact duplicates, limited to repeated source rows `I024–I026`;
+- five project-only naturalized alternatives retained as unverified historical probes;
+- 162 inherited `PASS` cells and 131 inherited `PROMOTED_ACCEPTED` cells preserved as project history, not independent evidence;
+- one independently verified pronunciation correction: `闊 fut3`;
+- zero source replacements;
+- zero parser, runtime, status, survey, release, or deployment authorizations.
 
-## Key discrepancies
+## Evidence authority
 
-- Source duplicates: 攰, 嬲, and 驚 occur twice; project lexicon records merge them.
-- Gloss expansion: several project lexical glosses add reviewed senses that are not present in the source wording.
-- Source/project translation wording differs for some complete sentences without changing the preserved Cantonese source.
-- The source gives `闊 kut3`; the reviewed project record gives `闊 fut3`.
-- The source labels all eight grammar-table items as prepositions even though current project records preserve multifunctional lexical categories and contextual roles.
-- Five naturalized alternatives are project-only and must not be represented as original Glossika rows.
+The original crosswalk remains a useful reconciliation record. Its project-owned status cells cannot establish their own authority. Every source row now separates the immutable source, legacy project relationship, inherited project assertion, independent evidence, terminal corpus disposition, and evidence-use boundary.
 
-## Modular ownership
+`canonicalParserOwnerCandidates` remain heuristic path candidates. They are not accepted parser ownership or parser-correctness evidence.
 
-Crosswalk ownership is resolved only against current `src/**` and `src/runtime-resources/**` paths. Existing sentence-level parser paths are recorded as candidate owners derived from reviewed utterance types; they are not new identity or promotion decisions. Generated `main.js` is excluded throughout.
+## Independent pronunciation decision
 
-## Stop boundary
+The source pair `血|闊` remains `hyut3|kut3` in the immutable source. CUHK's Cantonese pronunciation database and the Chinese Text Project independently give `fut3` for `闊`, supporting the reviewed pair `hyut3|fut3`. This is pronunciation-only evidence and does not validate the source phonics heading or any grammar claim.
 
-No parser behavior, runtime lexicon, generated bundle, construction identity/status, existing Week 17 review decision, evidence classification, survey, native panel, version, release, or deployment state changed.
+## Protected state
+
+The `w17-*` files and original `crosswalk.json` remain unchanged. No parser behavior, runtime lexicon/version, construction identity/status, native-panel evidence, survey state, release state, deployment state, or merge authorization changes.
