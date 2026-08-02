@@ -6,109 +6,52 @@ on:
       - ".github/workflows/research-provenance.yml"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  inspect-week17:
+  finalize-week17-review:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: Summarize Week 17 source, crosswalk, and inherited project states
+        with:
+          ref: agent/week17-ingress-review
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Generate final Week 17 review state
+        run: python3 tools/finalize-week17-review-temporary.py
+      - name: Validate final Week 17 state
         run: |
-          python3 - <<'PY'
-          import csv
-          import json
-          from collections import Counter, defaultdict
-          from pathlib import Path
-
-          package = Path('data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712')
-          source = json.loads((package / 'source.json').read_text(encoding='utf-8'))
-          review = json.loads((package / 'review.json').read_text(encoding='utf-8'))
-          crosswalk = json.loads((package / 'crosswalk.json').read_text(encoding='utf-8'))
-
-          def read_tsv(path):
-              with Path(path).open(encoding='utf-8', newline='') as handle:
-                  return list(csv.DictReader(handle, delimiter='\t'))
-
-          input_paths = crosswalk['existingWeek17Inputs']
-          tables = {name: read_tsv(path) for name, path in input_paths.items()}
-
-          status_values = Counter()
-          disposition_values = Counter()
-          notes = Counter()
-          columns = {}
-          for name, rows in tables.items():
-              columns[name] = sorted(rows[0].keys()) if rows else []
-              for row in rows:
-                  for key, value in row.items():
-                      if not value:
-                          continue
-                      lower = key.lower()
-                      if 'status' in lower or 'result' in lower or 'decision' in lower:
-                          status_values[f'{name}:{key}:{value}'] += 1
-                      if 'disposition' in lower or 'classification' in lower:
-                          disposition_values[f'{name}:{key}:{value}'] += 1
-                      if 'note' in lower or 'reason' in lower or 'comment' in lower:
-                          notes[f'{name}:{key}:{value}'] += 1
-
-          discrepancy_statuses = Counter()
-          discrepancy_types = Counter()
-          records_with_notes = []
-          for row in crosswalk['records']:
-              for discrepancy in row.get('discrepancies', []):
-                  discrepancy_types[discrepancy.get('type')] += 1
-                  discrepancy_statuses[discrepancy.get('status')] += 1
-                  records_with_notes.append({
-                      'id': row['sourceItemId'],
-                      'surface': row['sourceDisplay'],
-                      'classification': row['classification'],
-                      'type': discrepancy.get('type'),
-                      'status': discrepancy.get('status'),
-                      'note': discrepancy.get('note'),
-                      'existing': row.get('existingProjectRecords', []),
-                  })
-
-          source_by_id = {row['id']: row for row in source['items']}
-          kwut = []
-          for row in crosswalk['records']:
-              if '闊' in row.get('sourceDisplay', ''):
-                  kwut.append(row)
-          project_only = crosswalk.get('projectOnlyRecords') or crosswalk.get('projectOnlyItems') or []
-
-          repeated = [
-              {
-                  'id': row['sourceItemId'],
-                  'surface': row['sourceDisplay'],
-                  'repeat_of': row.get('sourceRepeatOf'),
-                  'classification': row['classification'],
-              }
-              for row in crosswalk['records'] if row.get('sourceRepeatOf')
-          ]
-
-          review_project_records = Counter()
-          for row in review['records']:
-              for ref in row.get('existingProjectRecords', []):
-                  review_project_records[ref['path']] += 1
-
-          output = {
-              'source_summary': {
-                  'record_count': len(source['items']),
-                  'item_types': dict(Counter(row['itemType'] for row in source['items'])),
-                  'source_repeat_rows': repeated,
-              },
-              'review_summary': review['summary'],
-              'crosswalk_summary': crosswalk['summary'],
-              'crosswalk_classifications': dict(Counter(row['classification'] for row in crosswalk['records'])),
-              'crosswalk_discrepancy_types': dict(discrepancy_types),
-              'crosswalk_discrepancy_statuses': dict(discrepancy_statuses),
-              'records_with_inherited_notes': records_with_notes,
-              'project_only_records': project_only,
-              'legacy_table_columns': columns,
-              'legacy_status_values': dict(status_values),
-              'legacy_disposition_values': dict(disposition_values),
-              'legacy_notes': dict(notes),
-              'project_record_path_counts': dict(review_project_records),
-              'kwut_records': kwut,
-          }
-          print(json.dumps(output, ensure_ascii=False, indent=2))
-          PY
+          python3 -m py_compile tools/build-pedagogical-corpus-review-candidates.py tools/verify-pedagogical-corpus-review.py tests/tooling/research/pedagogical-corpus-review.test.py
+          python3 tests/tooling/research/pedagogical-corpus-review.test.py
+          npm run verify:pedagogical-corpus-review
+          npm run verify:research
+          npm run verify
+          git diff --check
+      - name: Push non-workflow review changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git restore .github/workflows/research-provenance.yml
+          git rm -f tools/finalize-week17-review-temporary.py \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/.review-claim
+          git add config/pedagogical-corpus-source-locks.json \
+            config/verification-profiles.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/README.md \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/evidence-sources-r1.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/expert-review-r1.tsv \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/legacy-reconciliation-r1.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/mechanical-cross-reference-r1.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/package-integrity-r1.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/project-only-review-r1.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/research-summary.md \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/review.json \
+            docs/research/GLOSSIKA-YUEHK-A1-W17-20260712-CORPUS-RECONCILIATION.md \
+            package.json \
+            tests/tooling/research/pedagogical-corpus-review.test.py \
+            tools/build-pedagogical-corpus-review-candidates.py \
+            tools/verify-pedagogical-corpus-review.py
+          git commit -m "Complete Week 17 expert reconciliation review"
+          git push origin HEAD:agent/week17-ingress-review
