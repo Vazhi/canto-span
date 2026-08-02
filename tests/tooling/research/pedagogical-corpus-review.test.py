@@ -19,18 +19,76 @@ if SPEC is None or SPEC.loader is None:
 VERIFIER = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(VERIFIER)
 
-PACKAGE_RELATIVE = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621")
+WEEK14 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621")
+WEEK15 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628")
+REGISTERED = {
+    WEEK14: {"records": 61, "discrepancies": 6, "exact": 5},
+    WEEK15: {"records": 65, "discrepancies": 4, "exact": 10},
+}
 
 
 def write_json(path: Path, value: object) -> None:
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-class PedagogicalCorpusReviewTest(unittest.TestCase):
+class RegisteredPedagogicalCorpusReviewTest(unittest.TestCase):
+    def test_completed_registered_packages_pass(self) -> None:
+        for package, expected in REGISTERED.items():
+            with self.subTest(package=str(package)):
+                result = VERIFIER.verify(ROOT, package, check_deterministic_crossref=False)
+                self.assertEqual(result["status"], "PASS")
+                self.assertEqual(result["records"], expected["records"])
+                self.assertEqual(result["reviewed"], expected["records"])
+                self.assertEqual(result["unreviewed"], 0)
+                self.assertEqual(result["source_discrepancies"], expected["discrepancies"])
+                self.assertEqual(
+                    result["duplicate_status_counts"]["accepted_exact_duplicate"],
+                    expected["exact"],
+                )
+                self.assertEqual(result["reviewed_replacements"], 0)
+
+    def test_week15_terminal_projection(self) -> None:
+        review = json.loads((ROOT / WEEK15 / "review.json").read_text(encoding="utf-8"))
+        self.assertEqual(
+            review["summary"]["terminal_classification_counts"],
+            {
+                "exact_duplicate": 10,
+                "lexical_only_attestation": 29,
+                "naturalness_review_candidate": 1,
+                "new_corpus_attestation": 21,
+                "pronunciation_discrepancy": 1,
+                "translation_discrepancy": 2,
+                "unusable": 1,
+            },
+        )
+
+    def test_week15_incomplete_final_phonics_row_is_preserved_and_unusable(self) -> None:
+        source = json.loads((ROOT / WEEK15 / "source.json").read_text(encoding="utf-8"))
+        review = json.loads((ROOT / WEEK15 / "review.json").read_text(encoding="utf-8"))
+        source_row = next(row for row in source["items"] if row["id"].endswith("I065"))
+        review_row = next(row for row in review["records"] if row["id"].endswith("I065"))
+        self.assertEqual(
+            source_row["source"],
+            {
+                "ipa": "— vs /pʰɪŋ˨˩/",
+                "wordA": "—",
+                "wordB": "平",
+                "jyutpingA": "—",
+                "jyutpingB": "ping4",
+                "glossA": "—",
+                "glossB": "cheap; flat",
+            },
+        )
+        self.assertEqual(review_row["terminal_ingress_classification"], "unusable")
+        self.assertEqual(review_row["reviewed_values"]["phonics_pair"], None)
+        self.assertEqual(review_row["source_discrepancies"][0]["status"], "source_incomplete")
+
+
+class PedagogicalCorpusReviewMutationTest(unittest.TestCase):
     def setUp(self) -> None:
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)
-        shutil.copytree(ROOT / PACKAGE_RELATIVE, self.root / PACKAGE_RELATIVE, dirs_exist_ok=True)
+        shutil.copytree(ROOT / WEEK14, self.root / WEEK14, dirs_exist_ok=True)
         lock_target = self.root / VERIFIER.SOURCE_LOCKS_RELATIVE
         lock_target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(ROOT / VERIFIER.SOURCE_LOCKS_RELATIVE, lock_target)
@@ -40,23 +98,10 @@ class PedagogicalCorpusReviewTest(unittest.TestCase):
 
     @property
     def package(self) -> Path:
-        return self.root / PACKAGE_RELATIVE
+        return self.root / WEEK14
 
     def verify(self):
-        return VERIFIER.verify(
-            self.root,
-            PACKAGE_RELATIVE,
-            check_deterministic_crossref=False,
-        )
-
-    def test_completed_week14_review_passes(self) -> None:
-        result = self.verify()
-        self.assertEqual(result["status"], "PASS")
-        self.assertEqual(result["records"], 61)
-        self.assertEqual(result["reviewed"], 61)
-        self.assertEqual(result["unreviewed"], 0)
-        self.assertEqual(result["source_discrepancies"], 6)
-        self.assertEqual(result["reviewed_replacements"], 0)
+        return VERIFIER.verify(self.root, WEEK14, check_deterministic_crossref=False)
 
     def test_external_source_lock_rejects_coordinated_local_source_edit(self) -> None:
         source_path = self.package / "source.json"
