@@ -1,0 +1,42 @@
+name: Split Week 14 review brief
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/split-week14-review-brief.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  split:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/week14-ingress-review
+          fetch-depth: 0
+      - name: Split temporary review brief
+        run: |
+          python3 - <<'PY'
+          import csv
+          from pathlib import Path
+
+          package = Path('data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621')
+          source = package / 'expert-review-brief.tmp.tsv'
+          with source.open('r', encoding='utf-8', newline='') as handle:
+              reader = csv.DictReader(handle, delimiter='\t')
+              fields = list(reader.fieldnames or [])
+              rows = list(reader)
+          for name, start, end in [('part1', 0, 20), ('part2', 20, 40), ('part3', 40, 61)]:
+              with (package / f'expert-review-brief.{name}.tmp.tsv').open('w', encoding='utf-8', newline='') as handle:
+                  writer = csv.DictWriter(handle, fieldnames=fields, delimiter='\t', lineterminator='\n')
+                  writer.writeheader()
+                  writer.writerows(rows[start:end])
+          PY
+          git rm .github/workflows/split-week14-review-brief.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/expert-review-brief.part*.tmp.tsv
+          git commit -m "Split temporary Week 14 review brief"
+          git push origin HEAD:agent/week14-ingress-review
