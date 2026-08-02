@@ -21,7 +21,6 @@ jobs:
         run: |
           python3 - <<'PY'
           import json
-          import textwrap
           from pathlib import Path
 
           package = Path('data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705')
@@ -72,32 +71,34 @@ jobs:
               )
 
           if '"kind": "runtime_crosswalk"' not in text:
-              function_start = text.index('def load_later_research(')
-              return_at = text.index('    return by_item\n', function_start)
-              raw_block = textwrap.dedent('''\
-              runtime_crosswalk_path = root / f"data/pedagogical-corpus/glossika/{source_id}/runtime-crosswalk-r1.json"
-              if runtime_crosswalk_path.exists():
-                  runtime_crosswalk = read_json(runtime_crosswalk_path)
-                  if runtime_crosswalk.get("source_id") == source_id:
-                      for entry in runtime_crosswalk.get("records", []):
-                          item_id = entry.get("id")
-                          if item_id:
-                              by_item[item_id].append({
-                                  "packet": "runtime-crosswalk-r1",
-                                  "kind": "runtime_crosswalk",
-                                  "runtime_pull_request": runtime_crosswalk.get("runtime_pull_request"),
-                                  "runtime_merge_commit": runtime_crosswalk.get("runtime_merge_commit"),
-                                  "provenance_path": runtime_crosswalk.get("provenance_path"),
-                                  "runtime_crosswalk": entry.get("runtime_crosswalk"),
-                                  "source_discrepancies": entry.get("source_discrepancies", []),
-                                  "reviewed_values": entry.get("reviewed_values", {}),
-                              })
-              ''')
-              insertion = ''.join(
-                  ('    ' + line if line.strip() else line)
-                  for line in raw_block.splitlines(keepends=True)
+              marker = (
+                  '    stem = research_ledger_stem(source_id)\n'
+                  '    if stem is None:\n'
+                  '        return by_item\n'
               )
-              text = text[:return_at] + insertion + text[return_at:]
+              if marker not in text:
+                  raise SystemExit('live builder stem marker not found')
+              runtime_block = (
+                  '    runtime_crosswalk_path = root / f"data/pedagogical-corpus/glossika/{source_id}/runtime-crosswalk-r1.json"\n'
+                  '    if runtime_crosswalk_path.exists():\n'
+                  '        runtime_crosswalk = read_json(runtime_crosswalk_path)\n'
+                  '        if runtime_crosswalk.get("source_id") == source_id:\n'
+                  '            for entry in runtime_crosswalk.get("records", []):\n'
+                  '                item_id = entry.get("id")\n'
+                  '                if item_id:\n'
+                  '                    by_item[item_id].append({\n'
+                  '                        "packet": "runtime-crosswalk-r1",\n'
+                  '                        "kind": "runtime_crosswalk",\n'
+                  '                        "runtime_pull_request": runtime_crosswalk.get("runtime_pull_request"),\n'
+                  '                        "runtime_merge_commit": runtime_crosswalk.get("runtime_merge_commit"),\n'
+                  '                        "provenance_path": runtime_crosswalk.get("provenance_path"),\n'
+                  '                        "runtime_crosswalk": entry.get("runtime_crosswalk"),\n'
+                  '                        "source_discrepancies": entry.get("source_discrepancies", []),\n'
+                  '                        "reviewed_values": entry.get("reviewed_values", {}),\n'
+                  '                    })\n'
+                  '\n'
+              )
+              text = text.replace(marker, runtime_block + marker, 1)
 
           builder.write_text(text, encoding='utf-8')
           PY
@@ -138,10 +139,13 @@ jobs:
           package = Path('data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705')
           review = json.loads((package / 'review.json').read_text(encoding='utf-8'))
           summary = review['summary']
-          if summary.get('record_count') != 59:
-              raise SystemExit(f"unexpected record count: {summary}")
-          if summary.get('reviewed_count') != 59 or summary.get('unreviewed_count') != 0:
+          status_counts = summary.get('review_status_counts', {})
+          if review.get('record_count') != 59:
+              raise SystemExit(f"unexpected record count: {review.get('record_count')}")
+          if status_counts.get('reviewed') != 59 or status_counts.get('unreviewed') != 0:
               raise SystemExit(f"review is not terminal: {summary}")
+          if summary.get('records_with_runtime_crosswalk') != 35:
+              raise SystemExit(f"unexpected reviewed runtime crosswalk count: {summary}")
           crosswalk = json.loads((package / 'runtime-crosswalk-r1.json').read_text(encoding='utf-8'))
           if crosswalk.get('record_count') != 35:
               raise SystemExit(f"unexpected runtime crosswalk count: {crosswalk.get('record_count')}")
