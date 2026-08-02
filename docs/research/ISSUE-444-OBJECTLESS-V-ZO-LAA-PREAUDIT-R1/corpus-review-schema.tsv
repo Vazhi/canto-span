@@ -1,0 +1,22 @@
+field	allowed_values_or_format	purpose
+candidate_id	stable packet-local ID	Preserve one reviewable unit across revisions
+source_id	repository-authorized corpus or source ID	Keep source provenance explicit
+source_location	file/turn/line or stable locator	Allow independent reopening
+preceding_context	overt source text only	Record possible antecedents without reconstructing hidden words
+target_clause	overt Cantonese clause	Preserve the actual objectless or comparison form
+following_context	overt source text only	Record repair, clarification, or consequence
+verb_lemma	Jyutping or canonical written form	Support verb-class grouping
+verb_sense	free text plus controlled class	Separate lexical senses before valency claims
+verb_class	consumption|creation|transfer|communication|motion|change|activity|other	Test lexical-class effects
+target_profile	VZO_LAA|VZO|V_LAA|V_BARE|VZO_OBJECT|VYUNZO|OTHER	Keep aspect and particle combinations distinct
+overt_object	present|absent|uncertain	Do not infer an object from translation
+antecedent_present	yes|no|uncertain	Separate discourse recovery from context-free uses
+antecedent_specificity	specific|nonspecific_existential|generic|attributive|uncertain|none	Implement Lee 2018 distinctions where evidence permits
+object_recovery	unique|multiple_possible|generic|none_required|uncertain	Record interpretation rather than inserting a word
+event_only_reading	available|unavailable|uncertain	Test the competing event-only analysis
+conventional_activity	available|unavailable|uncertain	Track eating/writing/work-like conventional readings
+fragment_status	full_assertion|answer_fragment|repair|instruction|uncertain	Separate syntax from discourse use
+laa_contribution	realization_of_state|current_update|change_of_state|other|uncertain|not_present	Keep sentence-final particle analysis independent
+classification	genuine_target|overt_object_sibling|false_positive|ambiguous|unusable	Review disposition
+classification_reason	concise evidence-based explanation	Make decisions auditable
+reviewer_notes	free text	Preserve unresolved issues without promoting them
