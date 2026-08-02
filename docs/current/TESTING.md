@@ -112,14 +112,17 @@ Permanent GitHub workflows run only for the state they protect:
 
 | Workflow | Triggered scope | Command |
 |---|---|---|
-| Runtime source-first validation | runtime source, generated runtime, build tooling, or executable tests | `verify:runtime-build`, `npm test`, `test:generated-runtime` |
+| Runtime source-first validation | runtime source, generated runtime, build tooling, runtime profile ownership, or executable tests | `verify:runtime` |
+| Full diagnostic verification | verification profile manifest, profile runner, package scripts, its own workflow, or manual dispatch | `verify:all -- --keep-going` |
 | Construction identity | identity, adjudication, identity tooling, or current grammar notes | adjudication and identity checks |
 | Supported productive discovery | readiness inputs and deterministic discovery outputs | `verify:discovery` equivalent |
 | Research provenance | research packages, evidence configuration, or research notes | `verify:research` |
 
-Core verification intentionally excludes `npm test`; runtime behavior already has a
-path-scoped workflow and remains directly runnable through `npm test` or the runtime
-profile. No workflow runs coordination metadata checks on every pull request.
+The full diagnostic workflow is path-scoped to verification orchestration changes and
+manual dispatch. It does not run on every pull request. Core verification intentionally
+excludes `npm test`; runtime behavior already has a path-scoped workflow and remains
+directly runnable through `npm test` or the runtime profile. No workflow runs
+coordination metadata checks on every pull request.
 
 ## Verifier unit tests
 
