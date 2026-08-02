@@ -22,7 +22,7 @@ Wong (2023) describes instrumental `用嚟` and states that the instrument may b
 
 These sources make a context-recovered resource analysis plausible. They do not show that every string beginning with `用嚟` is grammatically complete without an antecedent, nor do they determine whether the missing material is a resource argument, a topic, a larger elided clause, or only situationally supplied.
 
-General fragment literature supplies additional competing analyses. Merchant (2004) treats many fragments as remnants of sentential structure under ellipsis. Wei (2016) argues that Mandarin fragment answers differ by question type, with movement-and-ellipsis for some wh-answer fragments and a base-generated `pro + copula + fragment` structure for yes/no answers and corrections. Huang and Yang (2024) distinguish topic drop from other pro-drop phenomena and propose root/CP-edge restrictions for null topics in Chinese-type languages. These analyses define tests; they are not direct descriptions of Cantonese subjectless `用嚟`.
+General fragment literature supplies additional competing analyses, but the full-text boundary is important. Merchant (2004) analyzes many XP fragments through movement plus sentential ellipsis. Wei (2016) proposes different derivations for Mandarin wh-answer fragments versus yes/no and correction fragments, but explicitly excludes verb-only short answers from that analysis. A predicate-like `用嚟 VP` response therefore cannot inherit either derivation automatically. Huang and Yang (2024) distinguish topic drop from other pro-drop phenomena and propose root/CP-edge restrictions for null topics in Chinese-type languages. These analyses define diagnostics; they are not direct descriptions of Cantonese subjectless `用嚟`.
 
 ## Competing analyses
 
@@ -30,7 +30,7 @@ General fragment literature supplies additional competing analyses. Merchant (20
 | --- | --- | --- |
 | Recoverable resource omission | `[ØRESOURCE] 用嚟 VP`, with an overt or situational antecedent | Plausible from Cantonese omission mechanisms and Wong's instrumental description; exact licensing remains untested. |
 | Null topic / topic-chain continuation | `[ØTOPIC] [用嚟 VP]` | Cantonese topic chains are independently supported; the internal role of the null topic is unresolved. |
-| Short-answer fragment | Answer to a question such as `呢樣嘢有咩用？` | General fragment and Mandarin fragment-answer analyses motivate this possibility; Cantonese connectivity evidence is still absent. |
+| Question-linked predicate response | Response to a question such as `呢樣嘢有咩用？` | Discourse-linked short responses are plausible, but existing fragment sources do not directly analyze this predicate-like surface. |
 | Label, caption, or demonstration fragment | Visual or situational referent supplies the item being described | Must be coded as context-bearing, not as truly antecedentless. |
 | Instructional or explanatory purpose phrase | The speaker gives only the purpose portion of a larger utterance | Possible discourse use; no source yet establishes a dedicated construction. |
 | Complete implicit-resource construction | `用嚟 VP` is licensed without any linguistic or situational antecedent | Not established by checked sources. |
@@ -44,14 +44,15 @@ A later controlled study must distinguish at least the following:
 - multiple possible antecedents;
 - distant antecedent across intervening discourse;
 - visual or jointly attended referent;
-- wh-question short answer;
-- yes/no question or correction;
+- wh-purpose question response;
+- yes/no response or correction, with `係` and `唔係` coded separately from copular `係用嚟`;
 - caption or product-label use;
 - instruction or demonstration;
 - genuinely out-of-the-blue use;
-- prosodically integrated clause versus standalone fragment intonation.
+- root versus embedded placement;
+- utterance-final versus continuing target position.
 
-The same lexical material must be held constant across these contexts. Acceptance in a visual or question-answer setting cannot be counted as evidence for an antecedentless complete clause.
+The same lexical material must be held constant across these contexts. Acceptance in a visual or question-answer setting cannot be counted as evidence for an antecedentless complete clause. An initial response marker such as `係` or `唔係` cannot be counted as evidence that the target itself has the copular structure `係用嚟 VP`.
 
 ## Initial decision map
 
@@ -60,14 +61,17 @@ The same lexical material must be held constant across these contexts. Acceptanc
 - Cantonese permits discourse-sensitive omission and topic-chain continuation.
 - `用嚟` has a purposive/function relation and an instrumental use in checked descriptions.
 - A missing resource analysis is structurally possible when context supplies the referent.
-- Fragment interpretations can depend on question type and discourse structure.
+- Question type and discourse structure can affect fragment analyses in Chinese, but predicate-like verbal responses require separate study.
+- Cantonese intonation has meaningful utterance-boundary effects, so written judgments cannot settle prosodic integration.
 
 ### Not yet supported
 
 - unrestricted subjectless `用嚟 VP` out of context;
 - one universal ellipsis or null-topic derivation;
+- direct transfer of Merchant's XP-fragment analysis or Wei's Mandarin fragment typology to `用嚟 VP`;
 - automatic insertion of a specific hidden Cantonese noun phrase;
 - equivalence among bare `用嚟 VP`, `NP 用嚟 VP`, `係用嚟 VP`, and actual-use `人用 NP 嚟 VP`;
+- treating response `係／唔係` as the copula inside the target fragment;
 - promotion of visual-context examples as antecedentless syntax;
 - parser acceptance without explicit context metadata.
 
@@ -76,20 +80,21 @@ The same lexical material must be held constant across these contexts. Acceptanc
 - final frozen G04C item audit and adjudicated interpretations;
 - matched context/no-context judgments with identical predicates;
 - context-bearing corpus examples preserving preceding and following turns;
-- prosodic evidence distinguishing integrated clauses from standalone fragments;
+- audio evidence with target position, pauses, duration, and F0 recorded rather than a presupposed fragment contour;
 - negative controls with absent, ambiguous, or incompatible antecedents;
 - independent speakers and held-out items before any construction or runtime decision.
 
 ## Working conclusion
 
-The interim pattern is best treated as a **context-licensing problem**, not proof of either categorical grammaticality or categorical incompleteness. Current sources support omission and topic-chain mechanisms and make short-answer or situational fragments plausible. They do not identify a unique derivation for bare `用嚟 VP` or establish an autonomous implicit-resource construction.
+The interim pattern is best treated as a **context-licensing problem**, not proof of either categorical grammaticality or categorical incompleteness. Current sources support omission and topic-chain mechanisms and make question-linked or situational responses plausible. They do not identify a unique derivation for bare `用嚟 VP` or establish an autonomous implicit-resource construction. Existing fragment analyses are especially limited because the target is predicate-like, not the nominal or XP fragment profile most directly analyzed in the cited literature.
 
 ## Files
 
 - `source-ledger.tsv` — sources, verified contributions, and limitations;
 - `claim-matrix.tsv` — live analyses and prohibited generalizations;
 - `controlled-contrasts.tsv` — matched discourse and construction contrasts;
-- `corpus-review-schema.tsv` — auditable coding fields for context-bearing examples.
+- `corpus-review-schema.tsv` — auditable coding fields for context-bearing examples;
+- `source-review-addendum.md` — full-text fragment and prosody boundary review.
 
 ## Protected state
 
