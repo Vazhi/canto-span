@@ -13,17 +13,24 @@ from typing import Any
 DEFAULT_ROOT = Path(__file__).resolve().parents[1]
 SCAN_ROOTS = ["src", "data", "tests", "docs", "grammar", "review-packets", "external-evidence"]
 TEXT_SUFFIXES = {".json", ".jsonl", ".tsv", ".csv", ".md", ".txt", ".js", ".yml", ".yaml"}
-EXCLUDED_PARTS = {
-    ".git",
-    "node_modules",
-    "archive",
-    "archives",
-    "validation",
-    "recovery",
-    "dist",
-    "build",
-}
+EXCLUDED_PARTS = {".git", "node_modules", "archive", "archives", "validation", "recovery", "dist", "build"}
 PUNCTUATION = re.compile(r"[\s，。！？；：、,.!?;:'\"“”‘’（）()【】\[\]《》<>—–…·`~]+", re.UNICODE)
+LAYER_PRIORITY = {
+    "runtime_lexicon": 0,
+    "runtime_source": 1,
+    "current_grammar_note": 2,
+    "executable_test_or_fixture": 3,
+    "canonical_or_research_data": 4,
+    "pedagogical_corpus": 5,
+    "review_packet": 6,
+    "external_evidence": 7,
+    "research_ledger": 8,
+    "research_report": 9,
+    "current_documentation": 10,
+    "other": 11,
+}
+MAX_MATCH_PATHS_PER_TYPE = 24
+MIN_NORMALIZED_MATCH_LENGTH = 6
 
 
 def normalize_surface(value: str) -> str:
@@ -91,40 +98,27 @@ def candidate_files(root: Path, package_relative: Path, output_relative: Path) -
     return sorted(output)
 
 
-def load_lines(root: Path, paths: list[Path]) -> list[tuple[str, int, str, str]]:
-    lines = []
+def load_documents(root: Path, paths: list[Path]) -> list[tuple[str, str, list[str]]]:
+    documents = []
     for path in paths:
         relative = str(path.relative_to(root))
         try:
             text = path.read_text(encoding="utf-8")
         except UnicodeDecodeError:
             continue
-        for number, line in enumerate(text.splitlines(), start=1):
-            if not line.strip():
-                continue
-            lines.append((relative, number, line, normalize_surface(line)))
-    return lines
+        normalized_lines = [normalize_surface(line) for line in text.splitlines() if line.strip()]
+        documents.append((relative, text, normalized_lines))
+    return documents
 
 
-def compact_match(path: str, line: int, match_type: str) -> dict[str, Any]:
-    return {
-        "path": path,
-        "line": line,
-        "match_type": match_type,
-        "layer": layer_for(path),
-    }
+def compact_match(path: str, match_type: str) -> dict[str, Any]:
+    return {"path": path, "match_type": match_type, "layer": layer_for(path)}
 
 
-def unique_matches(matches: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    seen = set()
-    output = []
-    for match in matches:
-        key = (match["path"], match["line"], match["match_type"])
-        if key in seen:
-            continue
-        seen.add(key)
-        output.append(match)
-    return output
+def ranked_matches(paths: set[str], match_type: str) -> tuple[list[dict[str, Any]], int]:
+    ordered = sorted(paths, key=lambda path: (LAYER_PRIORITY[layer_for(path)], path))
+    retained = ordered[:MAX_MATCH_PATHS_PER_TYPE]
+    return [compact_match(path, match_type) for path in retained], max(0, len(ordered) - len(retained))
 
 
 def load_later_research(root: Path, source_id: str) -> dict[str, list[dict[str, Any]]]:
@@ -148,25 +142,31 @@ def load_later_research(root: Path, source_id: str) -> dict[str, list[dict[str, 
     if followup_path.exists():
         followup = read_json(followup_path)
         if followup.get("sourceId") == source_id:
-            for entry in followup.get("candidates", followup.get("records", [])):
-                item_ids = entry.get("sourceItemIds", entry.get("source_item_ids", []))
-                if isinstance(entry.get("sourceItemId"), str):
-                    item_ids = [entry["sourceItemId"]]
-                for item_id in item_ids or []:
+            for entry in followup.get("candidates", []):
+                for item_id in entry.get("sourceItemIds", []):
                     by_item[item_id].append({
                         "packet": followup.get("packetId"),
                         "kind": "followup_candidate",
-                        "candidate_id": entry.get("candidateId", entry.get("id")),
-                        "disposition": entry.get("disposition", entry.get("terminalDisposition")),
-                        "issue": entry.get("issue"),
-                        "reason": entry.get("reason", entry.get("rationale")),
+                        "candidate_id": entry.get("id"),
+                        "cluster": entry.get("cluster"),
+                        "priority": entry.get("priority"),
+                        "next_method": entry.get("nextMethod"),
+                        "reason": entry.get("reason"),
+                    })
+            for entry in followup.get("nonCandidates", []):
+                for item_id in entry.get("sourceItemIds", []):
+                    by_item[item_id].append({
+                        "packet": followup.get("packetId"),
+                        "kind": "followup_non_candidate",
+                        "cluster": entry.get("cluster"),
+                        "disposition": entry.get("disposition"),
+                        "reason": entry.get("reason"),
                     })
     return by_item
 
 
 def build(root: Path, package_relative: Path, output_relative: Path) -> dict[str, Any]:
-    source_path = root / package_relative / "source.json"
-    source = read_json(source_path)
+    source = read_json(root / package_relative / "source.json")
     if source.get("schema") != "canto-span-pedagogical-corpus-source-v1":
         raise ValueError("unsupported pedagogical source schema")
     source_meta = source.get("source") or {}
@@ -175,8 +175,7 @@ def build(root: Path, package_relative: Path, output_relative: Path) -> dict[str
     if not isinstance(items, list):
         raise ValueError("source items must be an array")
 
-    scan_paths = candidate_files(root, package_relative, output_relative)
-    lines = load_lines(root, scan_paths)
+    documents = load_documents(root, candidate_files(root, package_relative, output_relative))
     later = load_later_research(root, str(source_id))
     records = []
     match_counts = Counter()
@@ -187,16 +186,18 @@ def build(root: Path, package_relative: Path, output_relative: Path) -> dict[str
         item_source = item.get("source") or {}
         traditional = str(item_source.get("traditional") or "")
         normalized = normalize_surface(traditional)
-        exact = []
-        normalized_only = []
+        exact_paths: set[str] = set()
+        normalized_paths: set[str] = set()
         if traditional:
-            for path, line_number, line, normalized_line in lines:
-                if traditional in line:
-                    exact.append(compact_match(path, line_number, "exact_surface"))
-                elif normalized and normalized in normalized_line:
-                    normalized_only.append(compact_match(path, line_number, "normalized_surface"))
-        exact = unique_matches(exact)
-        normalized_only = unique_matches(normalized_only)
+            for path, text, normalized_lines in documents:
+                if traditional in text:
+                    exact_paths.add(path)
+                elif len(normalized) >= MIN_NORMALIZED_MATCH_LENGTH and any(
+                    normalized == line or normalized in line for line in normalized_lines
+                ):
+                    normalized_paths.add(path)
+        exact, exact_omitted = ranked_matches(exact_paths, "exact_surface_file")
+        normalized_only, normalized_omitted = ranked_matches(normalized_paths, "normalized_surface_file")
         for match in exact + normalized_only:
             match_counts[match["match_type"]] += 1
             layer_counts[match["layer"]] += 1
@@ -213,7 +214,9 @@ def build(root: Path, package_relative: Path, output_relative: Path) -> dict[str
             "source_hash": item.get("sourceHash"),
             "normalized_surface": normalized,
             "exact_match_candidates": exact,
+            "exact_match_paths_omitted": exact_omitted,
             "normalized_match_candidates": normalized_only,
+            "normalized_match_paths_omitted": normalized_omitted,
             "later_research_links": later.get(item_id, []),
             "mechanical_status": "candidate_scan_complete",
             "expert_duplicate_status": "unreviewed",
@@ -231,25 +234,25 @@ def build(root: Path, package_relative: Path, output_relative: Path) -> dict[str
         "scan_policy": {
             "roots": SCAN_ROOTS,
             "excluded_package_files": [
-                "source.json",
-                "review.json",
-                "items.tsv",
-                "README.md",
-                "research-summary.md",
-                output_relative.name,
+                "source.json", "review.json", "items.tsv", "README.md", "research-summary.md", output_relative.name,
             ],
             "excluded_path_parts": sorted(EXCLUDED_PARTS),
             "maximum_file_bytes": 2_000_000,
             "generated_bundle_excluded": True,
-            "matches_are_candidates_not_decisions": True,
+            "matches_are_file_level_candidates_not_decisions": True,
+            "maximum_paths_per_match_type": MAX_MATCH_PATHS_PER_TYPE,
+            "minimum_normalized_match_length": MIN_NORMALIZED_MATCH_LENGTH,
+            "layer_priority": LAYER_PRIORITY,
         },
         "summary": {
             "item_type_counts": dict(sorted(Counter(row["item_type"] for row in records).items())),
             "records_with_exact_candidates": sum(bool(row["exact_match_candidates"]) for row in records),
             "records_with_normalized_candidates": sum(bool(row["normalized_match_candidates"]) for row in records),
             "records_with_later_research": sum(bool(row["later_research_links"]) for row in records),
-            "match_counts": dict(sorted(match_counts.items())),
+            "retained_file_match_counts": dict(sorted(match_counts.items())),
             "candidate_layer_counts": dict(sorted(layer_counts.items())),
+            "omitted_exact_paths": sum(row["exact_match_paths_omitted"] for row in records),
+            "omitted_normalized_paths": sum(row["normalized_match_paths_omitted"] for row in records),
             "expert_reviewed": 0,
         },
         "records": records,
