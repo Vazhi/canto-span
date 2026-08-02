@@ -8,6 +8,8 @@ The relevant risk is not limited to direct identifiers. A participant, recruiter
 
 ## Public thresholds
 
+The minimum cell size for sensitive public counts is **5**.
+
 - Participant characteristics, recruitment information, list-by-characteristic tables, completion-time extremes, exact response-category cells, and participant-derived qualitative themes require a public count of at least **5**.
 - Complementary suppression applies when visible totals would reveal a cell below 5.
 - Cross-tabs are withheld when any cell or inferable remainder is below 5.
