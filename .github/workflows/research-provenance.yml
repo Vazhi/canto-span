@@ -1,5 +1,6 @@
 name: Research provenance
 
+# Retry after all five hash-locked finalizer chunks were staged.
 on:
   pull_request:
     paths:
