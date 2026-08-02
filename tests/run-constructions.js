@@ -15,6 +15,9 @@ const npById = new Map(npMatrix.cases.map((item) => [item.id, item]));
 const constructionDir = path.join(root, "tests", "constructions");
 const files = fs.readdirSync(constructionDir).filter((name) => name.endsWith(".json")).sort();
 const cache = new Map();
+const canonicalResearchIdByRelationSubtype = Object.freeze({
+  committed_preference: "PRQ2-035",
+});
 
 function rowsFor(source, contextSource = null) {
   const key = `${contextSource || ""}\u0000${source}`;
@@ -84,6 +87,32 @@ for (const file of files) {
     record(spec.construction, testCase.case_id, testCase.source, "implementation_reachability_zero_evidence_weight", () => {
       assert.strictEqual(testCase.linguistic_evidence_weight, 0);
       assert.strictEqual(testCase.purpose, "runtime_reachability_only");
+      const caseResearchMatch = /^(PRQ2-\d{3})-/.exec(testCase.case_id || "");
+      if (caseResearchMatch) {
+        assert(
+          String(testCase.provenance || "").includes(caseResearchMatch[1]),
+          `${testCase.case_id} provenance must use ${caseResearchMatch[1]}`,
+        );
+      }
+      const declaredSubtype = testCase.expected_trace_detail?.relation_subtype
+        || testCase.expected_trace_detail?.clause_linking_subtype
+        || testCase.forbidden_trace_detail?.relation_subtype
+        || testCase.forbidden_trace_detail?.clause_linking_subtype;
+      const canonicalResearchId = canonicalResearchIdByRelationSubtype[declaredSubtype];
+      if (canonicalResearchId) {
+        assert.strictEqual(caseResearchMatch?.[1], canonicalResearchId, `${declaredSubtype} case ID provenance`);
+        assert(
+          String(testCase.provenance || "").includes(canonicalResearchId),
+          `${declaredSubtype} source provenance must use ${canonicalResearchId}`,
+        );
+        if (testCase.expected_trace_detail) {
+          assert.strictEqual(
+            testCase.expected_trace_detail.research_id,
+            canonicalResearchId,
+            `${declaredSubtype} expected research_id`,
+          );
+        }
+      }
       const rows = rowsFor(testCase.source, testCase.context_source || null);
       const labels = rows.map(internalConstruction).filter(Boolean);
       if (testCase.assertion === "construction_present") {

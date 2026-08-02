@@ -89,7 +89,7 @@ Implementation specifications, human artifact requests, corpus ingestion, work c
 
 Promotion-ready remains **0**.
 
-The paired-clause relation map reviews PRQ2-008–015 and PRQ2-033–035 as eleven separate families across 151 checked-in collision rows. Three bounded typed cores route to identity/composition decisions in #430, four source-ready unimplemented relations route to #431, three evidence-constrained families and the PRQ2-035 provenance defect route to #432, and PRQ2-015 remains research-only through #409. Generic clause graphs remain parser infrastructure and no identity, status, runtime, or fixture changes follow from the map itself.
+The paired-clause relation map reviews PRQ2-008–015 and PRQ2-033–035 as eleven separate families across 151 checked-in collision rows. Three bounded typed cores route to identity/composition decisions in #430, four source-ready unimplemented relations route to #431, and three evidence-constrained families remain in #432. The committed-preference runtime, probes, and generated bundle now use canonical PRQ2-035 provenance; PRQ2-015 remains research-only through #409. Generic clause graphs remain parser infrastructure, and the provenance correction changes metadata only, not matching behavior, identity, status, or evidence.
 
 Discovery ranks expose gaps; they never promote, park, assign, or authorize work.
 
