@@ -1,0 +1,30 @@
+name: Rebuild Week 14 review candidates
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/rebuild-week14-review-candidates.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/week14-ingress-review
+          fetch-depth: 0
+      - name: Rebuild compact cross-reference packet
+        run: |
+          python3 tools/build-pedagogical-corpus-review-candidates.py \
+            --package data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621 \
+            --output data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/mechanical-cross-reference-r1.json \
+            --write
+          git rm .github/workflows/rebuild-week14-review-candidates.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/mechanical-cross-reference-r1.json
+          git commit -m "Rebuild compact Week 14 review candidates"
+          git push origin HEAD:agent/week14-ingress-review
