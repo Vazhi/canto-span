@@ -10,24 +10,28 @@ SJL-C03	程式／記低開支	Topic shifts to another object before target	subje
 SJL-C04	樽／裝水	Bottle visibly held up, no linguistic antecedent	visual_demonstration	用嚟裝水。	The visible bottle supplies the resource.	Situational antecedent
 SJL-C04	樽／裝水	Two bottles visibly present and neither selected	visual_ambiguous	用嚟裝水。	Determine whether a unique visible referent can be selected.	Visual ambiguity control
 SJL-C04	樽／裝水	No object visible and no prior mention	spoken_no_context	用嚟裝水。	Judge out-of-the-blue licensing.	Separates visual from antecedentless use
-SJL-C05	刀／切方包	Question: 呢把刀係用嚟做咩㗎？	wh_purpose_response	用嚟切方包。	Provide the questioned purpose; derivation remains open.	Question-linked predicate-response profile
-SJL-C05	刀／切方包	Same wh-purpose question	overt_resource_answer	呢把刀用嚟切方包。	Answer with the resource overt.	Bare-response versus overt-resource comparison
-SJL-C05	刀／切方包	Same wh-purpose question	copular_full_answer	呢把刀係用嚟切方包嘅。	Answer in an overt copular/predicative frame.	Bare-response versus true-copular comparison
-SJL-C05	刀／切方包	Question: 邊個用呢把刀切方包？	mismatched_question	用嚟切方包。	Test whether the response is licensed when it does not answer the questioned participant role.	Question-answer congruence
-SJL-C06	程式／記低開支	Correction after someone says the program is for taking photos	correction_marker_plus_response	唔係，用嚟記低開支。	Initial 唔係 rejects the prior claim; the following purpose response remains structurally unresolved.	Keep correction marker separate from target structure
-SJL-C06	程式／記低開支	Yes/no question: 呢個程式係咪用嚟記低開支㗎？	affirmative_marker_plus_response	係，用嚟記低開支。	Initial 係 confirms the proposition; it is not automatically the copula inside the following target.	Keep affirmative response marker separate
-SJL-C06	程式／記低開支	Same referent, no question or correction	true_copular_predicate	係用嚟記低開支嘅。	Copular predicate with an omitted discourse topic/resource.	Structural sibling for response-marker controls
+SJL-C05A	刀／切方包	Non-priming wh-purpose question: 呢把刀有咩用㗎？	wh_purpose_response_nonprimed	用嚟切方包。	Provide the questioned purpose without echoing 用嚟 from the prompt; derivation remains open.	Question-linked response without structural or lexical priming
+SJL-C05A	刀／切方包	Same non-priming wh-purpose question	overt_resource_answer_nonprimed	呢把刀用嚟切方包。	Answer with the resource overt.	Bare-response versus overt-resource comparison
+SJL-C05A	刀／切方包	Same non-priming wh-purpose question	integrated_hai_ge_answer_nonprimed	呢把刀係用嚟切方包嘅。	Answer in an overt integrated 係…嘅 frame without assigning a unique analysis to that frame.	Bare-response versus integrated-frame comparison
+SJL-C05B	刀／切方包	Priming wh-purpose question: 呢把刀係用嚟做咩㗎？	wh_purpose_response_primed	用嚟切方包。	Provide the questioned purpose after a prompt that already contains 用嚟.	Measure structural or lexical echo separately from discourse licensing
+SJL-C05B	刀／切方包	Question: 邊個用呢把刀切方包？	mismatched_question	用嚟切方包。	Test whether the response is licensed when it does not answer the questioned participant role.	Question-answer congruence
+SJL-C06A	程式／記低開支	Non-priming correction after someone says: 呢個程式係影相㗎。	correction_marker_plus_response_nonprimed	唔係，用嚟記低開支。	Initial 唔係 rejects the prior claim; the following purpose response remains structurally unresolved.	Correction response without 用嚟 in the trigger
+SJL-C06A	程式／記低開支	Priming correction after someone says: 呢個程式係用嚟影相㗎。	correction_marker_plus_response_primed	唔係，用嚟記低開支。	Initial 唔係 rejects a prior claim whose wording already contains 用嚟.	Measure correction-trigger priming separately
+SJL-C06B	程式／記低開支	Non-priming yes/no question: 呢個程式嘅用途係咪記低開支㗎？	affirmative_marker_plus_response_nonprimed	係，用嚟記低開支。	Initial 係 confirms the proposition; it is not automatically part of the following target.	Yes/no response without 用嚟 in the prompt
+SJL-C06B	程式／記低開支	Priming yes/no question: 呢個程式係咪用嚟記低開支㗎？	affirmative_marker_plus_response_primed	係，用嚟記低開支。	Initial 係 confirms a proposition whose wording already contains 用嚟.	Measure yes/no-trigger priming separately
+SJL-C06B	程式／記低開支	Same referent, no question or correction	integrated_hai_ge_frame	係用嚟記低開支嘅。	Integrated 係…嘅 surface with an omitted discourse topic or resource; internal analysis remains open.	Analysis-neutral sibling for response-marker controls
 SJL-C07	刀／切方包	Caption beneath a picture of a knife	caption_fragment	用嚟切方包	The image supplies the resource in written layout.	Caption/register profile
 SJL-C07	刀／切方包	Ordinary spoken conversation with no visible object	spoken_fragment	用嚟切方包。	No layout or visual anchor.	Caption versus speech
-SJL-C08	刀／切方包	Immediate knife antecedent	copular_predicate	係用嚟切方包嘅。	Copular/predicative description with omitted overt NP but retained 係.	Separate copular sibling
-SJL-C08	刀／切方包	Immediate knife antecedent	bare_response	用嚟切方包。	Bare purpose/function response.	Do not collapse bare and copular forms
-SJL-C09	刀／切方包	Immediate knife antecedent; root response	root_target	用嚟切方包。	Root discourse-linked use.	Root baseline for topic-drop diagnostics
-SJL-C09	刀／切方包	Immediate knife antecedent; embedded report with overt resource	embedded_overt_resource	阿明話呢把刀用嚟切方包。	Embedded clause with the resource overt.	Embedding baseline
-SJL-C09	刀／切方包	Knife remains the active topic before an embedded report	embedded_omitted_resource	講緊呢把刀嗰陣，阿明話用嚟切方包。	Test whether an embedded target can recover the active knife and whether the analysis differs from root topic drop.	Do not treat embedded acceptance as automatic null-topic evidence
-SJL-C09	刀／切方包	No antecedent before embedded report	embedded_no_context	阿明話用嚟切方包。	Judge whether any resource is recoverable without linguistic or situational support.	Embedded antecedentless boundary
-SJL-C10	刀／切方包	Wh-purpose question; audio answer ends after target	standalone_final_audio	用嚟切方包。	Question-linked response in utterance-final position.	Record final F0, duration, and following pause
-SJL-C10	刀／切方包	Same wh-purpose question; audio answer continues	continuing_nonfinal_audio	用嚟切方包，仲可以切生果。	Same target words in nonfinal continuing position.	Boundary-position control
+SJL-C08	刀／切方包	Immediate knife antecedent	integrated_hai_ge_frame	係用嚟切方包嘅。	Integrated 係…嘅 surface with an omitted overt NP; internal analysis remains open.	Separate integrated-frame sibling
+SJL-C08	刀／切方包	Immediate knife antecedent	bare_response	用嚟切方包。	Bare purpose/function response.	Do not collapse bare and integrated 係…嘅 forms
+SJL-C09A	刀／切方包	Immediate knife antecedent; root response	root_target	用嚟切方包。	Root discourse-linked use.	Root baseline for topic-drop diagnostics
+SJL-C09A	刀／切方包	Immediate knife antecedent; complement of non-speech predicate with overt resource	embedded_overt_resource_yiwai	阿明以為呢把刀用嚟切方包。	Complement clause with the resource overt.	Clean non-speech embedding baseline
+SJL-C09A	刀／切方包	Knife remains the active topic before complement of 以為	embedded_omitted_resource_yiwai	講到呢把刀，阿明以為用嚟切方包。	Test whether the embedded target can recover the active knife without assuming null-topic structure.	Non-speech complement diagnostic with active antecedent
+SJL-C09A	刀／切方包	No antecedent before complement of 以為	embedded_no_context_yiwai	阿明以為用嚟切方包。	Judge whether any resource is recoverable without linguistic or situational support.	Embedded antecedentless boundary
+SJL-C09B	刀／切方包	Immediate knife antecedent followed by 話	reported_speech_ambiguity	阿明話用嚟切方包。	Determine whether speakers hear a complement, quotation-like report, loose reported speech, or an incomplete string.	Retain 話 only as a reported-speech ambiguity test
+SJL-C10	刀／切方包	Non-priming wh-purpose question; audio answer ends after target	standalone_final_audio	用嚟切方包。	Question-linked response in utterance-final position.	Record final F0, duration, and following pause
+SJL-C10	刀／切方包	Same non-priming wh-purpose question; audio answer continues	continuing_nonfinal_audio	用嚟切方包，仲可以切生果。	Same target words in nonfinal continuing position.	Boundary-position control
 SJL-C10	刀／切方包	Audio full clause with overt resource	overt_integrated_audio	呢把刀用嚟切方包。	Target sequence integrated with an overt resource NP.	Compare local phrasing without assuming a fragment contour
-SJL-C10	刀／切方包	Audio true-copular full clause	copular_integrated_audio	呢把刀係用嚟切方包嘅。	Target in an overt copular/predicative frame.	Copular prosodic sibling
+SJL-C10	刀／切方包	Audio integrated 係…嘅 frame	integrated_hai_ge_audio	呢把刀係用嚟切方包嘅。	Target in an overt integrated 係…嘅 surface whose internal analysis remains open.	Integrated-frame prosodic sibling
 SJL-C11	Any target	Matched context	forced_interpretation	用嚟切方包。	Choose: recover overt resource; visual referent; generic resource; question-linked predicate response; larger elided clause; unclear; unacceptable.	Naturalness cannot identify analysis
 SJL-C11	Any target	Matched context	correction_reason	用嚟切方包。	Optional correction and reason: missing context, wrong role, register, prosody, lexical choice, or grammar.	Adjudication support
