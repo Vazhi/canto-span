@@ -23,10 +23,17 @@ jobs:
 
           source = Path('.github/workflows/write-week14-expert-review.yml')
           text = source.read_text(encoding='utf-8')
-          unsupported = "              'GLOSSIKA-YUEHK-A1-W14-20260621-I022',\n"
-          if unsupported not in text:
-              raise SystemExit('expected unsupported I022 duplicate entry was not found')
-          text = text.replace(unsupported, '', 1)
+          replacements = {
+              "              'GLOSSIKA-YUEHK-A1-W14-20260621-I022',\n": "              'GLOSSIKA-YUEHK-A1-W14-20260621-I026',\n",
+              "              'GLOSSIKA-YUEHK-A1-W14-20260621-I038',\n": "              'GLOSSIKA-YUEHK-A1-W14-20260621-I031',\n",
+              "                  if 'compositional_numeral' in dispositions:\n": "                  if 'compositional_numeral_no_opaque_entry' in dispositions:\n",
+              "                  elif 'candidate' in dispositions:\n": "                  elif 'lexical_ingress_candidate' in dispositions:\n",
+          }
+          for old, new in replacements.items():
+              if old not in text:
+                  raise SystemExit(f'expected generator text not found: {old!r}')
+              text = text.replace(old, new, 1)
+
           lines = text.splitlines()
           marker = '        run: |'
           start = lines.index(marker) + 1
