@@ -16,7 +16,84 @@ jobs:
         with:
           ref: agent/week16-ingress-review
           fetch-depth: 0
-      - name: Execute checked-in Week 16 generation steps
+      - name: Preserve runtime crosswalk and extend the live builder
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          package = Path('data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705')
+          old_review = json.loads((package / 'review.json').read_text(encoding='utf-8'))
+          records = []
+          for row in old_review['records']:
+              if row.get('runtimeCrosswalk') is None:
+                  continue
+              records.append({
+                  'id': row['id'],
+                  'source_hash': row['sourceHash'],
+                  'runtime_crosswalk': row['runtimeCrosswalk'],
+                  'source_discrepancies': row.get('sourceDiscrepancies', []),
+                  'reviewed_values': row.get('reviewedValues', {}),
+                  'legacy_duplicate_candidates': row.get('duplicateOf', []),
+              })
+          if len(records) != 35:
+              raise SystemExit(f'expected 35 runtime crosswalk records, got {len(records)}')
+          runtime_crosswalk = {
+              'schema': 'canto-span-pedagogical-runtime-crosswalk-v1',
+              'source_id': old_review['sourceId'],
+              'source_payload_hash': old_review['sourcePayloadHash'],
+              'record_count': len(records),
+              'runtime_pull_request': 121,
+              'runtime_merge_commit': '252f8e432bfc2b2f37e25514c940d959580a548e',
+              'provenance_path': 'docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md',
+              'evidence_boundary': 'implementation and lexical coverage only; source readings, glosses, segmentation, naturalness, and duplicate identity require separate review',
+              'records': records,
+          }
+          (package / 'runtime-crosswalk-r1.json').write_text(
+              json.dumps(runtime_crosswalk, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
+          )
+
+          builder = Path('tools/build-pedagogical-corpus-review-candidates.py')
+          text = builder.read_text(encoding='utf-8')
+          if '"runtime-crosswalk-r1.json"' not in text:
+              text = text.replace(
+                  '    "package-integrity-r1.json",\n}',
+                  '    "package-integrity-r1.json",\n    "runtime-crosswalk-r1.json",\n}',
+                  1,
+              )
+              text = text.replace(
+                  '    "crosswalk.json",\n}',
+                  '    "crosswalk.json",\n    "runtime-crosswalk-r1.json",\n}',
+                  1,
+              )
+
+          if '"kind": "runtime_crosswalk"' not in text:
+              function_start = text.index('def load_later_research(')
+              return_at = text.index('    return by_item\n', function_start)
+              insertion = '''    runtime_crosswalk_path = root / f"data/pedagogical-corpus/glossika/{source_id}/runtime-crosswalk-r1.json"
+              if runtime_crosswalk_path.exists():
+                  runtime_crosswalk = read_json(runtime_crosswalk_path)
+                  if runtime_crosswalk.get("source_id") == source_id:
+                      for entry in runtime_crosswalk.get("records", []):
+                          item_id = entry.get("id")
+                          if item_id:
+                              by_item[item_id].append({
+                                  "packet": "runtime-crosswalk-r1",
+                                  "kind": "runtime_crosswalk",
+                                  "runtime_pull_request": runtime_crosswalk.get("runtime_pull_request"),
+                                  "runtime_merge_commit": runtime_crosswalk.get("runtime_merge_commit"),
+                                  "provenance_path": runtime_crosswalk.get("provenance_path"),
+                                  "runtime_crosswalk": entry.get("runtime_crosswalk"),
+                                  "source_discrepancies": entry.get("source_discrepancies", []),
+                                  "reviewed_values": entry.get("reviewed_values", {}),
+                              })
+          '''
+              insertion = '\n'.join(line[14:] if line.startswith('              ') else line for line in insertion.splitlines())
+              text = text[:return_at] + insertion + text[return_at:]
+          builder.write_text(text, encoding='utf-8')
+          PY
+          python3 -m py_compile tools/build-pedagogical-corpus-review-candidates.py
+      - name: Execute remaining checked-in Week 16 generation steps
         run: |
           python3 - <<'PY'
           from pathlib import Path
@@ -24,7 +101,6 @@ jobs:
           workflow = Path('.github/workflows/build-week16-review.yml')
           lines = workflow.read_text(encoding='utf-8').splitlines()
           selected = [
-              '      - name: Preserve runtime crosswalk and extend candidate builder',
               '      - name: Build immutable locks and mechanical cross-reference',
               '      - name: Generate expert review and projections',
               '      - name: Write package documentation',
