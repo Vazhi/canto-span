@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - .github/workflows/regenerate-week14-crossref.yml
+  workflow_dispatch:
 
 permissions:
   contents: write
