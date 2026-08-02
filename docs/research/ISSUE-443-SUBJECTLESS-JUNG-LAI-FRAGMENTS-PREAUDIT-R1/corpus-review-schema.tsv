@@ -1,0 +1,27 @@
+field	allowed_values_or_format	purpose
+candidate_id	stable packet-local ID	Preserve one reviewable unit across revisions
+source_id	repository-authorized corpus or source ID	Keep provenance explicit
+source_location	file/turn/line/timecode or stable locator	Allow independent reopening
+medium	spoken|written|caption|label|instruction|chat|other	Separate register and layout effects
+preceding_context	overt source text or scene description only	Record antecedents without reconstructing hidden words
+target_clause	overt Cantonese clause	Preserve the actual 用嚟 surface
+following_context	overt source text only	Record repair, clarification, continuation, or uptake
+visible_or_jointly_attended_referent	present|absent|uncertain	Separate situational context from genuine antecedentless use
+overt_linguistic_antecedent	present|absent|uncertain	Record whether a resource/topic was linguistically introduced
+antecedent_form	NP|pronoun|demonstrative|question_variable|visual_only|none|other	Classify how the referent is supplied
+antecedent_distance	immediate|one_turn|multiple_turns|same_caption|visual_only|none|uncertain	Test locality and topic-chain persistence
+antecedent_uniqueness	unique|multiple_possible|generic|none|uncertain	Distinguish unambiguous recovery from accommodation
+antecedent_semantic_class	tool|container|software|document|person|institution|location|event|other|uncertain	Track lexical and referent effects
+discourse_relation	answer|correction|explanation|definition|instruction|caption|topic_continuation|event_report|other	Identify fragment-licensing environments
+question_type	wh_purpose|yes_no|who|what_object|none|other	Test question-answer congruence
+construction_surface	bare_yung_lai_vp|copular_hai_yung_lai_vp|overt_np_yung_lai_vp|actual_use_yung_np_lai_vp|other	Keep sibling structures separate
+purpose_predicate	verbatim VP	Preserve lexical material
+predicate_class	physical_action|storage|recording|communication|service|other	Track predicate-class effects
+prosody_available	yes|no	Record whether fragment/integration judgments are possible
+prosody_profile	standalone_fragment|integrated_clause|continuing|uncertain|not_available	Do not infer prosody from punctuation
+repair_or_paraphrase	overt source material only	Use explicit interpretation evidence
+interpretation_evidence	referent_recovery|generic_reading|ellipsis_paraphrase|correction|continuation|none	Record what the source actually shows
+classification	context_licensed_resource_omission|topic_chain_candidate|short_answer_candidate|situational_fragment|caption_or_label|antecedentless_candidate|false_positive|ambiguous|unusable	Review disposition
+classification_reason	concise evidence-based explanation	Make decisions auditable
+hidden_word_reconstruction	prohibited	Prevent fabricated Cantonese material from becoming evidence
+reviewer_notes	free text	Preserve unresolved questions without promotion
