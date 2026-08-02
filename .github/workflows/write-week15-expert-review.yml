@@ -1,0 +1,354 @@
+name: Write Week 15 expert review
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/write-week15-expert-review.yml
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/week15-ingress-review
+          fetch-depth: 0
+      - name: Generate terminal expert review and documentation
+        run: |
+          python3 - <<'PY'
+          import csv
+          import json
+          from collections import Counter
+          from pathlib import Path
+
+          package_rel = Path('data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628')
+          package = Path('.') / package_rel
+          source = json.loads((package / 'source.json').read_text(encoding='utf-8'))
+          packet = json.loads((package / 'mechanical-cross-reference-r1.json').read_text(encoding='utf-8'))
+          packet_by_id = {row['id']: row for row in packet['records']}
+
+          not_claims = [
+              'not_grammar_proof',
+              'not_productivity_evidence',
+              'not_dialect_wide_naturalness',
+              'not_parser_acceptance',
+              'not_linguistic_status_change',
+          ]
+          allowed = [
+              'exact_duplicate',
+              'normalized_duplicate',
+              'new_corpus_attestation',
+              'lexical_only_attestation',
+              'pronunciation_discrepancy',
+              'translation_discrepancy',
+              'naturalness_review_candidate',
+              'unusable',
+          ]
+          discrepancies = {
+              'GLOSSIKA-YUEHK-A1-W15-20260628-I056': [{
+                  'field': 'english',
+                  'issue': 'The neutral polar-question gloss does not preserve the expectation, surprise, challenge, or negative-presupposition force associated with final me1.',
+                  'status': 'requires_contextual_particle_and_translation_review',
+              }],
+              'GLOSSIKA-YUEHK-A1-W15-20260628-I062': [{
+                  'field': 'phonics_pair',
+                  'issue': 'The IPA, Jyutping pairing, and lexical contrast require independent item-level phonological verification before learner-facing use.',
+                  'status': 'requires_independent_phonological_and_lexical_verification',
+              }],
+              'GLOSSIKA-YUEHK-A1-W15-20260628-I064': [{
+                  'field': 'english',
+                  'issue': 'The gloss “tin; to kiss” combines distinct lexical readings of 錫 and cannot be adopted as one undifferentiated learner gloss.',
+                  'status': 'requires_lexical_sense_disambiguation',
+              }],
+              'GLOSSIKA-YUEHK-A1-W15-20260628-I065': [{
+                  'field': 'phonics_pair',
+                  'issue': 'The source provides no Word A, Jyutping A, Gloss A, or corresponding IPA member; only 平 / ping4 / cheap; flat is present.',
+                  'status': 'source_incomplete',
+              }],
+          }
+
+          records = []
+          for item in source['items']:
+              item_id = item['id']
+              crossref = packet_by_id[item_id]
+              links = crossref.get('later_research_links', [])
+              lexical_links = [link for link in links if link.get('kind') == 'lexical_ingress']
+              exact_link = next((link for link in lexical_links if link.get('disposition') == 'already_covered_exact'), None)
+              compositional = any(link.get('disposition') == 'compositional_numeral_no_opaque_entry' for link in lexical_links)
+
+              targets = []
+              if exact_link:
+                  owners = list(exact_link.get('exact_runtime_owners') or [])
+                  if not owners:
+                      raise SystemExit(f'exact lexical disposition lacks owner: {item_id}')
+                  preferred = next((owner for owner in owners if owner.endswith('compositional-lexical-phrases.js')), owners[0])
+                  targets = [{'path': preferred, 'basis': 'accepted_later_runtime_owner'}]
+                  duplicate = 'accepted_exact_duplicate'
+                  terminal = 'exact_duplicate'
+                  evidence = 'duplicate_pedagogical_attestation_no_new_runtime_owner'
+                  note = 'A later canonical lexicon scan identifies an exact existing owner; this package preserves provenance only and creates no new runtime entry.'
+              elif item['itemType'] == 'lexical_entry':
+                  duplicate = 'no_accepted_duplicate'
+                  terminal = 'lexical_only_attestation'
+                  if compositional:
+                      evidence = 'compositional_numeral_attestation_no_opaque_ingress'
+                      note = 'Retained as a compositional numeral attestation; no opaque whole-form lexical entry or grammar inference is authorized.'
+                  else:
+                      evidence = 'lexical_ingress_candidate_not_implemented'
+                      note = 'Retained as lexical attestation and possible later ingress candidate; no runtime insertion or grammar inference occurs here.'
+              elif item_id == 'GLOSSIKA-YUEHK-A1-W15-20260628-I003':
+                  duplicate = 'no_accepted_duplicate'
+                  terminal = 'naturalness_review_candidate'
+                  evidence = 'formula_and_register_unresolved_requires_independent_review'
+                  note = 'The formula and source register label remain unresolved after direct research; retain for independent corpus or speaker review without treating it as rejected.'
+              elif item_id == 'GLOSSIKA-YUEHK-A1-W15-20260628-I056':
+                  duplicate = 'no_accepted_duplicate'
+                  terminal = 'translation_discrepancy'
+                  evidence = 'source_translation_pragmatics_unresolved_not_adopted'
+                  note = 'The Cantonese source is preserved, but the neutral English gloss does not encode final me1 discourse force; no replacement translation is asserted.'
+              elif item_id == 'GLOSSIKA-YUEHK-A1-W15-20260628-I062':
+                  duplicate = 'no_accepted_duplicate'
+                  terminal = 'pronunciation_discrepancy'
+                  evidence = 'source_pronunciation_discrepancy_unresolved_not_adopted'
+                  note = 'The source pair remains visible but requires independent phonological and lexical verification before any pronunciation-resource use.'
+              elif item_id == 'GLOSSIKA-YUEHK-A1-W15-20260628-I064':
+                  duplicate = 'no_accepted_duplicate'
+                  terminal = 'translation_discrepancy'
+                  evidence = 'source_lexical_gloss_discrepancy_unresolved_not_adopted'
+                  note = 'The source pair remains visible, but the polysemous 錫 gloss is not adopted as one learner-facing lexical value.'
+              elif item_id == 'GLOSSIKA-YUEHK-A1-W15-20260628-I065':
+                  duplicate = 'no_accepted_duplicate'
+                  terminal = 'unusable'
+                  evidence = 'source_incomplete_preserved_not_usable_as_pair'
+                  note = 'The incomplete final row is preserved exactly but cannot function as a reviewed pronunciation pair until the missing A-side source is recovered.'
+              else:
+                  duplicate = 'no_accepted_duplicate'
+                  terminal = 'new_corpus_attestation'
+                  evidence = 'pedagogical_attestation_plus_bounded_followup_research' if links else 'pedagogical_attestation_only'
+                  note = 'Retained as a source attestation' + (' and linked to bounded later research' if links else '') + '; it does not establish productivity, identity, preferred pronunciation, or parser behavior.'
+
+              records.append({
+                  'id': item_id,
+                  'source_hash': item['sourceHash'],
+                  'review_status': 'reviewed',
+                  'reviewed_on': '2026-08-02',
+                  'review_authority': 'project_expert_systematic_review',
+                  'expert_duplicate_status': duplicate,
+                  'accepted_duplicate_targets': targets,
+                  'terminal_ingress_classification': terminal,
+                  'evidence_use_disposition': evidence,
+                  'source_discrepancies': discrepancies.get(item_id, []),
+                  'reviewed_values': {
+                      'traditional': None,
+                      'jyutping': None,
+                      'english': None,
+                      'phonics_pair': None,
+                  },
+                  'later_research_links': links,
+                  'mechanical_cross_reference_id': item_id,
+                  'review_note': note,
+                  'not_claims': not_claims,
+              })
+
+          terminal_counts = Counter(row['terminal_ingress_classification'] for row in records)
+          duplicate_counts = Counter(row['expert_duplicate_status'] for row in records)
+          evidence_counts = Counter(row['evidence_use_disposition'] for row in records)
+          review = {
+              'schema': 'canto-span-pedagogical-corpus-review-v2',
+              'source_id': source['source']['sourceId'],
+              'source_payload_hash': source['ingress']['sourcePayloadHash'],
+              'record_count': len(records),
+              'reviewed_on': '2026-08-02',
+              'review_authority': 'project_expert_systematic_review',
+              'allowed_terminal_classifications': allowed,
+              'policy': {
+                  'source_layer': 'source.json and items.tsv are immutable accepted source projections.',
+                  'mechanical_layer': 'mechanical-cross-reference-r1.json records deterministic candidates and accepted later-research links but contains no expert decisions.',
+                  'expert_layer': 'This file owns terminal duplicate, ingress, discrepancy, and evidence-use decisions.',
+                  'source_claim_boundary': 'The lesson-wide claims about final me1/aa4 question formation, register labels, and phonics remain source claims requiring independent verification.',
+                  'evidence_boundary': 'Pedagogical attestation does not establish productivity, frequency, construction identity, dialect-wide naturalness, preferred Jyutping, parser correctness, or status.',
+              },
+              'summary': {
+                  'review_status_counts': {'reviewed': len(records), 'unreviewed': 0},
+                  'terminal_classification_counts': dict(sorted(terminal_counts.items())),
+                  'duplicate_status_counts': dict(sorted(duplicate_counts.items())),
+                  'evidence_use_counts': dict(sorted(evidence_counts.items())),
+                  'records_with_source_discrepancies': sum(bool(row['source_discrepancies']) for row in records),
+                  'records_with_reviewed_replacements': 0,
+                  'known_source_alerts': [
+                      {'scope': 'lesson-wide', 'type': 'pedagogical_register_labels', 'status': 'not_adopted_without_independent_review'},
+                      {'scope': 'grammar_patterns', 'type': 'generic_question_rule', 'status': 'not_adopted_as_neutral_productive_rule'},
+                      {'scope': 'phonics_drill', 'type': 'pronunciation_material', 'status': 'requires_item_level_independent_verification'},
+                      {'scope': 'GLOSSIKA-YUEHK-A1-W15-20260628-I065', 'type': 'incomplete_phonics_pair', 'status': 'source_incomplete'},
+                  ],
+              },
+              'records': records,
+          }
+          (package / 'review.json').write_text(json.dumps(review, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          source_by_id = {item['id']: item for item in source['items']}
+          fields = [
+              'id', 'ordinal', 'item_type', 'source_display', 'duplicate_status',
+              'terminal_classification', 'evidence_use', 'discrepancy_status',
+              'accepted_duplicate_targets', 'review_note'
+          ]
+          with (package / 'expert-review-r1.tsv').open('w', encoding='utf-8', newline='') as handle:
+              writer = csv.DictWriter(handle, fieldnames=fields, delimiter='\t', lineterminator='\n')
+              writer.writeheader()
+              for row in records:
+                  item = source_by_id[row['id']]
+                  values = item['source']
+                  display = values.get('traditional') or ' / '.join(
+                      str(values.get(key) or '—') for key in ['wordA', 'wordB']
+                  )
+                  writer.writerow({
+                      'id': row['id'],
+                      'ordinal': item['ordinal'],
+                      'item_type': item['itemType'],
+                      'source_display': display,
+                      'duplicate_status': row['expert_duplicate_status'],
+                      'terminal_classification': row['terminal_ingress_classification'],
+                      'evidence_use': row['evidence_use_disposition'],
+                      'discrepancy_status': ';'.join(value['status'] for value in row['source_discrepancies']),
+                      'accepted_duplicate_targets': ';'.join(value['path'] for value in row['accepted_duplicate_targets']),
+                      'review_note': row['review_note'],
+                  })
+
+          counts = dict(sorted(terminal_counts.items()))
+          exact_rows = [row for row in records if row['terminal_ingress_classification'] == 'exact_duplicate']
+          exact_lines = []
+          for row in exact_rows:
+              item = source_by_id[row['id']]
+              exact_lines.append(f"- `{row['id'].rsplit('-', 1)[-1]} {item['source'].get('traditional')}` — `{row['accepted_duplicate_targets'][0]['path']}`.")
+
+          summary = f'''# Week 15 corpus-ingress review summary
+
+Source ID: `GLOSSIKA-YUEHK-A1-W15-20260628`  
+Review date: `2026-08-02`  
+Review authority: project expert systematic review  
+Related research: issue #127 and merged PR #273
+
+## Outcome
+
+All **65** preserved records now have terminal ingress decisions. Source wording, order, hashes, Jyutping, English material, the source claims, and the incomplete final `— / 平` phonics row remain unchanged.
+
+| Terminal class | Count |
+| --- | ---: |
+| Exact duplicate | {counts.get('exact_duplicate', 0)} |
+| Lexical-only attestation | {counts.get('lexical_only_attestation', 0)} |
+| New corpus/pronunciation attestation | {counts.get('new_corpus_attestation', 0)} |
+| Naturalness-review candidate | {counts.get('naturalness_review_candidate', 0)} |
+| Pronunciation discrepancy | {counts.get('pronunciation_discrepancy', 0)} |
+| Translation or lexical-gloss discrepancy | {counts.get('translation_discrepancy', 0)} |
+| Unusable incomplete source | {counts.get('unusable', 0)} |
+
+Duplicate disposition: **{duplicate_counts.get('accepted_exact_duplicate', 0)} accepted exact**, **{duplicate_counts.get('no_accepted_duplicate', 0)} no accepted duplicate**, and **0 normalized duplicates**.
+
+Source discrepancies: **{sum(bool(row['source_discrepancies']) for row in records)}**.  
+Reviewed replacement values asserted: **0**.
+
+## Accepted exact duplicates
+
+{chr(10).join(exact_lines)}
+
+These decisions use the explicit later canonical-lexicon owners. Other source repetitions, tests, research mentions, archives, and generated inventories remain non-binding mechanical candidates.
+
+## Lexical and numeral disposition
+
+The remaining ordinary place and route terms are retained as lexical-only attestations and later lexical-ingress candidates. The nine uncovered multiples of ten-thousand remain compositional attestations rather than opaque entries. `一百萬` is already represented by canonical compositional and token-lexicon owners.
+
+No runtime lexicon change occurs in this package.
+
+## Formula, route, and question disposition
+
+The sentence and dialog records remain pedagogical corpus attestations except:
+
+- `I003 唔使唔該` remains a naturalness/register review candidate rather than a rejected formula;
+- `I056 你食飯咩` is a translation-pragmatics discrepancy because the neutral English polar-question gloss omits final `me1` discourse force.
+
+The route, spatial, arrival-`到`, `aa3`, A-not-A, and wh-question links remain bounded research questions. They do not establish a catch-all route construction, neutral interchangeable question particles, or parser behavior.
+
+## Phonics disposition
+
+Three complete rows (`些／四`, `借／字`, `踢／滴`) are retained only as pedagogical pronunciation attestations. `靚／令` requires independent phonological and lexical verification. `錫／識` contains an unresolved polysemous gloss. The final `— / 平` row is preserved exactly but is unusable as a reviewed pair because the A side is absent.
+
+## Integrity and evidence boundary
+
+- immutable source projections are bound locally and externally;
+- the mechanical packet excludes archives, generated bundles, package review outputs, and the package's own final report;
+- expert decisions occur only in `review.json` and `expert-review-r1.tsv`;
+- accepted duplicate targets require explicit later runtime-owner or deterministic candidate support;
+- source claims about register, final `me1`/`aa4`, and phonics remain unadopted without independent evidence;
+- no parser, identity, status, survey, release, or deployment inference follows from this review.
+'''
+          (package / 'research-summary.md').write_text(summary, encoding='utf-8')
+
+          readme = '''# Glossika Cantonese (HK) A1 Week 15 corpus ingress
+
+Source ID: `GLOSSIKA-YUEHK-A1-W15-20260628`  
+Source date: `2026-06-28`  
+Ingress issue: `#132`  
+Original source-ingress claim: `#270`  
+Completed review claim: `#473`
+
+This directory preserves the authorized Glossika lesson “Directions & Places” and its completed record-level review.
+
+## Files
+
+- `source.json` — immutable source records.
+- `items.tsv` — immutable tabular source projection.
+- `package-integrity-r1.json` — local immutable-file bindings.
+- `mechanical-cross-reference-r1.json` — deterministic candidates and later-research links; no expert decisions.
+- `review.json` — completed terminal expert review.
+- `expert-review-r1.tsv` — deterministic review projection.
+- `research-summary.md` — human-readable result and evidence boundaries.
+
+The external source lock is `config/pedagogical-corpus-source-locks.json`.
+
+## Coverage
+
+- 16 sentences;
+- 4 dialog turns;
+- 39 lexical entries;
+- 6 phonics rows, including the incomplete final `— / 平` source row.
+
+Total: **65 source records**.
+
+## Review status
+
+All 65 records are terminally reviewed with **0 unreviewed records** and no silent source replacement. Mechanical path occurrences remain candidates until the expert layer accepts an evidence-backed owner.
+
+Glossika remains pedagogical and lexical attestation. The package does not establish productivity, frequency, construction identity, dialect-wide naturalness, preferred pronunciation, parser correctness, or linguistic status.
+
+Run the permanent shared check with:
+
+```bash
+npm run verify:pedagogical-corpus-review
+```
+'''
+          (package / 'README.md').write_text(readme, encoding='utf-8')
+
+          locks_path = Path('config/pedagogical-corpus-source-locks.json')
+          locks = json.loads(locks_path.read_text(encoding='utf-8'))
+          lock = next(row for row in locks['records'] if row['package'] == str(package_rel))
+          lock['origin_pull_request'] = 474
+          locks_path.write_text(json.dumps(locks, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          PY
+      - name: Remove temporary review materials and commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add config/pedagogical-corpus-source-locks.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/README.md \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/review.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/expert-review-r1.tsv \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/research-summary.md
+          git rm -f .github/workflows/write-week15-expert-review.yml \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/.review-claim \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/expert-review-brief.tmp.tsv \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/tail-review.tmp.json
+          git commit -m "Complete Week 15 record-level ingress review"
+          git push origin HEAD:agent/week15-ingress-review
