@@ -1,0 +1,28 @@
+set_id	verb_class	context	condition	candidate_sentence	interpretation_target	control_purpose
+OV-C01	consumption	Unique sandwich introduced	overt_object	佢食咗個三文治喇。	Completed eating of the unique sandwich.	Overt-object baseline
+OV-C01	consumption	Unique sandwich introduced	objectless	佢食咗喇。	Recover the unique sandwich or report eating generally.	Specific null-object test
+OV-C01	consumption	Meal-time context only	objectless	佢食咗喇。	Conventional meal activity without a specific object.	Event/activity test
+OV-C01	consumption	No context	objectless	佢食咗喇。	Out-of-the-blue interpretation.	Measures context dependence
+OV-C02	reading/viewing	Unique book introduced	overt_object	我睇咗嗰本書喇。	Completed reading/viewing of the book.	Overt-object baseline
+OV-C02	reading/viewing	Unique book introduced	objectless	我睇咗喇。	Recover the book.	Specific null-object test
+OV-C02	reading/viewing	Question asks whether reading happened	objectless	我睇咗喇。	Event answer without an independently salient object.	Event-question test
+OV-C03	creation	Unique report introduced	overt_object	我寫咗份報告喇。	Completed writing of the report.	Overt-object baseline
+OV-C03	creation	Unique report introduced	objectless	我寫咗喇。	Recover the report.	Specific null-object test
+OV-C03	creation	Work-task context only	objectless	我寫咗喇。	Completed writing activity or omitted task.	Activity versus null object
+OV-C04	handling/transfer	Unique box introduced	overt_object	我搬咗個箱喇。	Moved the box.	Overt-object baseline
+OV-C04	handling/transfer	Unique box introduced	objectless	我搬咗喇。	Recover the box or interpret relocation by the speaker.	Valency ambiguity test
+OV-C04	handling/transfer	Speaker changed residence	objectless	我搬咗喇。	Intransitive relocation sense.	Lexical-sense control
+OV-C05	aspect-particle factorial	Same event context	bare_V	我食。	Bare predicate.	Baseline
+OV-C05	aspect-particle factorial	Same event context	V_zo	我食咗。	Perfective without final particle.	Isolate 咗
+OV-C05	aspect-particle factorial	Same event context	V_laa	我食喇。	Final particle without verbal perfective.	Isolate 喇
+OV-C05	aspect-particle factorial	Same event context	V_zo_laa	我食咗喇。	Perfective plus current-update particle.	Test combination
+OV-C06	non-specific antecedent	One indefinite book introduced	objectless	阿明都睇咗喇。	Same book, another book, or event-only.	Specific versus existential interpretation
+OV-C06	generic antecedent	Question about this type of food	objectless	我食過／食咗喇。	Kind-level or event interpretation.	Keep experiential and perfective separate
+OV-C07	question type	What happened to the sandwich?	objectless_answer	食咗喇。	Object-recovering answer fragment.	Object question
+OV-C07	question type	Have you eaten yet?	objectless_answer	食咗喇。	Meal-event answer.	Event question
+OV-C07	question type	No preceding question	objectless_assertion	食咗喇。	Context-free announcement.	Fragment versus complete assertion
+OV-C08	completion sibling	Unique book introduced	V_zo_object	我睇咗嗰本書。	Perfective with overt object.	Direct AB30 sibling
+OV-C08	completion sibling	Unique book introduced	V_jyun_zo_object	我睇完咗嗰本書。	Inner completion plus outer perfective.	Completion sibling
+OV-C08	completion sibling	Unique book introduced	V_jyun_zo_objectless	我睇完咗喇。	Completion with omitted/recoverable object or event-only reading.	Do not collapse into direct AB30
+OV-C09	forced interpretation	Any objectless target	choice_prompt	我食咗喇。	Choose: specific object; non-specific object; general activity; lexical intransitive sense; both; context required; unclear.	Naturalness cannot identify syntax
+OV-C09	reason coding	Any objectless target	reason_prompt	我食咗喇。	Choose grammar, missing context, lexical meaning, particle choice, or other.	Separates linguistic from instrument effects
