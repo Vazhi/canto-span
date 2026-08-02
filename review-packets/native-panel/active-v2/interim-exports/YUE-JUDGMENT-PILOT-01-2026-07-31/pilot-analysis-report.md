@@ -19,7 +19,7 @@ Participant-characteristic tables and region-by-list cross-tabs are withheld und
 
 ## 2. Public fixed-choice statistical summaries
 
-The public condition table retains only denominators and continuous summary statistics. All condition denominators are 36. The item table uses the same restricted schema; all 92 item denominators are between 8 and 11. Exact rating-category counts, percentages, correction counts, and interpretation counts are withheld.
+The public condition table retains only denominators and continuous summary statistics. All condition denominators are 36. The item table uses the same restricted schema; the 80 counterbalanced experimental-item denominators are between 8 and 11, while the 12 pooled filler/control denominators are 36. Exact rating-category counts, percentages, correction counts, and interpretation counts are withheld.
 
 | Group | Condition | Description | n | Mean | Median |
 | --- | --- | --- | ---: | ---: | ---: |
