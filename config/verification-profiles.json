@@ -69,6 +69,12 @@
         "command": ["python3", "tools/verify-interim-pilot-public-package.py"],
         "reason": "Prevent the disclosure-controlled interim pilot package from drifting into final-eligibility claims, small-cell or private-text disclosure, stale public hashes, contradictory lifecycle state, or unsupported reproducibility claims.",
         "run_when": "The 2026-07-31 public interim package, disclosure policy, current native-panel lifecycle, or its verifier changes."
+      },
+      {
+        "id": "pedagogical-corpus-review",
+        "command": ["python3", "tools/verify-pedagogical-corpus-review.py", "--package", "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621", "--check-deterministic-crossref"],
+        "reason": "Keep the Week 14 immutable source archive, deterministic repository cross-reference, terminal expert dispositions, duplicate targets, discrepancy records, and tabular projections synchronized.",
+        "run_when": "The Week 14 pedagogical corpus package, source locks, candidate builder, review verifier, or focused mutation tests change."
       }
     ],
     "runtime": [
