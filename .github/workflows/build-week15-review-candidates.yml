@@ -1,0 +1,128 @@
+name: Prepare Week 15 review candidates
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/build-week15-review-candidates.yml
+
+permissions:
+  contents: write
+
+jobs:
+  generalize-verifier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/week15-ingress-review
+          fetch-depth: 0
+      - name: Replace Week 14-specific verifier projections
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          path = Path('tools/verify-pedagogical-corpus-review.py')
+          text = path.read_text(encoding='utf-8')
+          start = text.index('def verify_documentation(')
+          end = text.index('\ndef verify_deterministic_crossref', start)
+          replacement = '''def source_display(item: dict[str, Any]) -> str:
+              values = item.get("source") or {}
+              if isinstance(values.get("traditional"), str) and values["traditional"]:
+                  return values["traditional"].rstrip("。！？?")
+              left = values.get("wordA", values.get("traditionalA", "—"))
+              right = values.get("wordB", values.get("traditionalB", "—"))
+              return f"{left}／{right}"
+
+
+          def verify_documentation(
+              package: Path,
+              source_items: list[dict[str, Any]],
+              review: dict[str, Any],
+          ) -> None:
+              readme = read_bytes(package / "README.md").decode("utf-8")
+              summary_text = read_bytes(package / "research-summary.md").decode("utf-8")
+              if "0 unreviewed records" not in readme or "npm run verify:pedagogical-corpus-review" not in readme:
+                  fail("package README does not describe the completed review and permanent verifier")
+              source_id = review.get("source_id")
+              if not isinstance(source_id, str) or source_id not in summary_text:
+                  fail("research summary does not identify the reviewed source")
+
+              source_by_id = {row["id"]: row for row in source_items}
+              for row in review.get("records", []):
+                  if row.get("terminal_ingress_classification") != "exact_duplicate":
+                      continue
+                  item_id = row["id"]
+                  short_id = item_id.rsplit("-", 1)[-1]
+                  projection = f"{short_id} {source_display(source_by_id[item_id])}"
+                  if projection not in summary_text:
+                      fail(f"research summary omits accepted exact duplicate: {projection}")
+
+              labels = {
+                  "exact_duplicate": ["Exact duplicate"],
+                  "lexical_only_attestation": ["Lexical-only attestation"],
+                  "new_corpus_attestation": ["New corpus/pronunciation attestation"],
+                  "pronunciation_discrepancy": ["Pronunciation discrepancy"],
+                  "translation_discrepancy": ["Translation or lexical-gloss discrepancy"],
+                  "naturalness_review_candidate": ["Naturalness-review candidate"],
+                  "unusable": ["Unusable", "Unusable incomplete source"],
+                  "normalized_duplicate": ["Normalized duplicate"],
+              }
+              counts = review["summary"]["terminal_classification_counts"]
+              for terminal, count in counts.items():
+                  if count <= 0:
+                      continue
+                  candidates = labels.get(terminal)
+                  if not candidates:
+                      fail(f"no documentation label configured for {terminal}")
+                  if not any(f"| {label} | {count} |" in summary_text for label in candidates):
+                      fail(f"research summary count projection mismatch: {terminal}={count}")
+
+'''
+          replacement = '\n'.join(line[10:] if line.startswith('          ') else line for line in replacement.splitlines())
+          text = text[:start] + replacement + text[end:]
+          text = text.replace('    verify_documentation(package, review)\n', '    verify_documentation(package, source_items, review)\n', 1)
+
+          main_start = text.index('def main() -> int:')
+          main_end = text.index('\n\nif __name__ == "__main__":', main_start)
+          main = '''def main() -> int:
+              parser = argparse.ArgumentParser()
+              parser.add_argument("--root", type=Path, default=DEFAULT_ROOT)
+              parser.add_argument("--package", type=Path, action="append", required=True)
+              parser.add_argument("--check-deterministic-crossref", action="store_true")
+              args = parser.parse_args()
+              results = [
+                  verify(
+                      args.root,
+                      package,
+                      check_deterministic_crossref=args.check_deterministic_crossref,
+                  )
+                  for package in args.package
+              ]
+              if len(results) == 1:
+                  output: dict[str, Any] = results[0]
+              else:
+                  output = {
+                      "schema": "canto-span-pedagogical-corpus-review-batch-verification-v1",
+                      "package_count": len(results),
+                      "records": sum(row["records"] for row in results),
+                      "reviewed": sum(row["reviewed"] for row in results),
+                      "unreviewed": sum(row["unreviewed"] for row in results),
+                      "packages": results,
+                      "status": "PASS",
+                  }
+              print(json.dumps(output, ensure_ascii=False, indent=2))
+              return 0
+'''
+          main = '\n'.join(line[10:] if line.startswith('          ') else line for line in main.splitlines())
+          text = text[:main_start] + main + text[main_end:]
+          path.write_text(text, encoding='utf-8')
+          PY
+          python3 -m py_compile tools/verify-pedagogical-corpus-review.py
+      - name: Commit shared verifier and remove workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add tools/verify-pedagogical-corpus-review.py
+          git rm .github/workflows/build-week15-review-candidates.yml
+          git commit -m "Generalize pedagogical corpus review verification"
+          git push origin HEAD:agent/week15-ingress-review
