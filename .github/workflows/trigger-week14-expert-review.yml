@@ -18,13 +18,20 @@ jobs:
         with:
           ref: agent/week14-ingress-review
           fetch-depth: 0
-      - name: Execute the checked-in deterministic review script
+      - name: Execute the corrected deterministic review script
         run: |
           python3 - <<'PY'
           from pathlib import Path
 
           source = Path('.github/workflows/write-week14-expert-review.yml')
-          lines = source.read_text(encoding='utf-8').splitlines()
+          text = source.read_text(encoding='utf-8')
+          unsupported = "              'GLOSSIKA-YUEHK-A1-W14-20260621-I022',\n"
+          if unsupported not in text:
+              raise SystemExit('expected unsupported I022 duplicate entry was not found')
+          text = text.replace(unsupported, '', 1)
+          source.write_text(text, encoding='utf-8')
+
+          lines = text.splitlines()
           marker = '        run: |'
           start = lines.index(marker) + 1
           body = []
