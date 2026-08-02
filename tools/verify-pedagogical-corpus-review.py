@@ -430,6 +430,268 @@ def verify_legacy_reconciliation(
     return set(ids)
 
 
+def verify_bounded_implementation_crosswalk(
+    root: Path,
+    package: Path,
+    source_id: str,
+    payload_hash: str,
+    source_items: list[dict[str, Any]],
+) -> set[str]:
+    path = package / "implementation-crosswalk-r1.json"
+    if not path.exists():
+        return set()
+    if not (package / "crosswalk.json").is_file():
+        fail("bounded implementation crosswalk lacks original crosswalk")
+    packet = load_json(path)
+    if packet.get("schema") != "canto-span-pedagogical-corpus-implementation-crosswalk-v1":
+        fail("unexpected bounded implementation-crosswalk schema")
+    if packet.get("source_id") != source_id or packet.get("source_payload_hash") != payload_hash:
+        fail("bounded implementation-crosswalk source identity mismatch")
+    if packet.get("origin_pull_request") != 280 or packet.get("origin_merge_commit") != "6924651c8048c4bc74d5b3eac47f4c49a6a8d6c5":
+        fail("bounded implementation-crosswalk origin identity mismatch")
+    crosswalk_data = read_bytes(package / "crosswalk.json")
+    crosswalk_lock = packet.get("original_crosswalk") or {}
+    expected_lock = {
+        "path": "crosswalk.json",
+        "bytes": len(crosswalk_data),
+        "sha256": sha256_hex(crosswalk_data),
+        "git_blob_sha": git_blob_sha(crosswalk_data),
+    }
+    if crosswalk_lock != expected_lock:
+        fail("bounded implementation original crosswalk lock drift")
+    original = load_json(package / "crosswalk.json")
+    if original.get("sourceId") != source_id or original.get("sourcePayloadHash") != payload_hash:
+        fail("original Week 18 crosswalk identity mismatch")
+    original_rows = original.get("records")
+    records = packet.get("records")
+    if not isinstance(original_rows, list) or not isinstance(records, list):
+        fail("bounded implementation-crosswalk records missing")
+    source_ids = [row["id"] for row in source_items]
+    ids = stable_ids(records, "bounded implementation-crosswalk records")
+    if ids != source_ids or packet.get("record_count") != len(source_ids):
+        fail("bounded implementation-crosswalk IDs/order/count mismatch")
+    original_by_id = {row["sourceItemId"]: row for row in original_rows}
+    source_by_id = {row["id"]: row for row in source_items}
+    target_ids: set[str] = set()
+    parser_hint_records = 0
+    for row in records:
+        item_id = row["id"]
+        source = source_by_id[item_id]
+        old = original_by_id.get(item_id)
+        if old is None or row.get("source_hash") != source.get("sourceHash"):
+            fail(f"bounded implementation source projection drift: {item_id}")
+        comparisons = {
+            "source_classification": old.get("classification"),
+            "compositional_numeral": bool(old.get("compositionalNumeral")),
+            "parser_owner_hints": old.get("canonicalParserOwnerCandidates", []),
+            "exact_project_occurrence_paths": old.get("exactProjectMatchPaths", []),
+        }
+        for field, expected in comparisons.items():
+            if row.get(field) != expected:
+                fail(f"bounded implementation crosswalk projection drift: {item_id}: {field}")
+        if row.get("authority_status") != "bounded_implementation_observation":
+            fail(f"bounded implementation observation elevated: {item_id}")
+        if row.get("parser_hint_authority") != "heuristic_search_hint_only":
+            fail(f"parser-owner hint elevated without audit: {item_id}")
+        if row.get("implementation_authorized") is not False:
+            fail(f"bounded implementation packet authorizes change: {item_id}")
+        expected_paths = list(old.get("canonicalLexiconOwners", [])) + list(old.get("canonicalPronunciationOwners", []))
+        targets = row.get("implementation_targets")
+        if not isinstance(targets, list) or [target.get("path") for target in targets] != expected_paths:
+            fail(f"bounded implementation target projection drift: {item_id}")
+        for target in targets:
+            if not isinstance(target, dict) or not all(
+                isinstance(target.get(key), str) and target[key]
+                for key in ["path", "target_type", "basis"]
+            ):
+                fail(f"malformed bounded implementation target: {item_id}")
+            if not (root / target["path"]).is_file():
+                fail(f"bounded implementation target path missing: {item_id}: {target['path']}")
+        target_paths = {target["path"] for target in targets}
+        if target_paths.intersection(row.get("parser_owner_hints", [])):
+            fail(f"parser hint promoted into implementation target: {item_id}")
+        if targets:
+            target_ids.add(item_id)
+        if row.get("parser_owner_hints"):
+            parser_hint_records += 1
+    if packet.get("target_record_count") != len(target_ids) or len(target_ids) != 39:
+        fail("bounded implementation target count mismatch")
+    if packet.get("parser_hint_record_count") != parser_hint_records or parser_hint_records != 33:
+        fail("bounded parser-hint count mismatch")
+    return target_ids
+
+
+def verify_research_routing(
+    root: Path,
+    package: Path,
+    source_id: str,
+    payload_hash: str,
+    source_items: list[dict[str, Any]],
+    review: dict[str, Any],
+) -> set[str]:
+    path = package / "research-routing-r1.json"
+    if not path.exists():
+        return set()
+    packet = load_json(path)
+    if packet.get("schema") != "canto-span-pedagogical-corpus-research-routing-v1":
+        fail("unexpected Week 18 research-routing schema")
+    if packet.get("source_id") != source_id or packet.get("source_payload_hash") != payload_hash:
+        fail("Week 18 research-routing source identity mismatch")
+    if packet.get("origin_pull_request") != 282 or packet.get("origin_merge_commit") != "31d5dd20de80f2a86d5bf40cdefea5aec9764bd8":
+        fail("Week 18 research-routing origin identity mismatch")
+    if packet.get("route_owner_issue") != 481:
+        fail("Week 18 research routes lack their durable owner")
+    ledger_files = packet.get("ledger_files")
+    if not isinstance(ledger_files, list) or len(ledger_files) != 4:
+        fail("Week 18 research-routing ledger lock count mismatch")
+    ledgers: dict[str, dict[str, Any]] = {}
+    for row in ledger_files:
+        path_value = row.get("path")
+        if not isinstance(path_value, str):
+            fail("Week 18 ledger lock path missing")
+        data = read_bytes(root / path_value)
+        ledger = load_json(root / path_value)
+        expected = {
+            "path": path_value,
+            "bytes": len(data),
+            "sha256": sha256_hex(data),
+            "git_blob_sha": git_blob_sha(data),
+            "schema": ledger.get("schema"),
+            "packet_id": ledger.get("packetId"),
+        }
+        if row != expected:
+            fail(f"Week 18 retained research ledger drift: {path_value}")
+        ledgers[path_value] = ledger
+    claim_ledger = next(value for value in ledgers.values() if value.get("packetId") == "GLOSSIKA-YUEHK-A1-W18-20260719-CLAIM-SOURCE-R1")
+    followup_ledger = next(value for value in ledgers.values() if value.get("packetId") == "GLOSSIKA-YUEHK-A1-W18-20260719-FOLLOWUP-R1")
+    claims = packet.get("claims")
+    routes = packet.get("routes")
+    item_routes = packet.get("item_routes")
+    non_candidates = packet.get("non_candidate_routes")
+    if not all(isinstance(value, list) for value in [claims, routes, item_routes, non_candidates]):
+        fail("Week 18 research-routing arrays missing")
+    original_claims = {row["id"]: row for row in claim_ledger.get("claims", [])}
+    if {row.get("id") for row in claims} != set(original_claims) or packet.get("claim_count") != 16:
+        fail("Week 18 research claim set drift")
+    source_ids = [row["id"] for row in source_items]
+    source_id_set = set(source_ids)
+    expected_claim_applications = {
+        "W18-C01": [f"{source_id}-I{number:03d}" for number in range(1, 5)],
+        "W18-C02": [f"{source_id}-I001"],
+        "W18-C03": [f"{source_id}-I002"],
+        "W18-C04": [f"{source_id}-I{number:03d}" for number in range(5, 9)],
+        "W18-C05": [f"{source_id}-I005", f"{source_id}-I008"],
+        "W18-C06": [f"{source_id}-I072"],
+        "W18-C07": [f"{source_id}-I075", f"{source_id}-I077"],
+        "W18-C08": [f"{source_id}-I078"],
+        "W18-C09": [f"{source_id}-I079"],
+        "W18-C10": [f"{source_id}-I079"],
+        "W18-C11": [f"{source_id}-I{number:03d}" for number in range(9, 34)],
+        "W18-C12": [f"{source_id}-I{number:03d}" for number in range(34, 62)],
+        "W18-C13": [f"{source_id}-I{number:03d}" for number in [34, 36, 37, 38, 45, 46, 59, 60, 61]],
+        "W18-C14": [f"{source_id}-I{number:03d}" for number in range(62, 72)],
+        "W18-C15": [f"{source_id}-I{number:03d}" for number in range(80, 91)],
+        "W18-C16": [f"{source_id}-I{number:03d}" for number in range(94, 100)],
+    }
+    claim_ids_by_item: dict[str, list[str]] = {item_id: [] for item_id in source_ids}
+    for row in claims:
+        claim_id = row["id"]
+        original = original_claims[claim_id]
+        for field in ["claim", "status", "sourceIds", "boundary"]:
+            if row.get(field) != original.get(field):
+                fail(f"Week 18 research claim projection drift: {claim_id}: {field}")
+        applicable = row.get("applicable_source_item_ids")
+        if applicable != expected_claim_applications.get(claim_id):
+            fail(f"Week 18 research claim source mapping drift: {claim_id}")
+        if row.get("authority_status") != "retained_bounded_research_claim" or row.get("implementation_authorized") is not False:
+            fail(f"Week 18 research claim exceeds its authority: {claim_id}")
+        for item_id in applicable:
+            claim_ids_by_item[item_id].append(claim_id)
+    original_routes = {row["id"]: row for row in followup_ledger.get("candidates", [])}
+    if {row.get("id") for row in routes} != set(original_routes) or packet.get("route_count") != 13:
+        fail("Week 18 follow-up route set drift")
+    expected_route_states = {
+        "W18-F01": "open_research_dependency",
+        "W18-F02": "open_research_dependency",
+        "W18-F03": "open_research_dependency",
+        "W18-F04": "open_research_dependency",
+        "W18-F05": "open_research_dependency",
+        "W18-F06": "open_parser_audit_dependency",
+        "W18-F07": "open_mixed_research_and_parser_audit_dependency",
+        "W18-F08": "open_research_dependency",
+        "W18-F09": "open_research_dependency",
+        "W18-F10": "open_lexical_review_dependency",
+        "W18-F11": "open_lexical_register_research_dependency",
+        "W18-F12": "open_research_family_dependency",
+        "W18-F13": "open_phonological_review_dependency",
+    }
+    route_ids_by_item: dict[str, list[str]] = {item_id: [] for item_id in source_ids}
+    route_ids: set[str] = set()
+    for row in routes:
+        route_id = row["id"]
+        original = original_routes[route_id]
+        comparisons = {
+            "cluster": original.get("cluster"),
+            "declared_source_item_ids": original.get("sourceItemIds", []),
+            "reason": original.get("reason"),
+            "priority": original.get("priority"),
+            "next_method": original.get("nextMethod"),
+            "blocked_actions": original.get("blockedActions", []),
+        }
+        for field, expected in comparisons.items():
+            if row.get(field) != expected:
+                fail(f"Week 18 follow-up route projection drift: {route_id}: {field}")
+        resolved = row.get("resolved_source_item_ids")
+        if not isinstance(resolved, list) or not resolved or not set(resolved).issubset(source_id_set):
+            fail(f"Week 18 resolved follow-up source IDs malformed: {route_id}")
+        if route_id == "W18-F11" and resolved != [f"{source_id}-I{number:03d}" for number in range(34, 62)]:
+            fail("Week 18 temporal route source coverage drift")
+        if route_id != "W18-F11" and resolved != original.get("sourceItemIds", []):
+            fail(f"Week 18 follow-up source IDs changed without reconciliation: {route_id}")
+        if row.get("terminal_route_state") != expected_route_states.get(route_id):
+            fail(f"Week 18 follow-up terminal route state drift: {route_id}")
+        if row.get("route_owner_issue") != 481 or row.get("implementation_authorized") is not False:
+            fail(f"Week 18 follow-up route lacks owner or authorizes change: {route_id}")
+        for item_id in resolved:
+            route_ids_by_item[item_id].append(route_id)
+        route_ids.add(route_id)
+    if packet.get("non_candidate_route_count") != 1 or len(non_candidates) != 1:
+        fail("Week 18 non-candidate route count mismatch")
+    non_candidate = non_candidates[0]
+    original_non_candidate = followup_ledger.get("nonCandidates", [None])[0]
+    declared = [f"{source_id}-I{number:03d}" for number in range(61, 71)]
+    resolved = [f"{source_id}-I{number:03d}" for number in range(62, 72)]
+    if non_candidate.get("declared_source_item_ids") != declared or original_non_candidate.get("sourceItemIds") != declared:
+        fail("Week 18 original numeral non-candidate ID range changed")
+    if non_candidate.get("resolved_source_item_ids") != resolved:
+        fail("Week 18 resolved numeral non-candidate ID range drift")
+    if non_candidate.get("declared_id_status") != "source_id_range_off_by_one":
+        fail("Week 18 numeral route provenance defect is not recorded")
+    if non_candidate.get("disposition") != original_non_candidate.get("disposition"):
+        fail("Week 18 numeral non-candidate disposition drift")
+    if non_candidate.get("terminal_route_state") != "completed_by_retained_compositional_numeral_decision":
+        fail("Week 18 numeral non-candidate route is not terminal")
+    if non_candidate.get("route_owner_issue") != 481 or non_candidate.get("implementation_authorized") is not False:
+        fail("Week 18 numeral non-candidate route exceeds scope")
+    non_candidate_by_item: dict[str, list[str]] = {item_id: [] for item_id in source_ids}
+    for item_id in resolved:
+        non_candidate_by_item[item_id].append("W18-N01")
+    if stable_ids(item_routes, "Week 18 item routes") != source_ids:
+        fail("Week 18 item-route IDs/order drift")
+    review_by_id = {row["id"]: row for row in review.get("records", [])}
+    for row in item_routes:
+        item_id = row["id"]
+        expected_claims = sorted(claim_ids_by_item[item_id])
+        expected_routes = sorted(route_ids_by_item[item_id])
+        expected_non_candidates = sorted(non_candidate_by_item[item_id])
+        if row.get("claim_ids") != expected_claims or row.get("route_ids") != expected_routes or row.get("non_candidate_route_ids") != expected_non_candidates:
+            fail(f"Week 18 item-route projection drift: {item_id}")
+        reviewed = review_by_id[item_id]
+        if reviewed.get("research_claim_ids") != expected_claims or reviewed.get("research_route_ids") != expected_routes or reviewed.get("research_non_candidate_route_ids") != expected_non_candidates:
+            fail(f"Week 18 review research-route linkage drift: {item_id}")
+    return route_ids
+
+
 def allowed_duplicate_paths(crossref_row: dict[str, Any], normalized: bool) -> set[str]:
     field = "normalized_match_candidates" if normalized else "exact_match_candidates"
     output = {
@@ -484,7 +746,8 @@ def verify_review(
     evidence_counts: Counter[str] = Counter()
     discrepancy_count = 0
     replacement_count = 0
-    implementation_crosswalk_count = 0
+    runtime_crosswalk_count = 0
+    bounded_implementation_count = 0
 
     for row in crossref_rows:
         item = source_by_id[row["id"]]
@@ -546,12 +809,17 @@ def verify_review(
                 fail(f"accepted duplicate target lacks basis: {item_id}")
 
 
+
         later_links = row.get("later_research_links")
         if later_links != crossref_row.get("later_research_links"):
             fail(f"review later-research links drift from the mechanical packet: {item_id}")
         runtime_links = [
             link for link in later_links
             if isinstance(link, dict) and link.get("kind") == "runtime_crosswalk"
+        ]
+        bounded_links = [
+            link for link in later_links
+            if isinstance(link, dict) and link.get("kind") == "implementation_crosswalk"
         ]
         implementation_targets = row.get("implementation_crosswalk_targets", [])
         if not isinstance(implementation_targets, list):
@@ -568,18 +836,33 @@ def verify_review(
             for link in runtime_links
             if isinstance(link.get("provenance_path"), str)
         )
+        for link in bounded_links:
+            allowed_implementation_paths.update(
+                target.get("path")
+                for target in link.get("implementation_targets", [])
+                if isinstance(target, dict) and isinstance(target.get("path"), str)
+            )
         if runtime_links:
             if terminal != "lexical_only_attestation" or not implementation_targets:
                 fail(f"runtime-crosswalk item lacks a separate lexical implementation target: {item_id}")
+        elif bounded_links:
+            expected_targets = bounded_links[0].get("implementation_targets", [])
+            if implementation_targets != expected_targets:
+                fail(f"bounded implementation targets drift from the mechanical packet: {item_id}")
+            if implementation_targets and terminal not in {"lexical_only_attestation", "new_corpus_attestation"}:
+                fail(f"bounded implementation target is attached to an incompatible terminal state: {item_id}")
         elif implementation_targets:
-            fail(f"implementation target lacks a runtime-crosswalk evidence link: {item_id}")
+            fail(f"implementation target lacks a recognized implementation evidence link: {item_id}")
         for target in implementation_targets:
             if not isinstance(target, dict) or target.get("path") not in allowed_implementation_paths:
                 fail(f"implementation crosswalk target is not evidence-backed: {item_id}: {target}")
             if not all(isinstance(target.get(key), str) and target[key] for key in ["basis", "target_type"]):
                 fail(f"implementation crosswalk target lacks metadata: {item_id}")
         if implementation_targets:
-            implementation_crosswalk_count += 1
+            if runtime_links:
+                runtime_crosswalk_count += 1
+            else:
+                bounded_implementation_count += 1
 
         discrepancies = row.get("source_discrepancies")
         if not isinstance(discrepancies, list):
@@ -614,8 +897,10 @@ def verify_review(
         fail("source discrepancy summary mismatch")
     if summary.get("records_with_reviewed_replacements") != replacement_count:
         fail("reviewed replacement summary mismatch")
-    if summary.get("records_with_runtime_crosswalk", 0) != implementation_crosswalk_count:
+    if summary.get("records_with_runtime_crosswalk", 0) != runtime_crosswalk_count:
         fail("runtime-crosswalk summary mismatch")
+    if summary.get("records_with_implementation_crosswalk", 0) != bounded_implementation_count:
+        fail("bounded implementation-crosswalk summary mismatch")
 
 
 def verify_expert_tsv(package: Path, source_items: list[dict[str, Any]], review: dict[str, Any]) -> None:
@@ -815,12 +1100,14 @@ def verify(
     verify_integrity(root, package, package_relative, integrity, source_id, payload_hash)
     runtime_crosswalk_ids = verify_runtime_crosswalk(root, package, source_id, payload_hash, source_items)
     legacy_reconciliation_ids = verify_legacy_reconciliation(root, package, source_id, payload_hash, source_items, review)
+    bounded_implementation_ids = verify_bounded_implementation_crosswalk(root, package, source_id, payload_hash, source_items)
+    research_route_ids = verify_research_routing(root, package, source_id, payload_hash, source_items, review)
     verify_review(source, review, crossref, source_items, source_ids)
     reviewed_crosswalk_ids = {
         row["id"] for row in review["records"] if row.get("implementation_crosswalk_targets")
     }
-    if reviewed_crosswalk_ids != runtime_crosswalk_ids:
-        fail("reviewed implementation targets do not match the runtime-crosswalk packet")
+    if reviewed_crosswalk_ids != (runtime_crosswalk_ids | bounded_implementation_ids):
+        fail("reviewed implementation targets do not match the registered implementation packets")
     verify_expert_tsv(package, source_items, review)
     verify_documentation(package, source_items, review)
     if check_deterministic_crossref:
@@ -840,6 +1127,8 @@ def verify(
         "reviewed_replacements": review["summary"]["records_with_reviewed_replacements"],
         "runtime_crosswalk_records": len(runtime_crosswalk_ids),
         "legacy_reconciliation_records": len(legacy_reconciliation_ids),
+        "bounded_implementation_records": len(bounded_implementation_ids),
+        "research_followup_routes": len(research_route_ids),
         "project_only_historical_records": review["summary"].get("project_only_historical_records", 0),
         "deterministic_crossref_checked": check_deterministic_crossref,
         "status": "PASS",

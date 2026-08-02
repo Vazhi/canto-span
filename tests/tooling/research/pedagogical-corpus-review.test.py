@@ -23,11 +23,13 @@ WEEK14 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621")
 WEEK15 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628")
 WEEK16 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705")
 WEEK17 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712")
+WEEK18 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719")
 REGISTERED = {
-    WEEK14: {"records": 61, "discrepancies": 6, "exact": 5, "runtime": 0, "legacy": 0},
-    WEEK15: {"records": 65, "discrepancies": 4, "exact": 10, "runtime": 0, "legacy": 0},
-    WEEK16: {"records": 59, "discrepancies": 11, "exact": 0, "runtime": 35, "legacy": 0},
-    WEEK17: {"records": 75, "discrepancies": 39, "exact": 3, "runtime": 0, "legacy": 75},
+    WEEK14: {"records": 61, "discrepancies": 6, "exact": 5, "runtime": 0, "legacy": 0, "implementation": 0, "routes": 0},
+    WEEK15: {"records": 65, "discrepancies": 4, "exact": 10, "runtime": 0, "legacy": 0, "implementation": 0, "routes": 0},
+    WEEK16: {"records": 59, "discrepancies": 11, "exact": 0, "runtime": 35, "legacy": 0, "implementation": 0, "routes": 0},
+    WEEK17: {"records": 75, "discrepancies": 39, "exact": 3, "runtime": 0, "legacy": 75, "implementation": 0, "routes": 0},
+    WEEK18: {"records": 99, "discrepancies": 41, "exact": 0, "runtime": 0, "legacy": 0, "implementation": 39, "routes": 13},
 }
 
 def write_json(path: Path, value: object) -> None:
@@ -50,6 +52,8 @@ class RegisteredPedagogicalCorpusReviewTest(unittest.TestCase):
                 )
                 self.assertEqual(result["runtime_crosswalk_records"], expected["runtime"])
                 self.assertEqual(result["legacy_reconciliation_records"], expected["legacy"])
+                self.assertEqual(result["bounded_implementation_records"], expected["implementation"])
+                self.assertEqual(result["research_followup_routes"], expected["routes"])
                 self.assertEqual(result["reviewed_replacements"], 0)
 
     def test_week15_terminal_projection(self) -> None:
@@ -148,6 +152,55 @@ class RegisteredPedagogicalCorpusReviewTest(unittest.TestCase):
         exact = [row for row in review["records"] if row["terminal_ingress_classification"] == "exact_duplicate"]
         self.assertEqual([row["id"].rsplit("-", 1)[-1] for row in exact], ["I024", "I025", "I026"])
         self.assertTrue(all(row["accepted_duplicate_targets"][0]["path"].endswith("source.json") for row in exact))
+
+    def test_week18_terminal_projection_and_no_duplicate_promotion(self) -> None:
+        review = json.loads((ROOT / WEEK18 / "review.json").read_text(encoding="utf-8"))
+        self.assertEqual(
+            review["summary"]["terminal_classification_counts"],
+            {
+                "lexical_only_attestation": 63,
+                "naturalness_review_candidate": 8,
+                "new_corpus_attestation": 27,
+                "unusable": 1,
+            },
+        )
+        self.assertTrue(all(row["expert_duplicate_status"] == "no_accepted_duplicate" for row in review["records"]))
+        final_mei = next(row for row in review["records"] if row["id"].endswith("I072"))
+        self.assertEqual(final_mei["terminal_ingress_classification"], "new_corpus_attestation")
+
+    def test_week18_incomplete_phonics_row_is_preserved_and_unusable(self) -> None:
+        source = json.loads((ROOT / WEEK18 / "source.json").read_text(encoding="utf-8"))
+        review = json.loads((ROOT / WEEK18 / "review.json").read_text(encoding="utf-8"))
+        source_row = next(row for row in source["items"] if row["id"].endswith("I097"))
+        review_row = next(row for row in review["records"] if row["id"].endswith("I097"))
+        self.assertEqual(source_row["source"]["wordA"], "香")
+        self.assertEqual(source_row["source"]["wordB"], "—")
+        self.assertEqual(review_row["terminal_ingress_classification"], "unusable")
+        self.assertEqual(review_row["reviewed_values"], {})
+
+    def test_week18_implementation_links_exclude_parser_hints(self) -> None:
+        packet = json.loads((ROOT / WEEK18 / "implementation-crosswalk-r1.json").read_text(encoding="utf-8"))
+        self.assertEqual(packet["target_record_count"], 39)
+        self.assertEqual(packet["parser_hint_record_count"], 33)
+        for row in packet["records"]:
+            target_paths = {target["path"] for target in row["implementation_targets"]}
+            self.assertTrue(target_paths.isdisjoint(set(row["parser_owner_hints"])))
+            self.assertEqual(row["parser_hint_authority"], "heuristic_search_hint_only")
+            self.assertFalse(row["implementation_authorized"])
+
+    def test_week18_all_followups_have_durable_routes(self) -> None:
+        packet = json.loads((ROOT / WEEK18 / "research-routing-r1.json").read_text(encoding="utf-8"))
+        self.assertEqual(packet["route_count"], 13)
+        self.assertEqual({row["id"] for row in packet["routes"]}, {f"W18-F{number:02d}" for number in range(1, 14)})
+        self.assertTrue(all(row["route_owner_issue"] == 481 for row in packet["routes"]))
+        self.assertTrue(all(row["terminal_route_state"].startswith("open_") for row in packet["routes"]))
+
+    def test_week18_numeral_route_id_defect_is_reconciled(self) -> None:
+        packet = json.loads((ROOT / WEEK18 / "research-routing-r1.json").read_text(encoding="utf-8"))
+        route = packet["non_candidate_routes"][0]
+        self.assertEqual([item.rsplit("-", 1)[-1] for item in route["declared_source_item_ids"]], [f"I{number:03d}" for number in range(61, 71)])
+        self.assertEqual([item.rsplit("-", 1)[-1] for item in route["resolved_source_item_ids"]], [f"I{number:03d}" for number in range(62, 72)])
+        self.assertEqual(route["declared_id_status"], "source_id_range_off_by_one")
 
 class PedagogicalCorpusReviewMutationTest(unittest.TestCase):
     def setUp(self) -> None:
@@ -323,6 +376,57 @@ class Week17LegacyAuthorityMutationTest(unittest.TestCase):
         packet["records"][0]["runtime_or_status_authorization"] = "runtime_acceptance"
         write_json(path, packet)
         with self.assertRaisesRegex(AssertionError, "authorizes runtime or status change"):
+            self.verify()
+
+class Week18ResearchRoutingMutationTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.temp = tempfile.TemporaryDirectory()
+        self.root = Path(self.temp.name)
+        shutil.copytree(ROOT / WEEK18, self.root / WEEK18, dirs_exist_ok=True)
+        lock_target = self.root / VERIFIER.SOURCE_LOCKS_RELATIVE
+        lock_target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(ROOT / VERIFIER.SOURCE_LOCKS_RELATIVE, lock_target)
+        routing = json.loads((ROOT / WEEK18 / "research-routing-r1.json").read_text(encoding="utf-8"))
+        for row in routing["ledger_files"]:
+            target = self.root / row["path"]
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copyfile(ROOT / row["path"], target)
+        implementation = json.loads((ROOT / WEEK18 / "implementation-crosswalk-r1.json").read_text(encoding="utf-8"))
+        for row in implementation["records"]:
+            for target_info in row["implementation_targets"]:
+                target = self.root / target_info["path"]
+                target.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copyfile(ROOT / target_info["path"], target)
+
+    def tearDown(self) -> None:
+        self.temp.cleanup()
+
+    def verify(self):
+        return VERIFIER.verify(self.root, WEEK18, check_deterministic_crossref=False)
+
+    def test_route_owner_is_required(self) -> None:
+        path = self.root / WEEK18 / "research-routing-r1.json"
+        packet = json.loads(path.read_text(encoding="utf-8"))
+        packet["routes"][0]["route_owner_issue"] = 0
+        write_json(path, packet)
+        with self.assertRaisesRegex(AssertionError, "lacks owner"):
+            self.verify()
+
+    def test_numeral_route_cannot_restore_off_by_one_range(self) -> None:
+        path = self.root / WEEK18 / "research-routing-r1.json"
+        packet = json.loads(path.read_text(encoding="utf-8"))
+        packet["non_candidate_routes"][0]["resolved_source_item_ids"] = packet["non_candidate_routes"][0]["declared_source_item_ids"]
+        write_json(path, packet)
+        with self.assertRaisesRegex(AssertionError, "resolved numeral"):
+            self.verify()
+
+    def test_parser_hint_cannot_become_authoritative(self) -> None:
+        path = self.root / WEEK18 / "implementation-crosswalk-r1.json"
+        packet = json.loads(path.read_text(encoding="utf-8"))
+        row = next(record for record in packet["records"] if record["parser_owner_hints"])
+        row["parser_hint_authority"] = "accepted_parser_owner"
+        write_json(path, packet)
+        with self.assertRaisesRegex(AssertionError, "parser-owner hint elevated"):
             self.verify()
 
 if __name__ == "__main__":

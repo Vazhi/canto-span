@@ -1,29 +1,39 @@
-# Glossika Week 18 corpus ingress
+# Glossika Week 18 corpus ingress — final expert review
 
 - Source ID: `GLOSSIKA-YUEHK-A1-W18-20260719`
 - Intake: #135
-- Work claim: #278
-- Related research: #128
-- PR: #280
-- Status: source-preserving ingress complete; expert research remains in #128
+- Original corpus package: #278 / merged PR #280
+- Bounded source-led research: #281 / merged PR #282
+- Completed review: #479 / PR #480
+- Durable follow-up owner: #481
+- Status: 99-record expert review complete; awaiting merge approval
 
-## Result
+## Terminal result
 
-- 99 source records preserved in lesson order.
-- Classification counts: `{"compositional_numeral":9,"exact_duplicate":1,"existing_runtime_entry":28,"new_attestation":49,"partial_match":11,"source_incomplete":1}`.
-- Common verbs with exact modular lexicon owners: 24 / 25.
-- Temporal entries with exact modular lexicon owners: 3 / 28.
-- Compositional 億 numeral rows: 10.
-- Discrepancy flags: `{"ellipsis_and_nominalization":1,"incomplete_phonics_pair":1,"multifunctional_lexeme":7,"naturalness_or_translation_influence":4,"particle_function_simplification":11,"phonics_heading_scope":6,"pronunciation_material":6,"question_force_simplification":1,"register_or_a1_appropriateness":10,"repair_formula_scope":1,"source_category_simplification":1,"translation_collision":4}`.
+- 99 of 99 source records reviewed;
+- 63 lexical-only attestations;
+- 27 new sentence, grammar-table, dialog, or pronunciation attestations;
+- 8 naturalness/discourse-review candidates;
+- 1 preserved unusable incomplete phonics row (`I097 香／—`);
+- 0 accepted corpus duplicates;
+- 39 bounded implementation-crosswalk records;
+- 33 non-authoritative parser-hint records;
+- 41 source-discrepancy rows;
+- 0 source replacements.
 
-## Source-review routing
+## Research routing
 
-- Repair and turn-management formulae, ellipsis, completion, and request force: #128.
-- Common-verb valency, readings, and collision information: #128.
-- Temporal lexical classes and formal/register boundaries: #128.
-- Aspect, motion, purpose, locative, benefactive, and directional chains: #128.
-- Particle functions and phonics material remain provisional source claims.
+All 13 follow-up candidates are retained as open named dependencies under issue #481. Open routes are not misreported as completed research. The ten 億 numeral route is terminally retained as compositional.
 
-## Stop boundary
+The original non-candidate ledger lists `I061–I070`, but exact source review shows `I061` is `截止日期` and the ten numeral rows are `I062–I071`. The original ledger remains unchanged; the declared and resolved ID sets are both preserved in the routing packet.
 
-No parser behavior, runtime lexicon, generated bundle, construction identity/status, evidence classification, survey deployment, native-panel decision, version, release, or deployment state changed.
+## Evidence boundaries
+
+- modular lexical/pronunciation owner paths record implementation coverage only;
+- parser-owner paths remain heuristic search hints pending item-level audits;
+- `著 zoek3`, temporal register/classes, final-`未`, `幫 + NP + VP`, `返嚟`, particle profiles, repair/turn-management formulas, and phonics remain at their retained evidence boundaries;
+- no source attestation, runtime occurrence, test fixture, or research route establishes productivity, parser correctness, identity, or promotion.
+
+## Protected state
+
+The source, original crosswalk, and four Week 18 research ledgers remain unchanged. No parser behavior, runtime lexicon/version, construction identity/status, native-panel evidence, survey state, release state, deployment state, or merge authorization changes.

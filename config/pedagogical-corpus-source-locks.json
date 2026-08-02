@@ -92,6 +92,29 @@
       "origin_issue": 134,
       "origin_pull_request": 478,
       "policy": "source-preserving archive; changes require a new reviewed source revision rather than in-place mutation"
+    },
+    {
+      "package": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719",
+      "source_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+      "source_payload_hash": "sha256:fb9efc4f693a96015740012e119a678e57645fb9017b9096a5383d8bdaa13579",
+      "immutable_files": [
+        {
+          "path": "source.json",
+          "bytes": 48568,
+          "sha256": "8e4989992b71632b02f7abd3e19f49069347b410d22364ca5e9e4ac2c527075a",
+          "git_blob_sha": "3f20d9589ca6248125fedb0dcd976280f1c99c80"
+        },
+        {
+          "path": "items.tsv",
+          "bytes": 56356,
+          "sha256": "66b3472331d9f65651e6d4295d32ccfc3c6b143103465ba724e0fbfbaefe6a1e",
+          "git_blob_sha": "f2e5ccace1b2bf2e3256de17257e67e88f8d5f41"
+        }
+      ],
+      "accepted_on": "2026-08-03",
+      "origin_issue": 135,
+      "origin_pull_request": 480,
+      "policy": "source-preserving archive; changes require a new reviewed source revision rather than in-place mutation"
     }
   ]
 }

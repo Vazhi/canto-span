@@ -44,6 +44,8 @@ PACKAGE_REVIEW_FILES = {
     "legacy-reconciliation-r1.json",
     "project-only-review-r1.json",
     "evidence-sources-r1.json",
+    "implementation-crosswalk-r1.json",
+    "research-routing-r1.json",
 }
 GLOBAL_PEDAGOGICAL_DERIVED_FILES = {
     "review.json",
@@ -57,6 +59,8 @@ GLOBAL_PEDAGOGICAL_DERIVED_FILES = {
     "legacy-reconciliation-r1.json",
     "project-only-review-r1.json",
     "evidence-sources-r1.json",
+    "implementation-crosswalk-r1.json",
+    "research-routing-r1.json",
 }
 
 
@@ -175,6 +179,40 @@ def research_ledger_stem(source_id: str) -> str | None:
 
 def load_later_research(root: Path, source_id: str) -> dict[str, list[dict[str, Any]]]:
     by_item: dict[str, list[dict[str, Any]]] = defaultdict(list)
+
+
+    implementation_path = root / f"data/pedagogical-corpus/glossika/{source_id}/implementation-crosswalk-r1.json"
+    if implementation_path.exists():
+        packet = read_json(implementation_path)
+        if packet.get("source_id") == source_id:
+            for entry in packet.get("records", []):
+                item_id = entry.get("id")
+                if item_id:
+                    by_item[item_id].append({
+                        "packet": "implementation-crosswalk-r1",
+                        "kind": "implementation_crosswalk",
+                        "implementation_targets": entry.get("implementation_targets", []),
+                        "parser_owner_hints": entry.get("parser_owner_hints", []),
+                        "exact_project_occurrence_paths": entry.get("exact_project_occurrence_paths", []),
+                        "authority_status": entry.get("authority_status"),
+                        "parser_hint_authority": entry.get("parser_hint_authority"),
+                    })
+
+    routing_path = root / f"data/pedagogical-corpus/glossika/{source_id}/research-routing-r1.json"
+    if routing_path.exists():
+        packet = read_json(routing_path)
+        if packet.get("source_id") == source_id:
+            for entry in packet.get("item_routes", []):
+                item_id = entry.get("id")
+                if item_id:
+                    by_item[item_id].append({
+                        "packet": "research-routing-r1",
+                        "kind": "research_routing",
+                        "claim_ids": entry.get("claim_ids", []),
+                        "route_ids": entry.get("route_ids", []),
+                        "non_candidate_route_ids": entry.get("non_candidate_route_ids", []),
+                        "route_owner_issue": packet.get("route_owner_issue"),
+                    })
 
     legacy_path = root / f"data/pedagogical-corpus/glossika/{source_id}/legacy-reconciliation-r1.json"
     if legacy_path.exists():

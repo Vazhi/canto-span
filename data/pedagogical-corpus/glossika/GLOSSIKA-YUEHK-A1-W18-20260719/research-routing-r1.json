@@ -1,0 +1,1711 @@
+{
+  "schema": "canto-span-pedagogical-corpus-research-routing-v1",
+  "source_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+  "source_payload_hash": "sha256:fb9efc4f693a96015740012e119a678e57645fb9017b9096a5383d8bdaa13579",
+  "origin_pull_request": 282,
+  "origin_merge_commit": "31d5dd20de80f2a86d5bf40cdefea5aec9764bd8",
+  "route_owner_issue": 481,
+  "policy": {
+    "claim_boundary": "Retained research claims remain bounded evidence and do not authorize parser or status change.",
+    "route_boundary": "All 13 follow-ups have a durable owner and terminal routing state; open dependencies are not treated as completed research.",
+    "native_panel_boundary": "Native-speaker work follows direct research and contextual corpus evidence only when a precise item-level question remains.",
+    "numeral_route_reconciliation": "The original off-by-one ID range remains locked as provenance; the exact ten 億 source rows are resolved separately."
+  },
+  "ledger_files": [
+    {
+      "path": "data/research-ledgers/glossika-week18-claim-source.json",
+      "bytes": 15689,
+      "sha256": "3b47c7ab6e176bb2e7fc3de4b281edf77ec3fbc1d293af3b966cf508cd67de68",
+      "git_blob_sha": "f2a80340c0e5b85b37a598d50b92af064dc14fd6",
+      "schema": "canto-span-claim-source-ledger-v1",
+      "packet_id": "GLOSSIKA-YUEHK-A1-W18-20260719-CLAIM-SOURCE-R1"
+    },
+    {
+      "path": "data/research-ledgers/glossika-week18-common-verb-audit.json",
+      "bytes": 16310,
+      "sha256": "f2c8f90436eca56eeb444114986bdb522dbd889d7e4940af4e14b53b0eb3fc3b",
+      "git_blob_sha": "3863c332e22009fe51db1ef94ca34b5c9197b7e5",
+      "schema": "canto-span-glossika-common-verb-audit-v1",
+      "packet_id": "GLOSSIKA-YUEHK-A1-W18-20260719-COMMON-VERB-AUDIT-R1"
+    },
+    {
+      "path": "data/research-ledgers/glossika-week18-temporal-lexicon.json",
+      "bytes": 15948,
+      "sha256": "1897f5470e2754a1917064001138c91e5b7845a3b039edc31e84d422def4802d",
+      "git_blob_sha": "c9f460b931cbdc781bcb4583ea39268e708e3cf1",
+      "schema": "canto-span-glossika-temporal-lexicon-audit-v1",
+      "packet_id": "GLOSSIKA-YUEHK-A1-W18-20260719-TEMPORAL-LEXICON-R1"
+    },
+    {
+      "path": "data/research-ledgers/glossika-week18-followup-candidates.json",
+      "bytes": 9646,
+      "sha256": "47113223622e69d78f0312930294567dd1a2eefba10a05ae15d49c78970aea49",
+      "git_blob_sha": "1960e2c77faa2cf8152b580d0278198768acf90d",
+      "schema": "canto-span-research-followup-candidates-v1",
+      "packet_id": "GLOSSIKA-YUEHK-A1-W18-20260719-FOLLOWUP-R1"
+    }
+  ],
+  "claim_count": 16,
+  "claims": [
+    {
+      "id": "W18-C01",
+      "claim": "The clarification examples instantiate several discourse tasks—open repair initiation, repetition request, referent clarification, and meaning clarification—not one surface construction.",
+      "status": "general_repair_framework_plus_source_attestation",
+      "sourceIds": [
+        "S-GLOSSIKA-W18",
+        "S-CA-REPAIR-GENERAL"
+      ],
+      "boundary": "General repair theory classifies interactional jobs but does not validate 咩話, 再講多次, or the source register labels as ordinary Cantonese formulas.",
+      "applicable_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I001",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I002",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I003",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I004"
+      ],
+      "authority_status": "retained_bounded_research_claim",
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-C02",
+      "claim": "咩話？ is a source-attested repair initiator and must remain distinct from productive wh-question and sentence-final me1 analyses.",
+      "status": "source_attested_direct_cantonese_gap",
+      "sourceIds": [
+        "S-GLOSSIKA-W18",
+        "S-CHEUNG-2021-ME1"
+      ],
+      "boundary": "The orthographic form 咩 does not by itself identify clause syntax, rhetorical force, or a sentence-final-particle use.",
+      "applicable_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I001"
+      ],
+      "authority_status": "retained_bounded_research_claim",
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-C03",
+      "claim": "你講嘅係邊個 contains an overt 嘅 nominalized or omitted-head constituent plus an identity question; the omitted material and referent set are context-dependent.",
+      "status": "conservative_source_analysis",
+      "sourceIds": [
+        "S-GLOSSIKA-W18"
+      ],
+      "boundary": "Do not treat 嘅 as merely a sentence-final particle or invent the omitted noun.",
+      "applicable_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I002"
+      ],
+      "authority_status": "retained_bounded_research_claim",
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-C04",
+      "claim": "The turn-management examples differ in interruption, floor-holding, apology, imperative, completion, sequencing, and confirmation/request force.",
+      "status": "source_attested_only",
+      "sourceIds": [
+        "S-GLOSSIKA-W18"
+      ],
+      "boundary": "No formula, politeness level, or productive 等 + NP + VP analysis is accepted without direct Cantonese discourse evidence and speaker review.",
+      "applicable_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I005",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I006",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I007",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I008"
+      ],
+      "authority_status": "retained_bounded_research_claim",
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-C05",
+      "claim": "講完 contains an overt V + 完 completion relation, but the entire 唔該等我講完先好唔好 sequence is not one completion construction.",
+      "status": "component_supported_exact_sequence_unresolved",
+      "sourceIds": [
+        "S-GLOSSIKA-W18",
+        "S-LAI-PANG-2023-RESULTATIVES"
+      ],
+      "boundary": "Completion, permissive or floor-holding 等, sequencing 先, and 好唔好 request force require independent profiles.",
+      "applicable_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I005",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I008"
+      ],
+      "authority_status": "retained_bounded_research_claim",
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-C06",
+      "claim": "你食咗飯未 is a completion-oriented polar question with postverbal perfective material and final 未; it is not a preverbal 未 negative statement or an A-not-A exact-copy question.",
+      "status": "source_attested_with_repository_negative_boundary",
+      "sourceIds": [
+        "S-GLOSSIKA-W18",
+        "S-REPO-ANOTA-R7",
+        "S-REPO-ASPECT-R24"
+      ],
+      "boundary": "The exact V咗O未 profile still needs direct modern Cantonese research and contextual contrasts before any parser change.",
+      "applicable_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I072"
+      ],
+      "authority_status": "retained_bounded_research_claim",
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-C07",
+      "claim": "我要返屋企煮飯 and 我去超市買嘢 contain overt destination motion followed by a semantically compatible purpose VP.",
+      "status": "source_attested_plus_verified_motion_boundary",
+      "sourceIds": [
+        "S-GLOSSIKA-W18",
+        "S-REPO-MOTION-B14",
+        "S-YIU-DIRECTIONALS"
+      ],
+      "boundary": "Destination motion and purpose relation remain independently parsed; adjacency does not license every two-verb sequence.",
+      "applicable_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I075",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I077"
+      ],
+      "authority_status": "retained_bounded_research_claim",
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-C08",
+      "claim": "我留喺屋企睇電視 contains a locative relation with a following predicate and must not be collapsed with a standalone 喺 + location predicate.",
+      "status": "source_attested_plus_verified_coverb_boundary",
+      "sourceIds": [
+        "S-GLOSSIKA-W18",
+        "S-REPO-COVERB-R23"
+      ],
+      "boundary": "The lexical contribution of 留, event location, and the following activity predicate remain visible.",
+      "applicable_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I078"
+      ],
+      "authority_status": "retained_bounded_research_claim",
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-C09",
+      "claim": "幫你買嘢 is source-attested as a participant-benefiting relation, but the lesson alone does not determine whether 幫 is lexical, coverbal, applicative, or part of another construction.",
+      "status": "source_attested_direct_construction_gap",
+      "sourceIds": [
+        "S-GLOSSIKA-W18"
+      ],
+      "boundary": "Do not infer a benefactive role solely from token presence or create a broad 幫 + NP + VP rule.",
+      "applicable_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I079"
+      ],
+      "authority_status": "retained_bounded_research_claim",
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-C10",
+      "claim": "返嚟 preserves return direction and speaker-oriented deixis; it must not be reduced to a generic serial-verb or aspect marker.",
+      "status": "supported_external_narrow",
+      "sourceIds": [
+        "S-GLOSSIKA-W18",
+        "S-YIU-DIRECTIONALS",
+        "S-REPO-MOTION-B14"
+      ],
+      "boundary": "The full 咁我幫你買嘢返嚟啦 sequence additionally contains discourse, participant, object, and particle structure.",
+      "applicable_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I079"
+      ],
+      "authority_status": "retained_bounded_research_claim",
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-C11",
+      "claim": "The 25 common-verb rows are lexical attestations, not complete valency frames; several forms have motion, directional, coverb, aspectual, posture, light-verb, or reading collisions.",
+      "status": "repository_audit_plus_source_attestation",
+      "sourceIds": [
+        "S-GLOSSIKA-W18",
+        "S-W18-CROSSWALK",
+        "S-REPO-COVERB-R23",
+        "S-YIU-DIRECTIONALS"
+      ],
+      "boundary": "Twenty-four exact modular entries block duplicate bulk ingress; 著 requires separate lexical and pronunciation review rather than silent addition.",
+      "applicable_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I009",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I010",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I011",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I012",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I013",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I014",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I015",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I016",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I017",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I018",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I019",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I020",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I021",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I022",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I023",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I024",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I025",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I026",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I027",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I028",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I029",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I030",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I031",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I032",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I033"
+      ],
+      "authority_status": "retained_bounded_research_claim",
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-C12",
+      "claim": "The temporal vocabulary spans time-of-day nouns, measure expressions, event and calendar nouns, relative time words, scalar temporal properties, periodicity modifiers, and temporal adverbs.",
+      "status": "supported_category_function_split",
+      "sourceIds": [
+        "S-GLOSSIKA-W18",
+        "S-REPO-TEMPORAL-R12",
+        "S-WONG-2002-ADVERBS"
+      ],
+      "boundary": "Adverbial use does not make every item a lexical adverb, and lexical category does not determine one clause role.",
+      "applicable_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I034",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I035",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I036",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I037",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I038",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I039",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I040",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I041",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I042",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I043",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I044",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I045",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I046",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I047",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I048",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I049",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I050",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I051",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I052",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I053",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I054",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I055",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I056",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I057",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I058",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I059",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I060",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I061"
+      ],
+      "authority_status": "retained_bounded_research_claim",
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-C13",
+      "claim": "黎明, 午夜, 正午, 世紀, 季度, 時代, 刹那, 日程, and 截止日期 require register, frequency, and A1-appropriateness review rather than automatic runtime ingress.",
+      "status": "source_attested_register_unresolved",
+      "sourceIds": [
+        "S-GLOSSIKA-W18",
+        "S-REPO-TEMPORAL-R12"
+      ],
+      "boundary": "Formal or written appearance is a review hypothesis, not a categorical rejection or dialect-wide judgment.",
+      "applicable_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I034",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I036",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I037",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I038",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I045",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I046",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I059",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I060",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I061"
+      ],
+      "authority_status": "retained_bounded_research_claim",
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-C14",
+      "claim": "一億 through 十億 are compositional numeral expressions; no ten-item opaque lexical expansion is justified.",
+      "status": "supported_external_and_repository_scan",
+      "sourceIds": [
+        "S-GLOSSIKA-W18",
+        "S-LAM-LAU-LEE-2024-SEGMENTATION",
+        "S-W18-CROSSWALK"
+      ],
+      "boundary": "Preserve internal numeral composition and avoid duplicate whole-form entries.",
+      "applicable_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I062",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I063",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I064",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I065",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I066",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I067",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I068",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I069",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I070",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I071"
+      ],
+      "authority_status": "retained_bounded_research_claim",
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-C15",
+      "claim": "The source particle table's one-gloss-per-character mapping is not a complete Cantonese particle grammar.",
+      "status": "supported_external_source_simplification",
+      "sourceIds": [
+        "S-GLOSSIKA-W18",
+        "S-SYBESMA-LI-2007-SFP",
+        "S-REPO-GAA3-UC011",
+        "S-CHEUNG-2021-ME1"
+      ],
+      "boundary": "Tone, clause type, discourse context, co-occurrence, prosody, orthography, and non-final uses must remain explicit; 嘅 nominalization is not erased.",
+      "applicable_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I080",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I081",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I082",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I083",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I084",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I085",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I086",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I087",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I088",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I089",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I090"
+      ],
+      "authority_status": "retained_bounded_research_claim",
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-C16",
+      "claim": "The phonics table is provisional source material and includes an incomplete 香 / — row; its heading does not transparently describe every listed pair.",
+      "status": "source_discrepancy_supported",
+      "sourceIds": [
+        "S-GLOSSIKA-W18",
+        "S-BAUER-BENEDICT-1997-PHONOLOGY"
+      ],
+      "boundary": "No IPA, Jyutping, pronunciation-resource, or pair-status change is authorized without item-level verification.",
+      "applicable_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I094",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I095",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I096",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I097",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I098",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I099"
+      ],
+      "authority_status": "retained_bounded_research_claim",
+      "implementation_authorized": false
+    }
+  ],
+  "route_count": 13,
+  "routes": [
+    {
+      "id": "W18-F01",
+      "cluster": "clarification_and_repair",
+      "declared_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I001",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I002",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I003",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I004"
+      ],
+      "resolved_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I001",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I002",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I003",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I004"
+      ],
+      "reason": null,
+      "priority": "high",
+      "next_method": "cantonese_conversation_corpus_inventory_then_contextual_panel_if_needed",
+      "blocked_actions": [
+        "single_repair_construction",
+        "register_acceptance",
+        "me1_identity_inference"
+      ],
+      "terminal_route_state": "open_research_dependency",
+      "route_owner_issue": 481,
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-F02",
+      "cluster": "ge3_nominalization_and_ellipsis",
+      "declared_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I002"
+      ],
+      "resolved_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I002"
+      ],
+      "reason": null,
+      "priority": "high",
+      "next_method": "direct_ge3_nominalization_research_plus_contextual_minimal_contrasts",
+      "blocked_actions": [
+        "invented_omitted_noun",
+        "sentence_final_particle_only_analysis",
+        "generic_identity_question_rule"
+      ],
+      "terminal_route_state": "open_research_dependency",
+      "route_owner_issue": 481,
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-F03",
+      "cluster": "turn_management_formulas",
+      "declared_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I005",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I006",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I007",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I008"
+      ],
+      "resolved_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I005",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I006",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I007",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I008"
+      ],
+      "reason": null,
+      "priority": "high",
+      "next_method": "conversation_corpus_and_role_neutral_context_panel",
+      "blocked_actions": [
+        "formula_ingress",
+        "politeness_feature",
+        "automatic_naturalness_acceptance"
+      ],
+      "terminal_route_state": "open_research_dependency",
+      "route_owner_issue": 481,
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-F04",
+      "cluster": "dang2_completion_sequence_request",
+      "declared_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I005",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I008"
+      ],
+      "resolved_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I005",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I008"
+      ],
+      "reason": null,
+      "priority": "high",
+      "next_method": "direct_cantonese_dang2_and_completion_research_plus_corpus_contrasts",
+      "blocked_actions": [
+        "one_turn_management_construction",
+        "generic_dang2_np_vp_rule",
+        "completion_request_merger"
+      ],
+      "terminal_route_state": "open_research_dependency",
+      "route_owner_issue": 481,
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-F05",
+      "cluster": "perfective_final_mei6_question",
+      "declared_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I072"
+      ],
+      "resolved_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I072"
+      ],
+      "reason": null,
+      "priority": "high",
+      "next_method": "direct_aspect_question_research_plus_minimal_contexts",
+      "blocked_actions": [
+        "negative_experiential_routing",
+        "a_not_a_merger",
+        "generic_final_mei6_rule"
+      ],
+      "terminal_route_state": "open_research_dependency",
+      "route_owner_issue": 481,
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-F06",
+      "cluster": "motion_purpose_relation",
+      "declared_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I075",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I077"
+      ],
+      "resolved_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I075",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I077"
+      ],
+      "reason": null,
+      "priority": "medium",
+      "next_method": "canonical_parser_audit_against_batch14_boundaries",
+      "blocked_actions": [
+        "new_identity",
+        "all_two_verb_sequences_as_purpose",
+        "hidden_destination_or_subject"
+      ],
+      "terminal_route_state": "open_parser_audit_dependency",
+      "route_owner_issue": 481,
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-F07",
+      "cluster": "stay_locative_activity",
+      "declared_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I078"
+      ],
+      "resolved_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I078"
+      ],
+      "reason": null,
+      "priority": "medium",
+      "next_method": "coverb_and_locative_parser_audit_plus_corpus_contexts",
+      "blocked_actions": [
+        "standalone_locative_merger",
+        "single_serial_verb_identity",
+        "hidden_linker_insertion"
+      ],
+      "terminal_route_state": "open_mixed_research_and_parser_audit_dependency",
+      "route_owner_issue": 481,
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-F08",
+      "cluster": "bang1_benefactive",
+      "declared_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I079"
+      ],
+      "resolved_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I079"
+      ],
+      "reason": null,
+      "priority": "high",
+      "next_method": "direct_cantonese_bang1_research_and_corpus_inventory",
+      "blocked_actions": [
+        "token_only_benefactive_assignment",
+        "generic_bang1_np_vp_rule",
+        "transfer_identity_change"
+      ],
+      "terminal_route_state": "open_research_dependency",
+      "route_owner_issue": 481,
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-F09",
+      "cluster": "return_deictic_directional",
+      "declared_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I079"
+      ],
+      "resolved_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I079"
+      ],
+      "reason": null,
+      "priority": "high",
+      "next_method": "directional_verb_research_plus_contextual_corpus_contrasts",
+      "blocked_actions": [
+        "generic_serial_verb_parse",
+        "aspect_marker_analysis",
+        "speaker_location_invention"
+      ],
+      "terminal_route_state": "open_research_dependency",
+      "route_owner_issue": 481,
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-F10",
+      "cluster": "zoek3_wear_lexeme",
+      "declared_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I030"
+      ],
+      "resolved_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I030"
+      ],
+      "reason": null,
+      "priority": "medium",
+      "next_method": "dictionary_and_corpus_lexical_review_then_focused_runtime_issue",
+      "blocked_actions": [
+        "silent_runtime_ingress",
+        "reading_merger",
+        "aspectual_zyu6_collision"
+      ],
+      "terminal_route_state": "open_lexical_review_dependency",
+      "route_owner_issue": 481,
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-F11",
+      "cluster": "temporal_lexical_classes_and_register",
+      "declared_source_item_ids": [],
+      "resolved_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I034",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I035",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I036",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I037",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I038",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I039",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I040",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I041",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I042",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I043",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I044",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I045",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I046",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I047",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I048",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I049",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I050",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I051",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I052",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I053",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I054",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I055",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I056",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I057",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I058",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I059",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I060",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I061"
+      ],
+      "reason": null,
+      "priority": "high",
+      "next_method": "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit",
+      "blocked_actions": [
+        "bulk_lexicon_ingress",
+        "all_time_words_as_adverbs",
+        "a1_register_acceptance"
+      ],
+      "terminal_route_state": "open_lexical_register_research_dependency",
+      "route_owner_issue": 481,
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-F12",
+      "cluster": "sentence_final_particle_profiles",
+      "declared_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I080",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I081",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I082",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I083",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I084",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I085",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I086",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I087",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I088",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I089",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I090"
+      ],
+      "resolved_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I080",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I081",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I082",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I083",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I084",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I085",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I086",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I087",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I088",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I089",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I090"
+      ],
+      "reason": null,
+      "priority": "high",
+      "next_method": "reuse_existing_particle_research_units_and_create_missing_particle_units_only",
+      "blocked_actions": [
+        "one_gloss_per_particle",
+        "orthography_only_identity",
+        "generic_particle_force_inference"
+      ],
+      "terminal_route_state": "open_research_family_dependency",
+      "route_owner_issue": 481,
+      "implementation_authorized": false
+    },
+    {
+      "id": "W18-F13",
+      "cluster": "phonics_oe_eo",
+      "declared_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I094",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I095",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I096",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I097",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I098",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I099"
+      ],
+      "resolved_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I094",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I095",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I096",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I097",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I098",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I099"
+      ],
+      "reason": null,
+      "priority": "high",
+      "next_method": "item_level_phonological_verification",
+      "blocked_actions": [
+        "pronunciation_resource_ingress",
+        "silent_completion_of_missing_pair",
+        "heading_based_generalization"
+      ],
+      "terminal_route_state": "open_phonological_review_dependency",
+      "route_owner_issue": 481,
+      "implementation_authorized": false
+    }
+  ],
+  "non_candidate_route_count": 1,
+  "non_candidate_routes": [
+    {
+      "id": "W18-N01",
+      "cluster": "large_numerals",
+      "declared_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I061",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I062",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I063",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I064",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I065",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I066",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I067",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I068",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I069",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I070"
+      ],
+      "resolved_source_item_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I062",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I063",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I064",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I065",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I066",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I067",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I068",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I069",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I070",
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I071"
+      ],
+      "declared_id_status": "source_id_range_off_by_one",
+      "resolution_basis": "The ledger describes ten 億 expressions; exact source surfaces are I062–I071, while I061 is 截止日期.",
+      "reason": "All ten 億 forms remain compositionally analyzable; no opaque bulk lexical entries are warranted.",
+      "disposition": "retain_compositional_numeral_analysis",
+      "terminal_route_state": "completed_by_retained_compositional_numeral_decision",
+      "route_owner_issue": 481,
+      "implementation_authorized": false
+    }
+  ],
+  "item_routes": [
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I001",
+      "claim_ids": [
+        "W18-C01",
+        "W18-C02"
+      ],
+      "route_ids": [
+        "W18-F01"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I002",
+      "claim_ids": [
+        "W18-C01",
+        "W18-C03"
+      ],
+      "route_ids": [
+        "W18-F01",
+        "W18-F02"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I003",
+      "claim_ids": [
+        "W18-C01"
+      ],
+      "route_ids": [
+        "W18-F01"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I004",
+      "claim_ids": [
+        "W18-C01"
+      ],
+      "route_ids": [
+        "W18-F01"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I005",
+      "claim_ids": [
+        "W18-C04",
+        "W18-C05"
+      ],
+      "route_ids": [
+        "W18-F03",
+        "W18-F04"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I006",
+      "claim_ids": [
+        "W18-C04"
+      ],
+      "route_ids": [
+        "W18-F03"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I007",
+      "claim_ids": [
+        "W18-C04"
+      ],
+      "route_ids": [
+        "W18-F03"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I008",
+      "claim_ids": [
+        "W18-C04",
+        "W18-C05"
+      ],
+      "route_ids": [
+        "W18-F03",
+        "W18-F04"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I009",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I010",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I011",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I012",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I013",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I014",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I015",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I016",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I017",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I018",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I019",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I020",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I021",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I022",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I023",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I024",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I025",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I026",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I027",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I028",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I029",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I030",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [
+        "W18-F10"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I031",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I032",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I033",
+      "claim_ids": [
+        "W18-C11"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I034",
+      "claim_ids": [
+        "W18-C12",
+        "W18-C13"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I035",
+      "claim_ids": [
+        "W18-C12"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I036",
+      "claim_ids": [
+        "W18-C12",
+        "W18-C13"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I037",
+      "claim_ids": [
+        "W18-C12",
+        "W18-C13"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I038",
+      "claim_ids": [
+        "W18-C12",
+        "W18-C13"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I039",
+      "claim_ids": [
+        "W18-C12"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I040",
+      "claim_ids": [
+        "W18-C12"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I041",
+      "claim_ids": [
+        "W18-C12"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I042",
+      "claim_ids": [
+        "W18-C12"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I043",
+      "claim_ids": [
+        "W18-C12"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I044",
+      "claim_ids": [
+        "W18-C12"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I045",
+      "claim_ids": [
+        "W18-C12",
+        "W18-C13"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I046",
+      "claim_ids": [
+        "W18-C12",
+        "W18-C13"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I047",
+      "claim_ids": [
+        "W18-C12"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I048",
+      "claim_ids": [
+        "W18-C12"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I049",
+      "claim_ids": [
+        "W18-C12"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I050",
+      "claim_ids": [
+        "W18-C12"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I051",
+      "claim_ids": [
+        "W18-C12"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I052",
+      "claim_ids": [
+        "W18-C12"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I053",
+      "claim_ids": [
+        "W18-C12"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I054",
+      "claim_ids": [
+        "W18-C12"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I055",
+      "claim_ids": [
+        "W18-C12"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I056",
+      "claim_ids": [
+        "W18-C12"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I057",
+      "claim_ids": [
+        "W18-C12"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I058",
+      "claim_ids": [
+        "W18-C12"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I059",
+      "claim_ids": [
+        "W18-C12",
+        "W18-C13"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I060",
+      "claim_ids": [
+        "W18-C12",
+        "W18-C13"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I061",
+      "claim_ids": [
+        "W18-C12",
+        "W18-C13"
+      ],
+      "route_ids": [
+        "W18-F11"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I062",
+      "claim_ids": [
+        "W18-C14"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": [
+        "W18-N01"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I063",
+      "claim_ids": [
+        "W18-C14"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": [
+        "W18-N01"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I064",
+      "claim_ids": [
+        "W18-C14"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": [
+        "W18-N01"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I065",
+      "claim_ids": [
+        "W18-C14"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": [
+        "W18-N01"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I066",
+      "claim_ids": [
+        "W18-C14"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": [
+        "W18-N01"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I067",
+      "claim_ids": [
+        "W18-C14"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": [
+        "W18-N01"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I068",
+      "claim_ids": [
+        "W18-C14"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": [
+        "W18-N01"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I069",
+      "claim_ids": [
+        "W18-C14"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": [
+        "W18-N01"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I070",
+      "claim_ids": [
+        "W18-C14"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": [
+        "W18-N01"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I071",
+      "claim_ids": [
+        "W18-C14"
+      ],
+      "route_ids": [],
+      "non_candidate_route_ids": [
+        "W18-N01"
+      ]
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I072",
+      "claim_ids": [
+        "W18-C06"
+      ],
+      "route_ids": [
+        "W18-F05"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I073",
+      "claim_ids": [],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I074",
+      "claim_ids": [],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I075",
+      "claim_ids": [
+        "W18-C07"
+      ],
+      "route_ids": [
+        "W18-F06"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I076",
+      "claim_ids": [],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I077",
+      "claim_ids": [
+        "W18-C07"
+      ],
+      "route_ids": [
+        "W18-F06"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I078",
+      "claim_ids": [
+        "W18-C08"
+      ],
+      "route_ids": [
+        "W18-F07"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I079",
+      "claim_ids": [
+        "W18-C09",
+        "W18-C10"
+      ],
+      "route_ids": [
+        "W18-F08",
+        "W18-F09"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I080",
+      "claim_ids": [
+        "W18-C15"
+      ],
+      "route_ids": [
+        "W18-F12"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I081",
+      "claim_ids": [
+        "W18-C15"
+      ],
+      "route_ids": [
+        "W18-F12"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I082",
+      "claim_ids": [
+        "W18-C15"
+      ],
+      "route_ids": [
+        "W18-F12"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I083",
+      "claim_ids": [
+        "W18-C15"
+      ],
+      "route_ids": [
+        "W18-F12"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I084",
+      "claim_ids": [
+        "W18-C15"
+      ],
+      "route_ids": [
+        "W18-F12"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I085",
+      "claim_ids": [
+        "W18-C15"
+      ],
+      "route_ids": [
+        "W18-F12"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I086",
+      "claim_ids": [
+        "W18-C15"
+      ],
+      "route_ids": [
+        "W18-F12"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I087",
+      "claim_ids": [
+        "W18-C15"
+      ],
+      "route_ids": [
+        "W18-F12"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I088",
+      "claim_ids": [
+        "W18-C15"
+      ],
+      "route_ids": [
+        "W18-F12"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I089",
+      "claim_ids": [
+        "W18-C15"
+      ],
+      "route_ids": [
+        "W18-F12"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I090",
+      "claim_ids": [
+        "W18-C15"
+      ],
+      "route_ids": [
+        "W18-F12"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I091",
+      "claim_ids": [],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I092",
+      "claim_ids": [],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I093",
+      "claim_ids": [],
+      "route_ids": [],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I094",
+      "claim_ids": [
+        "W18-C16"
+      ],
+      "route_ids": [
+        "W18-F13"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I095",
+      "claim_ids": [
+        "W18-C16"
+      ],
+      "route_ids": [
+        "W18-F13"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I096",
+      "claim_ids": [
+        "W18-C16"
+      ],
+      "route_ids": [
+        "W18-F13"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I097",
+      "claim_ids": [
+        "W18-C16"
+      ],
+      "route_ids": [
+        "W18-F13"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I098",
+      "claim_ids": [
+        "W18-C16"
+      ],
+      "route_ids": [
+        "W18-F13"
+      ],
+      "non_candidate_route_ids": []
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W18-20260719-I099",
+      "claim_ids": [
+        "W18-C16"
+      ],
+      "route_ids": [
+        "W18-F13"
+      ],
+      "non_candidate_route_ids": []
+    }
+  ]
+}
