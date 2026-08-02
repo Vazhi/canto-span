@@ -23,10 +23,14 @@ jobs:
 
       - name: Reconstruct and verify reviewed finalizer
         run: |
+          set -euxo pipefail
+          python3 --version
+          sha256sum tools/.dialog002-finalizer.part00
           test "$(sha256sum tools/.dialog002-finalizer.part00 | cut -d' ' -f1)" = "74eca66172f6c90a5571e0a7f0cca15e7eec6139df9145adc5af64c1fedad88c"
-          cp tools/.dialog002-finalizer.part00 /tmp/finalize-dialog002.py.gz.b64
-          test "$(sha256sum /tmp/finalize-dialog002.py.gz.b64 | cut -d' ' -f1)" = "74eca66172f6c90a5571e0a7f0cca15e7eec6139df9145adc5af64c1fedad88c"
-          base64 --decode /tmp/finalize-dialog002.py.gz.b64 | gzip --decompress > tools/finalize-dialog002-review-temporary.py
+          base64 --decode tools/.dialog002-finalizer.part00 > /tmp/finalize-dialog002.py.gz
+          gzip --test /tmp/finalize-dialog002.py.gz
+          gzip --decompress --stdout /tmp/finalize-dialog002.py.gz > tools/finalize-dialog002-review-temporary.py
+          sha256sum tools/finalize-dialog002-review-temporary.py
           test "$(sha256sum tools/finalize-dialog002-review-temporary.py | cut -d' ' -f1)" = "0d382aca5f17d0c566aebc8c4dd27bad1562cbc6855c6d76324701400c08ec29"
           python3 -m py_compile tools/finalize-dialog002-review-temporary.py
 
