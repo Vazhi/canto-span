@@ -1,0 +1,133 @@
+name: Prepare Week 15 review candidates
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/build-week15-review-candidates.yml
+
+permissions:
+  contents: write
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/week15-ingress-review
+          fetch-depth: 0
+      - name: Build deterministic candidates, immutable locks, and expert brief
+        run: |
+          python3 tools/build-pedagogical-corpus-review-candidates.py \
+            --package data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628 \
+            --output data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/mechanical-cross-reference-r1.json \
+            --write
+          python3 - <<'PY'
+          import csv
+          import hashlib
+          import json
+          from pathlib import Path
+
+          root = Path('.')
+          package_rel = Path('data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628')
+          package = root / package_rel
+          source = json.loads((package / 'source.json').read_text(encoding='utf-8'))
+          packet = json.loads((package / 'mechanical-cross-reference-r1.json').read_text(encoding='utf-8'))
+
+          def git_blob_sha(data: bytes) -> str:
+              return hashlib.sha1(b'blob ' + str(len(data)).encode('ascii') + b'\0' + data).hexdigest()
+
+          immutable = []
+          for name in ['source.json', 'items.tsv']:
+              data = (package / name).read_bytes()
+              immutable.append({
+                  'path': name,
+                  'bytes': len(data),
+                  'sha256': hashlib.sha256(data).hexdigest(),
+                  'git_blob_sha': git_blob_sha(data),
+              })
+
+          integrity = {
+              'schema': 'canto-span-pedagogical-corpus-package-integrity-v1',
+              'source_id': source['source']['sourceId'],
+              'source_payload_hash': source['ingress']['sourcePayloadHash'],
+              'immutable_files': immutable,
+              'policy': 'source.json and items.tsv are immutable accepted source projections; changes require a new reviewed source revision',
+          }
+          (package / 'package-integrity-r1.json').write_text(
+              json.dumps(integrity, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
+          )
+
+          locks_path = root / 'config/pedagogical-corpus-source-locks.json'
+          locks = json.loads(locks_path.read_text(encoding='utf-8'))
+          record = {
+              'package': str(package_rel),
+              'source_id': source['source']['sourceId'],
+              'source_payload_hash': source['ingress']['sourcePayloadHash'],
+              'immutable_files': immutable,
+              'accepted_on': '2026-08-02',
+              'origin_issue': 132,
+              'origin_pull_request': None,
+              'policy': 'source-preserving archive; changes require a new reviewed source revision rather than in-place mutation',
+          }
+          records = [row for row in locks['records'] if row.get('package') != str(package_rel)]
+          records.append(record)
+          locks['records'] = sorted(records, key=lambda row: row['package'])
+          locks_path.write_text(json.dumps(locks, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          brief_path = package / 'expert-review-brief.tmp.tsv'
+          fields = [
+              'id', 'ordinal', 'item_type', 'section', 'subsection',
+              'source_display', 'source_jyutping', 'source_english',
+              'later_research', 'top_owner_candidates'
+          ]
+          with brief_path.open('w', encoding='utf-8', newline='') as handle:
+              writer = csv.DictWriter(handle, fieldnames=fields, delimiter='\t', lineterminator='\n')
+              writer.writeheader()
+              for row in packet['records']:
+                  source_item = next(item for item in source['items'] if item['id'] == row['id'])
+                  values = source_item.get('source') or {}
+                  display = values.get('traditional') or ' / '.join(
+                      str(values.get(key) or '—') for key in ['traditionalA', 'traditionalB']
+                  )
+                  later = []
+                  for link in row['later_research_links']:
+                      parts = [link.get('kind', '')]
+                      for key in ['disposition', 'candidate_id', 'cluster', 'priority', 'recommendation', 'reason']:
+                          if link.get(key) not in [None, '', []]:
+                              parts.append(f"{key}={link[key]}")
+                      if link.get('exact_runtime_owners'):
+                          parts.append('runtime=' + ','.join(link['exact_runtime_owners']))
+                      later.append(' | '.join(parts))
+                  owners = [
+                      f"{candidate['layer']}:{candidate['path']}"
+                      for candidate in row['exact_match_candidates'][:8]
+                  ]
+                  writer.writerow({
+                      'id': row['id'],
+                      'ordinal': row['ordinal'],
+                      'item_type': row['item_type'],
+                      'section': row['section'],
+                      'subsection': row['subsection'],
+                      'source_display': display,
+                      'source_jyutping': values.get('jyutping') or ' / '.join(
+                          str(values.get(key) or '—') for key in ['jyutpingA', 'jyutpingB']
+                      ),
+                      'source_english': values.get('english') or ' / '.join(
+                          str(values.get(key) or '—') for key in ['englishA', 'englishB']
+                      ),
+                      'later_research': ' || '.join(later),
+                      'top_owner_candidates': ' || '.join(owners),
+                  })
+          PY
+      - name: Commit prepared state and remove this workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add config/pedagogical-corpus-source-locks.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/mechanical-cross-reference-r1.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/package-integrity-r1.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/expert-review-brief.tmp.tsv
+          git rm .github/workflows/build-week15-review-candidates.yml
+          git commit -m "Prepare Week 15 expert ingress review"
+          git push origin HEAD:agent/week15-ingress-review
