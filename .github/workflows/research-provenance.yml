@@ -69,6 +69,19 @@ jobs:
         with:
           node-version: 24
           package-manager-cache: false
+      - name: Regenerate Week 14 mechanical cross-reference in the ephemeral checkout
+        run: |
+          python3 tools/build-pedagogical-corpus-review-candidates.py \
+            --package data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621 \
+            --output data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/mechanical-cross-reference-r1.json \
+            --write
+      - name: Upload regenerated Week 14 mechanical cross-reference
+        uses: actions/upload-artifact@v4
+        with:
+          name: week14-mechanical-cross-reference
+          path: data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/mechanical-cross-reference-r1.json
+          if-no-files-found: error
+          retention-days: 1
       - name: Test native-panel lifecycle verifier
         run: node --test tests/tooling/native-panel/native-panel-lifecycle.test.js
       - name: Test AB30 aggregate integrity verifier
