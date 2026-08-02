@@ -24,13 +24,16 @@ jobs:
       - name: Reconstruct and verify reviewed finalizer
         run: |
           set -euxo pipefail
-          python3 --version
-          sha256sum tools/.dialog002-finalizer.part00
-          test "$(sha256sum tools/.dialog002-finalizer.part00 | cut -d' ' -f1)" = "74eca66172f6c90a5571e0a7f0cca15e7eec6139df9145adc5af64c1fedad88c"
-          base64 --decode tools/.dialog002-finalizer.part00 > /tmp/finalize-dialog002.py.gz
-          gzip --test /tmp/finalize-dialog002.py.gz
-          gzip --decompress --stdout /tmp/finalize-dialog002.py.gz > tools/finalize-dialog002-review-temporary.py
-          sha256sum tools/finalize-dialog002-review-temporary.py
+          test "$(sha256sum tools/.dialog002-finalizer.part00 | cut -d' ' -f1)" = "a569b7cff13e29c184ab63329bcc51679d28ab692e7b8fcc19f8166439bc4cc6"
+          test "$(sha256sum tools/.dialog002-finalizer.part01 | cut -d' ' -f1)" = "1ee9fc8ffa6a00aa03257dbeb4ab328e630892d2988b1e02b98864e4439751db"
+          test "$(sha256sum tools/.dialog002-finalizer.part02 | cut -d' ' -f1)" = "acc8b23a4dd18a97330f435fef920b9d1d29feb10628477ae8eebc31b7bbfdd5"
+          test "$(sha256sum tools/.dialog002-finalizer.part03 | cut -d' ' -f1)" = "4656b663d4887d1cd554659ee3a2717a9a7177a0cda70a24979eee6bdbc72c8e"
+          cat tools/.dialog002-finalizer.part00 \
+              tools/.dialog002-finalizer.part01 \
+              tools/.dialog002-finalizer.part02 \
+              tools/.dialog002-finalizer.part03 > /tmp/finalize-dialog002.py.gz.b64
+          test "$(sha256sum /tmp/finalize-dialog002.py.gz.b64 | cut -d' ' -f1)" = "74eca66172f6c90a5571e0a7f0cca15e7eec6139df9145adc5af64c1fedad88c"
+          base64 --decode /tmp/finalize-dialog002.py.gz.b64 | gzip --decompress > tools/finalize-dialog002-review-temporary.py
           test "$(sha256sum tools/finalize-dialog002-review-temporary.py | cut -d' ' -f1)" = "0d382aca5f17d0c566aebc8c4dd27bad1562cbc6855c6d76324701400c08ec29"
           python3 -m py_compile tools/finalize-dialog002-review-temporary.py
 
@@ -56,6 +59,9 @@ jobs:
 
           git rm -f \
             tools/.dialog002-finalizer.part00 \
+            tools/.dialog002-finalizer.part01 \
+            tools/.dialog002-finalizer.part02 \
+            tools/.dialog002-finalizer.part03 \
             data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-002-20251207/.review-claim
 
           git add \
@@ -90,6 +96,9 @@ jobs:
           package.json
           tests/tooling/research/pedagogical-corpus-review.test.py
           tools/.dialog002-finalizer.part00
+          tools/.dialog002-finalizer.part01
+          tools/.dialog002-finalizer.part02
+          tools/.dialog002-finalizer.part03
           tools/build-pedagogical-corpus-review-candidates.py
           tools/verify-pedagogical-corpus-review.py
           EOF
