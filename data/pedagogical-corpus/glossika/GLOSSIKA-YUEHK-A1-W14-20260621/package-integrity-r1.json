@@ -1,0 +1,34 @@
+{
+  "schema": "canto-span-pedagogical-corpus-package-integrity-v1",
+  "source_id": "GLOSSIKA-YUEHK-A1-W14-20260621",
+  "source_payload_hash": "sha256:8b539f409e0cd61bea4832edfa6ec1c607e8d18cd9f429ddbab954b36920102f",
+  "immutable_files": [
+    {
+      "path": "source.json",
+      "bytes": 31220,
+      "sha256": "4beb923900ff0dfcefa94f715e6035b8023b9f1dcd7d248e2359bc126bc153cd",
+      "git_blob_sha": "db326b6c551bff1d0c7ad6b4d556023b0f49b16b"
+    },
+    {
+      "path": "items.tsv",
+      "bytes": 13716,
+      "sha256": "381f143afaa67d00465e7e7f759597548f2139a23177c8bd5e0e8e5d64c06b6a",
+      "git_blob_sha": "fccdf16953d61892341cf6e16401c13b5b39e20c"
+    }
+  ],
+  "deterministic_files": [
+    "mechanical-cross-reference-r1.json",
+    "expert-review-r1.tsv"
+  ],
+  "review_files": [
+    "review.json",
+    "README.md",
+    "research-summary.md"
+  ],
+  "integrity_policy": {
+    "source_json_and_items_tsv_byte_immutable": true,
+    "mechanical_cross_reference_regenerable": true,
+    "expert_decisions_separate_from_mechanical_candidates": true,
+    "source_values_never_silently_replaced": true
+  }
+}

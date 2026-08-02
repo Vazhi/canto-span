@@ -15,12 +15,14 @@
       "external-evidence"
     ],
     "excluded_package_files": [
-      "source.json",
-      "review.json",
-      "items.tsv",
       "README.md",
+      "expert-review-r1.tsv",
+      "items.tsv",
+      "mechanical-cross-reference-r1.json",
+      "package-integrity-r1.json",
       "research-summary.md",
-      "mechanical-cross-reference-r1.json"
+      "review.json",
+      "source.json"
     ],
     "excluded_path_parts": [
       ".git",
