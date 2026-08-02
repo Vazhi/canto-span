@@ -2465,7 +2465,16 @@
             "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
             "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
           },
-          "source_discrepancies": [],
+          "source_discrepancies": [
+            {
+              "type": "component_default_reading",
+              "sourceComponent": "公園",
+              "reviewedRuntimeDefault": "gung1 jyun2",
+              "reviewVariant": "gung1 jyun4",
+              "status": "source_runtime_component_default_reading_difference",
+              "note": "The source form 行公園 contains 公園; the runtime defaults to the common changed-tone reading gung1 jyun2 while retaining gung1 jyun4 as a review variant."
+            }
+          ],
           "reviewed_values": {}
         }
       ],

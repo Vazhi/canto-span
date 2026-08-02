@@ -38,12 +38,12 @@
     },
     "evidence_use_counts": {
       "formula_or_register_unresolved_requires_independent_review": 4,
-      "lexical_attestation_with_reviewed_runtime_crosswalk": 31,
-      "lexical_attestation_with_runtime_crosswalk_and_source_difference": 4,
+      "lexical_attestation_with_reviewed_runtime_crosswalk": 30,
+      "lexical_attestation_with_runtime_crosswalk_and_source_difference": 5,
       "pedagogical_attestation_only": 14,
       "unverified_pedagogical_pronunciation_attestation": 6
     },
-    "records_with_source_discrepancies": 10,
+    "records_with_source_discrepancies": 11,
     "records_with_reviewed_replacements": 0,
     "records_with_runtime_crosswalk": 35,
     "known_source_alerts": [
@@ -1707,8 +1707,14 @@
         }
       ],
       "terminal_ingress_classification": "lexical_only_attestation",
-      "evidence_use_disposition": "lexical_attestation_with_reviewed_runtime_crosswalk",
-      "source_discrepancies": [],
+      "evidence_use_disposition": "lexical_attestation_with_runtime_crosswalk_and_source_difference",
+      "source_discrepancies": [
+        {
+          "field": "jyutping_component",
+          "issue": "The source form 行公園 contains 公園; the runtime defaults to the common changed-tone reading gung1 jyun2 while retaining gung1 jyun4 as a review variant.",
+          "status": "source_runtime_component_default_reading_difference"
+        }
+      ],
       "reviewed_values": {
         "traditional": null,
         "jyutping": null,
@@ -1732,12 +1738,21 @@
             "provenancePath": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
             "evidenceBoundary": "lexical_and_pedagogical_attestation_only"
           },
-          "source_discrepancies": [],
+          "source_discrepancies": [
+            {
+              "type": "component_default_reading",
+              "sourceComponent": "公園",
+              "reviewedRuntimeDefault": "gung1 jyun2",
+              "reviewVariant": "gung1 jyun4",
+              "status": "source_runtime_component_default_reading_difference",
+              "note": "The source form 行公園 contains 公園; the runtime defaults to the common changed-tone reading gung1 jyun2 while retaining gung1 jyun4 as a review variant."
+            }
+          ],
           "reviewed_values": {}
         }
       ],
       "mechanical_cross_reference_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I033",
-      "review_note": "The source form has a merged runtime representation, recorded separately from corpus duplicate identity and source correctness.",
+      "review_note": "The runtime representation is retained, but the component-level 公園 reading difference remains explicit and no source value is overwritten.",
       "not_claims": [
         "not_grammar_proof",
         "not_productivity_evidence",

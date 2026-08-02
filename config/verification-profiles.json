@@ -4,43 +4,64 @@
     "core": [
       {
         "id": "construction-notes",
-        "command": ["node", "tools/verify-construction-notes.js"],
+        "command": [
+          "node",
+          "tools/verify-construction-notes.js"
+        ],
         "reason": "Keep current construction notes structurally aligned with runtime labels and test files.",
         "run_when": "Runtime labels, construction notes, statuses, or construction test metadata change."
       },
       {
         "id": "construction-adjudications",
-        "command": ["node", "tools/apply-construction-adjudications.js"],
+        "command": [
+          "node",
+          "tools/apply-construction-adjudications.js"
+        ],
         "reason": "Prevent accepted UUID-keyed adjudications from drifting from their canonical records.",
         "run_when": "Identity or adjudication records change."
       },
       {
         "id": "construction-identities",
-        "command": ["node", "tools/verify-construction-identities.js"],
+        "command": [
+          "node",
+          "tools/verify-construction-identities.js"
+        ],
         "reason": "Protect permanent UUIDs, short codes, aliases, and lifecycle coverage.",
         "run_when": "Identity, adjudication, runtime-label, or source-path data change."
       },
       {
         "id": "discovery-freshness",
-        "command": ["node", "tools/generate-supported-productive-discovery.js"],
+        "command": [
+          "node",
+          "tools/generate-supported-productive-discovery.js"
+        ],
         "reason": "Detect stale deterministic readiness outputs after their canonical inputs change.",
         "run_when": "Identity, evidence, status, corpus, panel, test, or readiness inputs change."
       },
       {
         "id": "parked-constructions",
-        "command": ["node", "tools/verify-parked-constructions.js"],
+        "command": [
+          "node",
+          "tools/verify-parked-constructions.js"
+        ],
         "reason": "Ensure every parked entry resolves to one current identity and unlisted constructions remain available.",
         "run_when": "Parking or identity data change."
       },
       {
         "id": "project-state",
-        "command": ["node", "tools/verify-project-state.js"],
+        "command": [
+          "node",
+          "tools/verify-project-state.js"
+        ],
         "reason": "Keep the sole current project snapshot synchronized with canonical counts.",
         "run_when": "Canonical state or PROJECT-STATE.md changes."
       },
       {
         "id": "documentation",
-        "command": ["node", "tools/verify-documentation-consistency.js"],
+        "command": [
+          "node",
+          "tools/verify-documentation-consistency.js"
+        ],
         "reason": "Prevent broken current-document links and competing current authority.",
         "run_when": "Current documentation, authority settings, or canonical state change."
       }
@@ -48,25 +69,37 @@
     "research": [
       {
         "id": "research-provenance",
-        "command": ["node", "tools/verify-research-provenance.js"],
+        "command": [
+          "node",
+          "tools/verify-research-provenance.js"
+        ],
         "reason": "Prevent missing, duplicate, malformed, or overclaimed research provenance records.",
         "run_when": "Research packages, source ledgers, evidence grades, or provenance configuration change."
       },
       {
         "id": "native-panel-lifecycle",
-        "command": ["node", "tools/verify-native-panel-lifecycle.js"],
+        "command": [
+          "node",
+          "tools/verify-native-panel-lifecycle.js"
+        ],
         "reason": "Prevent a follow-up native-panel instrument or artifact from becoming locked, generated, deployable, or deployed before pilot closure and accepted item audit.",
         "run_when": "Canonical pilot, item-audit, follow-up lifecycle, or tracked-artifact metadata changes."
       },
       {
         "id": "ab30-aggregate-corpus",
-        "command": ["python3", "review-packets/corpus-review/AB30/verify-aggregate-corpus-evidence-manifest-r1.py"],
+        "command": [
+          "python3",
+          "review-packets/corpus-review/AB30/verify-aggregate-corpus-evidence-manifest-r1.py"
+        ],
         "reason": "Prevent accepted AB30 component decisions, source inventories, source manifests, candidate coverage, and note projections from drifting behind unchanged aggregate counts.",
         "run_when": "The AB30 aggregate manifest, any referenced component decision or source file, the AB30 note, or its verifier changes."
       },
       {
         "id": "interim-pilot-public-package",
-        "command": ["python3", "tools/verify-interim-pilot-public-package.py"],
+        "command": [
+          "python3",
+          "tools/verify-interim-pilot-public-package.py"
+        ],
         "reason": "Prevent the disclosure-controlled interim pilot package from drifting into final-eligibility claims, small-cell or private-text disclosure, stale public hashes, contradictory lifecycle state, or unsupported reproducibility claims.",
         "run_when": "The 2026-07-31 public interim package, disclosure policy, current native-panel lifecycle, or its verifier changes."
       },
@@ -79,6 +112,8 @@
           "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621",
           "--package",
           "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628",
+          "--package",
+          "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705",
           "--check-deterministic-crossref"
         ],
         "reason": "Keep reviewed pedagogical source archives, deterministic repository cross-references, terminal expert dispositions, duplicate targets, discrepancy records, and tabular projections synchronized across all registered packages.",
@@ -88,19 +123,30 @@
     "runtime": [
       {
         "id": "runtime-build",
-        "command": ["node", "tools/build-runtime.js", "--check"],
+        "command": [
+          "node",
+          "tools/build-runtime.js",
+          "--check"
+        ],
         "reason": "Detect stale or nondeterministic committed runtime bundles relative to canonical runtime source.",
         "run_when": "Runtime source, runtime resources, build tooling, package metadata, or committed main.js changes."
       },
       {
         "id": "runtime-tests",
-        "command": ["node", "tests/run-all.js"],
+        "command": [
+          "node",
+          "tests/run-all.js"
+        ],
         "reason": "Protect parser behavior and executable construction expectations across the canonical runtime test suite.",
         "run_when": "Runtime source, runtime resources, executable fixtures, lexicon data, or runtime tests change."
       },
       {
         "id": "generated-runtime",
-        "command": ["node", "--test", "tests/tooling/runtime/generated-bundle.test.js"],
+        "command": [
+          "node",
+          "--test",
+          "tests/tooling/runtime/generated-bundle.test.js"
+        ],
         "reason": "Ensure the committed deployment bundle remains loadable and self-contained in the supported host contract.",
         "run_when": "Runtime source, build tooling, package metadata, generated-bundle tests, or committed main.js changes."
       }
@@ -108,13 +154,19 @@
     "release": [
       {
         "id": "promotion-rules",
-        "command": ["node", "tools/enforce-promotion-rules.js"],
+        "command": [
+          "node",
+          "tools/enforce-promotion-rules.js"
+        ],
         "reason": "Block linguistic status promotion unless the permanent evidence gates are satisfied.",
         "run_when": "Status, promotion evidence, panel, corpus, or boundary records change for a promotion decision."
       },
       {
         "id": "release-handoff",
-        "command": ["node", "tools/verify-release-handoff.js"],
+        "command": [
+          "node",
+          "tools/verify-release-handoff.js"
+        ],
         "reason": "Block release publication when version, package, or handoff invariants are incomplete.",
         "run_when": "Preparing or changing a release."
       }

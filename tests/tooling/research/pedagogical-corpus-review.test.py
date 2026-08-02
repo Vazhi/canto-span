@@ -21,11 +21,12 @@ SPEC.loader.exec_module(VERIFIER)
 
 WEEK14 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621")
 WEEK15 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628")
+WEEK16 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705")
 REGISTERED = {
-    WEEK14: {"records": 61, "discrepancies": 6, "exact": 5},
-    WEEK15: {"records": 65, "discrepancies": 4, "exact": 10},
+    WEEK14: {"records": 61, "discrepancies": 6, "exact": 5, "runtime": 0},
+    WEEK15: {"records": 65, "discrepancies": 4, "exact": 10, "runtime": 0},
+    WEEK16: {"records": 59, "discrepancies": 11, "exact": 0, "runtime": 35},
 }
-
 
 def write_json(path: Path, value: object) -> None:
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -42,9 +43,10 @@ class RegisteredPedagogicalCorpusReviewTest(unittest.TestCase):
                 self.assertEqual(result["unreviewed"], 0)
                 self.assertEqual(result["source_discrepancies"], expected["discrepancies"])
                 self.assertEqual(
-                    result["duplicate_status_counts"]["accepted_exact_duplicate"],
+                    result["duplicate_status_counts"].get("accepted_exact_duplicate", 0),
                     expected["exact"],
                 )
+                self.assertEqual(result["runtime_crosswalk_records"], expected["runtime"])
                 self.assertEqual(result["reviewed_replacements"], 0)
 
     def test_week15_terminal_projection(self) -> None:
@@ -83,6 +85,38 @@ class RegisteredPedagogicalCorpusReviewTest(unittest.TestCase):
         self.assertEqual(review_row["reviewed_values"]["phonics_pair"], None)
         self.assertEqual(review_row["source_discrepancies"][0]["status"], "source_incomplete")
 
+
+    def test_week16_terminal_projection(self) -> None:
+        review = json.loads((ROOT / WEEK16 / "review.json").read_text(encoding="utf-8"))
+        self.assertEqual(
+            review["summary"]["terminal_classification_counts"],
+            {
+                "lexical_only_attestation": 35,
+                "naturalness_review_candidate": 4,
+                "new_corpus_attestation": 20,
+            },
+        )
+        self.assertEqual(review["summary"]["records_with_runtime_crosswalk"], 35)
+        self.assertEqual(review["summary"]["records_with_source_discrepancies"], 11)
+
+    def test_week16_runtime_crosswalk_is_separate_from_duplicate_identity(self) -> None:
+        source = json.loads((ROOT / WEEK16 / "source.json").read_text(encoding="utf-8"))
+        review = json.loads((ROOT / WEEK16 / "review.json").read_text(encoding="utf-8"))
+        runtime = json.loads((ROOT / WEEK16 / "runtime-crosswalk-r1.json").read_text(encoding="utf-8"))
+        self.assertEqual(runtime["record_count"], 35)
+        self.assertEqual(len(runtime["records"]), 35)
+        self.assertTrue(all(row["expert_duplicate_status"] == "no_accepted_duplicate" for row in review["records"]))
+        crosswalk_rows = [row for row in review["records"] if row["implementation_crosswalk_targets"]]
+        self.assertEqual(len(crosswalk_rows), 35)
+        source_by_id = {row["id"]: row for row in source["items"]}
+        difference_surfaces = {
+            source_by_id[row["id"]]["source"]["traditional"]
+            for row in crosswalk_rows
+            if row["evidence_use_disposition"] == "lexical_attestation_with_runtime_crosswalk_and_source_difference"
+        }
+        self.assertEqual(difference_surfaces, {"煮嘢食", "畫畫", "釣魚", "下棋", "行公園"})
+        park = next(row for row in review["records"] if row["id"].endswith("I033"))
+        self.assertEqual(park["source_discrepancies"][0]["status"], 'source_runtime_component_default_reading_difference')
 
 class PedagogicalCorpusReviewMutationTest(unittest.TestCase):
     def setUp(self) -> None:
@@ -180,6 +214,41 @@ class PedagogicalCorpusReviewMutationTest(unittest.TestCase):
         with self.assertRaisesRegex(AssertionError, "exact duplicate lacks accepted target"):
             self.verify()
 
+
+class Week16RuntimeCrosswalkMutationTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.temp = tempfile.TemporaryDirectory()
+        self.root = Path(self.temp.name)
+        shutil.copytree(ROOT / WEEK16, self.root / WEEK16, dirs_exist_ok=True)
+        lock_target = self.root / VERIFIER.SOURCE_LOCKS_RELATIVE
+        lock_target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(ROOT / VERIFIER.SOURCE_LOCKS_RELATIVE, lock_target)
+        provenance = self.root / "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md"
+        provenance.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(ROOT / "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md", provenance)
+
+    def tearDown(self) -> None:
+        self.temp.cleanup()
+
+    def verify(self):
+        return VERIFIER.verify(self.root, WEEK16, check_deterministic_crossref=False)
+
+    def test_runtime_crosswalk_identity_drift_fails(self) -> None:
+        path = self.root / WEEK16 / "runtime-crosswalk-r1.json"
+        packet = json.loads(path.read_text(encoding="utf-8"))
+        packet["runtime_merge_commit"] = "0" * 40
+        write_json(path, packet)
+        with self.assertRaisesRegex(AssertionError, "implementation identity mismatch"):
+            self.verify()
+
+    def test_fabricated_implementation_target_fails(self) -> None:
+        path = self.root / WEEK16 / "review.json"
+        review = json.loads(path.read_text(encoding="utf-8"))
+        row = next(record for record in review["records"] if record["implementation_crosswalk_targets"])
+        row["implementation_crosswalk_targets"][0]["path"] = "data/invented-runtime-owner.json"
+        write_json(path, review)
+        with self.assertRaisesRegex(AssertionError, "implementation crosswalk target is not evidence-backed"):
+            self.verify()
 
 if __name__ == "__main__":
     unittest.main()

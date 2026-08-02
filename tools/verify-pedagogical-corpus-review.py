@@ -216,6 +216,58 @@ def verify_source_and_tsv(package: Path, source: dict[str, Any]) -> tuple[list[d
     return items, source_ids
 
 
+def verify_runtime_crosswalk(
+    root: Path,
+    package: Path,
+    source_id: str,
+    payload_hash: str,
+    source_items: list[dict[str, Any]],
+) -> set[str]:
+    path = package / "runtime-crosswalk-r1.json"
+    if not path.exists():
+        return set()
+    packet = load_json(path)
+    if packet.get("schema") != "canto-span-pedagogical-runtime-crosswalk-v1":
+        fail("unexpected pedagogical runtime-crosswalk schema")
+    if packet.get("source_id") != source_id or packet.get("source_payload_hash") != payload_hash:
+        fail("runtime-crosswalk source identity mismatch")
+    pull_request = packet.get("runtime_pull_request")
+    merge_commit = packet.get("runtime_merge_commit")
+    provenance_path = packet.get("provenance_path")
+    if not isinstance(pull_request, int) or pull_request <= 0:
+        fail("runtime-crosswalk pull request missing")
+    if not isinstance(merge_commit, str) or not re.fullmatch(r"[0-9a-f]{40}", merge_commit):
+        fail("runtime-crosswalk merge commit malformed")
+    if not isinstance(provenance_path, str) or not provenance_path or not (root / provenance_path).is_file():
+        fail("runtime-crosswalk provenance path missing")
+    records = packet.get("records")
+    if not isinstance(records, list):
+        fail("runtime-crosswalk records must be an array")
+    ids = stable_ids(records, "runtime-crosswalk records")
+    if packet.get("record_count") != len(records):
+        fail("runtime-crosswalk record count mismatch")
+    source_by_id = {row["id"]: row for row in source_items}
+    for row in records:
+        item_id = row["id"]
+        source = source_by_id.get(item_id)
+        if source is None or source.get("itemType") != "lexical_entry":
+            fail(f"runtime-crosswalk references a nonlexical or missing source item: {item_id}")
+        if row.get("source_hash") != source.get("sourceHash"):
+            fail(f"runtime-crosswalk source hash drift: {item_id}")
+        link = row.get("runtime_crosswalk")
+        if not isinstance(link, dict) or link.get("status") != "merged_runtime_crosswalk":
+            fail(f"runtime-crosswalk implementation link missing: {item_id}")
+        if link.get("pullRequest") != pull_request or link.get("mergeCommit") != merge_commit:
+            fail(f"runtime-crosswalk implementation identity mismatch: {item_id}")
+        if link.get("provenancePath") != provenance_path:
+            fail(f"runtime-crosswalk provenance projection mismatch: {item_id}")
+        if not isinstance(row.get("source_discrepancies"), list):
+            fail(f"runtime-crosswalk source discrepancies malformed: {item_id}")
+        if not isinstance(row.get("reviewed_values"), dict):
+            fail(f"runtime-crosswalk reviewed values malformed: {item_id}")
+    return set(ids)
+
+
 def allowed_duplicate_paths(crossref_row: dict[str, Any], normalized: bool) -> set[str]:
     field = "normalized_match_candidates" if normalized else "exact_match_candidates"
     output = {
@@ -268,6 +320,7 @@ def verify_review(
     evidence_counts: Counter[str] = Counter()
     discrepancy_count = 0
     replacement_count = 0
+    implementation_crosswalk_count = 0
 
     for row in crossref_rows:
         item = source_by_id[row["id"]]
@@ -328,6 +381,42 @@ def verify_review(
             if not isinstance(target.get("basis"), str) or not target["basis"]:
                 fail(f"accepted duplicate target lacks basis: {item_id}")
 
+
+        later_links = row.get("later_research_links")
+        if later_links != crossref_row.get("later_research_links"):
+            fail(f"review later-research links drift from the mechanical packet: {item_id}")
+        runtime_links = [
+            link for link in later_links
+            if isinstance(link, dict) and link.get("kind") == "runtime_crosswalk"
+        ]
+        implementation_targets = row.get("implementation_crosswalk_targets", [])
+        if not isinstance(implementation_targets, list):
+            fail(f"implementation crosswalk targets must be an array: {item_id}")
+        allowed_implementation_paths = {
+            match.get("path")
+            for match in crossref_row.get("exact_match_candidates", [])
+            if isinstance(match, dict)
+            and match.get("layer") in {"runtime_lexicon", "runtime_source"}
+            and isinstance(match.get("path"), str)
+        }
+        allowed_implementation_paths.update(
+            link.get("provenance_path")
+            for link in runtime_links
+            if isinstance(link.get("provenance_path"), str)
+        )
+        if runtime_links:
+            if terminal != "lexical_only_attestation" or not implementation_targets:
+                fail(f"runtime-crosswalk item lacks a separate lexical implementation target: {item_id}")
+        elif implementation_targets:
+            fail(f"implementation target lacks a runtime-crosswalk evidence link: {item_id}")
+        for target in implementation_targets:
+            if not isinstance(target, dict) or target.get("path") not in allowed_implementation_paths:
+                fail(f"implementation crosswalk target is not evidence-backed: {item_id}: {target}")
+            if not all(isinstance(target.get(key), str) and target[key] for key in ["basis", "target_type"]):
+                fail(f"implementation crosswalk target lacks metadata: {item_id}")
+        if implementation_targets:
+            implementation_crosswalk_count += 1
+
         discrepancies = row.get("source_discrepancies")
         if not isinstance(discrepancies, list):
             fail(f"source discrepancies must be an array: {item_id}")
@@ -361,22 +450,22 @@ def verify_review(
         fail("source discrepancy summary mismatch")
     if summary.get("records_with_reviewed_replacements") != replacement_count:
         fail("reviewed replacement summary mismatch")
+    if summary.get("records_with_runtime_crosswalk", 0) != implementation_crosswalk_count:
+        fail("runtime-crosswalk summary mismatch")
 
 
 def verify_expert_tsv(package: Path, source_items: list[dict[str, Any]], review: dict[str, Any]) -> None:
     fields, rows = load_tsv(package / "expert-review-r1.tsv")
     required = {
-        "id",
-        "item_type",
-        "duplicate_status",
-        "terminal_classification",
-        "evidence_use",
-        "discrepancy_status",
-        "accepted_duplicate_targets",
-        "review_note",
+        "id", "item_type", "duplicate_status", "terminal_classification",
+        "evidence_use", "discrepancy_status", "review_note",
     }
     if not required.issubset(fields):
         fail(f"expert-review-r1.tsv missing fields: {sorted(required - set(fields))}")
+    accepted_field = find_field(fields, ["accepted_duplicate_targets"], "expert-review-r1.tsv", required=False)
+    implementation_field = find_field(fields, ["implementation_crosswalk_targets"], "expert-review-r1.tsv", required=False)
+    if accepted_field is None and implementation_field is None:
+        fail("expert-review-r1.tsv lacks target projections")
     ids = stable_ids(rows, "expert-review-r1.tsv")
     source_ids = [row["id"] for row in source_items]
     if ids != source_ids:
@@ -397,9 +486,23 @@ def verify_expert_tsv(package: Path, source_items: list[dict[str, Any]], review:
             fail(f"expert TSV evidence-use mismatch: {item_id}")
         if row["review_note"] != reviewed["review_note"]:
             fail(f"expert TSV review note mismatch: {item_id}")
-        target_paths = ";".join(target["path"] for target in reviewed["accepted_duplicate_targets"])
-        if row["accepted_duplicate_targets"] != target_paths:
-            fail(f"expert TSV duplicate target mismatch: {item_id}")
+        expected_discrepancies = ";".join(value["status"] for value in reviewed["source_discrepancies"])
+        if row["discrepancy_status"] != expected_discrepancies:
+            fail(f"expert TSV discrepancy projection mismatch: {item_id}")
+        accepted_paths = ";".join(target["path"] for target in reviewed["accepted_duplicate_targets"])
+        if accepted_field is not None:
+            if row[accepted_field] != accepted_paths:
+                fail(f"expert TSV duplicate target mismatch: {item_id}")
+        elif accepted_paths:
+            fail(f"expert TSV omits accepted duplicate targets: {item_id}")
+        implementation_paths = ";".join(
+            target["path"] for target in reviewed.get("implementation_crosswalk_targets", [])
+        )
+        if implementation_field is not None:
+            if row[implementation_field] != implementation_paths:
+                fail(f"expert TSV implementation target mismatch: {item_id}")
+        elif implementation_paths:
+            fail(f"expert TSV omits implementation crosswalk targets: {item_id}")
 
 
 def source_display(item: dict[str, Any]) -> str:
@@ -546,7 +649,13 @@ def verify(
     if not isinstance(payload_hash, str) or not SHA256_PATTERN.fullmatch(payload_hash):
         fail("source payload hash missing or malformed")
     verify_integrity(root, package, package_relative, integrity, source_id, payload_hash)
+    runtime_crosswalk_ids = verify_runtime_crosswalk(root, package, source_id, payload_hash, source_items)
     verify_review(source, review, crossref, source_items, source_ids)
+    reviewed_crosswalk_ids = {
+        row["id"] for row in review["records"] if row.get("implementation_crosswalk_targets")
+    }
+    if reviewed_crosswalk_ids != runtime_crosswalk_ids:
+        fail("reviewed implementation targets do not match the runtime-crosswalk packet")
     verify_expert_tsv(package, source_items, review)
     verify_documentation(package, source_items, review)
     if check_deterministic_crossref:
@@ -564,6 +673,7 @@ def verify(
         "duplicate_status_counts": review["summary"]["duplicate_status_counts"],
         "source_discrepancies": review["summary"]["records_with_source_discrepancies"],
         "reviewed_replacements": review["summary"]["records_with_reviewed_replacements"],
+        "runtime_crosswalk_records": len(runtime_crosswalk_ids),
         "deterministic_crossref_checked": check_deterministic_crossref,
         "status": "PASS",
     }
