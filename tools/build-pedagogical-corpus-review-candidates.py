@@ -31,6 +31,15 @@ LAYER_PRIORITY = {
 }
 MAX_MATCH_PATHS_PER_TYPE = 24
 MIN_NORMALIZED_MATCH_LENGTH = 6
+PACKAGE_REVIEW_FILES = {
+    "source.json",
+    "review.json",
+    "items.tsv",
+    "README.md",
+    "research-summary.md",
+    "expert-review-r1.tsv",
+    "package-integrity-r1.json",
+}
 
 
 def normalize_surface(value: str) -> str:
@@ -72,14 +81,8 @@ def read_json(path: Path) -> dict[str, Any]:
 
 def candidate_files(root: Path, package_relative: Path, output_relative: Path) -> list[Path]:
     output = []
-    excluded_package_files = {
-        package_relative / "source.json",
-        package_relative / "review.json",
-        package_relative / "items.tsv",
-        package_relative / "README.md",
-        package_relative / "research-summary.md",
-        output_relative,
-    }
+    excluded_package_files = {package_relative / name for name in PACKAGE_REVIEW_FILES}
+    excluded_package_files.add(output_relative)
     for scan_root in SCAN_ROOTS:
         base = root / scan_root
         if not base.exists():
@@ -89,6 +92,12 @@ def candidate_files(root: Path, package_relative: Path, output_relative: Path) -
                 continue
             relative = path.relative_to(root)
             if relative in excluded_package_files:
+                continue
+            if relative.parent == package_relative and (
+                relative.name.startswith("expert-review-brief.")
+                or relative.name.endswith(".tmp.tsv")
+                or relative.name.endswith(".tmp.json")
+            ):
                 continue
             if any(part in EXCLUDED_PARTS for part in relative.parts):
                 continue
@@ -233,9 +242,7 @@ def build(root: Path, package_relative: Path, output_relative: Path) -> dict[str
         "record_count": len(records),
         "scan_policy": {
             "roots": SCAN_ROOTS,
-            "excluded_package_files": [
-                "source.json", "review.json", "items.tsv", "README.md", "research-summary.md", output_relative.name,
-            ],
+            "excluded_package_files": sorted(PACKAGE_REVIEW_FILES | {output_relative.name}),
             "excluded_path_parts": sorted(EXCLUDED_PARTS),
             "maximum_file_bytes": 2_000_000,
             "generated_bundle_excluded": True,
