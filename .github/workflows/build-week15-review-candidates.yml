@@ -1,0 +1,51 @@
+name: Prepare Week 15 review candidates
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/build-week15-review-candidates.yml
+
+permissions:
+  contents: write
+
+jobs:
+  complete-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/week15-ingress-review
+          fetch-depth: 0
+      - name: Execute checked-in Week 15 review generator
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          workflow = Path('.github/workflows/write-week15-expert-review.yml')
+          lines = workflow.read_text(encoding='utf-8').splitlines()
+          step = lines.index('      - name: Generate terminal expert review and documentation')
+          start = lines.index('        run: |', step) + 1
+          end = next(
+              index for index in range(start, len(lines))
+              if lines[index].startswith('      - name: ')
+          )
+          body = [line[10:] if line.startswith('          ') else line for line in lines[start:end]]
+          Path('/tmp/week15-review.sh').write_text('\n'.join(body) + '\n', encoding='utf-8')
+          PY
+          bash -euxo pipefail /tmp/week15-review.sh
+      - name: Remove temporary review materials and commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add config/pedagogical-corpus-source-locks.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/README.md \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/review.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/expert-review-r1.tsv \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/research-summary.md
+          git rm -f .github/workflows/build-week15-review-candidates.yml \
+            .github/workflows/write-week15-expert-review.yml \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/.review-claim \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/expert-review-brief.tmp.tsv \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/tail-review.tmp.json
+          git commit -m "Complete Week 15 record-level ingress review"
+          git push origin HEAD:agent/week15-ingress-review
