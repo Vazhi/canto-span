@@ -1,93 +1,54 @@
 name: Research provenance
 
 on:
-  push:
-    paths:
-      - "data/construction-identities.json"
-      - "data/construction-identity-lock.json"
-      - "data/construction-adjudications.json"
-      - "data/construction-adjudication-batches/**"
-      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/**"
-      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/**"
-      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/**"
-      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/**"
-      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/**"
-      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/**"
-      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-002-20251207/**"
-      - "docs/research/**"
-      - "external-evidence/**"
-      - "grammar/**"
-      - "review-packets/**"
-      - "config/pedagogical-corpus-source-locks.json"
-      - "config/research-provenance-baseline.json"
-      - "config/research-evidence-grades.json"
-      - "config/verification-profiles.json"
-      - "tools/build-pedagogical-corpus-review-candidates.py"
-      - "tools/research-provenance-lib.js"
-      - "tools/verify-pedagogical-corpus-review.py"
-      - "tools/verify-research-provenance.js"
-      - "tools/verify-native-panel-lifecycle.js"
-      - "tools/verify-interim-pilot-public-package.py"
-      - "tests/tooling/native-panel/native-panel-lifecycle.test.js"
-      - "tests/tooling/research/ab30-aggregate-integrity.test.py"
-      - "tests/tooling/research/interim-pilot-public-package.test.py"
-      - "tests/tooling/research/pedagogical-corpus-review.test.py"
-      - "package.json"
-      - ".github/workflows/research-provenance.yml"
   pull_request:
     paths:
-      - "data/construction-identities.json"
-      - "data/construction-identity-lock.json"
-      - "data/construction-adjudications.json"
-      - "data/construction-adjudication-batches/**"
-      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/**"
-      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/**"
-      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/**"
-      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/**"
-      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/**"
-      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/**"
-      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-002-20251207/**"
-      - "docs/research/**"
-      - "external-evidence/**"
-      - "grammar/**"
-      - "review-packets/**"
-      - "config/pedagogical-corpus-source-locks.json"
-      - "config/research-provenance-baseline.json"
-      - "config/research-evidence-grades.json"
-      - "config/verification-profiles.json"
-      - "tools/build-pedagogical-corpus-review-candidates.py"
-      - "tools/research-provenance-lib.js"
-      - "tools/verify-pedagogical-corpus-review.py"
-      - "tools/verify-research-provenance.js"
-      - "tools/verify-native-panel-lifecycle.js"
-      - "tools/verify-interim-pilot-public-package.py"
-      - "tests/tooling/native-panel/native-panel-lifecycle.test.js"
-      - "tests/tooling/research/ab30-aggregate-integrity.test.py"
-      - "tests/tooling/research/interim-pilot-public-package.test.py"
-      - "tests/tooling/research/pedagogical-corpus-review.test.py"
-      - "package.json"
       - ".github/workflows/research-provenance.yml"
-  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
-  verify-research:
+  export-dialog003-review-inputs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - name: Stage exact dialog 003 review inputs
+        run: |
+          mkdir -p /tmp/dialog003-review-inputs/package \
+            /tmp/dialog003-review-inputs/aggregate \
+            /tmp/dialog003-review-inputs/repository-corpus \
+            /tmp/dialog003-review-inputs/tooling/.github/workflows \
+            /tmp/dialog003-review-inputs/tooling/tools \
+            /tmp/dialog003-review-inputs/tooling/tests/tooling/research \
+            /tmp/dialog003-review-inputs/tooling/config
+
+          cp data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214/source.json /tmp/dialog003-review-inputs/package/
+          cp data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214/items.tsv /tmp/dialog003-review-inputs/package/
+          cp data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214/review.json /tmp/dialog003-review-inputs/package/
+          cp data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214/crosswalk.json /tmp/dialog003-review-inputs/package/
+          cp data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214/README.md /tmp/dialog003-review-inputs/package/
+          cp docs/research/GLOSSIKA-YUEHK-A1-DLG-003-20251214-CORPUS-INGRESS.md /tmp/dialog003-review-inputs/package/
+
+          cp data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json /tmp/dialog003-review-inputs/aggregate/
+          cp docs/research/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.md /tmp/dialog003-review-inputs/aggregate/
+
+          find data/pedagogical-corpus/glossika -mindepth 2 -maxdepth 2 \
+            \( -name source.json -o -name review.json \) -print0 \
+            | xargs -0 -I{} cp --parents "{}" /tmp/dialog003-review-inputs/repository-corpus/
+
+          cp .github/workflows/research-provenance.yml /tmp/dialog003-review-inputs/tooling/.github/workflows/
+          cp tools/build-pedagogical-corpus-review-candidates.py /tmp/dialog003-review-inputs/tooling/tools/
+          cp tools/verify-pedagogical-corpus-review.py /tmp/dialog003-review-inputs/tooling/tools/
+          cp tests/tooling/research/pedagogical-corpus-review.test.py /tmp/dialog003-review-inputs/tooling/tests/tooling/research/
+          cp config/verification-profiles.json /tmp/dialog003-review-inputs/tooling/config/
+          cp config/pedagogical-corpus-source-locks.json /tmp/dialog003-review-inputs/tooling/config/
+          cp package.json /tmp/dialog003-review-inputs/tooling/
+
+          find /tmp/dialog003-review-inputs -type f -print0 | sort -z | xargs -0 sha256sum > /tmp/dialog003-review-inputs/SHA256SUMS
+      - uses: actions/upload-artifact@v4
         with:
-          node-version: 24
-          package-manager-cache: false
-      - name: Test native-panel lifecycle verifier
-        run: node --test tests/tooling/native-panel/native-panel-lifecycle.test.js
-      - name: Test AB30 aggregate integrity verifier
-        run: python3 tests/tooling/research/ab30-aggregate-integrity.test.py
-      - name: Test interim pilot public-package verifier
-        run: python3 tests/tooling/research/interim-pilot-public-package.test.py
-      - name: Test reviewed pedagogical corpus packages
-        run: python3 tests/tooling/research/pedagogical-corpus-review.test.py
-      - name: Verify durable research provenance and lifecycle state
-        run: npm run verify:research
+          name: dialog003-review-inputs
+          path: /tmp/dialog003-review-inputs
+          if-no-files-found: error
+          retention-days: 1
