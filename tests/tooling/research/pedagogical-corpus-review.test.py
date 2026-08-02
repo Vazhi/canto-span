@@ -3,8 +3,6 @@
 
 from __future__ import annotations
 
-import base64
-import gzip
 import hashlib
 import importlib.util
 import json
@@ -136,18 +134,6 @@ class PedagogicalCorpusReviewTest(unittest.TestCase):
         write_json(path, review)
         with self.assertRaisesRegex(AssertionError, "exact duplicate lacks accepted target"):
             self.verify()
-
-    def test_zz_emit_regenerated_cross_reference(self) -> None:
-        builder = VERIFIER.load_builder(ROOT)
-        output_relative = PACKAGE_RELATIVE / "mechanical-cross-reference-r1.json"
-        generated = builder.build(ROOT, PACKAGE_RELATIVE, output_relative)
-        rendered = (json.dumps(generated, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
-        encoded = base64.b64encode(gzip.compress(rendered, compresslevel=9)).decode("ascii")
-        print("CANTO_SPAN_WEEK14_CROSSREF_GZIP_BASE64_BEGIN")
-        for start in range(0, len(encoded), 120):
-            print(encoded[start:start + 120])
-        print("CANTO_SPAN_WEEK14_CROSSREF_GZIP_BASE64_END")
-        self.assertEqual(generated["record_count"], 61)
 
 
 if __name__ == "__main__":
