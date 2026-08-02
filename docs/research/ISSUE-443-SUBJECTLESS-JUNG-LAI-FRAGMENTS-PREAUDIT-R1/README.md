@@ -44,15 +44,17 @@ A later controlled study must distinguish at least the following:
 - multiple possible antecedents;
 - distant antecedent across intervening discourse;
 - visual or jointly attended referent;
-- wh-purpose question response;
-- yes/no response or correction, with `係` and `唔係` coded separately from copular `係用嚟`;
+- wh-purpose question response with and without `用嚟` already present in the prompt;
+- yes/no response and correction with primed and non-primed prompts;
+- response `係` and `唔係` versus an integrated `係…嘅` surface;
 - caption or product-label use;
 - instruction or demonstration;
 - genuinely out-of-the-blue use;
-- root versus embedded placement;
+- root placement versus a complement of a non-speech predicate such as `以為`;
+- quotation-like or loose reported-speech use with `話`, coded separately from clean embedding;
 - utterance-final versus continuing target position.
 
-The same lexical material must be held constant across these contexts. Acceptance in a visual or question-answer setting cannot be counted as evidence for an antecedentless complete clause. An initial response marker such as `係` or `唔係` cannot be counted as evidence that the target itself has the copular structure `係用嚟 VP`.
+The same lexical material must be held constant across these contexts. Acceptance in a visual or question-answer setting cannot be counted as evidence for an antecedentless complete clause. A prompt containing `用嚟` must not be pooled with a non-priming prompt because direct structural or lexical echo may inflate acceptance. An initial response marker such as `係` or `唔係` cannot be counted as evidence that the following target contains that marker internally.
 
 ## Initial decision map
 
@@ -70,16 +72,19 @@ The same lexical material must be held constant across these contexts. Acceptanc
 - one universal ellipsis or null-topic derivation;
 - direct transfer of Merchant's XP-fragment analysis or Wei's Mandarin fragment typology to `用嚟 VP`;
 - automatic insertion of a specific hidden Cantonese noun phrase;
-- equivalence among bare `用嚟 VP`, `NP 用嚟 VP`, `係用嚟 VP`, and actual-use `人用 NP 嚟 VP`;
-- treating response `係／唔係` as the copula inside the target fragment;
+- equivalence among bare `用嚟 VP`, `NP 用嚟 VP`, integrated `係…嘅` forms, and actual-use `人用 NP 嚟 VP`;
+- a unique copular, focus, cleft, or other analysis for the integrated `係…嘅` frame;
+- treating response `係／唔係` as structurally contained inside the following target;
+- treating `話` complements as clean embedding diagnostics without controlling quotation-like readings;
 - promotion of visual-context examples as antecedentless syntax;
 - parser acceptance without explicit context metadata.
 
 ### Required later evidence
 
 - final frozen G04C item audit and adjudicated interpretations;
-- matched context/no-context judgments with identical predicates;
+- matched primed/non-primed and context/no-context judgments with identical predicates;
 - context-bearing corpus examples preserving preceding and following turns;
+- clean non-speech embedding controls plus separate reported-speech ambiguity controls;
 - audio evidence with target position, pauses, duration, and F0 recorded rather than a presupposed fragment contour;
 - negative controls with absent, ambiguous, or incompatible antecedents;
 - independent speakers and held-out items before any construction or runtime decision.
