@@ -1,27 +1,33 @@
 set_id	lexical_material	context	condition	candidate_sentence	interpretation_target	control_purpose
 SJL-C01	刀／切方包	Immediate unique knife antecedent	overt_resource	呢把刀用嚟切方包。	The knife is overtly identified as the resource.	Canonical overt-resource baseline
-SJL-C01	刀／切方包	Immediate unique knife antecedent	subjectless_fragment	用嚟切方包。	Recover the immediately mentioned knife as the resource.	Immediate antecedent licensing
+SJL-C01	刀／切方包	Immediate unique knife antecedent	subjectless_response	用嚟切方包。	Recover the immediately mentioned knife as the resource without presupposing the syntactic derivation.	Immediate antecedent licensing
 SJL-C01	刀／切方包	No antecedent and no visible object	subjectless_no_context	用嚟切方包。	Judge whether an implicit generic resource is available or the utterance is incomplete.	Antecedentless boundary
 SJL-C02	刀同剪刀／切方包	Two equally salient tools introduced	subjectless_ambiguous	用嚟切方包。	Determine whether either tool can be recovered and whether ambiguity lowers acceptability.	Antecedent uniqueness test
-SJL-C02	刀同剪刀／切方包	Knife explicitly selected after two tools	subjectless_disambiguated	用嚟切方包。	Recover the selected knife.	Discourse selection control
+SJL-C02	刀同剪刀／切方包	Two tools introduced, then the knife is explicitly selected	subjectless_disambiguated	用嚟切方包。	Recover the selected knife.	Discourse selection control
 SJL-C03	程式／記低開支	Immediate program antecedent	overt_resource	個程式用嚟記低開支。	The program is the overt resource.	Nonphysical resource baseline
-SJL-C03	程式／記低開支	Immediate program antecedent	subjectless_fragment	用嚟記低開支。	Recover the program as resource.	Lexical-class replication
+SJL-C03	程式／記低開支	Immediate program antecedent	subjectless_response	用嚟記低開支。	Recover the program as resource without deciding between omission, topic continuation, or predicate response.	Lexical-class replication
 SJL-C03	程式／記低開支	Topic shifts to another object before target	subjectless_after_shift	用嚟記低開支。	Test whether the earlier program remains recoverable after a topic shift.	Topic-chain locality
 SJL-C04	樽／裝水	Bottle visibly held up, no linguistic antecedent	visual_demonstration	用嚟裝水。	The visible bottle supplies the resource.	Situational antecedent
-SJL-C04	樽／裝水	Two bottles visibly present	visual_ambiguous	用嚟裝水。	Determine which visible referent is selected.	Visual ambiguity control
-SJL-C04	樽／裝水	No object visible	spoken_no_context	用嚟裝水。	Judge out-of-the-blue licensing.	Separates visual from antecedentless use
-SJL-C05	刀／切方包	Question: 呢把刀有咩用？	wh_short_answer	用嚟切方包。	Purpose answer linked to an overt resource in the question.	Wh-answer fragment profile
-SJL-C05	刀／切方包	Same question	full_answer	呢把刀用嚟切方包。	Full overt-resource answer.	Fragment/full-answer comparison
-SJL-C05	刀／切方包	Question asks who uses the knife	mismatched_question	用嚟切方包。	Test whether the fragment is licensed when it does not answer the questioned role.	Question-answer congruence
-SJL-C06	程式／記低開支	Correction after someone says the program is for photos	correction_fragment	唔係，用嚟記低開支。	Correct the stated purpose while the resource remains salient.	Correction-fragment profile
-SJL-C06	程式／記低開支	Yes/no question: 個程式係咪用嚟記低開支？	yes_no_answer	係，用嚟記低開支。	Confirm the purpose with explicit copular response material.	Keeps yes/no structure separate
+SJL-C04	樽／裝水	Two bottles visibly present and neither selected	visual_ambiguous	用嚟裝水。	Determine whether a unique visible referent can be selected.	Visual ambiguity control
+SJL-C04	樽／裝水	No object visible and no prior mention	spoken_no_context	用嚟裝水。	Judge out-of-the-blue licensing.	Separates visual from antecedentless use
+SJL-C05	刀／切方包	Question: 呢把刀係用嚟做咩㗎？	wh_purpose_response	用嚟切方包。	Provide the questioned purpose; derivation remains open.	Question-linked predicate-response profile
+SJL-C05	刀／切方包	Same wh-purpose question	overt_resource_answer	呢把刀用嚟切方包。	Answer with the resource overt.	Bare-response versus overt-resource comparison
+SJL-C05	刀／切方包	Same wh-purpose question	copular_full_answer	呢把刀係用嚟切方包嘅。	Answer in an overt copular/predicative frame.	Bare-response versus true-copular comparison
+SJL-C05	刀／切方包	Question: 邊個用呢把刀切方包？	mismatched_question	用嚟切方包。	Test whether the response is licensed when it does not answer the questioned participant role.	Question-answer congruence
+SJL-C06	程式／記低開支	Correction after someone says the program is for taking photos	correction_marker_plus_response	唔係，用嚟記低開支。	Initial 唔係 rejects the prior claim; the following purpose response remains structurally unresolved.	Keep correction marker separate from target structure
+SJL-C06	程式／記低開支	Yes/no question: 呢個程式係咪用嚟記低開支㗎？	affirmative_marker_plus_response	係，用嚟記低開支。	Initial 係 confirms the proposition; it is not automatically the copula inside the following target.	Keep affirmative response marker separate
+SJL-C06	程式／記低開支	Same referent, no question or correction	true_copular_predicate	係用嚟記低開支嘅。	Copular predicate with an omitted discourse topic/resource.	Structural sibling for response-marker controls
 SJL-C07	刀／切方包	Caption beneath a picture of a knife	caption_fragment	用嚟切方包	The image supplies the resource in written layout.	Caption/register profile
 SJL-C07	刀／切方包	Ordinary spoken conversation with no visible object	spoken_fragment	用嚟切方包。	No layout or visual anchor.	Caption versus speech
 SJL-C08	刀／切方包	Immediate knife antecedent	copular_predicate	係用嚟切方包嘅。	Copular/predicative description with omitted overt NP but retained 係.	Separate copular sibling
-SJL-C08	刀／切方包	Immediate knife antecedent	bare_fragment	用嚟切方包。	Bare purpose/function fragment.	Do not collapse bare and copular forms
-SJL-C09	刀／切方包	Main-clause answer to a question	root_fragment	用嚟切方包。	Root short-answer use.	Root baseline for topic-drop diagnostics
-SJL-C09	刀／切方包	Embedded after 佢話 without overt resource	embedded_target	佢話用嚟切方包。	Determine whether the subjectless surface survives embedding and what is omitted.	Root/CP-edge diagnostic
-SJL-C10	刀／切方包	Immediate antecedent; audio version	standalone_prosody	用嚟切方包。	Standalone fragment contour.	Prosodic fragment test
-SJL-C10	刀／切方包	Same antecedent; embedded in full sentence audio	integrated_prosody	呢把刀係用嚟切方包嘅。	Integrated clause contour.	Prosodic sibling control
-SJL-C11	Any target	Matched context	forced_interpretation	用嚟切方包。	Choose: recover overt resource; visual referent; generic resource; larger elided clause; unclear; unacceptable.	Naturalness cannot identify analysis
+SJL-C08	刀／切方包	Immediate knife antecedent	bare_response	用嚟切方包。	Bare purpose/function response.	Do not collapse bare and copular forms
+SJL-C09	刀／切方包	Immediate knife antecedent; root response	root_target	用嚟切方包。	Root discourse-linked use.	Root baseline for topic-drop diagnostics
+SJL-C09	刀／切方包	Immediate knife antecedent; embedded report with overt resource	embedded_overt_resource	阿明話呢把刀用嚟切方包。	Embedded clause with the resource overt.	Embedding baseline
+SJL-C09	刀／切方包	Knife remains the active topic before an embedded report	embedded_omitted_resource	講緊呢把刀嗰陣，阿明話用嚟切方包。	Test whether an embedded target can recover the active knife and whether the analysis differs from root topic drop.	Do not treat embedded acceptance as automatic null-topic evidence
+SJL-C09	刀／切方包	No antecedent before embedded report	embedded_no_context	阿明話用嚟切方包。	Judge whether any resource is recoverable without linguistic or situational support.	Embedded antecedentless boundary
+SJL-C10	刀／切方包	Wh-purpose question; audio answer ends after target	standalone_final_audio	用嚟切方包。	Question-linked response in utterance-final position.	Record final F0, duration, and following pause
+SJL-C10	刀／切方包	Same wh-purpose question; audio answer continues	continuing_nonfinal_audio	用嚟切方包，仲可以切生果。	Same target words in nonfinal continuing position.	Boundary-position control
+SJL-C10	刀／切方包	Audio full clause with overt resource	overt_integrated_audio	呢把刀用嚟切方包。	Target sequence integrated with an overt resource NP.	Compare local phrasing without assuming a fragment contour
+SJL-C10	刀／切方包	Audio true-copular full clause	copular_integrated_audio	呢把刀係用嚟切方包嘅。	Target in an overt copular/predicative frame.	Copular prosodic sibling
+SJL-C11	Any target	Matched context	forced_interpretation	用嚟切方包。	Choose: recover overt resource; visual referent; generic resource; question-linked predicate response; larger elided clause; unclear; unacceptable.	Naturalness cannot identify analysis
 SJL-C11	Any target	Matched context	correction_reason	用嚟切方包。	Optional correction and reason: missing context, wrong role, register, prosody, lexical choice, or grammar.	Adjudication support
