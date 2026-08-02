@@ -63,6 +63,12 @@
         "command": ["python3", "review-packets/corpus-review/AB30/verify-aggregate-corpus-evidence-manifest-r1.py"],
         "reason": "Prevent accepted AB30 component decisions, source inventories, source manifests, candidate coverage, and note projections from drifting behind unchanged aggregate counts.",
         "run_when": "The AB30 aggregate manifest, any referenced component decision or source file, the AB30 note, or its verifier changes."
+      },
+      {
+        "id": "interim-pilot-public-package",
+        "command": ["python3", "tools/verify-interim-pilot-public-package.py"],
+        "reason": "Prevent the disclosure-controlled interim pilot package from drifting into final-eligibility claims, small-cell or private-text disclosure, stale public hashes, contradictory lifecycle state, or unsupported reproducibility claims.",
+        "run_when": "The 2026-07-31 public interim package, disclosure policy, current native-panel lifecycle, or its verifier changes."
       }
     ],
     "runtime": [
