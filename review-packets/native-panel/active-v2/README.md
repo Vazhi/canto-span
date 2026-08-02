@@ -13,9 +13,9 @@ Canonical files:
 
 - `panel-policy.json` — thresholds, instrument requirements, batching, and lifecycle;
 - `panel-review-state.json` — current construction-specific panel evidence,
-  permanent identity tuples, and instrument-lifecycle references;
-- `followup-draft-v1-metadata.json` — non-deployable follow-up metadata using
-  permanent construction identities;
+  permanent identity tuples, pilot collection state, and item-audit state;
+- `followup-draft-v1-metadata.json` — follow-up identity, lifecycle, deployment
+  permission, and tracked-artifact state;
 - `followup-draft-v1-items.tsv` — canonical `G06–G09` and `F011–F018` item table;
 - `followup-draft-v1-item-crosswalk.tsv` — explicit mapping from superseded
   Codex-local `RUL-V1-*`, `PFV-V1-*`, and `FIL-V1-*` aliases;
@@ -43,10 +43,22 @@ but do not control the deployment gate.
 
 The deterministic lock permits `locked`, `generated`, or `deployed` only when
 pilot collection is `closed` and the item-level audit is `accepted`. It also
-rejects generated or deployable artifacts while the follow-up lifecycle remains
-`draft`. The current state is `active` / `not_started` / `draft`, and all tracked
-artifacts are non-deployable draft sources. Reported live responses that have not
-been exported, screened, and adjudicated are not accepted panel evidence.
+rejects generated, deployed, or deployable artifacts while the follow-up
+lifecycle remains `draft`, duplicate lifecycle declarations, cross-file state
+contradictions, and untracked follow-up sources. The current state is
+`active` / `not_started` / `draft`, and all tracked artifacts are non-deployable
+draft sources. Reported live responses that have not been exported, screened,
+and adjudicated are not accepted panel evidence.
+
+Run the lifecycle guard directly with:
+
+```bash
+npm run verify:native-panel-lifecycle
+```
+
+It also runs through `npm run verify:research`. The verifier reads lifecycle
+metadata only; it does not inspect respondent rows, comments, identifiers, or
+open-text responses and cannot transition survey state.
 
 The AB30 active note links the accepted decision ledger and its mechanical source
 ledger. Its five reviewed candidates (two genuine and three false positives)
