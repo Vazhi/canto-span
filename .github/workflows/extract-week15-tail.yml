@@ -1,0 +1,56 @@
+name: Extract Week 15 review tail
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/extract-week15-tail.yml
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/week15-ingress-review
+          fetch-depth: 0
+      - name: Write compact tail comparison
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          package = Path('data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628')
+          source = json.loads((package / 'source.json').read_text(encoding='utf-8'))
+          review = json.loads((package / 'review.json').read_text(encoding='utf-8'))
+          review_by_id = {row['id']: row for row in review['records']}
+          rows = []
+          for item in source['items']:
+              if item['ordinal'] < 48:
+                  continue
+              old = review_by_id[item['id']]
+              rows.append({
+                  'id': item['id'],
+                  'ordinal': item['ordinal'],
+                  'itemType': item['itemType'],
+                  'section': item['section'],
+                  'subsection': item['subsection'],
+                  'source': item['source'],
+                  'old_duplicateStatus': old.get('duplicateStatus'),
+                  'old_ingressClassification': old.get('ingressClassification'),
+                  'old_sourceDiscrepancies': old.get('sourceDiscrepancies'),
+              })
+          (package / 'tail-review.tmp.json').write_text(
+              json.dumps(rows, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
+          )
+          PY
+      - name: Commit comparison and remove workflow
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/tail-review.tmp.json
+          git rm .github/workflows/extract-week15-tail.yml
+          git commit -m "Extract Week 15 question and phonics review tail"
+          git push origin HEAD:agent/week15-ingress-review
