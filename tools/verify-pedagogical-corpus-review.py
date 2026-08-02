@@ -402,38 +402,57 @@ def verify_expert_tsv(package: Path, source_items: list[dict[str, Any]], review:
             fail(f"expert TSV duplicate target mismatch: {item_id}")
 
 
-def verify_documentation(package: Path, review: dict[str, Any]) -> None:
+def source_display(item: dict[str, Any]) -> str:
+    values = item.get("source") or {}
+    if isinstance(values.get("traditional"), str) and values["traditional"]:
+        return values["traditional"].rstrip("。！？?")
+    left = values.get("wordA", values.get("traditionalA", "—"))
+    right = values.get("wordB", values.get("traditionalB", "—"))
+    return f"{left}／{right}"
+
+
+def verify_documentation(
+    package: Path,
+    source_items: list[dict[str, Any]],
+    review: dict[str, Any],
+) -> None:
     readme = read_bytes(package / "README.md").decode("utf-8")
     summary_text = read_bytes(package / "research-summary.md").decode("utf-8")
     if "0 unreviewed records" not in readme or "npm run verify:pedagogical-corpus-review" not in readme:
         fail("package README does not describe the completed review and permanent verifier")
-    expected = {
-        "I011 公司",
-        "I013 老闆",
-        "I026 準時",
-        "I031 文件",
-        "I043 十萬",
-        "三／心",
-        "間／根",
-        "擔／耽",
-        "殺／失",
-        "夾／急",
-        "藍／林",
+    source_id = review.get("source_id")
+    if not isinstance(source_id, str) or source_id not in summary_text:
+        fail("research summary does not identify the reviewed source")
+
+    source_by_id = {row["id"]: row for row in source_items}
+    for row in review.get("records", []):
+        if row.get("terminal_ingress_classification") != "exact_duplicate":
+            continue
+        item_id = row["id"]
+        short_id = item_id.rsplit("-", 1)[-1]
+        projection = f"{short_id} {source_display(source_by_id[item_id])}"
+        if projection not in summary_text:
+            fail(f"research summary omits accepted exact duplicate: {projection}")
+
+    labels = {
+        "exact_duplicate": ["Exact duplicate"],
+        "lexical_only_attestation": ["Lexical-only attestation"],
+        "new_corpus_attestation": ["New corpus/pronunciation attestation"],
+        "pronunciation_discrepancy": ["Pronunciation discrepancy"],
+        "translation_discrepancy": ["Translation or lexical-gloss discrepancy"],
+        "naturalness_review_candidate": ["Naturalness-review candidate"],
+        "unusable": ["Unusable", "Unusable incomplete source"],
+        "normalized_duplicate": ["Normalized duplicate"],
     }
-    missing = sorted(value for value in expected if value not in summary_text)
-    if missing:
-        fail(f"research summary is missing accepted source projections: {missing}")
     counts = review["summary"]["terminal_classification_counts"]
-    required_counts = {
-        "Exact duplicate | 5": counts.get("exact_duplicate"),
-        "Lexical-only attestation | 27": counts.get("lexical_only_attestation"),
-        "New corpus/pronunciation attestation | 23": counts.get("new_corpus_attestation"),
-        "Pronunciation discrepancy | 2": counts.get("pronunciation_discrepancy"),
-        "Translation or lexical-gloss discrepancy | 4": counts.get("translation_discrepancy"),
-    }
-    missing_counts = [text for text, value in required_counts.items() if value is None or text not in summary_text]
-    if missing_counts:
-        fail(f"research summary count projection mismatch: {missing_counts}")
+    for terminal, count in counts.items():
+        if count <= 0:
+            continue
+        candidates = labels.get(terminal)
+        if not candidates:
+            fail(f"no documentation label configured for {terminal}")
+        if not any(f"| {label} | {count} |" in summary_text for label in candidates):
+            fail(f"research summary count projection mismatch: {terminal}={count}")
 
 
 def verify_deterministic_crossref(root: Path, package_relative: Path, committed: dict[str, Any]) -> None:
@@ -476,7 +495,7 @@ def verify(
     verify_integrity(root, package, package_relative, integrity, source_id, payload_hash)
     verify_review(source, review, crossref, source_items, source_ids)
     verify_expert_tsv(package, source_items, review)
-    verify_documentation(package, review)
+    verify_documentation(package, source_items, review)
     if check_deterministic_crossref:
         verify_deterministic_crossref(root, package_relative, crossref)
 
@@ -500,11 +519,30 @@ def verify(
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=DEFAULT_ROOT)
-    parser.add_argument("--package", type=Path, required=True)
+    parser.add_argument("--package", type=Path, action="append", required=True)
     parser.add_argument("--check-deterministic-crossref", action="store_true")
     args = parser.parse_args()
-    result = verify(args.root, args.package, check_deterministic_crossref=args.check_deterministic_crossref)
-    print(json.dumps(result, ensure_ascii=False, indent=2))
+    results = [
+        verify(
+            args.root,
+            package,
+            check_deterministic_crossref=args.check_deterministic_crossref,
+        )
+        for package in args.package
+    ]
+    if len(results) == 1:
+        output: dict[str, Any] = results[0]
+    else:
+        output = {
+            "schema": "canto-span-pedagogical-corpus-review-batch-verification-v1",
+            "package_count": len(results),
+            "records": sum(row["records"] for row in results),
+            "reviewed": sum(row["reviewed"] for row in results),
+            "unreviewed": sum(row["unreviewed"] for row in results),
+            "packages": results,
+            "status": "PASS",
+        }
+    print(json.dumps(output, ensure_ascii=False, indent=2))
     return 0
 
 
