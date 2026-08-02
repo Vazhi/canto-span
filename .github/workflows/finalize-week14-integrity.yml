@@ -1,0 +1,72 @@
+name: Finalize Week 14 package integrity
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/finalize-week14-integrity.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/week14-ingress-review
+          fetch-depth: 0
+      - name: Regenerate cross-reference and bind immutable source files
+        run: |
+          python3 tools/build-pedagogical-corpus-review-candidates.py \
+            --package data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621 \
+            --output data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/mechanical-cross-reference-r1.json \
+            --write
+          python3 - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          package = Path('data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621')
+          source = json.loads((package / 'source.json').read_text(encoding='utf-8'))
+          records = []
+          for name in ('source.json', 'items.tsv'):
+              data = (package / name).read_bytes()
+              records.append({
+                  'path': name,
+                  'bytes': len(data),
+                  'sha256': hashlib.sha256(data).hexdigest(),
+                  'git_blob_sha': hashlib.sha1(b'blob ' + str(len(data)).encode('ascii') + b'\0' + data).hexdigest(),
+              })
+          integrity = {
+              'schema': 'canto-span-pedagogical-corpus-package-integrity-v1',
+              'source_id': source['source']['sourceId'],
+              'source_payload_hash': source['ingress']['sourcePayloadHash'],
+              'immutable_files': records,
+              'deterministic_files': [
+                  'mechanical-cross-reference-r1.json',
+                  'expert-review-r1.tsv',
+              ],
+              'review_files': [
+                  'review.json',
+                  'README.md',
+                  'research-summary.md',
+              ],
+              'integrity_policy': {
+                  'source_json_and_items_tsv_byte_immutable': True,
+                  'mechanical_cross_reference_regenerable': True,
+                  'expert_decisions_separate_from_mechanical_candidates': True,
+                  'source_values_never_silently_replaced': True,
+              },
+          }
+          (package / 'package-integrity-r1.json').write_text(
+              json.dumps(integrity, ensure_ascii=False, indent=2) + '\n', encoding='utf-8'
+          )
+          PY
+          git rm .github/workflows/finalize-week14-integrity.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/mechanical-cross-reference-r1.json \
+                  data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/package-integrity-r1.json
+          git commit -m "Bind Week 14 immutable source and deterministic review layers"
+          git push origin HEAD:agent/week14-ingress-review
