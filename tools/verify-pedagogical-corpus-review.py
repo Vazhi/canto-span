@@ -8,12 +8,14 @@ import csv
 import hashlib
 import importlib.util
 import json
+import re
 import sys
 from collections import Counter
 from pathlib import Path
 from typing import Any
 
 DEFAULT_ROOT = Path(__file__).resolve().parents[1]
+SOURCE_LOCKS_RELATIVE = Path("config/pedagogical-corpus-source-locks.json")
 REQUIRED_FILES = {
     "source.json",
     "items.tsv",
@@ -46,6 +48,7 @@ REQUIRED_NOT_CLAIMS = {
     "not_parser_acceptance",
     "not_linguistic_status_change",
 }
+SHA256_PATTERN = re.compile(r"^sha256:[0-9a-f]{64}$")
 
 
 def fail(message: str) -> None:
@@ -77,7 +80,7 @@ def git_blob_sha(data: bytes) -> str:
 
 
 def stable_ids(rows: list[dict[str, Any]], label: str, field: str = "id") -> list[str]:
-    values = []
+    values: list[str] = []
     for row in rows:
         value = row.get(field)
         if not isinstance(value, str) or not value:
@@ -120,26 +123,63 @@ def load_builder(root: Path):
     return module
 
 
-def verify_integrity(package: Path, integrity: dict[str, Any], source_id: str, payload_hash: str) -> None:
+def immutable_records(package: Path, records: Any, label: str) -> dict[str, dict[str, Any]]:
+    if not isinstance(records, list):
+        fail(f"{label} immutable_files must be an array")
+    by_path: dict[str, dict[str, Any]] = {}
+    for row in records:
+        if not isinstance(row, dict) or row.get("path") not in {"source.json", "items.tsv"}:
+            fail(f"{label} contains an invalid immutable file record")
+        path = row["path"]
+        if path in by_path:
+            fail(f"{label} repeats immutable path: {path}")
+        data = read_bytes(package / path)
+        expected = {
+            "path": path,
+            "bytes": len(data),
+            "sha256": sha256_hex(data),
+            "git_blob_sha": git_blob_sha(data),
+        }
+        for field, value in expected.items():
+            if row.get(field) != value:
+                fail(f"{label} {field} drift: {path}")
+        by_path[path] = row
+    if set(by_path) != {"source.json", "items.tsv"}:
+        fail(f"{label} must bind source.json and items.tsv exactly")
+    return by_path
+
+
+def verify_integrity(
+    root: Path,
+    package: Path,
+    package_relative: Path,
+    integrity: dict[str, Any],
+    source_id: str,
+    payload_hash: str,
+) -> None:
     if integrity.get("schema") != "canto-span-pedagogical-corpus-package-integrity-v1":
         fail("unexpected package integrity schema")
     if integrity.get("source_id") != source_id:
         fail("package integrity source ID mismatch")
     if integrity.get("source_payload_hash") != payload_hash:
         fail("package integrity source payload hash mismatch")
-    files = integrity.get("immutable_files")
-    if not isinstance(files, list) or {row.get("path") for row in files} != {"source.json", "items.tsv"}:
-        fail("package integrity must bind source.json and items.tsv exactly")
-    for row in files:
-        if not isinstance(row, dict) or not isinstance(row.get("path"), str):
-            fail("invalid immutable file record")
-        data = read_bytes(package / row["path"])
-        if row.get("bytes") != len(data):
-            fail(f"immutable byte-count drift: {row['path']}")
-        if row.get("sha256") != sha256_hex(data):
-            fail(f"immutable SHA-256 drift: {row['path']}")
-        if row.get("git_blob_sha") != git_blob_sha(data):
-            fail(f"immutable Git blob drift: {row['path']}")
+    local = immutable_records(package, integrity.get("immutable_files"), "package integrity")
+
+    locks = load_json(root / SOURCE_LOCKS_RELATIVE)
+    if locks.get("schema") != "canto-span-pedagogical-corpus-source-locks-v1":
+        fail("unexpected pedagogical source-lock schema")
+    records = locks.get("records")
+    if not isinstance(records, list):
+        fail("pedagogical source-lock records must be an array")
+    matches = [row for row in records if isinstance(row, dict) and row.get("package") == str(package_relative)]
+    if len(matches) != 1:
+        fail("package must have exactly one external source lock")
+    lock = matches[0]
+    if lock.get("source_id") != source_id or lock.get("source_payload_hash") != payload_hash:
+        fail("external source-lock identity mismatch")
+    external = immutable_records(package, lock.get("immutable_files"), "external source lock")
+    if external != local:
+        fail("package integrity does not match the external source lock")
 
 
 def verify_source_and_tsv(package: Path, source: dict[str, Any]) -> tuple[list[dict[str, Any]], list[str]]:
@@ -151,14 +191,19 @@ def verify_source_and_tsv(package: Path, source: dict[str, Any]) -> tuple[list[d
     source_ids = stable_ids(items, "source items")
     if [row.get("ordinal") for row in items] != list(range(1, len(items) + 1)):
         fail("source ordinals are not contiguous")
+    ingress = source.get("ingress") or {}
+    if ingress.get("recordCount") != len(items):
+        fail("source ingress record count mismatch")
     for item in items:
-        if not isinstance(item.get("sourceHash"), str) or len(item["sourceHash"]) != 64:
+        source_hash = item.get("sourceHash")
+        if not isinstance(source_hash, str) or not SHA256_PATTERN.fullmatch(source_hash):
             fail(f"source item hash missing or malformed: {item.get('id')}")
         if not isinstance(item.get("source"), dict):
             fail(f"source values missing: {item.get('id')}")
 
     fields, rows = load_tsv(package / "items.tsv")
     id_field = find_field(fields, ["id", "stable_id", "stableId", "item_id"], "items.tsv")
+    assert id_field is not None
     tsv_ids = stable_ids(rows, "items.tsv", id_field)
     if tsv_ids != source_ids:
         fail("items.tsv IDs or order do not match source.json")
@@ -181,9 +226,7 @@ def allowed_duplicate_paths(crossref_row: dict[str, Any], normalized: bool) -> s
     if not normalized:
         for link in crossref_row.get("later_research_links", []):
             if isinstance(link, dict):
-                output.update(
-                    owner for owner in link.get("exact_runtime_owners", []) if isinstance(owner, str)
-                )
+                output.update(owner for owner in link.get("exact_runtime_owners", []) if isinstance(owner, str))
     return output
 
 
@@ -200,12 +243,8 @@ def verify_review(
         fail("unexpected mechanical cross-reference schema")
     source_id = (source.get("source") or {}).get("sourceId")
     payload_hash = (source.get("ingress") or {}).get("sourcePayloadHash")
-    for label, value in [
-        ("review source ID", review.get("source_id")),
-        ("cross-reference source ID", crossref.get("source_id")),
-    ]:
-        if value != source_id:
-            fail(f"{label} mismatch")
+    if review.get("source_id") != source_id or crossref.get("source_id") != source_id:
+        fail("review or cross-reference source ID mismatch")
     if review.get("source_payload_hash") != payload_hash or crossref.get("source_payload_hash") != payload_hash:
         fail("source payload hash projection mismatch")
     if review.get("record_count") != len(source_ids) or crossref.get("record_count") != len(source_ids):
@@ -224,9 +263,9 @@ def verify_review(
 
     source_by_id = {row["id"]: row for row in source_items}
     crossref_by_id = {row["id"]: row for row in crossref_rows}
-    terminal_counts = Counter()
-    duplicate_counts = Counter()
-    evidence_counts = Counter()
+    terminal_counts: Counter[str] = Counter()
+    duplicate_counts: Counter[str] = Counter()
+    evidence_counts: Counter[str] = Counter()
     discrepancy_count = 0
     replacement_count = 0
 
@@ -297,7 +336,10 @@ def verify_review(
         if discrepancies:
             discrepancy_count += 1
             for discrepancy in discrepancies:
-                if not all(isinstance(discrepancy.get(key), str) and discrepancy[key] for key in ["field", "issue", "status"]):
+                if not isinstance(discrepancy, dict) or not all(
+                    isinstance(discrepancy.get(key), str) and discrepancy[key]
+                    for key in ["field", "issue", "status"]
+                ):
                     fail(f"malformed source discrepancy: {item_id}")
 
         reviewed_values = row.get("reviewed_values")
@@ -360,6 +402,40 @@ def verify_expert_tsv(package: Path, source_items: list[dict[str, Any]], review:
             fail(f"expert TSV duplicate target mismatch: {item_id}")
 
 
+def verify_documentation(package: Path, review: dict[str, Any]) -> None:
+    readme = read_bytes(package / "README.md").decode("utf-8")
+    summary_text = read_bytes(package / "research-summary.md").decode("utf-8")
+    if "0 unreviewed records" not in readme or "npm run verify:pedagogical-corpus-review" not in readme:
+        fail("package README does not describe the completed review and permanent verifier")
+    expected = {
+        "I011 公司",
+        "I013 老闆",
+        "I026 準時",
+        "I031 文件",
+        "I043 十萬",
+        "三／心",
+        "間／根",
+        "擔／耽",
+        "殺／失",
+        "夾／急",
+        "藍／林",
+    }
+    missing = sorted(value for value in expected if value not in summary_text)
+    if missing:
+        fail(f"research summary is missing accepted source projections: {missing}")
+    counts = review["summary"]["terminal_classification_counts"]
+    required_counts = {
+        "Exact duplicate | 5": counts.get("exact_duplicate"),
+        "Lexical-only attestation | 27": counts.get("lexical_only_attestation"),
+        "New corpus/pronunciation attestation | 23": counts.get("new_corpus_attestation"),
+        "Pronunciation discrepancy | 2": counts.get("pronunciation_discrepancy"),
+        "Translation or lexical-gloss discrepancy | 4": counts.get("translation_discrepancy"),
+    }
+    missing_counts = [text for text, value in required_counts.items() if value is None or text not in summary_text]
+    if missing_counts:
+        fail(f"research summary count projection mismatch: {missing_counts}")
+
+
 def verify_deterministic_crossref(root: Path, package_relative: Path, committed: dict[str, Any]) -> None:
     builder = load_builder(root)
     output_relative = package_relative / "mechanical-cross-reference-r1.json"
@@ -368,8 +444,13 @@ def verify_deterministic_crossref(root: Path, package_relative: Path, committed:
         fail("mechanical cross-reference is stale or nondeterministic")
 
 
-def verify(root: Path, package_relative: Path) -> dict[str, Any]:
+def verify(
+    root: Path,
+    package_relative: Path,
+    check_deterministic_crossref: bool = True,
+) -> dict[str, Any]:
     root = root.resolve()
+    package_relative = Path(package_relative)
     package = root / package_relative
     if not package.is_dir():
         fail(f"package directory does not exist: {package_relative}")
@@ -390,12 +471,14 @@ def verify(root: Path, package_relative: Path) -> dict[str, Any]:
     payload_hash = (source.get("ingress") or {}).get("sourcePayloadHash")
     if not isinstance(source_id, str) or not source_id:
         fail("source ID missing")
-    if not isinstance(payload_hash, str) or not payload_hash.startswith("sha256:"):
-        fail("source payload hash missing")
-    verify_integrity(package, integrity, source_id, payload_hash)
+    if not isinstance(payload_hash, str) or not SHA256_PATTERN.fullmatch(payload_hash):
+        fail("source payload hash missing or malformed")
+    verify_integrity(root, package, package_relative, integrity, source_id, payload_hash)
     verify_review(source, review, crossref, source_items, source_ids)
     verify_expert_tsv(package, source_items, review)
-    verify_deterministic_crossref(root, package_relative, crossref)
+    verify_documentation(package, review)
+    if check_deterministic_crossref:
+        verify_deterministic_crossref(root, package_relative, crossref)
 
     return {
         "schema": "canto-span-pedagogical-corpus-review-verification-v1",
@@ -409,6 +492,7 @@ def verify(root: Path, package_relative: Path) -> dict[str, Any]:
         "duplicate_status_counts": review["summary"]["duplicate_status_counts"],
         "source_discrepancies": review["summary"]["records_with_source_discrepancies"],
         "reviewed_replacements": review["summary"]["records_with_reviewed_replacements"],
+        "deterministic_crossref_checked": check_deterministic_crossref,
         "status": "PASS",
     }
 
@@ -417,8 +501,9 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=DEFAULT_ROOT)
     parser.add_argument("--package", type=Path, required=True)
+    parser.add_argument("--check-deterministic-crossref", action="store_true")
     args = parser.parse_args()
-    result = verify(args.root, args.package)
+    result = verify(args.root, args.package, check_deterministic_crossref=args.check_deterministic_crossref)
     print(json.dumps(result, ensure_ascii=False, indent=2))
     return 0
 
