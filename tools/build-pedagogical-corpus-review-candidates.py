@@ -45,6 +45,7 @@ PACKAGE_REVIEW_FILES = {
     "project-only-review-r1.json",
     "evidence-sources-r1.json",
     "implementation-crosswalk-r1.json",
+    "role-sensitive-crosswalk-r1.json",
     "research-routing-r1.json",
 }
 GLOBAL_PEDAGOGICAL_DERIVED_FILES = {
@@ -60,6 +61,7 @@ GLOBAL_PEDAGOGICAL_DERIVED_FILES = {
     "project-only-review-r1.json",
     "evidence-sources-r1.json",
     "implementation-crosswalk-r1.json",
+    "role-sensitive-crosswalk-r1.json",
     "research-routing-r1.json",
 }
 
@@ -196,6 +198,28 @@ def load_later_research(root: Path, source_id: str) -> dict[str, list[dict[str, 
                         "exact_project_occurrence_paths": entry.get("exact_project_occurrence_paths", []),
                         "authority_status": entry.get("authority_status"),
                         "parser_hint_authority": entry.get("parser_hint_authority"),
+                    })
+
+
+    role_path = root / f"data/pedagogical-corpus/glossika/{source_id}/role-sensitive-crosswalk-r1.json"
+    if role_path.exists():
+        packet = read_json(role_path)
+        if packet.get("source_id") == source_id:
+            for entry in packet.get("records", []):
+                item_id = entry.get("id")
+                if item_id:
+                    by_item[item_id].append({
+                        "packet": "role-sensitive-crosswalk-r1",
+                        "kind": "role_sensitive_crosswalk",
+                        "orthographic_token_owner_paths": entry.get("orthographic_token_owner_paths", []),
+                        "pronunciation_owner_paths": entry.get("pronunciation_owner_paths", []),
+                        "role_specific_targets": entry.get("role_specific_targets", []),
+                        "role_specific_coverage_state": entry.get("role_specific_coverage_state"),
+                        "unrelated_or_homographic_owner_paths": entry.get("unrelated_or_homographic_owner_paths", []),
+                        "parser_owner_hints": entry.get("parser_owner_hints", []),
+                        "parser_hint_authority": entry.get("parser_hint_authority"),
+                        "controlled_specification_candidates": entry.get("controlled_specification_candidates", []),
+                        "authority_status": entry.get("authority_status"),
                     })
 
     routing_path = root / f"data/pedagogical-corpus/glossika/{source_id}/research-routing-r1.json"

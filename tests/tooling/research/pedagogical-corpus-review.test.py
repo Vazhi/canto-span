@@ -24,12 +24,14 @@ WEEK15 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628")
 WEEK16 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705")
 WEEK17 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712")
 WEEK18 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719")
+WEEK19 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726")
 REGISTERED = {
-    WEEK14: {"records": 61, "discrepancies": 6, "exact": 5, "runtime": 0, "legacy": 0, "implementation": 0, "routes": 0},
-    WEEK15: {"records": 65, "discrepancies": 4, "exact": 10, "runtime": 0, "legacy": 0, "implementation": 0, "routes": 0},
-    WEEK16: {"records": 59, "discrepancies": 11, "exact": 0, "runtime": 35, "legacy": 0, "implementation": 0, "routes": 0},
-    WEEK17: {"records": 75, "discrepancies": 39, "exact": 3, "runtime": 0, "legacy": 75, "implementation": 0, "routes": 0},
-    WEEK18: {"records": 99, "discrepancies": 41, "exact": 0, "runtime": 0, "legacy": 0, "implementation": 39, "routes": 13},
+    WEEK14: {"role_sensitive": 0, "replacements": 0, "records": 61, "discrepancies": 6, "exact": 5, "runtime": 0, "legacy": 0, "implementation": 0, "routes": 0},
+    WEEK15: {"role_sensitive": 0, "replacements": 0, "records": 65, "discrepancies": 4, "exact": 10, "runtime": 0, "legacy": 0, "implementation": 0, "routes": 0},
+    WEEK16: {"role_sensitive": 0, "replacements": 0, "records": 59, "discrepancies": 11, "exact": 0, "runtime": 35, "legacy": 0, "implementation": 0, "routes": 0},
+    WEEK17: {"role_sensitive": 0, "replacements": 0, "records": 75, "discrepancies": 39, "exact": 3, "runtime": 0, "legacy": 75, "implementation": 0, "routes": 0},
+    WEEK18: {"records": 99, "discrepancies": 41, "exact": 0, "runtime": 0, "legacy": 0, "implementation": 39, "role_sensitive": 0, "routes": 13, "replacements": 0},
+    WEEK19: {"records": 76, "discrepancies": 72, "exact": 0, "runtime": 0, "legacy": 0, "implementation": 0, "role_sensitive": 27, "routes": 12, "replacements": 1},
 }
 
 def write_json(path: Path, value: object) -> None:
@@ -53,8 +55,9 @@ class RegisteredPedagogicalCorpusReviewTest(unittest.TestCase):
                 self.assertEqual(result["runtime_crosswalk_records"], expected["runtime"])
                 self.assertEqual(result["legacy_reconciliation_records"], expected["legacy"])
                 self.assertEqual(result["bounded_implementation_records"], expected["implementation"])
+                self.assertEqual(result["role_sensitive_implementation_records"], expected["role_sensitive"])
                 self.assertEqual(result["research_followup_routes"], expected["routes"])
-                self.assertEqual(result["reviewed_replacements"], 0)
+                self.assertEqual(result["reviewed_replacements"], expected["replacements"])
 
     def test_week15_terminal_projection(self) -> None:
         review = json.loads((ROOT / WEEK15 / "review.json").read_text(encoding="utf-8"))
@@ -201,6 +204,54 @@ class RegisteredPedagogicalCorpusReviewTest(unittest.TestCase):
         self.assertEqual([item.rsplit("-", 1)[-1] for item in route["declared_source_item_ids"]], [f"I{number:03d}" for number in range(61, 71)])
         self.assertEqual([item.rsplit("-", 1)[-1] for item in route["resolved_source_item_ids"]], [f"I{number:03d}" for number in range(62, 72)])
         self.assertEqual(route["declared_id_status"], "source_id_range_off_by_one")
+
+
+    def test_week19_terminal_projection_and_role_sensitive_counts(self) -> None:
+        review = json.loads((ROOT / WEEK19 / "review.json").read_text(encoding="utf-8"))
+        role = json.loads((ROOT / WEEK19 / "role-sensitive-crosswalk-r1.json").read_text(encoding="utf-8"))
+        self.assertEqual(review["summary"]["terminal_classification_counts"], {
+            "lexical_only_attestation": 61,
+            "new_corpus_attestation": 9,
+            "pronunciation_discrepancy": 1,
+            "unusable": 5,
+        })
+        self.assertEqual(role["summary"]["classifier_exact_rule_records"], 10)
+        self.assertEqual(role["summary"]["classifier_rule_gap_records"], 4)
+        self.assertEqual(role["summary"]["controlled_specification_candidate_rows"], 9)
+        self.assertEqual(role["summary"]["accepted_noun_pair_count"], 0)
+
+    def test_week19_classifier_gaps_are_not_token_coverage(self) -> None:
+        packet = json.loads((ROOT / WEEK19 / "role-sensitive-crosswalk-r1.json").read_text(encoding="utf-8"))
+        rows = {row["id"].rsplit("-", 1)[-1]: row for row in packet["records"]}
+        for item_id in ["I006", "I009", "I013", "I014"]:
+            self.assertEqual(rows[item_id]["role_specific_coverage_state"], "classifier_rule_gap")
+            self.assertEqual(rows[item_id]["role_specific_targets"], [])
+            self.assertTrue(rows[item_id]["orthographic_token_owner_paths"] or item_id == "I006")
+
+    def test_week19_gaa2_source_and_gaa3_review_are_separate(self) -> None:
+        source = json.loads((ROOT / WEEK19 / "source.json").read_text(encoding="utf-8"))
+        review = json.loads((ROOT / WEEK19 / "review.json").read_text(encoding="utf-8"))
+        source_row = next(row for row in source["items"] if row["id"].endswith("I003"))
+        review_row = next(row for row in review["records"] if row["id"].endswith("I003"))
+        self.assertEqual(source_row["source"]["jyutping"], "gaa2")
+        self.assertEqual(review_row["reviewed_values"], {"jyutping": "gaa3"})
+        self.assertEqual(review_row["terminal_ingress_classification"], "pronunciation_discrepancy")
+
+    def test_week19_spatial_route_empty_source_list_is_reconciled(self) -> None:
+        routing = json.loads((ROOT / WEEK19 / "research-routing-r1.json").read_text(encoding="utf-8"))
+        route = next(row for row in routing["routes"] if row["id"] == "W19-F10")
+        self.assertEqual(route["declared_source_item_ids"], [])
+        self.assertEqual(route["resolved_source_item_ids"], [f"GLOSSIKA-YUEHK-A1-W19-20260726-I{n:03d}" for n in range(26, 49)])
+        self.assertEqual(route["declared_id_status"], "empty_source_id_array_reconciled")
+
+    def test_week19_incomplete_tone_rows_remain_unusable(self) -> None:
+        source = json.loads((ROOT / WEEK19 / "source.json").read_text(encoding="utf-8"))
+        review = json.loads((ROOT / WEEK19 / "review.json").read_text(encoding="utf-8"))
+        review_by_id = {row["id"]: row for row in review["records"]}
+        for number in range(72, 77):
+            item_id = f"GLOSSIKA-YUEHK-A1-W19-20260726-I{number:03d}"
+            self.assertTrue(source["items"][number - 1]["source"]["saam"].endswith("—"))
+            self.assertEqual(review_by_id[item_id]["terminal_ingress_classification"], "unusable")
 
 class PedagogicalCorpusReviewMutationTest(unittest.TestCase):
     def setUp(self) -> None:
@@ -377,6 +428,62 @@ class Week17LegacyAuthorityMutationTest(unittest.TestCase):
         write_json(path, packet)
         with self.assertRaisesRegex(AssertionError, "authorizes runtime or status change"):
             self.verify()
+
+
+class Week19RoleSensitiveMutationTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.temp = tempfile.TemporaryDirectory()
+        self.root = Path(self.temp.name)
+        shutil.copytree(ROOT / WEEK19, self.root / WEEK19)
+        shutil.copytree(ROOT / "data/research-ledgers", self.root / "data/research-ledgers")
+        shutil.copytree(ROOT / "docs/research", self.root / "docs/research")
+        shutil.copytree(ROOT / "review-packets/corpus-review/UNIT-WORDS", self.root / "review-packets/corpus-review/UNIT-WORDS")
+        shutil.copytree(ROOT / "src", self.root / "src")
+        (self.root / "config").mkdir(parents=True)
+        shutil.copy2(ROOT / "config/pedagogical-corpus-source-locks.json", self.root / "config/pedagogical-corpus-source-locks.json")
+        (self.root / "tools").mkdir(parents=True)
+        shutil.copy2(VERIFIER_PATH, self.root / "tools/verify-pedagogical-corpus-review.py")
+        shutil.copy2(ROOT / "tools/build-pedagogical-corpus-review-candidates.py", self.root / "tools/build-pedagogical-corpus-review-candidates.py")
+
+    def tearDown(self) -> None:
+        self.temp.cleanup()
+
+    def verify_failure(self) -> None:
+        with self.assertRaises(AssertionError):
+            VERIFIER.verify(self.root, WEEK19, check_deterministic_crossref=False)
+
+    def test_classifier_gap_cannot_be_promoted_from_homographic_token(self) -> None:
+        path = self.root / WEEK19 / "role-sensitive-crosswalk-r1.json"
+        data = json.loads(path.read_text(encoding="utf-8"))
+        row = next(row for row in data["records"] if row["id"].endswith("I009"))
+        row["role_specific_coverage_state"] = "exact_classifier_rule_observed"
+        row["role_specific_targets"] = [{"path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js", "target_type": "role_specific_lexical_resource", "basis": "fabricated"}]
+        write_json(path, data)
+        self.verify_failure()
+
+    def test_parser_hint_cannot_become_role_target(self) -> None:
+        path = self.root / WEEK19 / "role-sensitive-crosswalk-r1.json"
+        data = json.loads(path.read_text(encoding="utf-8"))
+        row = next(row for row in data["records"] if row["id"].endswith("I063"))
+        target_path = row["parser_owner_hints"][0]
+        row["role_specific_targets"] = [{"path": target_path, "target_type": "role_specific_grammar_resource", "basis": "fabricated"}]
+        write_json(path, data)
+        self.verify_failure()
+
+    def test_spatial_route_cannot_return_to_empty_source_set(self) -> None:
+        path = self.root / WEEK19 / "research-routing-r1.json"
+        data = json.loads(path.read_text(encoding="utf-8"))
+        route = next(row for row in data["routes"] if row["id"] == "W19-F10")
+        route["resolved_source_item_ids"] = []
+        write_json(path, data)
+        self.verify_failure()
+
+    def test_gaa3_review_cannot_mutate_source_lock(self) -> None:
+        source_path = self.root / WEEK19 / "source.json"
+        source = json.loads(source_path.read_text(encoding="utf-8"))
+        source["items"][2]["source"]["jyutping"] = "gaa3"
+        write_json(source_path, source)
+        self.verify_failure()
 
 class Week18ResearchRoutingMutationTest(unittest.TestCase):
     def setUp(self) -> None:

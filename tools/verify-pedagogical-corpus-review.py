@@ -521,7 +521,7 @@ def verify_bounded_implementation_crosswalk(
     return target_ids
 
 
-def verify_research_routing(
+def verify_week18_research_routing(
     root: Path,
     package: Path,
     source_id: str,
@@ -692,6 +692,20 @@ def verify_research_routing(
     return route_ids
 
 
+
+def verify_research_routing(
+    root: Path,
+    package: Path,
+    source_id: str,
+    payload_hash: str,
+    source_items: list[dict[str, Any]],
+    review: dict[str, Any],
+) -> set[str]:
+    if source_id == "GLOSSIKA-YUEHK-A1-W19-20260726":
+        return verify_week19_research_routing(root, package, source_id, payload_hash, source_items, review)
+    return verify_week18_research_routing(root, package, source_id, payload_hash, source_items, review)
+
+
 def allowed_duplicate_paths(crossref_row: dict[str, Any], normalized: bool) -> set[str]:
     field = "normalized_match_candidates" if normalized else "exact_match_candidates"
     output = {
@@ -706,6 +720,212 @@ def allowed_duplicate_paths(crossref_row: dict[str, Any], normalized: bool) -> s
                 if link.get("kind") == "legacy_project_reconciliation" and isinstance(link.get("source_repeat_target_path"), str):
                     output.add(link["source_repeat_target_path"])
     return output
+
+
+
+def verify_week19_role_sensitive_crosswalk(
+    root: Path,
+    package: Path,
+    source_id: str,
+    payload_hash: str,
+    source_items: list[dict[str, Any]],
+) -> set[str]:
+    path = package / "role-sensitive-crosswalk-r1.json"
+    if not path.exists():
+        return set()
+    packet = load_json(path)
+    if packet.get("schema") != "canto-span-pedagogical-corpus-role-sensitive-crosswalk-v1":
+        fail("unexpected Week 19 role-sensitive crosswalk schema")
+    if packet.get("source_id") != source_id or packet.get("source_payload_hash") != payload_hash:
+        fail("Week 19 role-sensitive crosswalk identity mismatch")
+    if packet.get("origin_pull_request") != 285 or packet.get("origin_merge_commit") != "763bfabd0bfb5a57ed8e95a684217a51d158d3e1":
+        fail("Week 19 corpus-origin identity mismatch")
+    if packet.get("research_pull_request") != 287 or packet.get("research_merge_commit") != "6938b4a457daab2a46e95a603f5093fa8458eecc":
+        fail("Week 19 research-origin identity mismatch")
+    if packet.get("unit_word_pull_request") != 362 or packet.get("unit_word_merge_commit") != "9229799d6373e3f1bd93e0cb2816a65e6ae52a95":
+        fail("Week 19 unit-word-origin identity mismatch")
+    data = read_bytes(package / "crosswalk.json")
+    expected_lock = {"path": "crosswalk.json", "bytes": len(data), "sha256": sha256_hex(data), "git_blob_sha": git_blob_sha(data)}
+    if packet.get("original_crosswalk") != expected_lock:
+        fail("Week 19 original crosswalk lock drift")
+    original = load_json(package / "crosswalk.json")
+    original_rows = original.get("records")
+    records = packet.get("records")
+    if not isinstance(original_rows, list) or not isinstance(records, list):
+        fail("Week 19 role-sensitive records missing")
+    source_ids = [row["id"] for row in source_items]
+    if stable_ids(records, "Week 19 role-sensitive records") != source_ids or packet.get("summary", {}).get("record_count") != 76:
+        fail("Week 19 role-sensitive IDs/order/count drift")
+    original_by_id = {row["sourceItemId"]: row for row in original_rows}
+    source_by_id = {row["id"]: row for row in source_items}
+    target_ids: set[str] = set()
+    classifier_exact = 0
+    classifier_gaps: list[str] = []
+    candidate_ids: list[str] = []
+    for row in records:
+        item_id = row["id"]
+        source = source_by_id[item_id]
+        old = original_by_id[item_id]
+        if row.get("source_hash") != source.get("sourceHash"):
+            fail(f"Week 19 role-sensitive source hash drift: {item_id}")
+        if row.get("source_classification") != old.get("classification") or row.get("compositional_numeral") != bool(old.get("compositionalNumeral")):
+            fail(f"Week 19 original classification projection drift: {item_id}")
+        if row.get("orthographic_token_owner_paths") != old.get("canonicalRuntimeResourceOwners", []):
+            fail(f"Week 19 token-owner projection drift: {item_id}")
+        if row.get("parser_owner_hints") != old.get("canonicalParserOwnerCandidates", []):
+            fail(f"Week 19 parser-hint projection drift: {item_id}")
+        if row.get("parser_hint_authority") != "heuristic_search_hint_only":
+            fail(f"Week 19 parser hint elevated: {item_id}")
+        if row.get("authority_status") != "role_sensitive_implementation_observation_only":
+            fail(f"Week 19 role observation elevated: {item_id}")
+        if row.get("implementation_authorized") is not False or row.get("status_change_authorized") is not False:
+            fail(f"Week 19 role packet authorizes change: {item_id}")
+        targets = row.get("role_specific_targets")
+        if not isinstance(targets, list):
+            fail(f"Week 19 role targets malformed: {item_id}")
+        target_paths = set()
+        for target in targets:
+            if not isinstance(target, dict) or not all(isinstance(target.get(key), str) and target[key] for key in ["path", "target_type", "basis"]):
+                fail(f"Week 19 role target malformed: {item_id}")
+            if not (root / target["path"]).is_file():
+                fail(f"Week 19 role target path missing: {item_id}: {target['path']}")
+            target_paths.add(target["path"])
+        if target_paths.intersection(row.get("unrelated_or_homographic_owner_paths", [])):
+            fail(f"Week 19 homographic owner promoted as role owner: {item_id}")
+        if target_paths.intersection(row.get("parser_owner_hints", [])):
+            fail(f"Week 19 parser hint promoted as role owner: {item_id}")
+        state = row.get("role_specific_coverage_state")
+        if state == "exact_classifier_rule_observed":
+            classifier_exact += 1
+            if target_paths != {"src/runtime-resources/grammar/classifier-head-rules.js"}:
+                fail(f"Week 19 exact classifier rule target drift: {item_id}")
+        if state == "classifier_rule_gap":
+            classifier_gaps.append(source_text_for_verifier(source))
+            if targets:
+                fail(f"Week 19 classifier gap has a role target: {item_id}")
+        candidates = row.get("controlled_specification_candidates")
+        if not isinstance(candidates, list):
+            fail(f"Week 19 unit-word candidates malformed: {item_id}")
+        for candidate in candidates:
+            if candidate.get("downstream_policy") != "candidate_for_later_controlled_implementation":
+                fail(f"Week 19 unit-word candidate authority drift: {item_id}")
+            candidate_ids.append(candidate.get("evidence_id"))
+        if row.get("accepted_noun_pairs") != []:
+            fail(f"Week 19 noun pair promoted without authorization: {item_id}")
+        if targets:
+            target_ids.add(item_id)
+    summary = packet.get("summary") or {}
+    if classifier_exact != 10 or summary.get("classifier_exact_rule_records") != 10:
+        fail("Week 19 exact classifier-rule count mismatch")
+    if classifier_gaps != ["枝", "對", "把", "條"] or summary.get("classifier_rule_gap_records") != 4:
+        fail("Week 19 classifier-rule gap set mismatch")
+    if len(candidate_ids) != 9 or len(set(candidate_ids)) != 9 or summary.get("controlled_specification_candidate_rows") != 9:
+        fail("Week 19 controlled-specification candidate count mismatch")
+    if summary.get("accepted_noun_pair_count") != 0:
+        fail("Week 19 noun-pair promotion count changed")
+    return target_ids
+
+
+def source_text_for_verifier(item: dict[str, Any]) -> str:
+    source = item.get("source") or {}
+    return str(source.get("traditional") or source.get("tone") or "")
+
+
+def verify_week19_research_routing(
+    root: Path,
+    package: Path,
+    source_id: str,
+    payload_hash: str,
+    source_items: list[dict[str, Any]],
+    review: dict[str, Any],
+) -> set[str]:
+    path = package / "research-routing-r1.json"
+    packet = load_json(path)
+    if packet.get("source_id") != source_id or packet.get("source_payload_hash") != payload_hash:
+        fail("Week 19 research-routing identity mismatch")
+    if packet.get("origin_pull_request") != 287 or packet.get("origin_merge_commit") != "6938b4a457daab2a46e95a603f5093fa8458eecc":
+        fail("Week 19 research-routing origin drift")
+    if packet.get("route_owner_issue") != 484:
+        fail("Week 19 routes lack durable owner #484")
+    files = packet.get("research_files")
+    if not isinstance(files, list) or len(files) != 13:
+        fail("Week 19 research-file lock count mismatch")
+    for row in files:
+        relative = row.get("path")
+        if not isinstance(relative, str):
+            fail("Week 19 research-file path missing")
+        data = read_bytes(root / relative)
+        expected = {"path": relative, "bytes": len(data), "sha256": sha256_hex(data), "git_blob_sha": git_blob_sha(data)}
+        if relative.endswith(".json"):
+            ledger = load_json(root / relative)
+            expected["schema"] = ledger.get("schema")
+            expected["packet_id"] = ledger.get("packetId")
+        if row != expected:
+            fail(f"Week 19 retained research file drift: {relative}")
+    source_ids = [row["id"] for row in source_items]
+    source_set = set(source_ids)
+    routes = packet.get("routes")
+    claims = packet.get("claims")
+    item_routes = packet.get("item_routes")
+    if not all(isinstance(value, list) for value in [routes, claims, item_routes]):
+        fail("Week 19 research-routing arrays missing")
+    if packet.get("claim_count") != 16 or {row.get("id") for row in claims} != {f"W19-C{i:02d}" for i in range(1, 17)}:
+        fail("Week 19 research claim set drift")
+    for claim in claims:
+        applicable = claim.get("applicable_source_item_ids")
+        if not isinstance(applicable, list) or not applicable or not set(applicable).issubset(source_set):
+            fail(f"Week 19 claim mapping malformed: {claim.get('id')}")
+        if claim.get("authority_status") != "retained_bounded_research_claim" or claim.get("implementation_authorized") is not False:
+            fail(f"Week 19 claim authority elevated: {claim.get('id')}")
+    if packet.get("route_count") != 12 or {row.get("id") for row in routes} != {f"W19-F{i:02d}" for i in range(1, 13)}:
+        fail("Week 19 route set drift")
+    route_ids: set[str] = set()
+    for route in routes:
+        route_id = route["id"]
+        resolved = route.get("resolved_source_item_ids")
+        if not isinstance(resolved, list) or not resolved or not set(resolved).issubset(source_set):
+            fail(f"Week 19 route mapping malformed: {route_id}")
+        if route_id == "W19-F10":
+            expected = [f"{source_id}-I{number:03d}" for number in range(26, 49)]
+            if route.get("declared_source_item_ids") != [] or resolved != expected or route.get("declared_id_status") != "empty_source_id_array_reconciled":
+                fail("Week 19 spatial route reconciliation drift")
+        elif resolved != route.get("declared_source_item_ids"):
+            fail(f"Week 19 route IDs changed without reconciliation: {route_id}")
+        if route.get("route_owner_issue") != 484 or route.get("implementation_authorized") is not False:
+            fail(f"Week 19 route exceeds authority: {route_id}")
+        if route_id == "W19-F03":
+            result = route.get("completed_result") or {}
+            if route.get("terminal_route_state") != "completed_item_level_pronunciation_review" or result.get("source_value") != "gaa2" or result.get("reviewed_value") != "gaa3" or result.get("source_mutated") is not False:
+                fail("Week 19 架 pronunciation route drift")
+        elif not str(route.get("terminal_route_state", "")).startswith("open_"):
+            fail(f"Week 19 unresolved route falsely completed: {route_id}")
+        route_ids.add(route_id)
+    non_candidates = packet.get("non_candidate_routes")
+    if packet.get("non_candidate_route_count") != 1 or not isinstance(non_candidates, list) or len(non_candidates) != 1:
+        fail("Week 19 numeral non-candidate route count mismatch")
+    numeral = non_candidates[0]
+    expected_numerals = [f"{source_id}-I{number:03d}" for number in range(53, 63)]
+    if numeral.get("declared_source_item_ids") != expected_numerals or numeral.get("resolved_source_item_ids") != expected_numerals or numeral.get("terminal_route_state") != "completed_by_retained_compositional_numeral_decision":
+        fail("Week 19 compositional numeral route drift")
+    unit_summary = packet.get("unit_word_summary") or {}
+    if unit_summary.get("reviewed_surface_count") != 44 or unit_summary.get("controlled_specification_candidate_count") != 9 or unit_summary.get("accepted_or_promoted_noun_pair_count") != 0:
+        fail("Week 19 unit-word summary drift")
+    if stable_ids(item_routes, "Week 19 item routes") != source_ids:
+        fail("Week 19 item-route IDs/order drift")
+    review_by_id = {row["id"]: row for row in review.get("records", [])}
+    for row in item_routes:
+        item_id = row["id"]
+        reviewed = review_by_id[item_id]
+        comparisons = {
+            "research_claim_ids": row.get("claim_ids"),
+            "research_route_ids": row.get("route_ids"),
+            "research_non_candidate_route_ids": row.get("non_candidate_route_ids"),
+            "controlled_specification_candidate_ids": row.get("controlled_specification_candidate_ids"),
+        }
+        for field, expected in comparisons.items():
+            if reviewed.get(field) != expected:
+                fail(f"Week 19 review route projection drift: {item_id}: {field}")
+    return route_ids
 
 
 def verify_review(
@@ -819,7 +1039,7 @@ def verify_review(
         ]
         bounded_links = [
             link for link in later_links
-            if isinstance(link, dict) and link.get("kind") == "implementation_crosswalk"
+            if isinstance(link, dict) and link.get("kind") in {"implementation_crosswalk", "role_sensitive_crosswalk"}
         ]
         implementation_targets = row.get("implementation_crosswalk_targets", [])
         if not isinstance(implementation_targets, list):
@@ -839,17 +1059,17 @@ def verify_review(
         for link in bounded_links:
             allowed_implementation_paths.update(
                 target.get("path")
-                for target in link.get("implementation_targets", [])
+                for target in link.get("implementation_targets", link.get("role_specific_targets", []))
                 if isinstance(target, dict) and isinstance(target.get("path"), str)
             )
         if runtime_links:
             if terminal != "lexical_only_attestation" or not implementation_targets:
                 fail(f"runtime-crosswalk item lacks a separate lexical implementation target: {item_id}")
         elif bounded_links:
-            expected_targets = bounded_links[0].get("implementation_targets", [])
+            expected_targets = bounded_links[0].get("implementation_targets", bounded_links[0].get("role_specific_targets", []))
             if implementation_targets != expected_targets:
                 fail(f"bounded implementation targets drift from the mechanical packet: {item_id}")
-            if implementation_targets and terminal not in {"lexical_only_attestation", "new_corpus_attestation"}:
+            if implementation_targets and terminal not in {"lexical_only_attestation", "new_corpus_attestation", "pronunciation_discrepancy"}:
                 fail(f"bounded implementation target is attached to an incompatible terminal state: {item_id}")
         elif implementation_targets:
             fail(f"implementation target lacks a recognized implementation evidence link: {item_id}")
@@ -1082,6 +1302,8 @@ def verify(
     missing = REQUIRED_FILES - actual_files
     if missing:
         fail(f"package missing required files: {sorted(missing)}")
+    if package_relative.name == "GLOSSIKA-YUEHK-A1-W19-20260726" and "role-sensitive-crosswalk-r1.json" not in actual_files:
+        fail("Week 19 package lacks role-sensitive crosswalk")
     temporary = sorted(name for name in actual_files if ".tmp." in name or name.endswith(".tmp"))
     if temporary:
         fail(f"temporary review files remain: {temporary}")
@@ -1101,12 +1323,13 @@ def verify(
     runtime_crosswalk_ids = verify_runtime_crosswalk(root, package, source_id, payload_hash, source_items)
     legacy_reconciliation_ids = verify_legacy_reconciliation(root, package, source_id, payload_hash, source_items, review)
     bounded_implementation_ids = verify_bounded_implementation_crosswalk(root, package, source_id, payload_hash, source_items)
+    role_sensitive_ids = verify_week19_role_sensitive_crosswalk(root, package, source_id, payload_hash, source_items)
     research_route_ids = verify_research_routing(root, package, source_id, payload_hash, source_items, review)
     verify_review(source, review, crossref, source_items, source_ids)
     reviewed_crosswalk_ids = {
         row["id"] for row in review["records"] if row.get("implementation_crosswalk_targets")
     }
-    if reviewed_crosswalk_ids != (runtime_crosswalk_ids | bounded_implementation_ids):
+    if reviewed_crosswalk_ids != (runtime_crosswalk_ids | bounded_implementation_ids | role_sensitive_ids):
         fail("reviewed implementation targets do not match the registered implementation packets")
     verify_expert_tsv(package, source_items, review)
     verify_documentation(package, source_items, review)
@@ -1128,6 +1351,7 @@ def verify(
         "runtime_crosswalk_records": len(runtime_crosswalk_ids),
         "legacy_reconciliation_records": len(legacy_reconciliation_ids),
         "bounded_implementation_records": len(bounded_implementation_ids),
+        "role_sensitive_implementation_records": len(role_sensitive_ids),
         "research_followup_routes": len(research_route_ids),
         "project_only_historical_records": review["summary"].get("project_only_historical_records", 0),
         "deterministic_crossref_checked": check_deterministic_crossref,
