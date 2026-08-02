@@ -1,0 +1,364 @@
+name: Rewrite interim pilot disclosure package
+
+on:
+  push:
+    branches:
+      - agent/interim-pilot-disclosure-controls
+    paths:
+      - ".github/workflows/interim-pilot-disclosure-rewrite.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  rewrite:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/interim-pilot-disclosure-controls
+          fetch-depth: 0
+      - name: Rewrite public package with disclosure controls
+        run: |
+          python3 - <<'PY'
+          import csv
+          import hashlib
+          import json
+          from pathlib import Path
+
+          root = Path.cwd()
+          package = root / "review-packets/native-panel/active-v2/interim-exports/YUE-JUDGMENT-PILOT-01-2026-07-31"
+          old_manifest = json.loads((package / "manifest.json").read_text(encoding="utf-8"))
+
+          def read_csv(name):
+              with (package / name).open("r", encoding="utf-8", newline="") as handle:
+                  return list(csv.DictReader(handle))
+
+          def write_csv(name, fields, rows):
+              with (package / name).open("w", encoding="utf-8", newline="") as handle:
+                  writer = csv.DictWriter(handle, fieldnames=fields, lineterminator="\n")
+                  writer.writeheader()
+                  writer.writerows(rows)
+
+          conditions = read_csv("condition-statistics.csv")
+          items = read_csv("item-statistics.csv")
+
+          condition_fields = ["group", "condition", "description", "n", "mean", "sd", "median"]
+          item_fields = ["item_id", "sentence", "n", "mean", "sd", "median"]
+          write_csv("condition-statistics.csv", condition_fields, [
+              {field: row[field] for field in condition_fields} for row in conditions
+          ])
+          write_csv("item-statistics.csv", item_fields, [
+              {field: row[field] for field in item_fields} for row in items
+          ])
+
+          interpretation = package / "interpretation-statistics.csv"
+          if interpretation.exists():
+              interpretation.unlink()
+
+          theme_rows = [
+              {
+                  "theme_id": "QT-WORDING",
+                  "domain": "wording_or_particle_suggestion",
+                  "minimum_public_support": "5",
+                  "public_support_count": "",
+                  "adjudication_status": "not_audited_private_source_required",
+                  "public_disposition": "withheld"
+              },
+              {
+                  "theme_id": "QT-LEXICON",
+                  "domain": "lexical_alternative",
+                  "minimum_public_support": "5",
+                  "public_support_count": "",
+                  "adjudication_status": "not_audited_private_source_required",
+                  "public_disposition": "withheld"
+              },
+              {
+                  "theme_id": "QT-CONTEXT",
+                  "domain": "context_or_interpretation_explanation",
+                  "minimum_public_support": "5",
+                  "public_support_count": "",
+                  "adjudication_status": "not_audited_private_source_required",
+                  "public_disposition": "withheld"
+              },
+              {
+                  "theme_id": "QT-OTHER",
+                  "domain": "other_private_comment_content",
+                  "minimum_public_support": "5",
+                  "public_support_count": "",
+                  "adjudication_status": "not_audited_private_source_required",
+                  "public_disposition": "withheld"
+              }
+          ]
+          write_csv(
+              "qualitative-theme-disposition.csv",
+              ["theme_id", "domain", "minimum_public_support", "public_support_count", "adjudication_status", "public_disposition"],
+              theme_rows,
+          )
+
+          policy = """# Public disclosure-control policy
+
+This policy applies to the public interim snapshot of `YUE-JUDGMENT-PILOT-01` dated 31 July 2026. It reduces disclosure risk; it does not certify that any public survey release is risk-free.
+
+## Threat model
+
+The relevant risk is not limited to direct identifiers. A participant, recruiter, or community member may know that a person responded and may combine that knowledge with rare variety, region, list, completion-time, interpretation, or narrative information. Linked public tables may also reveal a suppressed value by subtraction.
+
+## Public thresholds
+
+- Participant characteristics, recruitment information, list-by-characteristic tables, completion-time extremes, exact response-category cells, and participant-derived qualitative themes require a public count of at least **5**.
+- Complementary suppression applies when visible totals would reveal a cell below 5.
+- Cross-tabs are withheld when any cell or inferable remainder is below 5.
+- Public condition and item statistical summaries require denominator **n >= 8** and may contain only the item/condition identity, denominator, mean, standard deviation, and median.
+- Exact rating-category counts, correction counts, fixed-choice interpretation counts, and participant-level combinations are not public in this snapshot.
+- A qualitative theme may be public only after an authorized private audit records a reproducible aggregate support count of at least 5 and confirms that the paraphrase is non-distinctive. No theme currently meets that documented standard.
+
+## Linked-table review
+
+The public package contains no participant-characteristic table, region-by-list table, completion-time extreme, exact response-category table, or fixed-choice interpretation table. The condition and item files cannot be joined to participant traits or row-level identifiers. The manifest and verifier reject reintroduction of prohibited columns and files.
+
+## Terminology
+
+The 36 records are a **provisional analytic subset for interim description**. This is not final eligibility or accepted panel evidence. Duplicate, consent, comprehension, quality, free-text privacy, and item-level adjudication remain incomplete until the survey is frozen and audited.
+
+## Review triggers
+
+Re-run disclosure review before publishing any new demographic table, cross-tab, interpretation distribution, qualitative theme, completion-time tail, participant-level data, or revised export. A final package must document the private audit, coding thresholds, source-to-output reproduction process, and reviewer decision.
+"""
+          (package / "PUBLIC-DISCLOSURE-POLICY.md").write_text(policy, encoding="utf-8")
+
+          offline = """# Offline reproducibility status
+
+## Current historical limitation
+
+The private participant-level SoSci files are not in the public repository, and the original source-to-aggregate analysis script and environment lock used for the 31 July 2026 report were not retained. The repository therefore **cannot currently reproduce these aggregate statistics from the private source files**. No script or environment digest is invented for work that was not preserved.
+
+The public files themselves are deterministic and are checked by `npm run verify:interim-pilot-export` for hashes, byte counts, row counts, schemas, arithmetic ranges, disclosure rules, lifecycle labels, and prohibited public fields.
+
+## Required future authorized process
+
+An authorized holder of the private files must, before any regenerated or final export:
+
+1. verify every private filename, byte count, and SHA-256 value against `manifest.json`;
+2. place the private files in an isolated non-repository workspace;
+3. create and review a version-controlled source-to-aggregate script that reads only those files and emits a candidate public package;
+4. record the script SHA-256, dependency/environment lock SHA-256, command line, operating environment, and output manifest digest;
+5. run duplicate, consent, comprehension, quality, free-text privacy, and item-level adjudication screens;
+6. apply `PUBLIC-DISCLOSURE-POLICY.md`, including complementary and linked-table review;
+7. run the public verifier on the candidate output;
+8. obtain a separate review decision before committing or releasing anything.
+
+Until that process exists, this snapshot remains a frozen, disclosure-controlled historical derivative and not source-reproducible final evidence.
+"""
+          (package / "OFFLINE-REPRODUCIBILITY.md").write_text(offline, encoding="utf-8")
+
+          condition_lookup = {(row["group"], row["condition"]): row for row in conditions}
+          def stat(group, condition, field):
+              return condition_lookup[(group, condition)][field]
+
+          rows_md = [
+              "| Group | Condition | Description | n | Mean | Median |",
+              "| --- | --- | --- | ---: | ---: | ---: |",
+          ]
+          for row in conditions:
+              rows_md.append(
+                  f"| {row['group']} | {row['condition']} | {row['description']} | {row['n']} | {float(row['mean']):.2f} | {float(row['median']):.1f} |"
+              )
+
+          report = f"""# Canto Span pilot analysis report — disclosure-controlled revision
+
+**Instrument:** `YUE-JUDGMENT-PILOT-01`  
+**Instrument version:** `0.1.0-pilot`  
+**SoSci export:** 2026-07-31 11:04  
+**Collection state:** active  
+**Provisional analytic subset:** `n = 36`  
+**Rating direction:** lower values indicate greater naturalness.
+
+> **Evidence boundary:** This is an interim descriptive snapshot for instrument revision and hypothesis generation. It does not establish final eligibility, close the survey, accept the item-level audit, create final panel evidence, promote or reject a construction, or authorize parser, identity, status, follow-up-deployment, release, or runtime changes.
+
+## 1. Public data basis
+
+The supplied export contained 113 starts and 47 finished cases. Eleven finished cases were removed by the two initial public screening rules used for this interim description, leaving 36 records provisionally retained. This does not complete the panel policy: duplicate, consent, current-comprehension, quality, free-text privacy, and item-level adjudication remain pending.
+
+All 36 provisionally retained records contain 32 ratings. Counterbalanced-list totals were LIST_A = 9, LIST_B = 11, LIST_C = 8, and LIST_D = 8. Completion-time reporting is limited to the group median of 10.5 minutes and interquartile range of 9.0–12.2 minutes; public minimum, maximum, and extreme-case descriptions are withheld.
+
+Participant-characteristic tables and region-by-list cross-tabs are withheld under the minimum-cell and complementary-suppression rules. The public package contains no participant-level records, open text, exact timestamps, case/serial identifiers, recruitment references, or fixed-choice interpretation table.
+
+## 2. Public fixed-choice statistical summaries
+
+The public condition table retains only denominators and continuous summary statistics. All condition denominators are 36. The item table uses the same restricted schema; all 92 item denominators are between 8 and 11. Exact rating-category counts, percentages, correction counts, and interpretation counts are withheld.
+
+{chr(10).join(rows_md)}
+
+## 3. Instrument-design observations
+
+These observations come only from the public rating summaries:
+
+- G01D had the highest condition mean (`{float(stat('G01', 'D', 'mean')):.2f}`; median `{float(stat('G01', 'D', 'median')):.1f}`), so human-NP items need better controlled contrasts rather than a categorical conclusion.
+- G02B was at the lower endpoint (mean `{float(stat('G02', 'B', 'mean')):.2f}`), indicating a ceiling problem for that section.
+- G03C was weaker than the other G03 condition means (mean `{float(stat('G03', 'C', 'mean')):.2f}`), but the public aggregate does not establish why.
+- G05B had mean `{float(stat('G05', 'B', 'mean')):.2f}` and requires item-level lexical controls before a general rule can be tested.
+- Fixed within-list order and uneven recruitment prevent confirmatory regional or list-effect interpretation.
+
+## 4. Analyst hypotheses, not adjudicated findings
+
+The condition and item summaries identify candidate follow-up questions about semantic type, aspect placement, fragment context, and lexical sensitivity. They do not determine construction identity, productivity, dialect distribution, or parser behavior. Any later claim must use controlled contrasts, source-linked research, a frozen audited panel, and held-out evidence.
+
+The original report mixed fixed-choice summaries with analyst coding of private comments. That layer is now separated: no participant-derived qualitative alternative is published. `qualitative-theme-disposition.csv` records only broad withheld domains, the public threshold, and the fact that a private audit is required.
+
+## 5. Privacy and reproducibility
+
+`PUBLIC-DISCLOSURE-POLICY.md` defines the minimum cell size, complementary suppression, linked-table review, statistical-summary schema, and qualitative threshold. `manifest.json` records public hashes and the private-source provenance hashes without publishing the private files.
+
+The original private source-to-aggregate script and environment lock were not retained. `OFFLINE-REPRODUCIBILITY.md` therefore records the current limitation and the exact requirements for a future authorized rebuild. The public-side package is verifiable, but the historical private-source derivation is not claimed to be reproducible.
+
+## 6. Lifecycle
+
+Collection remains active, item-level audit remains not started, and the follow-up remains draft and non-deployable. This package is a frozen historical snapshot of 31 July 2026. Current lifecycle authority remains in the active native-panel state and metadata files, enforced separately by the native-panel lifecycle verifier.
+"""
+          (package / "pilot-analysis-report.md").write_text(report, encoding="utf-8")
+
+          readme = """# YUE-JUDGMENT-PILOT-01 interim export — 2026-07-31
+
+This directory preserves a **disclosure-controlled aggregate snapshot** of the active SoSci pilot export dated 31 July 2026. Direct-identifier removal alone is not treated as a complete privacy guarantee.
+
+## Included
+
+- `manifest.json` — provenance, public hashes, provisional screening totals, lifecycle state, and disclosure controls;
+- `PUBLIC-DISCLOSURE-POLICY.md` — threat model, minimum cell size, suppression rules, and public-table boundaries;
+- `OFFLINE-REPRODUCIBILITY.md` — current source-to-aggregate reproducibility limitation and required future authorized process;
+- `pilot-analysis-report.md` — revised public fixed-choice summary, instrument observations, and clearly separated hypotheses;
+- `condition-statistics.csv` — 20 condition-level denominators and continuous summary statistics;
+- `item-statistics.csv` — 92 item-level denominators and continuous summary statistics;
+- `qualitative-theme-disposition.csv` — generic withheld domains only; no raw text, distinctive paraphrase, or unsupported support count.
+
+## Intentionally excluded or withdrawn
+
+The public repository does **not** include participant-level SoSci data, exact timestamps, case/serial identifiers, recruitment references, open correction fields, final comments, participant characteristics, region-by-list cross-tabs, completion-time extremes, exact rating-category counts, correction counts, or fixed-choice interpretation counts. `interpretation-statistics.csv` was withdrawn because it contained many exact cells below the public threshold.
+
+## Lifecycle and evidence boundary
+
+- The survey remains active.
+- The 36 records are provisionally retained for interim description, not final eligible panel evidence.
+- The item-level audit is not started or accepted.
+- No participant-derived qualitative theme is public without a private audited support count of at least 5.
+- No parser behavior, construction identity, linguistic status, promotion state, follow-up deployment, release, or runtime version changes.
+- A final frozen export, full policy screening, disclosure review, and source-to-output reproduction record remain required.
+
+Run the public-side integrity check with:
+
+```bash
+npm run verify:interim-pilot-export
+```
+"""
+          (package / "README.md").write_text(readme, encoding="utf-8")
+
+          public_names = [
+              "README.md",
+              "PUBLIC-DISCLOSURE-POLICY.md",
+              "OFFLINE-REPRODUCIBILITY.md",
+              "pilot-analysis-report.md",
+              "condition-statistics.csv",
+              "item-statistics.csv",
+              "qualitative-theme-disposition.csv",
+          ]
+          row_counts = {
+              "condition-statistics.csv": len(conditions),
+              "item-statistics.csv": len(items),
+              "qualitative-theme-disposition.csv": len(theme_rows),
+          }
+          public_files = []
+          for name in public_names:
+              data = (package / name).read_bytes()
+              record = {
+                  "path": name,
+                  "bytes": len(data),
+                  "sha256": hashlib.sha256(data).hexdigest(),
+              }
+              if name in row_counts:
+                  record["data_rows"] = row_counts[name]
+              public_files.append(record)
+
+          manifest = {
+              "schema": "canto-span-native-panel-interim-export-v2",
+              "instrument_id": old_manifest["instrument_id"],
+              "instrument_version": old_manifest["instrument_version"],
+              "platform": old_manifest["platform"],
+              "export_label": old_manifest["export_label"],
+              "export_timestamp_as_supplied": old_manifest["export_timestamp_as_supplied"],
+              "snapshot_kind": "interim_disclosure_controlled_aggregate",
+              "snapshot_state": "frozen_historical_derivative",
+              "collection_state": "active",
+              "item_level_audit_state": "not_started",
+              "evidence_status": "descriptive_pilot_only_not_adjudicated",
+              "analytic_subset_status": "provisionally_retained_for_interim_description",
+              "rating_scale": old_manifest["rating_scale"],
+              "screening_totals": {
+                  "survey_starts": 113,
+                  "incomplete_starts": 66,
+                  "finished_cases": 47,
+                  "screened_out_finished_cases": 11,
+                  "provisionally_retained_for_interim_description": 36,
+                  "provisional_cases_with_exactly_32_ratings": 36,
+              },
+              "counterbalanced_list_counts": old_manifest["counterbalanced_list_counts"],
+              "private_source_files": old_manifest["private_source_files"],
+              "public_package_files": public_files,
+              "disclosure_control": {
+                  "policy_file": "PUBLIC-DISCLOSURE-POLICY.md",
+                  "minimum_sensitive_cell_size": 5,
+                  "minimum_statistical_summary_denominator": 8,
+                  "complementary_suppression_required": True,
+                  "linked_table_review_required": True,
+                  "participant_characteristics_public": False,
+                  "cross_tabs_public": False,
+                  "completion_time_extremes_public": False,
+                  "exact_rating_category_counts_public": False,
+                  "correction_counts_public": False,
+                  "fixed_choice_interpretation_counts_public": False,
+                  "participant_derived_qualitative_themes_public": False,
+                  "qualitative_theme_minimum_support": 5,
+              },
+              "privacy_disposition": {
+                  "participant_level_export_public": False,
+                  "open_text_public": False,
+                  "exact_timestamps_public": False,
+                  "case_and_serial_identifiers_public": False,
+                  "recruitment_reference_public": False,
+                  "claim": "disclosure_controlled_not_risk_free",
+                  "future_requirement": "A final frozen export requires complete screening, private-text coding, linked-table disclosure review, and source-to-output reproduction documentation before any release decision."
+              },
+              "public_validation": {
+                  "condition_statistics_rows": len(conditions),
+                  "item_statistics_rows": len(items),
+                  "qualitative_theme_disposition_rows": len(theme_rows),
+                  "condition_denominator": 36,
+                  "item_denominator_min": min(int(row["n"]) for row in items),
+                  "item_denominator_max": max(int(row["n"]) for row in items),
+                  "aggregate_files_utf8": True,
+                  "interpretation_statistics_withdrawn": True,
+              },
+              "source_to_aggregate_reproducibility": {
+                  "status": "not_reproducible_historical_script_and_environment_not_retained",
+                  "documentation": "OFFLINE-REPRODUCIBILITY.md",
+                  "script_sha256": None,
+                  "environment_lock_sha256": None,
+              },
+              "protected_state_unchanged": old_manifest["protected_state_unchanged"],
+          }
+          (package / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+          active_readme = root / "review-packets/native-panel/active-v2/README.md"
+          active_text = active_readme.read_text(encoding="utf-8")
+          active_text = active_text.replace(
+              "preserves privacy-safe condition, item, and interpretation statistics plus a descriptive pilot report and source hashes.",
+              "preserves disclosure-controlled condition and item summaries, a revised descriptive report, public hashes, and explicit reproducibility limits."
+          )
+          active_readme.write_text(active_text, encoding="utf-8")
+          PY
+          git rm .github/workflows/interim-pilot-disclosure-rewrite.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Apply disclosure controls to the interim pilot export"
+          git push origin HEAD:agent/interim-pilot-disclosure-controls
