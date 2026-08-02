@@ -1,29 +1,42 @@
-# Glossika Cantonese (HK) A1 Week 15 corpus package
+# Glossika Cantonese (HK) A1 Week 15 corpus ingress
 
-- Source ID: `GLOSSIKA-YUEHK-A1-W15-20260628`
-- Lesson: Directions & Places
-- Source date: 2026-06-28
-- Gmail message: `19f0cf457d1b8ac3`
-- Intake issue: #132
-- Work claim: #270
-- Related research: #127
-- Record count: 65
-- Types: 16 sentences, 4 dialog turns, 39 lexical entries, 6 phonics pairs
-- Source payload hash: `sha256:0e57454b530e1a50bfc4a4cf9cedada7fcf87f194f290251dc2f3e4f9aaa65e8`
+Source ID: `GLOSSIKA-YUEHK-A1-W15-20260628`  
+Source date: `2026-06-28`  
+Ingress issue: `#132`  
+Original source-ingress claim: `#270`  
+Completed review claim: `#473`
+
+This directory preserves the authorized Glossika lesson “Directions & Places” and its completed record-level review.
 
 ## Files
 
-- `source.json`: immutable source fields, order, and source hashes.
-- `items.tsv`: review-oriented flat rendering.
-- `review.json`: mechanical duplicate candidates, ingress classifications, discrepancy flags, and empty reviewed-value fields.
+- `source.json` — immutable source records.
+- `items.tsv` — immutable tabular source projection.
+- `package-integrity-r1.json` — local immutable-file bindings.
+- `mechanical-cross-reference-r1.json` — deterministic candidates and later-research links; no expert decisions.
+- `review.json` — completed terminal expert review.
+- `expert-review-r1.tsv` — deterministic review projection.
+- `research-summary.md` — human-readable result and evidence boundaries.
 
-## Evidence boundary
+The external source lock is `config/pedagogical-corpus-source-locks.json`.
 
-This package preserves authorized pedagogical data. It does not promote any route, localizer, question, result, particle, numeral, lexical, or phonological claim. Mechanical duplicate paths are candidates, not accepted identity decisions.
+## Coverage
 
-## Known source alerts
+- 16 sentences;
+- 4 dialog turns;
+- 39 lexical entries;
+- 6 phonics rows, including the incomplete final `— / 平` source row.
 
-- Casual/Polite/Standard labels require independent register analysis.
-- The generic final 咩/呀 yes-no-question claim requires direct Cantonese evidence and controlled contrasts.
-- The final phonics row is incomplete on the A side and is preserved exactly.
-- Phonics IPA, glosses, and pair status require independent verification.
+Total: **65 source records**.
+
+## Review status
+
+All 65 records are terminally reviewed with **0 unreviewed records** and no silent source replacement. Mechanical path occurrences remain candidates until the expert layer accepts an evidence-backed owner.
+
+Glossika remains pedagogical and lexical attestation. The package does not establish productivity, frequency, construction identity, dialect-wide naturalness, preferred pronunciation, parser correctness, or linguistic status.
+
+Run the permanent shared check with:
+
+```bash
+npm run verify:pedagogical-corpus-review
+```
