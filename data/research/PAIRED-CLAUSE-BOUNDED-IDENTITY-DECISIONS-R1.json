@@ -1,0 +1,347 @@
+{
+  "schema": "canto-span-paired-clause-bounded-identity-decisions-v1",
+  "decided_on": "2026-08-02",
+  "parent_issue": 430,
+  "work_claim": 441,
+  "pull_request": null,
+  "scope": {
+    "research_units": [
+      "PRQ2-008",
+      "PRQ2-013",
+      "PRQ2-014"
+    ],
+    "runtime_parent": "ClauseRelationGraph",
+    "decision_layer": "language_construction_identity",
+    "runtime_change_authorized": false,
+    "status_change_authorized": false
+  },
+  "shared_decision": {
+    "three_new_uuids_required": true,
+    "one_shared_uuid_rejected": true,
+    "generic_graph_identity_rejected": true,
+    "short_codes_allocated": false,
+    "canonicalization_authorized_in_this_package": false,
+    "reason": "Each bounded pair contributes a distinct marker correlation, named member roles, and relation semantics that are lost under generic clause graph structure or neighboring broad identities. Sufficiency, ordered preference, and necessity are not interchangeable feature values of one established project identity, and no current UUID preserves all three relations losslessly.",
+    "canonicalization_dependency": "A later separately claimed source-first runtime package must create each current grammar note, executable construction test, runtime label and matcher, then canonicalize the corresponding reserved candidate through tools/allocate-construction-identity.js."
+  },
+  "decisions": [
+    {
+      "research_id": "PRQ2-008",
+      "new_uuid_required": true,
+      "candidate_uuid": "a476c6c6-a0ba-4cf2-9021-13ad4c717d0f",
+      "candidate_state": "candidate",
+      "construction_code": null,
+      "canonical_name_at_creation": "ZiJiuZauSufficientConditionRelation",
+      "claim_layer": "language_construction",
+      "family_name": "ConditionalClauseRelations",
+      "profile_name": "OvertZiJiuConditionZauConsequence",
+      "intended_source_path": "grammar/research_pending/ZiJiuZauSufficientConditionRelation.md",
+      "core_surface": "只要 + CONDITION，(SUBJECT) + 就 + CONSEQUENCE",
+      "semantic_contract": "The left member is presented as sufficient for the right-member consequence; the profile preserves an overt antecedent marker, overt consequence linker, and the relation between two licensed clause members.",
+      "span_contract": {
+        "start": "first overt token of the left 只要 marker sequence",
+        "end": "end of the maximal licensed right consequence clause before separately typed final discourse material",
+        "include": [
+          "只要 marker",
+          "left condition member",
+          "comma or equivalent overt pair boundary",
+          "right-clause subject when present",
+          "就 linker",
+          "right consequence member"
+        ],
+        "exclude": [
+          "material before 只要",
+          "final particle or discourse wrapper when separately typed",
+          "following independent discourse turn"
+        ]
+      },
+      "required_boundaries": [
+        "ordinary 如果 A，就 B",
+        "只有 A，先／先至 B necessary condition",
+        "除非 exception conditional",
+        "就算 concessive conditional",
+        "restrictive 只 plus lexical/modal 要",
+        "no-就 extensions",
+        "bare or fragmentary 只要",
+        "discourse-spanning completion",
+        "empty left or right member"
+      ],
+      "evidence_basis": [
+        {
+          "source_id": "SRC-YIP-MATTHEWS-2017-ZI2JIU3",
+          "role": "REFERENCE_GRAMMAR_CORE",
+          "scope": "explicit sufficient-condition analysis, condition-before-consequence order, overt 就 profile, and bounded no-就 attestation"
+        },
+        {
+          "source_id": "SRC-HONGKONGVISION-ZI2JIU3",
+          "role": "ATTESTATION_ONLY",
+          "scope": "modern examples and extension prompts only"
+        },
+        {
+          "source_id": "SRC-EDB-DRAMA-ZI2JIU3",
+          "role": "ATTESTATION_ONLY",
+          "scope": "independent paired attestation only"
+        },
+        {
+          "source_id": "CORPUS-HKCANCOR-PRQ2-008",
+          "role": "PRIMARY_CORPUS_ATTESTATION",
+          "scope": "occurrence and deferred fragment/discourse boundaries only"
+        },
+        {
+          "source_id": "RUNTIME-PRQ2-008-V0.5.213",
+          "role": "RUNTIME_OBSERVATION_ONLY",
+          "scope": "implementation collision and reachability only; zero linguistic-evidence weight"
+        }
+      ],
+      "existing_identity_dispositions": [
+        {
+          "construction_code": "AA14",
+          "canonical_name": "ClauseRelationGraph",
+          "disposition": "retain as parser representation only; it does not own sufficient-condition identity or evidence"
+        },
+        {
+          "construction_code": "AA29",
+          "canonical_name": "ConditionalClause",
+          "disposition": "may remain a broad neighboring or structural conditional analysis, but its unsupported general scope does not preserve the overt sufficient marker pair"
+        },
+        {
+          "construction_code": "AA28",
+          "canonical_name": "ConditionResult",
+          "disposition": "retired unresolved wrapper; cannot be revived as the new language identity"
+        }
+      ],
+      "later_runtime_sequence": [
+        "create canonical note and executable test",
+        "install the overt comma-delimited 只要 A，就 B profile only",
+        "preserve current internal sufficient_condition metadata as compatibility structure",
+        "canonicalize the reserved UUID and allocate the next code mechanically",
+        "defer no-就, fragment, and discourse extensions to separate evidence work"
+      ]
+    },
+    {
+      "research_id": "PRQ2-013",
+      "new_uuid_required": true,
+      "candidate_uuid": "caae4649-29cd-4752-8e5d-48ab7d9503a4",
+      "candidate_state": "candidate",
+      "construction_code": null,
+      "canonical_name_at_creation": "JyuKeiBatJyuOrderedPreferenceRelation",
+      "claim_layer": "language_construction",
+      "family_name": "AlternativePreferenceRelations",
+      "profile_name": "OvertJyuKeiDisfavoredBatJyuPreferred",
+      "intended_source_path": "grammar/research_pending/JyuKeiBatJyuOrderedPreferenceRelation.md",
+      "core_surface": "(SUBJECT) + 與其 + DISFAVORED OPTION，不如 + PREFERRED OPTION",
+      "semantic_contract": "The construction orders two overt alternatives by marking the first as rejected or disfavored and the second as preferred; suggestion or comparison readings of 不如 do not supply this two-member ordering.",
+      "span_contract": {
+        "start": "shared subject when it syntactically scopes over both alternatives; otherwise first overt token of 與其",
+        "end": "end of the maximal licensed preferred option before separately typed final discourse material",
+        "include": [
+          "optional shared subject when structurally common to both members",
+          "與其 marker",
+          "disfavored option member",
+          "comma or equivalent overt pair boundary",
+          "不如 marker",
+          "preferred option member"
+        ],
+        "exclude": [
+          "topic or frame outside the paired preference",
+          "final particle or discourse wrapper when separately typed",
+          "material after the preferred member belonging to another clause"
+        ]
+      },
+      "required_boundaries": [
+        "lone suggestion 不如 B",
+        "ordinary comparison A 不如 B",
+        "寧願 A，都唔 B or 都要 B",
+        "optional 倒 before 不如",
+        "marker omission",
+        "unlicensed NP or property symmetry",
+        "empty 與其 or 不如 member",
+        "lexical or coordinating 與"
+      ],
+      "evidence_basis": [
+        {
+          "source_id": "SRC-WORDSHK-JYU5KEI4",
+          "role": "VERIFIED_HONG_KONG_LEXICOGRAPHIC_RESOURCE",
+          "scope": "conjunction status, rejected first option, correlated 不如, and different-subject example"
+        },
+        {
+          "source_id": "SRC-JYUTDICTIONARY-JYU5KEI4",
+          "role": "VERIFIED_CANTONESE_LEXICOGRAPHIC_AGGREGATION",
+          "scope": "parallel predicate examples and optional 倒 attestation; 倒 remains deferred"
+        },
+        {
+          "source_id": "SRC-EDB-P6-JYU5KEI4",
+          "role": "VERIFIED_OFFICIAL_HONG_KONG_COURSE_MATERIAL",
+          "scope": "formal paired productivity and shared-subject placement with register limitation"
+        },
+        {
+          "source_id": "SRC-CANTODICT-BAT1JYU4",
+          "role": "VERIFIED_CANTONESE_LEXICOGRAPHIC_RESOURCE",
+          "scope": "suggestion-versus-comparison polysemy boundary"
+        },
+        {
+          "source_id": "RUNTIME-PRQ2-013-V0.5.213",
+          "role": "RUNTIME_OBSERVATION_ONLY",
+          "scope": "generic linking and Suggest collisions only; zero linguistic-evidence weight"
+        }
+      ],
+      "existing_identity_dispositions": [
+        {
+          "construction_code": "AA14",
+          "canonical_name": "ClauseRelationGraph",
+          "disposition": "retain as parser representation only; it cannot replace ordered preference identity"
+        },
+        {
+          "construction_code": "AB68",
+          "canonical_name": "SuggestionQuestion",
+          "disposition": "lone-suggestion neighbor only; it lacks the disfavored member and preference ordering"
+        },
+        {
+          "construction_code": "AB33",
+          "canonical_name": "ZungJiVPComplementClause",
+          "disposition": "lexical complement preference is structurally and semantically distinct from paired alternative ordering"
+        },
+        {
+          "construction_code": null,
+          "canonical_name": "PRQ2-035 committed preference",
+          "disposition": "separate research family because 寧願 with rejection or accepted-cost continuation has a different marker and polarity profile"
+        }
+      ],
+      "later_runtime_sequence": [
+        "create canonical note and executable test",
+        "install the overt comma-delimited 與其 A，不如 B profile only",
+        "preserve current ordered_preference runtime metadata as compatibility structure",
+        "canonicalize the reserved UUID and allocate the next code mechanically",
+        "keep optional 倒 and broader member categories deferred",
+        "maintain explicit suggestion, comparison, and 寧願 negative controls"
+      ]
+    },
+    {
+      "research_id": "PRQ2-014",
+      "new_uuid_required": true,
+      "candidate_uuid": "af85d495-5906-4fde-a5ba-ca39285a3281",
+      "candidate_state": "candidate",
+      "construction_code": null,
+      "canonical_name_at_creation": "ZiJauSinNecessaryConditionRelation",
+      "claim_layer": "language_construction",
+      "family_name": "ConditionalClauseRelations",
+      "profile_name": "OvertZiJauRequiredConditionSinConsequence",
+      "intended_source_path": "grammar/research_pending/ZiJauSinNecessaryConditionRelation.md",
+      "core_surface": "只有 + REQUIRED CONDITION，(SUBJECT) + 先／先至／先可以 + CONSEQUENCE",
+      "semantic_contract": "The left member states a required condition and the right linker presents the consequence as available only under that condition. The reserved identity is limited to the overt clausal pair and does not absorb participant restriction or temporal sequencing.",
+      "span_contract": {
+        "start": "first overt token of the left 只有 marker sequence",
+        "end": "end of the maximal licensed right consequence clause before separately typed final discourse material",
+        "include": [
+          "只有 marker",
+          "left required-condition member",
+          "comma or equivalent overt pair boundary",
+          "right-clause subject when present",
+          "先, 先至, or 先可以 linker",
+          "right consequence member"
+        ],
+        "exclude": [
+          "material before 只有",
+          "final particle or discourse wrapper when separately typed",
+          "following independent discourse turn"
+        ]
+      },
+      "required_boundaries": [
+        "participant or domain restriction without a clausal pair",
+        "locative restriction without paired clause structure",
+        "bare condition plus 先至 without overt 只有",
+        "short 至 condition",
+        "temporal-sequential 先至",
+        "existential or quantity 只有",
+        "只要 sufficient condition",
+        "除非 exception conditional",
+        "empty restrictor or consequence member"
+      ],
+      "evidence_basis": [
+        {
+          "source_id": "SRC-JYUTDICTIONARY-ZI2JAU5",
+          "role": "VERIFIED_CANTONESE_LEXICOGRAPHIC_AGGREGATION",
+          "scope": "necessary-condition marker correlation and participant, clausal, environmental, and locative profiles"
+        },
+        {
+          "source_id": "SRC-WORDSHK-ZI3-CONDITIONAL",
+          "role": "VERIFIED_HONG_KONG_LEXICOGRAPHIC_RESOURCE",
+          "scope": "conditional 至 as result available only under the preceding condition"
+        },
+        {
+          "source_id": "SRC-CANTODICT-SIN1ZI3",
+          "role": "VERIFIED_CANTONESE_LEXICOGRAPHIC_RESOURCE",
+          "scope": "先至 and shorter variants with temporal/conditional ambiguity boundaries"
+        },
+        {
+          "source_id": "CORPUS-HKCANCOR-PRQ2-014",
+          "role": "VERIFIED_PROJECT_EXTRACTED_ADULT_CORPUS_BOUNDARY",
+          "scope": "bare condition-plus-先至 boundary only, not core omission evidence"
+        },
+        {
+          "source_id": "RUNTIME-PRQ2-014-V0.5.213",
+          "role": "RUNTIME_OBSERVATION_ONLY",
+          "scope": "collision and reachability only; zero linguistic-evidence weight"
+        }
+      ],
+      "existing_identity_dispositions": [
+        {
+          "construction_code": "AA14",
+          "canonical_name": "ClauseRelationGraph",
+          "disposition": "retain as parser representation only; it cannot own necessary-condition identity or evidence"
+        },
+        {
+          "construction_code": "AA29",
+          "canonical_name": "ConditionalClause",
+          "disposition": "may remain a broad neighboring or structural conditional analysis, but it cannot preserve the overt necessary marker pair and inverse relation"
+        },
+        {
+          "construction_code": "AB34",
+          "canonical_name": "PostverbalSinPriorityClause",
+          "disposition": "distinct local postverbal priority profile; it does not encode a two-clause necessary condition"
+        },
+        {
+          "construction_code": "AA28",
+          "canonical_name": "ConditionResult",
+          "disposition": "retired unresolved wrapper; cannot be revived as the new language identity"
+        }
+      ],
+      "later_runtime_sequence": [
+        "create canonical note and executable test",
+        "install the overt comma-delimited 只有 A，先／先至／先可以 B clausal profile only",
+        "preserve current necessary_condition metadata as compatibility structure",
+        "canonicalize the reserved UUID and allocate the next code mechanically",
+        "keep participant restriction, bare condition, short 至, and temporal profiles deferred"
+      ]
+    }
+  ],
+  "cross_family_relations": [
+    {
+      "left": "PRQ2-008",
+      "right": "PRQ2-014",
+      "relation": "semantic_inverse_neighbors",
+      "constraint": "Shared conditional structure does not permit identity merger; sufficiency and necessity have distinct overt marker pairs and entailment direction."
+    },
+    {
+      "left": "PRQ2-013",
+      "right": "PRQ2-035",
+      "relation": "preference_neighbors",
+      "constraint": "Ordered alternative ranking and committed preference use different markers, polarity patterns, and continuation profiles."
+    },
+    {
+      "left": "all_three",
+      "right": "AA14 ClauseRelationGraph",
+      "relation": "transparent_parser_parent_only",
+      "constraint": "Generic graph, edge, and member-span records may host the language nodes but carry zero independent evidence and do not replace them."
+    }
+  ],
+  "protected_state": [
+    "permanent registry unchanged",
+    "short-code space unchanged through AB82",
+    "runtime source and generated bundle unchanged",
+    "executable construction fixtures unchanged",
+    "linguistic statuses unchanged",
+    "evidence grades and corpus classifications unchanged",
+    "survey, panel, held-out, version, release, deployment, and merge authority unchanged"
+  ]
+}
