@@ -8,6 +8,7 @@ on:
       - "data/construction-adjudications.json"
       - "data/construction-adjudication-batches/**"
       - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/**"
       - "docs/research/**"
       - "external-evidence/**"
       - "grammar/**"
@@ -35,6 +36,7 @@ on:
       - "data/construction-adjudications.json"
       - "data/construction-adjudication-batches/**"
       - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/**"
+      - "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/**"
       - "docs/research/**"
       - "external-evidence/**"
       - "grammar/**"
@@ -75,7 +77,7 @@ jobs:
         run: python3 tests/tooling/research/ab30-aggregate-integrity.test.py
       - name: Test interim pilot public-package verifier
         run: python3 tests/tooling/research/interim-pilot-public-package.test.py
-      - name: Test pedagogical corpus review verifier
+      - name: Test reviewed pedagogical corpus packages
         run: python3 tests/tooling/research/pedagogical-corpus-review.test.py
       - name: Verify durable research provenance and lifecycle state
         run: npm run verify:research
