@@ -1,0 +1,147 @@
+{
+  "schema": "canto-span-native-panel-interim-export-v1",
+  "instrument_id": "YUE-JUDGMENT-PILOT-01",
+  "instrument_version": "0.1.0-pilot",
+  "platform": "SoSci Survey",
+  "export_label": "2026-07-31_11-04",
+  "export_timestamp_as_supplied": "2026-07-31 11:04",
+  "snapshot_kind": "interim_privacy_safe_aggregate",
+  "collection_state": "active",
+  "item_level_audit_state": "not_started",
+  "evidence_status": "descriptive_pilot_only_not_adjudicated",
+  "rating_scale": {
+    "direction": "1_most_natural_5_most_unnatural",
+    "labels": {
+      "1": "好自然",
+      "2": "大致自然，但有少少唔自然",
+      "3": "唔肯定／要有上文先判斷",
+      "4": "比較唔自然",
+      "5": "明顯唔自然"
+    },
+    "summary_groups": {
+      "natural_or_acceptable": [1, 2],
+      "uncertain_or_context_dependent": [3],
+      "unnatural": [4, 5]
+    }
+  },
+  "screening_totals": {
+    "survey_starts": 113,
+    "incomplete_starts": 66,
+    "finished_cases": 47,
+    "screened_out_finished_cases": 11,
+    "screened_out_no_childhood_acquisition": 8,
+    "screened_out_under_18": 3,
+    "eligible_retained_cases": 36,
+    "retained_cases_with_exactly_32_ratings": 36
+  },
+  "counterbalanced_list_counts": {
+    "LIST_A": 9,
+    "LIST_B": 11,
+    "LIST_C": 8,
+    "LIST_D": 8
+  },
+  "private_source_files": [
+    {
+      "filename": "data_canto-span_2026-07-31_11-04.csv",
+      "role": "participant-level SoSci response export",
+      "bytes": 321334,
+      "sha256": "0cb385d5a4d115641bc2ea6bd6e83fc5e07190f4d3dfe9c4e41263ec323cabe2",
+      "encoding_or_format": "utf-16 tab-delimited",
+      "committed_to_public_repository": false
+    },
+    {
+      "filename": "variables_canto-span_2026-07-31_11-04.csv",
+      "role": "SoSci variable definitions",
+      "bytes": 181890,
+      "sha256": "1816ffcd84cb0ff5a68492122cc7f290d3e7f49ca554196d64f5b6eb9504c690",
+      "encoding_or_format": "utf-16 tab-delimited",
+      "committed_to_public_repository": false
+    },
+    {
+      "filename": "values_canto-span_2026-07-31_11-04.csv",
+      "role": "SoSci response-code value labels",
+      "bytes": 93018,
+      "sha256": "5b13025839661b66513483be6d6cc597e06d5a82378952e416e09b07422f8776",
+      "encoding_or_format": "utf-16 tab-delimited",
+      "committed_to_public_repository": false
+    },
+    {
+      "filename": "codebook_canto-span_2026-07-31_11-04.xlsx",
+      "role": "SoSci codebook",
+      "bytes": 69464,
+      "sha256": "79afd50631892672e3040862a0eabbd6537814ec7844269712096cf385c90416",
+      "encoding_or_format": "xlsx",
+      "committed_to_public_repository": false
+    },
+    {
+      "filename": "Canto_Span_Pilot_Analysis_Report_2026-07-31.docx",
+      "role": "descriptive analysis source report",
+      "bytes": 291169,
+      "sha256": "25b46a922020a3ec4543dac6c778ca71aa3f5c0254082b3c2d08fc16ea0a6db9",
+      "encoding_or_format": "docx",
+      "committed_to_public_repository": false
+    }
+  ],
+  "public_package_files": [
+    {
+      "path": "README.md",
+      "bytes": 1613,
+      "sha256": "f376a49cba13a23f73bdf1210b9883eab8957b446042bb60a86f017b17c58640"
+    },
+    {
+      "path": "pilot-analysis-report.md",
+      "bytes": 15485,
+      "sha256": "b2760e160b44fcd75a0b40dcb11eee346030256136f827c2206ad11fc78e6c55"
+    },
+    {
+      "path": "condition-statistics.csv",
+      "bytes": 1358,
+      "sha256": "38c4e9bcc4f67931eedca96df77a44aec5f1b008b30cd88904b5b52192fad106",
+      "data_rows": 20
+    },
+    {
+      "path": "item-statistics.csv",
+      "bytes": 7765,
+      "sha256": "657dec9a4fdc036d48ebd6dc4e0d7be25f551be57ba2c364d356120db653e939",
+      "data_rows": 92
+    },
+    {
+      "path": "interpretation-statistics.csv",
+      "bytes": 5319,
+      "sha256": "4aad8b9f85eedbdf7a32e8aa8ea8b1e63e9fc43f7e97996db71e6dc0fd460bf9",
+      "data_rows": 101
+    }
+  ],
+  "privacy_disposition": {
+    "participant_level_export_public": false,
+    "open_text_public": false,
+    "exact_timestamps_public": false,
+    "case_and_serial_identifiers_public": false,
+    "recruitment_reference_public": false,
+    "reason": "The public repository is not an appropriate location for row-level survey data containing open text and potentially identifying or re-identifiable metadata. Only aggregate tables and aggregate thematic summaries are published.",
+    "future_requirement": "A final frozen export must receive documented eligibility, duplicate, quality, free-text privacy, and adjudication review before any participant-level release decision."
+  },
+  "validation": {
+    "raw_export_rows": 113,
+    "raw_export_columns": 904,
+    "finished_count_recomputed": 47,
+    "eligible_count_recomputed": 36,
+    "retained_rating_count_check": "36_of_36_retained_cases_have_32_nonmissing_scale_responses",
+    "condition_statistics_rows": 20,
+    "item_statistics_rows": 92,
+    "interpretation_statistics_rows": 101,
+    "aggregate_files_utf8": true
+  },
+  "protected_state_unchanged": [
+    "live survey instrument",
+    "survey collection state",
+    "item-audit acceptance",
+    "participant-level adjudication",
+    "construction identity",
+    "linguistic status",
+    "parser/runtime behavior",
+    "follow-up deployment",
+    "runtime version",
+    "release and deployment state"
+  ]
+}
