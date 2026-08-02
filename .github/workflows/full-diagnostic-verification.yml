@@ -1,0 +1,69 @@
+name: Full diagnostic verification
+
+on:
+  push:
+    paths:
+      - "config/verification-profiles.json"
+      - "tools/verify-current-state.js"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/full-diagnostic-verification.yml"
+  pull_request:
+    paths:
+      - "config/verification-profiles.json"
+      - "tools/verify-current-state.js"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/full-diagnostic-verification.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Install build dependencies
+        run: npm ci
+      - name: Run full diagnostic sweep
+        continue-on-error: true
+        run: npm run verify:all -- --keep-going --output /tmp/full-verification.json
+      - name: Validate diagnostic orchestration and non-release profiles
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const report = JSON.parse(fs.readFileSync('/tmp/full-verification.json', 'utf8'));
+          const expectedProfiles = ['core', 'research', 'runtime', 'release'];
+          const actualProfiles = report.included_profiles || [];
+          if (JSON.stringify(actualProfiles) !== JSON.stringify(expectedProfiles)) {
+            throw new Error(`Unexpected included profiles: ${JSON.stringify(actualProfiles)}`);
+          }
+          const ids = (report.results || []).map((item) => item.id);
+          if (new Set(ids).size !== ids.length) {
+            throw new Error(`Duplicate verification command IDs: ${JSON.stringify(ids)}`);
+          }
+          for (const required of ['runtime-build', 'runtime-tests', 'generated-runtime']) {
+            if (!ids.includes(required)) throw new Error(`Missing runtime command: ${required}`);
+          }
+          const nonReleaseFailures = (report.results || []).filter(
+            (item) => item.profile !== 'release' && item.status !== 'PASS'
+          );
+          if (nonReleaseFailures.length) {
+            throw new Error(`Non-release diagnostic failures: ${JSON.stringify(nonReleaseFailures)}`);
+          }
+          const releaseFailures = (report.results || []).filter(
+            (item) => item.profile === 'release' && item.status !== 'PASS'
+          );
+          console.log(JSON.stringify({
+            included_profiles: actualProfiles,
+            command_count: ids.length,
+            non_release_failures: 0,
+            release_failures: releaseFailures.map((item) => item.id),
+          }, null, 2));
+          NODE
