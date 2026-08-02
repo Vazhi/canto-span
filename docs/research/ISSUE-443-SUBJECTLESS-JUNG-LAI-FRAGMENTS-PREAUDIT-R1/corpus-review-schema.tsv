@@ -14,14 +14,20 @@ antecedent_uniqueness	unique|multiple_possible|generic|none|uncertain	Distinguis
 antecedent_semantic_class	tool|container|software|document|person|institution|location|event|other|uncertain	Track lexical and referent effects
 discourse_relation	answer|correction|explanation|definition|instruction|caption|topic_continuation|event_report|other	Identify fragment-licensing environments
 question_type	wh_purpose|yes_no|who|what_object|none|other	Test question-answer congruence
+response_marker	none|hai_affirmative|m_hai_correction|copular_hai_inside_target|other|uncertain	Keep independent response material separate from true copular target structure
 construction_surface	bare_yung_lai_vp|copular_hai_yung_lai_vp|overt_np_yung_lai_vp|actual_use_yung_np_lai_vp|other	Keep sibling structures separate
 purpose_predicate	verbatim VP	Preserve lexical material
 predicate_class	physical_action|storage|recording|communication|service|other	Track predicate-class effects
-prosody_available	yes|no	Record whether fragment/integration judgments are possible
-prosody_profile	standalone_fragment|integrated_clause|continuing|uncertain|not_available	Do not infer prosody from punctuation
+clause_position	root|embedded|caption|label|uncertain	Test root/CP-edge diagnostics without assuming the analysis
+target_boundary_position	utterance_final|nonfinal_continuing|embedded_final|caption_final|uncertain|not_available	Record where the target occurs prosodically or graphically
+prosody_available	yes|no	Record whether acoustic judgments are possible
+pause_before_target_ms	numeric|not_measured|not_available	Record separation from response markers or prior material
+pause_after_target_ms	numeric|not_measured|not_available	Record utterance completion or continuation
+prosody_profile	standalone_final|continuing_nonfinal|integrated_overt_np|integrated_copular|uncertain|not_available	Describe the observed production condition without assigning a syntactic identity
+acoustic_measures	F0 onset/offset, range, duration, boundary movement, or repository measurement record	Preserve measurable evidence rather than punctuation-based inference
 repair_or_paraphrase	overt source material only	Use explicit interpretation evidence
-interpretation_evidence	referent_recovery|generic_reading|ellipsis_paraphrase|correction|continuation|none	Record what the source actually shows
-classification	context_licensed_resource_omission|topic_chain_candidate|short_answer_candidate|situational_fragment|caption_or_label|antecedentless_candidate|false_positive|ambiguous|unusable	Review disposition
+interpretation_evidence	referent_recovery|generic_reading|predicate_response|ellipsis_paraphrase|correction|continuation|none	Record what the source actually shows
+classification	context_licensed_resource_omission|topic_chain_candidate|question_linked_predicate_response|situational_fragment|caption_or_label|antecedentless_candidate|false_positive|ambiguous|unusable	Review disposition
 classification_reason	concise evidence-based explanation	Make decisions auditable
 hidden_word_reconstruction	prohibited	Prevent fabricated Cantonese material from becoming evidence
 reviewer_notes	free text	Preserve unresolved questions without promotion
