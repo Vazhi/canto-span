@@ -15,6 +15,7 @@ SCAN_ROOTS = ["src", "data", "tests", "docs", "grammar", "review-packets", "exte
 TEXT_SUFFIXES = {".json", ".jsonl", ".tsv", ".csv", ".md", ".txt", ".js", ".yml", ".yaml"}
 EXCLUDED_PARTS = {".git", "node_modules", "archive", "archives", "validation", "recovery", "dist", "build"}
 PUNCTUATION = re.compile(r"[\s，。！？；：、,.!?;:'\"“”‘’（）()【】\[\]《》<>—–…·`~]+", re.UNICODE)
+SOURCE_WEEK = re.compile(r"-W(\d+)-")
 LAYER_PRIORITY = {
     "runtime_lexicon": 0,
     "runtime_source": 1,
@@ -135,10 +136,20 @@ def ranked_matches(paths: set[str], match_type: str) -> tuple[list[dict[str, Any
     return [compact_match(path, match_type) for path in retained], max(0, len(ordered) - len(retained))
 
 
+def research_ledger_stem(source_id: str) -> str | None:
+    match = SOURCE_WEEK.search(source_id)
+    if not match:
+        return None
+    return f"glossika-week{int(match.group(1))}"
+
+
 def load_later_research(root: Path, source_id: str) -> dict[str, list[dict[str, Any]]]:
     by_item: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    stem = research_ledger_stem(source_id)
+    if stem is None:
+        return by_item
 
-    lexical_path = root / "data/research-ledgers/glossika-week14-lexical-ingress.json"
+    lexical_path = root / f"data/research-ledgers/{stem}-lexical-ingress.json"
     if lexical_path.exists():
         lexical = read_json(lexical_path)
         if lexical.get("sourceId") == source_id:
@@ -154,7 +165,7 @@ def load_later_research(root: Path, source_id: str) -> dict[str, list[dict[str, 
                         "recommendation": entry.get("recommendation"),
                     })
 
-    followup_path = root / "data/research-ledgers/glossika-week14-followup-candidates.json"
+    followup_path = root / f"data/research-ledgers/{stem}-followup-candidates.json"
     if followup_path.exists():
         followup = read_json(followup_path)
         if followup.get("sourceId") == source_id:
