@@ -1,0 +1,34 @@
+name: Trigger portfolio documentation patch
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/trigger-portfolio-doc-patch.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/retire-portfolio-ownership-path
+          fetch-depth: 0
+      - name: Execute and remove temporary documentation workflows
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          source = Path('.github/workflows/patch-portfolio-routing-docs.yml').read_text(encoding='utf-8').splitlines()
+          marker = '        run: |'
+          start = source.index(marker) + 1
+          shell = []
+          for line in source[start:]:
+              shell.append(line[10:] if line.startswith('          ') else line)
+          Path('/tmp/patch-portfolio-docs.sh').write_text('\n'.join(shell) + '\n', encoding='utf-8')
+          PY
+          bash /tmp/patch-portfolio-docs.sh
+          git rm .github/workflows/trigger-portfolio-doc-patch.yml
+          git commit -m "Remove temporary portfolio documentation trigger"
+          git push origin HEAD:agent/retire-portfolio-ownership-path
