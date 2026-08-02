@@ -1,0 +1,4124 @@
+{
+  "schema": "canto-span-pedagogical-corpus-review-candidates-v1",
+  "source_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+  "source_path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/source.json",
+  "source_payload_hash": "sha256:0e57454b530e1a50bfc4a4cf9cedada7fcf87f194f290251dc2f3e4f9aaa65e8",
+  "record_count": 65,
+  "scan_policy": {
+    "roots": [
+      "src",
+      "data",
+      "tests",
+      "docs",
+      "grammar",
+      "review-packets",
+      "external-evidence"
+    ],
+    "excluded_package_files": [
+      "README.md",
+      "expert-review-r1.tsv",
+      "items.tsv",
+      "mechanical-cross-reference-r1.json",
+      "package-integrity-r1.json",
+      "research-summary.md",
+      "review.json",
+      "source.json"
+    ],
+    "excluded_path_parts": [
+      ".git",
+      "archive",
+      "archives",
+      "build",
+      "dist",
+      "node_modules",
+      "recovery",
+      "validation"
+    ],
+    "maximum_file_bytes": 2000000,
+    "generated_bundle_excluded": true,
+    "matches_are_file_level_candidates_not_decisions": true,
+    "maximum_paths_per_match_type": 24,
+    "minimum_normalized_match_length": 6,
+    "layer_priority": {
+      "runtime_lexicon": 0,
+      "runtime_source": 1,
+      "current_grammar_note": 2,
+      "executable_test_or_fixture": 3,
+      "canonical_or_research_data": 4,
+      "pedagogical_corpus": 5,
+      "review_packet": 6,
+      "external_evidence": 7,
+      "research_ledger": 8,
+      "research_report": 9,
+      "current_documentation": 10,
+      "other": 11
+    }
+  },
+  "summary": {
+    "item_type_counts": {
+      "dialog_turn": 4,
+      "lexical_entry": 39,
+      "phonics_pair": 6,
+      "sentence": 16
+    },
+    "records_with_exact_candidates": 50,
+    "records_with_normalized_candidates": 6,
+    "records_with_later_research": 63,
+    "retained_file_match_counts": {
+      "exact_surface_file": 347,
+      "normalized_surface_file": 6
+    },
+    "candidate_layer_counts": {
+      "canonical_or_research_data": 25,
+      "current_grammar_note": 1,
+      "executable_test_or_fixture": 26,
+      "external_evidence": 38,
+      "pedagogical_corpus": 83,
+      "research_ledger": 50,
+      "research_report": 72,
+      "review_packet": 28,
+      "runtime_lexicon": 17,
+      "runtime_source": 13
+    },
+    "omitted_exact_paths": 185,
+    "omitted_normalized_paths": 0,
+    "expert_reviewed": 0
+  },
+  "records": [
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I001",
+      "ordinal": 1,
+      "section": "functional_language",
+      "subsection": "respond_to_thanks",
+      "item_type": "sentence",
+      "source_traditional": "唔使客氣。",
+      "source_jyutping": "M4 sai2 haak3 hei3.",
+      "source_english": "You're welcome.",
+      "source_hash": "sha256:9917f3f76ca410b28f10265dd2e9d9fbc3e44c0e9b45fb438e7339fc8ae358d1",
+      "normalized_surface": "唔使客氣",
+      "exact_match_candidates": [
+        {
+          "path": "data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/crosswalk.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-013-20260301/crosswalk.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-013-20260301/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-013-20260301/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-015-20260315/crosswalk.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-015-20260315/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-015-20260315/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F09",
+          "cluster": "formulaic_responses_register",
+          "priority": "medium",
+          "next_method": "dictionary_pragmatics_corpus_review_then_panel_only_for_unresolved_items",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I002",
+      "ordinal": 2,
+      "section": "functional_language",
+      "subsection": "respond_to_thanks",
+      "item_type": "sentence",
+      "source_traditional": "冇嘢。",
+      "source_jyutping": "Mou5 je5.",
+      "source_english": "It's nothing.",
+      "source_hash": "sha256:87cb5cdac6a71c3cd2c04f1505d2ef89852d66adad9c3b69b230ed8d4b5ae631",
+      "normalized_surface": "冇嘢",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F09",
+          "cluster": "formulaic_responses_register",
+          "priority": "medium",
+          "next_method": "dictionary_pragmatics_corpus_review_then_panel_only_for_unresolved_items",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I003",
+      "ordinal": 3,
+      "section": "functional_language",
+      "subsection": "respond_to_thanks",
+      "item_type": "sentence",
+      "source_traditional": "唔使唔該。",
+      "source_jyutping": "M4 sai2 m4 goi1.",
+      "source_english": "Don't mention it.",
+      "source_hash": "sha256:41b591eb65aa75da1579280935f2b7dcbf59b53fc3982faf23b93b83c2e9d413",
+      "normalized_surface": "唔使唔該",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F09",
+          "cluster": "formulaic_responses_register",
+          "priority": "medium",
+          "next_method": "dictionary_pragmatics_corpus_review_then_panel_only_for_unresolved_items",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I004",
+      "ordinal": 4,
+      "section": "functional_language",
+      "subsection": "respond_to_thanks",
+      "item_type": "sentence",
+      "source_traditional": "小事啫，唔使客氣。",
+      "source_jyutping": "Siu2 si6 ze1, m4 sai2 haak3 hei3.",
+      "source_english": "It's a small matter, don't mention it.",
+      "source_hash": "sha256:934f6f838c9231956f3888c2180a61b0c8cdf064db581b385796d323aed023b7",
+      "normalized_surface": "小事啫唔使客氣",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "normalized_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F09",
+          "cluster": "formulaic_responses_register",
+          "priority": "medium",
+          "next_method": "dictionary_pragmatics_corpus_review_then_panel_only_for_unresolved_items",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I005",
+      "ordinal": 5,
+      "section": "functional_language",
+      "subsection": "congratulations_and_well_wishes",
+      "item_type": "sentence",
+      "source_traditional": "恭喜恭喜！",
+      "source_jyutping": "Gung1 hei2 gung1 hei2!",
+      "source_english": "Congratulations!",
+      "source_hash": "sha256:8c731ea2a7a4bc3b830f38591c56a2c01f2d62cf449b03049e53d12e3eccbac2",
+      "normalized_surface": "恭喜恭喜",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F09",
+          "cluster": "formulaic_responses_register",
+          "priority": "medium",
+          "next_method": "dictionary_pragmatics_corpus_review_then_panel_only_for_unresolved_items",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I006",
+      "ordinal": 6,
+      "section": "functional_language",
+      "subsection": "congratulations_and_well_wishes",
+      "item_type": "sentence",
+      "source_traditional": "生日快樂！",
+      "source_jyutping": "Saang1 jat6 faai3 lok6!",
+      "source_english": "Happy birthday!",
+      "source_hash": "sha256:555113bb95b652645499907ef75f7165dd3636de967e5bae64eecd094855c461",
+      "normalized_surface": "生日快樂",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F09",
+          "cluster": "formulaic_responses_register",
+          "priority": "medium",
+          "next_method": "dictionary_pragmatics_corpus_review_then_panel_only_for_unresolved_items",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I007",
+      "ordinal": 7,
+      "section": "functional_language",
+      "subsection": "congratulations_and_well_wishes",
+      "item_type": "sentence",
+      "source_traditional": "新年快樂，身體健康。",
+      "source_jyutping": "San1 nin4 faai3 lok6, san1 tai2 gin6 hong1.",
+      "source_english": "Happy New Year, wishing you good health.",
+      "source_hash": "sha256:38bf413bb240a1aa86eaa23ef220d49e8eb986f95fa17921cfe855db7b01ca93",
+      "normalized_surface": "新年快樂身體健康",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "normalized_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F09",
+          "cluster": "formulaic_responses_register",
+          "priority": "medium",
+          "next_method": "dictionary_pragmatics_corpus_review_then_panel_only_for_unresolved_items",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I008",
+      "ordinal": 8,
+      "section": "functional_language",
+      "subsection": "congratulations_and_well_wishes",
+      "item_type": "sentence",
+      "source_traditional": "祝你一切順利。",
+      "source_jyutping": "Zuk1 nei5 jat1 cai3 seon6 lei6.",
+      "source_english": "Wishing you all the best.",
+      "source_hash": "sha256:daacc23368b67742481db9aa36a1dca355c21f044ca7263ce6fc8844d5f39559",
+      "normalized_surface": "祝你一切順利",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "normalized_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F09",
+          "cluster": "formulaic_responses_register",
+          "priority": "medium",
+          "next_method": "dictionary_pragmatics_corpus_review_then_panel_only_for_unresolved_items",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I009",
+      "ordinal": 9,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "隔籬",
+      "source_jyutping": "gaak3 lei4",
+      "source_english": "next to",
+      "source_hash": "sha256:2edd730464511ab580878f3ac94a636c469f4c894f9ed923f3da5a48970556be",
+      "normalized_surface": "隔籬",
+      "exact_match_candidates": [
+        {
+          "path": "data/research-ledgers/glossika-week15-claim-source.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F01",
+          "cluster": "spatial_categories",
+          "priority": "high",
+          "next_method": "direct_spatial_grammar_plus_corpus_distribution",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I010",
+      "ordinal": 10,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "對面",
+      "source_jyutping": "deoi3 min6",
+      "source_english": "opposite",
+      "source_hash": "sha256:b73602ff16cbc6c1df4616b3a287ffa71ad68354ab62e50675f4bdb715d458b0",
+      "normalized_surface": "對面",
+      "exact_match_candidates": [
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-020-20260419/crosswalk.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-020-20260419/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-020-20260419/review.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-020-20260419/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "review-packets/corpus-review/NOMINAL-MODIFICATION/issue-315/AA07-compact-review.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-claim-source.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F01",
+          "cluster": "spatial_categories",
+          "priority": "high",
+          "next_method": "direct_spatial_grammar_plus_corpus_distribution",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I011",
+      "ordinal": 11,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "附近",
+      "source_jyutping": "fu6 gan6",
+      "source_english": "nearby",
+      "source_hash": "sha256:39f60fc9a41a9cf527d0885e43943d32146684c75c9c541369c689d42acfe8ec",
+      "normalized_surface": "附近",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/study-suite.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "tests/tooling/runtime/aa82-matrix-parent-force.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "data/corpus-reviews/AA82-ATTESTED-BOUNDARY-PACKET-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/crosswalk.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/review.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "review-packets/corpus-review/AB30/candidate-ledger.json",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/corpus-review/AB30/candidates.json",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/corpus-review/AB30/candidates.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/corpus-review/NOMINAL-MODIFICATION/issue-315/AA07-compact-review.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "external-evidence/aa07-hkcancor/hkcancor-aa07-ge-nominal-head-query-summary.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/AA82-ATTESTED-BOUNDARY-PACKET-R1.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/WECHAT-GX-TRAVEL-002-ADJUDICATION-REPORT.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/WECHAT-GX-TRAVEL-002-LEXICON-JYUTPING-VERIFICATION-R2.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "already_covered_exact",
+          "exact_runtime_owners": [
+            "src/runtime-resources/lexicon/token-lexicon"
+          ],
+          "canonical_mentions": [
+            "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+          ],
+          "recommendation": "no_duplicate_ingress"
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I012",
+      "ordinal": 12,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "遠",
+      "source_jyutping": "jyun5",
+      "source_english": "far",
+      "source_hash": "sha256:7b5c0e85440ca19752b7783780ecab96922fffc1f9fa08e78e7da0176c3d75f1",
+      "normalized_surface": "遠",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/statives.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/parser/detectors/questions/wh-scalar.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "src/parser/features/token-features.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "src/plugin-entry.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "src/runtime-resources/grammar/templates/category-span-templates.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/constructions/ScalarValueQuestion.json",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "data/construction-adjudication-batches/batch-06.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/construction-identities.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/slot-model.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/review.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/crosswalk.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/review.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/crosswalk.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/review.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "review-packets/corpus-review/AA56/bounded-review-decisions-r1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/corpus-review/AA56/bounded-review-packet-r1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        }
+      ],
+      "exact_match_paths_omitted": 32,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "already_covered_exact",
+          "exact_runtime_owners": [
+            "src/runtime-resources/lexicon/token-lexicon"
+          ],
+          "canonical_mentions": [
+            "src/runtime-resources/lexicon/token-lexicon/statives.js"
+          ],
+          "recommendation": "no_duplicate_ingress"
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I013",
+      "ordinal": 13,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "近",
+      "source_jyutping": "kan5",
+      "source_english": "near",
+      "source_hash": "sha256:396a2f83b69a585f64b4ad9486d4d9cb8aa48993b920b0c6ebac3dde3e8170b7",
+      "normalized_surface": "近",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/statives.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/study-suite.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/parser/detectors/questions/wh-scalar.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "src/parser/features/token-features.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "src/runtime-resources/grammar/templates/slot-generation-rules.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/constructions/ClauseRelationGraph.json",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "tests/constructions/ClauseSpan.json",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "tests/constructions/DegreeStativePredicate.json",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "tests/constructions/FormulaDiscourseUnit.json",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "tests/constructions/ModifierNP.json",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "tests/constructions/StativePredicate.json",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "tests/tooling/runtime/aa82-matrix-parent-force.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "data/construction-adjudication-batches/batch-13.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/corpus-reviews/AA82-ATTESTED-BOUNDARY-PACKET-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/slot-model.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-001-20251130/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-001-20251130/review.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-001-20251130/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/crosswalk.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/review.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        }
+      ],
+      "exact_match_paths_omitted": 73,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "already_covered_exact",
+          "exact_runtime_owners": [
+            "src/runtime-resources/lexicon/token-lexicon"
+          ],
+          "canonical_mentions": [
+            "src/runtime-resources/lexicon/token-lexicon/statives.js"
+          ],
+          "recommendation": "no_duplicate_ingress"
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I014",
+      "ordinal": 14,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "上面",
+      "source_jyutping": "soeng6 min6",
+      "source_english": "above/upstairs",
+      "source_hash": "sha256:a76fd34eae387fca8683b2660abd5761e90b3ce9c0e79e6dce544f8baba088ac",
+      "normalized_surface": "上面",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/things.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "tests/constructions/LocativeExistentialClause.json",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "tests/constructions/LocativeFrameClause.json",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "tests/constructions/LocativePlacePhrase.json",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "tests/constructions/ModifiedNP.json",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "tests/constructions/PerfectiveVP.json",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "tests/constructions/PostverbalZoPerfectiveVP.json",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "data/construction-adjudication-batches/batch-11.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/construction-identities.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/research/GLOSSIKA-CONTEXT-LINKED-RESPONSE-DECISIONS-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-002-20251207/crosswalk.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-002-20251207/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-002-20251207/review.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-002-20251207/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-020-20260419/crosswalk.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-020-20260419/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-020-20260419/review.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-020-20260419/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "review-packets/corpus-review/GLOSSIKA-CONTEXT/context-linked-response-decisions-r1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/corpus-review/NOMINAL-MODIFICATION/issue-315/AA07-compact-review.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/development-baseline.json",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/focused-evaluation-packet.json",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/cp025-p1-pfv01-speaker-review-r1/CP025-P1-PFV01-SPEAKER-A-FORM-R1.md",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        }
+      ],
+      "exact_match_paths_omitted": 27,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "already_covered_exact",
+          "exact_runtime_owners": [
+            "src/runtime-resources/lexicon/token-lexicon"
+          ],
+          "canonical_mentions": [
+            "src/runtime-resources/lexicon/token-lexicon/things.js"
+          ],
+          "recommendation": "no_duplicate_ingress"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F01",
+          "cluster": "spatial_categories",
+          "priority": "high",
+          "next_method": "direct_spatial_grammar_plus_corpus_distribution",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I015",
+      "ordinal": 15,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "下面",
+      "source_jyutping": "haa6 min6",
+      "source_english": "below/downstairs",
+      "source_hash": "sha256:2bb4a42d66d1eb9b9006b320b4aaf85a0a82abdee58d5dc49c615e69b60ea140",
+      "normalized_surface": "下面",
+      "exact_match_candidates": [
+        {
+          "path": "review-packets/native-speaker/active-v1/completed/RUL01-SPEAKER-B-PUBLIC-R1/RUL01-PUBLIC-PANEL-SNAPSHOT-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-claim-source.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F01",
+          "cluster": "spatial_categories",
+          "priority": "high",
+          "next_method": "direct_spatial_grammar_plus_corpus_distribution",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I016",
+      "ordinal": 16,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "入面",
+      "source_jyutping": "jap6 min6",
+      "source_english": "inside",
+      "source_hash": "sha256:7790201ab07d1f1385b01c7dcea545a78a843ec63a76a71cf00fd2ec0485b279",
+      "normalized_surface": "入面",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/verbs.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/parser/detectors/existential/clauses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "data/construction-adjudication-batches/batch-11.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/construction-identities.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/crosswalk.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/review.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-claim-source.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/CONSTRUCTION-ADJUDICATION-BATCH-11.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/CP025-P1-PFV01-SPEAKER-A-RAW-R2.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/CP026-P1-RUL01-SPEAKER-A-FORM-R1.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/UC-RQ-001-GENERAL-ZOENG1-DISPOSAL-RESEARCH-R1.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "already_covered_exact",
+          "exact_runtime_owners": [
+            "src/runtime-resources/lexicon/token-lexicon"
+          ],
+          "canonical_mentions": [
+            "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+          ],
+          "recommendation": "no_duplicate_ingress"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F01",
+          "cluster": "spatial_categories",
+          "priority": "high",
+          "next_method": "direct_spatial_grammar_plus_corpus_distribution",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I017",
+      "ordinal": 17,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "外面",
+      "source_jyutping": "ngoi6 min6",
+      "source_english": "outside",
+      "source_hash": "sha256:8ded4e190ee3c22a611091ee5c753e888b25fd4f77c97b5d2d37808faa8d7f80",
+      "normalized_surface": "外面",
+      "exact_match_candidates": [
+        {
+          "path": "data/research-ledgers/glossika-week15-claim-source.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F01",
+          "cluster": "spatial_categories",
+          "priority": "high",
+          "next_method": "direct_spatial_grammar_plus_corpus_distribution",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I018",
+      "ordinal": 18,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "地鐵站",
+      "source_jyutping": "dei6 tit3 zaam6",
+      "source_english": "MTR station",
+      "source_hash": "sha256:73846b8fa7f5c1f7dc998797bdf1a9a6b9c3c905c6b8e69086081304bf30c38a",
+      "normalized_surface": "地鐵站",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/study-suite.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-001-20251130/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-001-20251130/review.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-001-20251130/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/crosswalk.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/review.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-followup-candidates.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W19-20260726-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "already_covered_exact",
+          "exact_runtime_owners": [
+            "src/runtime-resources/lexicon/token-lexicon"
+          ],
+          "canonical_mentions": [
+            "src/runtime-resources/lexicon/token-lexicon/study-suite.js"
+          ],
+          "recommendation": "no_duplicate_ingress"
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I019",
+      "ordinal": 19,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "巴士站",
+      "source_jyutping": "baa1 si2 zaam6",
+      "source_english": "bus stop",
+      "source_hash": "sha256:fbc9fe4c655cf569f24079e088c5d58a421088b8d2513da28ee9389622563858",
+      "normalized_surface": "巴士站",
+      "exact_match_candidates": [
+        {
+          "path": "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I020",
+      "ordinal": 20,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "醫院",
+      "source_jyutping": "ji1 jyun2",
+      "source_english": "hospital",
+      "source_hash": "sha256:5abf3821438d13de6c9ca7bd93d4ab6096cd6bb48215c0747b096fa6dd002351",
+      "normalized_surface": "醫院",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/verbs.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "review-packets/corpus-review/AA56/bounded-review-decisions-r1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/corpus-review/AA56/bounded-review-packet-r1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/corpus-review/NOMINAL-MODIFICATION/issue-315/AA07-compact-review.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/native-panel/active-v2/interim-exports/YUE-JUDGMENT-PILOT-01-2026-07-31/item-statistics.csv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-query-summary.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-query-summary.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa82-hkcancor/hkcancor-aa82-bin-dou-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/AA56-NO-PLACE-EXISTENTIAL-PRESENTATIONAL-BOUNDARIES-R1.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/UNIT-WORD-NOUN-PRIMARY-SOURCE-LEDGER-R1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "already_covered_exact",
+          "exact_runtime_owners": [
+            "src/runtime-resources/lexicon/token-lexicon"
+          ],
+          "canonical_mentions": [
+            "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+          ],
+          "recommendation": "no_duplicate_ingress"
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I021",
+      "ordinal": 21,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "公園",
+      "source_jyutping": "gung1 jyun2",
+      "source_english": "park",
+      "source_hash": "sha256:ca6c3320b3bd4e5375a16f85adc640605e22fa455ad63b3fed74e7e8fdaaf286",
+      "normalized_surface": "公園",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/places-and-times.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/study-suite.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "src/runtime-resources/pronunciation/jyutping-review-expectations.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/crosswalk.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/review.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/review.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "review-packets/native-panel/active-v2/interim-exports/YUE-JUDGMENT-PILOT-01-2026-07-31/item-statistics.csv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/PRQ2-001-YAU5-MOU5-DAK1-AVAILABILITY-RESEARCH-R1.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/RESULT-CHANGE-WRAPPERS-SOURCE-MAP-CP021B-R28.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "already_covered_exact",
+          "exact_runtime_owners": [
+            "src/runtime-resources/lexicon/token-lexicon"
+          ],
+          "canonical_mentions": [
+            "src/runtime-resources/lexicon/token-lexicon/places-and-times.js"
+          ],
+          "recommendation": "no_duplicate_ingress"
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I022",
+      "ordinal": 22,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "教堂",
+      "source_jyutping": "gaau3 tong4",
+      "source_english": "church",
+      "source_hash": "sha256:039af4692b7431c0c91cf06d110d018dcc96d5b938b51117e33a1af230a45d70",
+      "normalized_surface": "教堂",
+      "exact_match_candidates": [
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I023",
+      "ordinal": 23,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "郵局",
+      "source_jyutping": "jau4 guk2",
+      "source_english": "post office",
+      "source_hash": "sha256:dea94e1798640d6316694cf581ed7d7b62d97ce0db982ab7cf0f9bd4d0b9cb96",
+      "normalized_surface": "郵局",
+      "exact_match_candidates": [
+        {
+          "path": "review-packets/corpus-review/AA56/bounded-review-decisions-r1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/corpus-review/AA56/bounded-review-packet-r1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/corpus-review/NOMINAL-MODIFICATION/issue-315/AA07-compact-review.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I024",
+      "ordinal": 24,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "街",
+      "source_jyutping": "gaai1",
+      "source_english": "street",
+      "source_hash": "sha256:b9d96365cbcf9ec4417d05c5fdaeb4b8bbb5323ef5b5994952e63432898dc5ee",
+      "normalized_surface": "街",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/places-and-times.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/study-suite.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/presentation/learner-glosses.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "src/runtime-resources/pronunciation/jyutping-review-expectations.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_source"
+        },
+        {
+          "path": "grammar/research_pending/NamingClause.md",
+          "match_type": "exact_surface_file",
+          "layer": "current_grammar_note"
+        },
+        {
+          "path": "tests/constructions/ClauseSpan.json",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "tests/constructions/MotionGoalVP.json",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "tests/constructions/SerialVerbPurposeChain.json",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "tests/constructions/TransitiveVP.json",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "data/corpus-reviews/AA82-ATTESTED-BOUNDARY-PACKET-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/natural-corpus/wechat-father-daughter-001.txt",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/research/GLOSSIKA-CONTEXT-LINKED-RESPONSE-DECISIONS-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/crosswalk.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/review.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/crosswalk.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/review.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-015-20260315/crosswalk.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        }
+      ],
+      "exact_match_paths_omitted": 53,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "already_covered_exact",
+          "exact_runtime_owners": [
+            "src/runtime-resources/lexicon/token-lexicon"
+          ],
+          "canonical_mentions": [
+            "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+          ],
+          "recommendation": "no_duplicate_ingress"
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I025",
+      "ordinal": 25,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "十字路口",
+      "source_jyutping": "sap6 zi6 lou6 hau2",
+      "source_english": "intersection",
+      "source_hash": "sha256:f92bad19c6b44bc277136bb9be1ac745b78700aa7c3080e96782da9cb52c569b",
+      "normalized_surface": "十字路口",
+      "exact_match_candidates": [
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I026",
+      "ordinal": 26,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "行人路",
+      "source_jyutping": "haang4 jan4 lou6",
+      "source_english": "sidewalk",
+      "source_hash": "sha256:c0377d5e8bce86cc96c98fab5c215d6ce000145baeec7b2e29610a8dbf9cf7f0",
+      "normalized_surface": "行人路",
+      "exact_match_candidates": [
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I027",
+      "ordinal": 27,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "噴泉",
+      "source_jyutping": "pan3 cyun4",
+      "source_english": "fountain",
+      "source_hash": "sha256:c3c2f94cbd525b7e63a35f05ee521bee96d747bf65ff5597dd464d87b9497ac4",
+      "normalized_surface": "噴泉",
+      "exact_match_candidates": [
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I028",
+      "ordinal": 28,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "雕像",
+      "source_jyutping": "diu1 zoeng6",
+      "source_english": "statue",
+      "source_hash": "sha256:ea699dba9b566a8c96c18ca318532849df196fa74d1703d879d1cd39733f0254",
+      "normalized_surface": "雕像",
+      "exact_match_candidates": [
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I029",
+      "ordinal": 29,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "窄巷",
+      "source_jyutping": "zaak3 hong6",
+      "source_english": "alley",
+      "source_hash": "sha256:8da8d840ecb54aaba15759e599ba8b1e338648c0433f59970aa24c6e37e606ab",
+      "normalized_surface": "窄巷",
+      "exact_match_candidates": [
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I030",
+      "ordinal": 30,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "迴旋處",
+      "source_jyutping": "wui4 syun4 cyu3",
+      "source_english": "roundabout",
+      "source_hash": "sha256:e83fd68f624f3023108fabbba2dc5f5512d6a04e13831bb26d537f20498b9036",
+      "normalized_surface": "迴旋處",
+      "exact_match_candidates": [
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I031",
+      "ordinal": 31,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "天橋",
+      "source_jyutping": "tin1 kiu4",
+      "source_english": "overpass",
+      "source_hash": "sha256:b132d15d3327009f910038917f2eb5539913d9573c48d45bb1489919f7ff9339",
+      "normalized_surface": "天橋",
+      "exact_match_candidates": [
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I032",
+      "ordinal": 32,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "隧道",
+      "source_jyutping": "seoi6 dou6",
+      "source_english": "tunnel",
+      "source_hash": "sha256:838ccf23968b50ce0e2a46f420e3067b40e62911b10b6353b71513862f20ef54",
+      "normalized_surface": "隧道",
+      "exact_match_candidates": [
+        {
+          "path": "data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-020-20260419/crosswalk.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-020-20260419/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-020-20260419/review.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-020-20260419/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I033",
+      "ordinal": 33,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "橋",
+      "source_jyutping": "kiu4",
+      "source_english": "bridge",
+      "source_hash": "sha256:e530ae61b966d87ecc5f69cf66faa50d2a41cea202c1ebf0924401366e4855c3",
+      "normalized_surface": "橋",
+      "exact_match_candidates": [
+        {
+          "path": "review-packets/corpus-review/AA56/bounded-review-decisions-r1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/corpus-review/AA56/bounded-review-packet-r1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/corpus-review/NOMINAL-MODIFICATION/AA91-full-review-r1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/corpus-review/NOMINAL-MODIFICATION/issue-315/AA07-compact-review.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "review-packets/corpus-review/NOMINAL-MODIFICATION/issue-315/AA91-compact-review.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-query-summary.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa62-hkcancor/hkcancor-aa62-v-gwo-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-query-summary.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa91-hkcancor/hkcancor-aa91-hou-x-noun-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I034",
+      "ordinal": 34,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "廣場",
+      "source_jyutping": "gwong2 coeng4",
+      "source_english": "square",
+      "source_hash": "sha256:0a801db0181df17baeb2c3bb8a5915c9b5a9cedf1957c4772cc20c7c3f3bce5d",
+      "normalized_surface": "廣場",
+      "exact_match_candidates": [
+        {
+          "path": "external-evidence/aa84-bare-redup-hkcancor/hkcancor-aa84-bare-redup-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/PRQ2-005-HOI1-HABITUAL-ESTABLISHED-ACTIVITY-COLLISION-AUDIT-R1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/PRQ2-005-HOI1-HABITUAL-ESTABLISHED-ACTIVITY-RESEARCH-R1.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I035",
+      "ordinal": 35,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "噴水池",
+      "source_jyutping": "pan3 seoi2 ci4",
+      "source_english": "fountain",
+      "source_hash": "sha256:96edcac77b525d7ec6f15bc6b0c7a9d17dc43a5fc7e4cdb43b16283b63a02171",
+      "normalized_surface": "噴水池",
+      "exact_match_candidates": [
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I036",
+      "ordinal": 36,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "行人天橋",
+      "source_jyutping": "haang4 jan4 tin1 kiu4",
+      "source_english": "overpass",
+      "source_hash": "sha256:9382961d9b4adac287dacf685d0174be3af1302bd46125be295d0deb0917bfc5",
+      "normalized_surface": "行人天橋",
+      "exact_match_candidates": [
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I037",
+      "ordinal": 37,
+      "section": "vocabulary_and_situations",
+      "subsection": "directions_and_places",
+      "item_type": "lexical_entry",
+      "source_traditional": "戲票",
+      "source_jyutping": "hei3 piu3",
+      "source_english": "theater ticket",
+      "source_hash": "sha256:04f1d76c1702d53d39f5c03628e31eb564cd19dc0c82e1d86ccf955981406231",
+      "normalized_surface": "戲票",
+      "exact_match_candidates": [
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "lexical_ingress_candidate",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "review_for_smallest_canonical_lexicon_owner"
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I038",
+      "ordinal": 38,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "item_type": "lexical_entry",
+      "source_traditional": "十萬",
+      "source_jyutping": "sap6 maan6",
+      "source_english": "100 thousand",
+      "source_hash": "sha256:d998a6f5c28ff60eb4f6f087c068c82f867a5783b958b4bff2a45320afb73302",
+      "normalized_surface": "十萬",
+      "exact_match_candidates": [
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/expert-review-r1.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/mechanical-cross-reference-r1.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/research-summary.md",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "review-packets/corpus-review/NOMINAL-MODIFICATION/issue-315/AA07-compact-review.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-query-summary.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa76-hkcancor/hkcancor-aa76-bei-give-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-query-summary.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/cp021b/hkcancor-cp021b-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week14-claim-source.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week14-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-claim-source.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W14-20260621-CORPUS-INGRESS.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W14-20260621-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "compositional_numeral_no_opaque_entry",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_non_candidate",
+          "cluster": "large_numerals",
+          "disposition": "retain_compositional_numeral_analysis",
+          "reason": "Nine forms are compositionally uncovered; 一百萬 is already represented. No opaque bulk ingress is warranted."
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I039",
+      "ordinal": 39,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "item_type": "lexical_entry",
+      "source_traditional": "二十萬",
+      "source_jyutping": "ji6 sap6 maan6",
+      "source_english": "200 thousand",
+      "source_hash": "sha256:f91133303fccfd6e5898061edff4a328aa866a906f1a98eb4686fa6e4509cf45",
+      "normalized_surface": "二十萬",
+      "exact_match_candidates": [
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "compositional_numeral_no_opaque_entry",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_non_candidate",
+          "cluster": "large_numerals",
+          "disposition": "retain_compositional_numeral_analysis",
+          "reason": "Nine forms are compositionally uncovered; 一百萬 is already represented. No opaque bulk ingress is warranted."
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I040",
+      "ordinal": 40,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "item_type": "lexical_entry",
+      "source_traditional": "三十萬",
+      "source_jyutping": "saam1 sap6 maan6",
+      "source_english": "300 thousand",
+      "source_hash": "sha256:a0150455509d8ec53b8938f94c6ddbbcd8af8dd067d39bcd13da935f350ddadf",
+      "normalized_surface": "三十萬",
+      "exact_match_candidates": [
+        {
+          "path": "external-evidence/aa56-no-place-hkcancor/hkcancor-aa56-no-place-query-summary.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "external-evidence/aa77-hkcancor/hkcancor-aa77-jau-mou-query-summary.json",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "compositional_numeral_no_opaque_entry",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_non_candidate",
+          "cluster": "large_numerals",
+          "disposition": "retain_compositional_numeral_analysis",
+          "reason": "Nine forms are compositionally uncovered; 一百萬 is already represented. No opaque bulk ingress is warranted."
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I041",
+      "ordinal": 41,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "item_type": "lexical_entry",
+      "source_traditional": "四十萬",
+      "source_jyutping": "sei3 sap6 maan6",
+      "source_english": "400 thousand",
+      "source_hash": "sha256:ddb254089470a2a9b6bde4b6f652faa7df2b005dff0fd5fee14efbbba969b0c5",
+      "normalized_surface": "四十萬",
+      "exact_match_candidates": [
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "compositional_numeral_no_opaque_entry",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_non_candidate",
+          "cluster": "large_numerals",
+          "disposition": "retain_compositional_numeral_analysis",
+          "reason": "Nine forms are compositionally uncovered; 一百萬 is already represented. No opaque bulk ingress is warranted."
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I042",
+      "ordinal": 42,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "item_type": "lexical_entry",
+      "source_traditional": "五十萬",
+      "source_jyutping": "ng5 sap6 maan6",
+      "source_english": "500 thousand",
+      "source_hash": "sha256:147bf9d2e980da38ac80e45fc8c9eb8bceeeec13753a1d5d32381098e77a4aba",
+      "normalized_surface": "五十萬",
+      "exact_match_candidates": [
+        {
+          "path": "external-evidence/aa30-hkcancor/hkcancor-aa30-tung-tungmaai-candidate-inventory.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "external_evidence"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "compositional_numeral_no_opaque_entry",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_non_candidate",
+          "cluster": "large_numerals",
+          "disposition": "retain_compositional_numeral_analysis",
+          "reason": "Nine forms are compositionally uncovered; 一百萬 is already represented. No opaque bulk ingress is warranted."
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I043",
+      "ordinal": 43,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "item_type": "lexical_entry",
+      "source_traditional": "六十萬",
+      "source_jyutping": "luk6 sap6 maan6",
+      "source_english": "600 thousand",
+      "source_hash": "sha256:f304887dd79fe3a3c3600259658f813d85dc3f3ec7892abf17bd16f796919f84",
+      "normalized_surface": "六十萬",
+      "exact_match_candidates": [
+        {
+          "path": "review-packets/corpus-review/NOMINAL-MODIFICATION/issue-315/AA07-compact-review.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "review_packet"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "compositional_numeral_no_opaque_entry",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_non_candidate",
+          "cluster": "large_numerals",
+          "disposition": "retain_compositional_numeral_analysis",
+          "reason": "Nine forms are compositionally uncovered; 一百萬 is already represented. No opaque bulk ingress is warranted."
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I044",
+      "ordinal": 44,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "item_type": "lexical_entry",
+      "source_traditional": "七十萬",
+      "source_jyutping": "cat1 sap6 maan6",
+      "source_english": "700 thousand",
+      "source_hash": "sha256:b998ed902d79712b1b8ab2049a87c7e6d14733d9b327e279dde6b05f50b35c78",
+      "normalized_surface": "七十萬",
+      "exact_match_candidates": [
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "compositional_numeral_no_opaque_entry",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_non_candidate",
+          "cluster": "large_numerals",
+          "disposition": "retain_compositional_numeral_analysis",
+          "reason": "Nine forms are compositionally uncovered; 一百萬 is already represented. No opaque bulk ingress is warranted."
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I045",
+      "ordinal": 45,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "item_type": "lexical_entry",
+      "source_traditional": "八十萬",
+      "source_jyutping": "baat3 sap6 maan6",
+      "source_english": "800 thousand",
+      "source_hash": "sha256:3ea94542ce5f4f10ab3740e671fb890bb5932e21ab4d75053443223ad346efbd",
+      "normalized_surface": "八十萬",
+      "exact_match_candidates": [
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "compositional_numeral_no_opaque_entry",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_non_candidate",
+          "cluster": "large_numerals",
+          "disposition": "retain_compositional_numeral_analysis",
+          "reason": "Nine forms are compositionally uncovered; 一百萬 is already represented. No opaque bulk ingress is warranted."
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I046",
+      "ordinal": 46,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "item_type": "lexical_entry",
+      "source_traditional": "九十萬",
+      "source_jyutping": "gau2 sap6 maan6",
+      "source_english": "900 thousand",
+      "source_hash": "sha256:d0e314f5a2fe27aa42a9bb50bc255c53ea13df3bd7d686d3237f8c178273b418",
+      "normalized_surface": "九十萬",
+      "exact_match_candidates": [
+        {
+          "path": "data/research-ledgers/glossika-week15-claim-source.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "compositional_numeral_no_opaque_entry",
+          "exact_runtime_owners": [],
+          "canonical_mentions": [],
+          "recommendation": "retain_compositional_analysis_do_not_add_opaque_whole_form"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_non_candidate",
+          "cluster": "large_numerals",
+          "disposition": "retain_compositional_numeral_analysis",
+          "reason": "Nine forms are compositionally uncovered; 一百萬 is already represented. No opaque bulk ingress is warranted."
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I047",
+      "ordinal": 47,
+      "section": "vocabulary_and_situations",
+      "subsection": "numbers",
+      "item_type": "lexical_entry",
+      "source_traditional": "一百萬",
+      "source_jyutping": "jat1 baak3 maan6",
+      "source_english": "1 million",
+      "source_hash": "sha256:abc17c2e798ef312a5f1a89165dc0dc509dce4d5acfc1bfe22f22c494a1b715d",
+      "normalized_surface": "一百萬",
+      "exact_match_candidates": [
+        {
+          "path": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+          "match_type": "exact_surface_file",
+          "layer": "runtime_lexicon"
+        },
+        {
+          "path": "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/items.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/review.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/source.json",
+          "match_type": "exact_surface_file",
+          "layer": "pedagogical_corpus"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-claim-source.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-followup-candidates.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "data/research-ledgers/glossika-week15-lexical-ingress.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_ledger"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-WEEK16-LEXICON-PROVENANCE.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-LEXICAL-INGRESS-R1",
+          "kind": "lexical_ingress",
+          "disposition": "already_covered_exact",
+          "exact_runtime_owners": [
+            "src/runtime-resources/lexicon/token-lexicon",
+            "src/runtime-resources/lexicon/compositional-lexical-phrases.js"
+          ],
+          "canonical_mentions": [
+            "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+            "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js"
+          ],
+          "recommendation": "no_duplicate_ingress"
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_non_candidate",
+          "cluster": "large_numerals",
+          "disposition": "retain_compositional_numeral_analysis",
+          "reason": "Nine forms are compositionally uncovered; 一百萬 is already represented. No opaque bulk ingress is warranted."
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I048",
+      "ordinal": 48,
+      "section": "vocabulary_and_situations",
+      "subsection": "situation_patterns",
+      "item_type": "sentence",
+      "source_traditional": "請問去地鐵站點行？",
+      "source_jyutping": "cing2 man6 heoi3 dei6 tit3 zaam6 dim2 haang4?",
+      "source_english": "Excuse me, how do I get to the MTR station?",
+      "source_hash": "sha256:b9ffd6861a49433961abcd63d5fb7af2ec903eeedf9eb12320760f14c0506beb",
+      "normalized_surface": "請問去地鐵站點行",
+      "exact_match_candidates": [
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [
+        {
+          "path": "data/research-ledgers/glossika-week15-followup-candidates.json",
+          "match_type": "normalized_surface_file",
+          "layer": "research_ledger"
+        }
+      ],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F02",
+          "cluster": "destination_question",
+          "priority": "high",
+          "next_method": "canonical_parser_audit_then_controlled_corpus_contrasts",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I049",
+      "ordinal": 49,
+      "section": "vocabulary_and_situations",
+      "subsection": "situation_patterns",
+      "item_type": "sentence",
+      "source_traditional": "直行，然後轉左。",
+      "source_jyutping": "zik6 haang4, jin4 hau6 zyun3 zo2.",
+      "source_english": "Go straight, then turn left.",
+      "source_hash": "sha256:a9fb896a6f325c26754b43c48467655b28b0f486ebed76ec69f1aca2ae10a092",
+      "normalized_surface": "直行然後轉左",
+      "exact_match_candidates": [
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [
+        {
+          "path": "data/research-ledgers/glossika-week15-followup-candidates.json",
+          "match_type": "normalized_surface_file",
+          "layer": "research_ledger"
+        }
+      ],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F03",
+          "cluster": "imperative_route_chain",
+          "priority": "medium",
+          "next_method": "corpus_route_instruction_inventory_with_negative_boundaries",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I050",
+      "ordinal": 50,
+      "section": "vocabulary_and_situations",
+      "subsection": "situation_patterns",
+      "item_type": "sentence",
+      "source_traditional": "超市喺邊度？",
+      "source_jyutping": "ciu1 si5 hai2 bin1 dou6?",
+      "source_english": "Where is the supermarket?",
+      "source_hash": "sha256:bff53445bc46291d4ad444ef8bb1ff74556cf1c6b9c6a291bf2696b1f2d0aac9",
+      "normalized_surface": "超市喺邊度",
+      "exact_match_candidates": [
+        {
+          "path": "tests/tooling/runtime/aa82-matrix-parent-force.test.js",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "data/corpus-reviews/AA82-ATTESTED-BOUNDARY-PACKET-R1.json",
+          "match_type": "exact_surface_file",
+          "layer": "canonical_or_research_data"
+        },
+        {
+          "path": "docs/research/AA82-ATTESTED-BOUNDARY-PACKET-R1.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I051",
+      "ordinal": 51,
+      "section": "vocabulary_and_situations",
+      "subsection": "situation_patterns",
+      "item_type": "sentence",
+      "source_traditional": "就喺前面，行兩分鐘就到。",
+      "source_jyutping": "zau6 hai2 cin4 min6, haang4 loeng5 fan1 zung1 zau6 dou3.",
+      "source_english": "It's right ahead, two minutes' walk.",
+      "source_hash": "sha256:14a220c6be9a4e6729016fe1f613fded7a6fc0310640b9dee8b2c18e18d6b8c0",
+      "normalized_surface": "就喺前面行兩分鐘就到",
+      "exact_match_candidates": [
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F01",
+          "cluster": "spatial_categories",
+          "priority": "high",
+          "next_method": "direct_spatial_grammar_plus_corpus_distribution",
+          "reason": null
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F04",
+          "cluster": "arrival_result_dou3",
+          "priority": "high",
+          "next_method": "direct_resultative_review_plus_minimal_contrasts",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I052",
+      "ordinal": 52,
+      "section": "vocabulary_and_situations",
+      "subsection": "mini_dialog",
+      "item_type": "dialog_turn",
+      "source_traditional": "唔該，請問附近有冇郵局？",
+      "source_jyutping": "m4 goi1, cing2 man6 fu6 gan6 jau5 mou5 jau4 guk2?",
+      "source_english": "Excuse me, is there a post office nearby?",
+      "source_hash": "sha256:e5803047f0b6288b0e50585dcaf9907068ab1bfd57d6f71e4dc78f9b4f3689e0",
+      "normalized_surface": "唔該請問附近有冇郵局",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F08",
+          "cluster": "question_strategy_boundaries",
+          "priority": "high",
+          "next_method": "canonical_parser_and_test_audit",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I053",
+      "ordinal": 53,
+      "section": "vocabulary_and_situations",
+      "subsection": "mini_dialog",
+      "item_type": "dialog_turn",
+      "source_traditional": "有，喺超市隔籬。",
+      "source_jyutping": "jau5, hai2 ciu1 si5 gaak3 lei4.",
+      "source_english": "Yes, it's next to the supermarket.",
+      "source_hash": "sha256:130ad5f286e754c9b29f8cd65575624af1d455eefebc6fa39ead576dd373b92d",
+      "normalized_surface": "有喺超市隔籬",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I054",
+      "ordinal": 54,
+      "section": "vocabulary_and_situations",
+      "subsection": "mini_dialog",
+      "item_type": "dialog_turn",
+      "source_traditional": "點行呀？",
+      "source_jyutping": "dim2 haang4 aa3?",
+      "source_english": "How do I get there?",
+      "source_hash": "sha256:33a8718c97c6dbc4262ec925e4b9a0c1a325001f06f9fe7227194e25e38f5089",
+      "normalized_surface": "點行呀",
+      "exact_match_candidates": [
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F07",
+          "cluster": "aa_tone_identity",
+          "priority": "high",
+          "next_method": "tone_specific_particle_and_context_audit",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I055",
+      "ordinal": 55,
+      "section": "vocabulary_and_situations",
+      "subsection": "mini_dialog",
+      "item_type": "dialog_turn",
+      "source_traditional": "直行，過咗紅綠燈就喺右手邊。",
+      "source_jyutping": "zik6 haang4, gwo3 zo2 hung4 luk6 dang1 zau6 hai2 jau6 sau2 bin1.",
+      "source_english": "Go straight, past the traffic light, it's on the right.",
+      "source_hash": "sha256:b41200500c050c9998eb09f4ec8c4caac84e940804a383267a77d1ae7a395e90",
+      "normalized_surface": "直行過咗紅綠燈就喺右手邊",
+      "exact_match_candidates": [
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [
+        {
+          "path": "data/research-ledgers/glossika-week15-followup-candidates.json",
+          "match_type": "normalized_surface_file",
+          "layer": "research_ledger"
+        }
+      ],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F01",
+          "cluster": "spatial_categories",
+          "priority": "high",
+          "next_method": "direct_spatial_grammar_plus_corpus_distribution",
+          "reason": null
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F03",
+          "cluster": "imperative_route_chain",
+          "priority": "medium",
+          "next_method": "corpus_route_instruction_inventory_with_negative_boundaries",
+          "reason": null
+        },
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F05",
+          "cluster": "landmark_sequence",
+          "priority": "medium",
+          "next_method": "corpus_contrasts_for_gwo3_zo2_zau6_sequences",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I056",
+      "ordinal": 56,
+      "section": "grammar_patterns",
+      "subsection": "yes_no_questions",
+      "item_type": "sentence",
+      "source_traditional": "你食飯咩？",
+      "source_jyutping": "nei5 sik6 faan6 me1?",
+      "source_english": "Do you eat rice?",
+      "source_hash": "sha256:b8925cf2f9b46a8374a81b5e5795b4fa5bbe90b49f79bc4753103df87d0e799d",
+      "normalized_surface": "你食飯咩",
+      "exact_match_candidates": [
+        {
+          "path": "tests/constructions/ClauseSpan.json",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "tests/constructions/PolarQuestionFrame.json",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "tests/constructions/ProductiveVO.json",
+          "match_type": "exact_surface_file",
+          "layer": "executable_test_or_fixture"
+        },
+        {
+          "path": "docs/research/EVALUATION-PACKET-BLUEPRINTS-CP021B-R37.json",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/PARSER-CONSTRUCTION-CANONICAL-CONSOLIDATION-MATRIX-CP021B-R35.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/PARSER-CONSTRUCTION-INTERNAL-DISPOSITION-MATRIX-CP021B-R34.tsv",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F06",
+          "cluster": "me1_question_force",
+          "priority": "high",
+          "next_method": "direct_particle_analysis_then_role_neutral_context_panel_if_needed",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I057",
+      "ordinal": 57,
+      "section": "grammar_patterns",
+      "subsection": "yes_no_questions",
+      "item_type": "sentence",
+      "source_traditional": "佢係唔係老師？",
+      "source_jyutping": "keoi5 hai6 m4 hai6 lou5 si1?",
+      "source_english": "Is he/she a teacher?",
+      "source_hash": "sha256:6365cc8c9121aa11eef5e156ff2cf895e52dc0e1671d2dbc625656573d1580cf",
+      "normalized_surface": "佢係唔係老師",
+      "exact_match_candidates": [
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F08",
+          "cluster": "question_strategy_boundaries",
+          "priority": "high",
+          "next_method": "canonical_parser_and_test_audit",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I058",
+      "ordinal": 58,
+      "section": "grammar_patterns",
+      "subsection": "wh_questions",
+      "item_type": "sentence",
+      "source_traditional": "你叫咩名？",
+      "source_jyutping": "nei5 giu3 me1 meng2?",
+      "source_english": "What is your name?",
+      "source_hash": "sha256:2acad4976cbf32cb175b422df039fe79b0cf3eaf398964d397d968b1c4da606b",
+      "normalized_surface": "你叫咩名",
+      "exact_match_candidates": [
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F08",
+          "cluster": "question_strategy_boundaries",
+          "priority": "high",
+          "next_method": "canonical_parser_and_test_audit",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I059",
+      "ordinal": 59,
+      "section": "grammar_patterns",
+      "subsection": "wh_questions",
+      "item_type": "sentence",
+      "source_traditional": "邊個嚟？",
+      "source_jyutping": "bin1 go3 lai4?",
+      "source_english": "Who is coming?",
+      "source_hash": "sha256:6b8ee2c86d65a24b26a8b5792991bfcfb4ad84e5270809657798a02969be1170",
+      "normalized_surface": "邊個嚟",
+      "exact_match_candidates": [
+        {
+          "path": "docs/research/GLOSSIKA-YUEHK-A1-W15-20260628-RESEARCH.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        },
+        {
+          "path": "docs/research/reopened-retired-labels/IdentityWhQuestion.md",
+          "match_type": "exact_surface_file",
+          "layer": "research_report"
+        }
+      ],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F08",
+          "cluster": "question_strategy_boundaries",
+          "priority": "high",
+          "next_method": "canonical_parser_and_test_audit",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I060",
+      "ordinal": 60,
+      "section": "phonics_drill",
+      "subsection": "e_vs_i",
+      "item_type": "phonics_pair",
+      "source_traditional": "",
+      "source_jyutping": null,
+      "source_english": null,
+      "source_hash": "sha256:f25619d5f4e534849bc3add78c3296af389b1bfd9cbbade711a19e74ac794b38",
+      "normalized_surface": "",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F10",
+          "cluster": "phonics_e_i",
+          "priority": "high",
+          "next_method": "item_level_phonological_and_lexical_verification",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I061",
+      "ordinal": 61,
+      "section": "phonics_drill",
+      "subsection": "e_vs_i",
+      "item_type": "phonics_pair",
+      "source_traditional": "",
+      "source_jyutping": null,
+      "source_english": null,
+      "source_hash": "sha256:e6e484c7206efe9e4d8da91ae371af8399fe81a1944033cca92f6b4766cbdfdf",
+      "normalized_surface": "",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F10",
+          "cluster": "phonics_e_i",
+          "priority": "high",
+          "next_method": "item_level_phonological_and_lexical_verification",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I062",
+      "ordinal": 62,
+      "section": "phonics_drill",
+      "subsection": "e_vs_i",
+      "item_type": "phonics_pair",
+      "source_traditional": "",
+      "source_jyutping": null,
+      "source_english": null,
+      "source_hash": "sha256:489e81db477672b7e5b1cceb428328f754bc0383967e55e6d27b16b797a18b23",
+      "normalized_surface": "",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F10",
+          "cluster": "phonics_e_i",
+          "priority": "high",
+          "next_method": "item_level_phonological_and_lexical_verification",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I063",
+      "ordinal": 63,
+      "section": "phonics_drill",
+      "subsection": "e_vs_i",
+      "item_type": "phonics_pair",
+      "source_traditional": "",
+      "source_jyutping": null,
+      "source_english": null,
+      "source_hash": "sha256:990a401e19333db2f5929b6a4c566a863c6376174db7ad9cb86d015f35b23bd3",
+      "normalized_surface": "",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F10",
+          "cluster": "phonics_e_i",
+          "priority": "high",
+          "next_method": "item_level_phonological_and_lexical_verification",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I064",
+      "ordinal": 64,
+      "section": "phonics_drill",
+      "subsection": "e_vs_i",
+      "item_type": "phonics_pair",
+      "source_traditional": "",
+      "source_jyutping": null,
+      "source_english": null,
+      "source_hash": "sha256:d01bbca164d848991b5ea70283cba6abe88dc0df749cfd00df4a512375776209",
+      "normalized_surface": "",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F10",
+          "cluster": "phonics_e_i",
+          "priority": "high",
+          "next_method": "item_level_phonological_and_lexical_verification",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    },
+    {
+      "id": "GLOSSIKA-YUEHK-A1-W15-20260628-I065",
+      "ordinal": 65,
+      "section": "phonics_drill",
+      "subsection": "e_vs_i",
+      "item_type": "phonics_pair",
+      "source_traditional": "",
+      "source_jyutping": null,
+      "source_english": null,
+      "source_hash": "sha256:2320a37f2c768d8dc722ab801601dc4364012d08e10cd5afc460bee135ad77dc",
+      "normalized_surface": "",
+      "exact_match_candidates": [],
+      "exact_match_paths_omitted": 0,
+      "normalized_match_candidates": [],
+      "normalized_match_paths_omitted": 0,
+      "later_research_links": [
+        {
+          "packet": "GLOSSIKA-YUEHK-A1-W15-20260628-FOLLOWUP-R1",
+          "kind": "followup_candidate",
+          "candidate_id": "W15-F10",
+          "cluster": "phonics_e_i",
+          "priority": "high",
+          "next_method": "item_level_phonological_and_lexical_verification",
+          "reason": null
+        }
+      ],
+      "mechanical_status": "candidate_scan_complete",
+      "expert_duplicate_status": "unreviewed",
+      "terminal_ingress_classification": "unreviewed",
+      "evidence_use_disposition": "unreviewed",
+      "review_note": ""
+    }
+  ]
+}
