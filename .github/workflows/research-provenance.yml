@@ -6,26 +6,128 @@ on:
       - ".github/workflows/research-provenance.yml"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  inspect-dialog005-payload:
+  finalize-dialog005-review:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
         with:
           ref: agent/dialog005-ingress-review
-      - name: Record payload hashes
-        run: |
-          sha256sum tools/.dialog005-reviewed-state.part00 tools/.dialog005-reviewed-state.part01 > /tmp/dialog005-payload-sha256.txt
-          wc -c tools/.dialog005-reviewed-state.part00 tools/.dialog005-reviewed-state.part01 > /tmp/dialog005-payload-bytes.txt
-      - uses: actions/upload-artifact@v4
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
         with:
-          name: dialog005-staged-payload
-          path: |
-            tools/.dialog005-reviewed-state.part00
-            tools/.dialog005-reviewed-state.part01
-            /tmp/dialog005-payload-sha256.txt
-            /tmp/dialog005-payload-bytes.txt
-          if-no-files-found: error
-          retention-days: 1
+          node-version: 24
+          package-manager-cache: false
+
+      - name: Reconstruct and verify reviewed state
+        run: |
+          set -euxo pipefail
+          test "$(sha256sum tools/.dialog005-reviewed-state.chunk00 | cut -d' ' -f1)" = "ba038cf926a84de113a4055148e77f50f88ad22d5215e03b4b647068957ee1d8"
+          test "$(sha256sum tools/.dialog005-reviewed-state.chunk01 | cut -d' ' -f1)" = "03c18a7a593726d4adf8e0d9d055bae6a0c74d644af1c7ee0b56c4414bc8dc09"
+          test "$(sha256sum tools/.dialog005-reviewed-state.chunk02 | cut -d' ' -f1)" = "cf6f80fc36b7d5f2125302f8b80b528d766059bd07df4b8a7559480be0e11773"
+          test "$(sha256sum tools/.dialog005-reviewed-state.chunk03 | cut -d' ' -f1)" = "df9a386b0755120dfb3843647b1aa1edf986c138285cda0ce31a9207f66e29fc"
+          test "$(sha256sum tools/.dialog005-reviewed-state.chunk04 | cut -d' ' -f1)" = "249695fb2f5ffd52f4a05c7fce7aa3271cf502a56735e37fa4bfde987ac77510"
+          test "$(sha256sum tools/.dialog005-reviewed-state.chunk05 | cut -d' ' -f1)" = "acb01509b57d1d76094e597df681c3cee651651d5c61829a46b5b59df362a124"
+          test "$(sha256sum tools/.dialog005-reviewed-state.chunk06 | cut -d' ' -f1)" = "a0166dd9fd57e94253fd2c561599cbe61f8d469bd2686bdf1cda4b04045b4edb"
+          test "$(sha256sum tools/.dialog005-reviewed-state.chunk07 | cut -d' ' -f1)" = "c9d5c2fe17fe1fed87ac39cd60a4215b120ce3a224617da05fb4c445b8462728"
+          cat tools/.dialog005-reviewed-state.chunk00 \
+            tools/.dialog005-reviewed-state.chunk01 \
+            tools/.dialog005-reviewed-state.chunk02 \
+            tools/.dialog005-reviewed-state.chunk03 \
+            tools/.dialog005-reviewed-state.chunk04 \
+            tools/.dialog005-reviewed-state.chunk05 \
+            tools/.dialog005-reviewed-state.chunk06 \
+            tools/.dialog005-reviewed-state.chunk07 > /tmp/dialog005-reviewed-state.b64
+          test "$(wc -c < /tmp/dialog005-reviewed-state.b64)" = "63132"
+          test "$(sha256sum /tmp/dialog005-reviewed-state.b64 | cut -d' ' -f1)" = "7ae5aa9a5716a9322409b25dfb2b7723c83310fdab4b8c1dc44e5dd0b84f913b"
+          base64 --decode /tmp/dialog005-reviewed-state.b64 > /tmp/dialog005-reviewed-state.tar.gz
+          test "$(sha256sum /tmp/dialog005-reviewed-state.tar.gz | cut -d' ' -f1)" = "2abb12fe2ceb327b688cb1097722131fbab664311516c22c2d00fece82afeacc"
+          test -z "$(tar -tzf /tmp/dialog005-reviewed-state.tar.gz | grep -E '(^/|(^|/)\.\.(/|$))' || true)"
+          tar -xzf /tmp/dialog005-reviewed-state.tar.gz -C .
+
+      - name: Validate final Dialog 005 state
+        run: |
+          python3 -m py_compile \
+            tools/verify-pedagogical-corpus-review.py \
+            tests/tooling/research/pedagogical-corpus-review.test.py
+          python3 tests/tooling/research/pedagogical-corpus-review.test.py
+          npm run verify:pedagogical-corpus-review
+          npm run verify:research
+          npm run verify
+          git diff --check
+
+      - name: Commit and push reviewed non-workflow state
+        run: |
+          find tools tests -type d -name __pycache__ -prune -exec rm -rf {} +
+          git rm -f \
+            tools/.dialog005-reviewed-state.part00 \
+            tools/.dialog005-reviewed-state.part01 \
+            tools/.dialog005-reviewed-state.chunk00 \
+            tools/.dialog005-reviewed-state.chunk01 \
+            tools/.dialog005-reviewed-state.chunk02 \
+            tools/.dialog005-reviewed-state.chunk03 \
+            tools/.dialog005-reviewed-state.chunk04 \
+            tools/.dialog005-reviewed-state.chunk05 \
+            tools/.dialog005-reviewed-state.chunk06 \
+            tools/.dialog005-reviewed-state.chunk07 \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/.review-claim
+
+          git add \
+            config/pedagogical-corpus-source-locks.json \
+            config/verification-profiles.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/README.md \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/dialog-context-routing-r1.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/expert-review-r1.tsv \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/mechanical-cross-reference-r1.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/package-integrity-r1.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/research-summary.md \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/review.json \
+            docs/research/GLOSSIKA-YUEHK-A1-DLG-005-20251228-CORPUS-INGRESS.md \
+            package.json \
+            tests/tooling/research/pedagogical-corpus-review.test.py
+
+          git diff --cached --name-only | sort > /tmp/actual-paths.txt
+          cat > /tmp/expected-paths.txt <<'EOF'
+          config/pedagogical-corpus-source-locks.json
+          config/verification-profiles.json
+          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/.review-claim
+          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/README.md
+          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/dialog-context-routing-r1.json
+          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/expert-review-r1.tsv
+          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/mechanical-cross-reference-r1.json
+          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/package-integrity-r1.json
+          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/research-summary.md
+          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/review.json
+          docs/research/GLOSSIKA-YUEHK-A1-DLG-005-20251228-CORPUS-INGRESS.md
+          package.json
+          tests/tooling/research/pedagogical-corpus-review.test.py
+          tools/.dialog005-reviewed-state.chunk00
+          tools/.dialog005-reviewed-state.chunk01
+          tools/.dialog005-reviewed-state.chunk02
+          tools/.dialog005-reviewed-state.chunk03
+          tools/.dialog005-reviewed-state.chunk04
+          tools/.dialog005-reviewed-state.chunk05
+          tools/.dialog005-reviewed-state.chunk06
+          tools/.dialog005-reviewed-state.chunk07
+          tools/.dialog005-reviewed-state.part00
+          tools/.dialog005-reviewed-state.part01
+          EOF
+          sed -i 's/^          //' /tmp/expected-paths.txt
+          sort -o /tmp/expected-paths.txt /tmp/expected-paths.txt
+          diff -u /tmp/expected-paths.txt /tmp/actual-paths.txt
+
+          git diff --quiet HEAD -- \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/source.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/items.tsv \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/crosswalk.json \
+            data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json \
+            src \
+            main.js
+          test -z "$(git ls-files --others --exclude-standard)"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Complete Dialog 005 expert ingress review"
+          git push origin HEAD:agent/dialog005-ingress-review
