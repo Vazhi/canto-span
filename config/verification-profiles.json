@@ -59,6 +59,12 @@
         "command": ["node", "tools/verify-research-provenance.js"],
         "reason": "Prevent missing, duplicate, malformed, or overclaimed research provenance records.",
         "run_when": "Research packages, source ledgers, evidence grades, or provenance configuration change."
+      },
+      {
+        "id": "native-panel-lifecycle",
+        "command": ["node", "tools/verify-native-panel-lifecycle.js"],
+        "reason": "Prevent follow-up native-panel lifecycle, artifact-role, generated-form, and deployment evidence from bypassing pilot closure and accepted item audit.",
+        "run_when": "Canonical pilot, item-audit, follow-up lifecycle, artifact contract, generated namespace, or deployment namespace changes."
       }
     ],
     "runtime": [
