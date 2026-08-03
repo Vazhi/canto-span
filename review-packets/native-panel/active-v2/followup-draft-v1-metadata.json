@@ -70,9 +70,17 @@
   "response_template_file": "review-packets/native-panel/active-v2/followup-draft-v1-response-template.tsv",
   "artifact_contract": {
     "scope_root": "review-packets/native-panel/active-v2",
-    "tracked_prefix": "followup-",
     "generated_directory": "review-packets/native-panel/active-v2/generated",
-    "deployment_directory": "review-packets/native-panel/active-v2/deployment"
+    "deployment_directory": "review-packets/native-panel/active-v2/deployment",
+    "exempt_paths": [
+      "review-packets/native-panel/active-v2/README.md",
+      "review-packets/native-panel/active-v2/panel-policy.json",
+      "review-packets/native-panel/active-v2/panel-review-state.json",
+      "review-packets/native-panel/active-v2/followup-draft-v1-metadata.json"
+    ],
+    "exempt_directories": [
+      "review-packets/native-panel/active-v2/interim-exports"
+    ]
   },
   "tracked_artifacts": [
     {
