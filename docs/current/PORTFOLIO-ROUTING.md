@@ -2,49 +2,45 @@
 title: Canto Span — Portfolio Routing
 status: current
 tags: [canto-span/infrastructure, canto-span/planning, canto-span/coordination]
-related: "[[MULTI-AGENT-COORDINATION]]"
+related: "[[MULTI-AGENT-COORDINATION]] [[CODEX-ISSUE-WORKFLOW]]"
 ---
 
 # Portfolio routing
 
 `portfolio-routing` is optional planning metadata. It records durable backlog and
-research-planning information that GitHub does not model reliably, including owning
-track, work kind, research mode, priority rationale, decision or discovery scope,
-dependencies, read scope, expected locks, cancellation conditions, acceptable null
-outcomes, and completion endpoints.
+research-planning information that GitHub does not model reliably: track, work
+kind, research mode, priority rationale, bounded scope, dependencies, expected
+locks, cancellation conditions, acceptable null outcomes, and completion
+endpoints.
 
-It does **not** authorize repository execution.
+It never authorizes repository execution.
 
 ## Ownership boundary
 
+Active execution has one ownership path: exactly one fenced `task-intake` block
+whose JSON schema is `canto-span-task-intake-v2`. The linked v2 work claim,
+branch, and pull request must agree with that live intake record.
+
 A portfolio block cannot:
 
-- assign or change the active pickup owner;
+- assign or change the active owner;
 - authorize pickup, takeover, reassignment, or resumed work;
-- bind an active work claim;
-- authorize a branch or pull request;
-- replace handoff, permission, revision, claim, branch, or PR fields;
+- bind a work claim, branch, or pull request;
+- replace permission, handoff, revision, or active-claim fields;
 - establish merge eligibility or user approval.
 
-New or resumed active execution requires exactly one valid
-`canto-span-task-intake-v2` ownership block in the canonical intake issue. The linked
-`canto-span-work-claim-v2`, branch, and pull request must agree with that live intake
-record under [`MULTI-AGENT-COORDINATION.md`](MULTI-AGENT-COORDINATION.md).
+Portfolio-only issues may remain Future planning records. Before new or resumed
+execution, replace planning-only routing with one current task-intake ownership
+record. A body containing both task-intake and portfolio-routing blocks is not an
+accepted active ownership format.
 
-Historical and Future issues may retain portfolio-only planning blocks. Before one
-is activated or resumed, add or replace its current ownership record with one
-`task-intake-v2` block. Do not add a second ownership authority or treat comments,
-labels, assignments, project fields, portfolio metadata, or an old claim as a
-takeover.
-
-A body containing both a `task-intake` block and a `portfolio-routing` block is not
-an accepted active-ownership format. Keep planning metadata in the issue's ordinary
-Markdown or migrate the needed planning fields into the active task specification
-before execution.
+Fence labels are exact. Blocks such as `task-intake-example`, `task-intake json`,
+`portfolio-routing-example`, or `coordination-claim-example` are prose examples,
+not authority.
 
 ## Current enums
 
-### Tracks
+Tracks:
 
 - `T1-closure`
 - `T2-identity`
@@ -55,7 +51,7 @@ before execution.
 - `T7-ingress`
 - `T8-release`
 
-### Work kinds
+Kinds:
 
 - `decision`
 - `research`
@@ -68,39 +64,94 @@ before execution.
 - `release`
 - `coordination`
 
-### Research modes
+Priorities: `P0`, `P1`, `P2`, `P3`.
 
-- `decision-support`
-- `decision-discovery`
-- `null` for execution or non-research planning
+Research modes: `decision-support`, `decision-discovery`, or `null` according to
+the kind/mode matrix below.
 
-### Priorities
+## Kind and research-mode matrix
 
-- `P0`
-- `P1`
-- `P2`
-- `P3`
+| Kind | Allowed research mode |
+|---|---|
+| `decision` | `decision-support` |
+| `research` | `decision-support` or `decision-discovery` |
+| `identity-batch` | `decision-support` |
+| `corpus-review` | `decision-support` or `decision-discovery` |
+| `survey-audit` | `decision-support` |
+| `implementation` | `null` |
+| `source-ingress` | `null` |
+| `human-action` | `null` |
+| `release` | `null` |
+| `coordination` | `null` |
 
-Unknown tracks, kinds, modes, priorities, fields, malformed arrays, duplicate array
-members, or overlapping acquired/prohibited locks fail validation. Do not invent a
-new enum inside one issue. Passing planning validation does not establish readiness,
-pickup permission, evidence sufficiency, or implementation authority.
+`decision-support` requires a non-empty decision question and forbids discovery
+scope/prompts. `decision-discovery` requires a null decision question plus a
+bounded discovery scope and at least one prompt. Null mode forbids all decision
+and discovery fields.
 
-## Mode-specific contract
+## Lock semantics
 
-`decision-support` requires a non-empty `decision_question` and does not use
-discovery scope or prompts.
+Locks are hierarchical. `runtime:AA82` overlaps
+`runtime:AA82:children`. A `*` segment is a wildcard. A `global` segment owns all
+descendants of the matched namespace. Therefore:
 
-`decision-discovery` requires `decision_question: null`, a bounded non-empty
-`discovery_scope`, and at least one non-empty `discovery_prompts` entry.
+- `runtime:*` overlaps `runtime:AA82`;
+- `runtime:global` overlaps every `runtime:*` lock;
+- `runtime-bundle:global` overlaps every `runtime-bundle:*` lock;
+- `*:global` is repository-global and overlaps every lock.
 
-`research_mode: null` requires `decision_question: null` and no discovery scope or
-prompts. A `kind: research` issue must declare one of the two research modes.
+A write lock may not overlap any declared prohibited parallel write.
 
-## Execution rule
+## Pull-request authority
 
-The optional PR diagnostic accepts active ownership only through `task-intake-v2`.
-It rejects portfolio-only and mixed ownership modes. This is a focused diagnostic,
-not a universal GitHub merge gate. Agents remain responsible for re-fetching live
-ownership, claims, branches, pull requests, overlap, and user approval at every gate
-specified by `AGENTS.md` and the current coordination guide.
+A coordinated PR must contain exactly one of each authority marker:
+
+- hidden `<!-- coordination-claim: #NUMBER -->`;
+- visible `Work claim: #NUMBER`;
+- `Intake issue: #NUMBER`;
+- `Active worker: codex|chatgpt|human`;
+- `Ownership revision: NUMBER`.
+
+The hidden and visible claim numbers must agree. Duplicate markers fail even when
+they repeat the same value. The checker never selects the first of contradictory
+markers.
+
+## WIP limits
+
+The executable limits are owned by
+`tools/coordination/portfolio-integrity.js`:
+
+- maximum 4 counted open exclusive claims;
+- T1: 1;
+- T2: 1;
+- T3 lifecycle transition: 1, excluding passive collection;
+- combined T4/T5 substantive work: 2, with at most 1 broad discovery;
+- T6 runtime-changing work: 1;
+- T7 ingress: 2;
+- T8 release: 1.
+
+External human actions and passive survey collection are excluded from numerical
+WIP. Active claims without a track fail closed. Exact, hierarchical, wildcard,
+namespace-global, and repository-global lock conflicts are reported.
+
+Run a read-only normalized snapshot audit with:
+
+```bash
+npm run portfolio:audit -- --input /path/to/open-claims.json
+```
+
+Add `--strict` when a nonzero exit is required. The audit reports violations; it
+does not close claims, release locks, reassign owners, or edit project state.
+Existing excess claims require explicit reconciliation and terminal dispositions.
+
+## Validation
+
+Run:
+
+```bash
+npm run test:coordination
+```
+
+The suite covers exact fence labels, every kind/mode combination, wildcard/global
+lock overlap, coherent PR authority, WIP limits, lock conflicts, and the observed
+17-open/10-T7 violation shape.
