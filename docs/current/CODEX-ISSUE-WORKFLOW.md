@@ -3,7 +3,7 @@ title: Canto Span — Task Creator and Pickup Routing
 status: current
 implementation_status: routing-active; manual-issue-generator-implemented; automatic-dispatch-not-implemented
 tags: [canto-span/infrastructure, canto-span/agents, canto-span/github]
-related: "[[00-START-HERE]] [[AGENT-WORKFLOW-SETTINGS]] [[MULTI-AGENT-COORDINATION]] [[USER-MERGE-REVIEW]]"
+related: "[[00-START-HERE]] [[AGENT-WORKFLOW-SETTINGS]] [[MULTI-AGENT-COORDINATION]] [[PORTFOLIO-ROUTING]] [[USER-MERGE-REVIEW]]"
 ---
 
 # Task creator and pickup routing
@@ -181,16 +181,24 @@ repository but must run on the user's local device:
 Local untracked `validation/current/` byproducts are not included unless the claim
 explicitly covers them.
 
-## 7. Intake ownership and portfolio routing
+## 7. Intake ownership and portfolio planning
 
-The project recognizes two parent-issue routing modes. Agents must use one coherent
-mode, keep its records truthful, and resolve mixed, missing, duplicate, malformed, or
-unsupported routing before editing or presenting a pull request. This is an operating
-contract rather than a universal merge-time metadata check.
+Active repository execution has one ownership path: exactly one current
+`canto-span-task-intake-v2` block in the canonical intake issue. The linked
+`canto-span-work-claim-v2`, branch, and pull request must agree with that live
+ownership record. This is an operating contract rather than a universal merge-time
+metadata gate.
+
+A `canto-span-portfolio-routing-v2` block is optional planning metadata only. It may
+record track, kind, research mode, priority, decision or discovery scope,
+dependencies, expected locks, cancellation conditions, null outcomes, and completion
+endpoints. It cannot assign an owner, authorize pickup, bind a claim, authorize a
+branch or pull request, perform takeover or reassignment, or establish merge
+eligibility. See [`PORTFOLIO-ROUTING.md`](PORTFOLIO-ROUTING.md).
 
 ### Ownership-aware task intake
 
-A current operational intake normally uses one `canto-span-task-intake-v2` block and
+A current operational intake uses one `canto-span-task-intake-v2` block and
 distinguishes:
 
 - `created_by`: who prepared the issue;
@@ -200,10 +208,11 @@ distinguishes:
 - claim, branch, and PR bindings.
 
 The latest valid block in the canonical issue body is the sole pickup authority.
-Comments, labels, assignments, mentions, reviews, dispatch events, and cached copies
-cannot change ownership. A takeover or reassignment replaces the block, increases the
-revision exactly once, records the previous target, reason, later timestamp, pickup
-permission, and explicit handoff state, and releases or narrows overlapping work.
+Comments, labels, assignments, mentions, reviews, dispatch events, portfolio fields,
+and cached copies cannot change ownership. A takeover or reassignment replaces the
+block, increases the revision exactly once, records the previous target, reason,
+later timestamp, pickup permission, and explicit handoff state, and releases or
+narrows overlapping work.
 
 An initial ChatGPT intake may use:
 
@@ -237,30 +246,29 @@ An initial ChatGPT intake may use:
 Use the checked-in schema rather than copying this example blindly. The selected
 pickup target and current workflow setting must agree.
 
-### Portfolio-routed parent issue
+### Activating portfolio-planned work
 
-A planning or decision issue may instead contain exactly one
-`canto-span-portfolio-routing-v2` block and no `task-intake` block. This mode avoids
-copying operational ownership metadata into every issue produced by the portfolio
-plan. It authorizes a pull request only when all of the following remain true:
+A Future or historical issue may retain a portfolio block while it is only planning
+work. Before Codex, ChatGPT, or a human begins or resumes repository execution:
 
-1. the parent issue is open and the routing block validates;
-2. the work claim is `canto-span-work-claim-v2`, active, unexpired, and names that
-   parent issue in `intake_issue`;
-3. the claim branch matches the pull-request head;
-4. the pull-request body states the same `Active worker` and `Ownership revision` as
-   the claim;
-5. every portfolio `write_lock` is retained by the claim;
-6. the claim acquires none of the portfolio `prohibited_parallel_writes`;
-7. changed-file coverage remains inside the claim; and
-8. the separate user merge gate remains in force.
+1. create or replace the issue's current ownership record with exactly one valid
+   `task-intake-v2` block;
+2. assign a truthful pickup target and live owner permitted by current settings;
+3. record the ownership revision, permission, handoff state, active claim, branch,
+   and pull request as they become known;
+4. create the v2 work claim bound to that intake revision;
+5. re-fetch the live issue before every execution gate.
 
-The portfolio block is planning authority plus direct claim binding. It is not a
-mutable ownership ledger and cannot perform takeover, reassignment, or handoff. Any
-such ownership transition must use the ownership-aware `task-intake-v2` path.
+Do not retain both portfolio and task-intake blocks as competing active routing modes.
+Planning information needed during execution belongs in ordinary issue prose or the
+accepted task specification; ownership remains in `task-intake-v2`.
+
+Codex may not self-pick, branch from, or resume a portfolio-only issue. It must report
+`routing result: unavailable` until a valid live task-intake explicitly assigns it.
 
 Legacy intake and claim formats remain readable historical records. They must migrate
-to current ownership-aware formats before takeover, reassignment, or active binding.
+to current ownership-aware formats before takeover, reassignment, resumed work, or
+active binding.
 
 ## 8. Labels and assignment
 
@@ -278,10 +286,10 @@ agent setting. Removing or changing only one layer is insufficient.
 4. Re-fetch ownership before claim creation.
 5. Create the smallest adequate work claim and exact branch.
 6. Implement or produce findings within scope.
-7. Open one linked PR and bind `active_pr` to the assigned GitHub PR number when the
-   parent uses task-intake ownership; repeat the claim worker and revision in every PR.
+7. Open one linked PR, bind `active_pr` to the assigned GitHub PR number in the
+   live task-intake, and repeat the claim worker and revision in every PR.
 8. Use draft state only while work or dependencies remain unresolved.
-9. Validate exact head, live routing mode, ownership or claim binding, overlap,
+9. Validate exact head, live task-intake ownership, claim binding, overlap,
    changed-file coverage, and required checks.
 10. Mark the coherent PR ready, notify the user, and stop.
 11. Merge only after explicit user approval for that PR and unchanged head.
@@ -296,6 +304,7 @@ Do not:
 - target or assign a disabled agent;
 - treat Codex eligibility as availability;
 - preserve stale pickup authority through an old claim, branch, PR, or assignment;
+- treat portfolio planning metadata as pickup, ownership, claim, branch, PR, or merge authority;
 - delegate unresolved judgment by renaming it implementation;
 - create a human issue for work an available agent can perform merely to avoid
   ownership rules;

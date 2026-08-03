@@ -34,6 +34,7 @@ coherent claim when the affected state dimensions and substantive gates are clea
 - Work-claim format: `schemas/work-claim.schema.json`
 - Legacy work-claim format: `schemas/work-claim-v1.schema.json`
 - Current intake ownership format: `schemas/task-intake.schema.json`
+- Portfolio planning contract: `docs/current/PORTFOLIO-ROUTING.md`
 - Legacy unified intake format: `schemas/task-intake-v1.schema.json`
 - Declarative changeset format: `schemas/change-set.schema.json`
 - Exclusive and integration-owned paths: `config/coordination-targets.json`
@@ -47,6 +48,8 @@ The latest valid ownership block in the canonical intake issue body owns pickup
 authority. The linked work-claim issue owns semantic scope. They do not own
 linguistic status, construction identity, runtime behavior, evidence, survey state,
 or release state.
+
+`portfolio-routing` is optional planning metadata only. It cannot authorize pickup, takeover, reassignment, claim binding, branch ownership, pull-request ownership, or merge. Before new or resumed execution, a portfolio-planned issue must receive exactly one current `task-intake-v2` ownership block. See [`PORTFOLIO-ROUTING.md`](PORTFOLIO-ROUTING.md).
 
 ## Pickup ownership and precedence
 

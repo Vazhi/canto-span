@@ -4,7 +4,6 @@
 const fs = require("fs");
 const path = require("path");
 const {
-  extractClaim,
   loadJson,
   validateChangedFiles,
   validateClaim,
@@ -14,9 +13,8 @@ const {
   validateTaskMetadata,
 } = require("./codex-intake");
 const {
-  extractPortfolioRouting,
+  extractFencedBlocks,
   intakeRoutingCounts,
-  validatePortfolioOwnershipBinding,
 } = require("./portfolio-routing");
 
 const root = path.resolve(__dirname, "../..");
@@ -41,31 +39,106 @@ async function github(pathname, token) {
   return response.json();
 }
 
+function matchedValues(body, pattern, transform = (value) => value) {
+  const values = [];
+  for (const match of String(body || "").matchAll(pattern)) {
+    values.push(transform(match[1]));
+  }
+  return values;
+}
+
+function exactlyOne(values, label) {
+  if (values.length !== 1) {
+    throw new Error(`${label} must appear exactly once; found ${values.length}`);
+  }
+  return values[0];
+}
+
+function parsePrAuthority(prBody) {
+  const body = String(prBody || "");
+  const hiddenClaims = matchedValues(
+    body,
+    /<!--\s*coordination-claim:\s*#(\d+)\s*-->/gi,
+    Number,
+  );
+  const visibleClaims = matchedValues(
+    body,
+    /^[ \t]*(?:-\s*)?Work claim:\s*#(\d+)\s*$/gim,
+    Number,
+  );
+  const intakeIssues = matchedValues(
+    body,
+    /^[ \t]*(?:-\s*)?Intake issue:\s*#(\d+)\s*$/gim,
+    Number,
+  );
+  const activeWorkers = matchedValues(
+    body,
+    /^[ \t]*(?:-\s*)?Active worker:\s*`?(codex|chatgpt|human)`?\s*$/gim,
+    (value) => value.toLowerCase(),
+  );
+  const revisions = matchedValues(
+    body,
+    /^[ \t]*(?:-\s*)?Ownership revision:\s*`?(\d+)`?\s*$/gim,
+    Number,
+  );
+
+  const hiddenClaim = exactlyOne(hiddenClaims, "hidden coordination-claim marker");
+  const visibleClaim = exactlyOne(visibleClaims, "visible Work claim marker");
+  if (hiddenClaim !== visibleClaim) {
+    throw new Error(
+      `hidden coordination claim #${hiddenClaim} contradicts visible Work claim #${visibleClaim}`,
+    );
+  }
+
+  return {
+    claimIssue: hiddenClaim,
+    intakeIssue: exactlyOne(intakeIssues, "Intake issue marker"),
+    activeWorker: exactlyOne(activeWorkers, "Active worker marker"),
+    ownershipRevision: exactlyOne(revisions, "Ownership revision marker"),
+  };
+}
+
 function claimIssueNumber(prBody) {
-  const hidden = String(prBody || "").match(/<!--\s*coordination-claim:\s*#(\d+)\s*-->/i);
-  if (hidden) return Number(hidden[1]);
-  const visible = String(prBody || "").match(/Work claim:\s*#(\d+)/i);
-  return visible ? Number(visible[1]) : null;
+  return parsePrAuthority(prBody).claimIssue;
+}
+
+function intakeIssueNumber(prBody) {
+  return parsePrAuthority(prBody).intakeIssue;
+}
+
+function prOwnershipFields(prBody) {
+  const body = String(prBody || "");
+  const activeWorkers = matchedValues(
+    body,
+    /^[ \t]*(?:-\s*)?Active worker:\s*`?(codex|chatgpt|human)`?\s*$/gim,
+    (value) => value.toLowerCase(),
+  );
+  const revisions = matchedValues(
+    body,
+    /^[ \t]*(?:-\s*)?Ownership revision:\s*`?(\d+)`?\s*$/gim,
+    Number,
+  );
+  return {
+    activeWorker: activeWorkers.length === 1 ? activeWorkers[0] : null,
+    ownershipRevision: revisions.length === 1 ? revisions[0] : null,
+  };
+}
+
+function extractExactClaim(body) {
+  const matches = extractFencedBlocks(body, "coordination-claim");
+  if (matches.length !== 1) {
+    throw new Error(`expected exactly one fenced coordination-claim JSON block; found ${matches.length}`);
+  }
+  try {
+    return JSON.parse(matches[0][1]);
+  } catch (error) {
+    throw new Error(`invalid coordination-claim JSON: ${error.message}`);
+  }
 }
 
 function closesIssue(prBody, issueNumber) {
   const pattern = new RegExp(`\\b(?:close[sd]?|fix(?:e[sd])?|resolve[sd]?)\\s+#${issueNumber}\\b`, "i");
   return pattern.test(String(prBody || ""));
-}
-
-function intakeIssueNumber(prBody) {
-  const match = String(prBody || "").match(/Intake issue:\s*#(\d+)/i);
-  return match ? Number(match[1]) : null;
-}
-
-function prOwnershipFields(prBody) {
-  const body = String(prBody || "");
-  const worker = body.match(/^[ \t]*(?:-\s*)?Active worker:\s*`?(codex|chatgpt|human)`?\s*$/im);
-  const revision = body.match(/^[ \t]*(?:-\s*)?Ownership revision:\s*`?(\d+)`?\s*$/im);
-  return {
-    activeWorker: worker ? worker[1].toLowerCase() : null,
-    ownershipRevision: revision ? Number(revision[1]) : null,
-  };
 }
 
 function legacyIntakeRequiresMigration(intake) {
@@ -79,9 +152,9 @@ function legacyIntakeRequiresMigration(intake) {
   );
 }
 
-function validateOwnershipBinding(claim, claimIssue, intake, intakeIssue, pr) {
+function validateOwnershipBinding(claim, claimIssue, intake, intakeIssue, pr, prOwnership = null) {
   const errors = [];
-  const prOwnership = prOwnershipFields(pr.body);
+  const authority = prOwnership || prOwnershipFields(pr.body);
   if (claim.intake_issue != null && claim.intake_issue !== intakeIssue) {
     errors.push(`claim intake_issue ${claim.intake_issue} does not match PR intake issue ${intakeIssue}`);
   }
@@ -120,12 +193,12 @@ function validateOwnershipBinding(claim, claimIssue, intake, intakeIssue, pr) {
   if (intake.active_pr !== pr.number) {
     errors.push(`live intake PR ${intake.active_pr} does not match PR ${pr.number}`);
   }
-  if (prOwnership.activeWorker !== intake.active_pickup_owner) {
-    errors.push(`PR worker ${prOwnership.activeWorker} does not match live intake owner ${intake.active_pickup_owner}`);
+  if (authority.activeWorker !== intake.active_pickup_owner) {
+    errors.push(`PR worker ${authority.activeWorker} does not match live intake owner ${intake.active_pickup_owner}`);
   }
-  if (prOwnership.ownershipRevision !== intake.ownership_revision) {
+  if (authority.ownershipRevision !== intake.ownership_revision) {
     errors.push(
-      `PR ownership revision ${prOwnership.ownershipRevision} does not match live revision ${intake.ownership_revision}`,
+      `PR ownership revision ${authority.ownershipRevision} does not match live revision ${intake.ownership_revision}`,
     );
   }
   return errors;
@@ -137,10 +210,17 @@ function resolveIntakeRouting(issueBody) {
     return { mode: "task-intake", metadata: extractTaskIntake(issueBody), counts };
   }
   if (counts.taskIntake === 0 && counts.portfolioRouting === 1) {
-    return { mode: "portfolio-routing", metadata: extractPortfolioRouting(issueBody), counts };
+    throw new Error(
+      "portfolio-routing is planning metadata only and cannot authorize active ownership; add exactly one valid task-intake-v2 block before new or resumed execution",
+    );
+  }
+  if (counts.taskIntake > 0 && counts.portfolioRouting > 0) {
+    throw new Error(
+      `mixed ownership metadata is invalid; found task-intake=${counts.taskIntake}, portfolio-routing=${counts.portfolioRouting}`,
+    );
   }
   throw new Error(
-    `expected exactly one supported routing block; found task-intake=${counts.taskIntake}, portfolio-routing=${counts.portfolioRouting}`,
+    `expected exactly one task-intake ownership block; found task-intake=${counts.taskIntake}, portfolio-routing=${counts.portfolioRouting}`,
   );
 }
 
@@ -170,8 +250,13 @@ async function main() {
   if (!token || !repository) fail("GITHUB_TOKEN and GITHUB_REPOSITORY are required");
 
   const pr = event.pull_request;
-  const issueNumber = claimIssueNumber(pr.body);
-  if (!issueNumber) fail("PR body must contain <!-- coordination-claim: #NUMBER --> and Work claim: #NUMBER");
+  let prAuthority;
+  try {
+    prAuthority = parsePrAuthority(pr.body);
+  } catch (error) {
+    fail("PR ownership markers are invalid", error.message);
+  }
+  const issueNumber = prAuthority.claimIssue;
   if (!closesIssue(pr.body, issueNumber)) fail(`PR body must close work claim #${issueNumber}`);
 
   const issue = await github(`/repos/${repository}/issues/${issueNumber}`, token);
@@ -179,7 +264,7 @@ async function main() {
   if (issue.state !== "open") fail(`work claim #${issueNumber} is not open`);
   let claim;
   try {
-    claim = extractClaim(issue.body);
+    claim = extractExactClaim(issue.body);
   } catch (error) {
     fail(`work claim #${issueNumber} cannot be parsed`, error.message);
   }
@@ -187,8 +272,7 @@ async function main() {
   if (claimErrors.length) fail(`work claim #${issueNumber} is invalid`, claimErrors);
   if (claim.branch !== pr.head.ref) fail(`claim branch ${claim.branch} does not match PR head ${pr.head.ref}`);
 
-  const intakeNumber = intakeIssueNumber(pr.body);
-  if (!intakeNumber) fail("PR body must contain Intake issue: #NUMBER");
+  const intakeNumber = prAuthority.intakeIssue;
   const intakeIssue = await github(`/repos/${repository}/issues/${intakeNumber}`, token);
   if (intakeIssue.pull_request) fail(`#${intakeNumber} is a pull request, not an intake issue`);
   if (intakeIssue.state !== "open") fail(`intake issue #${intakeNumber} is not open`);
@@ -200,23 +284,16 @@ async function main() {
     fail(`intake issue #${intakeNumber} cannot be parsed`, error.message);
   }
 
-  const ownershipErrors = intakeRouting.mode === "task-intake"
-    ? validateOwnershipBinding(claim, issueNumber, intakeRouting.metadata, intakeNumber, pr)
-    : validatePortfolioOwnershipBinding(
-      claim,
-      issueNumber,
-      intakeRouting.metadata,
-      intakeNumber,
-      pr,
-      prOwnershipFields(pr.body),
-    );
+  const ownershipErrors = validateOwnershipBinding(
+    claim,
+    issueNumber,
+    intakeRouting.metadata,
+    intakeNumber,
+    pr,
+    prAuthority,
+  );
   if (ownershipErrors.length) {
-    fail(
-      intakeRouting.mode === "task-intake"
-        ? "live intake ownership does not authorize this pull request"
-        : "portfolio routing does not authorize this pull request",
-      ownershipErrors,
-    );
+    fail("live intake ownership does not authorize this pull request", ownershipErrors);
   }
 
   const files = await changedFiles(repository, pr.number, token);
@@ -224,12 +301,12 @@ async function main() {
   if (coverage.errors.length) fail("changed-file coordination rules failed", coverage.errors);
 
   const result = {
-    schema: "canto-span-pr-coordination-check-v1",
+    schema: "canto-span-pr-coordination-check-v2",
     status: "PASS",
     pull_request: pr.number,
     work_claim_issue: issueNumber,
     intake_issue: intakeNumber,
-    intake_mode: intakeRouting.mode,
+    intake_mode: "task-intake",
     work_id: claim.work_id,
     active_worker: claim.active_worker || null,
     ownership_revision: claim.ownership_revision || null,
@@ -249,8 +326,11 @@ if (require.main === module) {
 }
 
 module.exports = {
+  claimIssueNumber,
+  extractExactClaim,
   intakeIssueNumber,
   legacyIntakeRequiresMigration,
+  parsePrAuthority,
   prOwnershipFields,
   resolveIntakeRouting,
   validateOwnershipBinding,

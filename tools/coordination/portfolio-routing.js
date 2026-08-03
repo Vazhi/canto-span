@@ -1,6 +1,42 @@
 "use strict";
 
 const PORTFOLIO_SCHEMA = "canto-span-portfolio-routing-v2";
+const TRACKS = new Set([
+  "T1-closure",
+  "T2-identity",
+  "T3-survey",
+  "T4-corpus",
+  "T5-evidence",
+  "T6-runtime",
+  "T7-ingress",
+  "T8-release",
+]);
+const KINDS = new Set([
+  "decision",
+  "research",
+  "identity-batch",
+  "corpus-review",
+  "survey-audit",
+  "implementation",
+  "source-ingress",
+  "human-action",
+  "release",
+  "coordination",
+]);
+const RESEARCH_MODES = new Set(["decision-support", "decision-discovery"]);
+const PRIORITIES = new Set(["P0", "P1", "P2", "P3"]);
+const KIND_RESEARCH_MODES = Object.freeze({
+  decision: new Set(["decision-support"]),
+  research: new Set(["decision-support", "decision-discovery"]),
+  "identity-batch": new Set(["decision-support"]),
+  "corpus-review": new Set(["decision-support", "decision-discovery"]),
+  "survey-audit": new Set(["decision-support"]),
+  implementation: new Set([null]),
+  "source-ingress": new Set([null]),
+  "human-action": new Set([null]),
+  release: new Set([null]),
+  coordination: new Set([null]),
+});
 const REQUIRED_FIELDS = [
   "schema",
   "track",
@@ -17,11 +53,24 @@ const REQUIRED_FIELDS = [
   "acceptable_null_outcome",
   "completion_endpoint",
 ];
-const ALLOWED_FIELDS = new Set(REQUIRED_FIELDS);
-const WORKERS = new Set(["chatgpt", "codex", "human"]);
+const OPTIONAL_FIELDS = [
+  "discovery_scope",
+  "discovery_prompts",
+  "readiness_gaps",
+  "cancellation_condition",
+];
+const ALLOWED_FIELDS = new Set([...REQUIRED_FIELDS, ...OPTIONAL_FIELDS]);
+
+function escapeRegExp(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
 
 function extractFencedBlocks(body, label) {
-  const pattern = new RegExp("```" + label + "[^\\n`]*\\n([\\s\\S]*?)```", "gi");
+  const exactLabel = escapeRegExp(label);
+  const pattern = new RegExp(
+    `^\\x60\\x60\\x60${exactLabel}[ \\t]*\\r?\\n([\\s\\S]*?)^\\x60\\x60\\x60[ \\t]*$`,
+    "gmi",
+  );
   return [...String(body || "").matchAll(pattern)];
 }
 
@@ -60,14 +109,61 @@ function validateReferenceArray(name, value) {
   return errors;
 }
 
-function validateStringArray(name, value) {
+function validateStringArray(name, value, { required = true, nonEmpty = false } = {}) {
   const errors = [];
+  if (value == null && !required) return errors;
   if (!Array.isArray(value)) return [`${name} must be an array`];
+  if (nonEmpty && value.length === 0) errors.push(`${name} must contain at least one item`);
   if (new Set(value).size !== value.length) errors.push(`${name} must contain unique items`);
   if (value.some((item) => !isNonEmptyString(item))) {
     errors.push(`${name} items must be non-empty strings`);
   }
   return errors;
+}
+
+function lockParts(lock) {
+  return String(lock || "").trim().split(/[:/]/u).filter(Boolean);
+}
+
+function isUniversalLock(parts) {
+  return (parts.length === 1 && parts[0] === "*")
+    || (parts.length === 2 && parts[0] === "*" && parts[1] === "global");
+}
+
+function locksOverlap(left, right) {
+  const a = lockParts(left);
+  const b = lockParts(right);
+  if (!a.length || !b.length) return false;
+  if (isUniversalLock(a) || isUniversalLock(b)) return true;
+
+  const length = Math.min(a.length, b.length);
+  for (let index = 0; index < length; index += 1) {
+    const leftPart = a[index];
+    const rightPart = b[index];
+    if (leftPart === rightPart) {
+      if (leftPart === "global") return true;
+      continue;
+    }
+    if (leftPart === "global" || rightPart === "global") {
+      return index > 0;
+    }
+    if (leftPart === "*" || rightPart === "*") continue;
+    return false;
+  }
+  return true;
+}
+
+function modeLabel(mode) {
+  return mode === null ? "null" : mode;
+}
+
+function validateKindResearchMode(kind, mode) {
+  if (!KINDS.has(kind)) return [];
+  const allowed = KIND_RESEARCH_MODES[kind];
+  if (allowed && allowed.has(mode)) return [];
+  return [
+    `kind=${kind} requires research_mode to be one of: ${[...allowed].map(modeLabel).join(", ")}`,
+  ];
 }
 
 function validatePortfolioRouting(routing) {
@@ -85,24 +181,27 @@ function validatePortfolioRouting(routing) {
   }
 
   if (routing.schema !== PORTFOLIO_SCHEMA) errors.push(`schema must equal ${PORTFOLIO_SCHEMA}`);
-  if (!isNonEmptyString(routing.track) || !/^T[1-8]-[a-z0-9][a-z0-9-]*$/.test(routing.track)) {
-    errors.push("track must match T1- through T8- plus a lowercase hyphenated name");
+  if (!TRACKS.has(routing.track)) errors.push(`track must be one of: ${[...TRACKS].join(", ")}`);
+  if (!KINDS.has(routing.kind)) errors.push(`kind must be one of: ${[...KINDS].join(", ")}`);
+  if (!(routing.research_mode === null || RESEARCH_MODES.has(routing.research_mode))) {
+    errors.push("research_mode must be null, decision-support, or decision-discovery");
   }
-  if (!isNonEmptyString(routing.kind) || !/^[a-z][a-z0-9-]*$/.test(routing.kind)) {
-    errors.push("kind must be a lowercase identifier");
-  }
-  if (!(routing.research_mode === null
-      || (isNonEmptyString(routing.research_mode) && /^[a-z][a-z0-9-]*$/.test(routing.research_mode)))) {
-    errors.push("research_mode must be null or a lowercase identifier");
-  }
-  if (!new Set(["P0", "P1", "P2", "P3"]).has(routing.priority)) {
-    errors.push("priority must be P0, P1, P2, or P3");
-  }
+  if (!PRIORITIES.has(routing.priority)) errors.push("priority must be P0, P1, P2, or P3");
+  errors.push(...validateKindResearchMode(routing.kind, routing.research_mode));
+
   for (const field of ["priority_reason", "acceptable_null_outcome", "completion_endpoint"]) {
     if (!isNonEmptyString(routing[field])) errors.push(`${field} must be a non-empty string`);
   }
   if (!(routing.decision_question === null || isNonEmptyString(routing.decision_question))) {
     errors.push("decision_question must be null or a non-empty string");
+  }
+  if (Object.hasOwn(routing, "discovery_scope")
+      && !(routing.discovery_scope === null || isNonEmptyString(routing.discovery_scope))) {
+    errors.push("discovery_scope must be null or a non-empty string");
+  }
+  if (Object.hasOwn(routing, "cancellation_condition")
+      && !(routing.cancellation_condition === null || isNonEmptyString(routing.cancellation_condition))) {
+    errors.push("cancellation_condition must be null or a non-empty string");
   }
 
   errors.push(...validateReferenceArray("dependencies", routing.dependencies));
@@ -110,49 +209,72 @@ function validatePortfolioRouting(routing) {
   errors.push(...validateStringArray("read_scope", routing.read_scope));
   errors.push(...validateStringArray("write_locks", routing.write_locks));
   errors.push(...validateStringArray("prohibited_parallel_writes", routing.prohibited_parallel_writes));
+  errors.push(...validateStringArray("discovery_prompts", routing.discovery_prompts, { required: false }));
+  errors.push(...validateStringArray("readiness_gaps", routing.readiness_gaps, { required: false }));
+
+  if (routing.research_mode === "decision-support") {
+    if (!isNonEmptyString(routing.decision_question)) {
+      errors.push("decision-support requires a non-empty decision_question");
+    }
+    if (routing.discovery_scope != null) {
+      errors.push("decision-support must not declare discovery_scope");
+    }
+    if (Array.isArray(routing.discovery_prompts) && routing.discovery_prompts.length) {
+      errors.push("decision-support must not declare discovery_prompts");
+    }
+  } else if (routing.research_mode === "decision-discovery") {
+    if (routing.decision_question !== null) {
+      errors.push("decision-discovery requires decision_question=null");
+    }
+    if (!isNonEmptyString(routing.discovery_scope)) {
+      errors.push("decision-discovery requires a non-empty discovery_scope");
+    }
+    errors.push(...validateStringArray("discovery_prompts", routing.discovery_prompts, {
+      required: true,
+      nonEmpty: true,
+    }));
+  } else {
+    if (routing.decision_question !== null) {
+      errors.push("research_mode=null requires decision_question=null");
+    }
+    if (routing.discovery_scope != null) {
+      errors.push("research_mode=null must not declare discovery_scope");
+    }
+    if (Array.isArray(routing.discovery_prompts) && routing.discovery_prompts.length) {
+      errors.push("research_mode=null must not declare discovery_prompts");
+    }
+  }
+
+  if (Array.isArray(routing.write_locks) && Array.isArray(routing.prohibited_parallel_writes)) {
+    for (const lock of routing.write_locks) {
+      for (const prohibited of routing.prohibited_parallel_writes) {
+        if (locksOverlap(lock, prohibited)) {
+          errors.push(`write lock ${lock} overlaps prohibited parallel write ${prohibited}`);
+        }
+      }
+    }
+  }
   return errors;
 }
 
-function validatePortfolioOwnershipBinding(claim, claimIssue, routing, intakeIssue, pr, prOwnership) {
-  const errors = validatePortfolioRouting(routing).map((error) => `portfolio: ${error}`);
-  if (claim.schema !== "canto-span-work-claim-v2") {
-    errors.push("portfolio routing requires a v2 work claim");
-    return errors;
-  }
-  if (claim.intake_issue !== intakeIssue) {
-    errors.push(`claim intake_issue ${claim.intake_issue} does not match PR intake issue ${intakeIssue}`);
-  }
-  if (!WORKERS.has(claim.active_worker)) errors.push("claim active_worker is unsupported");
-  if (!Number.isInteger(claim.ownership_revision) || claim.ownership_revision < 1) {
-    errors.push("claim ownership_revision must be a positive integer");
-  }
-  if (claim.branch !== pr.head.ref) {
-    errors.push(`claim branch ${claim.branch} does not match PR head ${pr.head.ref}`);
-  }
-  if (prOwnership.activeWorker !== claim.active_worker) {
-    errors.push(`PR worker ${prOwnership.activeWorker} does not match claim worker ${claim.active_worker}`);
-  }
-  if (prOwnership.ownershipRevision !== claim.ownership_revision) {
-    errors.push(
-      `PR ownership revision ${prOwnership.ownershipRevision} does not match claim revision ${claim.ownership_revision}`,
-    );
-  }
-
-  const claimLocks = new Set(Array.isArray(claim.write_locks) ? claim.write_locks : []);
-  for (const lock of routing.write_locks || []) {
-    if (!claimLocks.has(lock)) errors.push(`claim does not preserve portfolio write lock ${lock}`);
-  }
-  for (const prohibited of routing.prohibited_parallel_writes || []) {
-    if (claimLocks.has(prohibited)) errors.push(`claim acquires prohibited parallel write ${prohibited}`);
-  }
-  if (claimIssue == null || claimIssue < 1) errors.push("claim issue number is invalid");
-  return errors;
+function validatePortfolioOwnershipBinding() {
+  return [
+    "portfolio-routing is planning metadata only and cannot authorize ownership; active execution requires exactly one valid task-intake-v2 ownership block",
+  ];
 }
 
 module.exports = {
+  KIND_RESEARCH_MODES,
+  KINDS,
   PORTFOLIO_SCHEMA,
+  PRIORITIES,
+  RESEARCH_MODES,
+  TRACKS,
+  extractFencedBlocks,
   extractPortfolioRouting,
   intakeRoutingCounts,
+  locksOverlap,
+  validateKindResearchMode,
   validatePortfolioOwnershipBinding,
   validatePortfolioRouting,
 };
