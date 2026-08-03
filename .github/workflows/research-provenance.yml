@@ -1,5 +1,6 @@
 name: Research provenance
 
+# Retry after correcting the first hash-locked transport chunk.
 on:
   pull_request:
     paths:
