@@ -1,6 +1,5 @@
 name: Research provenance
 
-# Retry after correcting the first hash-locked transport chunk.
 on:
   pull_request:
     paths:
@@ -26,10 +25,18 @@ jobs:
         run: |
           set -euxo pipefail
           test "$(sha256sum tools/.dialog003-finalizer.part00 | cut -d' ' -f1)" = "cc3802651fe5d36aa168ac163e058ec7b884c4cd57db7a17f1a0cfb1b17bd7db"
-          test "$(sha256sum tools/.dialog003-finalizer.part01 | cut -d' ' -f1)" = "37c8552fe2c8976d4f47be191e99305500e1da849fcf77dee52e88233f882004"
+          test "$(sha256sum tools/.dialog003-finalizer.part01 | cut -d' ' -f1)" = "5b8bcebb9462ffd5849bcd100c1477a2920580a3b213f75baacbb51a2ae33322"
+          test "$(sha256sum tools/.dialog003-finalizer.part01b | cut -d' ' -f1)" = "e06e73b42f87420d3a0eab416b054d4826bfd97c320995c32236ecd635153d48"
+          test "$(sha256sum tools/.dialog003-finalizer.part01c | cut -d' ' -f1)" = "0ac2ad84e5cb23c832f3fea273bebabb18d17531275dfab253acb048e8735cb1"
+          test "$(sha256sum tools/.dialog003-finalizer.part01d | cut -d' ' -f1)" = "94290541657dd4e59553169c777a9461b44b0ce6e694c92e2d76ecab26729f43"
+          test "$(sha256sum tools/.dialog003-finalizer.part01e | cut -d' ' -f1)" = "cd5d215a7e37fb3918b5e6ad6b6c750b308f353c84f3e2732f3360a3cf148ea3"
           test "$(sha256sum tools/.dialog003-finalizer.part02 | cut -d' ' -f1)" = "bbca21120e3395745a34dac54c723feb01c4d9a9d75f3b6fcfe92f26544cae39"
           cat tools/.dialog003-finalizer.part00 \
               tools/.dialog003-finalizer.part01 \
+              tools/.dialog003-finalizer.part01b \
+              tools/.dialog003-finalizer.part01c \
+              tools/.dialog003-finalizer.part01d \
+              tools/.dialog003-finalizer.part01e \
               tools/.dialog003-finalizer.part02 > /tmp/finalize-dialog003.py.gz.b64
           test "$(sha256sum /tmp/finalize-dialog003.py.gz.b64 | cut -d' ' -f1)" = "13af5ff84ebdfe9449b6ff322749b7018418a43de309ffb015f8810b38bdc308"
           base64 --decode /tmp/finalize-dialog003.py.gz.b64 | gzip --decompress > tools/finalize-dialog003-review-temporary.py
@@ -59,6 +66,10 @@ jobs:
           git rm -f \
             tools/.dialog003-finalizer.part00 \
             tools/.dialog003-finalizer.part01 \
+            tools/.dialog003-finalizer.part01b \
+            tools/.dialog003-finalizer.part01c \
+            tools/.dialog003-finalizer.part01d \
+            tools/.dialog003-finalizer.part01e \
             tools/.dialog003-finalizer.part02 \
             data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214/.review-claim
 
@@ -95,6 +106,10 @@ jobs:
           tests/tooling/research/pedagogical-corpus-review.test.py
           tools/.dialog003-finalizer.part00
           tools/.dialog003-finalizer.part01
+          tools/.dialog003-finalizer.part01b
+          tools/.dialog003-finalizer.part01c
+          tools/.dialog003-finalizer.part01d
+          tools/.dialog003-finalizer.part01e
           tools/.dialog003-finalizer.part02
           tools/build-pedagogical-corpus-review-candidates.py
           tools/verify-pedagogical-corpus-review.py
