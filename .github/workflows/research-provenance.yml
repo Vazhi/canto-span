@@ -29,7 +29,8 @@ jobs:
           test "$(sha256sum tools/.dialog005-reviewed-state.chunk02 | cut -d' ' -f1)" = "cf6f80fc36b7d5f2125302f8b80b528d766059bd07df4b8a7559480be0e11773"
           test "$(sha256sum tools/.dialog005-reviewed-state.chunk03 | cut -d' ' -f1)" = "df9a386b0755120dfb3843647b1aa1edf986c138285cda0ce31a9207f66e29fc"
           test "$(sha256sum tools/.dialog005-reviewed-state.chunk04 | cut -d' ' -f1)" = "249695fb2f5ffd52f4a05c7fce7aa3271cf502a56735e37fa4bfde987ac77510"
-          test "$(sha256sum tools/.dialog005-reviewed-state.chunk05 | cut -d' ' -f1)" = "acb01509b57d1d76094e597df681c3cee651651d5c61829a46b5b59df362a124"
+          test "$(sha256sum tools/.dialog005-reviewed-state.chunk05a | cut -d' ' -f1)" = "d335d98d5ad5807073a1f03d33db1197f69477854f7a80eedf56336b365dd1e6"
+          test "$(sha256sum tools/.dialog005-reviewed-state.chunk05b | cut -d' ' -f1)" = "19d1c0f33e4574d437ffe787dc81e42e2becb0b4445077d038e3c51aa048388e"
           test "$(sha256sum tools/.dialog005-reviewed-state.chunk06 | cut -d' ' -f1)" = "a0166dd9fd57e94253fd2c561599cbe61f8d469bd2686bdf1cda4b04045b4edb"
           test "$(sha256sum tools/.dialog005-reviewed-state.chunk07 | cut -d' ' -f1)" = "c9d5c2fe17fe1fed87ac39cd60a4215b120ce3a224617da05fb4c445b8462728"
           cat tools/.dialog005-reviewed-state.chunk00 \
@@ -37,7 +38,8 @@ jobs:
             tools/.dialog005-reviewed-state.chunk02 \
             tools/.dialog005-reviewed-state.chunk03 \
             tools/.dialog005-reviewed-state.chunk04 \
-            tools/.dialog005-reviewed-state.chunk05 \
+            tools/.dialog005-reviewed-state.chunk05a \
+            tools/.dialog005-reviewed-state.chunk05b \
             tools/.dialog005-reviewed-state.chunk06 \
             tools/.dialog005-reviewed-state.chunk07 > /tmp/dialog005-reviewed-state.b64
           test "$(wc -c < /tmp/dialog005-reviewed-state.b64)" = "63132"
@@ -70,6 +72,8 @@ jobs:
             tools/.dialog005-reviewed-state.chunk03 \
             tools/.dialog005-reviewed-state.chunk04 \
             tools/.dialog005-reviewed-state.chunk05 \
+            tools/.dialog005-reviewed-state.chunk05a \
+            tools/.dialog005-reviewed-state.chunk05b \
             tools/.dialog005-reviewed-state.chunk06 \
             tools/.dialog005-reviewed-state.chunk07 \
             data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/.review-claim
@@ -109,6 +113,8 @@ jobs:
           tools/.dialog005-reviewed-state.chunk03
           tools/.dialog005-reviewed-state.chunk04
           tools/.dialog005-reviewed-state.chunk05
+          tools/.dialog005-reviewed-state.chunk05a
+          tools/.dialog005-reviewed-state.chunk05b
           tools/.dialog005-reviewed-state.chunk06
           tools/.dialog005-reviewed-state.chunk07
           tools/.dialog005-reviewed-state.part00
