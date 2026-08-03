@@ -9,48 +9,23 @@ permissions:
   contents: read
 
 jobs:
-  export-dialog005-review-inputs:
+  export-dialog004-review-schema:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
         with:
           ref: agent/dialog005-ingress-review
-      - name: Stage exact Dialog 005 review inputs
+      - name: Stage completed Dialog 004 review schema
         run: |
-          mkdir -p /tmp/dialog005-review-inputs/package \
-            /tmp/dialog005-review-inputs/aggregate \
-            /tmp/dialog005-review-inputs/repository-corpus \
-            /tmp/dialog005-review-inputs/tooling/.github/workflows \
-            /tmp/dialog005-review-inputs/tooling/tools \
-            /tmp/dialog005-review-inputs/tooling/tests/tooling/research \
-            /tmp/dialog005-review-inputs/tooling/config
-
-          cp data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/source.json /tmp/dialog005-review-inputs/package/
-          cp data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/items.tsv /tmp/dialog005-review-inputs/package/
-          cp data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/review.json /tmp/dialog005-review-inputs/package/
-          cp data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/crosswalk.json /tmp/dialog005-review-inputs/package/
-          cp data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/README.md /tmp/dialog005-review-inputs/package/
-          cp docs/research/GLOSSIKA-YUEHK-A1-DLG-005-20251228-CORPUS-INGRESS.md /tmp/dialog005-review-inputs/package/
-
-          cp data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json /tmp/dialog005-review-inputs/aggregate/
-          cp docs/research/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.md /tmp/dialog005-review-inputs/aggregate/
-
-          find data/pedagogical-corpus/glossika -mindepth 2 -maxdepth 2 \
-            \( -name source.json -o -name review.json \) -print0 \
-            | xargs -0 -I{} cp --parents "{}" /tmp/dialog005-review-inputs/repository-corpus/
-
-          cp .github/workflows/research-provenance.yml /tmp/dialog005-review-inputs/tooling/.github/workflows/
-          cp tools/build-pedagogical-corpus-review-candidates.py /tmp/dialog005-review-inputs/tooling/tools/
-          cp tools/verify-pedagogical-corpus-review.py /tmp/dialog005-review-inputs/tooling/tools/
-          cp tests/tooling/research/pedagogical-corpus-review.test.py /tmp/dialog005-review-inputs/tooling/tests/tooling/research/
-          cp config/verification-profiles.json /tmp/dialog005-review-inputs/tooling/config/
-          cp config/pedagogical-corpus-source-locks.json /tmp/dialog005-review-inputs/tooling/config/
-          cp package.json /tmp/dialog005-review-inputs/tooling/
-
-          find /tmp/dialog005-review-inputs -type f -print0 | sort -z | xargs -0 sha256sum > /tmp/dialog005-review-inputs/SHA256SUMS
+          mkdir -p /tmp/dialog004-review-schema/package /tmp/dialog004-review-schema/docs
+          cp data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/*.json /tmp/dialog004-review-schema/package/
+          cp data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/*.tsv /tmp/dialog004-review-schema/package/
+          cp data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/*.md /tmp/dialog004-review-schema/package/
+          cp docs/research/GLOSSIKA-YUEHK-A1-DLG-004-20251221-CORPUS-INGRESS.md /tmp/dialog004-review-schema/docs/
+          find /tmp/dialog004-review-schema -type f -print0 | sort -z | xargs -0 sha256sum > /tmp/dialog004-review-schema/SHA256SUMS
       - uses: actions/upload-artifact@v4
         with:
-          name: dialog005-review-inputs
-          path: /tmp/dialog005-review-inputs
+          name: dialog004-review-schema
+          path: /tmp/dialog004-review-schema
           if-no-files-found: error
           retention-days: 1
