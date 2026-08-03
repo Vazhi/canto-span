@@ -1,0 +1,95 @@
+{
+  "schema": "canto-span-pedagogical-routes-v1",
+  "routes": [
+    {
+      "route_id": "W14-R-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W14-20260621",
+        "record_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I001"
+      },
+      "owner_issue": 131,
+      "status": "open",
+      "requirements": [
+        "Verify the lexical pronunciation of 唔好意思 independently; preserve source-final si1 until resolved."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I001"
+      ]
+    },
+    {
+      "route_id": "W14-R-015",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W14-20260621",
+        "record_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I015"
+      },
+      "owner_issue": 131,
+      "status": "open",
+      "requirements": [
+        "Review the perspective and event structure of the English gloss for 出糧; do not replace source text in place."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I015"
+      ]
+    },
+    {
+      "route_id": "W14-R-017",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W14-20260621",
+        "record_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I017"
+      },
+      "owner_issue": 131,
+      "status": "open",
+      "requirements": [
+        "Review whether the source gloss for 打工 is too narrowly restricted to part-time work."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I017"
+      ]
+    },
+    {
+      "route_id": "W14-R-021",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W14-20260621",
+        "record_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I021"
+      },
+      "owner_issue": 131,
+      "status": "open",
+      "requirements": [
+        "Review whether 見工 is an event/action expression rather than the source noun-like English gloss."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I021"
+      ]
+    },
+    {
+      "route_id": "W14-R-057",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W14-20260621",
+        "record_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I057"
+      },
+      "owner_issue": 131,
+      "status": "open",
+      "requirements": [
+        "Resolve the internal mismatch between 聲 seng1 and the source IPA /sɐŋ/."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I057"
+      ]
+    },
+    {
+      "route_id": "W14-R-060",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W14-20260621",
+        "record_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I060"
+      },
+      "owner_issue": 131,
+      "status": "open",
+      "requirements": [
+        "Verify the lexical sense and written-form/gloss pairing for 翻 faan1; do not assert a replacement without authority."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W14-20260621-I060"
+      ]
+    }
+  ]
+}
