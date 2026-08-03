@@ -28,6 +28,7 @@ jobs:
           test "$(sha256sum tools/.dialog004-executor.part01 | cut -d' ' -f1)" = "3eec44d90b4a0a60c1a0f8d7279401bb71098a64cb12a61d92320da5cbbf6835"
           test "$(sha256sum tools/.dialog004-executor.part02 | cut -d' ' -f1)" = "ed2b06997ba5d80d8067f3721120813162c5e0ebd65633c417dda49ed75de01d"
           test "$(sha256sum tools/.dialog004-executor.part03 | cut -d' ' -f1)" = "64ef721823ecf2ea27f72ef292c57bb27967fb8128338e089f71fb757a9d1672"
+          test "$(sha256sum tools/.dialog004-compat.py | cut -d' ' -f1)" = "5e5ef8e211bed7c08bcd81a2da507f73b2d9ed8d365e1b40f41790e3bf510580"
           cat tools/.dialog004-executor.part00 \
             tools/.dialog004-executor.part01 \
             tools/.dialog004-executor.part02 \
@@ -39,7 +40,7 @@ jobs:
           tar -xzf /tmp/d4-executor.tar.gz -C /tmp/d4-executor
           test "$(sha256sum /tmp/d4-executor/generate_d4.py | cut -d' ' -f1)" = "b238522a27adea13be69a64e735f11f4875ade239090d8aa90eb201f8a5c5680"
           test "$(sha256sum /tmp/d4-executor/d4-tooling.patch | cut -d' ' -f1)" = "55709d1e1b52bc05af84636b898f79c1f55be3efa64ecb12be82a7cfbc495f0c"
-          python3 -m py_compile /tmp/d4-executor/generate_d4.py
+          python3 -m py_compile /tmp/d4-executor/generate_d4.py tools/.dialog004-compat.py
           git apply --check /tmp/d4-executor/d4-tooling.patch
 
       - name: Generate final dialog 004 review state
@@ -47,6 +48,7 @@ jobs:
           git apply /tmp/d4-executor/d4-tooling.patch
           cp /tmp/d4-executor/generate_d4.py ./finalize-dialog004-review-temporary.py
           python3 ./finalize-dialog004-review-temporary.py
+          python3 tools/.dialog004-compat.py
           rm -f ./finalize-dialog004-review-temporary.py
 
       - name: Validate final dialog 004 state
@@ -72,6 +74,7 @@ jobs:
             tools/.dialog004-executor.part01 \
             tools/.dialog004-executor.part02 \
             tools/.dialog004-executor.part03 \
+            tools/.dialog004-compat.py \
             data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/.review-claim
 
           git add \
@@ -104,6 +107,7 @@ jobs:
           docs/research/GLOSSIKA-YUEHK-A1-DLG-004-20251221-CORPUS-INGRESS.md
           package.json
           tests/tooling/research/pedagogical-corpus-review.test.py
+          tools/.dialog004-compat.py
           tools/.dialog004-executor-payload
           tools/.dialog004-executor.part00
           tools/.dialog004-executor.part01
