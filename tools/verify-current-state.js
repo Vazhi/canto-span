@@ -6,6 +6,7 @@ const path = require("node:path");
 const { spawnSync } = require("node:child_process");
 
 const root = path.resolve(__dirname, "..");
+const CANONICAL_PROFILE_ORDER = Object.freeze(["core", "research", "runtime", "release"]);
 
 function optionValue(flag, fallback = null) {
   const indexes = process.argv
@@ -55,6 +56,11 @@ function validateManifest(manifest) {
   }
 
   assertStringArray(manifest.profile_order, "profile_order");
+  if (JSON.stringify(manifest.profile_order) !== JSON.stringify(CANONICAL_PROFILE_ORDER)) {
+    throw new Error(
+      `profile_order must exactly equal ${JSON.stringify(CANONICAL_PROFILE_ORDER)}`,
+    );
+  }
   assertExactKeys(manifest.profiles, manifest.profile_order, "profiles");
 
   const requestKeys = [...manifest.profile_order, "all"];
