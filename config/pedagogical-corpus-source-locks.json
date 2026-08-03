@@ -40,6 +40,25 @@
       ]
     },
     {
+      "package": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221",
+      "source_id": "GLOSSIKA-YUEHK-A1-DLG-004-20251221",
+      "source_payload_hash": "sha256:ab8c761c906a60f2a7fb23debfc08387174910579f36c730c3f264e0757e42ae",
+      "immutable_files": [
+        {
+          "path": "source.json",
+          "bytes": 41881,
+          "sha256": "f64308588e2a5a7f4f0d424093a82cc92e001350df5daaafe468648748a7fec8",
+          "git_blob_sha": "95a091c80677a48b64172f4f971c633bcdbcc68d"
+        },
+        {
+          "path": "items.tsv",
+          "bytes": 71897,
+          "sha256": "a3390761b4fa8c0e7f4d619c721b237b7226ec4ef534e79dc41cd42494df2ce7",
+          "git_blob_sha": "6b62d2957dc50a5807fccb57645bb1678f8bdef5"
+        }
+      ]
+    },
+    {
       "package": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621",
       "source_id": "GLOSSIKA-YUEHK-A1-W14-20260621",
       "source_payload_hash": "sha256:8b539f409e0cd61bea4832edfa6ec1c607e8d18cd9f429ddbab954b36920102f",

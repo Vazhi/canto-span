@@ -1,4 +1,0 @@
-Work claim: #491
-Intake issue: #140
-Branch: agent/dialog004-ingress-review
-Scope: complete the 88-record dialog-004 expert review while preserving immutable source values, stage directions, event adjacency, spoken-turn adjacency, source-authored metadata, aggregate-map records, and parser/runtime authority boundaries.

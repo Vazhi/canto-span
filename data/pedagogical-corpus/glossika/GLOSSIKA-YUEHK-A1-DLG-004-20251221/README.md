@@ -1,24 +1,34 @@
-# Glossika Cantonese A1 dialog 004 corpus package
+# Glossika Cantonese A1 Dialog 004 — reviewed corpus package
 
-- Source ID: `GLOSSIKA-YUEHK-A1-DLG-004-20251221`
-- Title: 想走但唔想失禮
-- Source date: 2025-12-21
-- Gmail message: `19b429ac74c22911`
-- Intake issue: #140
-- Work claim: #294
-- Records: 41 spoken turns + 3 stage directions + 44 vocabulary entries = 88
-- Source payload hash: `sha256:ab8c761c906a60f2a7fb23debfc08387174910579f36c730c3f264e0757e42ae`
+Source ID: `GLOSSIKA-YUEHK-A1-DLG-004-20251221`
+Title: `想走但唔想失禮`
 
-## Source fidelity
+## Completed review
 
-Speaker labels, Cantonese, spacing, punctuation, Jyutping lines, stage-direction romanization, vocabulary glosses, scenario, notes, and order are preserved. The source contains no event-level English translations; dialog-event records retain `english: null`.
+- 88 reviewed records and **0 unreviewed records**.
+- 41 spoken turns, 3 stage directions, and 44 vocabulary records remain source-preserved.
+- 3 exact and 2 normalized source-record duplicates were accepted.
+- 39 lexical attestations, 27 new dialog/stage attestations, and 17 unresolved contextual-naturalness candidates remain.
+- All 44 events preserve event adjacency; all 41 spoken turns separately preserve spoken-turn adjacency across stage directions.
+- Event-level English was not supplied and remains `null`; no translation was invented.
+- Provider grammar, Mandarin-comparison, cultural, and confidence notes remain metadata rather than evidence.
+- Fifteen durable routes are owned by issue #494.
 
-## Adjacency
+## Files
 
-All 44 dialog events preserve previous/next event links. Spoken turns additionally preserve previous/next spoken-turn links across intervening stage directions.
+- `source.json` and `items.tsv` — immutable source archive.
+- `crosswalk.json` — retained original mechanical ingress report.
+- `mechanical-cross-reference-r1.json` — deterministic current source-record candidates and route links.
+- `review.json` and `expert-review-r1.tsv` — terminal expert dispositions.
+- `dialog-context-routing-r1.json` — contextual, source-alert, aggregate, stage-direction, and dual-adjacency routing.
+- `package-integrity-r1.json` — immutable local source bindings.
+- `research-summary.md` — evidence boundary and final counts.
 
-## Modular ownership
+## Verification
 
-Canonical runtime ownership comes from `src/**` and `src/runtime-resources/**`. Generated `main.js` is excluded.
+```bash
+npm run verify:pedagogical-corpus-review
+python3 tests/tooling/research/pedagogical-corpus-review.test.py
+```
 
-No parser, lexicon, identity/status, survey, version, release, or deployment change is included.
+No parser behavior, runtime lexicon, construction identity/status, survey, release, or deployment state is authorized by this package.

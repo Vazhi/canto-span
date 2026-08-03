@@ -215,27 +215,73 @@ def verify_source_and_tsv(package: Path, source: dict[str, Any]) -> tuple[list[d
                 fail(f"items.tsv source hash mismatch: {row[id_field]}")
     if schema == "canto-span-pedagogical-dialog-source-v1":
         turns = [row for row in items if row.get("itemType") == "dialog_turn"]
+        stage_directions = [row for row in items if row.get("itemType") == "stage_direction"]
+        events = [row for row in items if row.get("itemType") in {"dialog_turn", "stage_direction"}]
         vocabulary = [row for row in items if row.get("itemType") == "lexical_entry"]
-        if ingress.get("turnCount") != len(turns) or ingress.get("vocabularyCount") != len(vocabulary):
-            fail("dialog source type counts mismatch")
-        if [row.get("turn") for row in turns] != list(range(1, len(turns) + 1)):
-            fail("dialog turn numbering drift")
-        if any((row.get("source") or {}).get("english") is not None for row in turns):
-            fail("dialog turn English must remain null when not supplied")
-        previous_field = find_field(fields, ["previous_turn_id"], "items.tsv")
-        next_field = find_field(fields, ["next_turn_id"], "items.tsv")
+        has_event_layer = bool(stage_directions) or "dialogEventCount" in ingress
         rows_by_id = {row[id_field]: row for row in rows}
-        turn_ids = [row["id"] for row in turns]
-        for index, item_id in enumerate(turn_ids):
-            expected_previous = "" if index == 0 else turn_ids[index - 1]
-            expected_next = "" if index == len(turn_ids) - 1 else turn_ids[index + 1]
-            row = rows_by_id[item_id]
-            if row[previous_field] != expected_previous or row[next_field] != expected_next:
-                fail(f"dialog source adjacency drift: {item_id}")
-        for row in vocabulary:
-            tsv = rows_by_id[row["id"]]
-            if tsv[previous_field] or tsv[next_field]:
-                fail(f"lexical row carries dialog adjacency: {row['id']}")
+        if has_event_layer:
+            if (
+                ingress.get("dialogEventCount") != len(events)
+                or ingress.get("turnCount") != len(turns)
+                or ingress.get("stageDirectionCount", 0) != len(stage_directions)
+                or ingress.get("vocabularyCount") != len(vocabulary)
+            ):
+                fail("dialog source type counts mismatch")
+            if [row.get("eventOrdinal") for row in events] != list(range(1, len(events) + 1)):
+                fail("dialog event numbering drift")
+            if [row.get("turn") for row in turns] != list(range(1, len(turns) + 1)):
+                fail("dialog turn numbering drift")
+            if [row.get("stageDirectionOrdinal") for row in stage_directions] != list(range(1, len(stage_directions) + 1)):
+                fail("dialog stage-direction numbering drift")
+            if any((row.get("source") or {}).get("english") is not None for row in events):
+                fail("dialog event English must remain null when not supplied")
+            previous_event_field = find_field(fields, ["previous_event_id"], "items.tsv")
+            next_event_field = find_field(fields, ["next_event_id"], "items.tsv")
+            previous_turn_field = find_field(fields, ["previous_turn_id"], "items.tsv")
+            next_turn_field = find_field(fields, ["next_turn_id"], "items.tsv")
+            event_ids = [row["id"] for row in events]
+            for index, item_id in enumerate(event_ids):
+                expected_previous = "" if index == 0 else event_ids[index - 1]
+                expected_next = "" if index == len(event_ids) - 1 else event_ids[index + 1]
+                row = rows_by_id[item_id]
+                if row[previous_event_field] != expected_previous or row[next_event_field] != expected_next:
+                    fail(f"dialog event adjacency drift: {item_id}")
+            turn_ids = [row["id"] for row in turns]
+            for index, item_id in enumerate(turn_ids):
+                expected_previous = "" if index == 0 else turn_ids[index - 1]
+                expected_next = "" if index == len(turn_ids) - 1 else turn_ids[index + 1]
+                row = rows_by_id[item_id]
+                if row[previous_turn_field] != expected_previous or row[next_turn_field] != expected_next:
+                    fail(f"dialog turn adjacency drift: {item_id}")
+            for item in stage_directions + vocabulary:
+                row = rows_by_id[item["id"]]
+                if row[previous_turn_field] or row[next_turn_field]:
+                    fail(f"non-turn row carries spoken-turn adjacency: {item['id']}")
+            for item in vocabulary:
+                row = rows_by_id[item["id"]]
+                if row[previous_event_field] or row[next_event_field]:
+                    fail(f"lexical row carries dialog event adjacency: {item['id']}")
+        else:
+            if ingress.get("turnCount") != len(turns) or ingress.get("vocabularyCount") != len(vocabulary):
+                fail("dialog source type counts mismatch")
+            if [row.get("turn") for row in turns] != list(range(1, len(turns) + 1)):
+                fail("dialog turn numbering drift")
+            if any((row.get("source") or {}).get("english") is not None for row in turns):
+                fail("dialog turn English must remain null when not supplied")
+            previous_turn_field = find_field(fields, ["previous_turn_id"], "items.tsv")
+            next_turn_field = find_field(fields, ["next_turn_id"], "items.tsv")
+            turn_ids = [row["id"] for row in turns]
+            for index, item_id in enumerate(turn_ids):
+                expected_previous = "" if index == 0 else turn_ids[index - 1]
+                expected_next = "" if index == len(turn_ids) - 1 else turn_ids[index + 1]
+                row = rows_by_id[item_id]
+                if row[previous_turn_field] != expected_previous or row[next_turn_field] != expected_next:
+                    fail(f"dialog source adjacency drift: {item_id}")
+            for item in vocabulary:
+                row = rows_by_id[item["id"]]
+                if row[previous_turn_field] or row[next_turn_field]:
+                    fail(f"lexical row carries dialog adjacency: {item['id']}")
     return items, source_ids
 
 
@@ -1079,13 +1125,28 @@ def verify_dialog_context_routing(root: Path, package: Path, source_id: str, pay
     if aggregate_lock != expected_lock:
         fail("dialog aggregate-map lock drift")
     turns = [row for row in source_items if row.get("itemType") == "dialog_turn"]
+    stage_directions = [row for row in source_items if row.get("itemType") == "stage_direction"]
+    events = [row for row in source_items if row.get("itemType") in {"dialog_turn", "stage_direction"}]
     aggregate_turns = [row for row in aggregate.get("turns", []) if row.get("source_id") == source_id]
     if len(aggregate_turns) != len(turns):
         fail("dialog aggregate-map turn projection count drift")
     null_adjacency = sum(row.get("previous_turn_id") is None and row.get("next_turn_id") is None for row in aggregate_turns)
     if null_adjacency != len(turns):
         fail("dialog aggregate-map limitation no longer matches retained map")
-    expected_limitation = {"dialog_turn_count":len(turns),"aggregate_turns_with_null_previous_and_next":len(turns),"source_package_adjacency_is_authoritative":True,"aggregate_map_is_not_rewritten":True}
+    if stage_directions:
+        expected_limitation = {
+            "dialog_event_count": len(events),
+            "dialog_turn_count": len(turns),
+            "stage_direction_count": len(stage_directions),
+            "aggregate_turn_count": len(aggregate_turns),
+            "aggregate_stage_direction_count": 0,
+            "aggregate_turns_with_null_previous_and_next": len(turns),
+            "source_event_adjacency_is_authoritative": True,
+            "source_turn_adjacency_is_authoritative": True,
+            "aggregate_map_is_not_rewritten": True,
+        }
+    else:
+        expected_limitation = {"dialog_turn_count":len(turns),"aggregate_turns_with_null_previous_and_next":len(turns),"source_package_adjacency_is_authoritative":True,"aggregate_map_is_not_rewritten":True}
     if packet.get("aggregate_adjacency_limitation") != expected_limitation:
         fail("dialog aggregate adjacency limitation drift")
     adjacency = packet.get("source_adjacency")
@@ -1096,6 +1157,19 @@ def verify_dialog_context_routing(root: Path, package: Path, source_id: str, pay
         expected_next = None if index == len(turns) - 1 else turns[index + 1]["id"]
         if row.get("previous_turn_id") != expected_previous or row.get("next_turn_id") != expected_next:
             fail(f"dialog source adjacency packet drift: {row['id']}")
+    if stage_directions:
+        event_adjacency = packet.get("source_event_adjacency")
+        if not isinstance(event_adjacency, list) or stable_ids(event_adjacency, "dialog source event adjacency") != [row["id"] for row in events]:
+            fail("dialog source event adjacency projection drift")
+        for index, row in enumerate(event_adjacency):
+            expected_previous = None if index == 0 else events[index - 1]["id"]
+            expected_next = None if index == len(events) - 1 else events[index + 1]["id"]
+            if row.get("previous_event_id") != expected_previous or row.get("next_event_id") != expected_next:
+                fail(f"dialog source event adjacency packet drift: {row['id']}")
+        if packet.get("stage_direction_ids") != [row["id"] for row in stage_directions]:
+            fail("dialog stage-direction projection drift")
+    elif packet.get("source_event_adjacency") is not None or packet.get("stage_direction_ids") is not None:
+        fail("dialog without stage directions declares event-only routing fields")
     actual_needs_context = sorted(row.get("item_id") for row in aggregate_turns if row.get("coverage_class") == "needs_context")
     if packet.get("aggregate_needs_context_ids") is not None and packet.get("aggregate_needs_context_ids") != actual_needs_context:
         fail("dialog aggregate NeedsContext projection drift")
@@ -1275,11 +1349,11 @@ def verify_review(
                 ):
                     fail(f"malformed source discrepancy: {item_id}")
 
-        if "-DLG-" in source_id and item.get("itemType") == "dialog_turn":
+        if "-DLG-" in source_id and item.get("itemType") in {"dialog_turn", "stage_direction"}:
             if row.get("source_availability") != {"english": "not_supplied"}:
-                fail(f"dialog turn missing English availability drift: {item_id}")
+                fail(f"dialog event missing English availability drift: {item_id}")
             if discrepancies:
-                fail(f"dialog turn missing English cannot be a translation discrepancy: {item_id}")
+                fail(f"dialog event missing English cannot be a translation discrepancy: {item_id}")
 
         reviewed_values = row.get("reviewed_values")
         if not isinstance(reviewed_values, dict):

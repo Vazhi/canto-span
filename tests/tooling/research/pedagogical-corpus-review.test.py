@@ -27,6 +27,7 @@ WEEK18 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719")
 WEEK19 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726")
 DIALOG002 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-002-20251207")
 DIALOG003 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214")
+DIALOG004 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221")
 REGISTERED = {
     WEEK14: {"role_sensitive": 0, "replacements": 0, "records": 61, "discrepancies": 6, "exact": 5, "runtime": 0, "legacy": 0, "implementation": 0, "routes": 0},
     WEEK15: {"role_sensitive": 0, "replacements": 0, "records": 65, "discrepancies": 4, "exact": 10, "runtime": 0, "legacy": 0, "implementation": 0, "routes": 0},
@@ -36,6 +37,7 @@ REGISTERED = {
     WEEK19: {"records": 76, "discrepancies": 72, "exact": 0, "runtime": 0, "legacy": 0, "implementation": 0, "role_sensitive": 27, "routes": 12, "replacements": 1},
     DIALOG002: {"records": 72, "discrepancies": 0, "exact": 3, "runtime": 0, "legacy": 0, "implementation": 0, "role_sensitive": 0, "routes": 13, "replacements": 0},
     DIALOG003: {"records": 96, "discrepancies": 0, "exact": 2, "runtime": 0, "legacy": 0, "implementation": 0, "role_sensitive": 0, "routes": 16, "replacements": 0},
+    DIALOG004: {"records": 88, "discrepancies": 0, "exact": 3, "runtime": 0, "legacy": 0, "implementation": 0, "role_sensitive": 0, "routes": 15, "replacements": 0},
 }
 
 def write_json(path: Path, value: object) -> None:
@@ -749,6 +751,130 @@ class Dialog003MutationTest(unittest.TestCase):
         row["accepted_duplicate_targets"][0]["record_id"] = "missing"
         write_json(path, review)
         with self.assertRaisesRegex(AssertionError, "not a record-level candidate"):
+            self.verify()
+
+
+class Dialog004ProjectionTest(unittest.TestCase):
+    def test_dialog004_terminal_projection_and_dual_adjacency(self) -> None:
+        source = json.loads((ROOT / DIALOG004 / "source.json").read_text(encoding="utf-8"))
+        review = json.loads((ROOT / DIALOG004 / "review.json").read_text(encoding="utf-8"))
+        routing = json.loads((ROOT / DIALOG004 / "dialog-context-routing-r1.json").read_text(encoding="utf-8"))
+        self.assertEqual(review["summary"]["terminal_classification_counts"], {"exact_duplicate":3,"lexical_only_attestation":39,"naturalness_review_candidate":17,"new_corpus_attestation":27,"normalized_duplicate":2})
+        self.assertEqual(len([row for row in source["items"] if row["itemType"] == "dialog_turn"]), 41)
+        self.assertEqual(len([row for row in source["items"] if row["itemType"] == "stage_direction"]), 3)
+        self.assertEqual(len(routing["source_adjacency"]), 41)
+        self.assertEqual(len(routing["source_event_adjacency"]), 44)
+        self.assertEqual(routing["stage_direction_ids"], [f"GLOSSIKA-YUEHK-A1-DLG-004-20251221-I{value:03d}" for value in [15,27,36]])
+        self.assertEqual(routing["aggregate_adjacency_limitation"]["aggregate_stage_direction_count"], 0)
+
+    def test_dialog004_duplicate_record_owners(self) -> None:
+        review = json.loads((ROOT / DIALOG004 / "review.json").read_text(encoding="utf-8"))
+        exact = [row["id"].rsplit("-",1)[-1] for row in review["records"] if row["terminal_ingress_classification"] == "exact_duplicate"]
+        normalized = [row["id"].rsplit("-",1)[-1] for row in review["records"] if row["terminal_ingress_classification"] == "normalized_duplicate"]
+        self.assertEqual(exact, ["I051","I074","I075"])
+        self.assertEqual(normalized, ["I045","I071"])
+
+    def test_dialog004_stage_directions_are_context_not_spoken_turns(self) -> None:
+        review = json.loads((ROOT / DIALOG004 / "review.json").read_text(encoding="utf-8"))
+        routing = json.loads((ROOT / DIALOG004 / "dialog-context-routing-r1.json").read_text(encoding="utf-8"))
+        stage_rows = [row for row in review["records"] if row["id"] in routing["stage_direction_ids"]]
+        self.assertEqual(len(stage_rows), 3)
+        self.assertTrue(all(row["evidence_use_disposition"] == "authorized_pedagogical_stage_context_attestation_only" for row in stage_rows))
+        self.assertTrue(routing["source_metadata_authority"]["stage_directions_are_context_not_spoken_syntax"])
+
+
+class Dialog004MutationTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.temp = tempfile.TemporaryDirectory()
+        self.root = Path(self.temp.name)
+        shutil.copytree(ROOT, self.root, dirs_exist_ok=True)
+
+    def tearDown(self) -> None:
+        self.temp.cleanup()
+
+    def verify(self):
+        return VERIFIER.verify(self.root, DIALOG004, check_deterministic_crossref=False)
+
+    def test_event_adjacency_cannot_be_erased(self) -> None:
+        path = self.root / DIALOG004 / "items.tsv"
+        lines = path.read_text(encoding="utf-8").splitlines()
+        fields = lines[0].split("\t")
+        values = lines[15].split("\t")
+        values[fields.index("previous_event_id")] = ""
+        lines[15] = "\t".join(values)
+        path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+        with self.assertRaisesRegex(AssertionError, "event adjacency drift"):
+            self.verify()
+
+    def test_stage_direction_cannot_carry_spoken_turn_adjacency(self) -> None:
+        path = self.root / DIALOG004 / "items.tsv"
+        lines = path.read_text(encoding="utf-8").splitlines()
+        fields = lines[0].split("\t")
+        values = lines[15].split("\t")
+        values[fields.index("previous_turn_id")] = "GLOSSIKA-YUEHK-A1-DLG-004-20251221-I014"
+        lines[15] = "\t".join(values)
+        path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+        with self.assertRaisesRegex(AssertionError, "non-turn row carries spoken-turn adjacency"):
+            self.verify()
+
+    def test_stage_direction_missing_translation_cannot_become_discrepancy(self) -> None:
+        path = self.root / DIALOG004 / "review.json"
+        review = json.loads(path.read_text(encoding="utf-8"))
+        row = next(value for value in review["records"] if value["id"].endswith("I015"))
+        row["source_discrepancies"] = [{"field":"english","issue":"not supplied","status":"translation_discrepancy"}]
+        review["summary"]["records_with_source_discrepancies"] = 1
+        write_json(path, review)
+        with self.assertRaisesRegex(AssertionError, "dialog event missing English"):
+            self.verify()
+
+    def test_aggregate_stage_omission_is_locked(self) -> None:
+        path = self.root / DIALOG004 / "dialog-context-routing-r1.json"
+        packet = json.loads(path.read_text(encoding="utf-8"))
+        packet["aggregate_adjacency_limitation"]["aggregate_stage_direction_count"] = 3
+        write_json(path, packet)
+        with self.assertRaisesRegex(AssertionError, "aggregate adjacency limitation drift"):
+            self.verify()
+
+    def test_source_event_adjacency_packet_cannot_be_erased(self) -> None:
+        path = self.root / DIALOG004 / "dialog-context-routing-r1.json"
+        packet = json.loads(path.read_text(encoding="utf-8"))
+        packet["source_event_adjacency"] = packet["source_event_adjacency"][:-1]
+        write_json(path, packet)
+        with self.assertRaisesRegex(AssertionError, "source event adjacency projection drift"):
+            self.verify()
+
+    def test_stage_direction_set_is_locked(self) -> None:
+        path = self.root / DIALOG004 / "dialog-context-routing-r1.json"
+        packet = json.loads(path.read_text(encoding="utf-8"))
+        packet["stage_direction_ids"] = packet["stage_direction_ids"][:-1]
+        write_json(path, packet)
+        with self.assertRaisesRegex(AssertionError, "stage-direction projection drift"):
+            self.verify()
+
+    def test_naturalness_route_set_is_locked(self) -> None:
+        path = self.root / DIALOG004 / "dialog-context-routing-r1.json"
+        packet = json.loads(path.read_text(encoding="utf-8"))
+        route = next(row for row in packet["routes"] if row["route_id"] == "D4-R13")
+        route["source_item_ids"] = route["source_item_ids"][:-1]
+        write_json(path, packet)
+        with self.assertRaisesRegex(AssertionError, "naturalness route|context route projection"):
+            self.verify()
+
+    def test_duplicate_record_identity_is_required(self) -> None:
+        path = self.root / DIALOG004 / "review.json"
+        review = json.loads(path.read_text(encoding="utf-8"))
+        row = next(value for value in review["records"] if value["id"].endswith("I051"))
+        row["accepted_duplicate_targets"][0]["record_id"] = "missing"
+        write_json(path, review)
+        with self.assertRaisesRegex(AssertionError, "not a record-level candidate"):
+            self.verify()
+
+    def test_source_metadata_cannot_become_evidence(self) -> None:
+        path = self.root / DIALOG004 / "dialog-context-routing-r1.json"
+        packet = json.loads(path.read_text(encoding="utf-8"))
+        packet["source_metadata_authority"]["accepted_as_linguistic_evidence"] = True
+        write_json(path, packet)
+        with self.assertRaisesRegex(AssertionError, "metadata authority"):
             self.verify()
 
 if __name__ == "__main__":
