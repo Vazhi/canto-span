@@ -1,0 +1,26 @@
+{
+  "schema": "canto-span-pedagogical-corpus-registry-v1",
+  "registry_state": "foundation",
+  "package_root": "data/pedagogical-corpus",
+  "packages": [],
+  "migration_queue": [
+    {"package_id": "GLOSSIKA-YUEHK-A1-W14-20260621", "source_issue": 131, "stale_claim": 471, "stale_pr": 472, "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621"},
+    {"package_id": "GLOSSIKA-YUEHK-A1-W15-20260628", "source_issue": 132, "stale_claim": 473, "stale_pr": 474, "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628"},
+    {"package_id": "GLOSSIKA-YUEHK-A1-W16-20260705", "source_issue": 133, "stale_claim": 475, "stale_pr": 476, "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705"},
+    {"package_id": "GLOSSIKA-YUEHK-A1-W17-20260712", "source_issue": 134, "stale_claim": 477, "stale_pr": 478, "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712"},
+    {"package_id": "GLOSSIKA-YUEHK-A1-W18-20260719", "source_issue": 135, "stale_claim": 479, "stale_pr": 480, "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719"},
+    {"package_id": "GLOSSIKA-YUEHK-A1-W19-20260726", "source_issue": 136, "stale_claim": 482, "stale_pr": 483, "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726"},
+    {"package_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207", "source_issue": 138, "stale_claim": 485, "stale_pr": 486, "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-002-20251207"},
+    {"package_id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214", "source_issue": 139, "stale_claim": 488, "stale_pr": 489, "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214"},
+    {"package_id": "GLOSSIKA-YUEHK-A1-DLG-004-20251221", "source_issue": 140, "stale_claim": 491, "stale_pr": 492, "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221"},
+    {"package_id": "GLOSSIKA-YUEHK-A1-DLG-005-20251228", "source_issue": 141, "stale_claim": 495, "stale_pr": 496, "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228"}
+  ],
+  "invariants": {
+    "closed_package_manifests": true,
+    "safe_path_containment": true,
+    "recompute_byte_and_semantic_hashes": true,
+    "registry_wide_duplicate_dag": true,
+    "registry_wide_route_ownership": true,
+    "exact_bidirectional_projections": true
+  }
+}

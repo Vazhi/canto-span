@@ -77,6 +77,12 @@
         "command": ["python3", "tools/verify-interim-pilot-public-package.py"],
         "reason": "Prevent reconstructable item or condition results, linked-table leakage, renamed private-source content, unsupported qualitative disclosure, stale public hashes, or lifecycle contradictions in the interim pilot package.",
         "run_when": "The 2026-07-31 interim package, disclosure policy, private-source provenance, native-panel lifecycle, or its verifier changes."
+      },
+      {
+        "id": "pedagogical-corpus-contract",
+        "command": ["python3", "tools/verify-pedagogical-corpus-contract.py"],
+        "reason": "Prevent undeclared pedagogical packages, open inventories, stale source hashes, self-authorized reviews, duplicate-graph conflicts, orphan routes, and projection drift.",
+        "run_when": "The pedagogical-corpus registry, package manifests, review relations, contract schemas, verifier, tests, or current contract documentation change."
       }
     ],
     "runtime": [

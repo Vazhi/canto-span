@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Vazhi/canto-span/schemas/pedagogical-corpus-review-authority.schema.json",
+  "title": "Canto Span pedagogical-corpus review authority",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "authority_issue", "authority_kind", "authorized_state", "reviewer_role", "source_semantic_sha256", "authorized_at", "scope", "evidence_basis", "replacement_rights"],
+  "properties": {
+    "schema": {"const": "canto-span-pedagogical-review-authority-v1"},
+    "authority_issue": {"type": "integer", "minimum": 1},
+    "authority_kind": {"enum": ["review", "acceptance", "supersession", "withdrawal"]},
+    "authorized_state": {"enum": ["reviewed", "accepted", "superseded", "withdrawn"]},
+    "reviewer_role": {"enum": ["project_reviewer", "external_expert", "native_reviewer"]},
+    "source_semantic_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "authorized_at": {"type": "string", "format": "date-time"},
+    "scope": {"type": "string", "minLength": 1},
+    "evidence_basis": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+    "replacement_rights": {"type": "array", "uniqueItems": true, "items": {"enum": ["pronunciation", "translation", "gloss", "orthography", "source_id", "segmentation", "naturalness", "other"]}}
+  }
+}
