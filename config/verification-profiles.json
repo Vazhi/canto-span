@@ -1,5 +1,13 @@
 {
-  "schema": "canto-span-verification-profiles-v2",
+  "schema": "canto-span-verification-profiles-v3",
+  "profile_order": ["core", "research", "runtime", "release"],
+  "profile_requests": {
+    "core": ["core"],
+    "research": ["research"],
+    "runtime": ["runtime"],
+    "release": ["core", "release"],
+    "all": ["core", "research", "runtime", "release"]
+  },
   "profiles": {
     "core": [
       {
@@ -42,7 +50,7 @@
         "id": "documentation",
         "command": ["node", "tools/verify-documentation-consistency.js"],
         "reason": "Prevent broken current-document links and competing current authority.",
-        "run_when": "Current documentation, authority settings, or canonical state change."
+        "run_when": "Current documentation, authority settings, or canonical state changes."
       }
     ],
     "research": [
@@ -55,8 +63,8 @@
       {
         "id": "native-panel-lifecycle",
         "command": ["node", "tools/verify-native-panel-lifecycle.js"],
-        "reason": "Prevent a follow-up native-panel instrument or artifact from becoming locked, generated, deployable, or deployed before pilot closure and accepted item audit.",
-        "run_when": "Canonical pilot, item-audit, follow-up lifecycle, or tracked-artifact metadata changes."
+        "reason": "Prevent follow-up native-panel lifecycle, artifact-role, generated-form, and deployment evidence from bypassing pilot closure and accepted item audit.",
+        "run_when": "Canonical pilot, item-audit, follow-up lifecycle, artifact contract, generated namespace, or deployment namespace changes."
       }
     ],
     "runtime": [
