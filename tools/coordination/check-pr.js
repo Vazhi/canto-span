@@ -107,10 +107,20 @@ function intakeIssueNumber(prBody) {
 }
 
 function prOwnershipFields(prBody) {
-  const authority = parsePrAuthority(prBody);
+  const body = String(prBody || "");
+  const activeWorkers = matchedValues(
+    body,
+    /^[ \t]*(?:-\s*)?Active worker:\s*`?(codex|chatgpt|human)`?\s*$/gim,
+    (value) => value.toLowerCase(),
+  );
+  const revisions = matchedValues(
+    body,
+    /^[ \t]*(?:-\s*)?Ownership revision:\s*`?(\d+)`?\s*$/gim,
+    Number,
+  );
   return {
-    activeWorker: authority.activeWorker,
-    ownershipRevision: authority.ownershipRevision,
+    activeWorker: exactlyOne(activeWorkers, "Active worker marker"),
+    ownershipRevision: exactlyOne(revisions, "Ownership revision marker"),
   };
 }
 
