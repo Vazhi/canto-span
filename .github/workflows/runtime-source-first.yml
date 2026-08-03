@@ -6,6 +6,8 @@ on:
       - "src/**"
       - "tests/**"
       - "tools/build-runtime.js"
+      - "tools/verify-current-state.js"
+      - "config/verification-profiles.json"
       - "package.json"
       - "package-lock.json"
       - "main.js"
@@ -15,6 +17,8 @@ on:
       - "src/**"
       - "tests/**"
       - "tools/build-runtime.js"
+      - "tools/verify-current-state.js"
+      - "config/verification-profiles.json"
       - "package.json"
       - "package-lock.json"
       - "main.js"
@@ -35,9 +39,5 @@ jobs:
           package-manager-cache: false
       - name: Install build dependencies
         run: npm ci
-      - name: Verify deterministic generated runtime
-        run: npm run verify:runtime-build
-      - name: Run source-first runtime tests
-        run: npm test
-      - name: Verify generated runtime loading
-        run: npm run test:generated-runtime
+      - name: Run runtime verification profile
+        run: npm run verify:runtime
