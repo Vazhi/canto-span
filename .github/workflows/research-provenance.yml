@@ -7,10 +7,15 @@ on:
       - "data/construction-identity-lock.json"
       - "data/construction-adjudications.json"
       - "data/construction-adjudication-batches/**"
+      - "data/pedagogical-corpus/**"
       - "docs/research/**"
+      - "docs/current/PEDAGOGICAL-CORPUS-REVIEW-CONTRACT.md"
       - "external-evidence/**"
       - "grammar/**"
       - "review-packets/**"
+      - "schemas/pedagogical-corpus-package.schema.json"
+      - "schemas/pedagogical-corpus-registry.schema.json"
+      - "config/pedagogical-corpus-packages.json"
       - "config/research-provenance-baseline.json"
       - "config/research-evidence-grades.json"
       - "config/verification-profiles.json"
@@ -18,9 +23,12 @@ on:
       - "tools/verify-research-provenance.js"
       - "tools/verify-native-panel-lifecycle.js"
       - "tools/verify-interim-pilot-public-package.py"
+      - "tools/verify-pedagogical-corpus-contract.py"
+      - "tools/pedagogical_corpus_contract/**"
       - "tests/tooling/native-panel/native-panel-lifecycle.test.js"
       - "tests/tooling/research/ab30-aggregate-integrity.test.py"
       - "tests/tooling/research/interim-pilot-public-package.test.py"
+      - "tests/tooling/research/pedagogical-corpus-contract.test.py"
       - "package.json"
       - ".github/workflows/research-provenance.yml"
   pull_request:
@@ -29,10 +37,15 @@ on:
       - "data/construction-identity-lock.json"
       - "data/construction-adjudications.json"
       - "data/construction-adjudication-batches/**"
+      - "data/pedagogical-corpus/**"
       - "docs/research/**"
+      - "docs/current/PEDAGOGICAL-CORPUS-REVIEW-CONTRACT.md"
       - "external-evidence/**"
       - "grammar/**"
       - "review-packets/**"
+      - "schemas/pedagogical-corpus-package.schema.json"
+      - "schemas/pedagogical-corpus-registry.schema.json"
+      - "config/pedagogical-corpus-packages.json"
       - "config/research-provenance-baseline.json"
       - "config/research-evidence-grades.json"
       - "config/verification-profiles.json"
@@ -40,9 +53,12 @@ on:
       - "tools/verify-research-provenance.js"
       - "tools/verify-native-panel-lifecycle.js"
       - "tools/verify-interim-pilot-public-package.py"
+      - "tools/verify-pedagogical-corpus-contract.py"
+      - "tools/pedagogical_corpus_contract/**"
       - "tests/tooling/native-panel/native-panel-lifecycle.test.js"
       - "tests/tooling/research/ab30-aggregate-integrity.test.py"
       - "tests/tooling/research/interim-pilot-public-package.test.py"
+      - "tests/tooling/research/pedagogical-corpus-contract.test.py"
       - "package.json"
       - ".github/workflows/research-provenance.yml"
   workflow_dispatch:
@@ -65,5 +81,7 @@ jobs:
         run: npm run test:ab30-aggregate
       - name: Test interim pilot disclosure verifier
         run: npm run test:interim-pilot-export
+      - name: Test pedagogical-corpus contract verifier
+        run: npm run test:pedagogical-corpus-contract
       - name: Verify durable research provenance and lifecycle state
         run: npm run verify:research
