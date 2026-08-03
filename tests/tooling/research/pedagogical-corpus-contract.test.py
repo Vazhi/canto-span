@@ -9,15 +9,20 @@ class ContractTests(unittest.TestCase):
     def fail(self,root,reg,msg):
         with self.assertRaisesRegex(mod.ContractError,msg): mod.verify_registry(root,reg)
     def test_foundation_and_active_pass(self):
-        root=repo(self); self.assertEqual(mod.verify_registry(root,registry(root))["migration_queue"],1)
+        root=repo(self); report=mod.verify_registry(root,registry(root)); self.assertEqual(report["migration_queue"],1); self.assertEqual(report["legacy_archives"],1)
         root,reg,_,_=active(self); self.assertEqual(mod.verify_registry(root,reg)["global"]["records"],2)
     def test_foundation_queue_failures(self):
         root=repo(self); entry,_=package(root); self.fail(root,registry(root,"foundation",[entry]),"foundation registry")
-        root=repo(self); self.fail(root,registry(root,"foundation",queue=[]),"migration queue")
-        root=repo(self); self.fail(root,registry(root,"foundation",queue=[queue_item("A",471,472),queue_item("B",471,474)]),"duplicate migration stale_claim")
+        root=repo(self); archive=legacy_item(); self.fail(root,registry(root,"foundation",queue=[],archives=[archive]),"migration queue")
+        root=repo(self); queue=[queue_item("A",471,472),queue_item("B",471,474)]; archives=[legacy_item("A"),legacy_item("B")]; self.fail(root,registry(root,"foundation",queue=queue,archives=archives),"duplicate migration stale_claim")
     def test_active_root_queue_failures(self):
-        root,reg,entries,_=active(self); data=load(reg); data["migration_queue"]=[queue_item(entries[0]["package_id"])]; dump(reg,data); self.fail(root,reg,"remain in migration queue")
-        root=repo(self); entry,_=package(root); reg=registry(root,"active",[entry],[]); data=load(reg); data["package_root"]="other-root"; dump(reg,data); self.fail(root,reg,"package_root")
+        root,reg,entries,_=active(self); data=load(reg); archive=legacy_item(entries[0]["package_id"],131,entries[0]["root"]); data["legacy_archives"]=[archive]; data["migration_queue"]=[queue_item(entries[0]["package_id"],source_root=entries[0]["root"])]; dump(reg,data); self.fail(root,reg,"remain in legacy archives")
+        root=repo(self); entry,_=package(root); reg=registry(root,"active",[entry],[],[]); data=load(reg); data["package_root"]="other-root"; dump(reg,data); self.fail(root,reg,"package_root")
+    def test_staged_legacy_archive_coverage(self):
+        root,reg,entries,_=active(self); archive=legacy_item("PKG-OLD"); materialize_archives(root,[archive]); data=load(reg); data["legacy_archives"]=[archive]; data["migration_queue"]=[queue_item("PKG-OLD")]; dump(reg,data); self.assertEqual(mod.verify_registry(root,reg)["legacy_archives"],1)
+        root,reg,_,_=active(self); data=load(reg); data["migration_queue"]=[queue_item("PKG-OLD")]; dump(reg,data); self.fail(root,reg,"lack legacy archive declarations")
+        root,reg,_,_=active(self); archive=legacy_item("PKG-OLD"); materialize_archives(root,[archive]); data=load(reg); data["legacy_archives"]=[archive]; data["migration_queue"]=[queue_item("PKG-OLD",source_root="data/pedagogical-corpus/legacy/OTHER")]; dump(reg,data); self.fail(root,reg,"source_root does not match")
+        root,reg,_,_=active(self); archive=legacy_item("PKG-OLD",source_root="outside/PKG-OLD"); materialize_archives(root,[archive]); data=load(reg); data["legacy_archives"]=[archive]; dump(reg,data); self.fail(root,reg,"outside configured package_root")
     def test_manifest_path_lifecycle_failures(self):
         root,reg,_,manifests=active(self); value=load(manifests[0]); value["extra"]=True; dump(manifests[0],value); self.fail(root,reg,"package manifest keys mismatch")
         root,reg,_,manifests=active(self); value=load(manifests[0]); value["lifecycle"]="reviewed"; dump(manifests[0],value); self.fail(root,reg,"lifecycle/authority state mismatch")
@@ -65,12 +70,12 @@ class ContractTests(unittest.TestCase):
         for issue,rights,msg in [(None,[],"missing authority"),(999,["pronunciation"],"does not match package review authority"),(505,[],"not covered by replacement rights")]:
             root,reg,entries,manifests=active(self); rel=f"{entries[0]['root']}/authority.json"; auth=load(root/rel); auth["replacement_rights"]=rights; dump(root/rel,auth); refresh(root,manifests[0],rel); item={"discrepancy_id":"D1","source":{"package_id":"PKG-A","record_id":"I001"},"type":"pronunciation","status":"accepted","replacement_value":"fut3","authority_issue":issue}; relation(root,manifests[0],"discrepancies_file","discrepancies",[item])
             with self.subTest(issue=issue,rights=rights): self.fail(root,reg,msg)
-        root,reg,_,manifests=active(self); route={"route_id":"R1","source":{"package_id":"PKG-A","record_id":"NOPE"},"owner_issue":700,"status":"open","requirements":["review"],"projected_record_ids":["NOPE"]}; relation(root,manifests[0],"routes_file","routes",[route]); self.fail(root,reg,"source missing")
+        root,reg,_,manifests=active(self); route={"route_id":"R1","source":{"package_id":"PKG-A","record_id":"NOPE"},"owner_issue":700,"status":"open","requirements":["review"],"projected_record_ids":["NOPE"]}; relation(root,manifests[0],"routes_file,"routes",[route]); self.fail(root,reg,"source missing")
     def test_global_route_lineage_failures(self):
         root,reg,_,manifests=active(self,2)
         for i,pid in enumerate(("PKG-A","PKG-B")): relation(root,manifests[i],"routes_file","routes",[{"route_id":"R-SHARED","source":{"package_id":pid,"record_id":"I001"},"owner_issue":700+i,"status":"open","requirements":["review"],"projected_record_ids":["I001"]}])
         self.fail(root,reg,"duplicate route_id")
-        root,reg,_,manifests=active(self); value=load(manifests[0]); value["lineage"]["parent_lineage_ids"]=["missing:lineage"]; dump(manifests[0],value); self.fail(root,reg,"unknown parent lineage")
+        root,reg,_,manifests=active(self,2); value=load(manifests[0]); value["lineage"]["parent_lineage_ids"]=["missing:lineage"]; dump(manifests[0],value); self.fail(root,reg,"known parent lineage")
         root,reg,_,manifests=active(self,2); a,b=load(manifests[0]),load(manifests[1]); a["lineage"]["parent_lineage_ids"]=[b["lineage"]["lineage_id"]]; b["lineage"]["parent_lineage_ids"]=[a["lineage"]["lineage_id"]]; dump(manifests[0],a); dump(manifests[1],b); self.fail(root,reg,"lineage cycle")
 
 if __name__=="__main__": unittest.main(verbosity=2)

@@ -1,5 +1,5 @@
 {
-  "schema": "canto-span-pedagogical-corpus-registry-v1",
+  "schema": "canto-span-pedagogical-corpus-registry-v2",
   "registry_state": "active",
   "package_root": "data/pedagogical-corpus",
   "packages": [
@@ -10,6 +10,133 @@
       "manifest": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W14-20260621/package-manifest.json",
       "authority_state": "reviewed",
       "authority_issue": 508
+    }
+  ],
+  "legacy_archives": [
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+      "source_issue": 132,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628"
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+      "source_issue": 133,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705"
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+      "source_issue": 134,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712"
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+      "source_issue": 135,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719"
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-W19-20260726",
+      "source_issue": 136,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726"
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-DLG-001-20251130",
+      "source_issue": 137,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-001-20251130"
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-DLG-002-20251207",
+      "source_issue": 138,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-002-20251207"
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-DLG-003-20251214",
+      "source_issue": 139,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214"
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-DLG-004-20251221",
+      "source_issue": 140,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221"
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-DLG-005-20251228",
+      "source_issue": 141,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228"
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-DLG-006-20260104",
+      "source_issue": 142,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-006-20260104"
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-DLG-007-20260111",
+      "source_issue": 143,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-007-20260111"
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-DLG-008-20260125",
+      "source_issue": 144,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-008-20260125"
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-DLG-009-20260201",
+      "source_issue": 145,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-009-20260201"
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-DLG-010-20260208",
+      "source_issue": 146,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-010-20260208"
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-DLG-011-20260215",
+      "source_issue": 147,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-011-20260215"
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-DLG-012-20260222",
+      "source_issue": 148,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-012-20260222"
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-DLG-013-20260301",
+      "source_issue": 149,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-013-20260301"
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-DLG-014-20260308",
+      "source_issue": 150,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-014-20260308"
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-DLG-015-20260315",
+      "source_issue": 151,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-015-20260315"
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-DLG-016-20260322",
+      "source_issue": 152,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-016-20260322"
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-DLG-017-20260329",
+      "source_issue": 153,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-017-20260329"
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-DLG-018-20260405",
+      "source_issue": 154,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-018-20260405"
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-DLG-019-20260412",
+      "source_issue": 155,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-019-20260412"
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-DLG-020-20260419",
+      "source_issue": 157,
+      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-020-20260419"
     }
   ],
   "migration_queue": [

@@ -45,89 +45,52 @@ def validate_global(packages: list[dict[str, Any]]) -> dict[str, int]:
             req(source != target, f"{label} cannot target itself")
             req(edge["relation"] in {"exact", "normalized"}, f"{label}.relation invalid")
             req(source not in outgoing, f"record has multiple duplicate owners: {source}")
-            outgoing[source] = target
-            duplicate_count += 1
-    for source in outgoing:
-        seen: set[tuple[str, str]] = set()
-        node = source
-        while node in outgoing:
-            req(node not in seen, f"duplicate graph cycle at {node}")
-            seen.add(node)
-            node = outgoing[node]
+            outgoing[\ЫЭ\ЩWHH\™Щ]€\XШ]WШЫЭ[ќ
+ПHB€›Ь€ЫЭ\ЩH[€Э]ЫЪ[™О‚€ЩY[Ћ€Щ]Э\VЬЭ‹Э—WHHЩ]
 
-    route_ids: set[str] = set()
-    route_count = 0
-    for package in packages:
-        for index, route in enumerate(package["routes"]):
-            label = f"route[{package['manifest']['package_id']}:{index}]"
-            exact_keys(route, {"route_id", "source", "owner_issue", "status", "requirements", "projected_record_ids"}, label)
-            route_id = route["route_id"]
-            req(isinstance(route_id, str) and route_id and route_id not in route_ids, f"duplicate route_id {route_id}")
-            route_ids.add(route_id)
-            source = ref_key(route["source"], f"{label}.source")
-            req(source in refs, f"{label} source missing")
-            req(isinstance(route["owner_issue"], int) and route["owner_issue"] > 0, f"{label}.owner_issue invalid")
-            req(route["status"] in {"open", "completed", "cancelled", "subsumed"}, f"{label}.status invalid")
-            req(isinstance(route["requirements"], list) and all(isinstance(v, str) and v for v in route["requirements"]), f"{label}.requirements invalid")
-            req(route["projected_record_ids"] == [source[1]], f"{label} must project source exactly once")
-            route_count += 1
+B€›ЩHHЫЭ\ЩB€Ъ[H›ЩH[€Э]ЫЪ[™О‚€™\J›ЩH›Э[€ЩY[‹€™\XШ]HЬ\ЮXЫH]Ы›Щ_HЉB€ЩY[‹Y
+›ЩJB€›ЩHHЭ]ЫЪ[™ЦЫ›ЩWB‚€›Э]WЪYО€Щ]ЬЭ—HHЩ]
 
-    discrepancy_count = 0
-    link_count = 0
-    for package in packages:
-        package_id = package["manifest"]["package_id"]
-        discrepancy_ids: set[str] = set()
-        for index, value in enumerate(package["discrepancies"]):
-            label = f"discrepancy[{package_id}:{index}]"
-            exact_keys(value, {"discrepancy_id", "source", "type", "status", "replacement_value", "authority_issue"}, label)
-            item_id = value["discrepancy_id"]
-            req(isinstance(item_id, str) and item_id and item_id not in discrepancy_ids, f"duplicate discrepancy_id {item_id}")
-            discrepancy_ids.add(item_id)
-            req(ref_key(value["source"], f"{label}.source") in refs, f"{label} source missing")
-            req(value["type"] in {"pronunciation", "translation", "gloss", "orthography", "source_id", "segmentation", "naturalness", "other"}, f"{label}.type invalid")
-            req(value["status"] in {"open", "proposed", "accepted", "rejected"}, f"{label}.status invalid")
-            if value["status"] == "accepted":
-                req(value["replacement_value"] is not None, f"{label} accepted replacement missing value")
-                req(isinstance(value["authority_issue"], int) and value["authority_issue"] > 0, f"{label} accepted replacement missing authority")
-                req(value["authority_issue"] == package["authority_issue"], f"{label} authority issue does not match package review authority")
-                req(value["type"] in package["replacement_rights"], f"{label} type is not covered by replacement rights")
-            else:
-                req(value["authority_issue"] is None, f"{label} non-accepted replacement claims authority")
-            discrepancy_count += 1
+B€›Э]WШЫЭ[ќH€›Ь€XЪШYЩH[€XЪШYЩ\О‚€›Ь€[™^›Э]H[€[ќ[Y\]JXЪШYЩVИњ›Э]\И—JN‚€X™[H€њ›Э]VЮЬXЪШYЩVЙЫX[љY™\Э	ЧVЙЬXЪШYЩWЪY	Ч_NћЪ[™^WH‚€^XЭЪЩ^\К›Э]KИњ›Э]WЪY‹њЫЭ\ЩH‹›ЭЫ™\—Ъ\ЬЭYH‹њЭ]\И‹њ™\]Z\™[Y[ќИ‹њ›Ъ™XЭYЬ™XЫЬ™ЪYИџKX™[
+B€›Э]WЪYH›Э]VИњ›Э]WЪY—B€™\J\Ъ[њЭ[ЩJ›Э]WЪYЭЉH[™›Э]WЪY[™›Э]WЪY›Э[€›Э]WЪYЛ€™\XШ]H›Э]WЪYЬ›Э]WЪYHЉB€›Э]WЪYЛY
+›Э]WЪY
+B€ЫЭ\ЩHH™Y—ЪЩ^J›Э]VИњЫЭ\ЩH—K€ћЫX™[KњЫЭ\ЩHЉB€™\JЫЭ\ЩH[€™YњЛ€ћЫX™[HЫЭ\ЩHZ\ЬЪ[™ИЉB€™\J\Ъ[њЭ[ЩJ›Э]VИ›ЭЫ™\—Ъ\ЬЭYH—K[ќ
+H[™›Э]VИ›ЭЫ™\—Ъ\ЬЭYH—H€€ћЫX™[K›ЭЫ™\—Ъ\ЬЭYH[ќ[YЉB€™\J›Э]VИњЭ]\И—H[€И›Ь[€‹ЫЫ\]Y‹Ш[Щ[Y‹њЭXњЭ[YYџK€ћЫX™[KњЭ]\И[ќ[YЉB€™\J\Ъ[њЭ[ЩJ›Э]VИњ™\]Z\™[Y[ќИ—K\Э
+H[™[
+\Ъ[њЭ[ЩJ‹ЭЉH[™€›Ь€€[€›Э]VИњ™\]Z\™[Y[ќИ—JK€ћЫX™[Kњ™\]Z\™[Y[ќИ[ќ[YЉB€™\J›Э]VИњ›Ъ™XЭYЬ™XЫЬ™ЪYИ—HOHЬЫЭ\ЩVМWWK€ћЫX™[H]\Э›Ъ™XЭЫЭ\ЩH^XЭHЫЩHЉB€›Э]WШЫЭ[ќ
+ПHB‚€\ШЬ™\[ЮWШЫЭ[ќH€[љЧШЫЭ[ќH€›Ь€XЪШYЩH[€XЪШYЩ\О‚€XЪШYЩWЪYHXЪШYЩVИ›X[љY™\Э—VИњXЪШYЩWЪY—B€\ШЬ™\[ЮWЪYО€Щ]ЬЭ—HHЩ]
 
-        link_ids: set[str] = set()
-        for index, value in enumerate(package["links"]):
-            label = f"link[{package_id}:{index}]"
-            exact_keys(value, {"link_id", "source", "type", "target", "authority"}, label)
-            link_id = value["link_id"]
-            req(isinstance(link_id, str) and link_id and link_id not in link_ids, f"duplicate link_id {link_id}")
-            link_ids.add(link_id)
-            req(ref_key(value["source"], f"{label}.source") in refs, f"{label} source missing")
-            req(value["type"] in LINK_AUTHORITY, f"{label}.type invalid")
-            req(isinstance(value["target"], str) and value["target"], f"{label}.target invalid")
-            req(value["authority"] == LINK_AUTHORITY[value["type"]], f"{label} typed authority mismatch")
-            link_count += 1
+B€›Ь€[™^[YH[€[ќ[Y\]JXЪШYЩVИ™\ШЬ™\[ЪY\И—JN‚€X™[H€™\ШЬ™\[ЮVЮЬXЪШYЩWЪYNћЪ[™^WH‚€^XЭЪЩ^\К[YKИ™\ШЬ™\[ЮWЪY‹њЫЭ\ЩH‹ќ\H‹њЭ]\И‹њ™\XЩ[Y[ќЭ[YH‹]]Ьљ]WЪ\ЬЭYHџKX™[
+B€][WЪYH[YVИ™\ШЬ™\[ЮWЪY—B€™\J\Ъ[њЭ[ЩJ][WЪYЭЉH[™][WЪY[™][WЪY›Э[€\ШЬ™\[ЮWЪYЛ€™\XШ]H\ШЬ™\[ЮWЪYЪ][WЪYHЉB€\ШЬ™\[ЮWЪYЛY
+][WЪY
+B€™\J™Y—ЪЩ^J[YVИњЫЭ\ЩH—K€ћЫX™[KњЫЭ\ЩHЉH[€™YњЛ€ћЫX™[HЫЭ\ЩHZ\ЬЪ[™ИЉB€™\J[YVИќ\H—H[€Ињ›Ыќ[ЪX][Ы€‹ќ[њЫ][Ы€‹™ЫЬЬИ‹›ЬќЩЬ\H‹њЫЭ\ЩWЪY‹њЩYЫY[ќ][Ы€‹›]\[™\ЬИ‹›Э\€џK€ћЫX™[Kќ\H[ќ[YЉB€™\J[YVИњЭ]\И—H[€И›Ь[€‹њ›ЬЬЩY‹XШЩ\Y‹њ™Z™XЭYџK€ћЫX™[KњЭ]\И[ќ[YЉB€Y€[YVИњЭ]\И—HOHXШЩ\YЋ‚€™\J[YVИњ™\XЩ[Y[ќЭ[YH—H\И›Э›Ы™K€ћЫX™[HXШЩ\Y™\XЩ[Y[ќZ\ЬЪ[™И[YHЉB€™\J\Ъ[њЭ[ЩJ[YVИ]]Ьљ]WЪ\ЬЭYH—K[ќ
+H[™[YVИ]]Ьљ]WЪ\ЬЭYH—H€€ћЫX™[HXШЩ\Y™\XЩ[Y[ќZ\ЬЪ[™И]]Ьљ]HЉB€™\J[YVИ]]Ьљ]WЪ\ЬЭYH—HOHXЪШYЩVИ]]Ьљ]WЪ\ЬЭYH—K€ћЫX™[H]]Ьљ]H\ЬЭYHЩ\И›ЭX]ЪXЪШYЩH™]љY]И]]Ьљ]HЉB€™\J[YVИќ\H—H[€XЪШYЩVИњ™\XЩ[Y[ќЬљYЪИ—K€ћЫX™[H\H\И›ЭЫЭ™\™YћH™\XЩ[Y[ќљYЪИЉB€[ЩN‚€™\J[YVИ]]Ьљ]WЪ\ЬЭYH—H\И›Ы™K€ћЫX™[H›Ы‹XXШЩ\Y™\XЩ[Y[ќЫZ[\И]]Ьљ]HЉB€\ШЬ™\[ЮWШЫЭ[ќ
+ПHB‚€[љЧЪYО€Щ]ЬЭ—HHЩ]
 
-    return {
-        "packages": len(packages), "records": len(refs), "duplicate_edges": duplicate_count,
-        "routes": route_count, "discrepancies": discrepancy_count,
-        "implementation_links": link_count, "lineages": len(lineage_owner),
-    }
-
-
-def validate_root_coverage(repo: Path, package_root_rel: str, packages: list[dict[str, Any]]) -> None:
-    package_root = resolve(repo, package_root_rel, "registry.package_root")
-    req(package_root.exists() and package_root.is_dir(), "active package_root missing")
-    roots = [package["root"].resolve() for package in packages]
-    for index, left in enumerate(roots):
-        for right in roots[index + 1:]:
-            req(left not in right.parents and right not in left.parents, "package roots overlap")
-    for current, dirs, names in os.walk(package_root, followlinks=False):
-        current_path = Path(current)
-        for name in dirs:
-            req(not (current_path / name).is_symlink(), "package_root contains symlink directory")
-        for name in names:
-            path = current_path / name
-            req(not path.is_symlink(), "package_root contains symlink file")
-            resolved = path.resolve()
-            req(any(root == resolved.parent or root in resolved.parents for root in roots), f"undeclared package file: {path.relative_to(repo)}")
+B€›Ь€[™^[YH[€[ќ[Y\]JXЪШYЩVИ›[љЬИ—JN‚€X™[H€›[љЦЮЬXЪШYЩWЪYNћЪ[™^WH‚€^XЭЪЩ^\К[YKИ›[љЧЪY‹њЫЭ\ЩH‹ќ\H‹ќ\™Щ]‹]]Ьљ]HџKX™[
+B€[љЧЪYH[YVИ›[љЧЪY—B€™\J\Ъ[њЭ[ЩJ[љЧЪYЭЉH[™[љЧЪY[™[љЧЪY›Э[€[љЧЪYЛ€™\XШ]H[љЧЪYЫ[љЧЪYHЉB€[љЧЪYЛY
+[љЧЪY
+B€™\J™Y—ЪЩ^J[YVИњЫЭ\ЩH—K€ћЫX™[KњЫЭ\ЩHЉH[€™YњЛ€ћЫX™[HЫЭ\ЩHZ\ЬЪ[™ИЉB€™\J[YVИќ\H—H[€S’ЧРUUФ’UK€ћЫX™[Kќ\H[ќ[YЉB€™\J\Ъ[њЭ[ЩJ[YVИќ\™Щ]—KЭЉH[™[YVИќ\™Щ]—K€ћЫX™[Kќ\™Щ][ќ[YЉB€™\J[YVИ]]Ьљ]H—HOHS’ЧРUUФ’UVЭ[YVИќ\H—WK€ћЫX™[H\Y]]Ьљ]HZ\ЫX]ЪЉB€[љЧШЫЭ[ќ
+ПHB‚€™]\›€В€њXЪШYЩ\ИЋ€[ЉXЪШYЩ\КKњ™XЫЬ™ИЋ€[Љ™YњКK™\XШ]WЩYЩ\ИЋ€\XШ]WШЫЭ[ќ€њ›Э]\ИЋ€›Э]WШЫЭ[ќ™\ШЬ™\[ЪY\ИЋ€\ШЬ™\[ЮWШЫЭ[ќ€љ[\[Y[ќ][Ы—Ы[љЬИЋ€[љЧШЫЭ[ќ›[™XYЩ\ИЋ€[Љ[™XYЩWЫЭЫ™\ЉK€B‚‚™Y€[Y]WЬ›ЫЭШЫЭ™\YЩJ€™\О€]€XЪШYЩWЬ›ЫЭЬ™[€Э‹€XЪШYЩ\О€\ЭЩXЭЬЭ‹[ћWWK€YШXЮWШ\Ъ]™\О€\ЭЩXЭЬЭ‹[ћWWKЉ
+HO€›Ы™N‚€XЪШYЩWЬ›ЫЭH™\ЫЫ™J™\ЛXЪШYЩWЬ›ЫЭЬ™[њ™YЪ\ЭћKњXЪШYЩWЬ›ЫЭЉB€™\J€XЪШYЩWЬ›ЫЭ™^\ЭК
+H[™XЪШYЩWЬ›ЫЭљ\ЧЩ\Љ
+H[™›ЭXЪШYЩWЬ›ЫЭљ\ЧЬЮ[[[љК
+K€њXЪШYЩWЬ›ЫЭ]\Э™HH™X[\™XЭЬћH‹€
+B‚€XЭ]™WЬ›ЫЭИHЬXЪШYЩVИњ›ЫЭ—Kњ™\ЫЫ™J
+H›Ь€XЪШYЩH[€XЪШYЩ\ЧB€\Ъ]™WЬ›ЫЭО€\ЭФ]HHЧB€›Ь€[™^\Ъ]™H[€[ќ[Y\]JYШXЮWШ\Ъ]™\КN‚€›ЫЭH™\ЫЫ™J™\Л\Ъ]™VИњЫЭ\ЩWЬ›ЫЭ—K€›YШXЮWШ\Ъ]™\ЦЮЪ[™^WKњЫЭ\ЩWЬ›ЫЭЉB€™\J›ЫЭ™^\ЭК
+H[™›ЫЭљ\ЧЩ\Љ
+H[™›Э›ЫЭљ\ЧЬЮ[[[љК
+K€›YШXЮH\Ъ]™H›ЫЭ]\Э™HH™X[\™XЭЬћN€Ш\Ъ]™VЙЬЫЭ\ЩWЬ›ЫЭ	Ч_HЉB€ћN‚€™[]]™HH›ЫЭњ™[]]™WЭКXЪШYЩWЬ›ЫЭ
+B€^Щ\[YQ\њ›Ь€\И^О‚€Z\ЩHЫЫќXЭ\њ›ЬЉ€›YШXЮH\Ъ]™H›ЫЭЭ]ЪYHЫЫ™љYЭ\™YXЪШYЩWЬ›ЫЭ€Ш\Ъ]™VЙЬЫЭ\ЩWЬ›ЫЭ	Ч_HЉHњ›ЫH^В€™\J™[]]™Kњ\ќЛ›YШXЮH\Ъ]™H›ЫЭШ[››Э\]X[ЫЫ™љYЭ\™YXЪШYЩWЬ›ЫЭЉB€\Ъ]™WЬ›ЫЭЛ\[™
+›ЫЭњ™\ЫЫ™J
+JB‚€›ЫЭИHXЭ]™WЬ›ЫЭИ
+И\Ъ]™WЬ›ЫЭВ€™\J[Љ›ЫЭКHOH[ЉЩ]
+›ЫЭКJKXЭ]™H[™YШXЮH›ЫЭИ]\Э™H[љ\]YHЉB€›Ь€[™^Yќ[€[ќ[Y\]J›ЫЭКN‚€›Ь€љYЪ[€›ЫЭЦЪ[™^
+ИN—N‚€™\JYќ›Э[€љYЪњ\™[ќИ[™љYЪ›Э[€Yќњ\™[ќЛ™XЫ\™YXЪШYЩH›ЫЭИЭ™\›\ЉB‚€›Ь€Э\њ™[ќ\њЛ[Y\И[€ЬЛќШ[КXЪШYЩWЬ›ЫЭ›ЫЭЫ[љЬПQ[ЩJN‚€Э\њ™[ќЬ]H]
+Э\њ™[ќ
+B€›Ь€[YH[€\њО‚€™\J›Э
+Э\њ™[ќЬ]И[YJKљ\ЧЬЮ[[[љК
+KњXЪШYЩWЬ›ЫЭЫЫќZ[њИЮ[[[љИ\™XЭЬћHЉB€›Ь€[YH[€[Y\О‚€]HЭ\њ™[ќЬ]И[YB€™\J›Э]љ\ЧЬЮ[[[љК
+KњXЪШYЩWЬ›ЫЭЫЫќZ[њИЮ[[[љИљ[HЉB€™\ЫЫ™YH]њ™\ЫЫ™J
+B€™\J€[ћJ›ЫЭOH™\ЫЫ™Yњ\™[ќЬ€›ЫЭ[€™\ЫЫ™Yњ\™[ќИ›Ь€›ЫЭ[€›ЫЭКK€€ќ[™XЫ\™YXЪШYЩHљ[N€Ь]њ™[]]™WЭК™\К_H‹€
+B
