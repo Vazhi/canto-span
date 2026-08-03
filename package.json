@@ -12,6 +12,8 @@
     "test:regression": "node tests/run-regression.js",
     "test:np": "node tests/run-np-subsystem.js",
     "test:coordination": "node --test tests/tooling/coordination/*.test.js",
+    "test:verification-orchestration": "node --test tests/tooling/verification/verification-profiles.test.js",
+    "test:native-panel-lifecycle": "node --test tests/tooling/native-panel/native-panel-lifecycle.test.js",
     "identity:generate": "node tools/generate-construction-identities.js --write && node tools/build-construction-identity-lock.js --write",
     "identity:allocate": "node tools/allocate-construction-identity.js",
     "adjudication:apply": "node tools/apply-construction-adjudications.js --write && node tools/generate-construction-identities.js --write && node tools/generate-supported-productive-discovery.js --write",
