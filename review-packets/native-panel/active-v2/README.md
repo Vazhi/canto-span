@@ -15,7 +15,7 @@ Canonical files:
 - `panel-review-state.json` — current construction-specific panel evidence,
   permanent identity tuples, pilot collection state, and item-audit state;
 - `followup-draft-v1-metadata.json` — follow-up identity, lifecycle, deployment
-  permission, artifact namespace, artifact roles, and tracked-artifact state;
+  permission, closed artifact inventory, artifact roles, and tracked-artifact state;
 - `followup-draft-v1-items.tsv` — canonical `G06–G09` and `F011–F018` item table;
 - `followup-draft-v1-item-crosswalk.tsv` — explicit mapping from superseded
   Codex-local `RUL-V1-*`, `PFV-V1-*`, and `FIL-V1-*` aliases;
@@ -55,10 +55,15 @@ They must remain `draft_source` and non-deployable. Relabelling one of them as
 Generated instruments must use role `generated_instrument` and live under
 `review-packets/native-panel/active-v2/generated/`. Deployment evidence must use
 role `deployment_receipt` and live under
-`review-packets/native-panel/active-v2/deployment/`. The verifier recursively
-inventories both directories and every `followup-*` file in the active directory;
-a discovered file that is absent from `tracked_artifacts` fails verification.
-Tracked paths must exist as regular, non-symlink files.
+`review-packets/native-panel/active-v2/deployment/`.
+
+The verifier treats `active-v2` as a closed inventory. It recursively discovers
+every file except four fixed control files (`README.md`, `panel-policy.json`,
+`panel-review-state.json`, and `followup-draft-v1-metadata.json`) and the separate
+`interim-exports/` subtree. Every other discovered file—regardless of name or
+extension—must have exactly one `tracked_artifacts` declaration. This means an
+arbitrarily named XML, JSON, script, form, package, or deployment file cannot be
+added silently. Tracked paths must exist as regular, non-symlink files.
 
 Lifecycle evidence is role-specific:
 
@@ -72,8 +77,8 @@ The deterministic lock permits `locked`, `generated`, or `deployed` only when
 pilot collection is `closed` and the item-level audit is `accepted`. It also
 rejects duplicate lifecycle declarations, cross-file state contradictions,
 missing or duplicate source roles, invalid artifact directories, source-file
-relabelling, untracked follow-up artifacts, and lifecycle states without the
-required role-specific evidence.
+relabelling, untracked files, unauthorized inventory exemptions, and lifecycle
+states without the required role-specific evidence.
 
 The current state remains `active` / `not_started` / `draft` /
 `deployment_allowed=false`, with three non-deployable draft sources and no
