@@ -49,6 +49,9 @@ jobs:
           cp /tmp/d4-executor/generate_d4.py ./finalize-dialog004-review-temporary.py
           python3 ./finalize-dialog004-review-temporary.py
           python3 tools/.dialog004-compat.py
+          sed -i 's/[[:space:]]\+$//' \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/README.md \
+            docs/research/GLOSSIKA-YUEHK-A1-DLG-004-20251221-CORPUS-INGRESS.md
           rm -f ./finalize-dialog004-review-temporary.py
 
       - name: Validate final dialog 004 state
