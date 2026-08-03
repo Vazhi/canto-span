@@ -119,8 +119,8 @@ function prOwnershipFields(prBody) {
     Number,
   );
   return {
-    activeWorker: exactlyOne(activeWorkers, "Active worker marker"),
-    ownershipRevision: exactlyOne(revisions, "Ownership revision marker"),
+    activeWorker: activeWorkers.length === 1 ? activeWorkers[0] : null,
+    ownershipRevision: revisions.length === 1 ? revisions[0] : null,
   };
 }
 
