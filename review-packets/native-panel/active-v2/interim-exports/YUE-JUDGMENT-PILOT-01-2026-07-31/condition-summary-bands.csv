@@ -1,0 +1,21 @@
+group,condition,description,interim_signal
+G01,A,Instrument/object NP + 用嚟,more_natural_side
+G01,B,Location NP + 用嚟,more_natural_side
+G01,C,Time/method/document/opportunity NP + 用嚟,more_natural_side
+G01,D,Human NP + 用嚟,mixed_or_context_sensitive
+G02,A,NP 用嚟 VP,more_natural_side
+G02,B,NP 可以用嚟 VP,more_natural_side
+G02,C,NP 係用嚟 VP,more_natural_side
+G02,D,NP 我用嚟 VP,more_natural_side
+G03,A,Generic NP 用嚟 V,more_natural_side
+G03,B,NP 用咗嚟 V,more_natural_side
+G03,C,NP 用嚟 V咗,more_natural_side
+G03,D,Agent V咗 NP 嚟 V,more_natural_side
+G04,A,Single purpose VP,more_natural_side
+G04,B,Coordinated purpose VPs,more_natural_side
+G04,C,Subjectless 用嚟 fragment,more_natural_side
+G04,D,用嚟 wh-question,more_natural_side
+G05,A,V咗 + overt object,more_natural_side
+G05,B,V完咗 + overt object,mixed_or_context_sensitive
+G05,C,Completed comparison sentence,more_natural_side
+G05,D,Objectless V咗喇,more_natural_side
