@@ -72,6 +72,8 @@ Review authority states are:
 - `superseded` — retained for history but replaced by another accepted review;
 - `withdrawn` — retained only as a withdrawn record.
 
+Package lifecycle and authority state are one coherent pair: `preserved` maps to `preserved`, `review_in_progress` maps to `mechanical`, and `reviewed`, `accepted`, `superseded`, and `withdrawn` map to the same-named authority state. A package cannot use a weaker lifecycle label while claiming stronger review authority.
+
 Reviewed, accepted, superseded, and withdrawn states require:
 
 - a positive authority issue;
@@ -107,7 +109,7 @@ Same-package and cross-package duplicates use the same graph. Substring matches 
 
 ## Discrepancies and implementation relations
 
-A discrepancy records the immutable source record, discrepancy type, status, optional replacement value, and authority issue. An accepted replacement requires both a replacement value and a positive authority issue. It never changes the original source file silently.
+A discrepancy records the immutable source record, discrepancy type, status, optional replacement value, and authority issue. An accepted replacement requires a replacement value, the package review authority issue, and an authority record that explicitly grants replacement rights for that discrepancy type. It never changes the original source file silently. Accepted-correction review events must cite the same package authority issue, and each accepted record receives exactly one acceptance event.
 
 Implementation relations are typed:
 
