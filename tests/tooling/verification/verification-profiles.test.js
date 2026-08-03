@@ -75,6 +75,15 @@ test("duplicate command payloads fail closed even with different IDs", () => {
   assertConfigFailure(manifest, /Duplicate verification command/);
 });
 
+test("canonical profile names cannot be redefined", () => {
+  const manifest = clone(canonicalManifest);
+  manifest.profile_order = ["core", "research", "release"];
+  delete manifest.profiles.runtime;
+  delete manifest.profile_requests.runtime;
+  manifest.profile_requests.all = ["core", "research", "release"];
+  assertConfigFailure(manifest, /profile_order must exactly equal/);
+});
+
 test("missing canonical profiles fail closed", () => {
   const manifest = clone(canonicalManifest);
   delete manifest.profiles.release;
