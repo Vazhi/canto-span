@@ -2,6 +2,7 @@ from __future__ import annotations
 from .common import *
 from .package import validate_package
 from .global_validation import validate_global, validate_root_coverage
+
 def verify_registry(repo: Path, registry_path: Path) -> dict[str, Any]:
     repo = repo.resolve()
     registry_path = registry_path.resolve()
@@ -18,6 +19,10 @@ def verify_registry(repo: Path, registry_path: Path) -> dict[str, Any]:
         values = [entry[field] for entry in entries]
         req(len(values) == len(set(values)), f"duplicate registry {field}")
 
+    active_ids = {entry["package_id"] for entry in entries}
+    queued_ids = {item["package_id"] for item in registry["migration_queue"]}
+    req(not (active_ids & queued_ids), f"active packages remain in migration queue: {sorted(active_ids & queued_ids)}")
+
     empty_counts = {"packages": 0, "records": 0, "duplicate_edges": 0, "routes": 0, "discrepancies": 0, "implementation_links": 0, "lineages": 0}
     if registry["registry_state"] == "foundation":
         req(not entries, "foundation registry cannot activate packages")
@@ -29,6 +34,15 @@ def verify_registry(repo: Path, registry_path: Path) -> dict[str, Any]:
         }
 
     req(entries, "active registry requires packages")
+    package_root = resolve(repo, registry["package_root"], "registry.package_root")
+    req(package_root.exists() and package_root.is_dir() and not package_root.is_symlink(), "active package_root must be a real directory")
+    for entry in entries:
+        root = resolve(repo, entry["root"], "package root")
+        try:
+            relative = root.relative_to(package_root)
+        except ValueError as exc:
+            raise ContractError(f"package root outside configured package_root: {entry['root']}") from exc
+        req(relative.parts, "package root cannot equal configured package_root")
     packages = [validate_package(repo, entry) for entry in entries]
     validate_root_coverage(repo, registry["package_root"], packages)
     return {
