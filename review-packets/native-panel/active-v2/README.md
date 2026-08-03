@@ -13,9 +13,9 @@ Canonical files:
 
 - `panel-policy.json` — thresholds, instrument requirements, batching, and lifecycle;
 - `panel-review-state.json` — current construction-specific panel evidence,
-  permanent identity tuples, and instrument-lifecycle references;
-- `followup-draft-v1-metadata.json` — non-deployable follow-up metadata using
-  permanent construction identities;
+  permanent identity tuples, pilot collection state, and item-audit state;
+- `followup-draft-v1-metadata.json` — follow-up identity, lifecycle, deployment
+  permission, artifact namespace, artifact roles, and tracked-artifact state;
 - `followup-draft-v1-items.tsv` — canonical `G06–G09` and `F011–F018` item table;
 - `followup-draft-v1-item-crosswalk.tsv` — explicit mapping from superseded
   Codex-local `RUL-V1-*`, `PFV-V1-*`, and `FIL-V1-*` aliases;
@@ -38,15 +38,63 @@ The lifecycle block in `panel-review-state.json` is the canonical owner of pilot
 collection (`active` or `closed`) and item-level audit (`not_started`,
 `in_progress`, or `accepted`) state. `followup-draft-v1-metadata.json` owns the
 follow-up identity, lifecycle (`draft`, `locked`, `generated`, or `deployed`),
-and tracked artifacts. Compatibility-status fields preserve existing note links
-but do not control the deployment gate.
+deployment permission, and artifact contract. Compatibility-status fields preserve
+existing note links but do not control the deployment gate.
+
+## Follow-up artifact contract
+
+The three editable specification files have fixed source roles:
+
+- `item_source`;
+- `crosswalk_source`;
+- `response_template_source`.
+
+They must remain `draft_source` and non-deployable. Relabelling one of them as
+`generated` or `deployed` does not constitute generation or deployment evidence.
+
+Generated instruments must use role `generated_instrument` and live under
+`review-packets/native-panel/active-v2/generated/`. Deployment evidence must use
+role `deployment_receipt` and live under
+`review-packets/native-panel/active-v2/deployment/`. The verifier recursively
+inventories both directories and every `followup-*` file in the active directory;
+a discovered file that is absent from `tracked_artifacts` fails verification.
+Tracked paths must exist as regular, non-symlink files.
+
+Lifecycle evidence is role-specific:
+
+- `draft` and `locked` contain no generated instrument or deployment receipt;
+- `generated` requires at least one `generated_instrument` and no deployment receipt;
+- `deployed` requires a deployed generated instrument plus a deployment receipt;
+- `deployment_allowed` is `true` exactly for `deployed` and `false` for
+  `draft`, `locked`, and `generated`.
 
 The deterministic lock permits `locked`, `generated`, or `deployed` only when
 pilot collection is `closed` and the item-level audit is `accepted`. It also
-rejects generated or deployable artifacts while the follow-up lifecycle remains
-`draft`. The current state is `active` / `not_started` / `draft`, and all tracked
-artifacts are non-deployable draft sources. Reported live responses that have not
-been exported, screened, and adjudicated are not accepted panel evidence.
+rejects duplicate lifecycle declarations, cross-file state contradictions,
+missing or duplicate source roles, invalid artifact directories, source-file
+relabelling, untracked follow-up artifacts, and lifecycle states without the
+required role-specific evidence.
+
+The current state remains `active` / `not_started` / `draft` /
+`deployment_allowed=false`, with three non-deployable draft sources and no
+generated or deployment artifacts. Reported live responses that have not been
+exported, screened, and adjudicated are not accepted panel evidence.
+
+Run the lifecycle guard directly with:
+
+```bash
+npm run verify:native-panel-lifecycle
+```
+
+Run its mutation suite with:
+
+```bash
+npm run test:native-panel-lifecycle
+```
+
+The verifier also runs through `npm run verify:research`. It reads lifecycle and
+artifact metadata only; it does not inspect respondent rows, comments,
+identifiers, or open-text responses and cannot transition survey state.
 
 The AB30 active note links the accepted decision ledger and its mechanical source
 ledger. Its five reviewed candidates (two genuine and three false positives)
