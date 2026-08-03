@@ -1,6 +1,46 @@
 from __future__ import annotations
+from datetime import datetime
 from .common import *
-def validate_authority(repo: Path, manifest: dict[str, Any], entry: dict[str, Any], files: dict[str, dict[str, Any]]) -> None:
+
+AUTHORITY_KIND = {
+    "reviewed": "review",
+    "accepted": "acceptance",
+    "superseded": "supersession",
+    "withdrawn": "withdrawal",
+}
+EVENT_DECISIONS = {
+    "review": {"genuine", "false_positive", "ambiguous", "unusable", "observation"},
+    "acceptance": {"genuine", "false_positive", "ambiguous", "unusable", "accepted_correction"},
+    "supersession": {"superseded"},
+    "withdrawal": {"withdrawn"},
+}
+DISCREPANCY_TYPES = {"pronunciation", "translation", "gloss", "orthography", "source_id", "segmentation", "naturalness", "other"}
+
+
+def timestamp(value: Any, label: str) -> None:
+    req(isinstance(value, str) and value, f"{label} must be a non-empty timestamp")
+    try:
+        parsed = datetime.fromisoformat(value.replace("Z", "+00:00"))
+    except ValueError as exc:
+        raise ContractError(f"{label} must be ISO-8601") from exc
+    req(parsed.tzinfo is not None and parsed.utcoffset() is not None, f"{label} must include a timezone")
+
+
+def string_list(value: Any, label: str, *, allow_empty: bool = False) -> list[str]:
+    req(isinstance(value, list), f"{label} must be an array")
+    req(allow_empty or bool(value), f"{label} must be non-empty")
+    req(all(isinstance(item, str) and item for item in value), f"{label} contains an invalid value")
+    req(len(value) == len(set(value)), f"{label} contains duplicates")
+    return value
+
+
+def validate_authority(
+    repo: Path,
+    manifest: dict[str, Any],
+    entry: dict[str, Any],
+    files: dict[str, dict[str, Any]],
+    record_ids: list[str],
+) -> None:
     source = manifest["source"]
     source_keys = {
         "source_id", "provider", "authorization_status", "distribution", "authorization_basis",
@@ -29,7 +69,7 @@ def validate_authority(repo: Path, manifest: dict[str, Any], entry: dict[str, An
     req(authority["state"] == entry["authority_state"], "registry/manifest authority state mismatch")
     req(authority["authority_issue"] == entry["authority_issue"], "registry/manifest authority issue mismatch")
     req(authority["reviewer_role"] in REVIEWER_ROLES, "reviewer_role invalid")
-    if authority["state"] in {"reviewed", "accepted", "superseded", "withdrawn"}:
+    if authority["state"] in AUTHORITY_KIND:
         req(isinstance(authority["authority_issue"], int) and authority["authority_issue"] > 0, "review state requires authority_issue")
         req(authority["reviewer_role"] != "source_provider_metadata", "source provider metadata cannot authorize review")
         req(authority["reviewed_source_semantic_sha256"] == source_semantic, "review not bound to current source semantic hash")
@@ -38,13 +78,62 @@ def validate_authority(repo: Path, manifest: dict[str, Any], entry: dict[str, An
         assert auth_loaded and event_loaded
         auth = auth_loaded[1]
         events = event_loaded[1]
-        req(isinstance(auth, dict) and auth.get("schema") == AUTHORITY_SCHEMA, "authority record schema invalid")
-        req(auth.get("authority_issue") == authority["authority_issue"], "authority issue mismatch")
-        req(auth.get("authorized_state") == authority["state"], "authority state mismatch")
-        req(auth.get("reviewer_role") == authority["reviewer_role"], "authority reviewer mismatch")
-        req(auth.get("source_semantic_sha256") == source_semantic, "authority source digest mismatch")
-        req(isinstance(events, dict) and events.get("schema") == REVIEW_EVENTS_SCHEMA, "review event schema invalid")
+
+        auth_keys = {
+            "schema", "authority_issue", "authority_kind", "authorized_state", "reviewer_role",
+            "source_semantic_sha256", "authorized_at", "scope", "evidence_basis", "replacement_rights",
+        }
+        exact_keys(auth, auth_keys, "authority record")
+        req(auth["schema"] == AUTHORITY_SCHEMA, "authority record schema invalid")
+        req(auth["authority_issue"] == authority["authority_issue"], "authority issue mismatch")
+        req(auth["authority_kind"] == AUTHORITY_KIND[authority["state"]], "authority kind mismatch")
+        req(auth["authorized_state"] == authority["state"], "authority state mismatch")
+        req(auth["reviewer_role"] == authority["reviewer_role"], "authority reviewer mismatch")
+        req(auth["source_semantic_sha256"] == source_semantic, "authority source digest mismatch")
+        timestamp(auth["authorized_at"], "authority authorized_at")
+        req(auth["scope"] == manifest["package_id"], "authority scope mismatch")
+        string_list(auth["evidence_basis"], "authority evidence_basis")
+        rights = string_list(auth["replacement_rights"], "authority replacement_rights", allow_empty=True)
+        req(set(rights) <= DISCREPANCY_TYPES, "authority replacement_rights invalid")
+
+        req(isinstance(events, dict), "review event file must be an object")
         req(not ({"authority_state", "authority_issue", "authorized_state"} & set(events)), "review event file cannot grant its own authority")
+        exact_keys(events, {"schema", "events"}, "review event file")
+        req(events["schema"] == REVIEW_EVENTS_SCHEMA, "review event schema invalid")
+        event_list = events["events"]
+        req(isinstance(event_list, list) and event_list, "review event file must contain events")
+        event_ids: set[str] = set()
+        required_type = AUTHORITY_KIND[authority["state"]]
+        required_records: set[str] = set()
+        event_keys = {
+            "event_id", "record_id", "event_type", "reviewer_role", "reviewed_source_semantic_sha256",
+            "decision_at", "decision_type", "evidence_basis", "replacement_authority_issue",
+        }
+        for index, event in enumerate(event_list):
+            label = f"review event[{index}]"
+            exact_keys(event, event_keys, label)
+            event_id = event["event_id"]
+            req(isinstance(event_id, str) and event_id and event_id not in event_ids, f"{label}.event_id invalid or duplicate")
+            event_ids.add(event_id)
+            record_id = event["record_id"]
+            req(record_id in record_ids, f"{label}.record_id missing from package")
+            event_type = event["event_type"]
+            req(event_type in EVENT_DECISIONS, f"{label}.event_type invalid")
+            req(event["reviewer_role"] == authority["reviewer_role"], f"{label}.reviewer_role mismatch")
+            req(event["reviewed_source_semantic_sha256"] == source_semantic, f"{label} source digest mismatch")
+            timestamp(event["decision_at"], f"{label}.decision_at")
+            req(event["decision_type"] in EVENT_DECISIONS[event_type], f"{label}.decision_type invalid")
+            string_list(event["evidence_basis"], f"{label}.evidence_basis")
+            replacement_issue = event["replacement_authority_issue"]
+            if event["decision_type"] == "accepted_correction":
+                req(isinstance(replacement_issue, int) and replacement_issue > 0, f"{label} accepted correction lacks replacement authority")
+            else:
+                req(replacement_issue is None, f"{label} claims replacement authority without an accepted correction")
+            if event_type == required_type:
+                required_records.add(record_id)
+        req(required_records, f"review event file lacks required {required_type} event")
+        if authority["state"] == "accepted":
+            req(required_records == set(record_ids), "accepted review must decide every record exactly through acceptance events")
     else:
         req(authority["authority_issue"] is None, "non-reviewed state must not claim authority_issue")
         req(authority["reviewed_source_semantic_sha256"] is None, "non-reviewed state must not claim source digest")
@@ -55,6 +144,7 @@ def validate_package(repo: Path, entry: dict[str, Any]) -> dict[str, Any]:
     root_rel = safe_rel(entry["root"], "package root")
     manifest_rel = safe_rel(entry["manifest"], "package manifest")
     root = resolve(repo, root_rel, "package root")
+    req(root.exists() and root.is_dir() and not root.is_symlink(), "package root must be a real directory")
     manifest_path = resolve(repo, manifest_rel, "package manifest")
     regular(manifest_path, "package manifest")
     try:
@@ -79,7 +169,7 @@ def validate_package(repo: Path, entry: dict[str, Any]) -> dict[str, Any]:
     ids, records = read_records(resolve(repo, record_file, "record_file"), id_field)
     req(continuity_hash(ids) == identity["continuity_lock_sha256"], "record continuity lock mismatch")
 
-    validate_authority(repo, manifest, entry, files)
+    validate_authority(repo, manifest, entry, files, ids)
 
     lineage = manifest["lineage"]
     exact_keys(lineage, {"lineage_id", "parent_lineage_ids", "independence_group"}, "lineage")
