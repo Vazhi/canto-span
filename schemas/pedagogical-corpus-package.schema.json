@@ -10,7 +10,7 @@
     "package_id": {"type": "string", "minLength": 1},
     "package_kind": {"enum": ["weekly", "dialog", "other"]},
     "root": {"$ref": "#/$defs/repositoryPath"},
-    "lifecycle": {"enum": ["preserved", "review_in_progress", "reviewed", "superseded", "withdrawn"]},
+    "lifecycle": {"enum": ["preserved", "review_in_progress", "reviewed", "accepted", "superseded", "withdrawn"]},
     "source": {"$ref": "#/$defs/source"},
     "lineage": {"$ref": "#/$defs/lineage"},
     "review_authority": {"$ref": "#/$defs/reviewAuthority"},
@@ -21,6 +21,14 @@
     "projections": {"$ref": "#/$defs/projections"},
     "summary": {"$ref": "#/$defs/summary"}
   },
+  "allOf": [
+    {"if": {"properties": {"lifecycle": {"const": "preserved"}}}, "then": {"properties": {"review_authority": {"properties": {"state": {"const": "preserved"}}}}}},
+    {"if": {"properties": {"lifecycle": {"const": "review_in_progress"}}}, "then": {"properties": {"review_authority": {"properties": {"state": {"const": "mechanical"}}}}}},
+    {"if": {"properties": {"lifecycle": {"const": "reviewed"}}}, "then": {"properties": {"review_authority": {"properties": {"state": {"const": "reviewed"}}}}}},
+    {"if": {"properties": {"lifecycle": {"const": "accepted"}}}, "then": {"properties": {"review_authority": {"properties": {"state": {"const": "accepted"}}}}}},
+    {"if": {"properties": {"lifecycle": {"const": "superseded"}}}, "then": {"properties": {"review_authority": {"properties": {"state": {"const": "superseded"}}}}}},
+    {"if": {"properties": {"lifecycle": {"const": "withdrawn"}}}, "then": {"properties": {"review_authority": {"properties": {"state": {"const": "withdrawn"}}}}}}
+  ],
   "$defs": {
     "repositoryPath": {
       "type": "string",
