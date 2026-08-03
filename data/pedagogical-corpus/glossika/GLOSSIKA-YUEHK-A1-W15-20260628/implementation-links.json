@@ -1,0 +1,145 @@
+{
+  "schema": "canto-span-pedagogical-implementation-links-v1",
+  "links": [
+    {
+      "link_id": "W15-LINK-011",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I011"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W15-LINK-012",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I012"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W15-LINK-013",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I013"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W15-LINK-014",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I014"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W15-LINK-016",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I016"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W15-LINK-018",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I018"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W15-LINK-020",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I020"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W15-LINK-021",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I021"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W15-LINK-024",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I024"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W15-LINK-047",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I047"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W15-EVIDENCE-048",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I048"
+      },
+      "type": "evidence_relation",
+      "target": "issue:#127:route-question-and-instruction-audit",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W15-EVIDENCE-052",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I052"
+      },
+      "type": "evidence_relation",
+      "target": "issue:#127:existential-location-question-audit",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W15-EVIDENCE-056",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I056"
+      },
+      "type": "evidence_relation",
+      "target": "issue:#127:question-form-pragmatics",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W15-EVIDENCE-060",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I060"
+      },
+      "type": "evidence_relation",
+      "target": "issue:#127:phonics-review",
+      "authority": "informational"
+    }
+  ]
+}

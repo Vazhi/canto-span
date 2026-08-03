@@ -1,0 +1,19 @@
+{
+  "schema": "canto-span-pedagogical-review-authority-v1",
+  "authority_issue": 511,
+  "authority_kind": "review",
+  "authorized_state": "reviewed",
+  "reviewer_role": "project_reviewer",
+  "source_semantic_sha256": "6823032022ffda79ba191443b81a50a02b9f049d17acb3061f5295210f28c969",
+  "authorized_at": "2026-08-04T01:10:00+08:00",
+  "scope": "GLOSSIKA-YUEHK-A1-W15-20260628",
+  "evidence_basis": [
+    "Original Glossika email 19f0cf457d1b8ac3 was read directly and matched to the immutable archive.",
+    "Immutable source.json SHA-256 2311af43012946916aaaec4000ca6f3eaa72a197c466b46de4f2aae0a58790ed.",
+    "Immutable items.tsv SHA-256 cec0b98953931b4d4bdce745dd930e66e9a23fb9bda96ba2fe16ef76793c8c4c.",
+    "Source issue #132 and bounded Week 15 research #127 / PR #273.",
+    "Stale PR #474 findings were re-examined as evidence only; no stale authority was inherited.",
+    "PR #510 reviewed head 6b23032736623b2ac352bcbf983aa22bc7f15039 supplies the active Week 14 dependency."
+  ],
+  "replacement_rights": []
+}

@@ -1,0 +1,80 @@
+{
+  "schema": "canto-span-pedagogical-routes-v1",
+  "routes": [
+    {
+      "route_id": "W15-ROUTE-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I003"
+      },
+      "owner_issue": 127,
+      "status": "open",
+      "requirements": [
+        "independent corpus or native review of formula naturalness and register"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I003"
+      ]
+    },
+    {
+      "route_id": "W15-ROUTE-056",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I056"
+      },
+      "owner_issue": 127,
+      "status": "open",
+      "requirements": [
+        "controlled final-me1 pragmatics and translation review"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I056"
+      ]
+    },
+    {
+      "route_id": "W15-ROUTE-062",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I062"
+      },
+      "owner_issue": 127,
+      "status": "open",
+      "requirements": [
+        "independent phonological and lexical verification"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I062"
+      ]
+    },
+    {
+      "route_id": "W15-ROUTE-064",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I064"
+      },
+      "owner_issue": 127,
+      "status": "open",
+      "requirements": [
+        "lexical-sense disambiguation for 錫"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I064"
+      ]
+    },
+    {
+      "route_id": "W15-ROUTE-065",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I065"
+      },
+      "owner_issue": 127,
+      "status": "open",
+      "requirements": [
+        "recover or document the missing A-side source before pronunciation use"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W15-20260628-I065"
+      ]
+    }
+  ]
+}
