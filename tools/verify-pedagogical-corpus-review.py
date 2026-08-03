@@ -726,7 +726,7 @@ def verify_research_routing(
 ) -> set[str]:
     if source_id == "GLOSSIKA-YUEHK-A1-W19-20260726":
         return verify_week19_research_routing(root, package, source_id, payload_hash, source_items, review)
-    if source_id == "GLOSSIKA-YUEHK-A1-DLG-002-20251207":
+    if "-DLG-" in source_id:
         return verify_dialog_context_routing(root, package, source_id, payload_hash, source_items, review)
     return verify_week18_research_routing(root, package, source_id, payload_hash, source_items, review)
 
@@ -991,7 +991,7 @@ def find_source_record(root: Path, path: str, record_id: str) -> dict[str, Any]:
 
 
 def verify_dialog_duplicate_targets(root: Path, source_id: str, source_items: list[dict[str, Any]], review: dict[str, Any], crossref: dict[str, Any]) -> None:
-    if source_id != "GLOSSIKA-YUEHK-A1-DLG-002-20251207":
+    if "-DLG-" not in source_id:
         return
     source_by_id = {row["id"]: row for row in source_items}
     crossref_by_id = {row["id"]: row for row in crossref.get("records", [])}
@@ -1023,28 +1023,30 @@ def verify_dialog_duplicate_targets(root: Path, source_id: str, source_items: li
 
 
 def verify_dialog_context_routing(root: Path, package: Path, source_id: str, payload_hash: str, source_items: list[dict[str, Any]], review: dict[str, Any]) -> set[str]:
-    if source_id != "GLOSSIKA-YUEHK-A1-DLG-002-20251207":
+    if "-DLG-" not in source_id:
         return set()
     packet = load_json(package / "dialog-context-routing-r1.json")
     if packet.get("schema") != "canto-span-pedagogical-dialog-context-routing-v1":
         fail("unexpected dialog context-routing schema")
     if packet.get("source_id") != source_id or packet.get("source_payload_hash") != payload_hash:
         fail("dialog context-routing source identity mismatch")
-    if packet.get("route_owner_issue") != 487:
+    owner = packet.get("route_owner_issue")
+    if not isinstance(owner, int) or owner <= 0:
         fail("dialog context routes lack durable owner")
     routes = packet.get("routes")
     item_routes = packet.get("item_routes")
     if not isinstance(routes, list) or not isinstance(item_routes, list):
         fail("dialog context-routing arrays missing")
-    expected_route_ids = {f"D2-R{number:02d}" for number in range(1, 14)}
-    route_ids = {row.get("route_id") for row in routes}
-    if route_ids != expected_route_ids or packet.get("route_count") != 13:
-        fail("dialog context route set drift")
+    route_ids = [row.get("route_id") for row in routes]
+    if any(not isinstance(value, str) or not value for value in route_ids) or len(route_ids) != len(set(route_ids)):
+        fail("dialog context route IDs missing or repeated")
+    if packet.get("route_count") != len(routes):
+        fail("dialog context route count drift")
     source_ids = [row["id"] for row in source_items]
     source_id_set = set(source_ids)
     route_ids_by_item = {item_id: [] for item_id in source_ids}
     for route in routes:
-        if route.get("owner_issue") != 487:
+        if route.get("owner_issue") != owner:
             fail(f"dialog context route lacks owner: {route.get('route_id')}")
         if not isinstance(route.get("route_state"), str) or not isinstance(route.get("evidence_requirement"), str):
             fail(f"dialog context route lacks state or evidence requirement: {route.get('route_id')}")
@@ -1060,12 +1062,12 @@ def verify_dialog_context_routing(root: Path, package: Path, source_id: str, pay
         expected = sorted(route_ids_by_item[row["id"]])
         if row.get("route_ids") != expected or review_by_id[row["id"]].get("research_route_ids") != expected:
             fail(f"dialog context route projection drift: {row['id']}")
-    naturalness = {f"{source_id}-{short}" for short in ["I003","I009","I017","I018","I020","I022","I023","I033","I034","I036"]}
-    reviewed_naturalness = {row["id"] for row in review.get("records", []) if row.get("terminal_ingress_classification") == "naturalness_review_candidate"}
-    if reviewed_naturalness != naturalness:
+    reviewed_naturalness = sorted(row["id"] for row in review.get("records", []) if row.get("terminal_ingress_classification") == "naturalness_review_candidate")
+    declared_naturalness = packet.get("naturalness_candidate_ids")
+    if declared_naturalness is not None and declared_naturalness != reviewed_naturalness:
         fail("dialog naturalness candidate set drift")
-    route12 = next(row for row in routes if row.get("route_id") == "D2-R12")
-    if set(route12.get("source_item_ids", [])) != naturalness:
+    naturalness_routes = [row for row in routes if row.get("route_state") == "terminal_unresolved_naturalness_candidates"]
+    if len(naturalness_routes) != 1 or sorted(naturalness_routes[0].get("source_item_ids", [])) != reviewed_naturalness:
         fail("dialog naturalness route projection drift")
     aggregate_lock = packet.get("aggregate_map")
     aggregate_path = aggregate_lock.get("path") if isinstance(aggregate_lock, dict) else None
@@ -1076,14 +1078,16 @@ def verify_dialog_context_routing(root: Path, package: Path, source_id: str, pay
     expected_lock = {"path": aggregate_path, "bytes": len(data), "sha256": sha256_hex(data), "git_blob_sha": git_blob_sha(data), "schema": aggregate.get("schema"), "packet_id": aggregate.get("packet_id")}
     if aggregate_lock != expected_lock:
         fail("dialog aggregate-map lock drift")
-    aggregate_turns = [row for row in aggregate.get("turns", []) if row.get("source_id") == source_id]
-    if len(aggregate_turns) != 38:
-        fail("dialog aggregate-map turn projection count drift")
-    if any(row.get("previous_turn_id") is not None or row.get("next_turn_id") is not None for row in aggregate_turns):
-        fail("dialog aggregate-map limitation no longer matches retained map")
-    if packet.get("aggregate_adjacency_limitation") != {"dialog_turn_count":38,"aggregate_turns_with_null_previous_and_next":38,"source_package_adjacency_is_authoritative":True,"aggregate_map_is_not_rewritten":True}:
-        fail("dialog aggregate adjacency limitation drift")
     turns = [row for row in source_items if row.get("itemType") == "dialog_turn"]
+    aggregate_turns = [row for row in aggregate.get("turns", []) if row.get("source_id") == source_id]
+    if len(aggregate_turns) != len(turns):
+        fail("dialog aggregate-map turn projection count drift")
+    null_adjacency = sum(row.get("previous_turn_id") is None and row.get("next_turn_id") is None for row in aggregate_turns)
+    if null_adjacency != len(turns):
+        fail("dialog aggregate-map limitation no longer matches retained map")
+    expected_limitation = {"dialog_turn_count":len(turns),"aggregate_turns_with_null_previous_and_next":len(turns),"source_package_adjacency_is_authoritative":True,"aggregate_map_is_not_rewritten":True}
+    if packet.get("aggregate_adjacency_limitation") != expected_limitation:
+        fail("dialog aggregate adjacency limitation drift")
     adjacency = packet.get("source_adjacency")
     if not isinstance(adjacency, list) or stable_ids(adjacency, "dialog source adjacency") != [row["id"] for row in turns]:
         fail("dialog source adjacency projection drift")
@@ -1092,8 +1096,14 @@ def verify_dialog_context_routing(root: Path, package: Path, source_id: str, pay
         expected_next = None if index == len(turns) - 1 else turns[index + 1]["id"]
         if row.get("previous_turn_id") != expected_previous or row.get("next_turn_id") != expected_next:
             fail(f"dialog source adjacency packet drift: {row['id']}")
-    return route_ids
-
+    actual_needs_context = sorted(row.get("item_id") for row in aggregate_turns if row.get("coverage_class") == "needs_context")
+    if packet.get("aggregate_needs_context_ids") is not None and packet.get("aggregate_needs_context_ids") != actual_needs_context:
+        fail("dialog aggregate NeedsContext projection drift")
+    authority = packet.get("source_metadata_authority")
+    if authority is not None:
+        if authority.get("accepted_as_linguistic_evidence") is not False or authority.get("source_confidence_affects_evidence_grade") is not False or authority.get("cultural_claims_require_independent_verification") is not True:
+            fail("dialog source metadata authority drift")
+    return set(route_ids)
 
 def verify_review(
     source: dict[str, Any],
@@ -1265,7 +1275,7 @@ def verify_review(
                 ):
                     fail(f"malformed source discrepancy: {item_id}")
 
-        if source_id == "GLOSSIKA-YUEHK-A1-DLG-002-20251207" and item.get("itemType") == "dialog_turn":
+        if "-DLG-" in source_id and item.get("itemType") == "dialog_turn":
             if row.get("source_availability") != {"english": "not_supplied"}:
                 fail(f"dialog turn missing English availability drift: {item_id}")
             if discrepancies:
@@ -1477,8 +1487,8 @@ def verify(
         fail(f"package missing required files: {sorted(missing)}")
     if package_relative.name == "GLOSSIKA-YUEHK-A1-W19-20260726" and "role-sensitive-crosswalk-r1.json" not in actual_files:
         fail("Week 19 package lacks role-sensitive crosswalk")
-    if package_relative.name == "GLOSSIKA-YUEHK-A1-DLG-002-20251207" and "dialog-context-routing-r1.json" not in actual_files:
-        fail("dialog 002 package lacks context-routing packet")
+    if package_relative.name.startswith("GLOSSIKA-YUEHK-A1-DLG-") and "dialog-context-routing-r1.json" not in actual_files:
+        fail("registered dialog package lacks context-routing packet")
     temporary = sorted(name for name in actual_files if ".tmp." in name or name.endswith(".tmp"))
     if temporary:
         fail(f"temporary review files remain: {temporary}")

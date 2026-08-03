@@ -26,6 +26,7 @@ WEEK17 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712")
 WEEK18 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719")
 WEEK19 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W19-20260726")
 DIALOG002 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-002-20251207")
+DIALOG003 = Path("data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214")
 REGISTERED = {
     WEEK14: {"role_sensitive": 0, "replacements": 0, "records": 61, "discrepancies": 6, "exact": 5, "runtime": 0, "legacy": 0, "implementation": 0, "routes": 0},
     WEEK15: {"role_sensitive": 0, "replacements": 0, "records": 65, "discrepancies": 4, "exact": 10, "runtime": 0, "legacy": 0, "implementation": 0, "routes": 0},
@@ -34,6 +35,7 @@ REGISTERED = {
     WEEK18: {"records": 99, "discrepancies": 41, "exact": 0, "runtime": 0, "legacy": 0, "implementation": 39, "role_sensitive": 0, "routes": 13, "replacements": 0},
     WEEK19: {"records": 76, "discrepancies": 72, "exact": 0, "runtime": 0, "legacy": 0, "implementation": 0, "role_sensitive": 27, "routes": 12, "replacements": 1},
     DIALOG002: {"records": 72, "discrepancies": 0, "exact": 3, "runtime": 0, "legacy": 0, "implementation": 0, "role_sensitive": 0, "routes": 13, "replacements": 0},
+    DIALOG003: {"records": 96, "discrepancies": 0, "exact": 2, "runtime": 0, "legacy": 0, "implementation": 0, "role_sensitive": 0, "routes": 16, "replacements": 0},
 }
 
 def write_json(path: Path, value: object) -> None:
@@ -642,6 +644,108 @@ class Dialog002MutationTest(unittest.TestCase):
         path = self.root / DIALOG002 / "review.json"
         review = json.loads(path.read_text(encoding="utf-8"))
         row = next(value for value in review["records"] if value["id"].endswith("I056"))
+        row["accepted_duplicate_targets"][0]["record_id"] = "missing"
+        write_json(path, review)
+        with self.assertRaisesRegex(AssertionError, "not a record-level candidate"):
+            self.verify()
+
+class Dialog003ProjectionTest(unittest.TestCase):
+    def test_dialog003_terminal_projection_and_metadata_boundary(self) -> None:
+        source = json.loads((ROOT / DIALOG003 / "source.json").read_text(encoding="utf-8"))
+        review = json.loads((ROOT / DIALOG003 / "review.json").read_text(encoding="utf-8"))
+        routing = json.loads((ROOT / DIALOG003 / "dialog-context-routing-r1.json").read_text(encoding="utf-8"))
+        self.assertEqual(review["summary"]["terminal_classification_counts"], {"exact_duplicate":2,"lexical_only_attestation":44,"naturalness_review_candidate":16,"new_corpus_attestation":34})
+        turns = [row for row in source["items"] if row["itemType"] == "dialog_turn"]
+        self.assertEqual(len(turns), 50)
+        self.assertTrue(all(row["source"]["english"] is None for row in turns))
+        self.assertFalse(routing["source_metadata_authority"]["accepted_as_linguistic_evidence"])
+        self.assertFalse(routing["source_metadata_authority"]["source_confidence_affects_evidence_grade"])
+        self.assertTrue(routing["source_metadata_authority"]["cultural_claims_require_independent_verification"])
+
+    def test_dialog003_duplicate_record_owners(self) -> None:
+        review = json.loads((ROOT / DIALOG003 / "review.json").read_text(encoding="utf-8"))
+        exact = [row["id"].rsplit("-",1)[-1] for row in review["records"] if row["terminal_ingress_classification"] == "exact_duplicate"]
+        normalized = [row["id"].rsplit("-",1)[-1] for row in review["records"] if row["terminal_ingress_classification"] == "normalized_duplicate"]
+        self.assertEqual(exact, ["I055","I091"])
+        self.assertEqual(normalized, [])
+
+    def test_dialog003_source_adjacency_and_aggregate_limitation(self) -> None:
+        routing = json.loads((ROOT / DIALOG003 / "dialog-context-routing-r1.json").read_text(encoding="utf-8"))
+        self.assertEqual(len(routing["source_adjacency"]), 50)
+        self.assertEqual(routing["aggregate_adjacency_limitation"]["aggregate_turns_with_null_previous_and_next"], 50)
+        self.assertEqual(len(routing["aggregate_needs_context_ids"]), 5)
+
+class Dialog003MutationTest(unittest.TestCase):
+    def setUp(self) -> None:
+        self.temp = tempfile.TemporaryDirectory()
+        self.root = Path(self.temp.name)
+        shutil.copytree(ROOT, self.root, dirs_exist_ok=True)
+
+    def tearDown(self) -> None:
+        self.temp.cleanup()
+
+    def verify(self):
+        return VERIFIER.verify(self.root, DIALOG003, check_deterministic_crossref=False)
+
+    def test_source_confidence_cannot_become_evidence(self) -> None:
+        path = self.root / DIALOG003 / "dialog-context-routing-r1.json"
+        packet = json.loads(path.read_text(encoding="utf-8"))
+        packet["source_metadata_authority"]["source_confidence_affects_evidence_grade"] = True
+        write_json(path, packet)
+        with self.assertRaisesRegex(AssertionError, "metadata authority"):
+            self.verify()
+
+    def test_aggregate_lock_is_required(self) -> None:
+        path = self.root / DIALOG003 / "dialog-context-routing-r1.json"
+        packet = json.loads(path.read_text(encoding="utf-8"))
+        packet["aggregate_map"]["sha256"] = "0" * 64
+        write_json(path, packet)
+        with self.assertRaisesRegex(AssertionError, "aggregate-map lock drift"):
+            self.verify()
+
+    def test_source_adjacency_cannot_be_erased(self) -> None:
+        path = self.root / DIALOG003 / "items.tsv"
+        lines = path.read_text(encoding="utf-8").splitlines()
+        fields = lines[0].split("\t")
+        values = lines[2].split("\t")
+        values[fields.index("previous_turn_id")] = ""
+        lines[2] = "\t".join(values)
+        path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+        with self.assertRaisesRegex(AssertionError, "adjacency drift"):
+            self.verify()
+
+    def test_documentation_occurrence_cannot_be_duplicate_owner(self) -> None:
+        path = self.root / DIALOG003 / "review.json"
+        review = json.loads(path.read_text(encoding="utf-8"))
+        row = next(value for value in review["records"] if value["id"].endswith("I059"))
+        row["terminal_ingress_classification"] = "exact_duplicate"
+        row["expert_duplicate_status"] = "accepted_exact_duplicate"
+        row["accepted_duplicate_targets"] = [{"path":"docs/research/example.md","record_id":"fake","basis":"documentation occurrence"}]
+        write_json(path, review)
+        with self.assertRaisesRegex(AssertionError, "not evidence-backed"):
+            self.verify()
+
+    def test_naturalness_route_set_is_locked(self) -> None:
+        path = self.root / DIALOG003 / "dialog-context-routing-r1.json"
+        packet = json.loads(path.read_text(encoding="utf-8"))
+        route = next(row for row in packet["routes"] if row["route_id"] == "D3-R15")
+        route["source_item_ids"] = route["source_item_ids"][:-1]
+        write_json(path, packet)
+        with self.assertRaisesRegex(AssertionError, "naturalness route|context route projection"):
+            self.verify()
+
+    def test_route_owner_is_required(self) -> None:
+        path = self.root / DIALOG003 / "dialog-context-routing-r1.json"
+        packet = json.loads(path.read_text(encoding="utf-8"))
+        packet["routes"][0]["owner_issue"] = 0
+        write_json(path, packet)
+        with self.assertRaisesRegex(AssertionError, "lacks owner"):
+            self.verify()
+
+    def test_duplicate_record_identity_is_required(self) -> None:
+        path = self.root / DIALOG003 / "review.json"
+        review = json.loads(path.read_text(encoding="utf-8"))
+        row = next(value for value in review["records"] if value["id"].endswith("I055"))
         row["accepted_duplicate_targets"][0]["record_id"] = "missing"
         write_json(path, review)
         with self.assertRaisesRegex(AssertionError, "not a record-level candidate"):

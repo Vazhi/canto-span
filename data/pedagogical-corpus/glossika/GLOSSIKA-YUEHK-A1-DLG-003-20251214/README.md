@@ -1,27 +1,25 @@
-# Glossika Cantonese A1 dialog 003 corpus package
+# Glossika dialog 003 — completed expert corpus review
 
-- Source ID: `GLOSSIKA-YUEHK-A1-DLG-003-20251214`
-- Title: 同朋友整湯圓慶祝冬至
-- Source date: 2025-12-14
-- Gmail message: `19b1e8e465b300ea`
-- Intake issue: #139
-- Work claim: #292
-- Records: 50 dialog turns + 46 vocabulary entries = 96
-- Source payload hash: `sha256:81ba3d49d5c951e48f9b1e2716deaf6026bb23b2cea474960a851fca4daaf0c9`
+Source ID: `GLOSSIKA-YUEHK-A1-DLG-003-20251214`
 
-## Source fidelity
+The immutable source contains 50 ordered turns and 46 vocabulary records. All 96 records are reviewed; there are **0 unreviewed records**. Per-turn English remains `null` because the provider did not supply translations.
 
-Speaker labels, Cantonese, spacing, punctuation, Jyutping lines, vocabulary glosses, scenario, notes, and order are preserved. The source contains no per-turn English translations; turn records retain `english: null`.
+## Terminal results
 
-## Modular ownership
+- Exact source duplicates: 2
+- Normalized source duplicates: 0
+- Lexical-only attestations: 44
+- New dialog attestations: 34
+- Naturalness/context candidates: 16
 
-Canonical runtime ownership comes from `src/**` and `src/runtime-resources/**`. Generated `main.js` is excluded.
+Source adjacency is preserved for all 50 turns. `dialog-context-routing-r1.json` records 16 route outcomes, quarantines source-authored grammar/cultural/confidence notes as metadata, and documents that the later aggregate map retained dialog 003 with null adjacency.
 
-## Files
+## Verification
 
-- `source.json`: immutable ordered source records.
-- `crosswalk.json`: adjacency, modular owners, and deduplication candidates.
-- `review.json`: review classifications and source alerts.
-- `items.tsv`: flat review rendering.
+```bash
+npm run verify:pedagogical-corpus-review
+python3 tests/tooling/research/pedagogical-corpus-review.test.py
+npm run verify:research
+```
 
-No parser, lexicon, identity/status, survey, version, release, or deployment change is included.
+The packet does not change parser behavior, runtime lexicon, construction identity/status, survey state, release state, or deployment state.
