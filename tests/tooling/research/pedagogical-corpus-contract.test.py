@@ -70,7 +70,7 @@ class ContractTests(unittest.TestCase):
         for issue,rights,msg in [(None,[],"missing authority"),(999,["pronunciation"],"does not match package review authority"),(505,[],"not covered by replacement rights")]:
             root,reg,entries,manifests=active(self); rel=f"{entries[0]['root']}/authority.json"; auth=load(root/rel); auth["replacement_rights"]=rights; dump(root/rel,auth); refresh(root,manifests[0],rel); item={"discrepancy_id":"D1","source":{"package_id":"PKG-A","record_id":"I001"},"type":"pronunciation","status":"accepted","replacement_value":"fut3","authority_issue":issue}; relation(root,manifests[0],"discrepancies_file","discrepancies",[item])
             with self.subTest(issue=issue,rights=rights): self.fail(root,reg,msg)
-        root,reg,_,manifests=active(self); route={"route_id":"R1","source":{"package_id":"PKG-A","record_id":"NOPE"},"owner_issue":700,"status":"open","requirements":["review"],"projected_record_ids":["NOPE"]}; relation(root,manifests[0],"routes_file,"routes",[route]); self.fail(root,reg,"source missing")
+        root,reg,_,manifests=active(self); route={"route_id":"R1","source":{"package_id":"PKG-A","record_id":"NOPE"},"owner_issue":700,"status":"open","requirements":["review"],"projected_record_ids":["NOPE"]}; relation(root,manifests[0],"routes_file","routes",[route]); self.fail(root,reg,"source missing")
     def test_global_route_lineage_failures(self):
         root,reg,_,manifests=active(self,2)
         for i,pid in enumerate(("PKG-A","PKG-B")): relation(root,manifests[i],"routes_file","routes",[{"route_id":"R-SHARED","source":{"package_id":pid,"record_id":"I001"},"owner_issue":700+i,"status":"open","requirements":["review"],"projected_record_ids":["I001"]}])
