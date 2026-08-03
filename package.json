@@ -16,6 +16,7 @@
     "test:native-panel-lifecycle": "node --test tests/tooling/native-panel/native-panel-lifecycle.test.js",
     "test:ab30-aggregate": "python3 tests/tooling/research/ab30-aggregate-integrity.test.py",
     "test:interim-pilot-export": "python3 tests/tooling/research/interim-pilot-public-package.test.py",
+    "portfolio:audit": "node tools/coordination/portfolio-integrity.js",
     "identity:generate": "node tools/generate-construction-identities.js --write && node tools/build-construction-identity-lock.js --write",
     "identity:allocate": "node tools/allocate-construction-identity.js",
     "adjudication:apply": "node tools/apply-construction-adjudications.js --write && node tools/generate-construction-identities.js --write && node tools/generate-supported-productive-discovery.js --write",
