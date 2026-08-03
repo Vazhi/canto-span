@@ -35,8 +35,8 @@ Source-authored grammar explanations, confidence labels, cultural notes, transla
 The registry is the complete package index. In active state:
 
 - every package ID, root, manifest, package kind, authority state, and authority issue appears exactly once;
-- every file under the configured package root belongs to exactly one registered package;
-- overlapping roots, undeclared files, missing packages, and duplicate manifests fail;
+- every active package root is a real directory strictly below the configured package root, and every file under that root belongs to exactly one registered package;
+- overlapping roots, roots outside the configured package root, undeclared files, missing packages, duplicate manifests, and packages left simultaneously active and queued for migration fail;
 - the registry authority state and issue must match the package manifest.
 
 Each package manifest is closed. It enumerates every allowed package file by role and records both byte and semantic SHA-256 values. The verifier rejects:
@@ -80,7 +80,9 @@ Reviewed, accepted, superseded, and withdrawn states require:
 - a separate authority record;
 - a separate review-event file.
 
-The authority record binds issue, reviewer role, state, and source digest. Review-event files are rejected if they contain fields that attempt to grant their own authority.
+The authority record binds issue, authority kind, reviewer role, state, package scope, source digest, timezone-bearing authorization timestamp, evidence basis, and any typed replacement rights. Review-event files are rejected if they contain fields that attempt to grant their own authority.
+
+Every review event has a unique event ID, an existing record ID, a typed lifecycle event, the authorized reviewer role, the exact source semantic digest, a timezone-bearing decision timestamp, a bounded decision type, a non-empty evidence basis, and an explicit replacement-authority issue only for an accepted correction. An accepted package must contain acceptance events covering every stable record. Empty, partial, stale-digest, or unscoped accepted reviews fail.
 
 ## Stable records and candidate discovery
 
