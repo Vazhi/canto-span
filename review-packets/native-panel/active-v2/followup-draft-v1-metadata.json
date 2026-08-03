@@ -68,19 +68,28 @@
   "item_file": "review-packets/native-panel/active-v2/followup-draft-v1-items.tsv",
   "crosswalk_file": "review-packets/native-panel/active-v2/followup-draft-v1-item-crosswalk.tsv",
   "response_template_file": "review-packets/native-panel/active-v2/followup-draft-v1-response-template.tsv",
+  "artifact_contract": {
+    "scope_root": "review-packets/native-panel/active-v2",
+    "tracked_prefix": "followup-",
+    "generated_directory": "review-packets/native-panel/active-v2/generated",
+    "deployment_directory": "review-packets/native-panel/active-v2/deployment"
+  },
   "tracked_artifacts": [
     {
       "path": "review-packets/native-panel/active-v2/followup-draft-v1-items.tsv",
+      "role": "item_source",
       "artifact_state": "draft_source",
       "deployable": false
     },
     {
       "path": "review-packets/native-panel/active-v2/followup-draft-v1-item-crosswalk.tsv",
+      "role": "crosswalk_source",
       "artifact_state": "draft_source",
       "deployable": false
     },
     {
       "path": "review-packets/native-panel/active-v2/followup-draft-v1-response-template.tsv",
+      "role": "response_template_source",
       "artifact_state": "draft_source",
       "deployable": false
     }
