@@ -11,23 +11,30 @@ const PANEL_STATE = `${ACTIVE_ROOT}/panel-review-state.json`;
 const FOLLOWUP_METADATA = `${ACTIVE_ROOT}/followup-draft-v1-metadata.json`;
 const GENERATED_DIRECTORY = `${ACTIVE_ROOT}/generated`;
 const DEPLOYMENT_DIRECTORY = `${ACTIVE_ROOT}/deployment`;
+const EXEMPT_PATHS = Object.freeze([
+  `${ACTIVE_ROOT}/README.md`,
+  `${ACTIVE_ROOT}/panel-policy.json`,
+  PANEL_STATE,
+  FOLLOWUP_METADATA,
+]);
+const EXEMPT_DIRECTORIES = Object.freeze([
+  `${ACTIVE_ROOT}/interim-exports`,
+]);
 
 const PILOT_STATES = new Set(["active", "closed"]);
 const AUDIT_STATES = new Set(["not_started", "in_progress", "accepted"]);
 const FOLLOWUP_STATES = new Set(["draft", "locked", "generated", "deployed"]);
 const RESTRICTED_FOLLOWUP_STATES = new Set(["locked", "generated", "deployed"]);
 const ARTIFACT_STATES = new Set(["draft_source", "generated", "deployed"]);
-const ARTIFACT_ROLES = new Set([
-  "item_source",
-  "crosswalk_source",
-  "response_template_source",
-  "generated_instrument",
-  "deployment_receipt",
-]);
 const SOURCE_ROLES = new Set([
   "item_source",
   "crosswalk_source",
   "response_template_source",
+]);
+const ARTIFACT_ROLES = new Set([
+  ...SOURCE_ROLES,
+  "generated_instrument",
+  "deployment_receipt",
 ]);
 const PILOT_COMPATIBILITY = {
   active: "collection_in_progress",
@@ -57,7 +64,7 @@ function isWithin(candidate, directory) {
   return candidate === directory || candidate.startsWith(`${directory}/`);
 }
 
-function walkRegularFiles(root, relativeDirectory) {
+function walkFiles(root, relativeDirectory) {
   const absoluteDirectory = path.join(root, relativeDirectory);
   if (!fs.existsSync(absoluteDirectory)) return [];
   const files = [];
@@ -76,23 +83,12 @@ function walkRegularFiles(root, relativeDirectory) {
   return files.sort();
 }
 
-function discoverFollowupArtifacts(root, metadata) {
-  const contract = metadata && metadata.artifact_contract;
-  const scopeRoot = contract && contract.scope_root === ACTIVE_ROOT
-    ? contract.scope_root
-    : ACTIVE_ROOT;
-  const trackedPrefix = contract && contract.tracked_prefix === "followup-"
-    ? contract.tracked_prefix
-    : "followup-";
-  const controlFiles = new Set([FOLLOWUP_METADATA]);
-  return walkRegularFiles(root, scopeRoot)
-    .filter((relativePath) => {
-      if (controlFiles.has(relativePath)) return false;
-      if (isWithin(relativePath, GENERATED_DIRECTORY) || isWithin(relativePath, DEPLOYMENT_DIRECTORY)) {
-        return true;
-      }
-      return path.posix.basename(relativePath).startsWith(trackedPrefix);
-    });
+function discoverFollowupArtifacts(root) {
+  const exemptPaths = new Set(EXEMPT_PATHS);
+  return walkFiles(root, ACTIVE_ROOT).filter((relativePath) =>
+    !exemptPaths.has(relativePath)
+    && !EXEMPT_DIRECTORIES.some((directory) => isWithin(relativePath, directory))
+  );
 }
 
 function sha256File(absolutePath) {
@@ -144,7 +140,7 @@ function validateNativePanelLifecycle(state, metadata, options = {}) {
       "exactly_one_pilot_declaration",
       Array.isArray(pilots)
         ? `found ${pilots.length} pilot declarations`
-        : "pilot_collections must be an array containing exactly one declaration",
+        : "pilot_collections must contain exactly one declaration",
     );
   }
   const pilot = Array.isArray(pilots) && pilots.length === 1 ? pilots[0] : {};
@@ -161,25 +157,13 @@ function validateNativePanelLifecycle(state, metadata, options = {}) {
   };
 
   if (!PILOT_STATES.has(values.pilot_state)) {
-    addFailure(
-      "controlled_pilot_collection_state",
-      `unsupported pilot state ${JSON.stringify(values.pilot_state)}`,
-      values,
-    );
+    addFailure("controlled_pilot_collection_state", "unsupported pilot state", values);
   }
   if (!AUDIT_STATES.has(values.audit_state)) {
-    addFailure(
-      "controlled_item_audit_state",
-      `unsupported audit state ${JSON.stringify(values.audit_state)}`,
-      values,
-    );
+    addFailure("controlled_item_audit_state", "unsupported audit state", values);
   }
   if (!FOLLOWUP_STATES.has(values.followup_state)) {
-    addFailure(
-      "controlled_followup_lifecycle_state",
-      `unsupported follow-up state ${JSON.stringify(values.followup_state)}`,
-      values,
-    );
+    addFailure("controlled_followup_lifecycle_state", "unsupported follow-up state", values);
   }
 
   const metadataPilot = metadata.current_live_instrument && typeof metadata.current_live_instrument === "object"
@@ -218,8 +202,8 @@ function validateNativePanelLifecycle(state, metadata, options = {}) {
     compatibility_status: metadata.instrument_status,
     deployment_allowed: metadata.deployment_allowed,
   };
-  for (const field of Object.keys(expectedFollowup)) {
-    if (followup[field] !== expectedFollowup[field]) {
+  for (const [field, expected] of Object.entries(expectedFollowup)) {
+    if (followup[field] !== expected) {
       addFailure(
         "followup_declaration_consistency",
         `follow-up ${field} does not match canonical metadata`,
@@ -253,25 +237,22 @@ function validateNativePanelLifecycle(state, metadata, options = {}) {
     );
   }
 
-  const contract = metadata.artifact_contract;
   const expectedContract = {
     scope_root: ACTIVE_ROOT,
-    tracked_prefix: "followup-",
     generated_directory: GENERATED_DIRECTORY,
     deployment_directory: DEPLOYMENT_DIRECTORY,
+    exempt_paths: [...EXEMPT_PATHS],
+    exempt_directories: [...EXEMPT_DIRECTORIES],
   };
+  const contract = metadata.artifact_contract;
   if (!contract || typeof contract !== "object" || Array.isArray(contract)) {
     addFailure("artifact_contract_required", "artifact_contract is missing", values);
-  } else {
-    for (const [field, expected] of Object.entries(expectedContract)) {
-      if (contract[field] !== expected) {
-        addFailure(
-          "canonical_artifact_contract",
-          `artifact_contract.${field} must equal ${expected}`,
-          values,
-        );
-      }
-    }
+  } else if (JSON.stringify(contract) !== JSON.stringify(expectedContract)) {
+    addFailure(
+      "canonical_artifact_contract",
+      "artifact_contract must exactly match the closed active-v2 inventory contract",
+      values,
+    );
   }
 
   const artifacts = metadata.tracked_artifacts;
@@ -283,12 +264,12 @@ function validateNativePanelLifecycle(state, metadata, options = {}) {
     for (const artifact of artifacts) {
       const artifactPath = artifact && normalizeRepoPath(artifact.path);
       const role = artifact && artifact.role;
-      const priorPath = byPath.get(artifactPath) || [];
-      priorPath.push(artifact);
-      byPath.set(artifactPath, priorPath);
-      const priorRole = byRole.get(role) || [];
-      priorRole.push(artifact);
-      byRole.set(role, priorRole);
+      const pathDeclarations = byPath.get(artifactPath) || [];
+      pathDeclarations.push(artifact);
+      byPath.set(artifactPath, pathDeclarations);
+      const roleDeclarations = byRole.get(role) || [];
+      roleDeclarations.push(artifact);
+      byRole.set(role, roleDeclarations);
 
       if (
         !artifact
@@ -300,11 +281,19 @@ function validateNativePanelLifecycle(state, metadata, options = {}) {
       ) {
         addFailure(
           "valid_tracked_artifact",
-          "artifact requires path, controlled role, controlled artifact_state, and deployable boolean",
+          "artifact requires path, controlled role/state, and deployable boolean",
           values,
           artifact || {},
         );
         continue;
+      }
+      if (!isWithin(artifactPath, ACTIVE_ROOT)) {
+        addFailure(
+          "tracked_artifact_inside_scope",
+          `tracked artifact must be under ${ACTIVE_ROOT}`,
+          values,
+          artifact,
+        );
       }
 
       if (SOURCE_ROLES.has(role)) {
@@ -334,10 +323,11 @@ function validateNativePanelLifecycle(state, metadata, options = {}) {
             artifact,
           );
         }
-        if (!["generated", "deployed"].includes(artifact.artifact_state)) {
+        const expectedState = deploymentExpected ? "deployed" : "generated";
+        if (artifact.artifact_state !== expectedState) {
           addFailure(
-            "generated_instrument_has_generated_state",
-            "generated instrument must have generated or deployed artifact_state",
+            "generated_instrument_has_lifecycle_state",
+            `generated instrument must have ${expectedState} state`,
             values,
             artifact,
           );
@@ -380,7 +370,6 @@ function validateNativePanelLifecycle(state, metadata, options = {}) {
         );
       }
     }
-
     for (const role of SOURCE_ROLES) {
       if ((byRole.get(role) || []).length !== 1) {
         addFailure(
@@ -432,7 +421,7 @@ function validateNativePanelLifecycle(state, metadata, options = {}) {
       if (!trackedPaths.has(artifactPath)) {
         addFailure(
           "untracked_followup_artifact",
-          `follow-up namespace contains an untracked artifact: ${artifactPath}`,
+          `active-v2 contains an untracked non-exempt file: ${artifactPath}`,
           values,
           { path: artifactPath },
         );
@@ -442,7 +431,7 @@ function validateNativePanelLifecycle(state, metadata, options = {}) {
       if (!discovered.has(artifactPath)) {
         addFailure(
           "tracked_artifact_exists",
-          `tracked artifact does not exist in the follow-up namespace: ${artifactPath}`,
+          `tracked artifact does not exist in the closed inventory: ${artifactPath}`,
           values,
           { path: artifactPath },
         );
@@ -456,8 +445,10 @@ function validateNativePanelLifecycle(state, metadata, options = {}) {
 function verifyNativePanelLifecycle(root = DEFAULT_ROOT) {
   const state = readJson(root, PANEL_STATE);
   const metadata = readJson(root, FOLLOWUP_METADATA);
-  const discoveredArtifacts = discoverFollowupArtifacts(root, metadata);
-  const failures = validateNativePanelLifecycle(state, metadata, { discovered_artifacts: discoveredArtifacts });
+  const discoveredArtifacts = discoverFollowupArtifacts(root);
+  const failures = validateNativePanelLifecycle(state, metadata, {
+    discovered_artifacts: discoveredArtifacts,
+  });
   const lifecycle = state.instrument_lifecycle || {};
   const pilot = Array.isArray(lifecycle.pilot_collections) && lifecycle.pilot_collections.length === 1
     ? lifecycle.pilot_collections[0]
@@ -520,6 +511,8 @@ module.exports = {
   FOLLOWUP_METADATA,
   GENERATED_DIRECTORY,
   DEPLOYMENT_DIRECTORY,
+  EXEMPT_PATHS,
+  EXEMPT_DIRECTORIES,
   discoverFollowupArtifacts,
   validateNativePanelLifecycle,
   verifyNativePanelLifecycle,
