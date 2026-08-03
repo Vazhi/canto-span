@@ -6,51 +6,108 @@ on:
       - ".github/workflows/research-provenance.yml"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  export-dialog004-review-inputs:
+  finalize-dialog004-review:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
         with:
           ref: agent/dialog004-ingress-review
-      - name: Stage exact dialog 004 review inputs
-        run: |
-          mkdir -p /tmp/dialog004-review-inputs/package \
-            /tmp/dialog004-review-inputs/aggregate \
-            /tmp/dialog004-review-inputs/repository-corpus \
-            /tmp/dialog004-review-inputs/tooling/.github/workflows \
-            /tmp/dialog004-review-inputs/tooling/tools \
-            /tmp/dialog004-review-inputs/tooling/tests/tooling/research \
-            /tmp/dialog004-review-inputs/tooling/config
-
-          cp data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/source.json /tmp/dialog004-review-inputs/package/
-          cp data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/items.tsv /tmp/dialog004-review-inputs/package/
-          cp data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/review.json /tmp/dialog004-review-inputs/package/
-          cp data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/crosswalk.json /tmp/dialog004-review-inputs/package/
-          cp data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/README.md /tmp/dialog004-review-inputs/package/
-          cp docs/research/GLOSSIKA-YUEHK-A1-DLG-004-20251221-CORPUS-INGRESS.md /tmp/dialog004-review-inputs/package/
-
-          cp data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json /tmp/dialog004-review-inputs/aggregate/
-          cp docs/research/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.md /tmp/dialog004-review-inputs/aggregate/
-
-          find data/pedagogical-corpus/glossika -mindepth 2 -maxdepth 2 \
-            \( -name source.json -o -name review.json \) -print0 \
-            | xargs -0 -I{} cp --parents "{}" /tmp/dialog004-review-inputs/repository-corpus/
-
-          cp .github/workflows/research-provenance.yml /tmp/dialog004-review-inputs/tooling/.github/workflows/
-          cp tools/build-pedagogical-corpus-review-candidates.py /tmp/dialog004-review-inputs/tooling/tools/
-          cp tools/verify-pedagogical-corpus-review.py /tmp/dialog004-review-inputs/tooling/tools/
-          cp tests/tooling/research/pedagogical-corpus-review.test.py /tmp/dialog004-review-inputs/tooling/tests/tooling/research/
-          cp config/verification-profiles.json /tmp/dialog004-review-inputs/tooling/config/
-          cp config/pedagogical-corpus-source-locks.json /tmp/dialog004-review-inputs/tooling/config/
-          cp package.json /tmp/dialog004-review-inputs/tooling/
-
-          find /tmp/dialog004-review-inputs -type f -print0 | sort -z | xargs -0 sha256sum > /tmp/dialog004-review-inputs/SHA256SUMS
-      - uses: actions/upload-artifact@v4
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
         with:
-          name: dialog004-review-inputs
-          path: /tmp/dialog004-review-inputs
-          if-no-files-found: error
-          retention-days: 1
+          node-version: 24
+          package-manager-cache: false
+
+      - name: Reconstruct and verify reviewed payload
+        run: |
+          test "$(sha256sum tools/.dialog004-executor-payload | cut -d' ' -f1)" = "de4fe83a1212024c63075a564c2ff635f2c647f868ab96791c7d5bd46699d4f5"
+          base64 --decode tools/.dialog004-executor-payload > /tmp/d4-executor.tar.gz
+          test "$(sha256sum /tmp/d4-executor.tar.gz | cut -d' ' -f1)" = "26cfd962d69a5782c4088506637bef0dede3f761a4e3c9e2c3b6e679c845cd19"
+          mkdir -p /tmp/d4-executor
+          tar -xzf /tmp/d4-executor.tar.gz -C /tmp/d4-executor
+          test "$(sha256sum /tmp/d4-executor/generate_d4.py | cut -d' ' -f1)" = "b238522a27adea13be69a64e735f11f4875ade239090d8aa90eb201f8a5c5680"
+          test "$(sha256sum /tmp/d4-executor/d4-tooling.patch | cut -d' ' -f1)" = "55709d1e1b52bc05af84636b898f79c1f55be3efa64ecb12be82a7cfbc495f0c"
+          python3 -m py_compile /tmp/d4-executor/generate_d4.py
+          git apply --check /tmp/d4-executor/d4-tooling.patch
+
+      - name: Generate final dialog 004 review state
+        run: |
+          git apply /tmp/d4-executor/d4-tooling.patch
+          cp /tmp/d4-executor/generate_d4.py ./finalize-dialog004-review-temporary.py
+          python3 ./finalize-dialog004-review-temporary.py
+          rm -f ./finalize-dialog004-review-temporary.py
+
+      - name: Validate final dialog 004 state
+        run: |
+          python3 -m py_compile \
+            tools/build-pedagogical-corpus-review-candidates.py \
+            tools/verify-pedagogical-corpus-review.py \
+            tests/tooling/research/pedagogical-corpus-review.test.py
+          python3 tests/tooling/research/pedagogical-corpus-review.test.py
+          npm run verify:pedagogical-corpus-review
+          npm run verify:research
+          npm run verify
+          git diff --check
+
+      - name: Commit and push reviewed non-workflow state
+        run: |
+          rm -f ./finalize-dialog004-review-temporary.py
+          find tools tests -type d -name __pycache__ -prune -exec rm -rf {} +
+
+          git rm -f \
+            tools/.dialog004-executor-payload \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/.review-claim
+
+          git add \
+            config/pedagogical-corpus-source-locks.json \
+            config/verification-profiles.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/README.md \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/dialog-context-routing-r1.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/expert-review-r1.tsv \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/mechanical-cross-reference-r1.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/package-integrity-r1.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/research-summary.md \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/review.json \
+            docs/research/GLOSSIKA-YUEHK-A1-DLG-004-20251221-CORPUS-INGRESS.md \
+            package.json \
+            tests/tooling/research/pedagogical-corpus-review.test.py \
+            tools/verify-pedagogical-corpus-review.py
+
+          git diff --cached --name-only | sort > /tmp/actual-paths.txt
+          cat > /tmp/expected-paths.txt <<'EOF'
+          config/pedagogical-corpus-source-locks.json
+          config/verification-profiles.json
+          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/.review-claim
+          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/README.md
+          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/dialog-context-routing-r1.json
+          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/expert-review-r1.tsv
+          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/mechanical-cross-reference-r1.json
+          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/package-integrity-r1.json
+          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/research-summary.md
+          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/review.json
+          docs/research/GLOSSIKA-YUEHK-A1-DLG-004-20251221-CORPUS-INGRESS.md
+          package.json
+          tests/tooling/research/pedagogical-corpus-review.test.py
+          tools/.dialog004-executor-payload
+          tools/verify-pedagogical-corpus-review.py
+          EOF
+          sed -i 's/^          //' /tmp/expected-paths.txt
+          sort -o /tmp/expected-paths.txt /tmp/expected-paths.txt
+          diff -u /tmp/expected-paths.txt /tmp/actual-paths.txt
+
+          git diff --quiet -- \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/source.json \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/items.tsv \
+            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-004-20251221/crosswalk.json \
+            data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json \
+            src \
+            main.js
+          test -z "$(git ls-files --others --exclude-standard)"
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Complete dialog 004 expert ingress review"
+          git push origin HEAD:agent/dialog004-ingress-review
