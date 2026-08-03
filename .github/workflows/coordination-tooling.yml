@@ -1,0 +1,43 @@
+name: Coordination tooling
+
+on:
+  push:
+    paths:
+      - "tools/coordination/**"
+      - "tests/tooling/coordination/**"
+      - "schemas/task-intake.schema.json"
+      - "schemas/work-claim.schema.json"
+      - "docs/current/MULTI-AGENT-COORDINATION.md"
+      - "docs/current/CODEX-ISSUE-WORKFLOW.md"
+      - "docs/current/PORTFOLIO-ROUTING.md"
+      - "package.json"
+      - ".github/workflows/coordination-tooling.yml"
+  pull_request:
+    paths:
+      - "tools/coordination/**"
+      - "tests/tooling/coordination/**"
+      - "schemas/task-intake.schema.json"
+      - "schemas/work-claim.schema.json"
+      - "docs/current/MULTI-AGENT-COORDINATION.md"
+      - "docs/current/CODEX-ISSUE-WORKFLOW.md"
+      - "docs/current/PORTFOLIO-ROUTING.md"
+      - "package.json"
+      - ".github/workflows/coordination-tooling.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Test reusable coordination tooling
+        run: npm run test:coordination
+      - name: Verify current documentation and canonical state
+        run: npm run verify
