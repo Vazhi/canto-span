@@ -1,14 +1,16 @@
 {
-  "schema": "canto-span-native-panel-interim-export-v1",
+  "schema": "canto-span-native-panel-interim-export-v3",
   "instrument_id": "YUE-JUDGMENT-PILOT-01",
   "instrument_version": "0.1.0-pilot",
   "platform": "SoSci Survey",
   "export_label": "2026-07-31_11-04",
   "export_timestamp_as_supplied": "2026-07-31 11:04",
-  "snapshot_kind": "interim_privacy_safe_aggregate",
+  "snapshot_kind": "interim_disclosure_controlled_banded_derivative",
+  "snapshot_state": "frozen_historical_derivative",
   "collection_state": "active",
   "item_level_audit_state": "not_started",
   "evidence_status": "descriptive_pilot_only_not_adjudicated",
+  "analytic_subset_status": "provisionally_retained_for_interim_description",
   "rating_scale": {
     "direction": "1_most_natural_5_most_unnatural",
     "labels": {
@@ -17,11 +19,6 @@
       "3": "唔肯定／要有上文先判斷",
       "4": "比較唔自然",
       "5": "明顯唔自然"
-    },
-    "summary_groups": {
-      "natural_or_acceptable": [1, 2],
-      "uncertain_or_context_dependent": [3],
-      "unnatural": [4, 5]
     }
   },
   "screening_totals": {
@@ -29,10 +26,8 @@
     "incomplete_starts": 66,
     "finished_cases": 47,
     "screened_out_finished_cases": 11,
-    "screened_out_no_childhood_acquisition": 8,
-    "screened_out_under_18": 3,
-    "eligible_retained_cases": 36,
-    "retained_cases_with_exactly_32_ratings": 36
+    "provisionally_retained_for_interim_description": 36,
+    "provisional_cases_with_exactly_32_ratings": 36
   },
   "counterbalanced_list_counts": {
     "LIST_A": 9,
@@ -85,52 +80,100 @@
   "public_package_files": [
     {
       "path": "README.md",
-      "bytes": 1613,
-      "sha256": "f376a49cba13a23f73bdf1210b9883eab8957b446042bb60a86f017b17c58640"
+      "bytes": 1849,
+      "sha256": "bb794c46115e9af9426ef17351e4d6aace19b2c703412d74046424ef6e1029cd"
+    },
+    {
+      "path": "PUBLIC-DISCLOSURE-POLICY.md",
+      "bytes": 2407,
+      "sha256": "f02d48aed3af84f07a2980360e388f35123e41562a47696ac581d0a0732b2020"
+    },
+    {
+      "path": "OFFLINE-REPRODUCIBILITY.md",
+      "bytes": 1463,
+      "sha256": "489ec718b86b07ef721db10456c9f2c8fd39fae857642661b081c6d9f96eceb7"
     },
     {
       "path": "pilot-analysis-report.md",
-      "bytes": 15485,
-      "sha256": "b2760e160b44fcd75a0b40dcb11eee346030256136f827c2206ad11fc78e6c55"
+      "bytes": 2577,
+      "sha256": "ad83909369406caacef9f99e039be986bec3505e99b0f5498bfbba291e62dfbf"
     },
     {
-      "path": "condition-statistics.csv",
-      "bytes": 1358,
-      "sha256": "38c4e9bcc4f67931eedca96df77a44aec5f1b008b30cd88904b5b52192fad106",
+      "path": "condition-summary-bands.csv",
+      "bytes": 970,
+      "sha256": "89fc509b4f7c26921a53725448d17fc2327e74d4ea9eb0ae3d940d714d864378",
       "data_rows": 20
     },
     {
-      "path": "item-statistics.csv",
-      "bytes": 7765,
-      "sha256": "657dec9a4fdc036d48ebd6dc4e0d7be25f551be57ba2c364d356120db653e939",
+      "path": "item-publication-status.csv",
+      "bytes": 10958,
+      "sha256": "b0ba9a8effc4d396c115460e43b2e377c82780562ef67c7761b6feb3124bb327",
       "data_rows": 92
     },
     {
-      "path": "interpretation-statistics.csv",
-      "bytes": 5319,
-      "sha256": "4aad8b9f85eedbdf7a32e8aa8ea8b1e63e9fc43f7e97996db71e6dc0fd460bf9",
-      "data_rows": 101
+      "path": "qualitative-theme-disposition.csv",
+      "bytes": 452,
+      "sha256": "31083f887ff04115612f6c9366d9d5afcc904126a9f1c18133e54f2712dbc126",
+      "data_rows": 4
     }
   ],
+  "disclosure_control": {
+    "policy_file": "PUBLIC-DISCLOSURE-POLICY.md",
+    "minimum_sensitive_cell_size": 5,
+    "exact_item_results_public": false,
+    "exact_condition_moments_public": false,
+    "exact_rating_category_counts_public": false,
+    "correction_counts_public": false,
+    "fixed_choice_interpretation_counts_public": false,
+    "participant_derived_qualitative_themes_public": false,
+    "condition_signal_bands_public": true,
+    "minimum_compatible_rating_histograms_per_band": 10000,
+    "linked_table_review_required": true,
+    "private_content_hash_scan_required": true,
+    "qualitative_theme_minimum_support": 5
+  },
+  "condition_signal_bands": {
+    "more_natural_side": {
+      "mean_lower_inclusive": 1.0,
+      "mean_upper_exclusive": 2.5,
+      "compatible_histograms_at_provisional_n": 19151
+    },
+    "mixed_or_context_sensitive": {
+      "mean_lower_inclusive": 2.5,
+      "mean_upper_exclusive": 3.5,
+      "compatible_histograms_at_provisional_n": 51900
+    },
+    "more_unnatural_side": {
+      "mean_lower_inclusive": 3.5,
+      "mean_upper_exclusive": 5.000001,
+      "compatible_histograms_at_provisional_n": 20339
+    }
+  },
   "privacy_disposition": {
     "participant_level_export_public": false,
     "open_text_public": false,
     "exact_timestamps_public": false,
     "case_and_serial_identifiers_public": false,
     "recruitment_reference_public": false,
-    "reason": "The public repository is not an appropriate location for row-level survey data containing open text and potentially identifying or re-identifiable metadata. Only aggregate tables and aggregate thematic summaries are published.",
-    "future_requirement": "A final frozen export must receive documented eligibility, duplicate, quality, free-text privacy, and adjudication review before any participant-level release decision."
+    "claim": "disclosure_controlled_not_risk_free",
+    "future_requirement": "A final frozen export requires complete screening, private-text coding, linked-table disclosure review, content-hash absence verification, and source-to-output reproduction documentation before any release decision."
   },
-  "validation": {
-    "raw_export_rows": 113,
-    "raw_export_columns": 904,
-    "finished_count_recomputed": 47,
-    "eligible_count_recomputed": 36,
-    "retained_rating_count_check": "36_of_36_retained_cases_have_32_nonmissing_scale_responses",
-    "condition_statistics_rows": 20,
-    "item_statistics_rows": 92,
-    "interpretation_statistics_rows": 101,
+  "public_validation": {
+    "condition_summary_rows": 20,
+    "item_publication_status_rows": 92,
+    "qualitative_theme_disposition_rows": 4,
+    "linked_condition_item_pairs_reviewed": 80,
+    "minimum_compatible_rating_histograms": 19151,
+    "condition_statistics_withdrawn": true,
+    "item_statistics_withdrawn": true,
+    "interpretation_statistics_withdrawn": true,
     "aggregate_files_utf8": true
+  },
+  "source_to_aggregate_reproducibility": {
+    "status": "not_reproducible_historical_script_and_environment_not_retained",
+    "documentation": "OFFLINE-REPRODUCIBILITY.md",
+    "script_sha256": null,
+    "environment_lock_sha256": null
   },
   "protected_state_unchanged": [
     "live survey instrument",
