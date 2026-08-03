@@ -31,6 +31,7 @@ on:
       - "tests/tooling/research/ab30-aggregate-integrity.test.py"
       - "tests/tooling/research/interim-pilot-public-package.test.py"
       - "tests/tooling/research/pedagogical-corpus-contract.test.py"
+      - "tests/tooling/research/pedagogical_corpus_contract_fixtures.py"
       - "package.json"
       - ".github/workflows/research-provenance.yml"
   pull_request:
@@ -63,6 +64,7 @@ on:
       - "tests/tooling/research/ab30-aggregate-integrity.test.py"
       - "tests/tooling/research/interim-pilot-public-package.test.py"
       - "tests/tooling/research/pedagogical-corpus-contract.test.py"
+      - "tests/tooling/research/pedagogical_corpus_contract_fixtures.py"
       - "package.json"
       - ".github/workflows/research-provenance.yml"
   workflow_dispatch:
