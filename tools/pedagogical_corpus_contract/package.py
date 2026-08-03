@@ -15,6 +15,14 @@ EVENT_DECISIONS = {
     "withdrawal": {"withdrawn"},
 }
 DISCREPANCY_TYPES = {"pronunciation", "translation", "gloss", "orthography", "source_id", "segmentation", "naturalness", "other"}
+LIFECYCLE_AUTHORITY = {
+    "preserved": "preserved",
+    "review_in_progress": "mechanical",
+    "reviewed": "reviewed",
+    "accepted": "accepted",
+    "superseded": "superseded",
+    "withdrawn": "withdrawn",
+}
 
 
 def timestamp(value: Any, label: str) -> None:
@@ -40,7 +48,7 @@ def validate_authority(
     entry: dict[str, Any],
     files: dict[str, dict[str, Any]],
     record_ids: list[str],
-) -> None:
+) -> dict[str, Any]:
     source = manifest["source"]
     source_keys = {
         "source_id", "provider", "authorization_status", "distribution", "authorization_basis",
@@ -104,7 +112,7 @@ def validate_authority(
         req(isinstance(event_list, list) and event_list, "review event file must contain events")
         event_ids: set[str] = set()
         required_type = AUTHORITY_KIND[authority["state"]]
-        required_records: set[str] = set()
+        required_counts: dict[str, int] = {}
         event_keys = {
             "event_id", "record_id", "event_type", "reviewer_role", "reviewed_source_semantic_sha256",
             "decision_at", "decision_type", "evidence_basis", "replacement_authority_issue",
@@ -126,18 +134,21 @@ def validate_authority(
             string_list(event["evidence_basis"], f"{label}.evidence_basis")
             replacement_issue = event["replacement_authority_issue"]
             if event["decision_type"] == "accepted_correction":
-                req(isinstance(replacement_issue, int) and replacement_issue > 0, f"{label} accepted correction lacks replacement authority")
+                req(replacement_issue == authority["authority_issue"], f"{label} accepted correction must use the package authority issue")
             else:
                 req(replacement_issue is None, f"{label} claims replacement authority without an accepted correction")
             if event_type == required_type:
-                required_records.add(record_id)
-        req(required_records, f"review event file lacks required {required_type} event")
+                required_counts[record_id] = required_counts.get(record_id, 0) + 1
+        req(required_counts, f"review event file lacks required {required_type} event")
         if authority["state"] == "accepted":
-            req(required_records == set(record_ids), "accepted review must decide every record exactly through acceptance events")
+            req(set(required_counts) == set(record_ids), "accepted review must decide every record through acceptance events")
+            req(all(count == 1 for count in required_counts.values()), "accepted review must contain exactly one acceptance event per record")
+        return {"authority_issue": authority["authority_issue"], "replacement_rights": set(rights)}
     else:
         req(authority["authority_issue"] is None, "non-reviewed state must not claim authority_issue")
         req(authority["reviewed_source_semantic_sha256"] is None, "non-reviewed state must not claim source digest")
         req(authority["authority_record"] is None and authority["event_file"] is None, "non-reviewed state must not claim review files")
+        return {"authority_issue": None, "replacement_rights": set()}
 
 
 def validate_package(repo: Path, entry: dict[str, Any]) -> dict[str, Any]:
@@ -157,7 +168,8 @@ def validate_package(repo: Path, entry: dict[str, Any]) -> dict[str, Any]:
     req(manifest["package_id"] == entry["package_id"], "package_id mismatch")
     req(manifest["package_kind"] == entry["package_kind"], "package_kind mismatch")
     req(manifest["root"] == root_rel, "package root mismatch")
-    req(manifest["lifecycle"] in {"preserved", "review_in_progress", "reviewed", "superseded", "withdrawn"}, "package lifecycle invalid")
+    req(manifest["lifecycle"] in LIFECYCLE_AUTHORITY, "package lifecycle invalid")
+    req(LIFECYCLE_AUTHORITY[manifest["lifecycle"]] == entry["authority_state"], "package lifecycle/authority state mismatch")
     files = validate_inventory(repo, root, manifest_path, manifest["files"])
 
     identity = manifest["record_identity"]
@@ -169,7 +181,7 @@ def validate_package(repo: Path, entry: dict[str, Any]) -> dict[str, Any]:
     ids, records = read_records(resolve(repo, record_file, "record_file"), id_field)
     req(continuity_hash(ids) == identity["continuity_lock_sha256"], "record continuity lock mismatch")
 
-    validate_authority(repo, manifest, entry, files, ids)
+    authority_binding = validate_authority(repo, manifest, entry, files, ids)
 
     lineage = manifest["lineage"]
     exact_keys(lineage, {"lineage_id", "parent_lineage_ids", "independence_group"}, "lineage")
@@ -238,4 +250,6 @@ def validate_package(repo: Path, entry: dict[str, Any]) -> dict[str, Any]:
         "discrepancies": relation_data["discrepancies_file"],
         "links": relation_data["implementation_links_file"],
         "routes": relation_data["routes_file"],
+        "authority_issue": authority_binding["authority_issue"],
+        "replacement_rights": authority_binding["replacement_rights"],
     }
