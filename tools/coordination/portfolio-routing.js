@@ -140,9 +140,14 @@ function locksOverlap(left, right) {
   for (let index = 0; index < length; index += 1) {
     const leftPart = a[index];
     const rightPart = b[index];
-    if (leftPart === rightPart) continue;
-    if (leftPart === "*" || rightPart === "*") return true;
-    if (leftPart === "global" || rightPart === "global") return true;
+    if (leftPart === rightPart) {
+      if (leftPart === "global") return true;
+      continue;
+    }
+    if (leftPart === "global" || rightPart === "global") {
+      return index > 0;
+    }
+    if (leftPart === "*" || rightPart === "*") continue;
     return false;
   }
   return true;
