@@ -5,6 +5,7 @@ on:
     paths:
       - "config/verification-profiles.json"
       - "tools/verify-current-state.js"
+      - "tests/tooling/verification/**"
       - "package.json"
       - "package-lock.json"
       - ".github/workflows/full-diagnostic-verification.yml"
@@ -12,6 +13,7 @@ on:
     paths:
       - "config/verification-profiles.json"
       - "tools/verify-current-state.js"
+      - "tests/tooling/verification/**"
       - "package.json"
       - "package-lock.json"
       - ".github/workflows/full-diagnostic-verification.yml"
@@ -31,6 +33,8 @@ jobs:
           package-manager-cache: false
       - name: Install build dependencies
         run: npm ci
+      - name: Test verification orchestration
+        run: npm run test:verification-orchestration
       - name: Run full diagnostic sweep
         continue-on-error: true
         run: npm run verify:all -- --keep-going --output /tmp/full-verification.json
@@ -38,19 +42,43 @@ jobs:
         run: |
           node <<'NODE'
           const fs = require('node:fs');
+          const manifest = JSON.parse(fs.readFileSync('config/verification-profiles.json', 'utf8'));
           const report = JSON.parse(fs.readFileSync('/tmp/full-verification.json', 'utf8'));
-          const expectedProfiles = ['core', 'research', 'runtime', 'release'];
+          const expectedProfiles = manifest.profile_requests.all;
+          const expectedIds = expectedProfiles.flatMap(
+            (profileName) => manifest.profiles[profileName].map((item) => item.id)
+          );
           const actualProfiles = report.included_profiles || [];
+          const actualIds = (report.results || []).map((item) => item.id);
+
           if (JSON.stringify(actualProfiles) !== JSON.stringify(expectedProfiles)) {
             throw new Error(`Unexpected included profiles: ${JSON.stringify(actualProfiles)}`);
           }
-          const ids = (report.results || []).map((item) => item.id);
-          if (new Set(ids).size !== ids.length) {
-            throw new Error(`Duplicate verification command IDs: ${JSON.stringify(ids)}`);
+          if (report.registered_command_count !== expectedIds.length) {
+            throw new Error(
+              `Registered command count mismatch: ${report.registered_command_count} != ${expectedIds.length}`
+            );
           }
-          for (const required of ['runtime-build', 'runtime-tests', 'generated-runtime']) {
-            if (!ids.includes(required)) throw new Error(`Missing runtime command: ${required}`);
+          if (report.configured_command_count !== expectedIds.length) {
+            throw new Error(
+              `Configured command count mismatch: ${report.configured_command_count} != ${expectedIds.length}`
+            );
           }
+          if (report.executed_command_count !== expectedIds.length) {
+            throw new Error(
+              `Executed command count mismatch: ${report.executed_command_count} != ${expectedIds.length}`
+            );
+          }
+          if (JSON.stringify(actualIds) !== JSON.stringify(expectedIds)) {
+            throw new Error(
+              `Verification commands were not executed exactly once in canonical order: ${JSON.stringify(actualIds)}`
+            );
+          }
+          const integrity = report.execution_integrity || {};
+          if ((integrity.duplicate_executions || []).length || (integrity.missing_executions || []).length) {
+            throw new Error(`Execution integrity failure: ${JSON.stringify(integrity)}`);
+          }
+
           const nonReleaseFailures = (report.results || []).filter(
             (item) => item.profile !== 'release' && item.status !== 'PASS'
           );
@@ -62,7 +90,7 @@ jobs:
           );
           console.log(JSON.stringify({
             included_profiles: actualProfiles,
-            command_count: ids.length,
+            command_count: actualIds.length,
             non_release_failures: 0,
             release_failures: releaseFailures.map((item) => item.id),
           }, null, 2));
