@@ -1,18 +1,34 @@
 #!/usr/bin/env node
 "use strict";
 
+const crypto = require("node:crypto");
 const fs = require("node:fs");
 const path = require("node:path");
 
 const DEFAULT_ROOT = path.resolve(__dirname, "..");
-const PANEL_STATE = "review-packets/native-panel/active-v2/panel-review-state.json";
-const FOLLOWUP_METADATA = "review-packets/native-panel/active-v2/followup-draft-v1-metadata.json";
+const ACTIVE_ROOT = "review-packets/native-panel/active-v2";
+const PANEL_STATE = `${ACTIVE_ROOT}/panel-review-state.json`;
+const FOLLOWUP_METADATA = `${ACTIVE_ROOT}/followup-draft-v1-metadata.json`;
+const GENERATED_DIRECTORY = `${ACTIVE_ROOT}/generated`;
+const DEPLOYMENT_DIRECTORY = `${ACTIVE_ROOT}/deployment`;
 
 const PILOT_STATES = new Set(["active", "closed"]);
 const AUDIT_STATES = new Set(["not_started", "in_progress", "accepted"]);
 const FOLLOWUP_STATES = new Set(["draft", "locked", "generated", "deployed"]);
 const RESTRICTED_FOLLOWUP_STATES = new Set(["locked", "generated", "deployed"]);
 const ARTIFACT_STATES = new Set(["draft_source", "generated", "deployed"]);
+const ARTIFACT_ROLES = new Set([
+  "item_source",
+  "crosswalk_source",
+  "response_template_source",
+  "generated_instrument",
+  "deployment_receipt",
+]);
+const SOURCE_ROLES = new Set([
+  "item_source",
+  "crosswalk_source",
+  "response_template_source",
+]);
 const PILOT_COMPATIBILITY = {
   active: "collection_in_progress",
   closed: "collection_closed",
@@ -23,14 +39,67 @@ const FOLLOWUP_COMPATIBILITY = {
   generated: "form_generated",
   deployed: "deployed",
 };
-const FOLLOWUP_RANK = { draft: 0, locked: 1, generated: 2, deployed: 3 };
-const ARTIFACT_RANK = { draft_source: 0, generated: 2, deployed: 3 };
+const SOURCE_ROLE_PATH_FIELDS = {
+  item_source: "item_file",
+  crosswalk_source: "crosswalk_file",
+  response_template_source: "response_template_file",
+};
 
 function readJson(root, relativePath) {
   return JSON.parse(fs.readFileSync(path.join(root, relativePath), "utf8"));
 }
 
-function validateNativePanelLifecycle(state, metadata) {
+function normalizeRepoPath(value) {
+  return typeof value === "string" ? value.split(path.sep).join("/") : value;
+}
+
+function isWithin(candidate, directory) {
+  return candidate === directory || candidate.startsWith(`${directory}/`);
+}
+
+function walkRegularFiles(root, relativeDirectory) {
+  const absoluteDirectory = path.join(root, relativeDirectory);
+  if (!fs.existsSync(absoluteDirectory)) return [];
+  const files = [];
+  const stack = [absoluteDirectory];
+  while (stack.length) {
+    const current = stack.pop();
+    for (const entry of fs.readdirSync(current, { withFileTypes: true })) {
+      const absolutePath = path.join(current, entry.name);
+      if (entry.isDirectory()) {
+        stack.push(absolutePath);
+      } else if (entry.isFile() || entry.isSymbolicLink()) {
+        files.push(normalizeRepoPath(path.relative(root, absolutePath)));
+      }
+    }
+  }
+  return files.sort();
+}
+
+function discoverFollowupArtifacts(root, metadata) {
+  const contract = metadata && metadata.artifact_contract;
+  const scopeRoot = contract && contract.scope_root === ACTIVE_ROOT
+    ? contract.scope_root
+    : ACTIVE_ROOT;
+  const trackedPrefix = contract && contract.tracked_prefix === "followup-"
+    ? contract.tracked_prefix
+    : "followup-";
+  const controlFiles = new Set([FOLLOWUP_METADATA]);
+  return walkRegularFiles(root, scopeRoot)
+    .filter((relativePath) => {
+      if (controlFiles.has(relativePath)) return false;
+      if (isWithin(relativePath, GENERATED_DIRECTORY) || isWithin(relativePath, DEPLOYMENT_DIRECTORY)) {
+        return true;
+      }
+      return path.posix.basename(relativePath).startsWith(trackedPrefix);
+    });
+}
+
+function sha256File(absolutePath) {
+  return crypto.createHash("sha256").update(fs.readFileSync(absolutePath)).digest("hex");
+}
+
+function validateNativePanelLifecycle(state, metadata, options = {}) {
   const failures = [];
   const canonicalFiles = {
     pilot_and_audit: PANEL_STATE,
@@ -48,22 +117,25 @@ function validateNativePanelLifecycle(state, metadata) {
     });
   };
 
-  if (!state || typeof state !== "object") {
+  if (!state || typeof state !== "object" || Array.isArray(state)) {
     addFailure("panel_state_required", "panel review state must be an object");
     return failures;
   }
-  if (!metadata || typeof metadata !== "object") {
+  if (!metadata || typeof metadata !== "object" || Array.isArray(metadata)) {
     addFailure("followup_metadata_required", "follow-up metadata must be an object");
     return failures;
   }
 
   const lifecycle = state.instrument_lifecycle;
-  if (!lifecycle || typeof lifecycle !== "object") {
+  if (!lifecycle || typeof lifecycle !== "object" || Array.isArray(lifecycle)) {
     addFailure("required_lifecycle_fields", "instrument_lifecycle is missing");
     return failures;
   }
   if (lifecycle.metadata_file !== FOLLOWUP_METADATA) {
-    addFailure("canonical_followup_metadata_link", "instrument_lifecycle.metadata_file does not name the canonical follow-up metadata file");
+    addFailure(
+      "canonical_followup_metadata_link",
+      "instrument_lifecycle.metadata_file does not name the canonical follow-up metadata file",
+    );
   }
 
   const pilots = lifecycle.pilot_collections;
@@ -72,7 +144,7 @@ function validateNativePanelLifecycle(state, metadata) {
       "exactly_one_pilot_declaration",
       Array.isArray(pilots)
         ? `found ${pilots.length} pilot declarations`
-        : "pilot_collections must be an array containing exactly one declaration"
+        : "pilot_collections must be an array containing exactly one declaration",
     );
   }
   const pilot = Array.isArray(pilots) && pilots.length === 1 ? pilots[0] : {};
@@ -89,13 +161,25 @@ function validateNativePanelLifecycle(state, metadata) {
   };
 
   if (!PILOT_STATES.has(values.pilot_state)) {
-    addFailure("controlled_pilot_collection_state", `unsupported pilot state ${JSON.stringify(values.pilot_state)}`, values);
+    addFailure(
+      "controlled_pilot_collection_state",
+      `unsupported pilot state ${JSON.stringify(values.pilot_state)}`,
+      values,
+    );
   }
   if (!AUDIT_STATES.has(values.audit_state)) {
-    addFailure("controlled_item_audit_state", `unsupported audit state ${JSON.stringify(values.audit_state)}`, values);
+    addFailure(
+      "controlled_item_audit_state",
+      `unsupported audit state ${JSON.stringify(values.audit_state)}`,
+      values,
+    );
   }
   if (!FOLLOWUP_STATES.has(values.followup_state)) {
-    addFailure("controlled_followup_lifecycle_state", `unsupported follow-up state ${JSON.stringify(values.followup_state)}`, values);
+    addFailure(
+      "controlled_followup_lifecycle_state",
+      `unsupported follow-up state ${JSON.stringify(values.followup_state)}`,
+      values,
+    );
   }
 
   const metadataPilot = metadata.current_live_instrument && typeof metadata.current_live_instrument === "object"
@@ -103,15 +187,29 @@ function validateNativePanelLifecycle(state, metadata) {
     : {};
   for (const field of ["instrument_id", "collection_state", "closure_rule"]) {
     if (pilot[field] !== metadataPilot[field]) {
-      addFailure("single_pilot_declaration_consistency", `pilot ${field} does not match follow-up metadata`, values);
+      addFailure(
+        "single_pilot_declaration_consistency",
+        `pilot ${field} does not match follow-up metadata`,
+        values,
+      );
     }
   }
-  if (pilot.compatibility_status !== PILOT_COMPATIBILITY[values.pilot_state] ||
-      metadataPilot.status !== pilot.compatibility_status) {
-    addFailure("pilot_compatibility_status_consistency", "pilot compatibility status does not match collection state", values);
+  if (
+    pilot.compatibility_status !== PILOT_COMPATIBILITY[values.pilot_state]
+    || metadataPilot.status !== pilot.compatibility_status
+  ) {
+    addFailure(
+      "pilot_compatibility_status_consistency",
+      "pilot compatibility status does not match collection state",
+      values,
+    );
   }
   if (!lifecycle.item_level_audit || audit.pilot_instrument_id !== pilot.instrument_id) {
-    addFailure("item_audit_targets_current_pilot", "item-level audit is missing or targets a different pilot", values);
+    addFailure(
+      "item_audit_targets_current_pilot",
+      "item-level audit is missing or targets a different pilot",
+      values,
+    );
   }
 
   const expectedFollowup = {
@@ -122,11 +220,19 @@ function validateNativePanelLifecycle(state, metadata) {
   };
   for (const field of Object.keys(expectedFollowup)) {
     if (followup[field] !== expectedFollowup[field]) {
-      addFailure("followup_declaration_consistency", `follow-up ${field} does not match canonical metadata`, values);
+      addFailure(
+        "followup_declaration_consistency",
+        `follow-up ${field} does not match canonical metadata`,
+        values,
+      );
     }
   }
   if (followup.compatibility_status !== FOLLOWUP_COMPATIBILITY[values.followup_state]) {
-    addFailure("followup_compatibility_status_consistency", "follow-up compatibility status does not match lifecycle state", values);
+    addFailure(
+      "followup_compatibility_status_consistency",
+      "follow-up compatibility status does not match lifecycle state",
+      values,
+    );
   }
 
   const prerequisitesSatisfied = values.pilot_state === "closed" && values.audit_state === "accepted";
@@ -134,41 +240,133 @@ function validateNativePanelLifecycle(state, metadata) {
     addFailure(
       "followup_deployment_lock",
       "locked, generated, or deployed follow-up requires pilot=closed and audit=accepted",
-      values
+      values,
     );
   }
-  if (values.followup_state === "draft" && followup.deployment_allowed !== false) {
-    addFailure("draft_is_non_deployable", "draft follow-up must set deployment_allowed=false", values);
+
+  const deploymentExpected = values.followup_state === "deployed";
+  if (followup.deployment_allowed !== deploymentExpected || metadata.deployment_allowed !== deploymentExpected) {
+    addFailure(
+      "deployment_permission_matches_lifecycle",
+      "deployment_allowed must be true exactly when lifecycle_state=deployed",
+      values,
+    );
   }
-  if (followup.deployment_allowed === true && !prerequisitesSatisfied) {
-    addFailure("deployment_permission_prerequisites", "deployment_allowed requires pilot=closed and audit=accepted", values);
+
+  const contract = metadata.artifact_contract;
+  const expectedContract = {
+    scope_root: ACTIVE_ROOT,
+    tracked_prefix: "followup-",
+    generated_directory: GENERATED_DIRECTORY,
+    deployment_directory: DEPLOYMENT_DIRECTORY,
+  };
+  if (!contract || typeof contract !== "object" || Array.isArray(contract)) {
+    addFailure("artifact_contract_required", "artifact_contract is missing", values);
+  } else {
+    for (const [field, expected] of Object.entries(expectedContract)) {
+      if (contract[field] !== expected) {
+        addFailure(
+          "canonical_artifact_contract",
+          `artifact_contract.${field} must equal ${expected}`,
+          values,
+        );
+      }
+    }
   }
 
   const artifacts = metadata.tracked_artifacts;
+  const byPath = new Map();
+  const byRole = new Map();
   if (!Array.isArray(artifacts)) {
     addFailure("tracked_artifacts_required", "tracked_artifacts must be an array", values);
   } else {
-    const byPath = new Map();
     for (const artifact of artifacts) {
-      const artifactPath = artifact && artifact.path;
-      const prior = byPath.get(artifactPath) || [];
-      prior.push(artifact);
-      byPath.set(artifactPath, prior);
+      const artifactPath = artifact && normalizeRepoPath(artifact.path);
+      const role = artifact && artifact.role;
+      const priorPath = byPath.get(artifactPath) || [];
+      priorPath.push(artifact);
+      byPath.set(artifactPath, priorPath);
+      const priorRole = byRole.get(role) || [];
+      priorRole.push(artifact);
+      byRole.set(role, priorRole);
 
-      if (!artifact || typeof artifact.path !== "string" || artifact.path.length === 0 ||
-          !ARTIFACT_STATES.has(artifact.artifact_state) || typeof artifact.deployable !== "boolean") {
-        addFailure("valid_tracked_artifact", "artifact requires path, controlled artifact_state, and deployable boolean", values, artifact || {});
+      if (
+        !artifact
+        || typeof artifactPath !== "string"
+        || artifactPath.length === 0
+        || !ARTIFACT_ROLES.has(role)
+        || !ARTIFACT_STATES.has(artifact.artifact_state)
+        || typeof artifact.deployable !== "boolean"
+      ) {
+        addFailure(
+          "valid_tracked_artifact",
+          "artifact requires path, controlled role, controlled artifact_state, and deployable boolean",
+          values,
+          artifact || {},
+        );
         continue;
       }
-      if (FOLLOWUP_RANK[values.followup_state] !== undefined &&
-          ARTIFACT_RANK[artifact.artifact_state] > FOLLOWUP_RANK[values.followup_state]) {
-        addFailure("artifact_state_not_ahead_of_lifecycle", "tracked artifact state is ahead of follow-up lifecycle", values, artifact);
-      }
-      if (values.followup_state === "draft" && artifact.deployable) {
-        addFailure("draft_has_no_generated_or_deployable_artifact", "draft lifecycle cannot contain a deployable artifact", values, artifact);
-      }
-      if (artifact.deployable && !prerequisitesSatisfied) {
-        addFailure("deployable_artifact_prerequisites", "deployable artifact requires pilot=closed and audit=accepted", values, artifact);
+
+      if (SOURCE_ROLES.has(role)) {
+        const expectedPath = metadata[SOURCE_ROLE_PATH_FIELDS[role]];
+        if (artifactPath !== expectedPath) {
+          addFailure(
+            "source_role_binds_canonical_path",
+            `${role} must bind ${expectedPath}`,
+            values,
+            artifact,
+          );
+        }
+        if (artifact.artifact_state !== "draft_source" || artifact.deployable !== false) {
+          addFailure(
+            "source_role_cannot_supply_generated_or_deployed_evidence",
+            `${role} must remain non-deployable draft_source evidence`,
+            values,
+            artifact,
+          );
+        }
+      } else if (role === "generated_instrument") {
+        if (!isWithin(artifactPath, GENERATED_DIRECTORY)) {
+          addFailure(
+            "generated_instrument_uses_canonical_directory",
+            `generated instrument must be under ${GENERATED_DIRECTORY}`,
+            values,
+            artifact,
+          );
+        }
+        if (!["generated", "deployed"].includes(artifact.artifact_state)) {
+          addFailure(
+            "generated_instrument_has_generated_state",
+            "generated instrument must have generated or deployed artifact_state",
+            values,
+            artifact,
+          );
+        }
+        if (artifact.deployable !== deploymentExpected) {
+          addFailure(
+            "generated_instrument_deployability_matches_lifecycle",
+            "generated instrument is deployable exactly in deployed lifecycle",
+            values,
+            artifact,
+          );
+        }
+      } else if (role === "deployment_receipt") {
+        if (!isWithin(artifactPath, DEPLOYMENT_DIRECTORY)) {
+          addFailure(
+            "deployment_receipt_uses_canonical_directory",
+            `deployment receipt must be under ${DEPLOYMENT_DIRECTORY}`,
+            values,
+            artifact,
+          );
+        }
+        if (artifact.artifact_state !== "deployed" || artifact.deployable !== false) {
+          addFailure(
+            "deployment_receipt_has_deployed_evidence_state",
+            "deployment receipt must be non-deployable deployed evidence",
+            values,
+            artifact,
+          );
+        }
       }
     }
 
@@ -178,22 +376,77 @@ function validateNativePanelLifecycle(state, metadata) {
           "unique_tracked_artifact_declaration",
           `${artifactPath || "<missing path>"} has ${declarations.length} declarations`,
           values,
-          { path: artifactPath || null }
+          { path: artifactPath || null },
         );
       }
     }
-    for (const requiredPath of [metadata.item_file, metadata.crosswalk_file, metadata.response_template_file]) {
-      if (typeof requiredPath !== "string" || (byPath.get(requiredPath) || []).length !== 1) {
-        addFailure("all_followup_sources_are_tracked", "required follow-up source lacks exactly one tracked-artifact declaration", values, { path: requiredPath || null });
+
+    for (const role of SOURCE_ROLES) {
+      if ((byRole.get(role) || []).length !== 1) {
+        addFailure(
+          "exactly_one_source_artifact_per_role",
+          `${role} requires exactly one tracked artifact`,
+          values,
+          { role },
+        );
       }
     }
-    if (values.followup_state === "generated" &&
-        !artifacts.some((artifact) => artifact && ["generated", "deployed"].includes(artifact.artifact_state))) {
-      addFailure("generated_state_has_generated_artifact", "generated lifecycle has no generated artifact", values);
+
+    const generatedArtifacts = byRole.get("generated_instrument") || [];
+    const deploymentReceipts = byRole.get("deployment_receipt") || [];
+    if (["draft", "locked"].includes(values.followup_state)) {
+      if (generatedArtifacts.length || deploymentReceipts.length) {
+        addFailure(
+          "pre_generation_lifecycle_has_no_generated_or_deployment_artifacts",
+          "draft and locked lifecycle states cannot contain generated instruments or deployment receipts",
+          values,
+        );
+      }
+    } else if (values.followup_state === "generated") {
+      if (generatedArtifacts.length < 1 || deploymentReceipts.length !== 0) {
+        addFailure(
+          "generated_lifecycle_evidence",
+          "generated lifecycle requires a generated instrument and no deployment receipt",
+          values,
+        );
+      }
+    } else if (values.followup_state === "deployed") {
+      if (generatedArtifacts.length < 1 || deploymentReceipts.length < 1) {
+        addFailure(
+          "deployed_lifecycle_evidence",
+          "deployed lifecycle requires both a deployed generated instrument and a deployment receipt",
+          values,
+        );
+      }
     }
-    if (values.followup_state === "deployed" &&
-        !artifacts.some((artifact) => artifact && artifact.artifact_state === "deployed")) {
-      addFailure("deployed_state_has_deployed_artifact", "deployed lifecycle has no deployed artifact", values);
+  }
+
+  if (Array.isArray(options.discovered_artifacts) && Array.isArray(artifacts)) {
+    const trackedPaths = new Set(
+      artifacts
+        .filter((artifact) => artifact && typeof artifact.path === "string")
+        .map((artifact) => normalizeRepoPath(artifact.path)),
+    );
+    const discovered = new Set(options.discovered_artifacts.map(normalizeRepoPath));
+    for (const artifactPath of discovered) {
+      if (!trackedPaths.has(artifactPath)) {
+        addFailure(
+          "untracked_followup_artifact",
+          `follow-up namespace contains an untracked artifact: ${artifactPath}`,
+          values,
+          { path: artifactPath },
+        );
+      }
+    }
+    for (const artifactPath of trackedPaths) {
+      if (!discovered.has(artifactPath)) {
+        addFailure(
+          "tracked_artifact_exists",
+          `tracked artifact does not exist in the follow-up namespace: ${artifactPath}`,
+          values,
+          { path: artifactPath },
+        );
+      }
     }
   }
 
@@ -203,7 +456,8 @@ function validateNativePanelLifecycle(state, metadata) {
 function verifyNativePanelLifecycle(root = DEFAULT_ROOT) {
   const state = readJson(root, PANEL_STATE);
   const metadata = readJson(root, FOLLOWUP_METADATA);
-  const failures = validateNativePanelLifecycle(state, metadata);
+  const discoveredArtifacts = discoverFollowupArtifacts(root, metadata);
+  const failures = validateNativePanelLifecycle(state, metadata, { discovered_artifacts: discoveredArtifacts });
   const lifecycle = state.instrument_lifecycle || {};
   const pilot = Array.isArray(lifecycle.pilot_collections) && lifecycle.pilot_collections.length === 1
     ? lifecycle.pilot_collections[0]
@@ -211,10 +465,15 @@ function verifyNativePanelLifecycle(root = DEFAULT_ROOT) {
   const audit = lifecycle.item_level_audit || {};
   const followup = lifecycle.followup_instrument || {};
 
+  const artifactDigests = [];
   for (const artifact of metadata.tracked_artifacts || []) {
-    if (!artifact.path || !fs.existsSync(path.join(root, artifact.path))) {
+    if (!artifact || typeof artifact.path !== "string") continue;
+    const absolutePath = path.join(root, artifact.path);
+    if (!fs.existsSync(absolutePath)) continue;
+    const stat = fs.lstatSync(absolutePath);
+    if (!stat.isFile() || stat.isSymbolicLink()) {
       failures.push({
-        invariant: "tracked_artifact_exists",
+        invariant: "tracked_artifact_is_regular_file",
         pilot_state: pilot.collection_state ?? null,
         audit_state: audit.state ?? null,
         followup_state: followup.lifecycle_state ?? null,
@@ -223,18 +482,26 @@ function verifyNativePanelLifecycle(root = DEFAULT_ROOT) {
           pilot_and_audit: PANEL_STATE,
           followup_and_artifacts: FOLLOWUP_METADATA,
         },
-        detail: `tracked artifact does not exist: ${artifact.path || "<missing path>"}`,
+        detail: `tracked artifact must be a regular non-symlink file: ${artifact.path}`,
       });
+      continue;
     }
+    artifactDigests.push({
+      path: artifact.path,
+      role: artifact.role,
+      sha256: sha256File(absolutePath),
+    });
   }
 
   return {
-    schema: "canto-span-native-panel-lifecycle-verification-v1",
+    schema: "canto-span-native-panel-lifecycle-verification-v2",
     pilot_state: pilot.collection_state ?? null,
     audit_state: audit.state ?? null,
     followup_state: followup.lifecycle_state ?? null,
     deployment_allowed: followup.deployment_allowed ?? null,
     tracked_artifacts: Array.isArray(metadata.tracked_artifacts) ? metadata.tracked_artifacts.length : null,
+    discovered_artifacts: discoveredArtifacts.length,
+    artifact_digests: artifactDigests,
     failed: failures.length,
     status: failures.length === 0 ? "PASS" : "FAIL",
     failures,
@@ -248,8 +515,12 @@ if (require.main === module) {
 }
 
 module.exports = {
+  ACTIVE_ROOT,
   PANEL_STATE,
   FOLLOWUP_METADATA,
+  GENERATED_DIRECTORY,
+  DEPLOYMENT_DIRECTORY,
+  discoverFollowupArtifacts,
   validateNativePanelLifecycle,
   verifyNativePanelLifecycle,
 };
