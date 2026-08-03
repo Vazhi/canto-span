@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Vazhi/canto-span/schemas/pedagogical-corpus-package.schema.json",
+  "title": "Canto Span pedagogical-corpus package manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "package_id", "package_kind", "root", "lifecycle", "source", "lineage", "review_authority", "candidate_discovery", "files", "record_identity", "relations", "projections", "summary"],
+  "properties": {
+    "schema": {"const": "canto-span-pedagogical-corpus-package-v1"},
+    "package_id": {"type": "string", "minLength": 1},
+    "package_kind": {"enum": ["weekly", "dialog", "other"]},
+    "root": {"$ref": "#/$defs/repositoryPath"},
+    "lifecycle": {"enum": ["preserved", "review_in_progress", "reviewed", "superseded", "withdrawn"]},
+    "source": {"$ref": "#/$defs/source"},
+    "lineage": {"$ref": "#/$defs/lineage"},
+    "review_authority": {"$ref": "#/$defs/reviewAuthority"},
+    "candidate_discovery": {"$ref": "#/$defs/candidateDiscovery"},
+    "files": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/fileEntry"}},
+    "record_identity": {"$ref": "#/$defs/recordIdentity"},
+    "relations": {"$ref": "#/$defs/relations"},
+    "projections": {"$ref": "#/$defs/projections"},
+    "summary": {"$ref": "#/$defs/summary"}
+  },
+  "$defs": {
+    "repositoryPath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$))(?!.*\\\\)[^\\u0000]+$"
+    },
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "provider", "authorization_status", "distribution", "authorization_basis", "original_file", "byte_sha256", "semantic_sha256", "source_claims_authority"],
+      "properties": {
+        "source_id": {"type": "string", "minLength": 1},
+        "provider": {"type": "string", "minLength": 1},
+        "authorization_status": {"enum": ["authorized", "restricted", "unknown", "prohibited"]},
+        "distribution": {"enum": ["repository_allowed", "private_only", "metadata_only", "prohibited"]},
+        "authorization_basis": {"type": "string", "minLength": 1},
+        "original_file": {"$ref": "#/$defs/repositoryPath"},
+        "byte_sha256": {"$ref": "#/$defs/sha256"},
+        "semantic_sha256": {"$ref": "#/$defs/sha256"},
+        "source_claims_authority": {"const": "metadata_only"}
+      }
+    },
+    "lineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["lineage_id", "parent_lineage_ids", "independence_group"],
+      "properties": {
+        "lineage_id": {"type": "string", "minLength": 1},
+        "parent_lineage_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "independence_group": {"type": "string", "minLength": 1}
+      }
+    },
+    "reviewAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "authority_issue", "reviewer_role", "reviewed_source_semantic_sha256", "authority_record", "event_file"],
+      "properties": {
+        "state": {"enum": ["preserved", "mechanical", "reviewed", "accepted", "superseded", "withdrawn"]},
+        "authority_issue": {"type": ["integer", "null"], "minimum": 1},
+        "reviewer_role": {"enum": ["project_reviewer", "external_expert", "native_reviewer", "source_provider_metadata"]},
+        "reviewed_source_semantic_sha256": {"oneOf": [{"$ref": "#/$defs/sha256"}, {"type": "null"}]},
+        "authority_record": {"oneOf": [{"$ref": "#/$defs/repositoryPath"}, {"type": "null"}]},
+        "event_file": {"oneOf": [{"$ref": "#/$defs/repositoryPath"}, {"type": "null"}]}
+      }
+    },
+    "candidateDiscovery": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "snapshot_file", "snapshot_semantic_sha256", "generator_command"],
+      "properties": {
+        "mode": {"const": "frozen_snapshot"},
+        "snapshot_file": {"$ref": "#/$defs/repositoryPath"},
+        "snapshot_semantic_sha256": {"$ref": "#/$defs/sha256"},
+        "generator_command": {"type": "null"}
+      }
+    },
+    "fileEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "role", "byte_sha256", "semantic_sha256"],
+      "properties": {
+        "path": {"$ref": "#/$defs/repositoryPath"},
+        "role": {"enum": ["source_original", "source_projection", "authority_record", "review_events", "candidate_snapshot", "duplicate_edges", "discrepancies", "implementation_links", "routes", "items_projection", "aggregate_projection", "documentation", "control"]},
+        "byte_sha256": {"$ref": "#/$defs/sha256"},
+        "semantic_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "recordIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["record_file", "id_field", "continuity_lock_sha256"],
+      "properties": {
+        "record_file": {"$ref": "#/$defs/repositoryPath"},
+        "id_field": {"type": "string", "minLength": 1},
+        "continuity_lock_sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "relations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["duplicate_edges_file", "discrepancies_file", "implementation_links_file", "routes_file"],
+      "properties": {
+        "duplicate_edges_file": {"oneOf": [{"$ref": "#/$defs/repositoryPath"}, {"type": "null"}]},
+        "discrepancies_file": {"oneOf": [{"$ref": "#/$defs/repositoryPath"}, {"type": "null"}]},
+        "implementation_links_file": {"oneOf": [{"$ref": "#/$defs/repositoryPath"}, {"type": "null"}]},
+        "routes_file": {"oneOf": [{"$ref": "#/$defs/repositoryPath"}, {"type": "null"}]}
+      }
+    },
+    "projections": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["items_tsv_file", "aggregate_file"],
+      "properties": {
+        "items_tsv_file": {"oneOf": [{"$ref": "#/$defs/repositoryPath"}, {"type": "null"}]},
+        "aggregate_file": {"oneOf": [{"$ref": "#/$defs/repositoryPath"}, {"type": "null"}]}
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["record_count", "duplicate_edge_count", "discrepancy_count", "implementation_link_count", "route_count"],
+      "properties": {
+        "record_count": {"type": "integer", "minimum": 1},
+        "duplicate_edge_count": {"type": "integer", "minimum": 0},
+        "discrepancy_count": {"type": "integer", "minimum": 0},
+        "implementation_link_count": {"type": "integer", "minimum": 0},
+        "route_count": {"type": "integer", "minimum": 0}
+      }
+    }
+  }
+}
