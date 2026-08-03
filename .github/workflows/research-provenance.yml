@@ -24,48 +24,12 @@ jobs:
       - name: Reconstruct reviewed state
         run: |
           set -euxo pipefail
-          cat \
-            tools/.dialog005-reviewed-state.chunk05b.00 \
-            tools/.dialog005-reviewed-state.chunk05b.01 \
-            tools/.dialog005-reviewed-state.chunk05b.02 \
-            tools/.dialog005-reviewed-state.chunk05b.03 \
-            > /tmp/dialog005-chunk05b
-          cat \
-            tools/.dialog005-reviewed-state.chunk06.00 \
-            tools/.dialog005-reviewed-state.chunk06.01 \
-            tools/.dialog005-reviewed-state.chunk06.02 \
-            tools/.dialog005-reviewed-state.chunk06.03 \
-            tools/.dialog005-reviewed-state.chunk06.04 \
-            tools/.dialog005-reviewed-state.chunk06.05 \
-            tools/.dialog005-reviewed-state.chunk06.06 \
-            tools/.dialog005-reviewed-state.chunk06.07 \
-            > /tmp/dialog005-chunk06
-          cat \
-            tools/.dialog005-reviewed-state.chunk07.00 \
-            tools/.dialog005-reviewed-state.chunk07.01 \
-            tools/.dialog005-reviewed-state.chunk07.02 \
-            tools/.dialog005-reviewed-state.chunk07.03 \
-            tools/.dialog005-reviewed-state.chunk07.04 \
-            tools/.dialog005-reviewed-state.chunk07.05 \
-            tools/.dialog005-reviewed-state.chunk07.06 \
-            tools/.dialog005-reviewed-state.chunk07.07 \
-            > /tmp/dialog005-chunk07
-
+          cat tools/.dialog005-reviewed-state.chunk05b.00 tools/.dialog005-reviewed-state.chunk05b.01 tools/.dialog005-reviewed-state.chunk05b.02 tools/.dialog005-reviewed-state.chunk05b.03 > /tmp/dialog005-chunk05b
+          cat tools/.dialog005-reviewed-state.chunk06.00 tools/.dialog005-reviewed-state.chunk06.01 tools/.dialog005-reviewed-state.chunk06.02 tools/.dialog005-reviewed-state.chunk06.03 tools/.dialog005-reviewed-state.chunk06.04 tools/.dialog005-reviewed-state.chunk06.05 tools/.dialog005-reviewed-state.chunk06.06 tools/.dialog005-reviewed-state.chunk06.07 > /tmp/dialog005-chunk06
+          cat tools/.dialog005-reviewed-state.chunk07.00 tools/.dialog005-reviewed-state.chunk07.01 tools/.dialog005-reviewed-state.chunk07.02 tools/.dialog005-reviewed-state.chunk07.03 tools/.dialog005-reviewed-state.chunk07.04 tools/.dialog005-reviewed-state.chunk07.05 tools/.dialog005-reviewed-state.chunk07.06 tools/.dialog005-reviewed-state.chunk07.07 > /tmp/dialog005-chunk07
           test "$(sha256sum /tmp/dialog005-chunk06 | cut -d' ' -f1)" = "a0166dd9fd57e94253fd2c561599cbe61f8d469bd2686bdf1cda4b04045b4edb"
           test "$(sha256sum /tmp/dialog005-chunk07 | cut -d' ' -f1)" = "c9d5c2fe17fe1fed87ac39cd60a4215b120ce3a224617da05fb4c445b8462728"
-
-          cat \
-            tools/.dialog005-reviewed-state.chunk00 \
-            tools/.dialog005-reviewed-state.chunk01 \
-            tools/.dialog005-reviewed-state.chunk02 \
-            tools/.dialog005-reviewed-state.chunk03 \
-            tools/.dialog005-reviewed-state.chunk04 \
-            tools/.dialog005-reviewed-state.chunk05a \
-            /tmp/dialog005-chunk05b \
-            /tmp/dialog005-chunk06 \
-            /tmp/dialog005-chunk07 \
-            > /tmp/dialog005-reviewed-state.b64
-
+          cat tools/.dialog005-reviewed-state.chunk00 tools/.dialog005-reviewed-state.chunk01 tools/.dialog005-reviewed-state.chunk02 tools/.dialog005-reviewed-state.chunk03 tools/.dialog005-reviewed-state.chunk04 tools/.dialog005-reviewed-state.chunk05a /tmp/dialog005-chunk05b /tmp/dialog005-chunk06 /tmp/dialog005-chunk07 > /tmp/dialog005-reviewed-state.b64
           test "$(wc -c < /tmp/dialog005-reviewed-state.b64)" = "63132"
           test "$(sha256sum /tmp/dialog005-reviewed-state.b64 | cut -d' ' -f1)" = "7ae5aa9a5716a9322409b25dfb2b7723c83310fdab4b8c1dc44e5dd0b84f913b"
           base64 --decode /tmp/dialog005-reviewed-state.b64 > /tmp/dialog005-reviewed-state.tar.gz
@@ -76,38 +40,36 @@ jobs:
 
       - name: Validate final Dialog 005 state
         run: |
-          set -euxo pipefail
+          set -euo pipefail
           python3 -m py_compile tools/verify-pedagogical-corpus-review.py tests/tooling/research/pedagogical-corpus-review.test.py
-          python3 tests/tooling/research/pedagogical-corpus-review.test.py
-          npm run verify:pedagogical-corpus-review
-          npm run verify:research
-          npm run verify
-          git diff --check
+          check() {
+            label="$1"; shift
+            log="/tmp/${label}.log"
+            if ! "$@" >"$log" 2>&1; then
+              echo "FAILED: $label"
+              tail -n 240 "$log"
+              exit 1
+            fi
+            echo "PASS: $label"
+          }
+          check focused python3 tests/tooling/research/pedagogical-corpus-review.test.py
+          check packages npm run verify:pedagogical-corpus-review
+          check research npm run verify:research
+          check core npm run verify
+          if ! git diff --check >/tmp/diff-check.log 2>&1; then
+            echo "FAILED: diff-check"
+            cat /tmp/diff-check.log
+            exit 1
+          fi
+          echo "PASS: diff-check"
 
       - name: Commit reviewed state
         run: |
           set -euxo pipefail
           find tools tests -type d -name __pycache__ -prune -exec rm -rf {} +
           git rm -f tools/.dialog005-* data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/.review-claim
-          git add \
-            config/pedagogical-corpus-source-locks.json \
-            config/verification-profiles.json \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/README.md \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/dialog-context-routing-r1.json \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/expert-review-r1.tsv \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/mechanical-cross-reference-r1.json \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/package-integrity-r1.json \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/research-summary.md \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/review.json \
-            docs/research/GLOSSIKA-YUEHK-A1-DLG-005-20251228-CORPUS-INGRESS.md \
-            package.json \
-            tests/tooling/research/pedagogical-corpus-review.test.py
-          git diff --quiet HEAD -- \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/source.json \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/items.tsv \
-            data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/crosswalk.json \
-            data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json \
-            src main.js
+          git add config/pedagogical-corpus-source-locks.json config/verification-profiles.json data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/README.md data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/dialog-context-routing-r1.json data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/expert-review-r1.tsv data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/mechanical-cross-reference-r1.json data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/package-integrity-r1.json data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/research-summary.md data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/review.json docs/research/GLOSSIKA-YUEHK-A1-DLG-005-20251228-CORPUS-INGRESS.md package.json tests/tooling/research/pedagogical-corpus-review.test.py
+          git diff --quiet HEAD -- data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/source.json data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/items.tsv data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-005-20251228/crosswalk.json data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json src main.js
           test -z "$(git ls-files --others --exclude-standard)"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
