@@ -8,6 +8,8 @@ const {
   FOLLOWUP_METADATA,
   GENERATED_DIRECTORY,
   DEPLOYMENT_DIRECTORY,
+  EXEMPT_PATHS,
+  EXEMPT_DIRECTORIES,
   validateNativePanelLifecycle,
   verifyNativePanelLifecycle,
 } = require("../../../tools/verify-native-panel-lifecycle");
@@ -27,9 +29,10 @@ function lifecycleFixtures() {
     response_template_file: `${ACTIVE_ROOT}/followup-draft-v1-response-template.tsv`,
     artifact_contract: {
       scope_root: ACTIVE_ROOT,
-      tracked_prefix: "followup-",
       generated_directory: GENERATED_DIRECTORY,
       deployment_directory: DEPLOYMENT_DIRECTORY,
+      exempt_paths: [...EXEMPT_PATHS],
+      exempt_directories: [...EXEMPT_DIRECTORIES],
     },
     tracked_artifacts: [
       { path: `${ACTIVE_ROOT}/followup-draft-v1-items.tsv`, role: "item_source", artifact_state: "draft_source", deployable: false },
@@ -263,18 +266,18 @@ test("deployed lifecycle requires both deployed instrument and deployment receip
   }
 });
 
-test("untracked follow-up artifacts fail closed", () => {
+test("arbitrarily named untracked files fail the closed inventory", () => {
   const fixture = lifecycleFixtures();
   const failures = validateNativePanelLifecycle(fixture.state, fixture.metadata, {
     discovered_artifacts: [
       ...discoveredFor(fixture.metadata),
-      `${GENERATED_DIRECTORY}/followup-untracked-form.json`,
+      `${ACTIVE_ROOT}/google-form-script.js`,
     ],
   });
   assert.ok(hasFailure(failures, "untracked_followup_artifact"));
 });
 
-test("tracked artifacts absent from the namespace fail closed", () => {
+test("tracked artifacts absent from the inventory fail closed", () => {
   const fixture = lifecycleFixtures();
   const failures = validateNativePanelLifecycle(fixture.state, fixture.metadata, {
     discovered_artifacts: discoveredFor(fixture.metadata).slice(0, 2),
@@ -298,7 +301,7 @@ test("artifact declarations require unique paths, unique source roles, and the c
   ));
 
   const badContract = lifecycleFixtures();
-  badContract.metadata.artifact_contract.generated_directory = `${ACTIVE_ROOT}/other`;
+  badContract.metadata.artifact_contract.exempt_paths.push(`${ACTIVE_ROOT}/hidden.js`);
   assert.ok(hasFailure(
     validateNativePanelLifecycle(badContract.state, badContract.metadata),
     "canonical_artifact_contract",
@@ -312,7 +315,7 @@ test("unrelated prose does not become lifecycle authority", () => {
   assert.deepEqual(validateNativePanelLifecycle(fixture.state, fixture.metadata), []);
 });
 
-test("current repository lifecycle and closed artifact namespace pass", () => {
+test("current repository lifecycle and closed artifact inventory pass", () => {
   const root = path.resolve(__dirname, "../../..");
   const result = verifyNativePanelLifecycle(root);
   assert.equal(result.status, "PASS", JSON.stringify(result.failures, null, 2));
