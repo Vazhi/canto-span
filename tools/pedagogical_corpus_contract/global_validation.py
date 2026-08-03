@@ -89,6 +89,8 @@ def validate_global(packages: list[dict[str, Any]]) -> dict[str, int]:
             if value["status"] == "accepted":
                 req(value["replacement_value"] is not None, f"{label} accepted replacement missing value")
                 req(isinstance(value["authority_issue"], int) and value["authority_issue"] > 0, f"{label} accepted replacement missing authority")
+                req(value["authority_issue"] == package["authority_issue"], f"{label} authority issue does not match package review authority")
+                req(value["type"] in package["replacement_rights"], f"{label} type is not covered by replacement rights")
             else:
                 req(value["authority_issue"] is None, f"{label} non-accepted replacement claims authority")
             discrepancy_count += 1
