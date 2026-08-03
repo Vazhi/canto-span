@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: agent/dialog004-ingress-review
       - name: Stage exact dialog 004 review inputs
         run: |
           mkdir -p /tmp/dialog004-review-inputs/package \
