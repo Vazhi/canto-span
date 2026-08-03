@@ -65,6 +65,12 @@
         "command": ["node", "tools/verify-native-panel-lifecycle.js"],
         "reason": "Prevent follow-up native-panel lifecycle, artifact-role, generated-form, and deployment evidence from bypassing pilot closure and accepted item audit.",
         "run_when": "Canonical pilot, item-audit, follow-up lifecycle, artifact contract, generated namespace, or deployment namespace changes."
+      },
+      {
+        "id": "ab30-aggregate-corpus",
+        "command": ["python3", "review-packets/corpus-review/AB30/verify-aggregate-corpus-evidence-manifest-r1.py"],
+        "reason": "Prevent accepted AB30 component decisions, source inventories, source manifests, candidate coverage, and note projections from drifting behind unchanged aggregate counts.",
+        "run_when": "The AB30 aggregate manifest, any referenced component decision or source file, the AB30 note, or its verifier changes."
       }
     ],
     "runtime": [

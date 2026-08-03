@@ -1,6 +1,7 @@
 {
-  "schema": "canto-span-corpus-evidence-aggregate-manifest-v1",
+  "schema": "canto-span-corpus-evidence-aggregate-manifest-v2",
   "manifest_id": "AB30-CORPUS-EVIDENCE-AGGREGATE-R1",
+  "integrity_revision": 2,
   "construction": {
     "construction_uuid": "2169217f-a21d-5165-9513-eb0edee2c220",
     "permanent_code": "AB30",
@@ -16,6 +17,11 @@
   },
   "created_on": "2026-07-30",
   "decision_storage_policy": "references_only_no_decisions_copied_renumbered_or_reclassified",
+  "note_projection_policy": {
+    "aggregate_is_references_only": true,
+    "component_source_inventories_are_source_ledger_owners": true,
+    "corpus_source_ledger_file_semantics": "references_only_aggregate_pointer_to_component_source_owners"
+  },
   "candidate_id_namespace": "ab30-",
   "components": [
     {
@@ -25,10 +31,18 @@
       "decision_ledger": "review-packets/corpus-review/AB30/review-decisions-r1.json",
       "decision_ledger_schema": "canto-span-corpus-review-decisions-v1",
       "decision_ledger_git_blob_sha": "15980caff44db2500e949e0566d6e3de8340ff3d",
+      "decision_ledger_sha256": "c223aa7b2cf9aedc6633d5ab3fe2a5ad5d90833f919c38332f38118f9e45233a",
       "source_inventory": "review-packets/corpus-review/AB30/candidate-ledger.json",
+      "source_inventory_git_blob_sha": "8695aecc4a07b6be95891be3ca98a5d057c58479",
+      "source_inventory_sha256": "315c2332de5d7dbdc14629e5b4089776abcfda57d4faa14ac01db28a495baf12",
       "source_manifest": {
-        "path": "review-packets/corpus-review/AB30/candidate-ledger.json",
-        "sha256": "1be8e59917a2f8a12da1f02f4e4e1e7d15fd9e778a9563e5630ac7bc1b5d23a3"
+        "ownership": "embedded_source_set_hash",
+        "path": null,
+        "sha256": "1be8e59917a2f8a12da1f02f4e4e1e7d15fd9e778a9563e5630ac7bc1b5d23a3",
+        "mirrored_in": [
+          "source_inventory.sourceManifestHash",
+          "decision_ledger.source_manifest_hash"
+        ]
       },
       "candidate_id_namespace": "ab30-",
       "counts": {
@@ -51,10 +65,17 @@
       "decision_ledger": "review-packets/corpus-review/AB30/hkcancor-zo-r-decisions-r2.json",
       "decision_ledger_schema": "canto-span-corpus-claim-cross-reference-decisions-v1",
       "decision_ledger_git_blob_sha": "b4c689e5ee167d627a4f1f123e998a90a8c91fc0",
+      "decision_ledger_sha256": "88ca6cb05007639abd89f8ce875e20c1e3b7db4052224ac51fa4795554f9307d",
       "source_inventory": "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-candidate-inventory.json",
+      "source_inventory_git_blob_sha": "0a01b462226acbeb0de3c948914c27aef1da6571",
+      "source_inventory_sha256": "6a1e3060efcb940f5e91f17473b7ff3958f38960322d400882c6546913532065",
       "query_summary": "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-r-query-summary.json",
+      "query_summary_git_blob_sha": "ae4f6f6d348ce9e80d904af1486e265876509ffe",
+      "query_summary_sha256": "ca4d8008eb323ed0b37cfc87b5b962370bb33567ca04318e89bdf761a4ce7c6a",
       "source_manifest": {
+        "ownership": "referenced_file",
         "path": "external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256",
+        "git_blob_sha": "9cdc2c0f1bfaaba38bb5d435c64c4252a1c99ab5",
         "sha256": "d93b064614b38227889b2db20162eb0c2fee3fb75aa94e90dd9abfc64289c731"
       },
       "candidate_id_namespace": "ab30-",
@@ -78,10 +99,17 @@
       "decision_ledger": "review-packets/corpus-review/AB30/hkcancor-zo-m-decisions-r1.json",
       "decision_ledger_schema": "canto-span-corpus-claim-cross-reference-decisions-v1",
       "decision_ledger_git_blob_sha": "cea41d2c45fe673bcf7579fe28853e3a8d539d19",
+      "decision_ledger_sha256": "24af5def69f51457c58d5f74d0e6d7f514bea7312da783f0ad983bebf322adeb",
       "source_inventory": "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-candidate-inventory.json",
+      "source_inventory_git_blob_sha": "9ed2bef1434f8f0cce2c3280cb8b65405b6a9559",
+      "source_inventory_sha256": "de2b2430af44b15955773c3a1ad0beb8c90d350f59876546168a39ebca77368f",
       "query_summary": "external-evidence/ab30-hkcancor/hkcancor-ab30-zo-m-query-summary.json",
+      "query_summary_git_blob_sha": "0ffe3546f9312ea2daaae919d524ca5065b3e113",
+      "query_summary_sha256": "7877287429591ff2e3fad8cba1e8c3e5dfc090640196e12d918775215f514b3c",
       "source_manifest": {
+        "ownership": "referenced_file",
         "path": "external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256",
+        "git_blob_sha": "9cdc2c0f1bfaaba38bb5d435c64c4252a1c99ab5",
         "sha256": "d93b064614b38227889b2db20162eb0c2fee3fb75aa94e90dd9abfc64289c731"
       },
       "candidate_id_namespace": "ab30-",
@@ -127,6 +155,11 @@
     "component_candidate_ids_disjoint": true,
     "component_decision_counts_complete": true,
     "component_decisions_embedded": false,
-    "component_classifications_modified": false
+    "component_classifications_modified": false,
+    "component_decision_bytes_immutable": true,
+    "component_source_inventory_bytes_immutable": true,
+    "component_decision_ids_equal_source_inventory_ids": true,
+    "referenced_source_manifest_bytes_immutable": true,
+    "canonical_note_projection_complete": true
   }
 }
