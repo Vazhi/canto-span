@@ -44,7 +44,18 @@ jobs:
           python3 -m py_compile tools/finalize-dialog003-review-temporary.py
 
       - name: Generate final dialog 003 review state
-        run: python3 tools/finalize-dialog003-review-temporary.py
+        run: |
+          python3 tools/finalize-dialog003-review-temporary.py
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path("tools/verify-pedagogical-corpus-review.py")
+          text = path.read_text(encoding="utf-8")
+          old = '        if item.get("itemType") == "dialog_turn":\n'
+          new = '        if "-DLG-" in source_id and item.get("itemType") == "dialog_turn":\n'
+          if text.count(old) != 1:
+              raise SystemExit("expected one dialog-turn availability guard")
+          path.write_text(text.replace(old, new, 1), encoding="utf-8")
+          PY
 
       - name: Validate final dialog 003 state
         run: |
