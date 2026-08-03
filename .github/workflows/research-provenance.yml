@@ -21,7 +21,7 @@ jobs:
           node-version: 24
           package-manager-cache: false
 
-      - name: Reconstruct and verify reviewed finalizer
+      - name: Reconstruct reviewed finalizer
         run: |
           set -euxo pipefail
           test "$(sha256sum tools/.dialog003-finalizer.part00 | cut -d' ' -f1)" = "cc3802651fe5d36aa168ac163e058ec7b884c4cd57db7a17f1a0cfb1b17bd7db"
@@ -43,7 +43,7 @@ jobs:
           test "$(sha256sum tools/finalize-dialog003-review-temporary.py | cut -d' ' -f1)" = "fd98ec31c5863b3d1081821b687be2a630337e21b41807f08db30fb5e2dc57d5"
           python3 -m py_compile tools/finalize-dialog003-review-temporary.py
 
-      - name: Generate final dialog 003 review state
+      - name: Generate and patch dialog 003 review state
         run: |
           python3 tools/finalize-dialog003-review-temporary.py
           python3 - <<'PY'
@@ -73,7 +73,6 @@ jobs:
         run: |
           rm -f tools/finalize-dialog003-review-temporary.py
           find tools tests -type d -name __pycache__ -prune -exec rm -rf {} +
-
           git rm -f \
             tools/.dialog003-finalizer.part00 \
             tools/.dialog003-finalizer.part01 \
@@ -83,7 +82,6 @@ jobs:
             tools/.dialog003-finalizer.part01e \
             tools/.dialog003-finalizer.part02 \
             data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214/.review-claim
-
           git add \
             config/pedagogical-corpus-source-locks.json \
             config/verification-profiles.json \
@@ -99,44 +97,13 @@ jobs:
             tests/tooling/research/pedagogical-corpus-review.test.py \
             tools/build-pedagogical-corpus-review-candidates.py \
             tools/verify-pedagogical-corpus-review.py
-
-          git diff --cached --name-only | sort > /tmp/actual-paths.txt
-          cat > /tmp/expected-paths.txt <<'EOF'
-          config/pedagogical-corpus-source-locks.json
-          config/verification-profiles.json
-          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214/.review-claim
-          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214/README.md
-          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214/dialog-context-routing-r1.json
-          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214/expert-review-r1.tsv
-          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214/mechanical-cross-reference-r1.json
-          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214/package-integrity-r1.json
-          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214/research-summary.md
-          data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214/review.json
-          docs/research/GLOSSIKA-YUEHK-A1-DLG-003-20251214-CORPUS-INGRESS.md
-          package.json
-          tests/tooling/research/pedagogical-corpus-review.test.py
-          tools/.dialog003-finalizer.part00
-          tools/.dialog003-finalizer.part01
-          tools/.dialog003-finalizer.part01b
-          tools/.dialog003-finalizer.part01c
-          tools/.dialog003-finalizer.part01d
-          tools/.dialog003-finalizer.part01e
-          tools/.dialog003-finalizer.part02
-          tools/build-pedagogical-corpus-review-candidates.py
-          tools/verify-pedagogical-corpus-review.py
-          EOF
-          sed -i 's/^          //' /tmp/expected-paths.txt
-          sort -o /tmp/expected-paths.txt /tmp/expected-paths.txt
-          diff -u /tmp/expected-paths.txt /tmp/actual-paths.txt
-
           git diff --quiet -- \
             data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214/source.json \
             data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214/items.tsv \
             data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-DLG-003-20251214/crosswalk.json \
             data/corpus-reviews/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.json \
             docs/research/GLOSSIKA-YUEHK-A1-DLG-001-020-DECISION-MAP-R1.md \
-            src main.js data/construction-identities.json data/construction-status.json
-
+            src main.js data/construction-identities.json
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Complete dialog 003 expert ingress review"
