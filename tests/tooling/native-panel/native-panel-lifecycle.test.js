@@ -4,7 +4,10 @@ const assert = require("node:assert/strict");
 const path = require("node:path");
 const test = require("node:test");
 const {
+  ACTIVE_ROOT,
   FOLLOWUP_METADATA,
+  GENERATED_DIRECTORY,
+  DEPLOYMENT_DIRECTORY,
   validateNativePanelLifecycle,
   verifyNativePanelLifecycle,
 } = require("../../../tools/verify-native-panel-lifecycle");
@@ -19,13 +22,34 @@ function lifecycleFixtures() {
     instrument_status: "draft_followup",
     lifecycle_state: "draft",
     deployment_allowed: false,
-    item_file: "items.tsv",
-    crosswalk_file: "crosswalk.tsv",
-    response_template_file: "responses.tsv",
+    item_file: `${ACTIVE_ROOT}/followup-draft-v1-items.tsv`,
+    crosswalk_file: `${ACTIVE_ROOT}/followup-draft-v1-item-crosswalk.tsv`,
+    response_template_file: `${ACTIVE_ROOT}/followup-draft-v1-response-template.tsv`,
+    artifact_contract: {
+      scope_root: ACTIVE_ROOT,
+      tracked_prefix: "followup-",
+      generated_directory: GENERATED_DIRECTORY,
+      deployment_directory: DEPLOYMENT_DIRECTORY,
+    },
     tracked_artifacts: [
-      { path: "items.tsv", artifact_state: "draft_source", deployable: false },
-      { path: "crosswalk.tsv", artifact_state: "draft_source", deployable: false },
-      { path: "responses.tsv", artifact_state: "draft_source", deployable: false },
+      {
+        path: `${ACTIVE_ROOT}/followup-draft-v1-items.tsv`,
+        role: "item_source",
+        artifact_state: "draft_source",
+        deployable: false,
+      },
+      {
+        path: `${ACTIVE_ROOT}/followup-draft-v1-item-crosswalk.tsv`,
+        role: "crosswalk_source",
+        artifact_state: "draft_source",
+        deployable: false,
+      },
+      {
+        path: `${ACTIVE_ROOT}/followup-draft-v1-response-template.tsv`,
+        role: "response_template_source",
+        artifact_state: "draft_source",
+        deployable: false,
+      },
     ],
     current_live_instrument: {
       instrument_id: "YUE-JUDGMENT-PILOT-01",
@@ -73,17 +97,32 @@ function setLifecycle(fixture, pilotState, auditState, followupState) {
   metadata.lifecycle_state = followupState;
   metadata.instrument_status = followupStatuses[followupState];
   metadata.deployment_allowed = followupState === "deployed";
-  metadata.tracked_artifacts = metadata.tracked_artifacts.map((artifact) => ({
-    ...artifact,
-    artifact_state: "draft_source",
-    deployable: false,
-  }));
+  metadata.tracked_artifacts = metadata.tracked_artifacts.filter((artifact) =>
+    ["item_source", "crosswalk_source", "response_template_source"].includes(artifact.role)
+  );
   if (followupState === "generated") {
-    metadata.tracked_artifacts[0].artifact_state = "generated";
+    metadata.tracked_artifacts.push({
+      path: `${GENERATED_DIRECTORY}/followup-form.json`,
+      role: "generated_instrument",
+      artifact_state: "generated",
+      deployable: false,
+    });
   }
   if (followupState === "deployed") {
-    metadata.tracked_artifacts[0].artifact_state = "deployed";
-    metadata.tracked_artifacts[0].deployable = true;
+    metadata.tracked_artifacts.push(
+      {
+        path: `${GENERATED_DIRECTORY}/followup-form.json`,
+        role: "generated_instrument",
+        artifact_state: "deployed",
+        deployable: true,
+      },
+      {
+        path: `${DEPLOYMENT_DIRECTORY}/followup-deployment-receipt.json`,
+        role: "deployment_receipt",
+        artifact_state: "deployed",
+        deployable: false,
+      },
+    );
   }
 
   const pilot = state.instrument_lifecycle.pilot_collections[0];
@@ -100,19 +139,25 @@ function hasFailure(failures, invariant) {
   return failures.some((failure) => failure.invariant === invariant);
 }
 
+function discoveredFor(metadata) {
+  return metadata.tracked_artifacts.map((artifact) => artifact.path);
+}
+
 test("deployment lock covers all 24 pilot, audit, and follow-up combinations", () => {
   for (const pilotState of ["active", "closed"]) {
     for (const auditState of ["not_started", "in_progress", "accepted"]) {
       for (const followupState of ["draft", "locked", "generated", "deployed"]) {
         const fixture = lifecycleFixtures();
         setLifecycle(fixture, pilotState, auditState, followupState);
-        const failures = validateNativePanelLifecycle(fixture.state, fixture.metadata);
-        const allowed = followupState === "draft" ||
-          (pilotState === "closed" && auditState === "accepted");
+        const failures = validateNativePanelLifecycle(fixture.state, fixture.metadata, {
+          discovered_artifacts: discoveredFor(fixture.metadata),
+        });
+        const allowed = followupState === "draft"
+          || (pilotState === "closed" && auditState === "accepted");
         assert.equal(
           failures.length === 0,
           allowed,
-          `${pilotState}/${auditState}/${followupState}: ${JSON.stringify(failures)}`
+          `${pilotState}/${auditState}/${followupState}: ${JSON.stringify(failures)}`,
         );
       }
     }
@@ -121,7 +166,12 @@ test("deployment lock covers all 24 pilot, audit, and follow-up combinations", (
 
 test("current active, not-started, draft fixture passes", () => {
   const { metadata, state } = lifecycleFixtures();
-  assert.deepEqual(validateNativePanelLifecycle(state, metadata), []);
+  assert.deepEqual(
+    validateNativePanelLifecycle(state, metadata, {
+      discovered_artifacts: discoveredFor(metadata),
+    }),
+    [],
+  );
 });
 
 test("missing and duplicate lifecycle declarations fail", () => {
@@ -133,15 +183,15 @@ test("missing and duplicate lifecycle declarations fail", () => {
 
   const duplicate = lifecycleFixtures();
   duplicate.state.instrument_lifecycle.pilot_collections.push(
-    clone(duplicate.state.instrument_lifecycle.pilot_collections[0])
+    clone(duplicate.state.instrument_lifecycle.pilot_collections[0]),
   );
   assert.ok(hasFailure(
     validateNativePanelLifecycle(duplicate.state, duplicate.metadata),
-    "exactly_one_pilot_declaration"
+    "exactly_one_pilot_declaration",
   ));
 });
 
-test("unsupported states and cross-file contradictions fail precisely", () => {
+test("unsupported states and cross-file contradictions fail", () => {
   for (const mutate of [
     (fixture) => { fixture.state.instrument_lifecycle.pilot_collections[0].collection_state = "paused"; },
     (fixture) => { fixture.state.instrument_lifecycle.item_level_audit.state = "complete"; },
@@ -155,43 +205,118 @@ test("unsupported states and cross-file contradictions fail precisely", () => {
   }
 });
 
-test("draft lifecycle rejects generated, deployed, or deployable artifacts", () => {
-  for (const artifact of [
-    { artifact_state: "generated", deployable: false },
-    { artifact_state: "deployed", deployable: false },
-    { artifact_state: "draft_source", deployable: true },
-  ]) {
+test("deployed lifecycle cannot coexist with deployment_allowed=false", () => {
+  const fixture = lifecycleFixtures();
+  setLifecycle(fixture, "closed", "accepted", "deployed");
+  fixture.metadata.deployment_allowed = false;
+  fixture.state.instrument_lifecycle.followup_instrument.deployment_allowed = false;
+  const failures = validateNativePanelLifecycle(fixture.state, fixture.metadata);
+  assert.ok(hasFailure(failures, "deployment_permission_matches_lifecycle"));
+});
+
+test("deployment permission cannot be true before deployed lifecycle", () => {
+  const fixture = lifecycleFixtures();
+  setLifecycle(fixture, "closed", "accepted", "generated");
+  fixture.metadata.deployment_allowed = true;
+  fixture.state.instrument_lifecycle.followup_instrument.deployment_allowed = true;
+  const failures = validateNativePanelLifecycle(fixture.state, fixture.metadata);
+  assert.ok(hasFailure(failures, "deployment_permission_matches_lifecycle"));
+});
+
+test("source files cannot satisfy generated or deployed evidence", () => {
+  for (const followupState of ["generated", "deployed"]) {
     const fixture = lifecycleFixtures();
-    Object.assign(fixture.metadata.tracked_artifacts[0], artifact);
-    const failures = validateNativePanelLifecycle(fixture.state, fixture.metadata);
-    assert.ok(
-      hasFailure(failures, "artifact_state_not_ahead_of_lifecycle") ||
-      hasFailure(failures, "draft_has_no_generated_or_deployable_artifact")
+    setLifecycle(fixture, "closed", "accepted", followupState);
+    fixture.metadata.tracked_artifacts = fixture.metadata.tracked_artifacts.filter((artifact) =>
+      !["generated_instrument", "deployment_receipt"].includes(artifact.role)
     );
+    fixture.metadata.tracked_artifacts[0].artifact_state = followupState;
+    fixture.metadata.tracked_artifacts[0].deployable = followupState === "deployed";
+    const failures = validateNativePanelLifecycle(fixture.state, fixture.metadata);
+    assert.ok(hasFailure(
+      failures,
+      "source_role_cannot_supply_generated_or_deployed_evidence",
+    ));
+    assert.ok(hasFailure(
+      failures,
+      followupState === "generated" ? "generated_lifecycle_evidence" : "deployed_lifecycle_evidence",
+    ));
   }
 });
 
-test("artifact declarations must be unique, complete, and lifecycle-consistent", () => {
-  const duplicate = lifecycleFixtures();
-  duplicate.metadata.tracked_artifacts.push(clone(duplicate.metadata.tracked_artifacts[0]));
+test("generated instruments and deployment receipts use separate canonical roles and directories", () => {
+  const wrongGenerated = lifecycleFixtures();
+  setLifecycle(wrongGenerated, "closed", "accepted", "generated");
+  wrongGenerated.metadata.tracked_artifacts.find(
+    (artifact) => artifact.role === "generated_instrument",
+  ).path = `${ACTIVE_ROOT}/followup-form.json`;
   assert.ok(hasFailure(
-    validateNativePanelLifecycle(duplicate.state, duplicate.metadata),
-    "unique_tracked_artifact_declaration"
+    validateNativePanelLifecycle(wrongGenerated.state, wrongGenerated.metadata),
+    "generated_instrument_uses_canonical_directory",
   ));
 
-  const missing = lifecycleFixtures();
-  missing.metadata.tracked_artifacts.pop();
+  const wrongReceipt = lifecycleFixtures();
+  setLifecycle(wrongReceipt, "closed", "accepted", "deployed");
+  wrongReceipt.metadata.tracked_artifacts.find(
+    (artifact) => artifact.role === "deployment_receipt",
+  ).path = `${GENERATED_DIRECTORY}/followup-deployment-receipt.json`;
   assert.ok(hasFailure(
-    validateNativePanelLifecycle(missing.state, missing.metadata),
-    "all_followup_sources_are_tracked"
+    validateNativePanelLifecycle(wrongReceipt.state, wrongReceipt.metadata),
+    "deployment_receipt_uses_canonical_directory",
+  ));
+});
+
+test("deployed lifecycle requires both deployed instrument and deployment receipt", () => {
+  for (const missingRole of ["generated_instrument", "deployment_receipt"]) {
+    const fixture = lifecycleFixtures();
+    setLifecycle(fixture, "closed", "accepted", "deployed");
+    fixture.metadata.tracked_artifacts = fixture.metadata.tracked_artifacts.filter(
+      (artifact) => artifact.role !== missingRole,
+    );
+    const failures = validateNativePanelLifecycle(fixture.state, fixture.metadata);
+    assert.ok(hasFailure(failures, "deployed_lifecycle_evidence"), missingRole);
+  }
+});
+
+test("untracked follow-up artifacts fail closed", () => {
+  const fixture = lifecycleFixtures();
+  const failures = validateNativePanelLifecycle(fixture.state, fixture.metadata, {
+    discovered_artifacts: [
+      ...discoveredFor(fixture.metadata),
+      `${GENERATED_DIRECTORY}/followup-untracked-form.json`,
+    ],
+  });
+  assert.ok(hasFailure(failures, "untracked_followup_artifact"));
+});
+
+test("tracked artifacts absent from the namespace fail closed", () => {
+  const fixture = lifecycleFixtures();
+  const failures = validateNativePanelLifecycle(fixture.state, fixture.metadata, {
+    discovered_artifacts: discoveredFor(fixture.metadata).slice(0, 2),
+  });
+  assert.ok(hasFailure(failures, "tracked_artifact_exists"));
+});
+
+test("artifact declarations require unique paths, unique source roles, and the canonical contract", () => {
+  const duplicatePath = lifecycleFixtures();
+  duplicatePath.metadata.tracked_artifacts.push(clone(duplicatePath.metadata.tracked_artifacts[0]));
+  assert.ok(hasFailure(
+    validateNativePanelLifecycle(duplicatePath.state, duplicatePath.metadata),
+    "unique_tracked_artifact_declaration",
   ));
 
-  const generatedWithoutArtifact = lifecycleFixtures();
-  setLifecycle(generatedWithoutArtifact, "closed", "accepted", "generated");
-  generatedWithoutArtifact.metadata.tracked_artifacts[0].artifact_state = "draft_source";
+  const duplicateRole = lifecycleFixtures();
+  duplicateRole.metadata.tracked_artifacts[1].role = "item_source";
   assert.ok(hasFailure(
-    validateNativePanelLifecycle(generatedWithoutArtifact.state, generatedWithoutArtifact.metadata),
-    "generated_state_has_generated_artifact"
+    validateNativePanelLifecycle(duplicateRole.state, duplicateRole.metadata),
+    "exactly_one_source_artifact_per_role",
+  ));
+
+  const badContract = lifecycleFixtures();
+  badContract.metadata.artifact_contract.generated_directory = `${ACTIVE_ROOT}/other`;
+  assert.ok(hasFailure(
+    validateNativePanelLifecycle(badContract.state, badContract.metadata),
+    "canonical_artifact_contract",
   ));
 });
 
@@ -202,7 +327,7 @@ test("unrelated prose does not become lifecycle authority", () => {
   assert.deepEqual(validateNativePanelLifecycle(fixture.state, fixture.metadata), []);
 });
 
-test("current repository lifecycle and tracked artifacts pass", () => {
+test("current repository lifecycle and closed artifact namespace pass", () => {
   const root = path.resolve(__dirname, "../../..");
   const result = verifyNativePanelLifecycle(root);
   assert.equal(result.status, "PASS", JSON.stringify(result.failures, null, 2));
@@ -210,4 +335,7 @@ test("current repository lifecycle and tracked artifacts pass", () => {
   assert.equal(result.audit_state, "not_started");
   assert.equal(result.followup_state, "draft");
   assert.equal(result.deployment_allowed, false);
+  assert.equal(result.tracked_artifacts, 3);
+  assert.equal(result.discovered_artifacts, 3);
+  assert.equal(result.artifact_digests.length, 3);
 });
