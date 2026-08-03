@@ -1,29 +1,32 @@
-# Glossika Cantonese (HK) A1 Week 15 corpus package
+# Glossika Cantonese (HK) A1 Week 15 contract package
 
-- Source ID: `GLOSSIKA-YUEHK-A1-W15-20260628`
+- Package: `GLOSSIKA-YUEHK-A1-W15-20260628`
 - Lesson: Directions & Places
 - Source date: 2026-06-28
 - Gmail message: `19f0cf457d1b8ac3`
-- Intake issue: #132
-- Work claim: #270
+- Source issue: #132
+- Migration intake/authority: #511
+- Work claim: #512
 - Related research: #127
-- Record count: 65
-- Types: 16 sentences, 4 dialog turns, 39 lexical entries, 6 phonics pairs
-- Source payload hash: `sha256:0e57454b530e1a50bfc4a4cf9cedada7fcf87f194f290251dc2f3e4f9aaa65e8`
+- Dependency: PR #510 reviewed head `6b23032736623b2ac352bcbf983aa22bc7f15039`
+- State: `reviewed`, not `accepted`
+- Records: 65
 
-## Files
+## Contract state
 
-- `source.json`: immutable source fields, order, and source hashes.
-- `items.tsv`: review-oriented flat rendering.
-- `review.json`: mechanical duplicate candidates, ingress classifications, discrepancy flags, and empty reviewed-value fields.
+The package uses a closed manifest, continuity-locked record IDs, digest-bound review authority, one review event per record, a frozen candidate snapshot, typed global relations, and exact aggregate projection.
+
+The immutable `source.json` and `items.tsv` remain unchanged. No source pronunciation, translation, gloss, orthography, or missing value is replaced.
+
+## Review outcome
+
+- one accepted active-package exact duplicate edge: Week 15 `I038 十萬` → Week 14 `I043 十萬`;
+- ten bounded runtime implementation-owner links retained as implementation information, not corpus identity or linguistic proof;
+- five open discrepancies/routes: `I003`, `I056`, `I062`, `I064`, and incomplete `I065`;
+- zero replacement rights and zero source replacements.
+
+The stale #473 / PR #474 review is evidence input only and grants no current authority.
 
 ## Evidence boundary
 
-This package preserves authorized pedagogical data. It does not promote any route, localizer, question, result, particle, numeral, lexical, or phonological claim. Mechanical duplicate paths are candidates, not accepted identity decisions.
-
-## Known source alerts
-
-- Casual/Polite/Standard labels require independent register analysis.
-- The generic final 咩/呀 yes-no-question claim requires direct Cantonese evidence and controlled contrasts.
-- The final phonics row is incomplete on the A side and is preserved exactly.
-- Phonics IPA, glosses, and pair status require independent verification.
+Glossika is pedagogical attestation. This package does not establish productivity, frequency, construction identity, dialect-wide naturalness, preferred pronunciation, parser correctness, runtime acceptance, or linguistic-status promotion.
