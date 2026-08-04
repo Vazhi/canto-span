@@ -1,5 +1,8 @@
 "use strict";
 
+const fs = require("fs");
+const path = require("path");
+
 const ALLOWED_STATUSES = new Set([
   "supported_productive",
   "provisional",
@@ -77,10 +80,119 @@ function isVerifiedSourceState(value) {
   return value === "PASS" || value === "CURRENT_PAGE_REOPENED" || value === "FULL_TEXT_REOPENED" ||
     String(value).startsWith("VERIFIED_") || String(value).startsWith("MANUALLY_REVIEWED_");
 }
-function countSourceRecords(note) { return [...String(note.text || "").matchAll(/^###\s+SRC-[^\n]+$/gm)].length; }
-function countVerifiedSourceRecords(note) {
-  return [...String(note.text || "").matchAll(/- Verification: `([^`]+)`/g)]
-    .map((match) => match[1]).filter(isVerifiedSourceState).length;
+
+function isSafeRepositoryRelativePath(value) {
+  if (typeof value !== "string" || !value.trim() || value.includes("\0")) return false;
+  const normalizedInput = value.replace(/\\/g, "/");
+  if (path.isAbsolute(value) || path.win32.isAbsolute(value) || path.posix.isAbsolute(normalizedInput)) return false;
+  const normalized = path.posix.normalize(normalizedInput);
+  return normalized === normalizedInput &&
+    normalized !== "." &&
+    !normalized.startsWith("../") &&
+    !normalized.includes("/../");
+}
+
+function inlineSourceRecordSummary(note) {
+  const text = String(note.text || "");
+  return {
+    mode: "inline",
+    source_count: [...text.matchAll(/^###\s+SRC-[^\n]+$/gm)].length,
+    verified_source_count: [...text.matchAll(/- Verification: `([^`]+)`/g)]
+      .map((match) => match[1]).filter(isVerifiedSourceState).length,
+    error: null,
+  };
+}
+
+function parseSourceLedger(content, ledgerPath) {
+  const lines = String(content).replace(/^\uFEFF/, "").split(/\r?\n/);
+  while (lines.length && !lines[lines.length - 1].trim()) lines.pop();
+  if (!lines.length) {
+    return { error: `empty_source_verification_file:${ledgerPath}` };
+  }
+
+  const headers = lines[0].split("\t").map((value) => value.trim());
+  if (new Set(headers).size !== headers.length) {
+    return { error: `duplicate_source_verification_header:${ledgerPath}` };
+  }
+  const sourceIndex = headers.indexOf("source_id");
+  const verificationIndex = headers.indexOf("verification");
+  if (sourceIndex < 0 || verificationIndex < 0) {
+    return { error: `incomplete_source_verification_header:${ledgerPath}` };
+  }
+
+  const seen = new Set();
+  let sourceCount = 0;
+  let verifiedSourceCount = 0;
+  for (let index = 1; index < lines.length; index += 1) {
+    const line = lines[index];
+    if (!line.trim()) continue;
+    const cells = line.split("\t");
+    if (cells.length !== headers.length) {
+      return { error: `malformed_source_verification_row:${ledgerPath}:${index + 1}` };
+    }
+    const sourceId = String(cells[sourceIndex] || "").trim();
+    const verification = String(cells[verificationIndex] || "").trim();
+    if (!sourceId) {
+      return { error: `missing_source_id:${ledgerPath}:${index + 1}` };
+    }
+    if (seen.has(sourceId)) {
+      return { error: `duplicate_source_id:${ledgerPath}:${sourceId}` };
+    }
+    if (!verification) {
+      return { error: `missing_source_verification_state:${ledgerPath}:${sourceId}` };
+    }
+    seen.add(sourceId);
+    sourceCount += 1;
+    if (isVerifiedSourceState(verification)) verifiedSourceCount += 1;
+  }
+
+  return {
+    mode: "ledger",
+    source_count: sourceCount,
+    verified_source_count: verifiedSourceCount,
+    error: null,
+  };
+}
+
+function sourceRecordSummary(note, root = null) {
+  const fm = note.frontmatter || note || {};
+  const ledgerPath = String(fm.source_verification_file || "").trim();
+  if (!ledgerPath) return inlineSourceRecordSummary(note);
+
+  if (!isSafeRepositoryRelativePath(ledgerPath) || path.posix.extname(ledgerPath.replace(/\\/g, "/")) !== ".tsv") {
+    return { mode: "ledger", source_count: 0, verified_source_count: 0, error: `invalid_source_verification_file_path:${ledgerPath}` };
+  }
+  if (!root) {
+    return { mode: "ledger", source_count: 0, verified_source_count: 0, error: `missing_repository_root_for_source_ledger:${ledgerPath}` };
+  }
+
+  const resolvedRoot = path.resolve(root);
+  const resolvedFile = path.resolve(resolvedRoot, ledgerPath);
+  if (resolvedFile !== resolvedRoot && !resolvedFile.startsWith(`${resolvedRoot}${path.sep}`)) {
+    return { mode: "ledger", source_count: 0, verified_source_count: 0, error: `source_verification_file_outside_repository:${ledgerPath}` };
+  }
+  if (!fs.existsSync(resolvedFile)) {
+    return { mode: "ledger", source_count: 0, verified_source_count: 0, error: `missing_source_verification_file:${ledgerPath}` };
+  }
+
+  let content;
+  try {
+    content = fs.readFileSync(resolvedFile, "utf8");
+  } catch (error) {
+    return { mode: "ledger", source_count: 0, verified_source_count: 0, error: `unreadable_source_verification_file:${ledgerPath}:${error.code || error.message}` };
+  }
+  return parseSourceLedger(content, ledgerPath);
+}
+
+function countSourceRecords(note, root = null) {
+  const summary = sourceRecordSummary(note, root);
+  if (summary.error) throw new Error(summary.error);
+  return summary.source_count;
+}
+function countVerifiedSourceRecords(note, root = null) {
+  const summary = sourceRecordSummary(note, root);
+  if (summary.error) throw new Error(summary.error);
+  return summary.verified_source_count;
 }
 function corpusClassificationTotal(fm) {
   return ["corpus_genuine_hit_count", "corpus_false_positive_count", "corpus_ambiguous_hit_count", "corpus_unusable_hit_count"]
@@ -197,8 +309,10 @@ module.exports = {
   PROVISIONAL_MINIMUM_ITEM_N,
   SUPPORTED_MINIMUM_ITEM_N,
   evaluatePromotion,
+  sourceRecordSummary,
   countSourceRecords,
   countVerifiedSourceRecords,
+  isSafeRepositoryRelativePath,
   isVerifiedSourceState,
   corpusClassificationTotal,
   hasCurrentCodeReviewMetadata,
