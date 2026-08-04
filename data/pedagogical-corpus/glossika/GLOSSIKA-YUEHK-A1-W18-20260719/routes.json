@@ -1,0 +1,1524 @@
+{
+  "schema": "canto-span-pedagogical-routes-v1",
+  "routes": [
+    {
+      "route_id": "W18-R-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I001"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F01.",
+        "Retained Week 18 follow-up W18-F01 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_conversation_corpus_inventory_then_contextual_panel_if_needed",
+        "Use direct Cantonese discourse/corpus evidence and controlled speaker review before accepting formula or register naturalness.",
+        "Preserve exactly; do not accept formula or register without independent Cantonese evidence.",
+        "Separate conventional repair initiator 咩話 from productive interrogative analysis and review 多次 versus 一次.",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior.",
+        "Use Carine Yuk-man Yiu as the current author attribution for DOI 10.1016/j.lingua.2021.103049; retain the Cheung attribution only as historical ledger provenance."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I001"
+      ]
+    },
+    {
+      "route_id": "W18-R-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I002"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F01, W18-F02.",
+        "Retained Week 18 follow-up W18-F01 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_conversation_corpus_inventory_then_contextual_panel_if_needed",
+        "Retained Week 18 follow-up W18-F02 remains owned by issue #481; open work is not completed evidence.",
+        "direct_ge3_nominalization_research_plus_contextual_minimal_contrasts",
+        "Use direct Cantonese discourse/corpus evidence and controlled speaker review before accepting formula or register naturalness.",
+        "The omitted material after 嘅 and the identity-question analysis require direct research.",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I002"
+      ]
+    },
+    {
+      "route_id": "W18-R-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I003"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F01.",
+        "Retained Week 18 follow-up W18-F01 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_conversation_corpus_inventory_then_contextual_panel_if_needed",
+        "Use direct Cantonese discourse/corpus evidence and controlled speaker review before accepting formula or register naturalness.",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I003"
+      ]
+    },
+    {
+      "route_id": "W18-R-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I004"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F01.",
+        "Retained Week 18 follow-up W18-F01 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_conversation_corpus_inventory_then_contextual_panel_if_needed",
+        "Use direct Cantonese discourse/corpus evidence and controlled speaker review before accepting formula or register naturalness.",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I004"
+      ]
+    },
+    {
+      "route_id": "W18-R-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I005"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F03, W18-F04.",
+        "Retained Week 18 follow-up W18-F03 remains owned by issue #481; open work is not completed evidence.",
+        "conversation_corpus_and_role_neutral_context_panel",
+        "Retained Week 18 follow-up W18-F04 remains owned by issue #481; open work is not completed evidence.",
+        "direct_cantonese_dang2_and_completion_research_plus_corpus_contrasts",
+        "Use direct Cantonese discourse/corpus evidence and controlled speaker review before accepting formula or register naturalness.",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I005"
+      ]
+    },
+    {
+      "route_id": "W18-R-006",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I006"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F03.",
+        "Retained Week 18 follow-up W18-F03 remains owned by issue #481; open work is not completed evidence.",
+        "conversation_corpus_and_role_neutral_context_panel",
+        "Use direct Cantonese discourse/corpus evidence and controlled speaker review before accepting formula or register naturalness.",
+        "Preserve exactly; do not accept formula or register without independent Cantonese evidence.",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I006"
+      ]
+    },
+    {
+      "route_id": "W18-R-007",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I007"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F03.",
+        "Retained Week 18 follow-up W18-F03 remains owned by issue #481; open work is not completed evidence.",
+        "conversation_corpus_and_role_neutral_context_panel",
+        "Use direct Cantonese discourse/corpus evidence and controlled speaker review before accepting formula or register naturalness.",
+        "Preserve exactly; do not accept formula or register without independent Cantonese evidence.",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I007"
+      ]
+    },
+    {
+      "route_id": "W18-R-008",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I008"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F03, W18-F04.",
+        "Retained Week 18 follow-up W18-F03 remains owned by issue #481; open work is not completed evidence.",
+        "conversation_corpus_and_role_neutral_context_panel",
+        "Retained Week 18 follow-up W18-F04 remains owned by issue #481; open work is not completed evidence.",
+        "direct_cantonese_dang2_and_completion_research_plus_corpus_contrasts",
+        "Use direct Cantonese discourse/corpus evidence and controlled speaker review before accepting formula or register naturalness.",
+        "Preserve exactly; do not accept formula or register without independent Cantonese evidence.",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I008"
+      ]
+    },
+    {
+      "route_id": "W18-R-009",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I009"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I009"
+      ]
+    },
+    {
+      "route_id": "W18-R-010",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I010"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I010"
+      ]
+    },
+    {
+      "route_id": "W18-R-011",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I011"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I011"
+      ]
+    },
+    {
+      "route_id": "W18-R-012",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I012"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I012"
+      ]
+    },
+    {
+      "route_id": "W18-R-013",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I013"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I013"
+      ]
+    },
+    {
+      "route_id": "W18-R-014",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I014"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I014"
+      ]
+    },
+    {
+      "route_id": "W18-R-015",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I015"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I015"
+      ]
+    },
+    {
+      "route_id": "W18-R-016",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I016"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I016"
+      ]
+    },
+    {
+      "route_id": "W18-R-017",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I017"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I017"
+      ]
+    },
+    {
+      "route_id": "W18-R-018",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I018"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I018"
+      ]
+    },
+    {
+      "route_id": "W18-R-019",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I019"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I019"
+      ]
+    },
+    {
+      "route_id": "W18-R-020",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I020"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I020"
+      ]
+    },
+    {
+      "route_id": "W18-R-021",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I021"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I021"
+      ]
+    },
+    {
+      "route_id": "W18-R-022",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I022"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I022"
+      ]
+    },
+    {
+      "route_id": "W18-R-023",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I023"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I023"
+      ]
+    },
+    {
+      "route_id": "W18-R-024",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I024"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I024"
+      ]
+    },
+    {
+      "route_id": "W18-R-025",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I025"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I025"
+      ]
+    },
+    {
+      "route_id": "W18-R-026",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I026"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage.",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I026"
+      ]
+    },
+    {
+      "route_id": "W18-R-027",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I027"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage.",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I027"
+      ]
+    },
+    {
+      "route_id": "W18-R-028",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I028"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage.",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I028"
+      ]
+    },
+    {
+      "route_id": "W18-R-029",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I029"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I029"
+      ]
+    },
+    {
+      "route_id": "W18-R-030",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I030"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F10.",
+        "Retained Week 18 follow-up W18-F10 remains owned by issue #481; open work is not completed evidence.",
+        "dictionary_and_corpus_lexical_review_then_focused_runtime_issue"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I030"
+      ]
+    },
+    {
+      "route_id": "W18-R-031",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I031"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I031"
+      ]
+    },
+    {
+      "route_id": "W18-R-032",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I032"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I032"
+      ]
+    },
+    {
+      "route_id": "W18-R-033",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I033"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I033"
+      ]
+    },
+    {
+      "route_id": "W18-R-034",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I034"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I034"
+      ]
+    },
+    {
+      "route_id": "W18-R-035",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I035"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I035"
+      ]
+    },
+    {
+      "route_id": "W18-R-036",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I036"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I036"
+      ]
+    },
+    {
+      "route_id": "W18-R-037",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I037"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I037"
+      ]
+    },
+    {
+      "route_id": "W18-R-038",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I038"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I038"
+      ]
+    },
+    {
+      "route_id": "W18-R-039",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I039"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I039"
+      ]
+    },
+    {
+      "route_id": "W18-R-040",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I040"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I040"
+      ]
+    },
+    {
+      "route_id": "W18-R-041",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I041"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I041"
+      ]
+    },
+    {
+      "route_id": "W18-R-042",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I042"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I042"
+      ]
+    },
+    {
+      "route_id": "W18-R-043",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I043"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I043"
+      ]
+    },
+    {
+      "route_id": "W18-R-044",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I044"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit",
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I044"
+      ]
+    },
+    {
+      "route_id": "W18-R-045",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I045"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I045"
+      ]
+    },
+    {
+      "route_id": "W18-R-046",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I046"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I046"
+      ]
+    },
+    {
+      "route_id": "W18-R-047",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I047"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I047"
+      ]
+    },
+    {
+      "route_id": "W18-R-048",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I048"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I048"
+      ]
+    },
+    {
+      "route_id": "W18-R-049",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I049"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I049"
+      ]
+    },
+    {
+      "route_id": "W18-R-050",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I050"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I050"
+      ]
+    },
+    {
+      "route_id": "W18-R-051",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I051"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I051"
+      ]
+    },
+    {
+      "route_id": "W18-R-052",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I052"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I052"
+      ]
+    },
+    {
+      "route_id": "W18-R-053",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I053"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I053"
+      ]
+    },
+    {
+      "route_id": "W18-R-054",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I054"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I054"
+      ]
+    },
+    {
+      "route_id": "W18-R-055",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I055"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit",
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I055"
+      ]
+    },
+    {
+      "route_id": "W18-R-056",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I056"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit",
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I056"
+      ]
+    },
+    {
+      "route_id": "W18-R-057",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I057"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I057"
+      ]
+    },
+    {
+      "route_id": "W18-R-058",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I058"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I058"
+      ]
+    },
+    {
+      "route_id": "W18-R-059",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I059"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I059"
+      ]
+    },
+    {
+      "route_id": "W18-R-060",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I060"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I060"
+      ]
+    },
+    {
+      "route_id": "W18-R-061",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I061"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F11.",
+        "Retained Week 18 follow-up W18-F11 remains owned by issue #481; open work is not completed evidence.",
+        "cantonese_dictionary_corpus_and_register_inventory_using_temporal_audit"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I061"
+      ]
+    },
+    {
+      "route_id": "W18-R-062",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I062"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I062"
+      ]
+    },
+    {
+      "route_id": "W18-R-072",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I072"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F05.",
+        "Retained Week 18 follow-up W18-F05 remains owned by issue #481; open work is not completed evidence.",
+        "direct_aspect_question_research_plus_minimal_contexts",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I072"
+      ]
+    },
+    {
+      "route_id": "W18-R-073",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I073"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I073"
+      ]
+    },
+    {
+      "route_id": "W18-R-074",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I074"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I074"
+      ]
+    },
+    {
+      "route_id": "W18-R-075",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I075"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F06.",
+        "Retained Week 18 follow-up W18-F06 remains owned by issue #481; open work is not completed evidence.",
+        "canonical_parser_audit_against_batch14_boundaries",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I075"
+      ]
+    },
+    {
+      "route_id": "W18-R-077",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I077"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F06.",
+        "Retained Week 18 follow-up W18-F06 remains owned by issue #481; open work is not completed evidence.",
+        "canonical_parser_audit_against_batch14_boundaries",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I077"
+      ]
+    },
+    {
+      "route_id": "W18-R-078",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I078"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F07.",
+        "Retained Week 18 follow-up W18-F07 remains owned by issue #481; open work is not completed evidence.",
+        "coverb_and_locative_parser_audit_plus_corpus_contexts",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I078"
+      ]
+    },
+    {
+      "route_id": "W18-R-079",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I079"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F08, W18-F09.",
+        "Retained Week 18 follow-up W18-F08 remains owned by issue #481; open work is not completed evidence.",
+        "direct_cantonese_bang1_research_and_corpus_inventory",
+        "Retained Week 18 follow-up W18-F09 remains owned by issue #481; open work is not completed evidence.",
+        "directional_verb_research_plus_contextual_corpus_contrasts",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I079"
+      ]
+    },
+    {
+      "route_id": "W18-R-080",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I080"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F12.",
+        "Retained Week 18 follow-up W18-F12 remains owned by issue #481; open work is not completed evidence.",
+        "reuse_existing_particle_research_units_and_create_missing_particle_units_only",
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage.",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I080"
+      ]
+    },
+    {
+      "route_id": "W18-R-081",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I081"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F12.",
+        "Retained Week 18 follow-up W18-F12 remains owned by issue #481; open work is not completed evidence.",
+        "reuse_existing_particle_research_units_and_create_missing_particle_units_only",
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage.",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I081"
+      ]
+    },
+    {
+      "route_id": "W18-R-082",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I082"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F12.",
+        "Retained Week 18 follow-up W18-F12 remains owned by issue #481; open work is not completed evidence.",
+        "reuse_existing_particle_research_units_and_create_missing_particle_units_only",
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage.",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I082"
+      ]
+    },
+    {
+      "route_id": "W18-R-083",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I083"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F12.",
+        "Retained Week 18 follow-up W18-F12 remains owned by issue #481; open work is not completed evidence.",
+        "reuse_existing_particle_research_units_and_create_missing_particle_units_only",
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage.",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I083"
+      ]
+    },
+    {
+      "route_id": "W18-R-084",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I084"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F12.",
+        "Retained Week 18 follow-up W18-F12 remains owned by issue #481; open work is not completed evidence.",
+        "reuse_existing_particle_research_units_and_create_missing_particle_units_only",
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage.",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I084"
+      ]
+    },
+    {
+      "route_id": "W18-R-085",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I085"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F12.",
+        "Retained Week 18 follow-up W18-F12 remains owned by issue #481; open work is not completed evidence.",
+        "reuse_existing_particle_research_units_and_create_missing_particle_units_only",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I085"
+      ]
+    },
+    {
+      "route_id": "W18-R-086",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I086"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F12.",
+        "Retained Week 18 follow-up W18-F12 remains owned by issue #481; open work is not completed evidence.",
+        "reuse_existing_particle_research_units_and_create_missing_particle_units_only",
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage.",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I086"
+      ]
+    },
+    {
+      "route_id": "W18-R-087",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I087"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F12.",
+        "Retained Week 18 follow-up W18-F12 remains owned by issue #481; open work is not completed evidence.",
+        "reuse_existing_particle_research_units_and_create_missing_particle_units_only",
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage.",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I087"
+      ]
+    },
+    {
+      "route_id": "W18-R-088",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I088"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F12.",
+        "Retained Week 18 follow-up W18-F12 remains owned by issue #481; open work is not completed evidence.",
+        "reuse_existing_particle_research_units_and_create_missing_particle_units_only",
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage.",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I088"
+      ]
+    },
+    {
+      "route_id": "W18-R-089",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I089"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F12.",
+        "Retained Week 18 follow-up W18-F12 remains owned by issue #481; open work is not completed evidence.",
+        "reuse_existing_particle_research_units_and_create_missing_particle_units_only",
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage.",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I089"
+      ]
+    },
+    {
+      "route_id": "W18-R-090",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I090"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F12.",
+        "Retained Week 18 follow-up W18-F12 remains owned by issue #481; open work is not completed evidence.",
+        "reuse_existing_particle_research_units_and_create_missing_particle_units_only",
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage.",
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I090"
+      ]
+    },
+    {
+      "route_id": "W18-R-091",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I091"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I091"
+      ]
+    },
+    {
+      "route_id": "W18-R-092",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I092"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I092"
+      ]
+    },
+    {
+      "route_id": "W18-R-093",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I093"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Treat broad parser paths as heuristic search hints until an item-level parser audit verifies ownership and behavior."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I093"
+      ]
+    },
+    {
+      "route_id": "W18-R-094",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I094"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F13.",
+        "Retained Week 18 follow-up W18-F13 remains owned by issue #481; open work is not completed evidence.",
+        "item_level_phonological_verification",
+        "Verify an exact item-level runtime owner locator, represented form, reading, role, and segmentation before treating historical path occurrence as implementation coverage."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I094"
+      ]
+    },
+    {
+      "route_id": "W18-R-095",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I095"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F13.",
+        "Retained Week 18 follow-up W18-F13 remains owned by issue #481; open work is not completed evidence.",
+        "item_level_phonological_verification"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I095"
+      ]
+    },
+    {
+      "route_id": "W18-R-096",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I096"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F13.",
+        "Retained Week 18 follow-up W18-F13 remains owned by issue #481; open work is not completed evidence.",
+        "item_level_phonological_verification"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I096"
+      ]
+    },
+    {
+      "route_id": "W18-R-097",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I097"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F13.",
+        "Retained Week 18 follow-up W18-F13 remains owned by issue #481; open work is not completed evidence.",
+        "item_level_phonological_verification",
+        "Resolve the incomplete source phonics pair 香 / — with independent item-level pronunciation evidence while preserving the source row unchanged."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I097"
+      ]
+    },
+    {
+      "route_id": "W18-R-098",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I098"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F13.",
+        "Retained Week 18 follow-up W18-F13 remains owned by issue #481; open work is not completed evidence.",
+        "item_level_phonological_verification"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I098"
+      ]
+    },
+    {
+      "route_id": "W18-R-099",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I099"
+      },
+      "owner_issue": 481,
+      "status": "open",
+      "requirements": [
+        "Historical route IDs: W18-F13.",
+        "Retained Week 18 follow-up W18-F13 remains owned by issue #481; open work is not completed evidence.",
+        "item_level_phonological_verification"
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W18-20260719-I099"
+      ]
+    }
+  ]
+}

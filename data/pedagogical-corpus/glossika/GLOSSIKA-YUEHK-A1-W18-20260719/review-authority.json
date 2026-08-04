@@ -1,0 +1,23 @@
+{
+  "schema": "canto-span-pedagogical-review-authority-v1",
+  "authority_issue": 520,
+  "authority_kind": "review",
+  "authorized_state": "reviewed",
+  "reviewer_role": "project_reviewer",
+  "source_semantic_sha256": "9a79fc954b0e1938a66076a21341874b5df94ac57e2a92753037571dd5142155",
+  "authorized_at": "2026-08-04T10:35:00+08:00",
+  "scope": "GLOSSIKA-YUEHK-A1-W18-20260719",
+  "evidence_basis": [
+    "Original Glossika email 19f7923023e862d2 was read directly and matched to the immutable 99-record archive.",
+    "Immutable source.json SHA-256 8e4989992b71632b02f7abd3e19f49069347b410d22364ca5e9e4ac2c527075a.",
+    "Immutable items.tsv SHA-256 66b3472331d9f65651e6d4295d32ccfc3c6b143103465ba724e0fbfbaefe6a1e.",
+    "Immutable crosswalk.json SHA-256 cdc4910b9eb36c0aa66bdee26f824cb4371ff4af113b5d003cc81194e410f94b.",
+    "Stale claim #479 and PR #480 were re-examined as evidence only; unresolved review blockers were not inherited as authority.",
+    "DOI 10.1016/j.lingua.2021.103049 is currently attributed to Carine Yuk-man Yiu; the retained Cheung source ID remains historical provenance only.",
+    "Retained ledger data/research-ledgers/glossika-week18-claim-source.json SHA-256 3b47c7ab6e176bb2e7fc3de4b281edf77ec3fbc1d293af3b966cf508cd67de68.",
+    "Retained ledger data/research-ledgers/glossika-week18-common-verb-audit.json SHA-256 f2c8f90436eca56eeb444114986bdb522dbd889d7e4940af4e14b53b0eb3fc3b.",
+    "Retained ledger data/research-ledgers/glossika-week18-temporal-lexicon.json SHA-256 1897f5470e2754a1917064001138c91e5b7845a3b039edc31e84d422def4802d.",
+    "Retained ledger data/research-ledgers/glossika-week18-followup-candidates.json SHA-256 47113223622e69d78f0312930294567dd1a2eefba10a05ae15d49c78970aea49."
+  ],
+  "replacement_rights": []
+}
