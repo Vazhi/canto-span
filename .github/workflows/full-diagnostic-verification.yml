@@ -1,4 +1,5 @@
 name: Full diagnostic verification
+# Temporary issue #574 diagnostic trigger; remove before review.
 
 on:
   push:
