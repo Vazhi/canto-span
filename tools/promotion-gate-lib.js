@@ -76,6 +76,9 @@ const REQUIRED_FIELDS = [
 ];
 
 function asBoolean(value) { return value === true; }
+function requiresPromotionMetadata(status) {
+  return status === "supported_productive" || status === "provisional";
+}
 function isVerifiedSourceState(value) {
   return value === "PASS" || value === "CURRENT_PAGE_REOPENED" || value === "FULL_TEXT_REOPENED" ||
     String(value).startsWith("VERIFIED_") || String(value).startsWith("MANUALLY_REVIEWED_");
@@ -354,6 +357,7 @@ module.exports = {
   sourceRecordSummary,
   countSourceRecords,
   countVerifiedSourceRecords,
+  requiresPromotionMetadata,
   isSafeRepositoryRelativePath,
   isVerifiedSourceState,
   corpusClassificationTotal,
