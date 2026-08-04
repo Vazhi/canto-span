@@ -1,5 +1,8 @@
 "use strict";
 
+const fs = require("fs");
+const path = require("path");
+
 const ALLOWED_STATUSES = new Set([
   "supported_productive",
   "provisional",
@@ -73,14 +76,168 @@ const REQUIRED_FIELDS = [
 ];
 
 function asBoolean(value) { return value === true; }
+function requiresPromotionMetadata(status) {
+  return status === "supported_productive" || status === "provisional";
+}
 function isVerifiedSourceState(value) {
   return value === "PASS" || value === "CURRENT_PAGE_REOPENED" || value === "FULL_TEXT_REOPENED" ||
     String(value).startsWith("VERIFIED_") || String(value).startsWith("MANUALLY_REVIEWED_");
 }
-function countSourceRecords(note) { return [...String(note.text || "").matchAll(/^###\s+SRC-[^\n]+$/gm)].length; }
-function countVerifiedSourceRecords(note) {
-  return [...String(note.text || "").matchAll(/- Verification: `([^`]+)`/g)]
-    .map((match) => match[1]).filter(isVerifiedSourceState).length;
+
+function isSafeRepositoryRelativePath(value) {
+  if (typeof value !== "string" || !value.trim() || value.includes("\0")) return false;
+  const normalizedInput = value.replace(/\\/g, "/");
+  if (path.isAbsolute(value) || path.win32.isAbsolute(value) || path.posix.isAbsolute(normalizedInput)) return false;
+  const normalized = path.posix.normalize(normalizedInput);
+  return normalized === normalizedInput &&
+    normalized !== "." &&
+    !normalized.startsWith("../") &&
+    !normalized.includes("/../");
+}
+
+function inlineSourceRecords(note) {
+  const text = String(note.text || "");
+  const headings = [...text.matchAll(/^###\s+(SRC-[^\n]+)\s*$/gm)];
+  const records = new Map();
+  for (let index = 0; index < headings.length; index += 1) {
+    const sourceId = headings[index][1].trim();
+    if (records.has(sourceId)) {
+      return { records, error: `duplicate_inline_source_id:${sourceId}` };
+    }
+    const start = headings[index].index + headings[index][0].length;
+    const end = index + 1 < headings.length ? headings[index + 1].index : text.length;
+    const section = text.slice(start, end);
+    const verification = section.match(/- Verification: `([^`]+)`/);
+    if (!verification) {
+      return { records, error: `missing_inline_source_verification:${sourceId}` };
+    }
+    records.set(sourceId, verification[1]);
+  }
+  return { records, error: null };
+}
+
+function parseSourceLedger(content, ledgerPath) {
+  const lines = String(content).replace(/^\uFEFF/, "").split(/\r?\n/);
+  while (lines.length && !lines[lines.length - 1].trim()) lines.pop();
+  if (!lines.length) {
+    return { records: new Map(), error: `empty_source_verification_file:${ledgerPath}` };
+  }
+
+  const headers = lines[0].split("\t").map((value) => value.trim());
+  if (new Set(headers).size !== headers.length) {
+    return { records: new Map(), error: `duplicate_source_verification_header:${ledgerPath}` };
+  }
+  const sourceIndex = headers.indexOf("source_id");
+  const verificationIndex = ["verification", "verification_state", "access_status"]
+    .map((name) => headers.indexOf(name)).find((index) => index >= 0);
+  if (sourceIndex < 0 || verificationIndex === undefined) {
+    return { records: new Map(), error: `incomplete_source_verification_header:${ledgerPath}` };
+  }
+
+  const records = new Map();
+  const requiredLastIndex = Math.max(sourceIndex, verificationIndex);
+  for (let index = 1; index < lines.length; index += 1) {
+    const line = lines[index];
+    if (!line.trim()) continue;
+    const cells = line.split("\t");
+    if (cells.length <= requiredLastIndex) {
+      return { records, error: `malformed_source_verification_row:${ledgerPath}:${index + 1}` };
+    }
+    const sourceId = String(cells[sourceIndex] || "").trim();
+    const verification = String(cells[verificationIndex] || "").trim();
+    if (!sourceId) {
+      return { records, error: `missing_source_id:${ledgerPath}:${index + 1}` };
+    }
+    if (records.has(sourceId)) {
+      return { records, error: `duplicate_source_id:${ledgerPath}:${sourceId}` };
+    }
+    if (!verification) {
+      return { records, error: `missing_source_verification_state:${ledgerPath}:${sourceId}` };
+    }
+    records.set(sourceId, verification);
+  }
+  return { records, error: null };
+}
+
+function loadSourceLedger(root, ledgerPath) {
+  if (!isSafeRepositoryRelativePath(ledgerPath) || path.posix.extname(ledgerPath.replace(/\\/g, "/")) !== ".tsv") {
+    return { records: new Map(), error: `invalid_source_verification_file_path:${ledgerPath}` };
+  }
+  if (!root) {
+    return { records: new Map(), error: `missing_repository_root_for_source_ledger:${ledgerPath}` };
+  }
+
+  const resolvedRoot = path.resolve(root);
+  const resolvedFile = path.resolve(resolvedRoot, ledgerPath);
+  if (resolvedFile !== resolvedRoot && !resolvedFile.startsWith(`${resolvedRoot}${path.sep}`)) {
+    return { records: new Map(), error: `source_verification_file_outside_repository:${ledgerPath}` };
+  }
+  if (!fs.existsSync(resolvedFile)) {
+    return { records: new Map(), error: `missing_source_verification_file:${ledgerPath}` };
+  }
+
+  let content;
+  try {
+    content = fs.readFileSync(resolvedFile, "utf8");
+  } catch (error) {
+    return { records: new Map(), error: `unreadable_source_verification_file:${ledgerPath}:${error.code || error.message}` };
+  }
+  return parseSourceLedger(content, ledgerPath);
+}
+
+function sourceRecordSummary(note, root = null) {
+  const fm = note.frontmatter || note || {};
+  const inline = inlineSourceRecords(note);
+  if (inline.error) {
+    return { mode: "inline", source_count: 0, verified_source_count: 0, error: inline.error };
+  }
+
+  const ledgerPath = String(fm.source_verification_file || "").trim();
+  const ledger = ledgerPath ? loadSourceLedger(root, ledgerPath) : { records: new Map(), error: null };
+  if (ledger.error) {
+    return { mode: "ledger", source_count: 0, verified_source_count: 0, error: ledger.error };
+  }
+
+  const declaredSourceIds = Array.isArray(fm.source_ids)
+    ? fm.source_ids.map((value) => String(value || "").trim())
+    : [];
+  if (declaredSourceIds.some((value) => !value)) {
+    return { mode: "declared", source_count: 0, verified_source_count: 0, error: "invalid_declared_source_id" };
+  }
+  if (new Set(declaredSourceIds).size !== declaredSourceIds.length) {
+    return { mode: "declared", source_count: 0, verified_source_count: 0, error: "duplicate_declared_source_id" };
+  }
+
+  const records = new Map(inline.records);
+  for (const [sourceId, verification] of ledger.records) records.set(sourceId, verification);
+  const sourceIds = declaredSourceIds.length ? declaredSourceIds : [...records.keys()];
+  const missing = sourceIds.filter((sourceId) => !records.has(sourceId));
+  if (missing.length) {
+    return {
+      mode: ledgerPath ? "declared_with_ledger" : "declared_inline",
+      source_count: sourceIds.length,
+      verified_source_count: 0,
+      error: `missing_source_record:${missing.join(",")}`,
+    };
+  }
+
+  return {
+    mode: ledgerPath ? "declared_with_ledger" : "declared_inline",
+    source_count: sourceIds.length,
+    verified_source_count: sourceIds.filter((sourceId) => isVerifiedSourceState(records.get(sourceId))).length,
+    error: null,
+  };
+}
+
+function countSourceRecords(note, root = null) {
+  const summary = sourceRecordSummary(note, root);
+  if (summary.error) throw new Error(summary.error);
+  return summary.source_count;
+}
+function countVerifiedSourceRecords(note, root = null) {
+  const summary = sourceRecordSummary(note, root);
+  if (summary.error) throw new Error(summary.error);
+  return summary.verified_source_count;
 }
 function corpusClassificationTotal(fm) {
   return ["corpus_genuine_hit_count", "corpus_false_positive_count", "corpus_ambiguous_hit_count", "corpus_unusable_hit_count"]
@@ -197,8 +354,11 @@ module.exports = {
   PROVISIONAL_MINIMUM_ITEM_N,
   SUPPORTED_MINIMUM_ITEM_N,
   evaluatePromotion,
+  sourceRecordSummary,
   countSourceRecords,
   countVerifiedSourceRecords,
+  requiresPromotionMetadata,
+  isSafeRepositoryRelativePath,
   isVerifiedSourceState,
   corpusClassificationTotal,
   hasCurrentCodeReviewMetadata,
