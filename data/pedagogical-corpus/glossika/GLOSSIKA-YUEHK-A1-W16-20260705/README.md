@@ -1,22 +1,19 @@
-# Glossika Cantonese (HK) A1 Week 16 corpus package
+# Glossika Cantonese (HK) A1 Week 16 contract package
 
-- Source ID: `GLOSSIKA-YUEHK-A1-W16-20260705`
+- Package ID: `GLOSSIKA-YUEHK-A1-W16-20260705`
 - Lesson: Hobbies & Free Time
 - Source date: 2026-07-05
 - Gmail message: `19f3100f131df130`
-- Intake issue: #133
-- Work claim: #274
-- Runtime crosswalk: #119 / PR #121
-- Record count: 59
-- Types: 14 sentences, 4 dialog turns, 35 lexical entries, 6 phonics pairs
-- Source payload hash: `sha256:79aaf70c47b4cbe42e98c72d62889fffd89ff41961178e5d11efa8b6434749ae`
+- Source issue: #133
+- Contract migration: #514
+- Related runtime implementation: #119 / merged PR #121
+- Lifecycle: `reviewed` (not `accepted`)
+- Stable records: 59
 
-## Files
+## Authority boundary
 
-- `source.json`: immutable source values and order.
-- `items.tsv`: review-oriented flat rendering.
-- `review.json`: mechanical duplicate candidates, PR #121 crosswalks, source discrepancies, and empty reviewed-value fields.
+`source.json` and `items.tsv` remain immutable. Source-authored register, negation, and phonics claims have metadata-only authority. PR #121 is implementation provenance and lexical coverage, not source-correction, pronunciation, naturalness, duplicate-identity, or linguistic-promotion authority.
 
-## Boundary
+## Open work
 
-PR #121 already owns runtime lexical integration. This corpus package does not modify it, count evidence, infer productivity, accept register labels, or promote grammar.
+The typed discrepancies and routes retain unresolved source/runtime, pronunciation, register, naturalness, segmentation, and lexical boundaries under issue #133. No replacement value is accepted by this package.

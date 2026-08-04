@@ -1,0 +1,115 @@
+{
+  "schema": "canto-span-pedagogical-implementation-links-v1",
+  "links": [
+    {
+      "link_id": "W14-L-RUNTIME-011",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W14-20260621",
+        "record_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I011"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W14-L-RUNTIME-013",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W14-20260621",
+        "record_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I013"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W14-L-RUNTIME-026",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W14-20260621",
+        "record_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I026"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W14-L-RUNTIME-031",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W14-20260621",
+        "record_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I031"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W14-L-W15-043",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W14-20260621",
+        "record_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I043"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W15-20260628/source.json",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W14-L-RESEARCH-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W14-20260621",
+        "record_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I001"
+      },
+      "type": "evidence_relation",
+      "target": "issue:126;pull:262",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W14-L-RESEARCH-015",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W14-20260621",
+        "record_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I015"
+      },
+      "type": "evidence_relation",
+      "target": "issue:126;pull:262",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W14-L-RESEARCH-017",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W14-20260621",
+        "record_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I017"
+      },
+      "type": "evidence_relation",
+      "target": "issue:126;pull:262",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W14-L-RESEARCH-021",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W14-20260621",
+        "record_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I021"
+      },
+      "type": "evidence_relation",
+      "target": "issue:126;pull:262",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W14-L-RESEARCH-057",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W14-20260621",
+        "record_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I057"
+      },
+      "type": "evidence_relation",
+      "target": "issue:126;pull:262",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W14-L-RESEARCH-060",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W14-20260621",
+        "record_id": "GLOSSIKA-YUEHK-A1-W14-20260621-I060"
+      },
+      "type": "evidence_relation",
+      "target": "issue:126;pull:262",
+      "authority": "informational"
+    }
+  ]
+}

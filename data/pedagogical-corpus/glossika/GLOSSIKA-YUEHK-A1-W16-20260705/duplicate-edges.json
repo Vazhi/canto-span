@@ -1,0 +1,17 @@
+{
+  "schema": "canto-span-pedagogical-duplicate-edges-v1",
+  "edges": [
+    {
+      "edge_id": "W16-E-034",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I034"
+      },
+      "target": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I047"
+      },
+      "relation": "exact"
+    }
+  ]
+}

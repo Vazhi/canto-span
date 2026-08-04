@@ -1,0 +1,245 @@
+{
+  "schema": "canto-span-pedagogical-routes-v1",
+  "routes": [
+    {
+      "route_id": "W16-R-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I001"
+      },
+      "owner_issue": 133,
+      "status": "open",
+      "requirements": [
+        "Resolve the typed discrepancy without replacing immutable source values.",
+        "Use controlled Cantonese corpus or independent speaker evidence for naturalness and register."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W16-20260705-I001"
+      ]
+    },
+    {
+      "route_id": "W16-R-006",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I006"
+      },
+      "owner_issue": 133,
+      "status": "open",
+      "requirements": [
+        "Resolve the typed discrepancy without replacing immutable source values.",
+        "Use controlled Cantonese corpus or independent speaker evidence for naturalness and register."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W16-20260705-I006"
+      ]
+    },
+    {
+      "route_id": "W16-R-008",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I008"
+      },
+      "owner_issue": 133,
+      "status": "open",
+      "requirements": [
+        "Resolve the typed discrepancy without replacing immutable source values.",
+        "Use controlled Cantonese corpus or independent speaker evidence for naturalness and register."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W16-20260705-I008"
+      ]
+    },
+    {
+      "route_id": "W16-R-017",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I017"
+      },
+      "owner_issue": 133,
+      "status": "open",
+      "requirements": [
+        "Resolve the typed discrepancy without replacing immutable source values.",
+        "Reconcile source/runtime representation boundaries while preserving both provenance layers."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W16-20260705-I017"
+      ]
+    },
+    {
+      "route_id": "W16-R-022",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I022"
+      },
+      "owner_issue": 133,
+      "status": "open",
+      "requirements": [
+        "Resolve the typed discrepancy without replacing immutable source values.",
+        "Reconcile source/runtime representation boundaries while preserving both provenance layers."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W16-20260705-I022"
+      ]
+    },
+    {
+      "route_id": "W16-R-026",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I026"
+      },
+      "owner_issue": 133,
+      "status": "open",
+      "requirements": [
+        "Resolve the typed discrepancy without replacing immutable source values.",
+        "Use independent phonological and lexical verification before learner-facing pronunciation use."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W16-20260705-I026"
+      ]
+    },
+    {
+      "route_id": "W16-R-032",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I032"
+      },
+      "owner_issue": 133,
+      "status": "open",
+      "requirements": [
+        "Resolve the typed discrepancy without replacing immutable source values.",
+        "Use independent phonological and lexical verification before learner-facing pronunciation use."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W16-20260705-I032"
+      ]
+    },
+    {
+      "route_id": "W16-R-033",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I033"
+      },
+      "owner_issue": 133,
+      "status": "open",
+      "requirements": [
+        "Resolve the typed discrepancy without replacing immutable source values.",
+        "Reconcile source/runtime representation boundaries while preserving both provenance layers."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W16-20260705-I033"
+      ]
+    },
+    {
+      "route_id": "W16-R-050",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I050"
+      },
+      "owner_issue": 133,
+      "status": "open",
+      "requirements": [
+        "Resolve the typed discrepancy without replacing immutable source values.",
+        "Use controlled Cantonese corpus or independent speaker evidence for naturalness and register."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W16-20260705-I050"
+      ]
+    },
+    {
+      "route_id": "W16-R-054",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I054"
+      },
+      "owner_issue": 133,
+      "status": "open",
+      "requirements": [
+        "Resolve the typed discrepancy without replacing immutable source values.",
+        "Reconcile source/runtime representation boundaries while preserving both provenance layers."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W16-20260705-I054"
+      ]
+    },
+    {
+      "route_id": "W16-R-055",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I055"
+      },
+      "owner_issue": 133,
+      "status": "open",
+      "requirements": [
+        "Resolve the typed discrepancy without replacing immutable source values.",
+        "Reconcile source/runtime representation boundaries while preserving both provenance layers."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W16-20260705-I055"
+      ]
+    },
+    {
+      "route_id": "W16-R-056",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I056"
+      },
+      "owner_issue": 133,
+      "status": "open",
+      "requirements": [
+        "Resolve the typed discrepancy without replacing immutable source values.",
+        "Reconcile source/runtime representation boundaries while preserving both provenance layers."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W16-20260705-I056"
+      ]
+    },
+    {
+      "route_id": "W16-R-057",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I057"
+      },
+      "owner_issue": 133,
+      "status": "open",
+      "requirements": [
+        "Resolve the typed discrepancy without replacing immutable source values.",
+        "Reconcile source/runtime representation boundaries while preserving both provenance layers."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W16-20260705-I057"
+      ]
+    },
+    {
+      "route_id": "W16-R-058",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I058"
+      },
+      "owner_issue": 133,
+      "status": "open",
+      "requirements": [
+        "Resolve the typed discrepancy without replacing immutable source values.",
+        "Reconcile source/runtime representation boundaries while preserving both provenance layers."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W16-20260705-I058"
+      ]
+    },
+    {
+      "route_id": "W16-R-059",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I059"
+      },
+      "owner_issue": 133,
+      "status": "open",
+      "requirements": [
+        "Resolve the typed discrepancy without replacing immutable source values.",
+        "Reconcile source/runtime representation boundaries while preserving both provenance layers."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W16-20260705-I059"
+      ]
+    }
+  ]
+}

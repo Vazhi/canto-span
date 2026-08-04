@@ -1,0 +1,822 @@
+{
+  "schema": "canto-span-pedagogical-routes-v1",
+  "routes": [
+    {
+      "route_id": "W17-R-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I001"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Treat parser-owner paths as heuristic until an item-level runtime audit verifies ownership."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I001"
+      ]
+    },
+    {
+      "route_id": "W17-R-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I002"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Keep inherited project assertions separate from independently authorized evidence.",
+        "Treat parser-owner paths as heuristic until an item-level runtime audit verifies ownership."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I002"
+      ]
+    },
+    {
+      "route_id": "W17-R-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I003"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Treat parser-owner paths as heuristic until an item-level runtime audit verifies ownership."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I003"
+      ]
+    },
+    {
+      "route_id": "W17-R-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I004"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Treat parser-owner paths as heuristic until an item-level runtime audit verifies ownership."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I004"
+      ]
+    },
+    {
+      "route_id": "W17-R-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I005"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Treat parser-owner paths as heuristic until an item-level runtime audit verifies ownership."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I005"
+      ]
+    },
+    {
+      "route_id": "W17-R-006",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I006"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Keep inherited project assertions separate from independently authorized evidence.",
+        "Treat parser-owner paths as heuristic until an item-level runtime audit verifies ownership."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I006"
+      ]
+    },
+    {
+      "route_id": "W17-R-007",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I007"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Treat parser-owner paths as heuristic until an item-level runtime audit verifies ownership."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I007"
+      ]
+    },
+    {
+      "route_id": "W17-R-008",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I008"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Treat parser-owner paths as heuristic until an item-level runtime audit verifies ownership."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I008"
+      ]
+    },
+    {
+      "route_id": "W17-R-010",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I010"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Keep inherited project assertions separate from independently authorized evidence."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I010"
+      ]
+    },
+    {
+      "route_id": "W17-R-011",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I011"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Keep inherited project assertions separate from independently authorized evidence."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I011"
+      ]
+    },
+    {
+      "route_id": "W17-R-012",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I012"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Resolve contextual meaning before adopting a learner-facing translation or gloss.",
+        "Keep inherited project assertions separate from independently authorized evidence."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I012"
+      ]
+    },
+    {
+      "route_id": "W17-R-013",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I013"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Resolve contextual meaning before adopting a learner-facing translation or gloss."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I013"
+      ]
+    },
+    {
+      "route_id": "W17-R-015",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I015"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Resolve contextual meaning before adopting a learner-facing translation or gloss."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I015"
+      ]
+    },
+    {
+      "route_id": "W17-R-017",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I017"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Resolve contextual meaning before adopting a learner-facing translation or gloss."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I017"
+      ]
+    },
+    {
+      "route_id": "W17-R-018",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I018"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Resolve contextual meaning before adopting a learner-facing translation or gloss."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I018"
+      ]
+    },
+    {
+      "route_id": "W17-R-019",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I019"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Resolve contextual meaning before adopting a learner-facing translation or gloss."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I019"
+      ]
+    },
+    {
+      "route_id": "W17-R-023",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I023"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Resolve contextual meaning before adopting a learner-facing translation or gloss."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I023"
+      ]
+    },
+    {
+      "route_id": "W17-R-024",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I024"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Keep inherited project assertions separate from independently authorized evidence."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I024"
+      ]
+    },
+    {
+      "route_id": "W17-R-025",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I025"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Resolve contextual meaning before adopting a learner-facing translation or gloss.",
+        "Keep inherited project assertions separate from independently authorized evidence."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I025"
+      ]
+    },
+    {
+      "route_id": "W17-R-026",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I026"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Keep inherited project assertions separate from independently authorized evidence."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I026"
+      ]
+    },
+    {
+      "route_id": "W17-R-028",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I028"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Resolve contextual meaning before adopting a learner-facing translation or gloss."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I028"
+      ]
+    },
+    {
+      "route_id": "W17-R-032",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I032"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Resolve contextual meaning before adopting a learner-facing translation or gloss.",
+        "Keep inherited project assertions separate from independently authorized evidence."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I032"
+      ]
+    },
+    {
+      "route_id": "W17-R-033",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I033"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Resolve contextual meaning before adopting a learner-facing translation or gloss."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I033"
+      ]
+    },
+    {
+      "route_id": "W17-R-035",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I035"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Resolve contextual meaning before adopting a learner-facing translation or gloss."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I035"
+      ]
+    },
+    {
+      "route_id": "W17-R-037",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I037"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Resolve contextual meaning before adopting a learner-facing translation or gloss."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I037"
+      ]
+    },
+    {
+      "route_id": "W17-R-038",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I038"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Resolve contextual meaning before adopting a learner-facing translation or gloss."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I038"
+      ]
+    },
+    {
+      "route_id": "W17-R-039",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I039"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Keep inherited project assertions separate from independently authorized evidence."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I039"
+      ]
+    },
+    {
+      "route_id": "W17-R-051",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I051"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Use controlled corpus or independent speaker evidence for naturalness and register.",
+        "Keep inherited project assertions separate from independently authorized evidence.",
+        "Treat parser-owner paths as heuristic until an item-level runtime audit verifies ownership.",
+        "Keep project-only naturalized alternatives outside source attestation and runtime/status promotion."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I051"
+      ]
+    },
+    {
+      "route_id": "W17-R-052",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I052"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Treat parser-owner paths as heuristic until an item-level runtime audit verifies ownership."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I052"
+      ]
+    },
+    {
+      "route_id": "W17-R-053",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I053"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Treat parser-owner paths as heuristic until an item-level runtime audit verifies ownership."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I053"
+      ]
+    },
+    {
+      "route_id": "W17-R-054",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I054"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Treat parser-owner paths as heuristic until an item-level runtime audit verifies ownership."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I054"
+      ]
+    },
+    {
+      "route_id": "W17-R-055",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I055"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Use controlled corpus or independent speaker evidence for naturalness and register.",
+        "Keep inherited project assertions separate from independently authorized evidence.",
+        "Treat parser-owner paths as heuristic until an item-level runtime audit verifies ownership.",
+        "Keep project-only naturalized alternatives outside source attestation and runtime/status promotion."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I055"
+      ]
+    },
+    {
+      "route_id": "W17-R-056",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I056"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Use controlled corpus or independent speaker evidence for naturalness and register.",
+        "Keep inherited project assertions separate from independently authorized evidence.",
+        "Treat parser-owner paths as heuristic until an item-level runtime audit verifies ownership.",
+        "Keep project-only naturalized alternatives outside source attestation and runtime/status promotion."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I056"
+      ]
+    },
+    {
+      "route_id": "W17-R-057",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I057"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Treat parser-owner paths as heuristic until an item-level runtime audit verifies ownership."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I057"
+      ]
+    },
+    {
+      "route_id": "W17-R-058",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I058"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Keep inherited project assertions separate from independently authorized evidence.",
+        "Treat parser-owner paths as heuristic until an item-level runtime audit verifies ownership.",
+        "Keep project-only naturalized alternatives outside source attestation and runtime/status promotion."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I058"
+      ]
+    },
+    {
+      "route_id": "W17-R-059",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I059"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Resolve contextual meaning before adopting a learner-facing translation or gloss.",
+        "Treat parser-owner paths as heuristic until an item-level runtime audit verifies ownership."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I059"
+      ]
+    },
+    {
+      "route_id": "W17-R-061",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I061"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Resolve contextual meaning before adopting a learner-facing translation or gloss.",
+        "Keep inherited project assertions separate from independently authorized evidence."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I061"
+      ]
+    },
+    {
+      "route_id": "W17-R-063",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I063"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Resolve contextual meaning before adopting a learner-facing translation or gloss.",
+        "Keep inherited project assertions separate from independently authorized evidence."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I063"
+      ]
+    },
+    {
+      "route_id": "W17-R-064",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I064"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Resolve contextual meaning before adopting a learner-facing translation or gloss.",
+        "Keep inherited project assertions separate from independently authorized evidence."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I064"
+      ]
+    },
+    {
+      "route_id": "W17-R-065",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I065"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Resolve contextual meaning before adopting a learner-facing translation or gloss."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I065"
+      ]
+    },
+    {
+      "route_id": "W17-R-066",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I066"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Resolve contextual meaning before adopting a learner-facing translation or gloss."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I066"
+      ]
+    },
+    {
+      "route_id": "W17-R-067",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I067"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Resolve contextual meaning before adopting a learner-facing translation or gloss."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I067"
+      ]
+    },
+    {
+      "route_id": "W17-R-068",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I068"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Treat parser-owner paths as heuristic until an item-level runtime audit verifies ownership."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I068"
+      ]
+    },
+    {
+      "route_id": "W17-R-069",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I069"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Resolve contextual meaning before adopting a learner-facing translation or gloss.",
+        "Treat parser-owner paths as heuristic until an item-level runtime audit verifies ownership."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I069"
+      ]
+    },
+    {
+      "route_id": "W17-R-070",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I070"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Use independent item-level pronunciation evidence before learner-facing adoption.",
+        "Keep inherited project assertions separate from independently authorized evidence."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I070"
+      ]
+    },
+    {
+      "route_id": "W17-R-071",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I071"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Use independent item-level pronunciation evidence before learner-facing adoption.",
+        "Keep inherited project assertions separate from independently authorized evidence."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I071"
+      ]
+    },
+    {
+      "route_id": "W17-R-072",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I072"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Use independent item-level pronunciation evidence before learner-facing adoption.",
+        "Keep inherited project assertions separate from independently authorized evidence."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I072"
+      ]
+    },
+    {
+      "route_id": "W17-R-073",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I073"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Use independent item-level pronunciation evidence before learner-facing adoption.",
+        "Keep inherited project assertions separate from independently authorized evidence."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I073"
+      ]
+    },
+    {
+      "route_id": "W17-R-074",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I074"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Use independent item-level pronunciation evidence before learner-facing adoption.",
+        "Keep inherited project assertions separate from independently authorized evidence.",
+        "Preserve the source reading unchanged; any corrected learner-facing reading requires separate acceptance authority."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I074"
+      ]
+    },
+    {
+      "route_id": "W17-R-075",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I075"
+      },
+      "owner_issue": 134,
+      "status": "open",
+      "requirements": [
+        "Resolve typed discrepancies without mutating the immutable source layer.",
+        "Use independent item-level pronunciation evidence before learner-facing adoption.",
+        "Keep inherited project assertions separate from independently authorized evidence."
+      ],
+      "projected_record_ids": [
+        "GLOSSIKA-YUEHK-A1-W17-20260712-I075"
+      ]
+    }
+  ]
+}

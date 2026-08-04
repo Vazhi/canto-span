@@ -1,0 +1,4475 @@
+{
+  "schema": "canto-span-pedagogical-implementation-links-v1",
+  "links": [
+    {
+      "link_id": "W17-L-001-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I001"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I001",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-001-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I001"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-glossika-corpus.tsv#COR-W17-001",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-001-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I001"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-corpus-semantic-disposition.tsv#COR-W17-001",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-001-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I001"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-functional-corpus.tsv#COR-W17-001",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-001-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I001"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/conditional.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-001-006",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I001"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/graph.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-001-007",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I001"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/markers.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-001-008",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I001"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/punctuation.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-001-009",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I001"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/questions/a-not-a.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-001-010",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I001"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/questions/completion-experiential.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-001-011",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I001"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/questions/wh-scalar.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-001-012",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I001"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/terminal/questions/final-particles.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-001-013",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I001"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/terminal/questions/question-fallbacks.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-002-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I002"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I002",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-002-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I002"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-glossika-corpus.tsv#COR-W17-002",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-002-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I002"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-corpus-semantic-disposition.tsv#COR-W17-002",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-002-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I002"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-functional-corpus.tsv#COR-W17-002",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-002-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I002"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/imperatives/clauses.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-003-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I003"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I003",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-003-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I003"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-glossika-corpus.tsv#COR-W17-003",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-003-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I003"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-corpus-semantic-disposition.tsv#COR-W17-003",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-003-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I003"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-functional-corpus.tsv#COR-W17-003",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-003-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I003"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/conditional.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-003-006",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I003"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/graph.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-003-007",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I003"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/markers.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-003-008",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I003"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/punctuation.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-003-009",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I003"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/modality/intention-preference.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-004-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I004"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I004",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-004-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I004"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-glossika-corpus.tsv#COR-W17-004",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-004-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I004"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-corpus-semantic-disposition.tsv#COR-W17-004",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-004-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I004"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-functional-corpus.tsv#COR-W17-004",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-004-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I004"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/conditional.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-004-006",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I004"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/graph.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-004-007",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I004"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/markers.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-004-008",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I004"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/punctuation.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-004-009",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I004"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/motion/directional.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-004-010",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I004"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/motion/ordering-review.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-004-011",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I004"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/motion/path-goal-source.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-004-012",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I004"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/motion/purpose-chains.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-005-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I005"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I005",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-005-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I005"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-glossika-corpus.tsv#COR-W17-005",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-005-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I005"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-corpus-semantic-disposition.tsv#COR-W17-005",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-005-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I005"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-functional-corpus.tsv#COR-W17-005",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-005-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I005"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/conditional.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-005-006",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I005"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/graph.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-005-007",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I005"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/markers.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-005-008",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I005"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/punctuation.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-005-009",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I005"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/terminal/particles/discourse.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-005-010",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I005"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/terminal/particles/focus.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-005-011",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I005"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/terminal/particles/ordered-cluster.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-006-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I006"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I006",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-006-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I006"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-glossika-corpus.tsv#COR-W17-006",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-006-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I006"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-corpus-semantic-disposition.tsv#COR-W17-006",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-006-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I006"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-functional-corpus.tsv#COR-W17-006",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-006-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I006"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/conditional.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-006-006",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I006"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/graph.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-006-007",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I006"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/markers.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-006-008",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I006"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/punctuation.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-006-009",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I006"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/modality/intention-preference.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-007-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I007"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I007",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-007-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I007"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-glossika-corpus.tsv#COR-W17-007",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-007-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I007"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-corpus-semantic-disposition.tsv#COR-W17-007",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-007-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I007"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-functional-corpus.tsv#COR-W17-007",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-007-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I007"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/conditional.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-007-006",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I007"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/graph.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-007-007",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I007"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/markers.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-007-008",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I007"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/punctuation.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-007-009",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I007"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/predicates/basic.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-008-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I008"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I008",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-008-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I008"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-glossika-corpus.tsv#COR-W17-008",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-008-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I008"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-corpus-semantic-disposition.tsv#COR-W17-008",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-008-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I008"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-functional-corpus.tsv#COR-W17-008",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-008-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I008"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/conditional.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-008-006",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I008"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/graph.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-008-007",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I008"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/markers.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-008-008",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I008"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/punctuation.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-008-009",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I008"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/definition/copular-relations.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-008-010",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I008"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/definition/intended-function.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-008-011",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I008"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/predicates/basic.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-009-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I009"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I009",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-009-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I009"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-001",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-009-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I009"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-001",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-009-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I009"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-009-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I009"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-010-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I010"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I010",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-010-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I010"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-002",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-010-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I010"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-002",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-010-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I010"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-011-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I011"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I011",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-011-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I011"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-003",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-011-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I011"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-003",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-011-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I011"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-012-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I012"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I012",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-012-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I012"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-004",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-012-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I012"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-004",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-012-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I012"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-013-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I013"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I013",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-013-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I013"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-005",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-013-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I013"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-005",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-013-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I013"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-014-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I014"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I014",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-014-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I014"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-006",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-014-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I014"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-006",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-014-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I014"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-015-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I015"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I015",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-015-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I015"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-007",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-015-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I015"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-007",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-015-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I015"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-016-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I016"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I016",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-016-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I016"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-008",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-016-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I016"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-008",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-016-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I016"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-017-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I017"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I017",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-017-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I017"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-009",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-017-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I017"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-009",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-017-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I017"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-018-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I018"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I018",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-018-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I018"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-010",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-018-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I018"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-010",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-018-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I018"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-019-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I019"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I019",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-019-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I019"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-011",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-019-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I019"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-011",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-019-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I019"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-020-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I020"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I020",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-020-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I020"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-012",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-020-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I020"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-012",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-020-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I020"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-021-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I021"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I021",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-021-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I021"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-013",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-021-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I021"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-013",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-021-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I021"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-022-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I022"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I022",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-022-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I022"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-014",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-022-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I022"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-014",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-022-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I022"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/statives.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-023-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I023"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I023",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-023-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I023"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-015",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-023-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I023"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-015",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-023-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I023"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-024-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I024"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I024",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-024-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I024"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-003",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-024-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I024"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-003",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-024-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I024"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-025-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I025"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I025",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-025-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I025"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-004",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-025-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I025"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-004",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-025-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I025"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-026-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I026"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I026",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-026-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I026"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-002",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-026-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I026"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-002",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-026-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I026"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-027-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I027"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I027",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-027-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I027"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-016",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-027-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I027"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-016",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-027-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I027"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/verbs.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-028-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I028"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I028",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-028-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I028"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-017",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-028-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I028"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-017",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-028-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I028"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-028-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I028"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-029-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I029"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I029",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-029-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I029"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-018",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-029-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I029"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-018",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-029-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I029"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-030-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I030"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I030",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-030-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I030"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-019",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-030-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I030"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-019",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-030-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I030"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-031-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I031"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I031",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-031-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I031"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-020",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-031-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I031"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-020",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-031-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I031"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-032-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I032"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I032",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-032-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I032"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-021",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-032-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I032"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-021",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-032-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I032"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-033-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I033"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I033",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-033-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I033"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-022",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-033-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I033"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-022",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-033-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I033"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-034-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I034"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I034",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-034-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I034"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-023",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-034-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I034"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-023",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-034-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I034"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-035-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I035"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I035",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-035-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I035"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-024",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-035-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I035"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-024",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-035-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I035"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-036-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I036"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I036",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-036-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I036"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-025",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-036-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I036"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-025",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-036-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I036"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-037-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I037"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I037",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-037-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I037"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-026",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-037-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I037"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-026",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-037-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I037"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-038-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I038"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I038",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-038-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I038"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-027",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-038-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I038"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-027",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-038-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I038"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-039-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I039"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I039",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-039-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I039"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-028",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-039-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I039"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-028",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-039-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I039"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-040-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I040"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I040",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-040-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I040"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-029",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-040-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I040"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-029",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-040-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I040"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-041-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I041"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I041",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-041-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I041"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-030",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-041-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I041"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-030",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-041-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I041"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-041-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I041"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-042-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I042"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I042",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-042-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I042"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-031",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-042-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I042"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-031",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-042-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I042"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-042-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I042"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-043-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I043"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I043",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-043-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I043"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-032",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-043-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I043"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-032",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-043-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I043"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-043-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I043"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-044-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I044"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I044",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-044-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I044"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-033",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-044-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I044"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-033",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-044-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I044"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-044-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I044"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-045-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I045"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I045",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-045-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I045"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-034",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-045-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I045"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-034",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-045-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I045"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-045-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I045"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-046-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I046"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I046",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-046-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I046"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-035",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-046-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I046"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-035",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-046-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I046"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-046-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I046"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-047-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I047"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I047",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-047-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I047"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-036",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-047-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I047"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-036",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-047-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I047"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-047-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I047"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-048-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I048"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I048",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-048-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I048"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-037",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-048-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I048"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-037",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-048-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I048"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-048-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I048"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-049-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I049"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I049",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-049-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I049"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-038",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-049-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I049"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-038",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-049-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I049"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-049-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I049"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-050-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I050"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I050",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-050-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I050"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-039",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-050-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I050"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-039",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-050-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I050"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-050-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I050"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-051-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I051"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I051",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-051-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I051"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-glossika-corpus.tsv#COR-W17-009",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-051-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I051"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-corpus-semantic-disposition.tsv#COR-W17-009",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-051-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I051"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-functional-corpus.tsv#COR-W17-009",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-051-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I051"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/predicates/basic.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-051-006",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I051"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/orchestration/wrap-predicate.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-052-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I052"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I052",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-052-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I052"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-glossika-corpus.tsv#COR-W17-010",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-052-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I052"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-corpus-semantic-disposition.tsv#COR-W17-010",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-052-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I052"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-functional-corpus.tsv#COR-W17-010",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-052-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I052"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/imperatives/clauses.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-052-006",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I052"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/questions/a-not-a.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-052-007",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I052"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/questions/completion-experiential.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-052-008",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I052"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/questions/wh-scalar.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-052-009",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I052"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/terminal/questions/final-particles.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-052-010",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I052"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/terminal/questions/question-fallbacks.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-053-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I053"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I053",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-053-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I053"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-glossika-corpus.tsv#COR-W17-011",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-053-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I053"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-corpus-semantic-disposition.tsv#COR-W17-011",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-053-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I053"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-functional-corpus.tsv#COR-W17-011",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-053-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I053"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/conditional.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-053-006",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I053"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/graph.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-053-007",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I053"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/markers.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-053-008",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I053"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/punctuation.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-053-009",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I053"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/complements/result.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-053-010",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I053"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/predicates/basic.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-054-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I054"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I054",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-054-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I054"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-glossika-corpus.tsv#COR-W17-012",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-054-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I054"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-corpus-semantic-disposition.tsv#COR-W17-012",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-054-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I054"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-functional-corpus.tsv#COR-W17-012",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-054-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I054"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/predicates/basic.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-054-006",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I054"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/orchestration/wrap-predicate.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-055-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I055"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I055",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-055-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I055"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-glossika-corpus.tsv#COR-W17-013",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-055-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I055"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-corpus-semantic-disposition.tsv#COR-W17-013",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-055-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I055"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-functional-corpus.tsv#COR-W17-013",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-055-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I055"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/predicates/basic.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-055-006",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I055"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/orchestration/wrap-predicate.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-056-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I056"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I056",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-056-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I056"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-glossika-corpus.tsv#COR-W17-014",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-056-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I056"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-corpus-semantic-disposition.tsv#COR-W17-014",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-056-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I056"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-functional-corpus.tsv#COR-W17-014",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-056-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I056"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/conditional.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-056-006",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I056"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/graph.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-056-007",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I056"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/markers.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-056-008",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I056"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/punctuation.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-056-009",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I056"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/discourse/formula-responses.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-056-010",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I056"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/predicates/basic.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-057-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I057"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I057",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-057-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I057"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-glossika-corpus.tsv#COR-W17-015",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-057-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I057"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-corpus-semantic-disposition.tsv#COR-W17-015",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-057-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I057"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-functional-corpus.tsv#COR-W17-015",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-057-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I057"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/conditional.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-057-006",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I057"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/graph.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-057-007",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I057"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/markers.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-057-008",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I057"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/punctuation.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-057-009",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I057"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/boundaries/fragments.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-057-010",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I057"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/boundaries/malformed.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-057-011",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I057"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/boundaries/needs-context.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-057-012",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I057"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/questions/a-not-a.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-057-013",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I057"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/questions/completion-experiential.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-057-014",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I057"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/questions/wh-scalar.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-057-015",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I057"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/terminal/questions/final-particles.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-057-016",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I057"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/terminal/questions/question-fallbacks.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-058-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I058"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I058",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-058-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I058"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-glossika-corpus.tsv#COR-W17-016",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-058-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I058"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-corpus-semantic-disposition.tsv#COR-W17-016",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-058-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I058"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-functional-corpus.tsv#COR-W17-016",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-058-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I058"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/conditional.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-058-006",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I058"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/graph.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-058-007",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I058"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/markers.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-058-008",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I058"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/punctuation.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-058-009",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I058"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/complements/result.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-058-010",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I058"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/discourse/formula-responses.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-059-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I059"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I059",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-059-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I059"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-glossika-corpus.tsv#COR-W17-017",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-059-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I059"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-corpus-semantic-disposition.tsv#COR-W17-017",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-059-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I059"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-functional-corpus.tsv#COR-W17-017",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-059-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I059"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/conditional.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-059-006",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I059"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/graph.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-059-007",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I059"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/markers.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-059-008",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I059"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/punctuation.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-059-009",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I059"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/modality/intention-preference.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-059-010",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I059"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/modality/modal-predicates.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-060-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I060"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I060",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-060-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I060"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-040",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-060-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I060"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-040",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-060-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I060"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-grammar-phrases.tsv#GRAM-W17-001",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-060-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I060"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-061-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I061"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I061",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-061-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I061"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-041",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-061-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I061"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-041",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-061-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I061"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-grammar-phrases.tsv#GRAM-W17-002",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-061-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I061"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/verbs.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-062-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I062"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I062",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-062-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I062"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-042",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-062-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I062"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-042",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-062-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I062"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-grammar-phrases.tsv#GRAM-W17-003",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-062-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I062"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-063-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I063"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I063",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-063-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I063"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-043",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-063-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I063"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-043",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-063-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I063"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-grammar-phrases.tsv#GRAM-W17-004",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-063-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I063"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-064-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I064"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I064",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-064-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I064"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-044",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-064-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I064"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-044",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-064-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I064"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-grammar-phrases.tsv#GRAM-W17-005",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-064-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I064"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/verbs.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-065-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I065"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I065",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-065-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I065"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-045",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-065-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I065"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-045",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-065-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I065"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-grammar-phrases.tsv#GRAM-W17-006",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-065-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I065"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/verbs.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-066-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I066"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I066",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-066-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I066"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-046",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-066-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I066"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-046",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-066-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I066"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-grammar-phrases.tsv#GRAM-W17-007",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-066-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I066"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-067-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I067"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I067",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-067-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I067"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-047",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-067-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I067"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon-role-review.tsv#LEX-W17-047",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-067-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I067"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-grammar-phrases.tsv#GRAM-W17-008",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-067-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I067"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-068-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I068"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I068",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-068-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I068"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-glossika-corpus.tsv#COR-W17-018",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-068-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I068"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-corpus-semantic-disposition.tsv#COR-W17-018",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-068-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I068"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-functional-corpus.tsv#COR-W17-018",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-068-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I068"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/coverbs/frames.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-068-006",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I068"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/locatives/coverb-place.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-068-007",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I068"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/locatives/posture.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-068-008",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I068"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/predicates/basic.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-069-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I069"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I069",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-069-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I069"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-glossika-corpus.tsv#COR-W17-019",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-069-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I069"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-corpus-semantic-disposition.tsv#COR-W17-019",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-069-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I069"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-functional-corpus.tsv#COR-W17-019",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-069-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I069"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/conditional.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-069-006",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I069"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/graph.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-069-007",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I069"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/markers.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-069-008",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I069"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/clause-relations/punctuation.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-069-009",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I069"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/coverbs/frames.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-069-010",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I069"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/motion/directional.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-069-011",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I069"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/motion/ordering-review.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-069-012",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I069"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/motion/path-goal-source.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-069-013",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I069"
+      },
+      "type": "parser_hint",
+      "target": "src/parser/detectors/motion/purpose-chains.js",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-070-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I070"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I070",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-070-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I070"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-phonics-pairs.tsv#PHO-W17-001",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-070-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I070"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-048",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-070-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I070"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-049",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-070-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I070"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/productive-vo.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-070-006",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I070"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-070-007",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I070"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/things.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-071-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I071"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I071",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-071-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I071"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-phonics-pairs.tsv#PHO-W17-002",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-071-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I071"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-050",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-071-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I071"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-051",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-071-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I071"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/productive-vo.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-071-006",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I071"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-071-007",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I071"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/verbs.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-072-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I072"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I072",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-072-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I072"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-phonics-pairs.tsv#PHO-W17-003",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-072-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I072"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-052",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-072-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I072"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-053",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-072-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I072"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-073-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I073"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I073",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-073-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I073"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-phonics-pairs.tsv#PHO-W17-004",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-073-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I073"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-054",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-073-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I073"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-055",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-073-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I073"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-074-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I074"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I074",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-074-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I074"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-phonics-pairs.tsv#PHO-W17-005",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-074-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I074"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-056",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-074-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I074"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-057",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-074-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I074"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-074-006",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I074"
+      },
+      "type": "pronunciation_owner",
+      "target": "evidence:W17-PRON-CUHK-FUT3",
+      "authority": "pronunciation_owner"
+    },
+    {
+      "link_id": "W17-L-074-007",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I074"
+      },
+      "type": "pronunciation_owner",
+      "target": "evidence:W17-PRON-CTEXT-FUT3",
+      "authority": "pronunciation_owner"
+    },
+    {
+      "link_id": "W17-L-075-001",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I075"
+      },
+      "type": "evidence_relation",
+      "target": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/crosswalk.json#GLOSSIKA-YUEHK-A1-W17-20260712-I075",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-075-002",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I075"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-phonics-pairs.tsv#PHO-W17-006",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-075-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I075"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-058",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-075-004",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I075"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-lexicon.tsv#LEX-W17-059",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-075-005",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I075"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W17-L-074-008",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I074"
+      },
+      "type": "pronunciation_owner",
+      "target": "https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/pho-rel.php?s2=ut",
+      "authority": "pronunciation_owner"
+    },
+    {
+      "link_id": "W17-L-074-009",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I074"
+      },
+      "type": "pronunciation_owner",
+      "target": "https://ctext.org/dictionary.pl?char=%E9%97%8A&if=en",
+      "authority": "pronunciation_owner"
+    },
+    {
+      "link_id": "W17-L-051-007",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I051"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-naturalized-alternatives.tsv#W17-PROJECT-ONLY-001",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-051-008",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I051"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-naturalized-alternatives.tsv#W17-PROJECT-ONLY-002",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-055-007",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I055"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-naturalized-alternatives.tsv#W17-PROJECT-ONLY-003",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-056-011",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I056"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-naturalized-alternatives.tsv#W17-PROJECT-ONLY-004",
+      "authority": "informational"
+    },
+    {
+      "link_id": "W17-L-058-011",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I058"
+      },
+      "type": "evidence_relation",
+      "target": "test-data/w17-naturalized-alternatives.tsv#W17-PROJECT-ONLY-005",
+      "authority": "informational"
+    }
+  ]
+}

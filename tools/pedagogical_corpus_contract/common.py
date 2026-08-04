@@ -12,7 +12,7 @@ import stat
 import sys
 from typing import Any
 
-REGISTRY_SCHEMA = "canto-span-pedagogical-corpus-registry-v1"
+REGISTRY_SCHEMA = "canto-span-pedagogical-corpus-registry-v2"
 PACKAGE_SCHEMA = "canto-span-pedagogical-corpus-package-v1"
 RECORDS_SCHEMA = "canto-span-pedagogical-corpus-records-v1"
 CANDIDATE_SCHEMA = "canto-span-pedagogical-candidate-snapshot-v1"
@@ -24,7 +24,7 @@ RELATION_SCHEMAS = {
     "implementation_links_file": ("implementation_links", "canto-span-pedagogical-implementation-links-v1", "links"),
     "routes_file": ("routes", "canto-span-pedagogical-routes-v1", "routes"),
 }
-REGISTRY_KEYS = {"schema", "registry_state", "package_root", "packages", "migration_queue", "invariants"}
+REGISTRY_KEYS = {"schema", "registry_state", "package_root", "packages", "legacy_archives", "migration_queue", "invariants"}
 REGISTRY_INVARIANTS = {
     "closed_package_manifests": True,
     "safe_path_containment": True,
@@ -125,9 +125,30 @@ def validate_registry_shape(registry: Any) -> None:
     req(registry["registry_state"] in {"foundation", "active"}, "invalid registry_state")
     safe_rel(registry["package_root"], "registry.package_root")
     req(isinstance(registry["packages"], list), "registry.packages must be an array")
+    req(isinstance(registry["legacy_archives"], list), "registry.legacy_archives must be an array")
     req(isinstance(registry["migration_queue"], list), "registry.migration_queue must be an array")
     req(registry["invariants"] == REGISTRY_INVARIANTS, "registry invariants must be exact")
 
+
+
+def validate_legacy_archives(archives: list[Any]) -> list[dict[str, Any]]:
+    seen_packages: set[str] = set()
+    seen_roots: set[str] = set()
+    keys = {"package_id", "source_issue", "source_root"}
+    validated: list[dict[str, Any]] = []
+    for index, item in enumerate(archives):
+        label = f"legacy_archives[{index}]"
+        exact_keys(item, keys, label)
+        package_id = item["package_id"]
+        req(isinstance(package_id, str) and package_id, f"{label}.package_id invalid")
+        req(package_id not in seen_packages, f"duplicate legacy archive package {package_id}")
+        seen_packages.add(package_id)
+        req(isinstance(item["source_issue"], int) and item["source_issue"] > 0, f"{label}.source_issue invalid")
+        source_root = safe_rel(item["source_root"], f"{label}.source_root")
+        req(source_root not in seen_roots, f"duplicate legacy archive root {source_root}")
+        seen_roots.add(source_root)
+        validated.append(item)
+    return validated
 
 def validate_queue(queue: list[Any]) -> None:
     seen_packages: set[str] = set()
@@ -237,3 +258,4 @@ def role_json(repo: Path, files: dict[str, dict[str, Any]], rel: Any, role: str,
     req(rel in files and files[rel]["role"] == role, f"{label} must be declared with role {role}")
     path = resolve(repo, rel, label)
     return path, read_json(path)
+

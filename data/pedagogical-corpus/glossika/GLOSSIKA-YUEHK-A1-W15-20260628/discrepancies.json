@@ -1,0 +1,60 @@
+{
+  "schema": "canto-span-pedagogical-discrepancies-v1",
+  "discrepancies": [
+    {
+      "discrepancy_id": "W15-D-003",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I003"
+      },
+      "type": "naturalness",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W15-D-056",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I056"
+      },
+      "type": "translation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W15-D-062",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I062"
+      },
+      "type": "pronunciation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W15-D-064",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I064"
+      },
+      "type": "gloss",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W15-D-065",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W15-20260628",
+        "record_id": "GLOSSIKA-YUEHK-A1-W15-20260628-I065"
+      },
+      "type": "other",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    }
+  ]
+}

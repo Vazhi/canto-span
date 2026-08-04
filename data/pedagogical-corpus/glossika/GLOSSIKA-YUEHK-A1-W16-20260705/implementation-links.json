@@ -1,0 +1,355 @@
+{
+  "schema": "canto-span-pedagogical-implementation-links-v1",
+  "links": [
+    {
+      "link_id": "W16-L-009-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I009"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/productive-vo.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-010-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I010"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/study-suite.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-011-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I011"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/productive-vo.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-012-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I012"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/productive-vo.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-013-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I013"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/productive-vo.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-014-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I014"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/productive-vo.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-015-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I015"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/productive-vo.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-016-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I016"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/productive-vo.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-017-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I017"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/productive-vo.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-018-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I018"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/productive-vo.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-019-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I019"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-020-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I020"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/presentation/learner-glosses.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-021-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I021"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/productive-vo.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-022-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I022"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/verbs.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-023-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I023"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/productive-vo.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-024-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I024"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/productive-vo.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-025-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I025"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/productive-vo.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-026-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I026"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/productive-vo.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-027-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I027"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-028-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I028"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/productive-vo.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-029-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I029"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/productive-vo.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-030-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I030"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-031-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I031"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-032-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I032"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/productive-vo.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-033-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I033"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-034-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I034"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-035-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I035"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-036-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I036"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-037-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I037"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-038-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I038"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-039-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I039"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-040-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I040"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-041-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I041"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-042-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I042"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+      "authority": "implementation_owner"
+    },
+    {
+      "link_id": "W16-L-043-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I043"
+      },
+      "type": "implementation_link",
+      "target": "src/runtime-resources/lexicon/compositional-lexical-phrases.js",
+      "authority": "implementation_owner"
+    }
+  ]
+}

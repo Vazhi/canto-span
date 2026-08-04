@@ -1,0 +1,18 @@
+{
+  "schema": "canto-span-pedagogical-review-authority-v1",
+  "authority_issue": 508,
+  "authority_kind": "review",
+  "authorized_state": "reviewed",
+  "reviewer_role": "project_reviewer",
+  "source_semantic_sha256": "d7a5444af2bb88ecc9a937fba9b2dff1799ad381db1c6a4358ee074b79421c8e",
+  "authorized_at": "2026-08-03T20:00:00+08:00",
+  "scope": "GLOSSIKA-YUEHK-A1-W14-20260621",
+  "evidence_basis": [
+    "Original Glossika email 19ee8bb6217dc444 was read directly and matched to the immutable archive.",
+    "Immutable source.json SHA-256 4beb923900ff0dfcefa94f715e6035b8023b9f1dcd7d248e2359bc126bc153cd.",
+    "Immutable items.tsv SHA-256 381f143afaa67d00465e7e7f759597548f2139a23177c8bd5e0e8e5d64c06b6a.",
+    "Source issue #131 and bounded follow-up research #126 / PR #262.",
+    "Stale PR #472 findings were re-examined as evidence only; no stale authority was inherited."
+  ],
+  "replacement_rights": []
+}

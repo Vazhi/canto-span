@@ -1,0 +1,53 @@
+{
+  "schema": "canto-span-pedagogical-duplicate-edges-v1",
+  "edges": [
+    {
+      "edge_id": "W17-E-024-SOURCE",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I024"
+      },
+      "target": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I011"
+      },
+      "relation": "exact"
+    },
+    {
+      "edge_id": "W17-E-025-SOURCE",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I025"
+      },
+      "target": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I012"
+      },
+      "relation": "exact"
+    },
+    {
+      "edge_id": "W17-E-026-SOURCE",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I026"
+      },
+      "target": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I010"
+      },
+      "relation": "exact"
+    },
+    {
+      "edge_id": "W17-E-041-ACTIVE",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I041"
+      },
+      "target": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W16-20260705",
+        "record_id": "GLOSSIKA-YUEHK-A1-W16-20260705-I043"
+      },
+      "relation": "exact"
+    }
+  ]
+}

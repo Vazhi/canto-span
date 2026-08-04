@@ -10,9 +10,23 @@ def dump(path,value):
     path.parent.mkdir(parents=True,exist_ok=True); path.write_text(json.dumps(value,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 def load(path): return json.loads(path.read_text(encoding="utf-8"))
 def file_entry(root,rel,role): return {"path":rel,"role":role,"byte_sha256":mod.byte_hash(root/rel),"semantic_sha256":mod.semantic_hash(root/rel)}
-def queue_item(pid="PKG-OLD",claim=471,pr=472): return {"package_id":pid,"source_issue":131,"stale_claim":claim,"stale_pr":pr,"source_root":f"data/pedagogical-corpus/legacy/{pid}"}
-def registry(root,state="foundation",packages=None,queue=None):
-    path=root/"config/registry.json"; dump(path,{"schema":mod.REGISTRY_SCHEMA,"registry_state":state,"package_root":"data/pedagogical-corpus","packages":packages or [],"migration_queue":[queue_item()] if queue is None and state=="foundation" else (queue or []),"invariants":mod.REGISTRY_INVARIANTS}); return path
+def queue_item(pid="PKG-OLD",claim=471,pr=472,issue=131,source_root=None):
+    return {"package_id":pid,"source_issue":issue,"stale_claim":claim,"stale_pr":pr,"source_root":source_root or f"data/pedagogical-corpus/legacy/{pid}"}
+def legacy_item(pid="PKG-OLD",issue=131,source_root=None):
+    return {"package_id":pid,"source_issue":issue,"source_root":source_root or f"data/pedagogical-corpus/legacy/{pid}"}
+def materialize_archives(root,archives):
+    for archive in archives:
+        path=root/archive["source_root"]; path.mkdir(parents=True,exist_ok=True)
+        marker=path/"source.json"
+        if not marker.exists(): dump(marker,{"legacy_archive":archive["package_id"]})
+def registry(root,state="foundation",packages=None,queue=None,archives=None):
+    if queue is None: queue=[queue_item()] if state=="foundation" else []
+    if archives is None:
+        archives=[legacy_item(item["package_id"],item["source_issue"],item["source_root"]) for item in queue]
+    materialize_archives(root,archives)
+    path=root/"config/registry.json"
+    dump(path,{"schema":mod.REGISTRY_SCHEMA,"registry_state":state,"package_root":"data/pedagogical-corpus","packages":packages or [],"legacy_archives":archives,"migration_queue":queue,"invariants":mod.REGISTRY_INVARIANTS})
+    return path
 
 def package(root,pid="PKG-A",records=None,issue=505,lineage=None,parents=None):
     records=records or ["I001","I002"]; lineage=lineage or f"lineage:{pid}"; parents=parents or ["external:provider"]
@@ -33,7 +47,7 @@ def active(case,count=1):
     root=repo(case); entries=[]; manifests=[]
     for i in range(count):
         entry,manifest=package(root,f"PKG-{chr(65+i)}",issue=505+i); entries.append(entry); manifests.append(manifest)
-    return root,registry(root,"active",entries,[]),entries,manifests
+    return root,registry(root,"active",entries,[],[]),entries,manifests
 def refresh(root,manifest,rel):
     value=load(manifest)
     for item in value["files"]:
