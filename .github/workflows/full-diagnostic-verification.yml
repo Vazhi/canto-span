@@ -1,7 +1,5 @@
 name: Full diagnostic verification
 
-# Temporary diagnostic trigger for issue #568; remove before ready state.
-
 on:
   push:
     paths:
