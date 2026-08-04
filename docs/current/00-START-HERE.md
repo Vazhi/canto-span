@@ -28,7 +28,7 @@ Use the narrowest relevant owner and link to it instead of copying it.
 | Task classification and routing | [`CODEX-ISSUE-WORKFLOW.md`](CODEX-ISSUE-WORKFLOW.md) |
 | Optional agent availability | [`AGENT-WORKFLOW-SETTINGS.md`](AGENT-WORKFLOW-SETTINGS.md) and [`../../config/agent-workflow-settings.json`](../../config/agent-workflow-settings.json) |
 | Concurrent scope and integration roles | [`MULTI-AGENT-COORDINATION.md`](MULTI-AGENT-COORDINATION.md) |
-| Merge authority, standing authorization, and required stops | [`USER-MERGE-REVIEW.md`](USER-MERGE-REVIEW.md) |
+| Autonomous merge authority, standing authorization, and required safety stops | [`USER-MERGE-REVIEW.md`](USER-MERGE-REVIEW.md) |
 | Parser and verification policy | [`TESTING.md`](TESTING.md) and executable tests |
 | Runtime source, wired resources, and generated-bundle architecture | [`RUNTIME-MODULARIZATION.md`](RUNTIME-MODULARIZATION.md) |
 | Corpus extraction and review | [`../../tools/corpus-review/README.md`](../../tools/corpus-review/README.md) |
@@ -83,9 +83,9 @@ Before the first edit:
     remain unresolved;
 13. when ready, record the pull-request number, exact head, scope, validation, risks,
     and limitations;
-14. apply `USER-MERGE-REVIEW.md`: stop when that owner requires a stop, otherwise
-    merge only under valid standing or PR-specific authorization after live safety
-    checks;
+14. apply `USER-MERGE-REVIEW.md`: continue autonomously and merge under standing
+    authority when live safety checks pass; stop only when that owner requires a
+    safety stop;
 15. keep promotion, deployment, release, and runtime broadening inside their own
     declared gates.
 
@@ -174,10 +174,10 @@ verification must not modify tracked validation reports.
 Automation follows least privilege. Write-capable automation must be claim-scoped,
 preconditioned, auditable, branch-limited, and unable to write directly to `main`,
 expand scope, adjudicate evidence, promote status, deploy surveys, publish releases,
-merge, enable auto-merge, or infer approval.
+or infer merge authority outside `USER-MERGE-REVIEW.md`.
 
-Passing checks, lack of conflict, elapsed time, assignment, repository ownership, or
-integrator role does not authorize merge.
+Passing checks, lack of conflict, elapsed time, assignment, or repository ownership
+must be paired with valid merge authority and live safety checks before merge.
 
 ### Permanent verification admission
 
@@ -213,8 +213,8 @@ repository records. It is not confirmed by `npm run verify` or by a universal PR
 metadata check. Run `npm run test:coordination` only when coordination libraries,
 schemas, or their focused behavior change.
 
-A passing verifier never promotes a construction, grants merge authority, proves that
-an agent followed procedure, or justifies retaining an unnecessary check.
+A passing verifier never promotes a construction, grants merge authority by itself,
+proves that an agent followed procedure, or justifies retaining an unnecessary check.
 
 ## Historical-material rule
 
