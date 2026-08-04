@@ -28,7 +28,7 @@ Use the narrowest relevant owner and link to it instead of copying it.
 | Task classification and routing | [`CODEX-ISSUE-WORKFLOW.md`](CODEX-ISSUE-WORKFLOW.md) |
 | Optional agent availability | [`AGENT-WORKFLOW-SETTINGS.md`](AGENT-WORKFLOW-SETTINGS.md) and [`../../config/agent-workflow-settings.json`](../../config/agent-workflow-settings.json) |
 | Concurrent scope and integration roles | [`MULTI-AGENT-COORDINATION.md`](MULTI-AGENT-COORDINATION.md) |
-| Per-PR merge authorization | [`USER-MERGE-REVIEW.md`](USER-MERGE-REVIEW.md) |
+| Autonomous merge authority, standing authorization, and required safety stops | [`USER-MERGE-REVIEW.md`](USER-MERGE-REVIEW.md) |
 | Parser and verification policy | [`TESTING.md`](TESTING.md) and executable tests |
 | Runtime source, wired resources, and generated-bundle architecture | [`RUNTIME-MODULARIZATION.md`](RUNTIME-MODULARIZATION.md) |
 | Corpus extraction and review | [`../../tools/corpus-review/README.md`](../../tools/corpus-review/README.md) |
@@ -51,7 +51,7 @@ No registry owns every state dimension.
 | Agent availability | `config/agent-workflow-settings.json` | A disabled agent cannot be target, owner, or assignee. |
 | Pickup authority | latest valid intake ownership block | Cached prompts, comments, labels, and assignments are not authority. |
 | Concurrent scope | matching open work claim | Owner, revision, branch, and PR must agree. |
-| Merge authorization | `USER-MERGE-REVIEW.md` | Passing checks never replace explicit approval. |
+| Merge authorization | `USER-MERGE-REVIEW.md` | Passing checks never replace valid merge authority or live safety checks. |
 | Discovery readiness | canonical readiness data | Rankings expose gaps; they do not promote or assign. |
 | Panel evidence | active versioned review-packet records | Evidence is role-neutral and item-level. |
 | Corpus candidates | extraction packet and decision ledger | Extraction is mechanical; classification is separate. |
@@ -81,9 +81,11 @@ Before the first edit:
     number in the live intake;
 12. keep the PR draft while work, dependencies, pending changesets, or integration
     remain unresolved;
-13. when ready, notify the user with PR number, exact head, scope, validation, risks,
-    and limitations, then stop without merging;
-14. merge only after explicit approval for that PR and unchanged head;
+13. when ready, record the pull-request number, exact head, scope, validation, risks,
+    and limitations;
+14. apply `USER-MERGE-REVIEW.md`: continue autonomously and merge under standing
+    authority when live safety checks pass; stop only when that owner requires a
+    safety stop;
 15. keep promotion, deployment, release, and runtime broadening inside their own
     declared gates.
 
@@ -172,10 +174,10 @@ verification must not modify tracked validation reports.
 Automation follows least privilege. Write-capable automation must be claim-scoped,
 preconditioned, auditable, branch-limited, and unable to write directly to `main`,
 expand scope, adjudicate evidence, promote status, deploy surveys, publish releases,
-merge, enable auto-merge, or infer approval.
+or infer merge authority outside `USER-MERGE-REVIEW.md`.
 
-Passing checks, lack of conflict, elapsed time, assignment, repository ownership, or
-integrator role does not authorize merge.
+Passing checks, lack of conflict, elapsed time, assignment, or repository ownership
+must be paired with valid merge authority and live safety checks before merge.
 
 ### Permanent verification admission
 
@@ -211,8 +213,8 @@ repository records. It is not confirmed by `npm run verify` or by a universal PR
 metadata check. Run `npm run test:coordination` only when coordination libraries,
 schemas, or their focused behavior change.
 
-A passing verifier never promotes a construction, grants merge approval, proves that
-an agent followed procedure, or justifies retaining an unnecessary check.
+A passing verifier never promotes a construction, grants merge authority by itself,
+proves that an agent followed procedure, or justifies retaining an unnecessary check.
 
 ## Historical-material rule
 
