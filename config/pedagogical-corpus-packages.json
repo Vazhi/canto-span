@@ -26,14 +26,17 @@
       "manifest": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W16-20260705/package-manifest.json",
       "authority_state": "reviewed",
       "authority_issue": 514
+    },
+    {
+      "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+      "package_kind": "weekly",
+      "root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712",
+      "manifest": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712/package-manifest.json",
+      "authority_state": "reviewed",
+      "authority_issue": 517
     }
   ],
   "legacy_archives": [
-    {
-      "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
-      "source_issue": 134,
-      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712"
-    },
     {
       "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
       "source_issue": 135,
@@ -146,13 +149,6 @@
     }
   ],
   "migration_queue": [
-    {
-      "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
-      "source_issue": 134,
-      "stale_claim": 477,
-      "stale_pr": 478,
-      "source_root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W17-20260712"
-    },
     {
       "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
       "source_issue": 135,

@@ -1,0 +1,19 @@
+{
+  "schema": "canto-span-pedagogical-review-authority-v1",
+  "authority_issue": 517,
+  "authority_kind": "review",
+  "authorized_state": "reviewed",
+  "reviewer_role": "project_reviewer",
+  "source_semantic_sha256": "1dd2e876a5f4fbee513a8ce885a9c66b02479384f11b1e3791beefcf235557b8",
+  "authorized_at": "2026-08-04T06:25:00+08:00",
+  "scope": "GLOSSIKA-YUEHK-A1-W17-20260712",
+  "evidence_basis": [
+    "Original Glossika email 19f5511dfc37c9ea was read directly and matched to the immutable 75-record archive.",
+    "Immutable source.json SHA-256 f47520abc2dc99fef3cb4a3a60667362825c9f7bf9560f25475fc6d79ad91576.",
+    "Immutable items.tsv SHA-256 8d12b078794ba3209d163a7ffa8bac365319e9677eb2ad2080b8bd7556534552.",
+    "Preserved crosswalk.json SHA-256 1d64c630b938f0df1220f0d384d4602b823cd87a1d30618cc50b006849f30d1b.",
+    "Source issue #134; stale claim #477 and PR #478 re-examined as evidence only.",
+    "CUHK pronunciation database and Chinese Text Project support only the item-level 闊 fut3 proposal."
+  ],
+  "replacement_rights": []
+}
