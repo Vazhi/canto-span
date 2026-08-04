@@ -1,0 +1,42 @@
+set_id	profile_id	context_or_variable	condition	candidate	judgment_target	control_purpose
+PVA-C01	PVA-HOI1	Current established medical practice	habitual_hoi1	佢睇開中醫嘅。	Naturalness plus recurring or established interpretation.	Source-backed habitual baseline
+PVA-C01	PVA-HOI1	One prior medical visit	experiential_gwo3	佢睇過中醫。	Prior experience without required habit.	Separate experiential viewpoint
+PVA-C01	PVA-HOI1	At the current reference time	progressive_gan2	佢睇緊中醫。	Event in progress without required established pattern.	Separate progressive viewpoint
+PVA-C01	PVA-HOI1	Frequent practice stated lexically	frequency_adverb	佢成日睇中醫。	Frequency-based habit without 開.	Test relation versus overt frequency
+PVA-C02	PVA-HOI1	Established professional activity	matrix_established	我哋做開呢行。	Established occupation or relation.	Predicate-class baseline
+PVA-C02	PVA-HOI1	Former practice explicitly ended	former_habit	我以前做開呢行，而家冇做喇。	Whether V開 permits a discontinued established pattern in explicit context.	Bound the temporal interval
+PVA-C02	PVA-HOI1	No prior interval or recurrence	one_off_control	我今日第一次做呢行。	Reject or avoid established-pattern inference.	Negative semantic control
+PVA-C03	PVA-HOI1	Habitual and lexical 開 in one sentence	local_role_contrast	我去開嗰間餐廳今日冇開。	Assign the first 開 to the preceding host and the second to lexical opening.	Character-only analysis control
+PVA-C03	PVA-HOI1	Result state	resultative_open	佢打開道門。	Resultative or lexical opening, not habit.	Resultative competitor
+PVA-C03	PVA-HOI1	Move aside or away	directional_away	你行開啲。	Directional/result-like 開, not habituality.	Directional competitor
+PVA-C04	PVA-HOI1	Modifier-internal established relation	modifier_habitual	我哋搵開嗰個裝修師傅太忙。	Habitual predicate retained inside modifying material.	Clause-environment replication
+PVA-C04	PVA-HOI1	Polarity question	question_habitual	你有冇食開啲乜嘢藥㗎？	Question scope and habitual host relation.	Higher-question composition
+PVA-C04	PVA-HOI1	Negation and aspect interaction	polarity_stack_targets	我冇食開呢隻藥。／我未食開呢隻藥。／我食開咗呢隻藥。	Separate judgments and interpretations for each form; no grouped verdict.	Prevent inherited polarity/stacking rules
+PVA-C05	PVA-LOKHEOI	Continue speaking beyond now	nonmotion_continuative	你講落去啦。	Temporal continuation of speech.	Source-backed dynamic baseline
+PVA-C05	PVA-LOKHEOI	Move downward or away	literal_motion	你行落去樓下啦。	Physical path and deictic direction.	Literal-motion control
+PVA-C05	PVA-LOKHEOI	Same motion-compatible host with explicit temporal context	motion_host_temporal	呢條路仲有好遠，你繼續行落去啦。	Whether 行落去 supports temporal continuation when spatial path remains available.	Ambiguity/coercion test
+PVA-C06	PVA-LOKHEOI	Financial process continues	state_process_continuative	公司咁樣蝕落去唔得嘅。	Continuation of nonmotion process or state.	Nonmotion replication
+PVA-C06	PVA-LOKHEOI	Scalar state continues	consequence_frame	再凍落去，啲花就會死。	Continuative child plus consequence relation.	Higher-relation preservation
+PVA-C06	PVA-LOKHEOI	Discourse-recovered manner or state	gam2_lok6heoi3	再咁落去，一定會出事。	Recover the continued situation without inventing a lexical verb.	Context-dependent boundary
+PVA-C07	PVA-LOKHEOI	Objectless speaking continues	adjacent_core	佢會一直講落去。	Accepted intended continuative core.	Object-order baseline
+PVA-C07	PVA-LOKHEOI	Object follows marker	postmarker_object	佢會一直講落去故事。	Judgment for intended continuative reading and any repair.	Documented negative boundary
+PVA-C07	PVA-LOKHEOI	Object splits marker	split_object	佢會一直講落故事去。	Judgment for intended continuative reading and any alternate parse.	Documented negative boundary
+PVA-C08	PVA-LOKHEOI	Maintained activity projected forward	zyu6_plus_continuative	你做住落去先啦。	Independent contribution of 住 and 落去.	Aspect-composition control
+PVA-C08	PVA-LOKHEOI	Only maintained state	zyu6_only	你做住先啦。	Maintenance without explicit later-interval projection.	Separate durative contribution
+PVA-C08	PVA-LOKHEOI	Lexical continue	lexical_continue	你繼續做啦。	Lexical continuation paraphrase and structural difference.	Do not collapse lexical and postverbal forms
+PVA-C09	PVA-HEILAI	Sudden crying begins	unsplit_dynamic_onset	佢好突然咁喊起上嚟。	Onset of a dynamic event.	Source-backed unsplit baseline
+PVA-C09	PVA-HEILAI	Bird rises toward speaker	literal_self_motion	隻雀突然飛咗上嚟。	Physical upward/deictic motion without inchoative marker.	Motion control
+PVA-C09	PVA-HEILAI	Person physically gets up	literal_rise_candidate	佢突然企起上嚟。	Literal rise, onset, or ambiguity with correction evidence.	Surface-near ambiguity test
+PVA-C10	PVA-HEILAI	Property becomes manifest	state_manifestation	佢野蠻起上嚟，真係不可理喻。	Onset or manifestation interpretation.	State/property profile
+PVA-C10	PVA-HEILAI	Generic evaluation when smiling	generic_manifestation	佢笑起上嚟好明顯。	Generic when/manifestation versus one-time onset.	Semantic subtype boundary
+PVA-C10	PVA-HEILAI	Lexical beginning	lexical_begin	佢開始笑。	Beginning expressed with lexical 開始.	Structural competitor
+PVA-C11	PVA-HEILAI	Transitive activity manifests	split_transitive_long	佢打起網球上嚟成個職業球員咁。	Source-backed V起O上嚟 shape.	Discontinuous positive baseline
+PVA-C11	PVA-HEILAI	Short split variant	split_transitive_short	佢打起網球嚟成個職業球員咁。	Short/long comparison under matched context.	Variant boundary
+PVA-C11	PVA-HEILAI	Object precedes complete marker	unsplit_postobject	佢打網球起上嚟成個職業球員咁。	Naturalness, interpretation, and preferred repair.	Source-incompatible order control
+PVA-C11	PVA-HEILAI	Object follows complete marker	postmarker_object	佢打起上嚟網球成個職業球員咁。	Naturalness, interpretation, and preferred repair.	Source-incompatible order control
+PVA-C12	PVA-HEILAI	Verb-object compound manifests	split_vo	老闆發起脾氣上嚟好得人驚。	Preserve 發–脾氣 relation across marker split.	Split VO baseline
+PVA-C12	PVA-HEILAI	Contiguous VO before marker	contiguous_vo_control	老闆發脾氣起上嚟好得人驚。	Judgment and repair rather than assumed categorical rejection.	VO order boundary
+PVA-C13	PVA-HEILAI	Appearance judgment	appearance_boundary	呢件事睇起嚟好困難。	Appearance/evaluation, not automatic onset.	Lexical/discourse competitor
+PVA-C13	PVA-HEILAI	Speaking-of discourse frame	discourse_boundary	講起嚟，我都識佢。	Discourse-topic function, not automatic onset.	Discourse competitor
+PVA-C14	PVA-SHARED	Each matched item	forced_interpretation	Target item from PVA-C01–C13.	Choose recurrence/establishment; forward continuation; onset; manifestation; literal motion; lexical/result; discourse/evaluation; other; unclear.	Naturalness alone cannot identify profile
+PVA-C14	PVA-SHARED	Each matched item	correction_and_reason	Target item from PVA-C01–C13.	Optional correction plus reason: context, lexical choice, object order, aspect, direction, register, or grammar.	Adjudication and null-outcome support
