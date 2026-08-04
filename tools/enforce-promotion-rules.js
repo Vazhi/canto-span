@@ -4,7 +4,7 @@
 const fs = require("fs");
 const path = require("path");
 const { loadConstructionNotes } = require("./construction-notes-lib");
-const { evaluatePromotion, countSourceRecords, countVerifiedSourceRecords } = require("./promotion-gate-lib");
+const { evaluatePromotion, sourceRecordSummary } = require("./promotion-gate-lib");
 
 const root = path.resolve(__dirname, "..");
 const outputIndex = process.argv.indexOf("--output");
@@ -23,11 +23,18 @@ for (let index = 0; index < notes.length; index += 1) {
   const note = notes[index];
   const fm = note.frontmatter;
   const result = results[index];
-  const sourceRecordCount = countSourceRecords(note);
-  const verificationCount = countVerifiedSourceRecords(note);
+  const sourceSummary = sourceRecordSummary(note, root);
 
-  if (Number(fm.source_count) !== sourceRecordCount) result.blockers.push(`source_count_mismatch:${fm.source_count}!=${sourceRecordCount}`);
-  if (Number(fm.verified_source_count) !== verificationCount) result.blockers.push(`verified_source_count_mismatch:${fm.verified_source_count}!=${verificationCount}`);
+  if (sourceSummary.error) {
+    result.blockers.push(sourceSummary.error);
+  } else {
+    if (Number(fm.source_count) !== sourceSummary.source_count) {
+      result.blockers.push(`source_count_mismatch:${fm.source_count}!=${sourceSummary.source_count}`);
+    }
+    if (Number(fm.verified_source_count) !== sourceSummary.verified_source_count) {
+      result.blockers.push(`verified_source_count_mismatch:${fm.verified_source_count}!=${sourceSummary.verified_source_count}`);
+    }
+  }
   if (Number(fm.verified_source_count) > Number(fm.source_count)) result.blockers.push("verified_sources_exceed_cited_sources");
   if (fm.promotion_gate_version !== "v3") result.blockers.push(`unsupported_promotion_gate_version:${String(fm.promotion_gate_version)}`);
 
