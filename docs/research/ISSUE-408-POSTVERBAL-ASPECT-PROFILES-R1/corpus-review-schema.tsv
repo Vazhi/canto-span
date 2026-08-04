@@ -1,0 +1,35 @@
+field	allowed_values_or_format	purpose
+candidate_id	stable packet-local ID	Preserve one reviewable unit across revisions
+profile_id	PVA-HOI1|PVA-LOKHEOI|PVA-HEILAI	Keep the three evidence programs separate
+source_id	repository-authorized corpus or source ID	Keep provenance explicit
+source_location	file/turn/line/timecode or stable locator	Allow independent reopening
+medium	spoken|written|caption|instruction|chat|pedagogical|lexicographic|other	Track register and source type
+preceding_context	overt source text only	Preserve temporal, spatial, and discourse licensing without reconstruction
+target_text	overt Cantonese text	Record the exact candidate surface
+following_context	overt source text only	Preserve consequence, evaluation, repair, or continuation
+host_predicate	verbatim host or uncertain	Identify what precedes the postverbal material
+host_predicate_class	activity|state|property|achievement|accomplishment|motion|caused_motion|speech|occupation|residence|use_relation|other|uncertain	Track lexical compatibility without assuming unrestricted classes
+marker_surface	hoi1|lok6heoi3|hei2lai4|hei2soeng5lai4|split_hei2_O_lai4|split_hei2_O_soeng5lai4|other	Preserve exact marker shape
+marker_contiguity	contiguous|split_by_object|split_by_vo_nominal|other|uncertain	Record discontinuous structure
+intervening_material	verbatim or none	Preserve every token inside split forms
+object_or_complement	verbatim|omitted|none|uncertain	Track object and complement behavior
+object_relation	direct_object|vo_nominal|location|role_or_profession|clausal|discourse_recovered|none|uncertain	Classify host-dependent material
+clause_environment	matrix|modifier|question|subordinate|conditional_consequence|evaluation|discourse_topic|reported_speech|other|uncertain	Track higher environments without replacing the local profile
+polarity_or_modal	positive|mou5|m4|mei6|jau5mou5|modal|potential|other|none|uncertain	Bound polarity, question, modal, and potential interactions
+cooccurring_aspect	none|gan2|gwo3|zyu6|zo2|other|uncertain	Track composition and ordering
+reference_interval	prior_established|current_reference|future_extension|left_boundary_onset|generic_manifestation|former_discontinued|spatial_path|uncertain	Separate the core temporal contributions
+physical_mover	present|absent|uncertain	Distinguish temporal profiles from literal motion
+moved_theme	present|absent|uncertain	Identify caused-motion competitors
+path_or_location	present|absent|discourse_recoverable|uncertain	Track spatial evidence
+speaker_deixis	toward|away|neutral|uncertain|not_applicable	Preserve directional contribution
+trigger_or_onset_cue	verbatim|none|uncertain	Record sudden, after, once, and similar onset support
+continuation_cue	verbatim|none|uncertain	Record still, again, continuously, consequence, and reference-point cues
+habituality_cue	verbatim|none|uncertain	Record independent frequency or established-interval cues
+prompt_or_context_paraphrase	overt source material only	Use explicit interpretation evidence
+repair_or_followup	overt source material only	Preserve speaker correction or clarification
+candidate_reading	habitual_established|already_underway_hoi1|discourse_hoi1|lexical_open|resultative_open|directional_away|continuative_temporal|literal_lok6heoi3_motion|inchoative_onset|manifestation|literal_upward_motion|caused_upward_motion|appearance_evaluative|discourse_heilai|other|ambiguous|unusable	Profile-specific reading inventory
+identity_evidence_strength	direct_interpretation|structural_context|attestation_only|runtime_only|none	Separate evidence types
+classification	positive_candidate|negative_boundary|competitor_family|ambiguous|false_positive|unusable	Review disposition
+classification_reason	concise evidence-based explanation	Make decisions auditable
+hidden_material_reconstruction	prohibited	Prevent fabricated objects, paths, or temporal operators from becoming evidence
+reviewer_notes	free text	Preserve unresolved questions without promotion
