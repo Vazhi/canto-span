@@ -136,6 +136,10 @@ Stable task-scoped core verification is `npm run verify`. Runtime verification i
 
 ## Current work order
 
+Live GitHub issue state records active execution and activation-ready work, not the complete universe of dormant future-work signals. A zero-open-issue state therefore means there is no current intake or active work claim after live-state review; it does not cancel deferred work recorded in this file, accepted decision records, route records, candidate ledgers, survey lifecycle gates, release gates, or closed issue and pull-request history.
+
+Do not create a bulk placeholder backlog merely to mirror every dormant signal. Create or reopen an issue only when a concrete trigger has current evidence, dependencies are clear enough to define a bounded outcome, and the work can reach a reviewable terminal state. Prefer a new issue when the old issue reached its original endpoint or when reopening would blur historical closure; reopen only when the same unresolved outcome remains accurately owned by that issue.
+
 1. Keep documentation, canonical data, status notes, runtime, survey metadata, corpus records, agent settings, claims, and generated reports consistent.
 2. Select the highest-benefit non-parked task after checking live work, evidence gaps, learner impact, ontology risk, source and data availability, dependencies, implementation leverage, and recent topic concentration.
 3. Require each substantive research issue to identify an actual project trigger, a falsifiable unresolved linguistic question, bounded evidence, relevant counterevidence and ambiguity, and an acceptable null outcome.
