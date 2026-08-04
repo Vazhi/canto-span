@@ -47,10 +47,10 @@ independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/QuantifiedClassifierNP.json"
 standard_test_coverage: "positive_and_boundary"
-standard_positive_test_count: 42
+standard_positive_test_count: 25
 standard_boundary_test_count: 2
 standard_implementation_probe_count: 0
-standard_executable_test_count: 44
+standard_executable_test_count: 46
 source_ids: ["SRC-BOND-SIO-2024-CLASSIFIERS", "SRC-LAM-LAU-LEE-2024-SEGMENTATION", "SRC-XIA-2025-CLASSIFIERS"]
 runtime_active: true
 workflow_state: "archived"
