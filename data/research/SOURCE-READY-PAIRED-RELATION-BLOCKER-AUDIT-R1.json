@@ -1,0 +1,180 @@
+{
+  "schema": "canto-span-source-ready-paired-relation-blocker-audit-v1",
+  "audited_on": "2026-08-02",
+  "parent_issue": 431,
+  "work_claim": 451,
+  "pull_request": 452,
+  "purpose": "Reopen four formerly source-ready paired-relation packages to discover evidence, ontology, boundary, and runtime blockers that were not made explicit before closure.",
+  "scope": {
+    "research_units": ["PRQ2-010", "PRQ2-011", "PRQ2-012", "PRQ2-033"],
+    "runtime_version_rechecked": "0.5.218",
+    "historical_collision_runtime_version": "0.5.213",
+    "identity_reservation_authorized": false,
+    "runtime_change_authorized": false,
+    "status_change_authorized": false,
+    "parent_issue_closes_with_this_audit": false
+  },
+  "shared_findings": {
+    "candidate_reservations_retained": 0,
+    "branch_only_candidate_proposals_withdrawn": 4,
+    "all_four_ledgers_are_ungraded_provenance_debt": true,
+    "known_weak_core_ids": ["PRQ2-010", "PRQ2-011", "PRQ2-033"],
+    "prior_methodological_warning": {
+      "research_id": "PRQ2-012",
+      "source": "PR #7 Formalize research evidence grades",
+      "finding": "The Wong 2002 scholarly row supports lexical category rather than the full paired construction; the paired syntax required exact regrading and a narrower disposition unless direct construction analysis was recovered."
+    },
+    "evidence_rule": "A dictionary, lesson, manual, isolated example, corpus occurrence, or runtime observation cannot independently qualify a promotion-style core claim. A workbook or textbook is not automatically a reference grammar; the exact source function must be adjudicated.",
+    "identity_rule": "The evidence-grade rule does not mechanically ban all provisional UUIDs. Here, reservation is deferred because each proposed identity still contains unresolved profile, arity, polarity, omission, or discourse assumptions that would harden an unsafe ontology.",
+    "runtime_revalidation": {
+      "result": "No dedicated PRQ2-010, PRQ2-011, PRQ2-012, or PRQ2-033 language relation has appeared by runtime 0.5.218. Generic graph and broad-wrapper masking persists, so the implementation gap is real, but runtime output remains zero-weight linguistic evidence.",
+      "probe_count": 17
+    }
+  },
+  "withdrawn_branch_only_proposals": [
+    {"research_id": "PRQ2-010", "uuid": "21cc0365-1987-41e8-9ed2-15234e136058", "name": "CeoiZoZiNgoiExclusionAdditionRelation", "disposition": "withdrawn_before_merge_not_reserved_in_main"},
+    {"research_id": "PRQ2-011", "uuid": "6a445432-e8d8-491f-967d-bc968b794587", "name": "M4DaanZiZungAdditiveCorrelativeRelation", "disposition": "withdrawn_before_merge_not_reserved_in_main"},
+    {"research_id": "PRQ2-012", "uuid": "c0147807-844a-40a0-8f66-681818ce0073", "name": "JatHaiPairedExclusiveAlternativeRelation", "disposition": "withdrawn_before_merge_not_reserved_in_main"},
+    {"research_id": "PRQ2-033", "uuid": "8e86317e-1c85-4056-b339-716613b5ca66", "name": "JauJauCoexistenceCorrelativeRelation", "disposition": "withdrawn_before_merge_not_reserved_in_main"}
+  ],
+  "recovered_external_sources": [
+    {
+      "provisional_source_id": "SRC-YIP-MATTHEWS-2017-INTERMEDIATE-PAIRED-RELATIONS",
+      "citation": "Virginia Yip and Stephen Matthews. 2017. Intermediate Cantonese: A Grammar and Workbook, 2nd ed. Routledge.",
+      "official_metadata": "https://www.routledge.com/Intermediate-Cantonese-A-Grammar-and-Workbook/Yip-Matthews/p/book/9780415815611",
+      "recovered_claims": [
+        "Unit 19 directly describes 除咗...之外 as a paired subordinate-clause expression and gives additive 仲 and restrictive negative examples.",
+        "Unit 17 directly distinguishes statement 一係...一係 from 定/定係 alternative questions and tentative 或者, describing 一係 as a definitive choice.",
+        "Unit 16 directly describes negative clauses using 又...又 as the Cantonese strategy corresponding to neither...nor."
+      ],
+      "grade_disposition": "exact source-function grading pending; strong candidate for REFERENCE_GRAMMAR_CORE, but the repository standard forbids assigning that grade merely from the workbook label"
+    },
+    {
+      "provisional_source_id": "SRC-WONG-ETAL-2022-GACS-CORRELATIVES",
+      "citation": "Wong, Cheung, Lo, and Wan. 2022. Grammatical Analysis of Cantonese Samples, in Understanding Development and Disorder in Cantonese using Language Sample Analysis.",
+      "recovered_claims": ["Classifies 又...又 and 一係...一係 as Cantonese coordinating conjunction patterns and supplies Cantonese examples."],
+      "grade_disposition": "direct scholarly chapter candidate; exact scope and publication text must be entered into a graded ledger before it supports a core disposition"
+    },
+    {
+      "provisional_source_id": "SRC-ZHENG-2021-YUEYU-XIANGGANGHUA-M4DAANZI",
+      "citation": "粵語（香港話）教程（修訂版）, section 唔單止, p. 282 / PDF p. 306.",
+      "recovered_claims": ["Describes 唔單止 as an additive conjunction normally paired with 仲, 而且, or 而且仲 and supplies complete examples."],
+      "grade_disposition": "pedagogical direct description; currently treated as non-qualifying until source function is formally adjudicated or stronger construction-level evidence is recovered"
+    }
+  ],
+  "families": [
+    {
+      "research_id": "PRQ2-010",
+      "surface": "除咗 A (之外)，B",
+      "terminal_disposition": "IDENTITY_DEFERRED_PARTIAL_CORE_RECOVERED",
+      "what_survives": "A narrow overt full-frame hypothesis beginning with 除咗 and containing overt 之外 has direct grammar evidence and remains a high-value identity candidate after source grading.",
+      "new_blockers": [
+        "The checked-in ledger is ungraded and PRQ2-010 is explicitly marked as a known weak core.",
+        "The withdrawn candidate treated optional omission of 之外 as part of the same initial core, but the recovered direct grammar source analyzes the overt pair; omission is currently supported only by teaching/lexicographic statements and sparse corpus attestation.",
+        "Additive and restrictive examples are both attested, but whether they are two profiles of one identity, a construction plus continuation semantics, or partially separate analyses has not been directly adjudicated.",
+        "The continuation inventory 仲, 都, negative, totalizer, interrogative, and other forms is broader than the direct source analysis.",
+        "Nominal, predicative, and clausal A members and subject/topic placement remain incompletely bounded."
+      ],
+      "fresh_runtime_0_5_218": [
+        {"surface": "除咗呢個餐之外，全部都好貴。", "result": "generic ClauseRelationGraph with local NP and degree-predicate children; no exclusion-domain relation"},
+        {"surface": "佢除咗識彈琴，仲識彈結他添。", "result": "generic ClauseRelationGraph; right continuation is NeedsContext; no additive profile"},
+        {"surface": "除咗前鋒，你仲有冇打開咩嘢位置？", "result": "partial local wh/VP structure only; omitted-之外 frame remains untyped"},
+        {"surface": "除咗件褸佢啦。", "result": "no top construction, preserving the removal-verb homograph as a control"}
+      ],
+      "recovery_plan": [
+        "Migrate the complete source ledger to the graded schema and formally adjudicate Yip and Matthews 2017 for the exact overt-pair claim.",
+        "Run controlled contrasts for overt versus omitted 之外, additive versus restrictive continuation, and nominal versus predicative A.",
+        "Review a bounded corpus inventory with enough context to classify continuation semantics rather than counting marker strings.",
+        "Only then decide whether one identity has two profiles, whether omission is a sibling profile, or whether no new identity is needed."
+      ]
+    },
+    {
+      "research_id": "PRQ2-011",
+      "surface": "唔單止 A，仲／而且仲 B",
+      "terminal_disposition": "EVIDENCE_BLOCKED_NO_QUALIFYING_CORE_YET",
+      "what_survives": "The complete overt pair is a strong hypothesis and its negative boundaries remain useful for future controlled evidence and parser tests.",
+      "new_blockers": [
+        "The checked-in ledger is ungraded and PRQ2-011 is explicitly marked as a known weak core.",
+        "Current sources are dictionaries, teaching material, a clinical manual, sparse corpus attestations, and runtime probes. The newly recovered tutorial directly describes the pattern but is not automatically promotion-qualifying under the repository standard.",
+        "Natural corpus examples include 唔單止 followed by coordinate material without overt adjacent 仲, leaving open whether the target is an obligatory pair, a broader first-marker construction, or discourse linkage.",
+        "The withdrawn candidate treated 仲 and 而且仲 as the core second markers while excluding no-marker continuations without a controlled distributional basis.",
+        "唔單止, 唔單只, 唔只, 唔淨止, and formal written variants have not been separated by register and distribution."
+      ],
+      "fresh_runtime_0_5_218": [
+        {"surface": "我哋唔單止去行街，仲去咗睇戲添。", "result": "generic ClauseRelationGraph only; no additive-correlative relation"},
+        {"surface": "欣欣唔單止擦傷膝頭哥，而且仲整爛咗條褲。", "result": "only unrelated VocativeAddressTerm substring survives"},
+        {"surface": "我唔單止俾佢知道我係邊個，我喺邊一度。", "result": "no construction rows"},
+        {"surface": "我哋唔單止去行街。", "result": "local motion predicate only; no hidden second member is created"}
+      ],
+      "recovery_plan": [
+        "Recover a direct scholarly or recognized reference-grammar analysis of the Cantonese construction, or collect controlled role-neutral judgments with complete provenance.",
+        "Contrast overt 仲, 而且, 而且仲, 都, and no overt second marker under matched contexts.",
+        "Separate complete same-sentence pairs from discourse continuation and context-recovered second members.",
+        "Grade the ledger before any candidate UUID or runtime batch is proposed again."
+      ]
+    },
+    {
+      "research_id": "PRQ2-012",
+      "surface": "一係 A，一係 B",
+      "terminal_disposition": "IDENTITY_DEFERRED_ARITY_AND_GRADE_ADJUDICATION",
+      "what_survives": "Direct grammar evidence now supports a statement-level definitive-choice pattern distinct from 定/定係 questions and tentative 或者. The earlier lexical-category-only blocker is therefore partially resolved.",
+      "new_blockers": [
+        "The checked-in ledger remains ungraded, and the recovered grammar source still needs formal exact-function grading.",
+        "The withdrawn identity was restricted to exactly two options, but the project corpus naturally contains a three-option 一係 list. Binary implementation convenience must not be mistaken for language identity.",
+        "Optional 就 placement is supported mainly by lexicographic and corpus examples rather than the recovered direct grammar passage.",
+        "The relationship between paired definitive choice, lone suggestion/ultimatum 一係, and contextually omitted alternatives remains unresolved.",
+        "Option category, exhaustivity, speech-act type, and list closure are not yet bounded."
+      ],
+      "fresh_runtime_0_5_218": [
+        {"surface": "你一係就死，一係就投降。", "result": "generic ClauseRelationGraph/Edge and member spans; no exclusive-choice semantics"},
+        {"surface": "我哋一係去圖書館，一係返屋企。", "result": "generic graph preserving MotionGoalVP children only"},
+        {"surface": "一係話佢傾偈，一係話佢抌垃圾，一係話佢玩嘢。", "result": "generic graph with three ReportedSpeech children, confirming the arity question remains live"},
+        {"surface": "一係食壽司喇。", "result": "no top construction; lone suggestion remains separate"}
+      ],
+      "recovery_plan": [
+        "Migrate and grade Yip and Matthews 2017 for the exact statement-level paired-choice claim.",
+        "Decide whether the language identity is binary, n-ary, or a family with binary and list profiles using corpus review and controlled contrasts.",
+        "Test optional 就, lone suggestions, ultimatums, and discourse-supplied alternatives separately.",
+        "Reserve an identity only after the arity and relation-scope decision is terminal."
+      ]
+    },
+    {
+      "research_id": "PRQ2-033",
+      "surface": "又 A 又 B",
+      "terminal_disposition": "IDENTITY_DEFERRED_POLARITY_AND_PROFILE_ARCHITECTURE",
+      "what_survives": "Direct sources support a conventional paired coordination/coexistence pattern, but the withdrawn positive-only candidate is not an adequate identity.",
+      "new_blockers": [
+        "The checked-in ledger is ungraded and PRQ2-033 is explicitly marked as a known weak core.",
+        "Yip and Matthews directly analyze negative clauses using 又...又 for neither...nor. The withdrawn candidate excluded negative profiles, so it would have created an incomplete or wrongly split identity.",
+        "Positive property, modal/action, negative clause, and nominal-list examples may be profiles of one correlative identity or require a more explicit family architecture.",
+        "Exactly-two arity, shared-subject versus shared-domain licensing, member parallelism, and first-marker omission remain unresolved.",
+        "A preceding overt host was imposed as an implementation guard, but the corpus includes subjectless repeated-modal examples; parser convenience cannot settle the construction's linguistic domain."
+      ],
+      "fresh_runtime_0_5_218": [
+        {"surface": "佢又聰明又靚。", "result": "no construction rows"},
+        {"surface": "我又要返工又要讀書。", "result": "one broad ModalVP inside ClauseSpan masks the two members"},
+        {"surface": "佢又唔覆我嘅信又唔覆我嘅電話。", "result": "only an internal associative NP is recognized; negative correlative is absent"},
+        {"surface": "今日又落雨喇。", "result": "TemporalClause plus environmental clause correctly demonstrates a non-paired recurrence control"}
+      ],
+      "recovery_plan": [
+        "Migrate and grade the direct grammar and scholarly coordination sources.",
+        "Decide whether positive and negative 又...又 are polarity profiles of one identity or distinct constructions linked at family level.",
+        "Contrast property, action/modal, negative, and nominal-list members; test shared subjects, overt repeated subjects, and subjectless discourse domains.",
+        "Resolve arity and first-marker omission before any UUID or runtime contract is accepted."
+      ]
+    }
+  ],
+  "portfolio_consequence": {
+    "issue_431_state": "remain_open",
+    "next_work": "graded source-ledger migration plus family-specific controlled evidence; no shared runtime implementation batch is authorized",
+    "acceptable_null_outcomes": [
+      "one or more families remain transparent coordination without a new UUID",
+      "one broad research family splits into narrower identities",
+      "a proposed profile is rejected as an implementation convenience rather than a language construction",
+      "no runtime change after evidence recovery"
+    ]
+  },
+  "protected_state": [
+    "construction_identity_candidates_on_main", "permanent_identity_registry", "short_codes", "runtime_behavior", "generated_bundle", "executable_fixtures", "linguistic_status", "corpus_classification", "survey_state", "panel_state", "held_out_state", "runtime_version", "release_state", "deployment_state", "merge_authorization"
+  ]
+}
