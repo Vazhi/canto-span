@@ -82,7 +82,7 @@ ChatGPT retains work requiring:
 - broad external research or source evaluation;
 - linguistic or construction-boundary judgment;
 - identity, ontology, status, promotion, parking, deployment, release, governance,
-  or merge decisions;
+  or protected merge-safety decisions;
 - survey design or interpretation of participant evidence;
 - work prioritization or clarification of an ambiguous objective;
 - independent review of an agent pull request;
@@ -93,7 +93,7 @@ enabled, bounded implementation may be routed to Codex. When Codex is disabled,
 ChatGPT implements it directly or creates a human action only for a genuine human
 limitation.
 
-ChatGPT must report every created issue, its bounded outcome, protected state, pickup
+ChatGPT records every created issue, its bounded outcome, protected state, pickup
 target, and truthful status. Creating an issue does not prove that work has begun.
 
 ## 4. Codex eligibility gate
@@ -106,10 +106,11 @@ A task is Codex-eligible only when every condition is true:
 4. one coherent PR or explicit findings report;
 5. no unresolved user preference or expert decision;
 6. no request to decide evidence sufficiency, grammaticality, identity, status,
-   promotion, parking, survey design, deployment, release, governance, or merge;
+   promotion, parking, survey design, deployment, release, governance, or protected
+   merge-safety policy;
 7. no request to invent linguistic evidence;
 8. no direct write to `main`;
-9. no merge or auto-merge authorization;
+9. no merge or auto-merge authority outside `USER-MERGE-REVIEW.md`;
 10. no silently parked construction;
 11. no active semantic overlap;
 12. compatibility with current policy and the live agent setting.
@@ -238,7 +239,7 @@ An initial ChatGPT intake may use:
   "active_branch": null,
   "active_pr": null,
   "work_claim_required": true,
-  "user_merge_approval_required": true,
+  "user_merge_approval_required": false,
   "codex_self_screen_required": false
 }
 ```
@@ -282,7 +283,7 @@ agent setting. Removing or changing only one layer is insufficient.
 
 1. Classify the work.
 2. Apply workflow availability.
-3. Create or update the intake and report truthful pickup status.
+3. Create or update the intake and record truthful pickup status.
 4. Re-fetch ownership before claim creation.
 5. Create the smallest adequate work claim and exact branch.
 6. Implement or produce findings within scope.
@@ -291,8 +292,9 @@ agent setting. Removing or changing only one layer is insufficient.
 8. Use draft state only while work or dependencies remain unresolved.
 9. Validate exact head, live task-intake ownership, claim binding, overlap,
    changed-file coverage, and required checks.
-10. Mark the coherent PR ready, notify the user, and stop.
-11. Merge only after explicit user approval for that PR and unchanged head.
+10. Mark the coherent PR ready.
+11. Apply `USER-MERGE-REVIEW.md`: continue autonomously and merge under standing
+    authority when live safety checks pass; stop only for a required safety stop.
 
 Automatic dispatch is not implemented. Manual issue creation or the manual generator
 creates an intake only; it does not establish that a target has started work.
@@ -309,4 +311,5 @@ Do not:
 - create a human issue for work an available agent can perform merely to avoid
   ownership rules;
 - infer evidence, status, deployment, release, or merge authority from task routing;
-- merge or enable auto-merge without the separate user-review gate.
+- merge or enable auto-merge without current `USER-MERGE-REVIEW.md` authority and
+  live safety checks.
