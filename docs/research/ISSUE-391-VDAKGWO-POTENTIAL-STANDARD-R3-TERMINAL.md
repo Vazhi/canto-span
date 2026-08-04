@@ -14,7 +14,7 @@ The evidence supports a Cantonese lexical reliability family centered on `信`:
 - `信得過` — trustworthy / reliable / can be trusted;
 - `信唔過` — not trustworthy / cannot be trusted;
 - `信唔信得過 + NP` — A-not-A question over the same lexical-predicate family;
-- split object/predicate order such as `信 NP 唔過` is attested in lexical-example material and remains an implementation-alignment caution.
+- split object/predicate order such as `信 NP 唔過`, including `信你唔過`, is attested in lexical-example material and remains an implementation-alignment caution.
 
 The evidence reviewed for this issue does **not** support promoting an open productive `V得過` reliability-standard construction for arbitrary verbs.
 
@@ -43,7 +43,7 @@ A bounded public web inventory found recurring examples of:
 - `信得過` as a predicate or modifier;
 - `信唔過` as the negative counterpart;
 - `信唔信得過` as an A-not-A question in dictionary-example, forum, news, and blog-style material;
-- `信 NP 唔過`-type split negative order in lexical-example material.
+- `信 NP 唔過`-type split negative order, including `信你唔過`, in lexical-example material.
 
 The same bounded inventory did not produce comparable Cantonese evidence for an open reliability-standard family across arbitrary verbs. Possible neighboring forms such as `靠得過` are sparse in the reviewed material and are confounded by Mandarin/general-Chinese usage; Cantonese evidence more readily points to separate lexical expressions such as `靠得住` rather than a productive `V得過` class.
 
@@ -100,4 +100,6 @@ Lexical and example sources reviewed for this bounded packet:
 - CC-Canto search for `信`, listing `信得過 seon3 dak1 gwo3`: https://cantonese.org/search.php?q=%E4%BF%A1
 - CantoDict, `信唔過`, marked Cantonese and glossed as unreliable / cannot be trusted: https://www.cantonese.sheik.co.uk/dictionary/words/40552/
 - Words.hk `聞所未聞` example containing `唔知信唔信得過`: https://words.hk/zidin/%E8%81%9E%E6%89%80%E6%9C%AA%E8%81%9E
+- Cantowords `信` example containing `我點會信你唔過啊？`: https://cantowords.com/dictionary/%E4%BF%A1
+- Jyut Dictionary `信` example containing `我點會信你唔過啊？`: https://jyutdictionary.com/dictionary/entry/%E4%BF%A1
 - Public search examples for `信唔信得過` and `信得過`, including forum/news/blog-style attestations, used as attestation only and not as productivity proof.
