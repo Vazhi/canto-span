@@ -1,0 +1,153 @@
+{
+  "schema": "canto-span-pedagogical-corpus-package-v1",
+  "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+  "package_kind": "weekly",
+  "root": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719",
+  "lifecycle": "reviewed",
+  "source": {
+    "source_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+    "provider": "Glossika",
+    "authorization_status": "authorized",
+    "distribution": "repository_allowed",
+    "authorization_basis": "User states Glossika granted permission to use all lesson data in this non-commercial private-use Canto Span project.",
+    "original_file": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/source.json",
+    "byte_sha256": "8e4989992b71632b02f7abd3e19f49069347b410d22364ca5e9e4ac2c527075a",
+    "semantic_sha256": "9a79fc954b0e1938a66076a21341874b5df94ac57e2a92753037571dd5142155",
+    "source_claims_authority": "metadata_only"
+  },
+  "lineage": {
+    "lineage_id": "lineage:GLOSSIKA-YUEHK-A1-W18-20260719",
+    "parent_lineage_ids": [
+      "external:glossika-email:19f7923023e862d2"
+    ],
+    "independence_group": "provider:glossika:cantonese-hk-a1-newsletter-series"
+  },
+  "review_authority": {
+    "state": "reviewed",
+    "authority_issue": 520,
+    "reviewer_role": "project_reviewer",
+    "reviewed_source_semantic_sha256": "9a79fc954b0e1938a66076a21341874b5df94ac57e2a92753037571dd5142155",
+    "authority_record": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/review-authority.json",
+    "event_file": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/review-events.json"
+  },
+  "candidate_discovery": {
+    "mode": "frozen_snapshot",
+    "snapshot_file": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/candidate-snapshot.json",
+    "snapshot_semantic_sha256": "5991127b2ee30525f0bc78a61d28b6c928c91a3468522b11d6ff4b41d97f94c1",
+    "generator_command": null
+  },
+  "files": [
+    {
+      "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/source.json",
+      "role": "source_original",
+      "byte_sha256": "8e4989992b71632b02f7abd3e19f49069347b410d22364ca5e9e4ac2c527075a",
+      "semantic_sha256": "9a79fc954b0e1938a66076a21341874b5df94ac57e2a92753037571dd5142155"
+    },
+    {
+      "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/items.tsv",
+      "role": "items_projection",
+      "byte_sha256": "66b3472331d9f65651e6d4295d32ccfc3c6b143103465ba724e0fbfbaefe6a1e",
+      "semantic_sha256": "66b3472331d9f65651e6d4295d32ccfc3c6b143103465ba724e0fbfbaefe6a1e"
+    },
+    {
+      "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/crosswalk.json",
+      "role": "control",
+      "byte_sha256": "cdc4910b9eb36c0aa66bdee26f824cb4371ff4af113b5d003cc81194e410f94b",
+      "semantic_sha256": "1de8c267f78ee6fdca069de8f20c8e755bd8e72489b306be338528f2caea1261"
+    },
+    {
+      "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/record-ids.json",
+      "role": "source_projection",
+      "byte_sha256": "3b74097abe6dd6dcc39a4844b944314017fbdbecd815387a737f1fc66aa92f7c",
+      "semantic_sha256": "95cdfc41102841bd4e238396f24c840521cd5462ff16b9e0556269cc23cc76f3"
+    },
+    {
+      "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/review-authority.json",
+      "role": "authority_record",
+      "byte_sha256": "cb2e140e96d5dafde3b00a8c60dbd217ad8238972fd5e385c79c5a90ba0d46df",
+      "semantic_sha256": "4561523d37f44f89f423c6f00a4be3c0728d3801f0f5b50a3c8037411f71d71d"
+    },
+    {
+      "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/review-events.json",
+      "role": "review_events",
+      "byte_sha256": "a977bb0553b65169fd522fcb352083abff4635914e595eedc7478dd046371e0c",
+      "semantic_sha256": "76d30d4ee00a8883bbb15beb5861f12b856eac577b2945908e08fd0ecf7360ef"
+    },
+    {
+      "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/candidate-snapshot.json",
+      "role": "candidate_snapshot",
+      "byte_sha256": "1a5b0f49dae9f6fe9f9514c2b314d7577697c8d9307a90a2ca264deba35b9c69",
+      "semantic_sha256": "5991127b2ee30525f0bc78a61d28b6c928c91a3468522b11d6ff4b41d97f94c1"
+    },
+    {
+      "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/duplicate-edges.json",
+      "role": "duplicate_edges",
+      "byte_sha256": "9ab4a7df1476b799bf0c9084fdb4b33715a4c4be72b5c7d98950b8d175ba370e",
+      "semantic_sha256": "6d23223f548a5c902942605e265ca49c09bb7a01ae06ebed996170ea68e86e20"
+    },
+    {
+      "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/discrepancies.json",
+      "role": "discrepancies",
+      "byte_sha256": "a01a90eaaedd68abdb9903ac0cf7998b98fddd46ce02b2da152504272c30b40d",
+      "semantic_sha256": "7850929210d4a1f2373c7cf87906fcffe9da23eb454e1ff86b28792b39da4895"
+    },
+    {
+      "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/implementation-links.json",
+      "role": "implementation_links",
+      "byte_sha256": "8fe95b134f9f471aaf98996a6e1dc24a618613456e7506cbead9daf15e2802b8",
+      "semantic_sha256": "e99c696cba18618739353e133083c8f5ec7e904c93bec64581d051c6e1018942"
+    },
+    {
+      "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/routes.json",
+      "role": "routes",
+      "byte_sha256": "fdf50019f2b97e3feefe979483161e025f4114b24d87164df3a62428fe3ab60e",
+      "semantic_sha256": "a91f1a408561780c09e3f835702b2a4d147b5fbf9996c35983f7ecaa05656292"
+    },
+    {
+      "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/aggregate.json",
+      "role": "aggregate_projection",
+      "byte_sha256": "abc7820eae8f6d2a4b1dfbf1940844123f9ea084d0ad7bcd75ae9069555a524f",
+      "semantic_sha256": "99af5b97ebf69d63cc3ef63f5c55408d036ee6705440a3a02a0237a931585c08"
+    },
+    {
+      "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/review.json",
+      "role": "control",
+      "byte_sha256": "c8a34451948497576386bf520ed2c34534e862ef34c06be5a035fd246a9abaaf",
+      "semantic_sha256": "f91e0a95f4d38340407105bee8eb720446afb15b81b812115439cb7c6f03cd59"
+    },
+    {
+      "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/README.md",
+      "role": "documentation",
+      "byte_sha256": "c38d048c22e40d92f6dbf2293483c280cf6a4036aac0d9e7c4d3fdb7b888beb3",
+      "semantic_sha256": "c38d048c22e40d92f6dbf2293483c280cf6a4036aac0d9e7c4d3fdb7b888beb3"
+    },
+    {
+      "path": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/research-summary.md",
+      "role": "documentation",
+      "byte_sha256": "770e614ce7c2da0d550325260799ec60ca2aa47c0fdf439ee4f8f1c61912863b",
+      "semantic_sha256": "770e614ce7c2da0d550325260799ec60ca2aa47c0fdf439ee4f8f1c61912863b"
+    }
+  ],
+  "record_identity": {
+    "record_file": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/record-ids.json",
+    "id_field": "id",
+    "continuity_lock_sha256": "0083f897149a53dfdb9621395dddf8348ccfba86d8c10c2e66ad9f349c51c5c0"
+  },
+  "relations": {
+    "duplicate_edges_file": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/duplicate-edges.json",
+    "discrepancies_file": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/discrepancies.json",
+    "implementation_links_file": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/implementation-links.json",
+    "routes_file": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/routes.json"
+  },
+  "projections": {
+    "items_tsv_file": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/items.tsv",
+    "aggregate_file": "data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719/aggregate.json"
+  },
+  "summary": {
+    "record_count": 99,
+    "duplicate_edge_count": 1,
+    "discrepancy_count": 1,
+    "implementation_link_count": 681,
+    "route_count": 89
+  }
+}

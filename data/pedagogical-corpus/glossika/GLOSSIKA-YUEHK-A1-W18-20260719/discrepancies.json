@@ -1,0 +1,16 @@
+{
+  "schema": "canto-span-pedagogical-discrepancies-v1",
+  "discrepancies": [
+    {
+      "discrepancy_id": "W18-D-097-P",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W18-20260719",
+        "record_id": "GLOSSIKA-YUEHK-A1-W18-20260719-I097"
+      },
+      "type": "pronunciation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    }
+  ]
+}
