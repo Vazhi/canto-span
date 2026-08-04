@@ -10,7 +10,7 @@ Before planning or changing repository work, read these current owners:
 2. [`docs/current/CODEX-ISSUE-WORKFLOW.md`](docs/current/CODEX-ISSUE-WORKFLOW.md) — task classification and pickup routing;
 3. [`docs/current/AGENT-WORKFLOW-SETTINGS.md`](docs/current/AGENT-WORKFLOW-SETTINGS.md) and [`config/agent-workflow-settings.json`](config/agent-workflow-settings.json) — available optional agent workflows;
 4. [`docs/current/MULTI-AGENT-COORDINATION.md`](docs/current/MULTI-AGENT-COORDINATION.md) — semantic claims, branches, overlap, and integration roles;
-5. [`docs/current/USER-MERGE-REVIEW.md`](docs/current/USER-MERGE-REVIEW.md) — merge authority, standing authorization, and required stops before merge.
+5. [`docs/current/USER-MERGE-REVIEW.md`](docs/current/USER-MERGE-REVIEW.md) — autonomous merge authority, standing authorization, and required safety stops.
 
 ## Mandatory sequence
 
@@ -28,12 +28,12 @@ Before the first repository edit:
 10. open or update one pull request linked to the claim;
 11. bind the assigned pull-request number in the live intake metadata;
 12. when ready, record the pull-request number, exact head, scope, validation, risks, and limitations;
-13. apply `USER-MERGE-REVIEW.md`: stop when that owner requires a stop, otherwise merge only under valid standing or PR-specific authorization after live safety checks. Any new commit after review requires fresh review before merge.
+13. apply `USER-MERGE-REVIEW.md`: continue autonomously and merge under standing authority when live safety checks pass; stop only when that owner requires a safety stop. Any new commit after review requires fresh review before merge.
 
 ## Execution reliability protocol
 
-For any multi-step task, keep a compact operational checkpoint in the live work-claim
-issue or linked pull-request description. Record the exact outcome, current head,
+For any multi-step task, keep a compact progress record in the live work-claim issue
+or linked pull-request description. Record the exact outcome, current head,
 authorized scope, protected state, completed work, failed or rejected approaches,
 commands and results, unresolved blockers, and next concrete action. Refresh it after
 a major phase or material change; do not create a parallel state file.
@@ -41,12 +41,12 @@ a major phase or material change; do not create a parallel state file.
 - After each substantive repository change, record whether the existing review still
   applies. If a prior review found no blockers, state that it applied only to the
   earlier head and is stale after the new change. After the final rereview finds no
-  blockers, either merge under valid authority from `USER-MERGE-REVIEW.md` or report
-  the specific stop condition that requires user approval or another decision.
+  blockers, merge under valid authority from `USER-MERGE-REVIEW.md` or report the
+  specific safety stop that blocks merge.
 - After context compaction, resume, handoff, interruption, or apparent memory loss,
   re-read this file, the mandatory current owners, the live intake and claim, the
-  current branch diff, and the latest operational checkpoint before acting. Do not ask
-  the user to restate work already recorded in those sources.
+  current branch diff, and the latest progress record before acting. Do not ask the
+  user to restate work already recorded in those sources.
 - Treat existing branch changes as evidence to inspect, not as disposable drafts. Do
   not rewrite, redesign, revert, or duplicate them merely because context was lost.
   Preserve working implementation unless an identified requirement, defect, or test
@@ -54,10 +54,11 @@ a major phase or material change; do not create a parallel state file.
 - Never invent an execution-time, context, quota, tool, permission, or platform limit.
   A claimed blocker must cite the actual error or observed state, the bounded recovery
   attempted, and why no authorized next action remains. Otherwise continue the task.
-- Do not stop at planning, repeated status messages, or further inspection while an
-  authorized executable next step remains. Prefer one concrete action followed by its
-  result. Stop only at a real gate, evidenced blocker, completed outcome, or required
-  user decision.
+- Do not stop at planning, repeated status messages, user checkpoints, copy-file
+  handoffs, download-link handoffs, or further inspection while an authorized
+  executable next step remains. Prefer one concrete action followed by its result.
+  Stop only at a real safety gate, evidenced blocker, completed outcome, or required
+  user decision outside the active issue's authority.
 - Tool success, lack of an error, child-agent completion, a plausible diff, or a passing
   unrelated check is not proof of completion. Verify the requested artifact or state
   directly and record the exact command, observed result, and remaining limitation.
@@ -68,10 +69,10 @@ a major phase or material change; do not create a parallel state file.
   original user request, live intake, and claim. Remove unrelated work and state every
   unresolved limitation plainly.
 - On the first context-loss or invented-blocker failure, recover from the durable
-  checkpoint and repository state. If the same failure recurs in that task after one
-  recovery, stop further writes, preserve the exact state, and tell the user that the
-  current session or model is unreliable. Recommend resuming with a stable alternative
-  rather than adding more instructions or repeatedly retracing the work.
+  progress record and repository state. If the same failure recurs in that task after
+  one recovery, stop further writes, preserve the exact state, and tell the user that
+  the current session or model is unreliable. Recommend resuming with a stable
+  alternative rather than adding more instructions or repeatedly retracing the work.
 
 Cached prompts, comments, labels, assignments, mentions, previous dispatch, old claims,
 and branch existence are not pickup authority. A live mismatch or disabled workflow
@@ -127,8 +128,8 @@ and current-state files require an integrator.
 
 Automation follows least privilege. It must be claim-scoped, preconditioned,
 auditable, branch-limited, and unable to write directly to `main`, broaden its own
-scope, adjudicate evidence, promote status, deploy surveys, publish releases, merge,
-enable auto-merge, or infer user approval.
+scope, adjudicate evidence, promote status, deploy surveys, publish releases, or infer
+merge authority outside `USER-MERGE-REVIEW.md`.
 
 Edit canonical inputs first and regenerate deterministic outputs in the same branch. For runtime work, edit the smallest owner under `src/**` or `src/runtime-resources/**`; never hand-edit `main.js`. Regenerate it only with `npm run build:runtime`, and do not touch it for unrelated research, corpus, survey, governance, or documentation work.
 `validation/current/` contains optional verifier reports, not patch inputs. Routine
