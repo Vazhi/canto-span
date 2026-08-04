@@ -4,7 +4,11 @@
 const fs = require("fs");
 const os = require("os");
 const path = require("path");
-const { evaluatePromotion, sourceRecordSummary } = require("./promotion-gate-lib");
+const {
+  evaluatePromotion,
+  sourceRecordSummary,
+  requiresPromotionMetadata,
+} = require("./promotion-gate-lib");
 
 const root = path.resolve(__dirname, "..");
 const cases = JSON.parse(fs.readFileSync(path.join(root, "test-data", "promotion-gate-v3.json"), "utf8"));
@@ -27,6 +31,24 @@ for (const item of cases) {
   if (item.expected_gate_class) checks.push(result.gate_class === item.expected_gate_class);
   record(item.name, checks.every(Boolean), result);
 }
+
+record(
+  "supported productive records require exact promotion metadata",
+  requiresPromotionMetadata("supported_productive") === true,
+  { status: "supported_productive" }
+);
+record(
+  "provisional records require exact promotion metadata",
+  requiresPromotionMetadata("provisional") === true,
+  { status: "provisional" }
+);
+record(
+  "quarantined records do not create release-only exact-count blockers",
+  requiresPromotionMetadata("research_pending") === false &&
+    requiresPromotionMetadata("unsupported_generalization") === false &&
+    requiresPromotionMetadata("parser_heuristic") === false,
+  { statuses: ["research_pending", "unsupported_generalization", "parser_heuristic"] }
+);
 
 const tempRoot = fs.mkdtempSync(path.join(os.tmpdir(), "canto-span-promotion-gate-"));
 try {
