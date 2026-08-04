@@ -1,0 +1,45 @@
+name: Temporary Week 18 contract builder
+
+on:
+  push:
+    branches:
+      - agent/week18-contract-migration
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Fetch stale evidence branch
+        run: git fetch origin agent/week18-ingress-review:refs/remotes/origin/agent/week18-ingress-review
+      - name: Build contract package
+        run: python3 tools/_tmp_build_week18_contract.py
+      - name: Verify contract tests
+        run: python3 tests/tooling/research/pedagogical-corpus-contract.test.py
+      - name: Verify contract registry
+        run: python3 tools/verify-pedagogical-corpus-contract.py
+      - name: Verify research profile
+        run: npm run verify:research
+      - name: Verify core profile
+        run: npm run verify
+      - name: Commit final package and remove temporary tooling
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add config/pedagogical-corpus-packages.json
+          git add data/pedagogical-corpus/glossika/GLOSSIKA-YUEHK-A1-W18-20260719
+          git rm .github/workflows/_tmp-build-week18-contract.yml tools/_tmp_build_week18_contract.py
+          git diff --cached --check
+          git commit -m "Migrate Glossika Week 18 into corpus contract"
+          git push origin HEAD:agent/week18-contract-migration
