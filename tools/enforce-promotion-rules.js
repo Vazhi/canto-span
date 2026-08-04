@@ -4,7 +4,11 @@
 const fs = require("fs");
 const path = require("path");
 const { loadConstructionNotes } = require("./construction-notes-lib");
-const { evaluatePromotion, sourceRecordSummary } = require("./promotion-gate-lib");
+const {
+  evaluatePromotion,
+  sourceRecordSummary,
+  requiresPromotionMetadata,
+} = require("./promotion-gate-lib");
 
 const root = path.resolve(__dirname, "..");
 const outputIndex = process.argv.indexOf("--output");
@@ -23,40 +27,44 @@ for (let index = 0; index < notes.length; index += 1) {
   const note = notes[index];
   const fm = note.frontmatter;
   const result = results[index];
-  const sourceSummary = sourceRecordSummary(note, root);
+  const promotionMetadataRequired = requiresPromotionMetadata(fm.status);
 
-  if (sourceSummary.error) {
-    result.blockers.push(sourceSummary.error);
-  } else {
-    if (Number(fm.source_count) !== sourceSummary.source_count) {
-      result.blockers.push(`source_count_mismatch:${fm.source_count}!=${sourceSummary.source_count}`);
+  if (promotionMetadataRequired) {
+    const sourceSummary = sourceRecordSummary(note, root);
+    if (sourceSummary.error) {
+      result.blockers.push(sourceSummary.error);
+    } else {
+      if (Number(fm.source_count) !== sourceSummary.source_count) {
+        result.blockers.push(`source_count_mismatch:${fm.source_count}!=${sourceSummary.source_count}`);
+      }
+      if (Number(fm.verified_source_count) !== sourceSummary.verified_source_count) {
+        result.blockers.push(`verified_source_count_mismatch:${fm.verified_source_count}!=${sourceSummary.verified_source_count}`);
+      }
     }
-    if (Number(fm.verified_source_count) !== sourceSummary.verified_source_count) {
-      result.blockers.push(`verified_source_count_mismatch:${fm.verified_source_count}!=${sourceSummary.verified_source_count}`);
+
+    const testFile = path.join(root, String(fm.standard_test_file || ""));
+    if (!fs.existsSync(testFile)) {
+      result.blockers.push(`missing_standard_test_file:${String(fm.standard_test_file)}`);
+    } else {
+      const testData = JSON.parse(fs.readFileSync(testFile, "utf8"));
+      const coverage = testData.coverage || {};
+      const boundaryCount = Number(coverage.boundary_case_count);
+      const positiveCount = Number(coverage.positive_case_count);
+      const executableCount = Number(coverage.executable_case_count);
+      if (!Number.isFinite(boundaryCount)) result.blockers.push("missing_test_coverage_boundary_count");
+      if (!Number.isFinite(positiveCount)) result.blockers.push("missing_test_coverage_positive_count");
+      if (!Number.isFinite(executableCount)) result.blockers.push("missing_test_coverage_executable_count");
+      if (Number(fm.standard_boundary_test_count) !== boundaryCount) result.blockers.push(`standard_boundary_test_count_mismatch:${fm.standard_boundary_test_count}!=${boundaryCount}`);
+      if (Number(fm.standard_positive_test_count) !== positiveCount) result.blockers.push(`standard_positive_test_count_mismatch:${fm.standard_positive_test_count}!=${positiveCount}`);
+      if (Number(fm.standard_executable_test_count) !== executableCount) result.blockers.push(`standard_executable_test_count_mismatch:${fm.standard_executable_test_count}!=${executableCount}`);
+      if (fm.status === "supported_productive" && boundaryCount < 1) result.blockers.push("supported_productive_without_executable_boundary_cases");
     }
   }
+
   if (Number(fm.verified_source_count) > Number(fm.source_count)) result.blockers.push("verified_sources_exceed_cited_sources");
   if (fm.promotion_gate_version !== "v3") result.blockers.push(`unsupported_promotion_gate_version:${String(fm.promotion_gate_version)}`);
 
-  const testFile = path.join(root, String(fm.standard_test_file || ""));
-  if (!fs.existsSync(testFile)) {
-    result.blockers.push(`missing_standard_test_file:${String(fm.standard_test_file)}`);
-  } else {
-    const testData = JSON.parse(fs.readFileSync(testFile, "utf8"));
-    const coverage = testData.coverage || {};
-    const boundaryCount = Number(coverage.boundary_case_count);
-    const positiveCount = Number(coverage.positive_case_count);
-    const executableCount = Number(coverage.executable_case_count);
-    if (!Number.isFinite(boundaryCount)) result.blockers.push("missing_test_coverage_boundary_count");
-    if (!Number.isFinite(positiveCount)) result.blockers.push("missing_test_coverage_positive_count");
-    if (!Number.isFinite(executableCount)) result.blockers.push("missing_test_coverage_executable_count");
-    if (Number(fm.standard_boundary_test_count) !== boundaryCount) result.blockers.push(`standard_boundary_test_count_mismatch:${fm.standard_boundary_test_count}!=${boundaryCount}`);
-    if (Number(fm.standard_positive_test_count) !== positiveCount) result.blockers.push(`standard_positive_test_count_mismatch:${fm.standard_positive_test_count}!=${positiveCount}`);
-    if (Number(fm.standard_executable_test_count) !== executableCount) result.blockers.push(`standard_executable_test_count_mismatch:${fm.standard_executable_test_count}!=${executableCount}`);
-    if (fm.status === "supported_productive" && boundaryCount < 1) result.blockers.push("supported_productive_without_executable_boundary_cases");
-  }
-
-  result.eligible = result.blockers.length === 0 && ["supported_productive", "provisional"].includes(fm.status);
+  result.eligible = result.blockers.length === 0 && requiresPromotionMetadata(fm.status);
   if (result.blockers.length) failures.push(result);
 }
 
