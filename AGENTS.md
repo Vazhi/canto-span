@@ -30,6 +30,49 @@ Before the first repository edit:
 12. when ready, inform the user and stop before merge after reporting the PR number, exact head, scope, validation, risks, and limitations;
 13. merge only after the user explicitly approves that specific PR and unchanged head. Any new commit after approval requires fresh review and approval.
 
+## Execution reliability protocol
+
+For any multi-step task, keep a compact operational checkpoint in the live work-claim
+issue or linked pull-request description. Record the exact outcome, current head,
+authorized scope, protected state, completed work, failed or rejected approaches,
+commands and results, unresolved blockers, and next concrete action. Refresh it after
+a major phase or material change; do not create a parallel state file.
+
+- After each substantive repository change, remind the user to request a fresh review
+  of the updated pull-request head before merge. If a prior review found no blockers,
+  state that it applied only to the earlier head and is stale after the new change.
+  After the final rereview finds no blockers, tell the user clearly that the unchanged
+  reviewed head is ready for merge approval.
+- After context compaction, resume, handoff, interruption, or apparent memory loss,
+  re-read this file, the mandatory current owners, the live intake and claim, the
+  current branch diff, and the latest operational checkpoint before acting. Do not ask
+  the user to restate work already recorded in those sources.
+- Treat existing branch changes as evidence to inspect, not as disposable drafts. Do
+  not rewrite, redesign, revert, or duplicate them merely because context was lost.
+  Preserve working implementation unless an identified requirement, defect, or test
+  result justifies the change.
+- Never invent an execution-time, context, quota, tool, permission, or platform limit.
+  A claimed blocker must cite the actual error or observed state, the bounded recovery
+  attempted, and why no authorized next action remains. Otherwise continue the task.
+- Do not stop at planning, repeated status messages, or further inspection while an
+  authorized executable next step remains. Prefer one concrete action followed by its
+  result. Stop only at a real gate, evidenced blocker, completed outcome, or required
+  user decision.
+- Tool success, lack of an error, child-agent completion, a plausible diff, or a passing
+  unrelated check is not proof of completion. Verify the requested artifact or state
+  directly and record the exact command, observed result, and remaining limitation.
+- Keep execution economical. Read the narrowest relevant slices, avoid repeated full
+  scans, do not spawn a subagent for work one agent can complete, and do not run broader
+  checks than the changed invariant requires.
+- Before declaring completion, compare the final diff and deliverables against the
+  original user request, live intake, and claim. Remove unrelated work and state every
+  unresolved limitation plainly.
+- On the first context-loss or invented-blocker failure, recover from the durable
+  checkpoint and repository state. If the same failure recurs in that task after one
+  recovery, stop further writes, preserve the exact state, and tell the user that the
+  current session or model is unreliable. Recommend resuming with a stable alternative
+  rather than adding more instructions or repeatedly retracing the work.
+
 Cached prompts, comments, labels, assignments, mentions, previous dispatch, old claims,
 and branch existence are not pickup authority. A live mismatch or disabled workflow
 requires:
