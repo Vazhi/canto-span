@@ -34,7 +34,15 @@ try {
   fs.mkdirSync(ledgerDir, { recursive: true });
   fs.writeFileSync(
     path.join(ledgerDir, "valid.tsv"),
-    "source_id\tverification\tcitation\nSRC-ONE\tVERIFIED_FULL_TEXT\tOne\nSRC-TWO\tPENDING_REVIEW\tTwo\n"
+    "source_id\tverification\tcitation\nSRC-ONE\tVERIFIED_FULL_TEXT\tOne\nSRC-TWO\tPENDING_REVIEW\tTwo\nSRC-EXTRA\tVERIFIED_FULL_TEXT\tExtra\n"
+  );
+  fs.writeFileSync(
+    path.join(ledgerDir, "access-status.tsv"),
+    "source_id\tcitation\taccess_status\nSRC-ONE\tOne\tFULL_TEXT_REOPENED\nSRC-TWO\tTwo\tCURRENT_PAGE_REOPENED\n"
+  );
+  fs.writeFileSync(
+    path.join(ledgerDir, "partial.tsv"),
+    "source_id\tverification\nSRC-ONE\tVERIFIED_FULL_TEXT\n"
   );
   fs.writeFileSync(
     path.join(ledgerDir, "incomplete-header.tsv"),
@@ -42,33 +50,64 @@ try {
   );
   fs.writeFileSync(
     path.join(ledgerDir, "malformed-row.tsv"),
-    "source_id\tverification\nSRC-ONE\tVERIFIED_FULL_TEXT\textra\n"
+    "source_id\tverification\nSRC-ONE\n"
   );
 
   const ledgerSummary = sourceRecordSummary({
-    frontmatter: { source_verification_file: "docs/research/valid.tsv" },
-    text: "### SRC-INLINE-IGNORED\n\n- Verification: `VERIFIED_FULL_TEXT`\n",
+    frontmatter: {
+      source_ids: ["SRC-ONE", "SRC-TWO"],
+      source_verification_file: "docs/research/valid.tsv",
+    },
+    text: "",
   }, tempRoot);
   record(
-    "declared TSV ledger owns source counts",
-    ledgerSummary.error === null && ledgerSummary.mode === "ledger" &&
+    "declared source IDs constrain TSV ledger counts",
+    ledgerSummary.error === null && ledgerSummary.mode === "declared_with_ledger" &&
       ledgerSummary.source_count === 2 && ledgerSummary.verified_source_count === 1,
     ledgerSummary
   );
 
+  const accessSummary = sourceRecordSummary({
+    frontmatter: {
+      source_ids: ["SRC-ONE", "SRC-TWO"],
+      source_verification_file: "docs/research/access-status.tsv",
+    },
+    text: "",
+  }, tempRoot);
+  record(
+    "access_status is accepted as a verification column",
+    accessSummary.error === null && accessSummary.source_count === 2 &&
+      accessSummary.verified_source_count === 2,
+    accessSummary
+  );
+
+  const combinedSummary = sourceRecordSummary({
+    frontmatter: {
+      source_ids: ["SRC-ONE", "SRC-TWO"],
+      source_verification_file: "docs/research/partial.tsv",
+    },
+    text: "### SRC-TWO\n\n- Verification: `VERIFIED_FULL_TEXT`\n",
+  }, tempRoot);
+  record(
+    "ledger and inline records combine by declared source ID",
+    combinedSummary.error === null && combinedSummary.source_count === 2 &&
+      combinedSummary.verified_source_count === 2,
+    combinedSummary
+  );
+
   const inlineSummary = sourceRecordSummary({
-    frontmatter: {},
+    frontmatter: { source_ids: ["SRC-ONE", "SRC-TWO"] },
     text: "### SRC-ONE\n\n- Verification: `VERIFIED_FULL_TEXT`\n\n### SRC-TWO\n\n- Verification: `PENDING_REVIEW`\n",
   }, tempRoot);
   record(
     "inline source sections remain supported",
-    inlineSummary.error === null && inlineSummary.mode === "inline" &&
+    inlineSummary.error === null && inlineSummary.mode === "declared_inline" &&
       inlineSummary.source_count === 2 && inlineSummary.verified_source_count === 1,
     inlineSummary
   );
 
   const unsafeSummary = sourceRecordSummary({
-    frontmatter: { source_verification_file: "../outside.tsv" },
+    frontmatter: { source_ids: ["SRC-ONE"], source_verification_file: "../outside.tsv" },
     text: "",
   }, tempRoot);
   record(
@@ -79,7 +118,7 @@ try {
 
   const absolutePath = path.join(tempRoot, "absolute.tsv");
   const absoluteSummary = sourceRecordSummary({
-    frontmatter: { source_verification_file: absolutePath },
+    frontmatter: { source_ids: ["SRC-ONE"], source_verification_file: absolutePath },
     text: "",
   }, tempRoot);
   record(
@@ -89,7 +128,7 @@ try {
   );
 
   const missingSummary = sourceRecordSummary({
-    frontmatter: { source_verification_file: "docs/research/missing.tsv" },
+    frontmatter: { source_ids: ["SRC-ONE"], source_verification_file: "docs/research/missing.tsv" },
     text: "",
   }, tempRoot);
   record(
@@ -99,7 +138,7 @@ try {
   );
 
   const incompleteSummary = sourceRecordSummary({
-    frontmatter: { source_verification_file: "docs/research/incomplete-header.tsv" },
+    frontmatter: { source_ids: ["SRC-ONE"], source_verification_file: "docs/research/incomplete-header.tsv" },
     text: "",
   }, tempRoot);
   record(
@@ -109,13 +148,23 @@ try {
   );
 
   const malformedSummary = sourceRecordSummary({
-    frontmatter: { source_verification_file: "docs/research/malformed-row.tsv" },
+    frontmatter: { source_ids: ["SRC-ONE"], source_verification_file: "docs/research/malformed-row.tsv" },
     text: "",
   }, tempRoot);
   record(
     "malformed ledger row fails closed",
     malformedSummary.error === "malformed_source_verification_row:docs/research/malformed-row.tsv:2",
     malformedSummary
+  );
+
+  const missingRecordSummary = sourceRecordSummary({
+    frontmatter: { source_ids: ["SRC-ONE", "SRC-MISSING"], source_verification_file: "docs/research/partial.tsv" },
+    text: "",
+  }, tempRoot);
+  record(
+    "missing declared source record fails closed",
+    missingRecordSummary.error === "missing_source_record:SRC-MISSING",
+    missingRecordSummary
   );
 } finally {
   fs.rmSync(tempRoot, { recursive: true, force: true });
