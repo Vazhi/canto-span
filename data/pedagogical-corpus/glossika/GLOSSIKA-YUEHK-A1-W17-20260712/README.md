@@ -1,30 +1,20 @@
-# Glossika Cantonese (HK) A1 Week 17 corpus reconciliation
+# Glossika Cantonese (HK) A1 Week 17 contract package
 
-- Source ID: `GLOSSIKA-YUEHK-A1-W17-20260712`
+- Package ID: `GLOSSIKA-YUEHK-A1-W17-20260712`
 - Lesson: Emotions & States
 - Source date: 2026-07-12
 - Gmail message: `19f5511dfc37c9ea`
-- Intake issue: #134
-- Work claim: #276
-- Pull request: #277
-- Source records: 75
-- Source payload hash: `sha256:1ece0875ae59d215fbc1f09ad8b5b648ad80e448fadaf89d72f019208be28ea7`
+- Source issue: #134
+- Contract migration: #517
+- Lifecycle: `reviewed` (not `accepted`)
+- Stable records: 75
 
-## Preserved source structure
+## Authority boundary
 
-- 8 functional-language sentences
-- 32 emotion/state lexical rows, including repeated 攰, 嬲, and 驚 rows
-- 10 number entries
-- 4 situation sentences
-- 5 dialog turns
-- 8 source-labeled preposition entries
-- 2 preposition example sentences
-- 6 phonics pairs
+`source.json`, `items.tsv`, `crosswalk.json`, and the legacy `w17-*` project records remain immutable. Inherited `PASS`, `REVIEW`, and `PROMOTED_ACCEPTED` values remain project history rather than independent evidence. Parser-owner paths are heuristic hints only.
 
-## Reconciliation
+The source pronunciation `闊 hyut3|kut3` remains unchanged. Independent CUHK and Chinese Text Project evidence supports a proposed `hyut3|fut3` learner-facing reading, but this reviewed package grants no replacement authority.
 
-The package crosswalks every source row to existing `test-data/w17-*` records and current modular owners. It preserves five project-created naturalized alternatives as project-only records. Existing project corrections and lifecycle states remain unchanged.
+## Open work
 
-## Architecture boundary
-
-`src/**` and `src/runtime-resources/**` are canonical runtime inputs. `main.js` is generated and is not an ownership source. This corpus-only package does not regenerate or modify the runtime bundle.
+Typed discrepancies and routes retain unresolved translation, naturalness, pronunciation, project-history, project-only-probe, and parser-ownership questions under issue #134. No source value is accepted as replaced.

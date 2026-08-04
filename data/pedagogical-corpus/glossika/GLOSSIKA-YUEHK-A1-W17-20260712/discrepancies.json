@@ -1,0 +1,599 @@
+{
+  "schema": "canto-span-pedagogical-discrepancies-v1",
+  "discrepancies": [
+    {
+      "discrepancy_id": "W17-D-002-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I002"
+      },
+      "type": "other",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-006-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I006"
+      },
+      "type": "other",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-010-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I010"
+      },
+      "type": "other",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-011-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I011"
+      },
+      "type": "other",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-012-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I012"
+      },
+      "type": "translation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-012-02",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I012"
+      },
+      "type": "other",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-013-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I013"
+      },
+      "type": "translation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-015-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I015"
+      },
+      "type": "translation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-017-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I017"
+      },
+      "type": "translation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-018-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I018"
+      },
+      "type": "translation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-019-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I019"
+      },
+      "type": "translation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-023-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I023"
+      },
+      "type": "translation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-024-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I024"
+      },
+      "type": "other",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-025-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I025"
+      },
+      "type": "translation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-025-02",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I025"
+      },
+      "type": "other",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-026-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I026"
+      },
+      "type": "other",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-028-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I028"
+      },
+      "type": "translation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-032-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I032"
+      },
+      "type": "translation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-032-02",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I032"
+      },
+      "type": "other",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-033-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I033"
+      },
+      "type": "translation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-035-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I035"
+      },
+      "type": "translation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-037-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I037"
+      },
+      "type": "translation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-038-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I038"
+      },
+      "type": "translation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-039-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I039"
+      },
+      "type": "other",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-051-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I051"
+      },
+      "type": "other",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-051-N",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I051"
+      },
+      "type": "naturalness",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-055-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I055"
+      },
+      "type": "other",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-055-N",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I055"
+      },
+      "type": "naturalness",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-056-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I056"
+      },
+      "type": "other",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-056-N",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I056"
+      },
+      "type": "naturalness",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-058-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I058"
+      },
+      "type": "other",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-059-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I059"
+      },
+      "type": "translation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-061-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I061"
+      },
+      "type": "translation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-061-02",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I061"
+      },
+      "type": "other",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-063-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I063"
+      },
+      "type": "translation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-063-02",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I063"
+      },
+      "type": "other",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-064-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I064"
+      },
+      "type": "translation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-064-02",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I064"
+      },
+      "type": "other",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-065-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I065"
+      },
+      "type": "translation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-066-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I066"
+      },
+      "type": "translation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-067-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I067"
+      },
+      "type": "translation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-069-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I069"
+      },
+      "type": "translation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-070-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I070"
+      },
+      "type": "other",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-070-PH",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I070"
+      },
+      "type": "pronunciation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-071-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I071"
+      },
+      "type": "other",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-071-PH",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I071"
+      },
+      "type": "pronunciation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-072-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I072"
+      },
+      "type": "other",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-072-PH",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I072"
+      },
+      "type": "pronunciation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-073-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I073"
+      },
+      "type": "other",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-073-PH",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I073"
+      },
+      "type": "pronunciation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-074-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I074"
+      },
+      "type": "pronunciation",
+      "status": "proposed",
+      "replacement_value": "hyut3|fut3",
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-074-02",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I074"
+      },
+      "type": "other",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-075-01",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I075"
+      },
+      "type": "other",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    },
+    {
+      "discrepancy_id": "W17-D-075-PH",
+      "source": {
+        "package_id": "GLOSSIKA-YUEHK-A1-W17-20260712",
+        "record_id": "GLOSSIKA-YUEHK-A1-W17-20260712-I075"
+      },
+      "type": "pronunciation",
+      "status": "open",
+      "replacement_value": null,
+      "authority_issue": null
+    }
+  ]
+}
