@@ -14,9 +14,9 @@ The evidence supports a Cantonese lexical reliability family centered on `信`:
 - `信得過` — trustworthy / reliable / can be trusted;
 - `信唔過` — not trustworthy / cannot be trusted;
 - `信唔信得過 + NP` — A-not-A question over the same lexical-predicate family;
-- split object/predicate order such as `信 NP 唔過` is also attested in public examples.
+- split object/predicate order such as `信 NP 唔過` is attested in lexical-example material and remains an implementation-alignment caution.
 
-The evidence does **not** support promoting an open productive `V得過` reliability-standard construction for arbitrary verbs.
+The evidence reviewed for this issue does **not** support promoting an open productive `V得過` reliability-standard construction for arbitrary verbs.
 
 ## Evidence reviewed
 
@@ -32,7 +32,7 @@ Those examples establish that the project needs to account for the `信` family,
 
 ### Lexical dictionaries
 
-Dictionary evidence independently supports `信得過` as a lexical trustworthiness item and `信唔過` as its negative counterpart. This is enough to reject treating the forms as merely parser artifacts.
+Dictionary evidence independently supports `信得過` as a listed trustworthiness/reliability item and `信唔過` as a listed Cantonese negative counterpart. This is enough to reject treating the forms as merely parser artifacts.
 
 The dictionary evidence is not enough to infer productive open-class `V得過`; dictionary entries list the item, not a constructional schema.
 
@@ -40,12 +40,14 @@ The dictionary evidence is not enough to infer productive open-class `V得過`; 
 
 A bounded public web inventory found recurring examples of:
 
-- `信得過` as a predicate or prenominal modifier;
+- `信得過` as a predicate or modifier;
 - `信唔過` as the negative counterpart;
-- `信唔信得過` as an A-not-A question, including forum/news/blog-style examples;
-- `信 NP 唔過`-type split negative order in dictionary-derived examples.
+- `信唔信得過` as an A-not-A question in dictionary-example, forum, news, and blog-style material;
+- `信 NP 唔過`-type split negative order in lexical-example material.
 
-The same inventory did not produce comparable Cantonese evidence for an open reliability-standard family across arbitrary verbs. Possible neighboring forms such as `靠得過` are sparse and confounded by Mandarin or general Chinese usage; Cantonese evidence more readily points to separate lexical expressions such as `靠得住` rather than a productive `V得過` class.
+The same bounded inventory did not produce comparable Cantonese evidence for an open reliability-standard family across arbitrary verbs. Possible neighboring forms such as `靠得過` are sparse in the reviewed material and are confounded by Mandarin/general-Chinese usage; Cantonese evidence more readily points to separate lexical expressions such as `靠得住` rather than a productive `V得過` class.
+
+This is a bounded negative/productivity check, not a claim that no speaker can ever coin or accept another `V得過` form.
 
 ## Analysis
 
@@ -65,7 +67,7 @@ Reasons:
 - `信唔過`: source-supported negative lexical counterpart.
 - `信唔信得過 + NP`: source-supported lexical-predicate A-not-A question profile.
 - `信 NP 唔過`: attested split-object negative profile requiring care in any later parser alignment.
-- Productive `V得過`: not supported.
+- Productive `V得過`: not supported by this issue's evidence.
 - New UUID: no.
 - Construction-status promotion: no.
 - Runtime change from this issue: no.
@@ -92,8 +94,10 @@ This packet changes no runtime behavior, parser matcher, construction identity, 
 
 ## Source pointers
 
-- Wiktionary: `信得過`, Cantonese `seon3 dak1 gwo3`, trustable / trustworthy / reliable senses.
-- CC-Canto / Jyut Dictionary: `信得過` and related Cantonese dictionary search evidence.
-- CantoDict: `信唔過`, unreliable / cannot be trusted.
-- Words.hk / Jyut Dictionary examples containing `信唔過`, `信唔信得過`, and split negative forms.
-- Public web/news/forum examples containing `信得過`, `信唔過`, and `信唔信得過`.
+Lexical and example sources reviewed for this bounded packet:
+
+- Wiktionary, `信得過`, Cantonese `seon3 dak1 gwo3`, glossed with trustable/trustworthy/reliable senses: https://en.wiktionary.org/wiki/%E4%BF%A1%E5%BE%97%E9%81%8E
+- CC-Canto search for `信`, listing `信得過 seon3 dak1 gwo3`: https://cantonese.org/search.php?q=%E4%BF%A1
+- CantoDict, `信唔過`, marked Cantonese and glossed as unreliable / cannot be trusted: https://www.cantonese.sheik.co.uk/dictionary/words/40552/
+- Words.hk `聞所未聞` example containing `唔知信唔信得過`: https://words.hk/zidin/%E8%81%9E%E6%89%80%E6%9C%AA%E8%81%9E
+- Public search examples for `信唔信得過` and `信得過`, including forum/news/blog-style attestations, used as attestation only and not as productivity proof.
