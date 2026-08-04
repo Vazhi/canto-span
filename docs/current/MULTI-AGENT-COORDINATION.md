@@ -22,8 +22,8 @@ The system uses:
 5. worker and integrator roles;
 6. integration-owned aggregate and current-state files;
 7. agent-observed claim and handoff discipline;
-8. an integrator responsible for final reconciliation and merge order after the
-   mandatory user-review stop and explicit approval.
+8. an integrator responsible for final reconciliation and merge order under the
+   current autonomous merge-authority owner after live safety checks pass.
 
 There is no read-only research role. Research, evidence recording, adjudication,
 implementation, testing, documentation, and integration may be combined in one
@@ -42,7 +42,7 @@ coherent claim when the affected state dimensions and substantive gates are clea
 - Pull-request handoff: `.github/pull_request_template.md`
 - Optional coordination diagnostics: `tools/coordination/check-pr.js` and focused tests
 - Changeset validation and application: `tools/coordination/change-set.js`
-- Per-PR merge authorization: `docs/current/USER-MERGE-REVIEW.md`
+- Autonomous merge authority: `docs/current/USER-MERGE-REVIEW.md`
 
 The latest valid ownership block in the canonical intake issue body owns pickup
 authority. The linked work-claim issue owns semantic scope. They do not own
@@ -246,13 +246,13 @@ integrator:
 7. removes pending changesets;
 8. runs every applicable verifier;
 9. verifies exact head SHA and mergeability;
-10. marks a complete PR ready, notifies the user with the exact head and validation,
-    and stops without merging;
-11. after explicit approval for that PR and unchanged head, re-checks every gate and
-    merges only a coherent passing state.
+10. marks a complete PR ready and records the exact head and validation;
+11. applies `USER-MERGE-REVIEW.md`, re-checks every live gate, and merges a coherent
+    passing state under valid standing authority unless a required safety stop applies.
 
-Integrator role does not authorize autonomous merge and does not bypass evidence,
-identity, status, survey, release, parser, or user-review gates.
+Integrator role does not bypass evidence, identity, status, survey, release, parser,
+or merge-safety gates. It authorizes merge only when paired with valid authority from
+`USER-MERGE-REVIEW.md` and passing live safety checks.
 
 ## Integration-owned files
 
@@ -336,8 +336,9 @@ temporary file.
 
 The ready gate replaces post-merge repair. Temporary intent is cleaned on the branch
 before review while the issue, PR, and Git history preserve the decision trail. Once
-ready, the agent re-fetches live ownership, notifies the user, and stops; ready state
-and passing checks do not authorize merge.
+ready, the agent re-fetches live ownership, records the exact head and validation,
+and applies `USER-MERGE-REVIEW.md`: merge under standing authority when live safety
+checks pass, or stop only for a required safety stop.
 
 ## Automation policy
 
@@ -359,13 +360,12 @@ Write-capable automation is permitted only when all of the following hold:
 5. the action cannot expand its own scope;
 6. every write is auditable and recoverable;
 7. the workflow cannot autonomously adjudicate evidence, promote linguistic status,
-   deploy a survey, publish a release, write directly to `main`, merge, enable
-   auto-merge, or infer user approval.
+   deploy a survey, publish a release, write directly to `main`, or infer merge
+   authority outside `USER-MERGE-REVIEW.md`.
 
 Claim-aware automation may prepare commits, apply validated changesets, update claim
-metadata, or assist integration when those conditions are satisfied. It may not
-merge or enable auto-merge before explicit user approval for the specific PR and
-head. A generic unscoped writer, repair bot, or direct-to-main merge remains
+metadata, assist integration, or merge when those conditions and `USER-MERGE-REVIEW.md`
+are satisfied. A generic unscoped writer, repair bot, or direct-to-main merge remains
 prohibited.
 
 ## Stale and abandoned work
@@ -381,8 +381,8 @@ claim's expiry alone does not reassign pickup ownership.
 
 ## Merge-order rules
 
-After explicit user approval for each specific PR and unchanged head, the integrator
-normally merges in this order:
+Under valid `USER-MERGE-REVIEW.md` authority and passing live safety checks, the
+integrator normally merges in this order:
 
 1. repository-wide schemas, policy, or workflow changes;
 2. canonical independent records;
@@ -402,6 +402,6 @@ Do not force a conflict-prone merge because checks once passed.
 - It does not create a permanent queue or active-note whitelist.
 - It does not make research read-only.
 - It does not grant automation unrestricted write access.
-- It does not let checks, labels, elapsed time, or integrator role substitute for user
-  approval of a specific PR and head.
+- It does not let checks, labels, elapsed time, or integrator role substitute for
+  `USER-MERGE-REVIEW.md` authority and live safety checks.
 - It does not replace evidence, survey, status, release, or deployment gates.
