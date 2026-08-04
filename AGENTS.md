@@ -38,6 +38,11 @@ authorized scope, protected state, completed work, failed or rejected approaches
 commands and results, unresolved blockers, and next concrete action. Refresh it after
 a major phase or material change; do not create a parallel state file.
 
+- After each substantive repository change, remind the user to request a fresh review
+  of the updated pull-request head before merge. If a prior review found no blockers,
+  state that it applied only to the earlier head and is stale after the new change.
+  After the final rereview finds no blockers, tell the user clearly that the unchanged
+  reviewed head is ready for merge approval.
 - After context compaction, resume, handoff, interruption, or apparent memory loss,
   re-read this file, the mandatory current owners, the live intake and claim, the
   current branch diff, and the latest operational checkpoint before acting. Do not ask
