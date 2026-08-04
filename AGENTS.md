@@ -10,7 +10,7 @@ Before planning or changing repository work, read these current owners:
 2. [`docs/current/CODEX-ISSUE-WORKFLOW.md`](docs/current/CODEX-ISSUE-WORKFLOW.md) — task classification and pickup routing;
 3. [`docs/current/AGENT-WORKFLOW-SETTINGS.md`](docs/current/AGENT-WORKFLOW-SETTINGS.md) and [`config/agent-workflow-settings.json`](config/agent-workflow-settings.json) — available optional agent workflows;
 4. [`docs/current/MULTI-AGENT-COORDINATION.md`](docs/current/MULTI-AGENT-COORDINATION.md) — semantic claims, branches, overlap, and integration roles;
-5. [`docs/current/USER-MERGE-REVIEW.md`](docs/current/USER-MERGE-REVIEW.md) — the mandatory stop before merge.
+5. [`docs/current/USER-MERGE-REVIEW.md`](docs/current/USER-MERGE-REVIEW.md) — merge authority, standing authorization, and required stops before merge.
 
 ## Mandatory sequence
 
@@ -27,8 +27,8 @@ Before the first repository edit:
 9. implement one coherent passing state within the claim;
 10. open or update one pull request linked to the claim;
 11. bind the assigned pull-request number in the live intake metadata;
-12. when ready, inform the user and stop before merge after reporting the PR number, exact head, scope, validation, risks, and limitations;
-13. merge only after the user explicitly approves that specific PR and unchanged head. Any new commit after approval requires fresh review and approval.
+12. when ready, record the pull-request number, exact head, scope, validation, risks, and limitations;
+13. apply `USER-MERGE-REVIEW.md`: stop when that owner requires a stop, otherwise merge only under valid standing or PR-specific authorization after live safety checks. Any new commit after review requires fresh review before merge.
 
 ## Execution reliability protocol
 
@@ -38,11 +38,11 @@ authorized scope, protected state, completed work, failed or rejected approaches
 commands and results, unresolved blockers, and next concrete action. Refresh it after
 a major phase or material change; do not create a parallel state file.
 
-- After each substantive repository change, remind the user to request a fresh review
-  of the updated pull-request head before merge. If a prior review found no blockers,
-  state that it applied only to the earlier head and is stale after the new change.
-  After the final rereview finds no blockers, tell the user clearly that the unchanged
-  reviewed head is ready for merge approval.
+- After each substantive repository change, record whether the existing review still
+  applies. If a prior review found no blockers, state that it applied only to the
+  earlier head and is stale after the new change. After the final rereview finds no
+  blockers, either merge under valid authority from `USER-MERGE-REVIEW.md` or report
+  the specific stop condition that requires user approval or another decision.
 - After context compaction, resume, handoff, interruption, or apparent memory loss,
   re-read this file, the mandatory current owners, the live intake and claim, the
   current branch diff, and the latest operational checkpoint before acting. Do not ask
@@ -145,8 +145,9 @@ issue metadata to prove that those duties were followed.
 
 Coordination schemas, libraries, and their focused tests may be used when those tools
 change or when an agent needs a diagnostic. They are not part of `npm run verify`, do
-not run on every pull request, and do not determine merge eligibility. Explicit user
-approval for the specific unchanged PR head remains mandatory.
+not run on every pull request, and do not determine merge eligibility. Merge authority
+is owned by `docs/current/USER-MERGE-REVIEW.md`; passing verification or coordination
+diagnostics alone never grants merge authority.
 
 ## Verification anti-bloat rule
 
@@ -174,6 +175,6 @@ not automatically part of every repository change.
 
 Use the narrowest canonical owner listed in `00-START-HERE.md`. Agent availability
 is owned by the checked-in workflow setting; routing by the routing contract;
-concurrent scope by the live claim; merge permission by the per-PR review gate; and
+concurrent scope by the live claim; merge permission by `USER-MERGE-REVIEW.md`; and
 volatile project facts by `PROJECT-STATE.md`. Historical material never overrides a
 newer current owner.
