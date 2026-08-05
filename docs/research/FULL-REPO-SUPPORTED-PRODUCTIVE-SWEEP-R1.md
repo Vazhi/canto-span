@@ -1,9 +1,9 @@
 # Full-repository supported-productive discovery sweep R1
 
-**Generated:** 2026-07-24  
-**Permanent UUID records:** 181  
-**Current:** 133  
-**Retired:** 48  
+**Generated:** 2026-07-24
+**Permanent UUID records:** 182
+**Current:** 134
+**Retired:** 48
 **Promotion-ready now:** 0
 
 The sweep evaluates every permanent identity. It separates construction identity, current naming quality, source support, runtime alignment, executable boundaries, corpus review, panel evidence, held-out validation, and ontology closure. No score or automatic flag authorizes promotion.
@@ -18,7 +18,7 @@ The sweep evaluates every permanent identity. It separates construction identity
 | `narrowing_candidate` | 30 |
 | `retired_evidence_rehome_candidate` | 42 |
 | `retired_research_gap` | 6 |
-| `source_supported` | 62 |
+| `source_supported` | 63 |
 
 ## Nearest missing gate
 
@@ -29,7 +29,7 @@ The sweep evaluates every permanent identity. It separates construction identity
 | `reviewed_corpus_evidence` | 2 |
 | `role_neutral_panel_threshold` | 1 |
 | `runtime_research_alignment` | 18 |
-| `source_scope_matches_claim` | 46 |
+| `source_scope_matches_claim` | 47 |
 
 ## Narrow-construction discovery signals
 

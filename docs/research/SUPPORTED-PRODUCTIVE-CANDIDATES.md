@@ -2,7 +2,7 @@
 
 This is a prioritization report, not a promotion decision. A score cannot override any hard gate.
 
-**Records reviewed:** 181  
+**Records reviewed:** 182
 **Promotion-ready now:** 0
 
 ## Direct candidates
@@ -11,6 +11,7 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 |---|---|---|---|---|---|
 | `AB30` | `ZoMarkedPerfectiveObjectVP` | `boundary_ready` | 90 | `role_neutral_panel_threshold` | run or complete a locked role-neutral panel instrument with critical contrasts |
 | `AB15` | `DemonstrativeClassifierNounNP` | `source_supported` | 83 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
+| `AB83` | `JauDakMouDakAvailabilityPredicate` | `source_supported` | 68 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA84` | `GamMarkedReduplicatedMannerVP` | `source_supported` | 65 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AB28` | `BeiMarkedPostThemeParticipantConstruction` | `source_supported` | 65 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AA11` | `BinSingDimWhComplementVP` | `source_supported` | 60 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
@@ -48,7 +49,6 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 | `AA55` | `SubjectJauPossessiveClause` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA76` | `BeiThemeRecipientGiveVP` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA86` | `ModalM4ModalInterrogative` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
-| `AA89` | `ModalAuxiliaryComplementVP` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 
 ## Narrowing candidates
 

@@ -1,10 +1,10 @@
 {
   "schema": "canto-span-full-repo-label-sweep-v1",
   "identity_registry_schema": "canto-span-construction-identity-registry-v1",
-  "record_count": 181,
-  "pending_review_count": 88,
+  "record_count": 182,
+  "pending_review_count": 89,
   "automatic_flag_counts": {
-    "generic_head_requires_boundary_definition": 72,
+    "generic_head_requires_boundary_definition": 73,
     "internal_representation_name_review": 20,
     "possible_bundled_or_cross_layer_name": 5,
     "possible_multi_layer_construction_bundle": 3,
@@ -1217,6 +1217,22 @@
       "recommended_action": "internalize_and_decompose",
       "automatic_risk_flags": [
         "unsupported_generalization_requires_source_runtime_reconciliation"
+      ]
+    },
+    {
+      "construction_uuid": "4e176fe2-a147-47c7-86c8-6778a379beb2",
+      "construction_code": "AB83",
+      "canonical_name": "JauDakMouDakAvailabilityPredicate",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "source_path": "grammar/research_pending/JauDakMouDakAvailabilityPredicate.md",
+      "review_state": "pending",
+      "behavior_research_alignment": "not_reviewed",
+      "terminology_alignment": "not_reviewed",
+      "recommended_action": "not_reviewed",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
       ]
     },
     {

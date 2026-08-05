@@ -257,8 +257,8 @@ function buildReport(registry, sweep) {
     .join("\n") || "| _none_ | 0 |";
   return `# Full-repository label sweep baseline R1\n\n` +
     `**Bootstrap date:** ${BOOTSTRAP_DATE}  \n` +
-    `**Permanent records:** ${registry.record_count}  \n` +
-    `**Current records:** ${registry.current_record_count}  \n` +
+    `**Permanent records:** ${registry.record_count}\n` +
+    `**Current records:** ${registry.current_record_count}\n` +
     `**Retired records:** ${registry.retired_record_count}  \n` +
     `**Records with automatic screening flags:** ${flagged.length}\n\n` +
     `This baseline assigns permanent identities and opens a review row for every current and retired label. ` +

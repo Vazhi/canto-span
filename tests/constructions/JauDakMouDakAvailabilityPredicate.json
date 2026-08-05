@@ -1,0 +1,120 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "JauDakMouDakAvailabilityPredicate",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [],
+  "focused_cases": [
+    {
+      "case_id": "JMD-AVAIL-P01",
+      "source": "我有得去。",
+      "class": "affirmative_availability_with_overt_motion_predicate",
+      "expected_profile": "construction_present",
+      "assertion": "construction_present",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#surface-profiles",
+      "source_ids": [
+        "SRC-LAM-LAU-LEE-2024-SEGMENTATION",
+        "HKCANCOR-JAU-MOU-DAK-R1"
+      ]
+    },
+    {
+      "case_id": "JMD-AVAIL-P02",
+      "source": "我冇得去。",
+      "class": "negative_availability_with_overt_motion_predicate",
+      "expected_profile": "construction_present",
+      "assertion": "construction_present",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#surface-profiles",
+      "source_ids": [
+        "SRC-LAM-LAU-LEE-2024-SEGMENTATION",
+        "HKCANCOR-JAU-MOU-DAK-R1"
+      ]
+    },
+    {
+      "case_id": "JMD-AVAIL-P03",
+      "source": "有冇得去？",
+      "class": "suppletive_polar_availability_question",
+      "expected_profile": "construction_present",
+      "assertion": "construction_present",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#suppletive-polar-question",
+      "source_ids": [
+        "SRC-HUANG-HER-KONG-2025-INTERROGATIVES",
+        "HKCANCOR-JAU-MOU-DAK-R1"
+      ]
+    },
+    {
+      "case_id": "JMD-AVAIL-P04",
+      "source": "我有得食飯。",
+      "class": "affirmative_availability_with_object_bearing_predicate",
+      "expected_profile": "construction_present",
+      "assertion": "construction_present",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#predicate-contract",
+      "source_ids": [
+        "SRC-LAM-LAU-LEE-2024-SEGMENTATION",
+        "HKCANCOR-JAU-MOU-DAK-R1"
+      ]
+    },
+    {
+      "case_id": "JMD-AVAIL-N01",
+      "source": "我有冇車？",
+      "class": "nominal_possession_or_existential_question_not_availability",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#negative-or-quarantined-cells",
+      "source_ids": [
+        "SRC-LAM-LAU-LEE-2024-SEGMENTATION"
+      ]
+    },
+    {
+      "case_id": "JMD-AVAIL-N02",
+      "source": "冇得頂。",
+      "class": "lexicalized_evaluative_quarantine",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#lexical-and-discourse-quarantine",
+      "source_ids": [
+        "HKCANCOR-JAU-MOU-DAK-R1"
+      ]
+    },
+    {
+      "case_id": "JMD-AVAIL-N03",
+      "source": "我食得到飯。",
+      "class": "postverbal_potential_result_not_preverbal_availability",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#why-existing-identities-are-insufficient",
+      "source_ids": [
+        "SRC-LAM-LAU-LEE-2024-SEGMENTATION"
+      ]
+    }
+  ],
+  "np_cases": [],
+  "implementation_probe_cases": [
+    {
+      "case_id": "JMD-AVAIL-T01",
+      "source": "有冇得去？",
+      "purpose": "runtime_reachability_only",
+      "linguistic_evidence_weight": 0,
+      "assertion": "trace_detail_equals",
+      "expected_surface": "有冇得去",
+      "expected_trace_detail": {
+        "polarity": "interrogative",
+        "question_strategy": "suppletive_jau_mou",
+        "hidden_material_inserted": false
+      },
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#composition-contract"
+    }
+  ],
+  "coverage": {
+    "state": "positive_and_boundary",
+    "exact_snapshot_positive_count": 0,
+    "focused_positive_count": 4,
+    "focused_boundary_count": 3,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "implementation_probe_count": 1,
+    "compatibility_alias_probe_count": 0,
+    "positive_case_count": 4,
+    "boundary_case_count": 3,
+    "executable_case_count": 8
+  }
+}

@@ -8,11 +8,11 @@
       "claim_layer": "language_construction",
       "source_path": "grammar/research_pending/JauDakMouDakAvailabilityPredicate.md",
       "profile_description": "A preverbal availability or opportunity relation uses affirmative 有得 or negative 冇得 before an overt predicate; the suppletive-polar surface 有冇得 asks which availability alternative holds. The profile excludes existential or possessive 有／冇 plus nominal complements, ordinary lexical V-唔-V, postverbal potential 得／唔到, arbitrary predicate omission, and fused or semi-lexical expressions whose meaning is not transparently availability.",
-      "state": "candidate",
+      "state": "canonicalized",
       "created_at": "2026-08-01",
-      "canonicalized_at": null,
+      "canonicalized_at": "2026-08-05",
       "abandoned_at": null,
-      "construction_code": null
+      "construction_code": "AB83"
     },
     {
       "construction_uuid": "a476c6c6-a0ba-4cf2-9021-13ad4c717d0f",

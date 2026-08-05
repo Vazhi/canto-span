@@ -47,10 +47,10 @@ independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/LocativePlacePhrase.json"
 standard_test_coverage: "positive_and_boundary"
-standard_positive_test_count: 15
+standard_positive_test_count: 14
 standard_boundary_test_count: 2
 standard_implementation_probe_count: 0
-standard_executable_test_count: 17
+standard_executable_test_count: 16
 source_ids: ["SRC-KWAN-2010-LOCATIVE", "SRC-YIP-MATTHEWS-2000-BASIC"]
 runtime_active: true
 workflow_state: "archived"

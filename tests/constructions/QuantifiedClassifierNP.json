@@ -377,7 +377,7 @@
     {
       "case_id": "NP-P002",
       "source": "三本水。",
-      "group": "classifier_incompatible",
+      "group": "classifier_policy_control",
       "assertion": "np_matrix_case",
       "expected_internal": "QuantifiedClassifierNP",
       "expected_surface": "三本水",
@@ -387,7 +387,7 @@
     {
       "case_id": "NP-P003",
       "source": "三杯書。",
-      "group": "classifier_incompatible",
+      "group": "classifier_policy_control",
       "assertion": "np_matrix_case",
       "expected_internal": "QuantifiedClassifierNP",
       "expected_surface": "三杯書",
@@ -397,7 +397,7 @@
     {
       "case_id": "NP-P004",
       "source": "三間醫生。",
-      "group": "classifier_incompatible",
+      "group": "classifier_policy_control",
       "assertion": "np_matrix_case",
       "expected_internal": "QuantifiedClassifierNP",
       "expected_surface": "三間醫生",
@@ -407,7 +407,7 @@
     {
       "case_id": "NP-P005",
       "source": "三隻餐廳。",
-      "group": "classifier_incompatible",
+      "group": "classifier_policy_control",
       "assertion": "np_matrix_case",
       "expected_internal": "QuantifiedClassifierNP",
       "expected_surface": "三隻餐廳",
@@ -417,7 +417,7 @@
     {
       "case_id": "NP-P006",
       "source": "三本電話。",
-      "group": "classifier_incompatible",
+      "group": "classifier_policy_control",
       "assertion": "np_matrix_case",
       "expected_internal": "QuantifiedClassifierNP",
       "expected_surface": "三本電話",
@@ -427,7 +427,7 @@
     {
       "case_id": "NP-P007",
       "source": "三張水。",
-      "group": "classifier_incompatible",
+      "group": "classifier_policy_control",
       "assertion": "np_matrix_case",
       "expected_internal": "QuantifiedClassifierNP",
       "expected_surface": "三張水",
@@ -445,7 +445,7 @@
     "np_case_count": 19,
     "implementation_probe_count": 0,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 25,
+    "positive_case_count": 44,
     "boundary_case_count": 2,
     "executable_case_count": 46
   }

@@ -2,8 +2,8 @@
   "schema": "canto-span-supported-productive-discovery-v1",
   "generated_on": "2026-07-24",
   "identity_registry_schema": "canto-span-construction-identity-registry-v1",
-  "record_count": 181,
-  "current_record_count": 133,
+  "record_count": 182,
+  "current_record_count": 134,
   "retired_record_count": 48,
   "promotion_eligible_now_count": 0,
   "state_counts": {
@@ -13,7 +13,7 @@
     "narrowing_candidate": 30,
     "retired_evidence_rehome_candidate": 42,
     "retired_research_gap": 6,
-    "source_supported": 62
+    "source_supported": 63
   },
   "nearest_missing_gate_counts": {
     "language_claim_defined": 38,
@@ -21,7 +21,7 @@
     "reviewed_corpus_evidence": 2,
     "role_neutral_panel_threshold": 1,
     "runtime_research_alignment": 18,
-    "source_scope_matches_claim": 46
+    "source_scope_matches_claim": 47
   },
   "records": [
     {
@@ -140,7 +140,7 @@
       ],
       "preserved_source_ids": [],
       "future_research_preserved_as": "",
-      "standard_positive_test_count": 30,
+      "standard_positive_test_count": 32,
       "standard_boundary_test_count": 6,
       "gates": {
         "language_claim_defined": {
@@ -163,7 +163,7 @@
         "executable_positive_cases_present": {
           "status": "pass",
           "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "30"
+          "detail": "32"
         },
         "negative_boundaries_complete": {
           "status": "pass",
@@ -2417,6 +2417,98 @@
         "unsupported_generalization_requires_source_runtime_reconciliation"
       ],
       "source_path": "grammar/unsupported_generalization/WhClassifierQuestion.md"
+    },
+    {
+      "construction_uuid": "4e176fe2-a147-47c7-86c8-6778a379beb2",
+      "construction_code": "AB83",
+      "canonical_name": "JauDakMouDakAvailabilityPredicate",
+      "legacy_label": "JauDakMouDakAvailabilityPredicate",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "family_id": null,
+      "family_name": null,
+      "profile_name": null,
+      "learner_label": null,
+      "source_ids": [
+        "SRC-LAM-LAU-LEE-2024-SEGMENTATION",
+        "SRC-HUANG-HER-KONG-2025-INTERROGATIVES",
+        "HKCANCOR-JAU-MOU-DAK-R1"
+      ],
+      "preserved_source_ids": [],
+      "future_research_preserved_as": "",
+      "standard_positive_test_count": 4,
+      "standard_boundary_test_count": 3,
+      "gates": {
+        "language_claim_defined": {
+          "status": "pass",
+          "evidence": "plain_language_claim_present"
+        },
+        "independent_source_support": {
+          "status": "pass",
+          "evidence": "all_cited_sources_verified_and_independent",
+          "detail": "3/3"
+        },
+        "source_scope_matches_claim": {
+          "status": "partial",
+          "evidence": "verified_sources_but_scope_reaudit_incomplete"
+        },
+        "runtime_research_alignment": {
+          "status": "partial",
+          "evidence": "code_document_reconciled_without_complete_current_metadata"
+        },
+        "executable_positive_cases_present": {
+          "status": "pass",
+          "evidence": "executable_positive_cases_present_implementation_only",
+          "detail": "4"
+        },
+        "negative_boundaries_complete": {
+          "status": "pass",
+          "evidence": "complete_executable_passing_negative_inventory"
+        },
+        "reviewed_corpus_evidence": {
+          "status": "pass",
+          "evidence": "reviewed_genuine_corpus_hits",
+          "detail": "68/95 genuine"
+        },
+        "role_neutral_panel_threshold": {
+          "status": "not_started",
+          "evidence": "no_eligible_panel_evidence",
+          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":true,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
+        },
+        "held_out_validation": {
+          "status": "not_started",
+          "evidence": "no_passing_held_out_record"
+        },
+        "ontology_conflicts_resolved": {
+          "status": "unresolved",
+          "evidence": "identity_label_review_pending"
+        }
+      },
+      "supported_gate_eligible": false,
+      "supported_gate_blockers": [
+        "requirement_failed:locked_clean_panel_instrument",
+        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
+        "requirement_failed:instrument_quality_resolved",
+        "requirement_failed:quality_screen_complete",
+        "requirement_failed:panel_adjudication_complete",
+        "requirement_failed:critical_contrast_coverage_complete",
+        "requirement_failed:positive_and_negative_contrasts_reviewed",
+        "requirement_failed:current_code_review_metadata",
+        "requirement_failed:current_standard_reaudit_complete"
+      ],
+      "discovery_hard_blockers": [
+        "discovery_gate:held_out_validation",
+        "discovery_gate:ontology_conflicts_resolved"
+      ],
+      "readiness_score": 68,
+      "candidate_state": "source_supported",
+      "nearest_missing_gate": "source_scope_matches_claim",
+      "next_best_action": "complete source-scope reaudit and split any unsupported extensions",
+      "automatic_risk_flags": [
+        "generic_head_requires_boundary_definition"
+      ],
+      "source_path": "grammar/research_pending/JauDakMouDakAvailabilityPredicate.md"
     },
     {
       "construction_uuid": "28bbdab0-a637-5842-b93a-a129c8a55d7b",
@@ -6947,7 +7039,7 @@
       ],
       "preserved_source_ids": [],
       "future_research_preserved_as": "",
-      "standard_positive_test_count": 42,
+      "standard_positive_test_count": 44,
       "standard_boundary_test_count": 2,
       "gates": {
         "language_claim_defined": {
@@ -6970,7 +7062,7 @@
         "executable_positive_cases_present": {
           "status": "pass",
           "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "42"
+          "detail": "44"
         },
         "negative_boundaries_complete": {
           "status": "partial",
@@ -8248,8 +8340,8 @@
       ],
       "preserved_source_ids": [],
       "future_research_preserved_as": "",
-      "standard_positive_test_count": 4,
-      "standard_boundary_test_count": 2,
+      "standard_positive_test_count": 7,
+      "standard_boundary_test_count": 10,
       "gates": {
         "language_claim_defined": {
           "status": "pass",
@@ -8271,7 +8363,7 @@
         "executable_positive_cases_present": {
           "status": "pass",
           "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "4"
+          "detail": "7"
         },
         "negative_boundaries_complete": {
           "status": "partial",
@@ -14390,7 +14482,7 @@
       ],
       "preserved_source_ids": [],
       "future_research_preserved_as": "",
-      "standard_positive_test_count": 15,
+      "standard_positive_test_count": 14,
       "standard_boundary_test_count": 2,
       "gates": {
         "language_claim_defined": {
@@ -14413,7 +14505,7 @@
         "executable_positive_cases_present": {
           "status": "pass",
           "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "15"
+          "detail": "14"
         },
         "negative_boundaries_complete": {
           "status": "partial",
@@ -14753,7 +14845,7 @@
       ],
       "preserved_source_ids": [],
       "future_research_preserved_as": "",
-      "standard_positive_test_count": 38,
+      "standard_positive_test_count": 41,
       "standard_boundary_test_count": 2,
       "gates": {
         "language_claim_defined": {
@@ -14776,7 +14868,7 @@
         "executable_positive_cases_present": {
           "status": "pass",
           "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "38"
+          "detail": "41"
         },
         "negative_boundaries_complete": {
           "status": "partial",

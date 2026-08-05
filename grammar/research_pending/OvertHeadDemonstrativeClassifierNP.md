@@ -52,7 +52,7 @@ promotion_gate_version: "v3"
 source_verification_file: "docs/research/AB15-CLASSIFIER-NP-PRIMARY-SOURCE-LEDGER-R1.tsv"
 standard_test_file: "tests/constructions/OvertHeadDemonstrativeClassifierNP.json"
 standard_test_coverage: "positive_and_boundary"
-standard_positive_test_count: 30
+standard_positive_test_count: 32
 standard_boundary_test_count: 6
 standard_implementation_probe_count: 0
 standard_executable_test_count: 38
