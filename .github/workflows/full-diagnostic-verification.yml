@@ -46,25 +46,50 @@ jobs:
             git pull --rebase origin agent/aa56-positive-participant-runtime
             git push origin HEAD:agent/aa56-positive-participant-runtime
           fi
-      - name: Temporary AA56 matcher debug
+      - name: Temporary AA56 regression snapshot commit
         run: |
           node <<'NODE'
-          const { loadRuntimeApi, internalConstruction, rowSurface } = require('./tests/lib/runtime-api');
-          const api = loadRuntimeApi();
-          for (const source of ['有個人搵你。','有幾個學生好嬲。','有好多客人嚟咗。','有一日我去中環。','有個人喺門口。']) {
-            const rows = api.diagnosticFinalRows(api.analyzeLine(source));
-            const constructions = rows.filter((row) => row.kind === 'construction').map((row) => ({
-              c: internalConstruction(row),
-              s: rowSurface(row),
-              slots: row.slots,
-              trace: row.trace_detail,
-            }));
-            const tokens = rows.filter((row) => row.kind !== 'construction').map((row) => ({
-              s: rowSurface(row), role: row.role, slots: row.slots, syntax: row.syntax, c: internalConstruction(row), parent: row.parent,
-            }));
-            console.log(JSON.stringify({ source, constructions, tokens }, null, 2));
-          }
+          const fs = require('node:fs');
+          const fixturePath = 'tests/fixtures/regression-snapshots.json';
+          const fixture = JSON.parse(fs.readFileSync(fixturePath, 'utf8'));
+          const sources = [
+            '冇人喺度。',
+            '冇學生喺學校。',
+            '有個人喺門口。',
+            '有個學生喺學校。',
+          ];
+          fixture.current_focused_candidate = 'v0.5.218-aa56-positive-participant-runtime';
+          fixture.current_focused_exclusions = sources.map((source) => ({ source }));
+          fs.writeFileSync(fixturePath, JSON.stringify(fixture, null, 2) + '\n');
           NODE
+          node tests/run-regression.js --absorb-current-focused
+          node <<'NODE'
+          const fs = require('node:fs');
+          const fixturePath = 'tests/fixtures/regression-snapshots.json';
+          const fixture = JSON.parse(fs.readFileSync(fixturePath, 'utf8'));
+          const sources = new Set([
+            '冇人喺度。',
+            '冇學生喺學校。',
+            '有個人喺門口。',
+            '有個學生喺學校。',
+          ]);
+          for (const testCase of fixture.cases || []) {
+            if (!sources.has(testCase.source)) continue;
+            testCase.accepted_transition = 'v0.5.218_aa56_positive_participant_runtime_profile';
+            testCase.transition_reason = 'AA56 is now implemented as positive-only JauMarkedIndefiniteNPPredication; negative 冇 + predicate cases are no longer emitted as ExistentialPresentationalClause, and positive locative-coda cases retain the compatibility label with positive participant-introduction trace metadata.';
+          }
+          fixture.runtime_version = '0.5.218';
+          fixture.last_intentional_transition = 'v0.5.218_aa56_positive_participant_runtime_profile';
+          fs.writeFileSync(fixturePath, JSON.stringify(fixture, null, 2) + '\n');
+          NODE
+          if ! git diff --quiet -- tests/fixtures/regression-snapshots.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add tests/fixtures/regression-snapshots.json
+            git commit -m "Refresh AA56 regression snapshots"
+            git pull --rebase origin agent/aa56-positive-participant-runtime
+            git push origin HEAD:agent/aa56-positive-participant-runtime
+          fi
       - name: Test verification orchestration
         run: npm run test:verification-orchestration
       - name: Run full diagnostic sweep
