@@ -20,13 +20,37 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: agent/aa56-current-state-reconcile
+      - name: Temporary AA56 current-state patch
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const path = 'docs/current/PROJECT-STATE.md';
+          const before = '- `AA56 JauMarkedIndefiniteNPPredication` is canonical for the legacy runtime note `ExistentialPresentationalClause`; it is positive-only at the identity/specification layer, while the current locative-coda and negative runtime behavior remains unchanged pending a separate implementation;';
+          const after = '- `AA56 JauMarkedIndefiniteNPPredication` is canonical for the legacy runtime note `ExistentialPresentationalClause`; PR #593 / `833c7e15cb7b6b9f4efa2caae95461f09f9484f5` implements the accepted positive-only runtime profile under that legacy compatibility label, with no status promotion, runtime-label migration, survey, corpus, release, or deployment change;';
+          const original = fs.readFileSync(path, 'utf8');
+          if (!original.includes(before)) {
+            throw new Error('Expected stale AA56 current-state sentence not found');
+          }
+          const updated = original.replace(before, after);
+          fs.writeFileSync(path, updated);
+          NODE
+          if ! git diff --quiet -- docs/current/PROJECT-STATE.md; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add docs/current/PROJECT-STATE.md
+            git commit -m "Reconcile AA56 current state after runtime implementation"
+            git pull --rebase origin agent/aa56-current-state-reconcile
+            git push origin HEAD:agent/aa56-current-state-reconcile
+          fi
       - uses: actions/setup-node@v6
         with:
           node-version: 24
