@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-regression-snapshot-v2",
-  "runtime_version": "0.5.208",
+  "runtime_version": "0.5.218",
   "generated_from_runner_count": 548,
   "case_count": 548,
   "errors": [],
@@ -6689,103 +6689,36 @@
       ],
       "expected": {
         "summary": {
-          "top_constructions": [
-            "ExistentialPresentationalClause"
-          ],
+          "top_constructions": [],
           "top_child_constructions": [],
           "context_requirement_status": "context_not_required",
           "antecedent_status": "not_applicable",
           "missing_argument_slots": [],
-          "root_span_coverage_status": "PASS",
-          "root_top_construction_count": 1,
-          "unwrapped_root_nonpunctuation_count": 0,
-          "unwrapped_root_surfaces": []
+          "root_span_coverage_status": "NO_TOP_CONSTRUCTION",
+          "root_top_construction_count": 0,
+          "unwrapped_root_nonpunctuation_count": 3,
+          "unwrapped_root_surfaces": [
+            "冇",
+            "人",
+            "喺度"
+          ],
+          "semantic_review_flags": [
+            "no_top_construction"
+          ]
         },
         "tree": [
           {
-            "kind": "construction",
+            "kind": "token",
             "depth": 0,
             "parent": "",
-            "surface": "冇人喺度",
-            "construction": "ExistentialPresentationalClause",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "clause",
-              "co_participant",
-              "construction_span",
-              "existential",
-              "existential_clause",
-              "existential_presentational_clause",
-              "goal",
-              "head_noun",
-              "introduced_participant",
-              "location",
-              "locative_phrase",
-              "negated_existential",
-              "np",
-              "object",
-              "opinion_topic",
-              "predicate",
-              "presentational_coda",
-              "presentational_predicate",
-              "recipient",
-              "stance_holder",
-              "subject",
-              "topic"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "ExistentialPresentationalClause",
-              "template_family": "generative_template",
-              "template": [
-                "negated_existential!",
-                "introduced_participant!",
-                "presentational_coda!",
-                "particle?"
-              ],
-              "assigned_slots": [
-                "negated_existential",
-                "introduced_participant",
-                "presentational_coda"
-              ],
-              "surfaces": [
-                "冇",
-                "人",
-                "喺度"
-              ],
-              "subject_status": "impersonal",
-              "not_claims": [
-                "not_prenominal_relative_clause",
-                "not_possessive_have",
-                "not_hidden_subject",
-                "not_progressive_aspect"
-              ],
-              "subjectless_type": "genuinely_subjectless_existential_presentational",
-              "hidden_subject_inserted": false,
-              "existential_subtype": "participant_presentation_with_locative_coda",
-              "polarity": "negative",
-              "have_relation": "presentation",
-              "introduced_participant_surface": "人",
-              "presentational_coda_surface": "喺度"
-            }
-          },
-          {
-            "kind": "token",
-            "depth": 1,
-            "parent": "ExistentialPresentationalClause",
             "surface": "冇",
             "construction": "",
             "role": "func",
-            "syntax": "negated_existential_presentational_predicate",
+            "syntax": "negated_existential",
             "jyutping": "mou5",
             "slots": [
               "negated_existential",
-              "predicate",
-              "presentational_predicate"
+              "negator"
             ],
             "contextual_role_affordances": [
               {
@@ -6795,15 +6728,15 @@
                 "active_in_final_construction": true
               }
             ],
-            "trace": "construction_internal_parser_inactive_clone",
+            "trace": "atomic_lexicon",
             "trace_detail": {
-              "kind": "construction_internal_parser_inactive_clone"
+              "kind": "atomic_lexicon"
             }
           },
           {
             "kind": "token",
-            "depth": 1,
-            "parent": "ExistentialPresentationalClause",
+            "depth": 0,
+            "parent": "",
             "surface": "人",
             "construction": "",
             "role": "who",
@@ -6841,71 +6774,26 @@
             }
           },
           {
-            "kind": "construction",
-            "depth": 1,
-            "parent": "ExistentialPresentationalClause",
-            "surface": "喺度",
-            "construction": "LocativePlacePhrase",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "location",
-              "locative_phrase",
-              "presentational_coda"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "LocativePlacePhrase",
-              "template_family": "generative_template",
-              "template": [
-                "presentational_location_coda!"
-              ],
-              "assigned_slots": [
-                "presentational_coda"
-              ],
-              "surfaces": [
-                "喺度"
-              ],
-              "not_claims": [
-                "not_progressive_aspect"
-              ]
-            }
-          },
-          {
             "kind": "token",
-            "depth": 2,
-            "parent": "LocativePlacePhrase",
+            "depth": 0,
+            "parent": "",
             "surface": "喺度",
             "construction": "",
-            "role": "where",
-            "syntax": "locative_deictic presentational_location_coda",
+            "role": "func",
+            "syntax": "progressive_or_locative_marker",
             "jyutping": "hai2 dou6",
-            "slots": [
-              "location",
-              "locative_phrase",
-              "presentational_coda"
-            ],
+            "slots": [],
             "contextual_role_affordances": [
               {
                 "role": "func",
                 "source": "lexical_default",
                 "active_before_construction_wrapping": true,
-                "active_in_final_construction": false
-              },
-              {
-                "role": "where",
-                "slot": "presentational_coda",
-                "source": "construction_override",
-                "active_before_construction_wrapping": false,
                 "active_in_final_construction": true
               }
             ],
-            "trace": "construction_internal_parser_inactive_clone",
+            "trace": "atomic_lexicon",
             "trace_detail": {
-              "kind": "construction_internal_parser_inactive_clone"
+              "kind": "atomic_lexicon"
             }
           }
         ],
@@ -6945,7 +6833,9 @@
           }
         }
       },
-      "case_id": "REG-0028"
+      "case_id": "REG-0028",
+      "accepted_transition": "v0.5.218_aa56_positive_participant_runtime_profile",
+      "transition_reason": "AA56 is now implemented as positive-only JauMarkedIndefiniteNPPredication; negative 冇 + predicate cases are no longer emitted as ExistentialPresentationalClause, and positive locative-coda cases retain the compatibility label with positive participant-introduction trace metadata."
     },
     {
       "source": "冇同人講。",
@@ -8541,104 +8431,36 @@
       "expected": {
         "summary": {
           "top_constructions": [
-            "ExistentialPresentationalClause"
+            "LocativePlacePhrase"
           ],
           "top_child_constructions": [],
           "context_requirement_status": "context_not_required",
           "antecedent_status": "not_applicable",
           "missing_argument_slots": [],
-          "root_span_coverage_status": "PASS",
+          "root_span_coverage_status": "PARTIAL",
           "root_top_construction_count": 1,
-          "unwrapped_root_nonpunctuation_count": 0,
-          "unwrapped_root_surfaces": []
+          "unwrapped_root_nonpunctuation_count": 2,
+          "unwrapped_root_surfaces": [
+            "冇",
+            "學生"
+          ],
+          "semantic_review_flags": [
+            "partial_root_span_unwrapped_material"
+          ]
         },
         "tree": [
           {
-            "kind": "construction",
+            "kind": "token",
             "depth": 0,
             "parent": "",
-            "surface": "冇學生喺學校",
-            "construction": "ExistentialPresentationalClause",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "clause",
-              "co_participant",
-              "construction_span",
-              "existential",
-              "existential_clause",
-              "existential_presentational_clause",
-              "goal",
-              "head_noun",
-              "introduced_participant",
-              "location",
-              "locative_marker",
-              "locative_phrase",
-              "locative_predicate",
-              "negated_existential",
-              "np",
-              "object",
-              "opinion_topic",
-              "predicate",
-              "presentational_coda",
-              "presentational_predicate",
-              "recipient",
-              "stance_holder",
-              "subject",
-              "topic"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "ExistentialPresentationalClause",
-              "template_family": "generative_template",
-              "template": [
-                "negated_existential!",
-                "introduced_participant!",
-                "presentational_coda!",
-                "particle?"
-              ],
-              "assigned_slots": [
-                "negated_existential",
-                "introduced_participant",
-                "presentational_coda"
-              ],
-              "surfaces": [
-                "冇",
-                "學生",
-                "喺學校"
-              ],
-              "subject_status": "impersonal",
-              "not_claims": [
-                "not_prenominal_relative_clause",
-                "not_possessive_have",
-                "not_hidden_subject",
-                "not_progressive_aspect"
-              ],
-              "subjectless_type": "genuinely_subjectless_existential_presentational",
-              "hidden_subject_inserted": false,
-              "existential_subtype": "participant_presentation_with_locative_coda",
-              "polarity": "negative",
-              "have_relation": "presentation",
-              "introduced_participant_surface": "學生",
-              "presentational_coda_surface": "喺學校"
-            }
-          },
-          {
-            "kind": "token",
-            "depth": 1,
-            "parent": "ExistentialPresentationalClause",
             "surface": "冇",
             "construction": "",
             "role": "func",
-            "syntax": "negated_existential_presentational_predicate",
+            "syntax": "negated_existential",
             "jyutping": "mou5",
             "slots": [
               "negated_existential",
-              "predicate",
-              "presentational_predicate"
+              "negator"
             ],
             "contextual_role_affordances": [
               {
@@ -8648,15 +8470,15 @@
                 "active_in_final_construction": true
               }
             ],
-            "trace": "construction_internal_parser_inactive_clone",
+            "trace": "atomic_lexicon",
             "trace_detail": {
-              "kind": "construction_internal_parser_inactive_clone"
+              "kind": "atomic_lexicon"
             }
           },
           {
             "kind": "token",
-            "depth": 1,
-            "parent": "ExistentialPresentationalClause",
+            "depth": 0,
+            "parent": "",
             "surface": "學生",
             "construction": "",
             "role": "who",
@@ -8695,8 +8517,8 @@
           },
           {
             "kind": "construction",
-            "depth": 1,
-            "parent": "ExistentialPresentationalClause",
+            "depth": 0,
+            "parent": "",
             "surface": "喺學校",
             "construction": "LocativePlacePhrase",
             "role": "",
@@ -8704,16 +8526,15 @@
             "jyutping": "",
             "slots": [
               "construction_span",
+              "coverb_marker",
               "goal",
               "head_noun",
               "location",
               "locative_marker",
               "locative_phrase",
-              "locative_predicate",
               "np",
               "object",
               "opinion_topic",
-              "predicate",
               "topic"
             ],
             "contextual_role_affordances": [],
@@ -8733,22 +8554,20 @@
               "surfaces": [
                 "喺",
                 "學校"
-              ],
-              "not_claims": [
-                "not_coverb_frame_without_following_predicate"
               ]
             }
           },
           {
             "kind": "token",
-            "depth": 2,
+            "depth": 1,
             "parent": "LocativePlacePhrase",
             "surface": "喺",
             "construction": "",
             "role": "func",
-            "syntax": "locative_predicate_marker locative_marker",
+            "syntax": "locative_coverb",
             "jyutping": "hai2",
             "slots": [
+              "coverb_marker",
               "locative_marker"
             ],
             "contextual_role_affordances": [
@@ -8759,14 +8578,14 @@
                 "active_in_final_construction": true
               }
             ],
-            "trace": "construction_internal_parser_inactive_clone",
+            "trace": "atomic_lexicon",
             "trace_detail": {
-              "kind": "construction_internal_parser_inactive_clone"
+              "kind": "atomic_lexicon"
             }
           },
           {
             "kind": "token",
-            "depth": 2,
+            "depth": 1,
             "parent": "LocativePlacePhrase",
             "surface": "學校",
             "construction": "",
@@ -8839,7 +8658,9 @@
           }
         }
       },
-      "case_id": "REG-0038"
+      "case_id": "REG-0038",
+      "accepted_transition": "v0.5.218_aa56_positive_participant_runtime_profile",
+      "transition_reason": "AA56 is now implemented as positive-only JauMarkedIndefiniteNPPredication; negative 冇 + predicate cases are no longer emitted as ExistentialPresentationalClause, and positive locative-coda cases retain the compatibility label with positive participant-introduction trace metadata."
     },
     {
       "source": "天光喇。",
@@ -21378,8 +21199,10 @@
               "locative_predicate",
               "negated_existential",
               "np",
+              "np_linked_predicate",
               "object",
               "opinion_topic",
+              "participant_introduction_marker",
               "predicate",
               "presentational_coda",
               "presentational_predicate",
@@ -21397,13 +21220,13 @@
               "template": [
                 "existential!",
                 "introduced_participant!",
-                "presentational_coda!",
+                "np_linked_predicate!",
                 "particle?"
               ],
               "assigned_slots": [
                 "existential",
                 "introduced_participant",
-                "presentational_coda"
+                "np_linked_predicate"
               ],
               "surfaces": [
                 "有",
@@ -21412,18 +21235,19 @@
               ],
               "subject_status": "impersonal",
               "not_claims": [
-                "not_prenominal_relative_clause",
+                "not_negative_member",
                 "not_possessive_have",
+                "not_bare_existence",
                 "not_hidden_subject",
-                "not_progressive_aspect"
+                "not_mandatory_locative_coda",
+                "not_unrestricted_any_np_any_predicate"
               ],
               "subjectless_type": "genuinely_subjectless_existential_presentational",
               "hidden_subject_inserted": false,
-              "existential_subtype": "participant_presentation_with_locative_coda",
+              "existential_subtype": "positive_indefinite_np_predication",
               "polarity": "positive",
-              "have_relation": "presentation",
-              "introduced_participant_surface": "個人",
-              "presentational_coda_surface": "喺門口"
+              "have_relation": "participant_introduction",
+              "introduced_participant_surface": "個人"
             }
           },
           {
@@ -21433,10 +21257,11 @@
             "surface": "有",
             "construction": "",
             "role": "func",
-            "syntax": "existential_presentational_predicate",
+            "syntax": "positive_existential_participant_introduction_marker",
             "jyutping": "jau5",
             "slots": [
               "existential",
+              "participant_introduction_marker",
               "predicate",
               "presentational_predicate"
             ],
@@ -21711,7 +21536,9 @@
           }
         }
       },
-      "case_id": "REG-0085"
+      "case_id": "REG-0085",
+      "accepted_transition": "v0.5.218_aa56_positive_participant_runtime_profile",
+      "transition_reason": "AA56 is now implemented as positive-only JauMarkedIndefiniteNPPredication; negative 冇 + predicate cases are no longer emitted as ExistentialPresentationalClause, and positive locative-coda cases retain the compatibility label with positive participant-introduction trace metadata."
     },
     {
       "source": "有個學生喺學校。",
@@ -21759,8 +21586,10 @@
               "locative_predicate",
               "negated_existential",
               "np",
+              "np_linked_predicate",
               "object",
               "opinion_topic",
+              "participant_introduction_marker",
               "predicate",
               "presentational_coda",
               "presentational_predicate",
@@ -21778,13 +21607,13 @@
               "template": [
                 "existential!",
                 "introduced_participant!",
-                "presentational_coda!",
+                "np_linked_predicate!",
                 "particle?"
               ],
               "assigned_slots": [
                 "existential",
                 "introduced_participant",
-                "presentational_coda"
+                "np_linked_predicate"
               ],
               "surfaces": [
                 "有",
@@ -21793,18 +21622,19 @@
               ],
               "subject_status": "impersonal",
               "not_claims": [
-                "not_prenominal_relative_clause",
+                "not_negative_member",
                 "not_possessive_have",
+                "not_bare_existence",
                 "not_hidden_subject",
-                "not_progressive_aspect"
+                "not_mandatory_locative_coda",
+                "not_unrestricted_any_np_any_predicate"
               ],
               "subjectless_type": "genuinely_subjectless_existential_presentational",
               "hidden_subject_inserted": false,
-              "existential_subtype": "participant_presentation_with_locative_coda",
+              "existential_subtype": "positive_indefinite_np_predication",
               "polarity": "positive",
-              "have_relation": "presentation",
-              "introduced_participant_surface": "個學生",
-              "presentational_coda_surface": "喺學校"
+              "have_relation": "participant_introduction",
+              "introduced_participant_surface": "個學生"
             }
           },
           {
@@ -21814,10 +21644,11 @@
             "surface": "有",
             "construction": "",
             "role": "func",
-            "syntax": "existential_presentational_predicate",
+            "syntax": "positive_existential_participant_introduction_marker",
             "jyutping": "jau5",
             "slots": [
               "existential",
+              "participant_introduction_marker",
               "predicate",
               "presentational_predicate"
             ],
@@ -22092,7 +21923,9 @@
           }
         }
       },
-      "case_id": "REG-0086"
+      "case_id": "REG-0086",
+      "accepted_transition": "v0.5.218_aa56_positive_participant_runtime_profile",
+      "transition_reason": "AA56 is now implemented as positive-only JauMarkedIndefiniteNPPredication; negative 冇 + predicate cases are no longer emitted as ExistentialPresentationalClause, and positive locative-coda cases retain the compatibility label with positive participant-introduction trace metadata."
     },
     {
       "source": "有啊，有啊，有。",
@@ -156658,8 +156491,8 @@
     "accepted_as_positive_language_evidence_count_for_conflict_cases": 0,
     "note": "Regression stability preserves parser behavior. It does not override native-speaker naturalness conflicts or convert them into language evidence."
   },
-  "last_absorbed_candidate": "v0.5.180-cp022-p1-pfv01-postverbal-zo-overt-object-promotion-r1",
-  "absorbed_current_focused_case_count": 16,
-  "last_intentional_transition": "v0.5.204_degree_modified_lexical_stative_source_runtime_reconciliation",
+  "last_absorbed_candidate": "v0.5.218-aa56-positive-participant-runtime",
+  "absorbed_current_focused_case_count": 4,
+  "last_intentional_transition": "v0.5.218_aa56_positive_participant_runtime_profile",
   "abandoned_candidate": "v0.5.183-cp024-p1-demo01-r1"
 }
