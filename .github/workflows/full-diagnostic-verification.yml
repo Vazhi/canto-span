@@ -46,6 +46,25 @@ jobs:
             git pull --rebase origin agent/aa56-positive-participant-runtime
             git push origin HEAD:agent/aa56-positive-participant-runtime
           fi
+      - name: Temporary AA56 matcher debug
+        run: |
+          node <<'NODE'
+          const { loadRuntimeApi, internalConstruction, rowSurface } = require('./tests/lib/runtime-api');
+          const api = loadRuntimeApi();
+          for (const source of ['有個人搵你。','有幾個學生好嬲。','有好多客人嚟咗。','有一日我去中環。','有個人喺門口。']) {
+            const rows = api.diagnosticFinalRows(api.analyzeLine(source));
+            const constructions = rows.filter((row) => row.kind === 'construction').map((row) => ({
+              c: internalConstruction(row),
+              s: rowSurface(row),
+              slots: row.slots,
+              trace: row.trace_detail,
+            }));
+            const tokens = rows.filter((row) => row.kind !== 'construction').map((row) => ({
+              s: rowSurface(row), role: row.role, slots: row.slots, syntax: row.syntax, c: internalConstruction(row), parent: row.parent,
+            }));
+            console.log(JSON.stringify({ source, constructions, tokens }, null, 2));
+          }
+          NODE
       - name: Test verification orchestration
         run: npm run test:verification-orchestration
       - name: Run full diagnostic sweep
