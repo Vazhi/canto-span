@@ -3622,12 +3622,6 @@ var require_construction_templates = __commonJS({
         note: "Prohibitive imperative: 唔好 + VP."
       },
       {
-        type: "PreferenceVP",
-        label: "Preference",
-        template: ["subject?", "preference_predicate!", "vp!", "particle?"],
-        note: "Preference predicate followed by a VP/object complement."
-      },
-      {
         type: "DegreeMannerModifiedVP",
         label: "DegMannerVP",
         template: ["degree_manner_adverbial!", "vp!", "particle?"],
@@ -8933,6 +8927,8 @@ var require_a_not_a = __commonJS({
         yesNoQuestionMarkerClone: yesNoQuestionMarkerClone2
       } = dependencies;
       function aNotAQuestionFallback2(core) {
+        const preferenceANotA = preferenceANotAQuestionFallback(core);
+        if (preferenceANotA) return preferenceANotA;
         const offset = optionalSubjectOffset2(core);
         if (core.length - offset < 3) return null;
         const first = core[offset];
@@ -8948,6 +8944,62 @@ var require_a_not_a = __commonJS({
           trace: traceInfo2("generative_or_heuristic_slot_rule", {
             rule: "subject? + verb + 唔 + copied verb + complement?",
             reason: "Structural A-not-A heuristic runs before VP subspan wrapping so the copied verb remains visible."
+          })
+        });
+      }
+      function splitFinalQuestionMaterial(core, options = {}) {
+        let questionCore = core;
+        const punctuation = [];
+        while (questionCore.length && isQuestionPunctuationText(questionCore[questionCore.length - 1])) {
+          punctuation.unshift(questionCore[questionCore.length - 1]);
+          questionCore = questionCore.slice(0, -1);
+        }
+        let particleStart = questionCore.length;
+        while (particleStart > 0 && isParticle2(questionCore[particleStart - 1]) && !(options.keepGeParticle && isToken2(questionCore[particleStart - 1], "嘅"))) {
+          particleStart -= 1;
+        }
+        return {
+          bareCore: questionCore.slice(0, particleStart),
+          particles: questionCore.slice(particleStart),
+          punctuation
+        };
+      }
+      function preferenceANotAQuestionFallback(core) {
+        const { bareCore, particles } = splitFinalQuestionMaterial(core);
+        const compact = withoutIgnorableSpaceText2(bareCore);
+        const offset = compact.length >= 5 && nodeCanFillSlot2(compact[0], "subject") ? 1 : 0;
+        if (compact.length - offset < 4) return null;
+        const firstSyllable = compact[offset];
+        const negator = compact[offset + 1];
+        const preferencePredicate = compact[offset + 2];
+        if (!isToken2(firstSyllable, "鍾") || !isToken2(negator, "唔") || !isToken2(preferencePredicate, "鍾意")) return null;
+        const complementCore = compact.slice(offset + 3);
+        if (!complementCore.length) return null;
+        const wrappedComplement = applyConstructionPatterns2(complementCore);
+        if (wrappedComplement.length !== 1) return null;
+        const complement = wrappedComplement[0];
+        const complementSlot = nodeCanFillSlot2(complement, "vp") ? "vp" : nodeCanFillSlot2(complement, "np") || nodeCanFillSlot2(complement, "object") ? "object" : "";
+        if (!complementSlot) return null;
+        const children = [...compact.slice(0, offset), firstSyllable, negator, preferencePredicate, complement, ...particles];
+        const assignedSlots = [
+          ...compact.slice(0, offset).map(() => "subject"),
+          "a_not_a_first_syllable",
+          "negator",
+          "preference_predicate",
+          complementSlot,
+          ...particles.map(() => "particle")
+        ];
+        return construction2("ANotAQuestion", "A-not-A", children, {
+          note: "Bounded first-syllable preference A-not-A question: optional subject + 鍾唔鍾意 + overt typed NP/VP complement.",
+          slots: cleanSlots2(["question_fragment", "predicate", "negator", complementSlot, ...templateDerivedSlots2("ANotAQuestion", children)]),
+          trace: traceInfo2("generative_template", {
+            construction_type: "ANotAQuestion",
+            template_family: "first_syllable_preference_a_not_a",
+            template: ["subject?", "a_not_a_first_syllable!", "negator!", "preference_predicate!", `${complementSlot}!`, "particle?"],
+            assigned_slots: assignedSlots,
+            surfaces: children.map((node) => flattenSurface2(node)),
+            copied_surface_profile: "first_syllable_plus_full_preference_predicate",
+            reason: "Preserves reviewed 鍾唔鍾意 + overt typed complement questions without reclassifying them as AB33 PreferenceVP."
           })
         });
       }
@@ -9086,6 +9138,8 @@ var require_a_not_a = __commonJS({
       function copularANotAComplementCandidate(complementCore) {
         const possessive = possessiveFragmentAnswerCandidate2(complementCore);
         if (possessive) return { node: possessive, profile: "possessive_fragment" };
+        const quantifiedPreferenceClause = copularANotAQuantifiedPreferenceClauseCandidate(complementCore);
+        if (quantifiedPreferenceClause) return { node: quantifiedPreferenceClause, profile: "clausal_or_predicate" };
         const wrapped = applyConstructionPatterns2(complementCore);
         if (wrapped.length === 1 && wrapped[0] && wrapped[0].kind === "construction") {
           const candidate = wrapped[0];
@@ -9125,13 +9179,49 @@ var require_a_not_a = __commonJS({
         }
         return null;
       }
+      function copularANotAQuantifiedPreferenceClauseCandidate(complementCore) {
+        const compact = withoutIgnorableSpaceText2(applyConstructionPatterns2(complementCore));
+        if (compact.length !== 4) return null;
+        const [quantifier, subject, focus, predicate] = compact;
+        if (!isToken2(quantifier, "每")) return null;
+        if (!nodeCanFillSlot2(subject, "subject")) return null;
+        if (!isToken2(focus, "都") || !nodeCanFillSlot2(focus, "focus_adverb")) return null;
+        if (!isPreferencePredicateWithTypedActivityComplement(predicate)) return null;
+        const children = [quantifier, subject, focus, predicate];
+        return construction2("SubjectPredicateClause", "SubjPred", children, {
+          note: "Bounded copular A-not-A complement: 每 + overt subject + 都 + overt preference predicate.",
+          slots: cleanSlots2([
+            "subject_predicate_clause",
+            "clause",
+            "subject",
+            "focus_adverb",
+            "predicate",
+            ...templateDerivedSlots2("SubjectPredicateClause", children)
+          ]),
+          trace: traceInfo2("generative_template", {
+            construction_type: "SubjectPredicateClause",
+            template_family: "copular_a_not_a_bounded_complement",
+            template: ["distributive_quantifier!", "subject!", "focus_adverb!", "predicate!"],
+            assigned_slots: ["distributive_quantifier", "subject", "focus_adverb", "predicate"],
+            surfaces: children.map((node) => flattenSurface2(node)),
+            reason: "Keeps the sourced 每...都 preference predicate visible as a copular A-not-A complement without restoring broad PreferenceVP matching."
+          })
+        });
+      }
+      function isPreferencePredicateWithTypedActivityComplement(node) {
+        if (!node || node.kind !== "construction" || node.type !== "ModifierNP") return false;
+        const children = withoutIgnorableSpaceText2(node.children || []);
+        if (children.length !== 2 || !isToken2(children[0], "鍾意")) return false;
+        const complement = children[1];
+        if (!nodeCanFillSlot2(complement, "vp")) return false;
+        return ["TransitiveVP", "ProductiveVO", "DirectionalMotionVP", "CompoundDirectionalMotionVP", "VerbComplementVP"].includes(complement.type);
+      }
+      function isQuestionPunctuationText(node) {
+        if (!node || node.kind !== "text") return false;
+        return /^[?？]+$/.test(surfaceOf2(node) || node.text || "");
+      }
       function copularANotAQuestionFallback2(core) {
-        let particleStart = core.length;
-        while (particleStart > 0 && isParticle2(core[particleStart - 1]) && !isToken2(core[particleStart - 1], "嘅")) {
-          particleStart -= 1;
-        }
-        const bareCore = core.slice(0, particleStart);
-        const particles = core.slice(particleStart);
+        const { bareCore, particles, punctuation } = splitFinalQuestionMaterial(core, { keepGeParticle: true });
         const offset = bareCore.length >= 4 && nodeCanFillSlot2(bareCore[0], "subject") && !isToken2(bareCore[0], "係") ? 1 : 0;
         if (bareCore.length - offset < 3) return null;
         if (!isToken2(bareCore[offset], "係")) return null;
@@ -9180,14 +9270,15 @@ var require_a_not_a = __commonJS({
           slots: ["copula", "copular_negative_arm"],
           reason: "係 is the copied negative arm of the copular A-not-A question."
         });
-        const children = [...bareCore.slice(0, offset), positiveCopula, negator, negativeCopula, complement, ...particles];
+        const children = [...bareCore.slice(0, offset), positiveCopula, negator, negativeCopula, complement, ...particles, ...punctuation];
         const assignedSlots = [
           ...bareCore.slice(0, offset).map(() => "subject"),
           "copula_positive_arm",
           "negator",
           "copula_negative_arm",
           complementSlot,
-          ...particles.map(() => "particle")
+          ...particles.map(() => "particle"),
+          ...punctuation.map(() => "question_punctuation")
         ];
         return construction2("CopularANotAQuestion", "CopularQ", children, {
           note: complementCandidate.profile === "clausal_or_predicate" ? "Copular A-not-A question: optional subject/topic + 係唔係 + overt predicate or clause complement." : "Copular A-not-A question: optional subject + 係唔係 + bounded nominal or possessive complement.",
@@ -10381,7 +10472,7 @@ var require_intention_preference = __commonJS({
         });
       }
       function rawPreferenceTemplateFallback2(core) {
-        return templateConstructionFor2(core, ["PreferenceVP"]);
+        return null;
       }
       function desiderativeVPWrapCoreFallback2(core) {
         if (!hasSurface2(core, "想") || !hasSurface2(core, "好") && !hasSurface2(core, "試吓")) return null;
@@ -10394,14 +10485,7 @@ var require_intention_preference = __commonJS({
         });
       }
       function preferenceVPWrapCoreFallback2(core) {
-        if (!hasSurface2(core, "鍾意")) return null;
-        return construction2("PreferenceVP", "Preference", core, {
-          note: "Preference fallback: preference predicate taking a VP/object complement.",
-          trace: traceInfo2("construction_function", {
-            construction_type: "PreferenceVP",
-            reason: "Fallback only; generative PreferenceVP should normally catch this before ModifiedNP wrapping."
-          })
-        });
+        return null;
       }
       return {
         desiderativeVPWrapCoreFallback: desiderativeVPWrapCoreFallback2,
@@ -19477,6 +19561,25 @@ var require_apply_terminal_patterns = __commonJS({
           return constructionTypePresent(node.children, expectedType);
         });
       }
+      function withCopularANotATerminalQuestionSurface(nodes, terminalText = "") {
+        if (!/[？?]/u.test(String(terminalText || ""))) return nodes;
+        if (!Array.isArray(nodes) || nodes.length !== 1) return nodes;
+        const [node] = nodes;
+        if (!node || node.kind !== "construction" || node.type !== "CopularANotAQuestion") return nodes;
+        const punctuationNode = {
+          kind: "text",
+          text: terminalText,
+          trace: { kind: "punctuation_or_plain_text", surface: terminalText }
+        };
+        return [{
+          ...node,
+          children: [...node.children || [], punctuationNode],
+          trace: {
+            ...node.trace || {},
+            terminal_question_punctuation_preserved: true
+          }
+        }];
+      }
       function locativeWhQuestionForTerminal(segment, terminalText = "", ordinaryWrapped = null) {
         if (!/[？?]/u.test(String(terminalText || "")) || !segment || !segment.length) return null;
         const surface = segment.map(terminalSurface).join("");
@@ -19538,10 +19641,11 @@ var require_apply_terminal_patterns = __commonJS({
         const connectorLinked = connectorAwareClauseLinkingForTerminal2(segment);
         if (connectorLinked) return connectorLinked;
         const ordinaryWrapped = applyConstructionPatterns2(segment);
+        const terminalAwareOrdinaryWrapped = withCopularANotATerminalQuestionSurface(ordinaryWrapped, terminalText);
         const locativeWhQuestion = locativeWhQuestionForTerminal(segment, terminalText, ordinaryWrapped);
         if (locativeWhQuestion) return [locativeWhQuestion];
         const particleClusterInfo = orderedParticleClusterInfo2(segment, terminalText);
-        if (particleClusterInfo && !particleClusterInfo.supportedOrder) return ordinaryWrapped;
+        if (particleClusterInfo && !particleClusterInfo.supportedOrder) return terminalAwareOrdinaryWrapped;
         const orderedParticleCluster = orderedParticleClusterFallback2(segment, terminalText, particleClusterInfo);
         if (orderedParticleCluster) return [orderedParticleCluster];
         const restrictiveFocusParticle = restrictiveFocusParticleFallback2(segment, terminalText, ordinaryWrapped);
@@ -19556,7 +19660,7 @@ var require_apply_terminal_patterns = __commonJS({
         if (scopedEpistemicParticle) return [scopedEpistemicParticle];
         const finalMePolarQuestion = finalMePolarQuestionFallbackForPunctuation2(segment, terminalText, ordinaryWrapped);
         if (finalMePolarQuestion) return [finalMePolarQuestion];
-        return ordinaryWrapped;
+        return terminalAwareOrdinaryWrapped;
       }
       function applyConstructionPatternsByPunctuation2(nodes) {
         const boundedAcknowledgementRepetition = boundedAcknowledgementRepetitionForPunctuation2(nodes);
@@ -19573,8 +19677,10 @@ var require_apply_terminal_patterns = __commonJS({
         };
         for (const node of nodes) {
           if (node.kind === "text" && hasSentencePunctuation2(node.text)) {
+            const beforeFlushLength = rendered.length;
             flush(node.text);
-            rendered.push(node);
+            const terminalAbsorbed = rendered.length === beforeFlushLength + 1 && rendered[beforeFlushLength] && rendered[beforeFlushLength].kind === "construction" && rendered[beforeFlushLength].trace && rendered[beforeFlushLength].trace.terminal_question_punctuation_preserved;
+            if (!terminalAbsorbed) rendered.push(node);
           } else {
             segment.push(node);
           }
