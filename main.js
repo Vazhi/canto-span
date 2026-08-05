@@ -15776,6 +15776,93 @@ var require_spatial = __commonJS({
           })
         });
       }
+      function nodeHasAnySlot(node, slots = []) {
+        return slots.some((slot) => nodeCanFillSlot2(node, slot));
+      }
+      function introducedParticipantAllowed(participant) {
+        if (!participant) return false;
+        const surface = flattenSurface2(participant);
+        if (!surface || /^啲/u.test(surface)) return false;
+        if (["一日", "一次", "一段時間", "可能", "機會", "事"].includes(surface)) return false;
+        if (nodeHasAnySlot(participant, ["time", "time_head", "locative_phrase", "location", "goal", "vp", "action_vp", "predicate"])) return false;
+        const trace = participant.trace || {};
+        if (trace.np_license_status && trace.construction_licensing_allowed === false) return false;
+        return nodeHasAnySlot(participant, ["np", "head_noun", "object", "subject", "topic"]);
+      }
+      function presentationalPredicateSubtype(predicate) {
+        if (!predicate) return "predicate";
+        if (predicate.type === "LocativePlacePhrase") return "locative_predicate";
+        if (predicate.type === "SubjectPredicateClause") return "subject_predicate";
+        if (nodeCanFillSlot2(predicate, "locative_predicate") || nodeCanFillSlot2(predicate, "locative_phrase")) return "locative_predicate";
+        if (nodeCanFillSlot2(predicate, "modal_vp") || predicate.type === "ModalVP") return "modal_predicate";
+        if (nodeCanFillSlot2(predicate, "stative_predicate") || predicate.type === "StativePredicate" || predicate.type === "DegreeStativePredicate") return "property_predicate";
+        if (nodeCanFillSlot2(predicate, "perfective_vp") || predicate.type === "PerfectiveVP") return "perfective_verbal_predicate";
+        if (nodeCanFillSlot2(predicate, "copular_relation") || predicate.type === "CopularRelationFrame" || predicate.type === "CopularIdentificationFrame") return "copular_predicate";
+        if (nodeCanFillSlot2(predicate, "vp") || nodeCanFillSlot2(predicate, "action_vp")) return "verbal_predicate";
+        return "predicate";
+      }
+      function presentationalPredicateFromNodes(nodes = []) {
+        const compact = withoutIgnorableSpaceText2(nodes || []);
+        if (!compact.length) return null;
+        const locative = presentationalLocativeCodaFromNodes(compact);
+        if (locative) return { node: locative, assignedSlot: "np_linked_predicate", subtype: "locative_predicate" };
+        const wrapped = applyConstructionPatterns2(compact);
+        const predicate = fullSpanSingleConstruction2(wrapped, compact) || (compact.length === 1 ? compact[0] : null);
+        if (!predicate) return null;
+        if (!nodeHasAnySlot(predicate, ["predicate", "vp", "action_vp", "stative_predicate", "modal_vp", "perfective_vp", "locative_predicate", "locative_phrase"])) return null;
+        if (nodeHasAnySlot(predicate, ["np", "head_noun", "object"]) && !nodeHasAnySlot(predicate, ["predicate", "vp", "action_vp", "stative_predicate", "modal_vp", "perfective_vp"])) return null;
+        return { node: predicate, assignedSlot: "np_linked_predicate", subtype: presentationalPredicateSubtype(predicate) };
+      }
+      function positiveParticipantIntroductionConstruction(marker, participant, predicateInfo, particles = []) {
+        if (!marker || !participant || !predicateInfo) return null;
+        const predicate = parserInactiveTokenClone2(marker, {
+          label: "func",
+          syntax: "positive_existential_participant_introduction_marker",
+          slots: ["existential", "participant_introduction_marker", "presentational_predicate", "predicate"],
+          reason: `${flattenSurface2(marker)} introduces an overt indefinite participant before a linked predicate.`
+        });
+        const children = [predicate, participant, predicateInfo.node, ...particles];
+        return construction2("ExistentialPresentationalClause", "Presentational", children, {
+          note: "AA56 positive participant introduction: 有 + overt indefinite NP + overt NP-linked predicate. The legacy runtime label is retained as the compatibility surface for JauMarkedIndefiniteNPPredication.",
+          slots: cleanSlots2(["existential_presentational_clause", "existential_clause", "predicate", "existential", "participant_introduction_marker", "introduced_participant", "np_linked_predicate", "clause", ...templateDerivedSlots2("ExistentialPresentationalClause", children)]),
+          trace: traceInfo2("generative_template", {
+            construction_type: "ExistentialPresentationalClause",
+            template_family: "generative_template",
+            template: ["existential!", "introduced_participant!", `${predicateInfo.assignedSlot}!`, "particle?"],
+            assigned_slots: ["existential", "introduced_participant", predicateInfo.assignedSlot, ...particles.map(() => "particle")],
+            surfaces: children.map(flattenSurface2),
+            construction_uuid: "258c1d00-8a77-543c-a26f-2e66d3a37849",
+            construction_code: "AA56",
+            canonical_identity: "JauMarkedIndefiniteNPPredication",
+            legacy_runtime_label: "ExistentialPresentationalClause",
+            existential_subtype: "positive_indefinite_np_predication",
+            predicate_subtype: predicateInfo.subtype,
+            polarity: "positive",
+            marker: "有",
+            have_relation: "participant_introduction",
+            subject_status: "impersonal",
+            subjectless_type: "genuinely_subjectless_existential_presentational",
+            hidden_subject_inserted: false,
+            introduced_participant: "overt",
+            predicate_relation: "linked_to_introduced_np",
+            introduced_participant_surface: flattenSurface2(participant),
+            np_linked_predicate_surface: flattenSurface2(predicateInfo.node),
+            not_claims: ["not_negative_member", "not_possessive_have", "not_bare_existence", "not_hidden_subject", "not_mandatory_locative_coda", "not_unrestricted_any_np_any_predicate"]
+          })
+        });
+      }
+      function positiveParticipantIntroductionFromNodes(nodes = [], particles = []) {
+        const compact = withoutIgnorableSpaceText2(nodes || []);
+        if (compact.length < 3 || !isToken2(compact[0], "有")) return null;
+        for (let split = 2; split < compact.length; split += 1) {
+          const participant = existentialNPFromNodes(compact.slice(1, split));
+          if (!introducedParticipantAllowed(participant)) continue;
+          const predicateInfo = presentationalPredicateFromNodes(compact.slice(split));
+          if (!predicateInfo) continue;
+          return positiveParticipantIntroductionConstruction(compact[0], participant, predicateInfo, particles);
+        }
+        return null;
+      }
       function existentialLocationPresentationalFallback2(core = []) {
         const { core: bareCore, particles } = withoutTrailingParticles2(core);
         const compact = withoutIgnorableSpaceText2(bareCore);
@@ -15784,6 +15871,30 @@ var require_spatial = __commonJS({
         if (existentialIndex > 0 && existentialIndex < compact.length - 1) {
           const locationPrefix2 = locativeDomainPrefix(compact.slice(0, existentialIndex));
           if (locationPrefix2 && locationPrefix2.consumed === existentialIndex) {
+            if (isToken2(compact[existentialIndex], "有")) {
+              const aa56Core = positiveParticipantIntroductionFromNodes(compact.slice(existentialIndex), []);
+              if (aa56Core) {
+                const children = [locationPrefix2.node, aa56Core, ...particles];
+                return construction2("LocativeExistentialClause", "LocExist", children, {
+                  note: "Overt spatial-domain layer composed with an AA56 positive participant-introduction core.",
+                  slots: cleanSlots2(["locative_existential_clause", "existential_clause", "location", "locative_domain", "predicate", "introduced_theme", "clause", ...templateDerivedSlots2("LocativeExistentialClause", children)]),
+                  trace: traceInfo2("generative_template", {
+                    construction_type: "LocativeExistentialClause",
+                    template_family: "generative_template",
+                    template: ["locative_domain!", "existential_presentational_clause!", "particle?"],
+                    assigned_slots: ["locative_domain", "existential_presentational_clause", ...particles.map(() => "particle")],
+                    surfaces: children.map(flattenSurface2),
+                    existential_subtype: "locative_domain_plus_positive_participant_predication",
+                    polarity: "positive",
+                    have_relation: "existence_plus_participant_introduction",
+                    location_relation: "external_overt_spatial_domain_not_absorbed_into_aa56_core",
+                    subject_status: "impersonal",
+                    hidden_subject_inserted: false,
+                    not_claims: ["not_possessor_subject", "not_location_as_forced_subject", "not_location_as_forced_topic", "not_hidden_expletive_subject"]
+                  })
+                });
+              }
+            }
             const theme = existentialNPFromNodes(compact.slice(existentialIndex + 1));
             if (theme) {
               const marker = compact[existentialIndex];
@@ -15818,44 +15929,8 @@ var require_spatial = __commonJS({
             }
           }
         }
-        if (existentialIndex === 0 && compact.length >= 3) {
-          const codaIndex = compact.findIndex((node, index) => index > 0 && (isToken2(node, "喺") || isToken2(node, "喺度")));
-          if (codaIndex > 1) {
-            const participant = existentialNPFromNodes(compact.slice(1, codaIndex));
-            const coda = presentationalLocativeCodaFromNodes(compact.slice(codaIndex));
-            if (participant && coda) {
-              const marker = compact[0];
-              const negative = isToken2(marker, "冇");
-              const predicate = parserInactiveTokenClone2(marker, {
-                label: "func",
-                syntax: negative ? "negated_existential_presentational_predicate" : "existential_presentational_predicate",
-                slots: [negative ? "negated_existential" : "existential", "presentational_predicate", "predicate"],
-                reason: `${flattenSurface2(marker)} introduces the visible participant before its locative coda.`
-              });
-              const children = [predicate, participant, coda, ...particles];
-              return construction2("ExistentialPresentationalClause", "Presentational", children, {
-                note: "Existential-presentational clause: predicate + introduced participant + visible locative coda.",
-                slots: cleanSlots2(["existential_presentational_clause", "existential_clause", "predicate", negative ? "negated_existential" : "existential", "introduced_participant", "presentational_coda", "location", "clause", ...templateDerivedSlots2("ExistentialPresentationalClause", children)]),
-                trace: traceInfo2("generative_template", {
-                  construction_type: "ExistentialPresentationalClause",
-                  template_family: "generative_template",
-                  template: [negative ? "negated_existential!" : "existential!", "introduced_participant!", "presentational_coda!", "particle?"],
-                  assigned_slots: [negative ? "negated_existential" : "existential", "introduced_participant", "presentational_coda", ...particles.map(() => "particle")],
-                  surfaces: children.map(flattenSurface2),
-                  existential_subtype: "participant_presentation_with_locative_coda",
-                  polarity: negative ? "negative" : "positive",
-                  have_relation: "presentation",
-                  subject_status: "impersonal",
-                  subjectless_type: "genuinely_subjectless_existential_presentational",
-                  hidden_subject_inserted: false,
-                  introduced_participant_surface: flattenSurface2(participant),
-                  presentational_coda_surface: flattenSurface2(coda),
-                  not_claims: ["not_prenominal_relative_clause", "not_possessive_have", "not_hidden_subject", "not_progressive_aspect"]
-                })
-              });
-            }
-          }
-        }
+        const positiveParticipantIntroduction = positiveParticipantIntroductionFromNodes(compact, particles);
+        if (positiveParticipantIntroduction) return positiveParticipantIntroduction;
         const locationPrefix = locativeDomainPrefix(compact);
         if (!locationPrefix || locationPrefix.consumed >= compact.length) return null;
         const remainder = compact.slice(locationPrefix.consumed);
