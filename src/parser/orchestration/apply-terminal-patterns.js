@@ -38,6 +38,26 @@ function constructionTypePresent(nodes, expectedType) {
   });
 }
 
+function withCopularANotATerminalQuestionSurface(nodes, terminalText = "") {
+  if (!/[？?]/u.test(String(terminalText || ""))) return nodes;
+  if (!Array.isArray(nodes) || nodes.length !== 1) return nodes;
+  const [node] = nodes;
+  if (!node || node.kind !== "construction" || node.type !== "CopularANotAQuestion") return nodes;
+  const punctuationNode = {
+    kind: "text",
+    text: terminalText,
+    trace: { kind: "punctuation_or_plain_text", surface: terminalText },
+  };
+  return [{
+    ...node,
+    children: [...(node.children || []), punctuationNode],
+    trace: {
+      ...(node.trace || {}),
+      terminal_question_punctuation_preserved: true,
+    },
+  }];
+}
+
 function locativeWhQuestionForTerminal(segment, terminalText = "", ordinaryWrapped = null) {
   if (!/[？?]/u.test(String(terminalText || "")) || !segment || !segment.length) return null;
   const surface = segment.map(terminalSurface).join("");
@@ -104,10 +124,11 @@ function applyConstructionPatternsForTerminal(segment, terminalText = "") {
   const connectorLinked = connectorAwareClauseLinkingForTerminal(segment);
   if (connectorLinked) return connectorLinked;
   const ordinaryWrapped = applyConstructionPatterns(segment);
+  const terminalAwareOrdinaryWrapped = withCopularANotATerminalQuestionSurface(ordinaryWrapped, terminalText);
   const locativeWhQuestion = locativeWhQuestionForTerminal(segment, terminalText, ordinaryWrapped);
   if (locativeWhQuestion) return [locativeWhQuestion];
   const particleClusterInfo = orderedParticleClusterInfo(segment, terminalText);
-  if (particleClusterInfo && !particleClusterInfo.supportedOrder) return ordinaryWrapped;
+  if (particleClusterInfo && !particleClusterInfo.supportedOrder) return terminalAwareOrdinaryWrapped;
   const orderedParticleCluster = orderedParticleClusterFallback(segment, terminalText, particleClusterInfo);
   if (orderedParticleCluster) return [orderedParticleCluster];
   const restrictiveFocusParticle = restrictiveFocusParticleFallback(segment, terminalText, ordinaryWrapped);
@@ -122,7 +143,7 @@ function applyConstructionPatternsForTerminal(segment, terminalText = "") {
   if (scopedEpistemicParticle) return [scopedEpistemicParticle];
   const finalMePolarQuestion = finalMePolarQuestionFallbackForPunctuation(segment, terminalText, ordinaryWrapped);
   if (finalMePolarQuestion) return [finalMePolarQuestion];
-  return ordinaryWrapped;
+  return terminalAwareOrdinaryWrapped;
 }
 
 function applyConstructionPatternsByPunctuation(nodes) {
@@ -141,8 +162,14 @@ function applyConstructionPatternsByPunctuation(nodes) {
 
   for (const node of nodes) {
     if (node.kind === "text" && hasSentencePunctuation(node.text)) {
+      const beforeFlushLength = rendered.length;
       flush(node.text);
-      rendered.push(node);
+      const terminalAbsorbed = rendered.length === beforeFlushLength + 1
+        && rendered[beforeFlushLength]
+        && rendered[beforeFlushLength].kind === "construction"
+        && rendered[beforeFlushLength].trace
+        && rendered[beforeFlushLength].trace.terminal_question_punctuation_preserved;
+      if (!terminalAbsorbed) rendered.push(node);
     } else {
       segment.push(node);
     }

@@ -29,6 +29,9 @@ module.exports = function createANotAQuestionDetectors(dependencies = {}) {
   } = dependencies;
 
   function aNotAQuestionFallback(core) {
+    const preferenceANotA = preferenceANotAQuestionFallback(core);
+    if (preferenceANotA) return preferenceANotA;
+
     const offset = optionalSubjectOffset(core);
     if (core.length - offset < 3) return null;
     const first = core[offset];
@@ -45,6 +48,72 @@ module.exports = function createANotAQuestionDetectors(dependencies = {}) {
         rule: "subject? + verb + 唔 + copied verb + complement?",
         reason: "Structural A-not-A heuristic runs before VP subspan wrapping so the copied verb remains visible."
       })
+    });
+  }
+
+  function splitFinalQuestionMaterial(core, options = {}) {
+    let questionCore = core;
+    const punctuation = [];
+    while (questionCore.length && isQuestionPunctuationText(questionCore[questionCore.length - 1])) {
+      punctuation.unshift(questionCore[questionCore.length - 1]);
+      questionCore = questionCore.slice(0, -1);
+    }
+    let particleStart = questionCore.length;
+    while (
+      particleStart > 0 &&
+      isParticle(questionCore[particleStart - 1]) &&
+      !(options.keepGeParticle && isToken(questionCore[particleStart - 1], "嘅"))
+    ) {
+      particleStart -= 1;
+    }
+    return {
+      bareCore: questionCore.slice(0, particleStart),
+      particles: questionCore.slice(particleStart),
+      punctuation,
+    };
+  }
+
+  function preferenceANotAQuestionFallback(core) {
+    const { bareCore, particles } = splitFinalQuestionMaterial(core);
+    const compact = withoutIgnorableSpaceText(bareCore);
+    const offset = compact.length >= 5 && nodeCanFillSlot(compact[0], "subject") ? 1 : 0;
+    if (compact.length - offset < 4) return null;
+    const firstSyllable = compact[offset];
+    const negator = compact[offset + 1];
+    const preferencePredicate = compact[offset + 2];
+    if (!isToken(firstSyllable, "鍾") || !isToken(negator, "唔") || !isToken(preferencePredicate, "鍾意")) return null;
+
+    const complementCore = compact.slice(offset + 3);
+    if (!complementCore.length) return null;
+    const wrappedComplement = applyConstructionPatterns(complementCore);
+    if (wrappedComplement.length !== 1) return null;
+    const complement = wrappedComplement[0];
+    const complementSlot = nodeCanFillSlot(complement, "vp")
+      ? "vp"
+      : (nodeCanFillSlot(complement, "np") || nodeCanFillSlot(complement, "object") ? "object" : "");
+    if (!complementSlot) return null;
+
+    const children = [...compact.slice(0, offset), firstSyllable, negator, preferencePredicate, complement, ...particles];
+    const assignedSlots = [
+      ...compact.slice(0, offset).map(() => "subject"),
+      "a_not_a_first_syllable",
+      "negator",
+      "preference_predicate",
+      complementSlot,
+      ...particles.map(() => "particle"),
+    ];
+    return construction("ANotAQuestion", "A-not-A", children, {
+      note: "Bounded first-syllable preference A-not-A question: optional subject + 鍾唔鍾意 + overt typed NP/VP complement.",
+      slots: cleanSlots(["question_fragment", "predicate", "negator", complementSlot, ...templateDerivedSlots("ANotAQuestion", children)]),
+      trace: traceInfo("generative_template", {
+        construction_type: "ANotAQuestion",
+        template_family: "first_syllable_preference_a_not_a",
+        template: ["subject?", "a_not_a_first_syllable!", "negator!", "preference_predicate!", `${complementSlot}!`, "particle?"],
+        assigned_slots: assignedSlots,
+        surfaces: children.map((node) => flattenSurface(node)),
+        copied_surface_profile: "first_syllable_plus_full_preference_predicate",
+        reason: "Preserves reviewed 鍾唔鍾意 + overt typed complement questions without reclassifying them as AB33 PreferenceVP.",
+      }),
     });
   }
 
@@ -237,8 +306,7 @@ module.exports = function createANotAQuestionDetectors(dependencies = {}) {
     if (!isToken(quantifier, "每")) return null;
     if (!nodeCanFillSlot(subject, "subject")) return null;
     if (!isToken(focus, "都") || !nodeCanFillSlot(focus, "focus_adverb")) return null;
-    if (!flattenSurface(predicate).startsWith("鍾意")) return null;
-    if (!nodeCanFillSlot(predicate, "predicate") && !directPredicateCapableNode(predicate)) return null;
+    if (!isPreferencePredicateWithTypedActivityComplement(predicate)) return null;
 
     const children = [quantifier, subject, focus, predicate];
     return construction("SubjectPredicateClause", "SubjPred", children, {
@@ -262,6 +330,15 @@ module.exports = function createANotAQuestionDetectors(dependencies = {}) {
     });
   }
 
+  function isPreferencePredicateWithTypedActivityComplement(node) {
+    if (!node || node.kind !== "construction" || node.type !== "ModifierNP") return false;
+    const children = withoutIgnorableSpaceText(node.children || []);
+    if (children.length !== 2 || !isToken(children[0], "鍾意")) return false;
+    const complement = children[1];
+    if (!nodeCanFillSlot(complement, "vp")) return false;
+    return ["TransitiveVP", "ProductiveVO", "DirectionalMotionVP", "CompoundDirectionalMotionVP", "VerbComplementVP"].includes(complement.type);
+  }
+
   function isQuestionPunctuationText(node) {
     if (!node || node.kind !== "text") return false;
     return /^[?？]+$/.test(surfaceOf(node) || node.text || "");
@@ -271,16 +348,7 @@ module.exports = function createANotAQuestionDetectors(dependencies = {}) {
     // 嘅 may close a possessive complement (你嘅), so do not strip it as a
     // sentence-final particle before complement analysis. Other final particles
     // remain outside the complement and visible at the question level.
-    let questionCore = core;
-    while (questionCore.length && isQuestionPunctuationText(questionCore[questionCore.length - 1])) {
-      questionCore = questionCore.slice(0, -1);
-    }
-    let particleStart = questionCore.length;
-    while (particleStart > 0 && isParticle(questionCore[particleStart - 1]) && !isToken(questionCore[particleStart - 1], "嘅")) {
-      particleStart -= 1;
-    }
-    const bareCore = questionCore.slice(0, particleStart);
-    const particles = questionCore.slice(particleStart);
+    const { bareCore, particles, punctuation } = splitFinalQuestionMaterial(core, { keepGeParticle: true });
     const offset = bareCore.length >= 4 && nodeCanFillSlot(bareCore[0], "subject") && !isToken(bareCore[0], "係") ? 1 : 0;
     if (bareCore.length - offset < 3) return null;
     if (!isToken(bareCore[offset], "係")) return null;
@@ -324,11 +392,12 @@ module.exports = function createANotAQuestionDetectors(dependencies = {}) {
           slots: ["copula", "copular_negative_arm"], reason: "係 is the copied negative arm of the copular A-not-A question.",
         });
 
-    const children = [...bareCore.slice(0, offset), positiveCopula, negator, negativeCopula, complement, ...particles];
+    const children = [...bareCore.slice(0, offset), positiveCopula, negator, negativeCopula, complement, ...particles, ...punctuation];
     const assignedSlots = [
       ...bareCore.slice(0, offset).map(() => "subject"),
       "copula_positive_arm", "negator", "copula_negative_arm", complementSlot,
       ...particles.map(() => "particle"),
+      ...punctuation.map(() => "question_punctuation"),
     ];
     return construction("CopularANotAQuestion", "CopularQ", children, {
       note: complementCandidate.profile === "clausal_or_predicate"

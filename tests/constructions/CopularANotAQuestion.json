@@ -40,6 +40,36 @@
         "SRC-WONG-2023-LANGUAGE-SAMPLE"
       ],
       "source_locator": "printed p. 55 / PDF p. 65"
+    },
+    {
+      "case_id": "AB33-ZUNGJI-COPA-N01",
+      "source": "係唔係每個學生都鍾意音樂呀？",
+      "class": "copular_a_not_a_preference_np_object_outside_ab33",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-608-ZUNGJI-COMPLEMENT-PROFILES-R1.md#composition-cells",
+      "source_ids": [
+        "SRC-YIP-MATTHEWS-2000-BASIC"
+      ]
+    },
+    {
+      "case_id": "AB33-ZUNGJI-COPA-N02",
+      "source": "係唔係每個學生都鍾意咗個學生呀？",
+      "class": "copular_a_not_a_aspect_marked_np_preference_outside_ab33",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-608-ZUNGJI-COMPLEMENT-PROFILES-R1.md#composition-cells"
+    },
+    {
+      "case_id": "AB33-ZUNGJI-COPA-N03",
+      "source": "係唔係每個學生都鍾意燒鵝定係燒鴨多啲呀？",
+      "class": "copular_a_not_a_alternative_scalar_preference_outside_ab33",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-608-ZUNGJI-COMPLEMENT-PROFILES-R1.md#composition-cells",
+      "source_ids": [
+        "SRC-CUHK-ILC-CANTONESE-TUTORIAL-ZUNGJI"
+      ]
     }
   ],
   "np_cases": [],
@@ -52,19 +82,32 @@
       "source_role": "candidate_unverified_corpus_item",
       "linguistic_evidence_weight": 0,
       "purpose": "runtime_reachability_only"
+    },
+    {
+      "case_id": "AB33-ZUNGJI-COPA-SURF-01",
+      "source": "係唔係每個學生都鍾意睇電視呀？",
+      "assertion": "trace_detail_equals",
+      "expected_surface": "係唔係每個學生都鍾意睇電視呀？",
+      "expected_trace_detail": {
+        "tokenization_path": "positive_copula_plus_fused_negative_copula"
+      },
+      "provenance": "docs/research/ISSUE-608-ZUNGJI-COMPLEMENT-PROFILES-R1.md#composition-cells",
+      "source_role": "runtime_surface_fidelity_regression",
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only"
     }
   ],
   "coverage": {
     "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 0,
     "focused_positive_count": 2,
-    "focused_boundary_count": 1,
+    "focused_boundary_count": 4,
     "focused_review_only_count": 0,
     "np_case_count": 0,
-    "implementation_probe_count": 1,
+    "implementation_probe_count": 2,
     "compatibility_alias_probe_count": 0,
     "positive_case_count": 2,
-    "boundary_case_count": 1,
-    "executable_case_count": 4
+    "boundary_case_count": 4,
+    "executable_case_count": 8
   }
 }
