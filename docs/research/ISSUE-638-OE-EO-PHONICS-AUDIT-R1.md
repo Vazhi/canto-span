@@ -20,7 +20,7 @@ and licenses the following finals:
 | Nucleus label | Official Jyutping finals | Broad IPA relation |
 |---|---|---|
 | `oe` | `oe`, `oeng`, `oet`, `oek` | [œː], [œːŋ], [œːt̚], [œːk̚] |
-| `eo` | `eoi`, `eon`, `eot` | [ɵy]/[ɵɥ], [ɵn], [ɵt̚] |
+| `eo` | `eoi`, `eon`, `eot` | [ɵɥ], [ɵn], [ɵt̚] |
 
 The Week 18 claim that `oe` appears before `-ng` and `-k` is incomplete because official Jyutping also has bare `oe` and `oet`. Its treatment of `eoi` as if it were simply the monophthong `eo` is pedagogically imprecise: `eoi` is a diphthong whose nucleus belongs to the `eo` row.
 
@@ -239,7 +239,7 @@ No direct runtime pronunciation change follows from this audit. The verified Jyu
 
 - `oe [œː]` nucleus: `VERIFIED`.
 - `eo [ɵ]` nucleus: `VERIFIED`.
-- `eoi` as diphthong in the `eo` finals row: `VERIFIED`.
+- `eoi [ɵɥ]` as a diphthong in the `eo` finals row: `VERIFIED`.
 - source `oe` distribution statement: `INCOMPLETE`.
 - source `eo/eoi` statement: `REQUIRES_DIPHTHONG_CLARIFICATION`.
 - “unique to Cantonese”: `UNSUPPORTED_REJECTED`.
