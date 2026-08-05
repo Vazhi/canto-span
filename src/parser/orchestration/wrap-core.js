@@ -4,6 +4,7 @@ module.exports = function createWrapCore(dependencies = {}) {
   const {
     aNotAQuestionFallback,
     acceptabilityANotAQuestionFallback,
+    availabilityPredicateWrapCoreFallback,
     ambiguousNeedsContextCandidate,
     approximateQuantityFallback,
     bareNumeralObjectMalformedCandidate,
@@ -134,6 +135,9 @@ function wrapCore(core) {
 
   const nominalMeasurePredicate = nominalMeasurePredicateFallback(core);
   if (nominalMeasurePredicate) return [nominalMeasurePredicate];
+
+  const availabilityPredicateSpan = availabilityPredicateWrapCoreFallback(core);
+  if (availabilityPredicateSpan) return availabilityPredicateSpan;
 
   const motionEventSpatial = motionEventSpatialFallback(core);
   if (motionEventSpatial) return [motionEventSpatial];

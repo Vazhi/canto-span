@@ -73,6 +73,7 @@ const constructionLabelRegistry = [
   "NominalHeadSpan",
   "IntentionFrame",
   "IntransitiveVP",
+  "JauDakMouDakAvailabilityPredicate",
   "LocativeExistentialClause",
   "LocativePostureVP",
   "MannerAdverbialVP",

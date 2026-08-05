@@ -412,7 +412,7 @@ function buildCandidateReport(readiness) {
     { label: "Next action", value: (r) => r.next_best_action },
   ];
   return `# Supported-productive candidate discovery\n\nThis is a prioritization report, not a promotion decision. A score cannot override any hard gate.\n\n` +
-    `**Records reviewed:** ${readiness.record_count}  \n**Promotion-ready now:** ${readiness.promotion_eligible_now_count}\n\n` +
+    `**Records reviewed:** ${readiness.record_count}\n**Promotion-ready now:** ${readiness.promotion_eligible_now_count}\n\n` +
     `## Direct candidates\n\n` + markdownTable(direct, headers) +
     `\n\n## Narrowing candidates\n\nThese broad current labels are not direct promotion candidates. Their source-backed overlap may justify one or more new narrow successor UUIDs after exact scope review.\n\n` +
     markdownTable(narrowing, headers) +
@@ -496,8 +496,8 @@ function buildSweepReport(readiness) {
   const gateRows = Object.entries(readiness.nearest_missing_gate_counts).map(([name, count]) => ({ name, count }));
   const narrowSignals = readiness.records.filter((record) =>
     (record.linguistic_status === "unsupported_generalization" && record.source_ids.length > 0) || record.candidate_state === "retired_evidence_rehome_candidate");
-  return `# Full-repository supported-productive discovery sweep R1\n\n**Generated:** 2026-07-24  \n**Permanent UUID records:** ${readiness.record_count}  \n` +
-    `**Current:** ${readiness.current_record_count}  \n**Retired:** ${readiness.retired_record_count}  \n**Promotion-ready now:** ${readiness.promotion_eligible_now_count}\n\n` +
+  return `# Full-repository supported-productive discovery sweep R1\n\n**Generated:** 2026-07-24\n**Permanent UUID records:** ${readiness.record_count}\n` +
+    `**Current:** ${readiness.current_record_count}\n**Retired:** ${readiness.retired_record_count}\n**Promotion-ready now:** ${readiness.promotion_eligible_now_count}\n\n` +
     `The sweep evaluates every permanent identity. It separates construction identity, current naming quality, source support, runtime alignment, executable boundaries, corpus review, panel evidence, held-out validation, and ontology closure. No score or automatic flag authorizes promotion.\n\n## Candidate-state distribution\n\n` +
     markdownTable(stateRows, [{ label: "State", value: (r) => `\`${r.state}\`` }, { label: "Records", value: (r) => r.count }]) +
     `\n\n## Nearest missing gate\n\n` + markdownTable(gateRows, [{ label: "Gate", value: (r) => `\`${r.name}\`` }, { label: "Records", value: (r) => r.count }]) +

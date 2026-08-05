@@ -1945,6 +1945,13 @@ const {
   traceInfo, withoutIgnorableSpaceText, withoutTrailingParticles,
 });
 
+const createAvailabilityDetectors = require("./parser/detectors/modality/availability");
+const { availabilityPredicateWrapCoreFallback } = createAvailabilityDetectors({
+  construction, constructionSlotsByType, flattenSurface, nodeCanFillSlot,
+  parserInactiveTokenClone, templateConstructionFor, traceInfo,
+  withoutIgnorableSpaceText, withoutTrailingParticles,
+});
+
 const createIntentionPreferenceDetectors = require("./parser/detectors/modality/intention-preference");
 const {
   desiderativeVPWrapCoreFallback,
@@ -2719,6 +2726,7 @@ const {
 wrapCoreImplementation = require("./parser/orchestration/wrap-core")({
   aNotAQuestionFallback,
   acceptabilityANotAQuestionFallback,
+  availabilityPredicateWrapCoreFallback,
   ambiguousNeedsContextCandidate,
   approximateQuantityFallback,
   bareNumeralObjectMalformedCandidate,

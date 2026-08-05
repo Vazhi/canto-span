@@ -130,6 +130,7 @@ module.exports = function createSlotPrimitives(dependencies = {}) {
       if (has("negated_directional_motion_vp") || has("negator")) slots.push("negative_clause", "negated_predicate", "negator");
     }
     if (["ModalVP"].includes(type)) slots.push("modal_vp", "modal_predicate", "modal", "predicate", "vp");
+    if (["JauDakMouDakAvailabilityPredicate"].includes(type)) slots.push("availability_predicate", "availability_opportunity", "modal_predicate", "predicate", "vp", "clause");
     if (["LocativeModalPredicateClause"].includes(type)) slots.push("locative_modal_predicate_clause", "modal_predicate_clause", "location", "modal_vp", "modal", "predicate", "clause");
     if (["SubjectModalPredicateClause"].includes(type)) slots.push("subject_modal_predicate_clause", "modal_predicate_clause", "subject", "modal_vp", "modal", "predicate", "clause");
     if (["TopicModalPredicateClause"].includes(type)) slots.push("topic_modal_predicate_clause", "modal_predicate_clause", "topic", "modal_vp", "modal", "predicate", "clause");

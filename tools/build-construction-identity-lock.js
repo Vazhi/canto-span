@@ -8,6 +8,7 @@ const root = path.resolve(__dirname, "..");
 const registryPath = path.join(root, "data", "construction-identities.json");
 const lockPath = path.join(root, "data", "construction-identity-lock.json");
 const writeMode = process.argv.includes("--write");
+const lockDate = process.env.CANTO_SPAN_IDENTITY_LOCK_DATE || new Date().toISOString().slice(0, 10);
 
 function stableJson(value) {
   return JSON.stringify(value, null, 2) + "\n";
@@ -38,7 +39,7 @@ for (const entry of existing.entries || []) {
   }
   if (entry.construction_code === null && current.construction_code !== null) {
     entry.construction_code = current.construction_code;
-    entry.code_locked_at = "2026-07-24";
+    entry.code_locked_at = lockDate;
   }
 }
 
@@ -49,8 +50,8 @@ for (const record of registry.records) {
     construction_uuid: record.construction_uuid,
     construction_code: record.construction_code,
     initial_canonical_name: record.canonical_name,
-    identity_locked_at: "2026-07-24",
-    code_locked_at: record.construction_code === null ? null : "2026-07-24"
+    identity_locked_at: lockDate,
+    code_locked_at: record.construction_code === null ? null : lockDate
   });
 }
 entries.sort((a, b) => {

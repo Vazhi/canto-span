@@ -2,8 +2,8 @@
   "schema": "canto-span-construction-identity-registry-v1",
   "migration_namespace_uuid": "b7254734-8d7d-4882-95cb-bf7bb2230314",
   "bootstrap_date": "2026-07-24",
-  "record_count": 181,
-  "current_record_count": 133,
+  "record_count": 182,
+  "current_record_count": 134,
   "retired_record_count": 48,
   "records": [
     {
@@ -2978,6 +2978,37 @@
           "unsupported_generalization_requires_source_runtime_reconciliation"
         ],
         "review_notes": "Expert adjudication 2026-07-24. The legacy name converts a parser observation—one visible action predicate with no overt object—into a lexical valency judgment. The implementation is explicitly a relation-member fallback, and the source record warns that Cantonese permits context-sensitive object omission. BareActionPredicateRelationMember therefore preserves the exact parser function while removing unsupported intransitivity and hidden-argument conclusions. Status recommendation: migrate to parser_heuristic after compatibility migration; represent independently established lexical intransitivity separately from discourse-conditioned object or complement omission and from clause-relation segmentation"
+      }
+    },
+    {
+      "construction_uuid": "4e176fe2-a147-47c7-86c8-6778a379beb2",
+      "construction_code": "AB83",
+      "canonical_name": "JauDakMouDakAvailabilityPredicate",
+      "legacy_labels": [
+        "JauDakMouDakAvailabilityPredicate"
+      ],
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "lifecycle_state": "current",
+      "source_path": "grammar/research_pending/JauDakMouDakAvailabilityPredicate.md",
+      "family_name": "AvailabilityAndOpportunityPredication",
+      "profile_name": "PreverbalJauDakOrMouDakWithPredicate",
+      "profile_description": "A preverbal availability or opportunity relation uses affirmative 有得 or negative 冇得 before an overt predicate; the suppletive-polar surface 有冇得 asks which availability alternative holds. The profile excludes existential or possessive 有／冇 plus nominal complements, ordinary lexical V-唔-V, postverbal potential 得／唔到, arbitrary predicate omission, and fused or semi-lexical expressions whose meaning is not transparently availability.",
+      "learner_label": null,
+      "source_terms": [],
+      "former_names": [],
+      "predecessor_uuids": [],
+      "successor_uuids": [],
+      "record_revision": 1,
+      "label_review": {
+        "review_state": "pending",
+        "behavior_research_alignment": "not_reviewed",
+        "terminology_alignment": "not_reviewed",
+        "recommended_action": "not_reviewed",
+        "automatic_risk_flags": [
+          "generic_head_requires_boundary_definition"
+        ],
+        "review_notes": ""
       }
     },
     {

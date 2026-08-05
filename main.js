@@ -1287,6 +1287,7 @@ var require_runtime_label_registry = __commonJS({
       "NominalHeadSpan",
       "IntentionFrame",
       "IntransitiveVP",
+      "JauDakMouDakAvailabilityPredicate",
       "LocativeExistentialClause",
       "LocativePostureVP",
       "MannerAdverbialVP",
@@ -5829,6 +5830,7 @@ var require_slot_primitives = __commonJS({
           if (has("negated_directional_motion_vp") || has("negator")) slots.push("negative_clause", "negated_predicate", "negator");
         }
         if (["ModalVP"].includes(type)) slots.push("modal_vp", "modal_predicate", "modal", "predicate", "vp");
+        if (["JauDakMouDakAvailabilityPredicate"].includes(type)) slots.push("availability_predicate", "availability_opportunity", "modal_predicate", "predicate", "vp", "clause");
         if (["LocativeModalPredicateClause"].includes(type)) slots.push("locative_modal_predicate_clause", "modal_predicate_clause", "location", "modal_vp", "modal", "predicate", "clause");
         if (["SubjectModalPredicateClause"].includes(type)) slots.push("subject_modal_predicate_clause", "modal_predicate_clause", "subject", "modal_vp", "modal", "predicate", "clause");
         if (["TopicModalPredicateClause"].includes(type)) slots.push("topic_modal_predicate_clause", "modal_predicate_clause", "topic", "modal_vp", "modal", "predicate", "clause");
@@ -10139,6 +10141,168 @@ var require_modal_predicates = __commonJS({
         coordinatedSubjectModalPredicateClauseFallback: coordinatedSubjectModalPredicateClauseFallback2,
         modalPredicateWrapCoreFallback: modalPredicateWrapCoreFallback2,
         modalVPFromNodes: modalVPFromNodes2
+      };
+    };
+  }
+});
+
+// src/parser/detectors/modality/availability.js
+var require_availability = __commonJS({
+  "src/parser/detectors/modality/availability.js"(exports2, module2) {
+    "use strict";
+    module2.exports = function createAvailabilityDetectors2(dependencies = {}) {
+      const {
+        construction: construction2,
+        constructionSlotsByType: constructionSlotsByType2,
+        flattenSurface: flattenSurface2,
+        nodeCanFillSlot: nodeCanFillSlot2,
+        parserInactiveTokenClone: parserInactiveTokenClone2,
+        templateConstructionFor: templateConstructionFor2,
+        traceInfo: traceInfo2,
+        withoutIgnorableSpaceText: withoutIgnorableSpaceText2,
+        withoutTrailingParticles: withoutTrailingParticles2
+      } = dependencies;
+      const LEXICAL_QUARANTINE = /* @__PURE__ */ new Set([
+        "冇得頂",
+        "冇得講",
+        "冇得計",
+        "冇得搞",
+        "有得諗"
+      ]);
+      function surfaceIs(node, values) {
+        return values.includes(flattenSurface2(node));
+      }
+      function availabilityHeadPlan(nodes) {
+        if (!nodes.length) return null;
+        if (surfaceIs(nodes[0], ["有得"])) {
+          return { end: 1, polarity: "affirmative", headSurface: "有得", questionStrategy: "none" };
+        }
+        if (surfaceIs(nodes[0], ["冇得"])) {
+          return { end: 1, polarity: "negative", headSurface: "冇得", questionStrategy: "none" };
+        }
+        if (surfaceIs(nodes[0], ["有冇得"])) {
+          return { end: 1, polarity: "interrogative", headSurface: "有冇得", questionStrategy: "suppletive_jau_mou" };
+        }
+        if (nodes.length >= 2 && surfaceIs(nodes[0], ["有"]) && surfaceIs(nodes[1], ["得"])) {
+          return { end: 2, polarity: "affirmative", headSurface: "有+得", questionStrategy: "none" };
+        }
+        if (nodes.length >= 2 && surfaceIs(nodes[0], ["冇"]) && surfaceIs(nodes[1], ["得"])) {
+          return { end: 2, polarity: "negative", headSurface: "冇+得", questionStrategy: "none" };
+        }
+        if (nodes.length >= 2 && surfaceIs(nodes[0], ["有冇"]) && surfaceIs(nodes[1], ["得"])) {
+          return { end: 2, polarity: "interrogative", headSurface: "有冇+得", questionStrategy: "suppletive_jau_mou" };
+        }
+        if (nodes.length >= 3 && surfaceIs(nodes[0], ["有"]) && surfaceIs(nodes[1], ["冇"]) && surfaceIs(nodes[2], ["得"])) {
+          return { end: 3, polarity: "interrogative", headSurface: "有+冇+得", questionStrategy: "suppletive_jau_mou" };
+        }
+        return null;
+      }
+      function predicateFromNodes(nodes) {
+        if (!nodes.length) return null;
+        if (nodes.length === 1 && (nodeCanFillSlot2(nodes[0], "predicate") || nodeCanFillSlot2(nodes[0], "vp") || nodeCanFillSlot2(nodes[0], "action_verb") || nodeCanFillSlot2(nodes[0], "stative_predicate"))) return nodes[0];
+        const templated = templateConstructionFor2(nodes, [
+          "ActionStativeVP",
+          "DegreeMannerModifiedVP",
+          "DirectionalMotionVP",
+          "IntransitiveVP",
+          "MannerAdverbialVP",
+          "MotionGoalVP",
+          "MotionPurposeChain",
+          "ProductiveVO",
+          "SerialVerbPurposeChain",
+          "StativePredicate",
+          "TransitiveVP",
+          "VerbComplementVP"
+        ]);
+        if (templated && nodeCanFillSlot2(templated, "predicate")) return templated;
+        if (nodes.length === 2 && nodeCanFillSlot2(nodes[0], "action_verb") && (nodeCanFillSlot2(nodes[1], "object") || nodeCanFillSlot2(nodes[1], "np") || nodeCanFillSlot2(nodes[1], "head_noun"))) {
+          return construction2("TransitiveVP", "VP", nodes, {
+            slots: constructionSlotsByType2("TransitiveVP", nodes),
+            trace: traceInfo2("generative_template", {
+              construction_type: "TransitiveVP",
+              template_family: "generative_template",
+              template: ["action_verb!", "object!"],
+              assigned_slots: ["action_verb", "object"],
+              surfaces: nodes.map((node) => flattenSurface2(node)),
+              subspan: true,
+              reason: "Provides an independently typed object-bearing predicate child for the 有得／冇得 availability relation."
+            })
+          });
+        }
+        return null;
+      }
+      function availabilityHeadToken(node, plan, index) {
+        const surface = flattenSurface2(node);
+        return parserInactiveTokenClone2(node, {
+          label: "func",
+          syntax: "availability_opportunity_marker",
+          slots: ["availability_marker", "polarity_marker"],
+          note: `${surface} marks the 有得／冇得 availability relation.`,
+          reason: "有得／冇得 is active as the overt availability head, not ordinary possessive/existential 有／冇 plus independent 得.",
+          trace_detail: {
+            relation_subtype: "availability_opportunity",
+            availability_polarity: plan.polarity,
+            head_surface: plan.headSurface,
+            question_strategy: plan.questionStrategy,
+            head_index: index
+          }
+        });
+      }
+      function lexicalQuarantineApplies(headNodes, predicate) {
+        const headSurface = headNodes.map((node) => flattenSurface2(node)).join("");
+        const predicateSurface = flattenSurface2(predicate);
+        return LEXICAL_QUARANTINE.has(`${headSurface}${predicateSurface}`);
+      }
+      function availabilityPredicateFromNodes(nodes) {
+        const { core, particles } = withoutTrailingParticles2(nodes || []);
+        const compact = withoutIgnorableSpaceText2(core);
+        if (!compact.length) return null;
+        const plan = availabilityHeadPlan(compact);
+        if (!plan) return null;
+        const predicateNodes = compact.slice(plan.end);
+        const predicate = predicateFromNodes(predicateNodes);
+        if (!predicate) return null;
+        const headNodes = compact.slice(0, plan.end);
+        if (lexicalQuarantineApplies(headNodes, predicate)) return null;
+        const children = [
+          ...headNodes.map((node, index) => availabilityHeadToken(node, plan, index)),
+          predicate
+        ];
+        return {
+          span: construction2("JauDakMouDakAvailabilityPredicate", "Availability", children, {
+            slots: constructionSlotsByType2("JauDakMouDakAvailabilityPredicate", children),
+            note: "Preverbal 有得／冇得 marks whether the following overt predicate event is available, possible, unavailable, or impossible.",
+            trace: traceInfo2("source_linked_runtime_matcher", {
+              construction_type: "JauDakMouDakAvailabilityPredicate",
+              relation_subtype: "availability_opportunity",
+              polarity: plan.polarity,
+              head_surface: plan.headSurface,
+              question_strategy: plan.questionStrategy,
+              predicate_surface: flattenSurface2(predicate),
+              lexical_quarantine_checked: true,
+              hidden_material_inserted: false,
+              source_specification: "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md",
+              reason: "Matches the accepted source-first 有得／冇得 + overt predicate availability identity while preserving the predicate as an independently typed child."
+            })
+          }),
+          particles
+        };
+      }
+      function availabilityPredicateWrapCoreFallback2(core) {
+        const compact = withoutIgnorableSpaceText2(core || []);
+        for (let index = 0; index < compact.length; index += 1) {
+          const planned = availabilityPredicateFromNodes(compact.slice(index));
+          if (!planned) continue;
+          return [
+            ...compact.slice(0, index),
+            planned.span,
+            ...planned.particles
+          ];
+        }
+        return null;
+      }
+      return {
+        availabilityPredicateWrapCoreFallback: availabilityPredicateWrapCoreFallback2
       };
     };
   }
@@ -18931,6 +19095,7 @@ var require_wrap_core = __commonJS({
       const {
         aNotAQuestionFallback: aNotAQuestionFallback2,
         acceptabilityANotAQuestionFallback: acceptabilityANotAQuestionFallback2,
+        availabilityPredicateWrapCoreFallback: availabilityPredicateWrapCoreFallback2,
         ambiguousNeedsContextCandidate: ambiguousNeedsContextCandidate2,
         approximateQuantityFallback: approximateQuantityFallback2,
         bareNumeralObjectMalformedCandidate: bareNumeralObjectMalformedCandidate2,
@@ -19051,6 +19216,8 @@ var require_wrap_core = __commonJS({
         if (existentialLocationPresentational) return [existentialLocationPresentational];
         const nominalMeasurePredicate = nominalMeasurePredicateFallback2(core);
         if (nominalMeasurePredicate) return [nominalMeasurePredicate];
+        const availabilityPredicateSpan = availabilityPredicateWrapCoreFallback2(core);
+        if (availabilityPredicateSpan) return availabilityPredicateSpan;
         const motionEventSpatial = motionEventSpatialFallback2(core);
         if (motionEventSpatial) return [motionEventSpatial];
         const incompatibleAspectComposition = incompatibleAspectCompositionMalformedCandidate2(core);
@@ -22604,6 +22771,18 @@ var {
   withoutIgnorableSpaceText,
   withoutTrailingParticles
 });
+var createAvailabilityDetectors = require_availability();
+var { availabilityPredicateWrapCoreFallback } = createAvailabilityDetectors({
+  construction,
+  constructionSlotsByType,
+  flattenSurface,
+  nodeCanFillSlot,
+  parserInactiveTokenClone,
+  templateConstructionFor,
+  traceInfo,
+  withoutIgnorableSpaceText,
+  withoutTrailingParticles
+});
 var createIntentionPreferenceDetectors = require_intention_preference();
 var {
   desiderativeVPWrapCoreFallback,
@@ -23423,6 +23602,7 @@ var {
 wrapCoreImplementation = require_wrap_core()({
   aNotAQuestionFallback,
   acceptabilityANotAQuestionFallback,
+  availabilityPredicateWrapCoreFallback,
   ambiguousNeedsContextCandidate,
   approximateQuantityFallback,
   bareNumeralObjectMalformedCandidate,

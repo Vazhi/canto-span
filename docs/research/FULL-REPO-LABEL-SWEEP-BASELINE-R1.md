@@ -1,10 +1,10 @@
 # Full-repository label sweep baseline R1
 
 **Bootstrap date:** 2026-07-24  
-**Permanent records:** 181  
-**Current records:** 133  
+**Permanent records:** 182
+**Current records:** 134
 **Retired records:** 48  
-**Records with automatic screening flags:** 129
+**Records with automatic screening flags:** 130
 
 This baseline assigns permanent identities and opens a review row for every current and retired label. It does **not** approve any label, linguistic analysis, implementation behavior, or retirement.
 
@@ -20,7 +20,7 @@ This baseline assigns permanent identities and opens a review row for every curr
 
 | Flag | Records |
 |---|---:|
-| `generic_head_requires_boundary_definition` | 72 |
+| `generic_head_requires_boundary_definition` | 73 |
 | `internal_representation_name_review` | 20 |
 | `possible_bundled_or_cross_layer_name` | 5 |
 | `possible_multi_layer_construction_bundle` | 3 |

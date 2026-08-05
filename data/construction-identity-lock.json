@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-construction-identity-lock-v1",
-  "entry_count": 181,
+  "entry_count": 182,
   "entries": [
     {
       "construction_uuid": "5e10dfc5-15a5-5f5a-b203-37c81a653330",
@@ -1268,6 +1268,13 @@
       "initial_canonical_name": "WhClassifierQuestion",
       "identity_locked_at": "2026-07-24",
       "code_locked_at": "2026-07-24"
+    },
+    {
+      "construction_uuid": "4e176fe2-a147-47c7-86c8-6778a379beb2",
+      "construction_code": "AB83",
+      "initial_canonical_name": "JauDakMouDakAvailabilityPredicate",
+      "identity_locked_at": "2026-08-05",
+      "code_locked_at": "2026-08-05"
     }
   ]
 }

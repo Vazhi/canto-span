@@ -22,11 +22,13 @@ const labels = loadConstructionNotes(root)
   .sort();
 
 const existingFocusedCases = new Map();
+const existingImplementationProbeCases = new Map();
 for (const label of labels) {
   const file = path.join(outDir, `${label}.json`);
   if (!fs.existsSync(file)) continue;
   const record = readJson(file);
   existingFocusedCases.set(label, Array.isArray(record.focused_cases) ? record.focused_cases : []);
+  existingImplementationProbeCases.set(label, Array.isArray(record.implementation_probe_cases) ? record.implementation_probe_cases : []);
 }
 
 const regression = readJson(regressionPath);
@@ -44,7 +46,7 @@ const files = new Map(labels.map((label) => [label, {
   snapshot_cases: [],
   focused_cases: existingFocusedCases.get(label) || [],
   np_cases: [],
-  implementation_probe_cases: [],
+  implementation_probe_cases: existingImplementationProbeCases.get(label) || [],
   coverage: {},
 }]));
 
@@ -125,14 +127,19 @@ for (const boundarySet of boundaryClosure.boundary_sets) {
 }
 
 const acceptedReachabilitySchema = "canto-span-implementation-reachability-probes-v1";
-const reachability = readJson(reachabilityPath);
-if (reachability.schema !== acceptedReachabilitySchema) {
+const reachability = fs.existsSync(reachabilityPath) ? readJson(reachabilityPath) : null;
+if (reachability && reachability.schema !== acceptedReachabilitySchema) {
   throw new Error(`Unexpected reachability schema: ${reachability.schema}`);
 }
-if (reachability.linguistic_evidence_weight !== 0) {
+if (reachability && reachability.linguistic_evidence_weight !== 0) {
   throw new Error("Runtime reachability probes must have zero linguistic evidence weight");
 }
-for (const testCase of reachability.cases) {
+if (reachability) {
+  for (const record of files.values()) {
+    record.implementation_probe_cases = [];
+  }
+}
+for (const testCase of reachability ? reachability.cases : []) {
     const target = files.get(testCase.construction);
     if (!target) throw new Error(`Missing construction note for reachability probe ${testCase.construction}`);
     if (testCase.linguistic_evidence_weight !== 0 || testCase.purpose !== "runtime_reachability_only") {

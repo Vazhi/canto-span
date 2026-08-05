@@ -360,14 +360,14 @@
     {
       "case_id": "NP-N001",
       "source": "我飲咗三本水。",
-      "group": "pfv_forbidden_classifier_incompatible",
+      "group": "pfv_forbidden_classifier_policy_control",
       "assertion": "construction_absent",
       "forbid_narrow_pfv": true
     },
     {
       "case_id": "NP-N002",
       "source": "我睇咗三杯書。",
-      "group": "pfv_forbidden_classifier_incompatible",
+      "group": "pfv_forbidden_classifier_policy_control",
       "assertion": "construction_absent",
       "forbid_narrow_pfv": true
     },
