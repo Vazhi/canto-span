@@ -98,7 +98,8 @@ function presentationalLocativeCodaFromNodes(nodes = []) {
       }),
     });
   }
-  return locativePredicatePhraseFromNodes(compact);
+  const hasExplicitLocativeMarker = compact.some((node) => isToken(node, "喺") || isToken(node, "喺度"));
+  return hasExplicitLocativeMarker ? locativePredicatePhraseFromNodes(compact) : null;
 }
 
 function placementPerfectiveVPFromNodes(nodes = []) {
@@ -136,13 +137,24 @@ function nodeHasAnySlot(node, slots = []) {
   return slots.some((slot) => nodeCanFillSlot(node, slot));
 }
 
+function nodeChildren(node) {
+  return Array.isArray(node && node.children) ? node.children : [];
+}
+
+function nodeOrDescendantHasAnySlot(node, slots = []) {
+  if (!node) return false;
+  if (nodeHasAnySlot(node, slots)) return true;
+  return nodeChildren(node).some((child) => nodeOrDescendantHasAnySlot(child, slots));
+}
+
 function introducedParticipantAllowed(participant) {
   if (!participant) return false;
   const surface = flattenSurface(participant);
   if (!surface || /^啲/u.test(surface)) return false;
-  if (["一日", "一次", "一段時間", "可能", "機會", "事"].includes(surface)) return false;
-  if (nodeHasAnySlot(participant, ["time", "time_head", "locative_phrase", "location", "goal", "vp", "action_vp", "predicate"])) return false;
+  if (/^(一日|一晚|一朝|一陣|一次|一段時間|可能|機會|事)/u.test(surface)) return false;
+  if (nodeOrDescendantHasAnySlot(participant, ["time", "time_head", "quantified_time_np", "locative_phrase", "location", "goal", "vp", "action_vp", "predicate"])) return false;
   const trace = participant.trace || {};
+  if (trace.fragment_subtype === "quantified_time_fragment") return false;
   if (trace.np_license_status && trace.construction_licensing_allowed === false) return false;
   return nodeHasAnySlot(participant, ["np", "head_noun", "object", "subject", "topic"]);
 }
@@ -160,6 +172,43 @@ function presentationalPredicateSubtype(predicate) {
   return "predicate";
 }
 
+function aa56PredicateFallbackFromNodes(nodes = []) {
+  const compact = withoutIgnorableSpaceText(nodes || []);
+  if (!compact.length) return null;
+  const first = compact[0];
+  const firstIsPredicate = nodeHasAnySlot(first, ["predicate", "action_verb", "main_verb", "movement_verb", "stative_predicate", "modal_vp", "modal", "perfective_vp", "vp", "action_vp"]);
+  if (!firstIsPredicate) return null;
+  if (nodeHasAnySlot(first, ["np", "head_noun", "object", "time", "time_head", "location", "goal"]) && !nodeHasAnySlot(first, ["predicate", "action_verb", "main_verb", "movement_verb", "stative_predicate"])) return null;
+  const slots = ["subject_predicate_clause", "predicate", "np_linked_predicate", "clause"];
+  if (nodeHasAnySlot(first, ["action_verb", "main_verb", "movement_verb", "vp", "action_vp"])) slots.push("vp", "action_vp");
+  if (nodeHasAnySlot(first, ["stative_predicate"])) slots.push("stative_predicate");
+  if (compact.some((node) => nodeCanFillSlot(node, "perfective_aspect"))) slots.push("perfective_vp");
+  const head = first.kind === "token" ? parserInactiveTokenClone(first, {
+    label: first.label || (nodeCanFillSlot(first, "stative_predicate") ? "like" : "doing"),
+    syntax: `${first.syntax || "predicate"} aa56_np_linked_predicate_head`,
+    slots: cleanSlots([...(first.slots || []), "predicate", "np_linked_predicate"]),
+    reason: "This predicate is linked to the overt participant introduced by positive 有 in AA56.",
+    preserve_existing_affordances: true,
+  }) : first;
+  const children = [head, ...compact.slice(1)];
+  return construction("SubjectPredicateClause", "Clause", children, {
+    note: "Predicate linked to the overt participant introduced by positive 有; no hidden subject is inserted.",
+    slots: cleanSlots([...slots, ...templateDerivedSlots("SubjectPredicateClause", children)]),
+    trace: traceInfo("generative_template", {
+      construction_type: "SubjectPredicateClause",
+      template_family: "generative_template",
+      template: ["np_linked_predicate_head!", "complement_or_aspect*"],
+      assigned_slots: ["np_linked_predicate_head", ...compact.slice(1).map(() => "complement_or_aspect")],
+      surfaces: children.map(flattenSurface),
+      subspan: true,
+      predicate_relation: "linked_to_aa56_introduced_np",
+      subject_status: "supplied_by_aa56_introduced_participant",
+      hidden_subject_inserted: false,
+      not_claims: ["not_independent_subject_predicate_claim", "not_hidden_subject"],
+    }),
+  });
+}
+
 function presentationalPredicateFromNodes(nodes = []) {
   const compact = withoutIgnorableSpaceText(nodes || []);
   if (!compact.length) return null;
@@ -167,10 +216,14 @@ function presentationalPredicateFromNodes(nodes = []) {
   if (locative) return { node: locative, assignedSlot: "np_linked_predicate", subtype: "locative_predicate" };
   const wrapped = applyConstructionPatterns(compact);
   const predicate = fullSpanSingleConstruction(wrapped, compact) || (compact.length === 1 ? compact[0] : null);
-  if (!predicate) return null;
-  if (!nodeHasAnySlot(predicate, ["predicate", "vp", "action_vp", "stative_predicate", "modal_vp", "perfective_vp", "locative_predicate", "locative_phrase"])) return null;
-  if (nodeHasAnySlot(predicate, ["np", "head_noun", "object"]) && !nodeHasAnySlot(predicate, ["predicate", "vp", "action_vp", "stative_predicate", "modal_vp", "perfective_vp"])) return null;
-  return { node: predicate, assignedSlot: "np_linked_predicate", subtype: presentationalPredicateSubtype(predicate) };
+  if (predicate) {
+    if (!nodeHasAnySlot(predicate, ["predicate", "vp", "action_vp", "stative_predicate", "modal_vp", "perfective_vp", "locative_predicate", "locative_phrase"])) return null;
+    if (nodeHasAnySlot(predicate, ["np", "head_noun", "object"]) && !nodeHasAnySlot(predicate, ["predicate", "vp", "action_vp", "stative_predicate", "modal_vp", "perfective_vp"])) return null;
+    return { node: predicate, assignedSlot: "np_linked_predicate", subtype: presentationalPredicateSubtype(predicate) };
+  }
+  const fallback = aa56PredicateFallbackFromNodes(compact);
+  if (!fallback) return null;
+  return { node: fallback, assignedSlot: "np_linked_predicate", subtype: presentationalPredicateSubtype(fallback) };
 }
 
 function positiveParticipantIntroductionConstruction(marker, participant, predicateInfo, particles = []) {
