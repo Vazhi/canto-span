@@ -1,0 +1,141 @@
+{
+  "schema": "canto-span-construction-test-file-v1",
+  "construction": "JauDakMouDakAvailabilityPredicate",
+  "runtime_active": true,
+  "migration_phase": 5,
+  "snapshot_cases": [],
+  "focused_cases": [
+    {
+      "case_id": "JMD-POS-AFF-01",
+      "source": "有得去。",
+      "class": "affirmative_availability_simple_predicate",
+      "expected_profile": "affirmative_availability",
+      "assertion": "construction_present",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#affirmative",
+      "source_ids": ["SRC-LAM-LAU-LEE-2024-SEGMENTATION", "HKCANCOR-JAU-MOU-DAK-R1"]
+    },
+    {
+      "case_id": "JMD-POS-NEG-01",
+      "source": "冇得去。",
+      "class": "negative_availability_simple_predicate",
+      "expected_profile": "negative_availability",
+      "assertion": "construction_present",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#negative",
+      "source_ids": ["SRC-LAM-LAU-LEE-2024-SEGMENTATION", "HKCANCOR-JAU-MOU-DAK-R1"]
+    },
+    {
+      "case_id": "JMD-POS-Q-01",
+      "source": "有冇得去？",
+      "class": "suppletive_polar_availability_question",
+      "expected_profile": "suppletive_polar_availability",
+      "assertion": "construction_present",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#suppletive-polar-question",
+      "source_ids": ["SRC-HUANG-HER-KONG-2025-INTERROGATIVES", "HKCANCOR-JAU-MOU-DAK-R1"]
+    },
+    {
+      "case_id": "JMD-POS-OBJ-01",
+      "source": "有得食飯。",
+      "class": "affirmative_availability_object_bearing_predicate",
+      "expected_profile": "affirmative_availability",
+      "assertion": "construction_present",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#predicate-contract",
+      "source_ids": ["HKCANCOR-JAU-MOU-DAK-R1"]
+    },
+    {
+      "case_id": "JMD-POS-HOST-01",
+      "source": "我有得去。",
+      "class": "subject_host_plus_affirmative_availability",
+      "expected_profile": "affirmative_availability_with_outer_subject",
+      "assertion": "construction_present",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#predicate-contract",
+      "source_ids": ["HKCANCOR-JAU-MOU-DAK-R1"]
+    },
+    {
+      "case_id": "JMD-BND-POSS-01",
+      "source": "我有本書。",
+      "class": "aa55_possession_not_availability",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#negative-or-quarantined-cells",
+      "source_ids": ["PROJECT-JMD-SPEC"]
+    },
+    {
+      "case_id": "JMD-BND-PLACE-01",
+      "source": "枱上面有支筆。",
+      "class": "aa77_place_existence_not_availability",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#negative-or-quarantined-cells",
+      "source_ids": ["PROJECT-JMD-SPEC"]
+    },
+    {
+      "case_id": "JMD-BND-NOM-Q-01",
+      "source": "你有冇書？",
+      "class": "nominal_have_question_not_availability",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#negative-or-quarantined-cells",
+      "source_ids": ["PROJECT-JMD-SPEC"]
+    },
+    {
+      "case_id": "JMD-BND-EVENT-Q-01",
+      "source": "你有冇去？",
+      "class": "ordinary_event_have_or_not_without_dak_not_availability",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#negative-or-quarantined-cells",
+      "source_ids": ["PROJECT-JMD-SPEC"]
+    },
+    {
+      "case_id": "JMD-BND-POT-01",
+      "source": "去唔到。",
+      "class": "postverbal_potential_not_availability",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#negative-or-quarantined-cells",
+      "source_ids": ["PROJECT-JMD-SPEC"]
+    },
+    {
+      "case_id": "JMD-BND-LEX-01",
+      "source": "冇得頂。",
+      "class": "fused_lexicalized_expression_not_productive_availability",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#lexical-and-discourse-quarantine",
+      "source_ids": ["HKCANCOR-JAU-MOU-DAK-R1"]
+    },
+    {
+      "case_id": "JMD-BND-FORMULA-01",
+      "source": "冇得講。",
+      "class": "formulaic_expression_not_productive_availability",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#lexical-and-discourse-quarantine",
+      "source_ids": ["HKCANCOR-JAU-MOU-DAK-R1"]
+    },
+    {
+      "case_id": "JMD-BND-ZERO-01",
+      "source": "有得。",
+      "class": "predicate_less_availability_requires_context",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#ellipsis-and-context",
+      "source_ids": ["HKCANCOR-JAU-MOU-DAK-R1"]
+    }
+  ],
+  "np_cases": [],
+  "implementation_probe_cases": [],
+  "coverage": {
+    "state": "positive_and_boundary",
+    "exact_snapshot_positive_count": 0,
+    "focused_positive_count": 5,
+    "focused_boundary_count": 8,
+    "focused_review_only_count": 0,
+    "np_case_count": 0,
+    "implementation_probe_count": 0,
+    "compatibility_alias_probe_count": 0,
+    "positive_case_count": 5,
+    "boundary_case_count": 8,
+    "executable_case_count": 13
+  }
+}
