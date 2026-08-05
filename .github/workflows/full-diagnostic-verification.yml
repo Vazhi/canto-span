@@ -43,6 +43,7 @@ jobs:
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add main.js
             git commit -m "Regenerate runtime bundle for AA56"
+            git pull --rebase origin agent/aa56-positive-participant-runtime
             git push origin HEAD:agent/aa56-positive-participant-runtime
           fi
       - name: Test verification orchestration
