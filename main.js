@@ -10215,9 +10215,7 @@ var require_availability = __commonJS({
           "VerbComplementVP"
         ]);
         if (templated && nodeCanFillSlot2(templated, "predicate")) return templated;
-        if (nodes.length >= 2 && nodeCanFillSlot2(nodes[0], "action_verb") && nodes.slice(1).some(
-          (node) => nodeCanFillSlot2(node, "object") || nodeCanFillSlot2(node, "np") || nodeCanFillSlot2(node, "head_noun")
-        )) {
+        if (nodes.length === 2 && nodeCanFillSlot2(nodes[0], "action_verb") && (nodeCanFillSlot2(nodes[1], "object") || nodeCanFillSlot2(nodes[1], "np") || nodeCanFillSlot2(nodes[1], "head_noun"))) {
           return construction2("TransitiveVP", "VP", nodes, {
             slots: constructionSlotsByType2("TransitiveVP", nodes),
             trace: traceInfo2("generative_template", {

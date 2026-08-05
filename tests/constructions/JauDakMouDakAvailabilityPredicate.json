@@ -180,7 +180,7 @@
       "class": "interrupted_repair_not_single_availability_predicate",
       "expected_profile": "construction_absent",
       "assertion": "construction_absent",
-      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#repairs-ellipsis-and-context-linking",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#lexical-and-discourse-quarantine",
       "source_ids": [
         "HKCANCOR-JAU-MOU-DAK-R1"
       ]
@@ -194,6 +194,17 @@
       "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#required-boundary-matrix",
       "source_ids": [
         "HKCANCOR-JAU-MOU-DAK-R1"
+      ]
+    },
+    {
+      "case_id": "JMD-AVAIL-N14",
+      "source": "我有得食飯你。",
+      "class": "unlicensed_trailing_material_not_absorbed_into_predicate",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#predicate-contract",
+      "source_ids": [
+        "SRC-LAM-LAU-LEE-2024-SEGMENTATION"
       ]
     }
   ],
@@ -218,13 +229,13 @@
     "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 0,
     "focused_positive_count": 4,
-    "focused_boundary_count": 13,
+    "focused_boundary_count": 14,
     "focused_review_only_count": 0,
     "np_case_count": 0,
     "implementation_probe_count": 1,
     "compatibility_alias_probe_count": 0,
     "positive_case_count": 4,
-    "boundary_case_count": 13,
-    "executable_case_count": 18
+    "boundary_case_count": 14,
+    "executable_case_count": 19
   }
 }

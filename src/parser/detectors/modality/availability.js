@@ -74,12 +74,12 @@ module.exports = function createAvailabilityDetectors(dependencies = {}) {
       "VerbComplementVP",
     ]);
     if (templated && nodeCanFillSlot(templated, "predicate")) return templated;
-    if (nodes.length >= 2
+    if (nodes.length === 2
         && nodeCanFillSlot(nodes[0], "action_verb")
-        && nodes.slice(1).some((node) =>
-          nodeCanFillSlot(node, "object")
-          || nodeCanFillSlot(node, "np")
-          || nodeCanFillSlot(node, "head_noun")
+        && (
+          nodeCanFillSlot(nodes[1], "object")
+          || nodeCanFillSlot(nodes[1], "np")
+          || nodeCanFillSlot(nodes[1], "head_noun")
         )) {
       return construction("TransitiveVP", "VP", nodes, {
         slots: constructionSlotsByType("TransitiveVP", nodes),
