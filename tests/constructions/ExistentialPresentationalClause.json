@@ -33,7 +33,7 @@
     },
     {
       "case_id": "AA56-POS-ADJ-01",
-      "source": "有幾個學生好嬲。",
+      "source": "有個學生好嬲。",
       "class": "positive_indefinite_np_adjectival_predicate",
       "expected_profile": "positive_participant_introduction",
       "assertion": "construction_present",
@@ -42,7 +42,7 @@
     },
     {
       "case_id": "AA56-POS-PERF-01",
-      "source": "有好多客人嚟咗。",
+      "source": "有個人嚟咗。",
       "class": "positive_indefinite_np_perfective_verbal_predicate",
       "expected_profile": "positive_participant_introduction",
       "assertion": "construction_present",
