@@ -27,6 +27,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+      - name: Temporary AA56 source inspection
+        run: |
+          find src/parser/detectors -maxdepth 4 -type f | sort
+          grep -R "ExistentialPresentationalClause\|existentialLocationPresentationalFallback\|JauMarkedIndefiniteNPPredication\|有個人喺門口" -n src tests docs/research | head -200
       - uses: actions/setup-node@v6
         with:
           node-version: 24
