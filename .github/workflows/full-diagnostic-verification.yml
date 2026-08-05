@@ -20,23 +20,31 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - name: Temporary AA56 source inspection
-        run: |
-          find src/parser/detectors -maxdepth 4 -type f | sort
-          grep -R "ExistentialPresentationalClause\|existentialLocationPresentationalFallback\|JauMarkedIndefiniteNPPredication\|有個人喺門口" -n src tests docs/research | head -200
+        with:
+          ref: agent/aa56-positive-participant-runtime
       - uses: actions/setup-node@v6
         with:
           node-version: 24
           package-manager-cache: false
       - name: Install build dependencies
         run: npm ci
+      - name: Temporary AA56 generated bundle commit
+        run: |
+          npm run build:runtime
+          if ! git diff --quiet -- main.js; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add main.js
+            git commit -m "Regenerate runtime bundle for AA56"
+            git push origin HEAD:agent/aa56-positive-participant-runtime
+          fi
       - name: Test verification orchestration
         run: npm run test:verification-orchestration
       - name: Run full diagnostic sweep
