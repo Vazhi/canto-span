@@ -5,22 +5,6 @@
   "migration_phase": 5,
   "snapshot_cases": [
     {
-      "case_id": "REG-0028",
-      "source": "冇人喺度。",
-      "origins": [
-        "run-current-focused-v0.5.162-r1.js"
-      ],
-      "assertion": "construction_present_in_exact_snapshot"
-    },
-    {
-      "case_id": "REG-0038",
-      "source": "冇學生喺學校。",
-      "origins": [
-        "run-current-focused-v0.5.162-r1.js"
-      ],
-      "assertion": "construction_present_in_exact_snapshot"
-    },
-    {
       "case_id": "REG-0085",
       "source": "有個人喺門口。",
       "origins": [
@@ -38,6 +22,69 @@
     }
   ],
   "focused_cases": [
+    {
+      "case_id": "AA56-POS-VERBAL-01",
+      "source": "有個人搵你。",
+      "class": "positive_indefinite_np_verbal_predicate",
+      "expected_profile": "positive_participant_introduction",
+      "assertion": "construction_present",
+      "provenance": "docs/research/AA56-POSITIVE-PARTICIPANT-INTRODUCTION-SPECIFICATION-R1.md#positive-cells",
+      "source_ids": ["SRC-YIP-MATTHEWS-2000-BASIC"]
+    },
+    {
+      "case_id": "AA56-POS-ADJ-01",
+      "source": "有幾個學生好嬲。",
+      "class": "positive_indefinite_np_adjectival_predicate",
+      "expected_profile": "positive_participant_introduction",
+      "assertion": "construction_present",
+      "provenance": "docs/research/AA56-POSITIVE-PARTICIPANT-INTRODUCTION-SPECIFICATION-R1.md#positive-cells",
+      "source_ids": ["SRC-YIP-MATTHEWS-2000-BASIC"]
+    },
+    {
+      "case_id": "AA56-POS-PERF-01",
+      "source": "有好多客人嚟咗。",
+      "class": "positive_indefinite_np_perfective_verbal_predicate",
+      "expected_profile": "positive_participant_introduction",
+      "assertion": "construction_present",
+      "provenance": "docs/research/AA56-POSITIVE-PARTICIPANT-INTRODUCTION-SPECIFICATION-R1.md#positive-cells",
+      "source_ids": ["SRC-YIP-MATTHEWS-2000-BASIC"]
+    },
+    {
+      "case_id": "AA56-POS-LOC-PARTICLE-01",
+      "source": "有個人喺門口呀。",
+      "class": "positive_indefinite_np_locative_predicate_with_particle",
+      "expected_profile": "positive_participant_introduction",
+      "assertion": "construction_present",
+      "provenance": "docs/research/AA56-POSITIVE-PARTICIPANT-INTRODUCTION-SPECIFICATION-R1.md#controlled-implementation-matrix",
+      "source_ids": ["PROJECT-AA56-BATCH20-SPEC"]
+    },
+    {
+      "case_id": "AA56-POS-MODAL-01",
+      "source": "有個人可以幫你。",
+      "class": "positive_indefinite_np_modal_predicate",
+      "expected_profile": "positive_participant_introduction",
+      "assertion": "construction_present",
+      "provenance": "docs/research/AA56-POSITIVE-PARTICIPANT-INTRODUCTION-SPECIFICATION-R1.md#positive-cells",
+      "source_ids": ["PROJECT-AA56-BATCH20-SPEC"]
+    },
+    {
+      "case_id": "REG-0028-AA56-B1",
+      "source": "冇人喺度。",
+      "class": "negative_human_or_negative_existential_not_aa56",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/AA56-POSITIVE-PARTICIPANT-INTRODUCTION-SPECIFICATION-R1.md#negative-冇人-predicate",
+      "source_ids": ["SRC-LAM-2018-NEGATION-ASPECT"]
+    },
+    {
+      "case_id": "REG-0038-AA56-B2",
+      "source": "冇學生喺學校。",
+      "class": "negative_human_or_negative_existential_not_aa56",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/AA56-POSITIVE-PARTICIPANT-INTRODUCTION-SPECIFICATION-R1.md#negative-冇人-predicate",
+      "source_ids": ["SRC-LAM-2018-NEGATION-ASPECT"]
+    },
     {
       "case_id": "CP061-EPC-N01",
       "source": "我食飯。",
@@ -63,21 +110,75 @@
         "SRC-YIP-MATTHEWS-2000-BASIC",
         "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
       ]
+    },
+    {
+      "case_id": "AA56-BND-NEG-HUMAN-01",
+      "source": "冇人知。",
+      "class": "negative_human_quantificational_not_aa56",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/AA56-POSITIVE-PARTICIPANT-INTRODUCTION-SPECIFICATION-R1.md#negative-冇人-predicate",
+      "source_ids": ["SRC-LAM-2018-NEGATION-ASPECT"]
+    },
+    {
+      "case_id": "AA56-BND-BARE-EXISTENCE-01",
+      "source": "有個人。",
+      "class": "bare_existence_without_np_linked_predicate",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/AA56-POSITIVE-PARTICIPANT-INTRODUCTION-SPECIFICATION-R1.md#bare-existence-inventory-or-listing",
+      "source_ids": ["PROJECT-AA56-BATCH20-SPEC"]
+    },
+    {
+      "case_id": "AA56-BND-PARTITIVE-01",
+      "source": "有啲人嚟。",
+      "class": "partitive_indefinite_subject_not_automatic_aa56",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/AA56-POSITIVE-PARTICIPANT-INTRODUCTION-SPECIFICATION-R1.md#partitive-or-indefinite-subject-有啲人",
+      "source_ids": ["PROJECT-AA56-BATCH20-SPEC"]
+    },
+    {
+      "case_id": "AA56-BND-TEMPORAL-01",
+      "source": "有一日我去中環。",
+      "class": "temporal_you_not_aa56",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/AA56-POSITIVE-PARTICIPANT-INTRODUCTION-SPECIFICATION-R1.md#temporal-conditional-measure-and-lexical-有",
+      "source_ids": ["PROJECT-AA56-BATCH20-SPEC"]
+    },
+    {
+      "case_id": "AA56-BND-POSSESSION-01",
+      "source": "我有個朋友。",
+      "class": "aa55_overt_subject_possession_not_aa56",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/AA56-POSITIVE-PARTICIPANT-INTRODUCTION-SPECIFICATION-R1.md#aa55-overt-subject-possession",
+      "source_ids": ["PROJECT-AA56-BATCH20-SPEC"]
+    },
+    {
+      "case_id": "AA56-BND-LEXICAL-01",
+      "source": "有可能會落雨。",
+      "class": "lexical_or_abstract_object_you_not_aa56",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/AA56-POSITIVE-PARTICIPANT-INTRODUCTION-SPECIFICATION-R1.md#temporal-conditional-measure-and-lexical-有",
+      "source_ids": ["PROJECT-AA56-BATCH20-SPEC"]
     }
   ],
   "np_cases": [],
   "implementation_probe_cases": [],
   "coverage": {
     "state": "positive_and_boundary",
-    "exact_snapshot_positive_count": 4,
-    "focused_positive_count": 0,
-    "focused_boundary_count": 2,
+    "exact_snapshot_positive_count": 2,
+    "focused_positive_count": 5,
+    "focused_boundary_count": 9,
     "focused_review_only_count": 0,
     "np_case_count": 0,
     "implementation_probe_count": 0,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 4,
-    "boundary_case_count": 2,
-    "executable_case_count": 6
+    "positive_case_count": 7,
+    "boundary_case_count": 9,
+    "executable_case_count": 16
   }
 }
