@@ -134,6 +134,11 @@ if (reachability && reachability.schema !== acceptedReachabilitySchema) {
 if (reachability && reachability.linguistic_evidence_weight !== 0) {
   throw new Error("Runtime reachability probes must have zero linguistic evidence weight");
 }
+if (reachability) {
+  for (const record of files.values()) {
+    record.implementation_probe_cases = [];
+  }
+}
 for (const testCase of reachability ? reachability.cases : []) {
     const target = files.get(testCase.construction);
     if (!target) throw new Error(`Missing construction note for reachability probe ${testCase.construction}`);

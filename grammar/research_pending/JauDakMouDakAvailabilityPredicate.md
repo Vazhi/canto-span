@@ -48,9 +48,9 @@ promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/JauDakMouDakAvailabilityPredicate.json"
 standard_test_coverage: "positive_and_boundary"
 standard_positive_test_count: 4
-standard_boundary_test_count: 3
+standard_boundary_test_count: 13
 standard_implementation_probe_count: 1
-standard_executable_test_count: 8
+standard_executable_test_count: 18
 source_ids: ["SRC-LAM-LAU-LEE-2024-SEGMENTATION", "SRC-HUANG-HER-KONG-2025-INTERROGATIVES", "HKCANCOR-JAU-MOU-DAK-R1"]
 runtime_active: true
 workflow_state: "active"

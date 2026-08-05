@@ -848,14 +848,14 @@
       "state": "positive_and_boundary",
       "exact_snapshot_positive_count": 0,
       "focused_positive_count": 4,
-      "focused_boundary_count": 3,
+      "focused_boundary_count": 13,
       "focused_review_only_count": 0,
       "np_case_count": 0,
       "implementation_probe_count": 1,
       "compatibility_alias_probe_count": 0,
       "positive_case_count": 4,
-      "boundary_case_count": 3,
-      "executable_case_count": 8
+      "boundary_case_count": 13,
+      "executable_case_count": 18
     },
     {
       "construction": "LexicalGiveRelation",

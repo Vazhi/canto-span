@@ -85,6 +85,116 @@
       "source_ids": [
         "SRC-LAM-LAU-LEE-2024-SEGMENTATION"
       ]
+    },
+    {
+      "case_id": "JMD-AVAIL-N04",
+      "source": "我有三本書。",
+      "class": "aa55_possession_or_nominal_availability_not_predicate_availability",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#required-boundary-matrix",
+      "source_ids": [
+        "SRC-LAM-LAU-LEE-2024-SEGMENTATION"
+      ]
+    },
+    {
+      "case_id": "JMD-AVAIL-N05",
+      "source": "嗰度有三個人。",
+      "class": "aa77_place_existence_not_predicate_availability",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#required-boundary-matrix",
+      "source_ids": [
+        "SRC-LAM-LAU-LEE-2024-SEGMENTATION"
+      ]
+    },
+    {
+      "case_id": "JMD-AVAIL-N06",
+      "source": "你有冇去？",
+      "class": "ordinary_event_occurrence_jau_mou_vp_without_dak_not_availability",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#required-boundary-matrix",
+      "source_ids": [
+        "SRC-HUANG-HER-KONG-2025-INTERROGATIVES"
+      ]
+    },
+    {
+      "case_id": "JMD-AVAIL-N07",
+      "source": "你去唔去？",
+      "class": "lexical_v_m4_v_question_not_suppletive_availability",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#required-boundary-matrix",
+      "source_ids": [
+        "SRC-HUANG-HER-KONG-2025-INTERROGATIVES"
+      ]
+    },
+    {
+      "case_id": "JMD-AVAIL-N08",
+      "source": "我食唔到飯。",
+      "class": "negative_postverbal_potential_not_preverbal_availability",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#required-boundary-matrix",
+      "source_ids": [
+        "SRC-LAM-LAU-LEE-2024-SEGMENTATION"
+      ]
+    },
+    {
+      "case_id": "JMD-AVAIL-N09",
+      "source": "我有得。",
+      "class": "predicate_less_availability_head_not_context_free_core",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#required-boundary-matrix",
+      "source_ids": [
+        "HKCANCOR-JAU-MOU-DAK-R1"
+      ]
+    },
+    {
+      "case_id": "JMD-AVAIL-N10",
+      "source": "冇得講。",
+      "class": "formulaic_evaluative_quarantine",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#lexical-and-discourse-quarantine",
+      "source_ids": [
+        "HKCANCOR-JAU-MOU-DAK-R1"
+      ]
+    },
+    {
+      "case_id": "JMD-AVAIL-N11",
+      "source": "有得諗。",
+      "class": "conventionalized_lexical_quarantine",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#lexical-and-discourse-quarantine",
+      "source_ids": [
+        "HKCANCOR-JAU-MOU-DAK-R1"
+      ]
+    },
+    {
+      "case_id": "JMD-AVAIL-N12",
+      "source": "冇得，唔可以去。",
+      "class": "interrupted_repair_not_single_availability_predicate",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#repairs-ellipsis-and-context-linking",
+      "source_ids": [
+        "HKCANCOR-JAU-MOU-DAK-R1"
+      ]
+    },
+    {
+      "case_id": "JMD-AVAIL-N13",
+      "source": "我有得嘢。",
+      "class": "unresolved_nominal_or_category_ambiguous_complement_not_runtime_availability",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/JAU-MOU-DAK-AVAILABILITY-IDENTITY-SPECIFICATION-R1.md#required-boundary-matrix",
+      "source_ids": [
+        "HKCANCOR-JAU-MOU-DAK-R1"
+      ]
     }
   ],
   "np_cases": [],
@@ -108,13 +218,13 @@
     "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 0,
     "focused_positive_count": 4,
-    "focused_boundary_count": 3,
+    "focused_boundary_count": 13,
     "focused_review_only_count": 0,
     "np_case_count": 0,
     "implementation_probe_count": 1,
     "compatibility_alias_probe_count": 0,
     "positive_case_count": 4,
-    "boundary_case_count": 3,
-    "executable_case_count": 8
+    "boundary_case_count": 13,
+    "executable_case_count": 18
   }
 }

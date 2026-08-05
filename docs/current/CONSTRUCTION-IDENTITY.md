@@ -18,14 +18,14 @@ compatibility alias, not the durable key.
 
 ## Current registry
 
-- permanent records: **181**;
-- current runtime-linked records: **133**;
+- permanent records: **182**;
+- current runtime-linked records: **134**;
 - retired records: **48**;
 - expert-adjudicated records: **93**;
-- pending expert adjudications: **88**;
+- pending expert adjudications: **89**;
 - accepted adjudication batches: **20**;
-- reserved identity candidates: **4**;
-- allocated codes: `AA01` through `AB82`.
+- reserved identity candidates: **3**;
+- allocated codes: `AA01` through `AB83`.
 
 The canonical registry is `data/construction-identities.json`. The immutable lock
 is `data/construction-identity-lock.json`. Accepted naming and ontology decisions
@@ -39,14 +39,13 @@ Batch 20 retains AA56's UUID and code while approving
 changes, negative-fixture reclassification, panel evidence, and held-out validation
 remain separate work. Batch 19's retired possession dispositions remain unchanged.
 
-The accepted 有得／冇得 specification reserves candidate UUID
+The accepted 有得／冇得 specification assigned canonical record `AB83` to candidate UUID
 `4e176fe2-a147-47c7-86c8-6778a379beb2` for
-`JauDakMouDakAvailabilityPredicate`. The candidate has no short code and is not yet
-canonical: a later runtime package must create the note, test, runtime label, and
-matcher before invoking the allocation tool. The permanent registry therefore
-remains at 181 records and codes remain allocated only through `AB82`.
-Candidate reservation establishes identity continuity only; it does not make the
-construction current, runtime-available, status-promoted, or promotion-eligible.
+`JauDakMouDakAvailabilityPredicate`. The runtime package creates the current note,
+test, runtime label, matcher, and generated bundle for the source-first
+`有得／冇得 + overt predicate` availability identity. This canonicalization establishes
+identity continuity and runtime availability only; it does not promote the
+construction beyond `research_pending` or make it promotion-eligible.
 
 The bounded paired-clause identity decision additionally reserves three candidates:
 
@@ -58,8 +57,7 @@ These candidates have no short codes, current notes, dedicated test files, or ca
 runtime identities. Generic `ClauseRelationGraph` structure remains parser-only and carries
 zero independent linguistic-evidence weight. A later separately claimed runtime package
 must create the required artifacts and canonicalize each exact UUID through the allocation
-tool. The permanent registry therefore remains at 181 records and allocated codes remain
-`AA01` through `AB82`.
+tool.
 
 ## UUID rules
 
