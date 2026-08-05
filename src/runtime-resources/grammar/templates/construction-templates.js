@@ -259,13 +259,6 @@ module.exports = [
     note: "Prohibitive imperative: 唔好 + VP."
   },
   {
-    type: "PreferenceVP",
-    label: "Preference",
-    template: ["subject?", "preference_predicate!", "vp!", "particle?"],
-    note: "Preference predicate followed by a VP/object complement."
-  },
-
-  {
     type: "DegreeMannerModifiedVP",
     label: "DegMannerVP",
     template: ["degree_manner_adverbial!", "vp!", "particle?"],

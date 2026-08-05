@@ -64,7 +64,7 @@ module.exports = function createIntentionPreferenceDetectors(dependencies = {}) 
   }
 
   function rawPreferenceTemplateFallback(core) {
-    return templateConstructionFor(core, ["PreferenceVP"]);
+    return null;
   }
 
   function desiderativeVPWrapCoreFallback(core) {
@@ -79,14 +79,7 @@ module.exports = function createIntentionPreferenceDetectors(dependencies = {}) 
   }
 
   function preferenceVPWrapCoreFallback(core) {
-    if (!hasSurface(core, "鍾意")) return null;
-    return construction("PreferenceVP", "Preference", core, {
-      note: "Preference fallback: preference predicate taking a VP/object complement.",
-      trace: traceInfo("construction_function", {
-        construction_type: "PreferenceVP",
-        reason: "Fallback only; generative PreferenceVP should normally catch this before ModifiedNP wrapping.",
-      }),
-    });
+    return null;
   }
 
   return {

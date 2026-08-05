@@ -200,6 +200,9 @@ module.exports = function createANotAQuestionDetectors(dependencies = {}) {
     const possessive = possessiveFragmentAnswerCandidate(complementCore);
     if (possessive) return { node: possessive, profile: "possessive_fragment" };
 
+    const quantifiedPreferenceClause = copularANotAQuantifiedPreferenceClauseCandidate(complementCore);
+    if (quantifiedPreferenceClause) return { node: quantifiedPreferenceClause, profile: "clausal_or_predicate" };
+
     const wrapped = applyConstructionPatterns(complementCore);
     if (wrapped.length === 1 && wrapped[0] && wrapped[0].kind === "construction") {
       const candidate = wrapped[0];
@@ -227,16 +230,57 @@ module.exports = function createANotAQuestionDetectors(dependencies = {}) {
     return null;
   }
 
+  function copularANotAQuantifiedPreferenceClauseCandidate(complementCore) {
+    const compact = withoutIgnorableSpaceText(applyConstructionPatterns(complementCore));
+    if (compact.length !== 4) return null;
+    const [quantifier, subject, focus, predicate] = compact;
+    if (!isToken(quantifier, "每")) return null;
+    if (!nodeCanFillSlot(subject, "subject")) return null;
+    if (!isToken(focus, "都") || !nodeCanFillSlot(focus, "focus_adverb")) return null;
+    if (!flattenSurface(predicate).startsWith("鍾意")) return null;
+    if (!nodeCanFillSlot(predicate, "predicate") && !directPredicateCapableNode(predicate)) return null;
+
+    const children = [quantifier, subject, focus, predicate];
+    return construction("SubjectPredicateClause", "SubjPred", children, {
+      note: "Bounded copular A-not-A complement: 每 + overt subject + 都 + overt preference predicate.",
+      slots: cleanSlots([
+        "subject_predicate_clause",
+        "clause",
+        "subject",
+        "focus_adverb",
+        "predicate",
+        ...templateDerivedSlots("SubjectPredicateClause", children),
+      ]),
+      trace: traceInfo("generative_template", {
+        construction_type: "SubjectPredicateClause",
+        template_family: "copular_a_not_a_bounded_complement",
+        template: ["distributive_quantifier!", "subject!", "focus_adverb!", "predicate!"],
+        assigned_slots: ["distributive_quantifier", "subject", "focus_adverb", "predicate"],
+        surfaces: children.map((node) => flattenSurface(node)),
+        reason: "Keeps the sourced 每...都 preference predicate visible as a copular A-not-A complement without restoring broad PreferenceVP matching.",
+      }),
+    });
+  }
+
+  function isQuestionPunctuationText(node) {
+    if (!node || node.kind !== "text") return false;
+    return /^[?？]+$/.test(surfaceOf(node) || node.text || "");
+  }
+
   function copularANotAQuestionFallback(core) {
     // 嘅 may close a possessive complement (你嘅), so do not strip it as a
     // sentence-final particle before complement analysis. Other final particles
     // remain outside the complement and visible at the question level.
-    let particleStart = core.length;
-    while (particleStart > 0 && isParticle(core[particleStart - 1]) && !isToken(core[particleStart - 1], "嘅")) {
+    let questionCore = core;
+    while (questionCore.length && isQuestionPunctuationText(questionCore[questionCore.length - 1])) {
+      questionCore = questionCore.slice(0, -1);
+    }
+    let particleStart = questionCore.length;
+    while (particleStart > 0 && isParticle(questionCore[particleStart - 1]) && !isToken(questionCore[particleStart - 1], "嘅")) {
       particleStart -= 1;
     }
-    const bareCore = core.slice(0, particleStart);
-    const particles = core.slice(particleStart);
+    const bareCore = questionCore.slice(0, particleStart);
+    const particles = questionCore.slice(particleStart);
     const offset = bareCore.length >= 4 && nodeCanFillSlot(bareCore[0], "subject") && !isToken(bareCore[0], "係") ? 1 : 0;
     if (bareCore.length - offset < 3) return null;
     if (!isToken(bareCore[offset], "係")) return null;
