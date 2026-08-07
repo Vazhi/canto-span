@@ -13,14 +13,14 @@ Retain Week 18 I078:
 ngo5 lau4 hai2 uk1 kei2 tai2 din6 si6.
 ```
 
-as a source-attested composition containing three independently visible components:
+as a source-attested composition with three independently visible components:
 
 ```text
 我 | 留 | 喺屋企 | 睇電視
 subject | stay/remain | at home | watch television
 ```
 
-The strongest evidence-supported result is:
+Terminal result:
 
 ```text
 LEXICAL_STAY + OVERT_LOCATION + FOLLOWING_ACTIVITY;
@@ -28,14 +28,15 @@ EVENT_LOCATION_AND_CIRCUMSTANCE_READINGS_COMPATIBLE;
 EXACT_ATTACHMENT_NOT_UNIQUELY_ESTABLISHED
 ```
 
-Direct research supports preverbal `喺 + place` as the location of a following action. A published Cantonese coding framework independently supports `喺 + place + VP` and a circumstance serial-verb profile in which the first predicate describes the circumstance under which the second action occurs. Lexical and contextual sources attest `留喺 + place` and close `留喺屋企 + activity` strings.
+Direct research supports preverbal `喺 + place` as the location of a following action. A published Cantonese coding framework independently supports `喺 + place + VP` and a circumstance serial-verb profile in which a first predicate describes the circumstance under which a second action occurs. Lexical and contextual sources attest bare `留喺屋企 + activity` strings.
 
-No inspected direct source analyzes the exact I078 string or selects one unique tree. The packet therefore does not decide whether:
+No inspected direct source analyzes the exact I078 string or selects one unique tree. The evidence leaves open whether:
 
-1. `喺屋企` is selected primarily by lexical `留`;
-2. `喺屋企` modifies the following `睇電視` event;
-3. `留喺屋企` forms the circumstance under which `睇電視` occurs;
-4. the location is shared by both predicates in a layered composition.
+1. `留喺屋企` forms a stay-at-home predicate followed by the activity `睇電視`;
+2. `喺屋企` has event-location scope over `睇電視` while remaining semantically compatible with `留`;
+3. the overt location is shared by the stay situation and the watching event in a layered composition.
+
+The packet does **not** analyze lexical `留` as selecting the entire constituent `喺屋企睇電視`; no inspected source licenses that complement structure.
 
 No hidden conjunction, progressive marker, purpose relation, or omitted argument is inserted. No parser, identity, status, source, corpus, survey, release, or deployment change is authorized.
 
@@ -43,29 +44,32 @@ No hidden conjunction, progressive marker, purpose relation, or omitted argument
 
 | Profile | Disposition | Reason |
 |---|---|---|
-| lexical `留 lau4` ‘stay/remain’ | `LEXICALLY_SUPPORTED` | Dictionary evidence defines remaining in the same place without leaving. |
-| `留 + 喺 + place` | `LEXICALLY_AND_CONTEXTUALLY_ATTESTED` | Dictionary examples and close attestations support the sequence. |
+| lexical `留 lau4` ‘stay/remain’ | `LEXICALLY_SUPPORTED` | Dictionary evidence establishes the lexeme, reading, and stay/remain sense. |
+| bare `留 + 喺 + place + activity` | `CONTEXTUALLY_ATTESTED` | Words.hk and Glossika provide close or exact surface attestations. |
 | `喺 + place + activity VP` | `DIRECTLY_SUPPORTED_EVENT_LOCATION_PROFILE` | Kwan and Wong et al. directly support preverbal `喺` PP as action location. |
-| `留…睇電視` circumstance relation | `COMPATIBLE_WITH_DIRECT_CIRCUMSTANCE_SVC_PROFILE` | Wong et al. define a close first-predicate-as-circumstance relation, but do not analyze this exact intervening locative structure. |
-| exact I078 attachment | `UNRESOLVED_LAYERED_ATTACHMENT` | Multiple source-compatible analyses preserve the same surface and interpretation. |
-| one `留喺 + place + VP` construction | `NOT_JUSTIFIED` | No direct source establishes this as one independent productive construction. |
+| `留…睇電視` circumstance relation | `COMPATIBLE_WITH_DIRECT_CIRCUMSTANCE_SVC_PROFILE` | Wong et al. define a close first-predicate-as-circumstance relation but do not analyze this exact intervening locative structure. |
+| exact I078 attachment | `UNRESOLVED_LAYERED_ATTACHMENT` | More than one source-compatible scope relation preserves the surface and interpretation. |
+| lexical `留` selecting `喺屋企睇電視` | `NOT_SUPPORTED` | No inspected source establishes that clausal/complement structure. |
+| one `留喺 + place + VP` construction | `NOT_JUSTIFIED` | No direct source establishes one independent productive construction. |
 | AA80 ownership of semantic role | `REJECTED` | AA80 is an implementation wrapper that explicitly does not determine role or attachment. |
-| parser/runtime change | `NOT_AUTHORIZED` | Research outcome requires later audit before any implementation decision. |
+| parser/runtime change | `NOT_AUTHORIZED` | Research outcome requires a later audit before implementation decisions. |
 
 ## Lexical `留`
 
-Words.hk defines `留 lau4` as continuing to be active in the same place without leaving, with English glosses including ‘remain’, ‘stay’, and ‘reside’. Its examples include locative material after `留`, such as staying in a safe place.
+Words.hk defines `留 lau4` as continuing to be in the same place without leaving, with English glosses including ‘remain’, ‘stay’, and ‘reside’. This supports the lexical identity and stay/remain meaning.
 
-Close contextual attestations include:
+The entry’s cited locative example contains `留低`, not bare `留`, so it is not used to establish the syntax of bare `留 + 喺`.
+
+Bare `留喺 + place + activity` is instead supported as contextual attestation by examples including:
 
 ```text
 禮拜六日我鍾意留喺屋企煲劇。
-On weekends, I like staying home and watching a drama series for a long time.
+On weekends, I like staying home and watching drama series for a long time.
 ```
 
-and learner/pedagogical examples such as `留喺屋企休息`.
+and the exact Glossika I078 string.
 
-These sources support lexical identity and natural contextual combinations. They do not independently define a construction-level valency rule for every `留 + 喺 + NP + VP` sequence.
+These attestations establish occurrence and interpretation, not a general construction-level valency rule.
 
 ## Preverbal `喺 + place` event location
 
@@ -89,18 +93,18 @@ S/he swims at the swimming pool.
 S/he is at the swimming pool.
 ```
 
-For I078, the contiguous substring:
+The contiguous I078 substring:
 
 ```text
 喺屋企睇電視
 at home watch television
 ```
 
-therefore fits an independently supported event-location order. This does not establish whether the PP attaches only to `睇電視`, because `留` precedes it and is itself compatible with a locative continuation.
+therefore fits an independently supported event-location order. This supports event-location scope over the watching event, but does not prove exclusive syntactic attachment because lexical `留` precedes the PP and the exact complete sentence has not been directly analyzed.
 
 ## Static, event, and result-location boundaries
 
-The following profiles must remain separate:
+Keep the following profiles separate:
 
 ```text
 我喺屋企。
@@ -123,7 +127,7 @@ S/he threw the book onto the floor.
 
 Postverbal `喺` can encode a resulting or participant location. It must not inherit the same role merely because `喺` is present.
 
-I078 visibly contains lexical `留` before the PP and therefore cannot be reduced to any one of these simpler profiles without preserving the extra predicate.
+I078 contains lexical `留` before the PP and cannot be reduced to any of these simpler profiles without preserving that predicate.
 
 ## `喺度` ambiguity boundary
 
@@ -133,13 +137,13 @@ Wong et al. and the existing repository sources distinguish:
 我喺度做功課。
 ```
 
-which may mean either ‘I do my homework here’ or ‘I am doing my homework’, depending on context. This locative/progressive ambiguity is tied to `喺度`, not to every `喺 + lexical place` phrase.
+which may mean either ‘I do my homework here’ or ‘I am doing my homework’, depending on context. This locative/progressive ambiguity is tied to `喺度`, not every `喺 + lexical place` phrase.
 
-I078 contains `喺屋企`, not `喺度`. No progressive aspect marker is inserted. The source English progressive wording describes the situation but is not evidence of an overt Cantonese progressive construction.
+I078 contains `喺屋企`, not `喺度`. No progressive aspect marker is inserted. The progressive English translation describes the situation but is not evidence of an overt Cantonese progressive construction.
 
 ## Circumstance serial-verb compatibility
 
-Wong et al. define circumstance SVCs as structures in which the first verb describes the circumstance under which the action denoted by the second verb takes place. Their example is:
+Wong et al. define circumstance SVCs as structures in which the first verb describes the circumstance under which the action denoted by the second verb takes place:
 
 ```text
 搭地鐵 睇書
@@ -154,39 +158,34 @@ I078 is semantically compatible with this relation:
 stay at home | watch television
 ```
 
-The staying-at-home situation can be understood as the circumstance during which television watching occurs. However, the direct example has no intervening locative PP inside the first predicate and does not establish that every `stay + location + activity` sequence is a circumstance SVC.
+The staying-at-home situation may describe the circumstance during which watching occurs. The direct example, however, lacks an intervening `喺 + place` phrase inside its first predicate. It does not establish that every `stay + location + activity` sequence is a circumstance SVC.
 
-The correct disposition is therefore compatibility with a documented semantic SVC subtype, not direct proof that I078 belongs to one fixed serial-verb construction.
+The correct disposition is compatibility with a documented relation, not direct classification of I078 as one fixed serial-verb construction.
 
-## Attachment alternatives preserved
+## Source-supported attachment space
 
-### Analysis A: lexical stay predicate plus following activity
+### Stay predicate followed by activity
 
 ```text
 [留喺屋企] [睇電視]
 [stay at home] [watch television]
 ```
 
-The first predicate describes the circumstance of the second activity.
+This is compatible with the close circumstance relation and the exact contextual translation.
 
-### Analysis B: stay predicate plus event-location activity phrase
-
-```text
-留 [喺屋企睇電視]
-stay [watch television at home]
-```
-
-This reflects the independently supported `喺 + place + VP` substring but may require a specific relation between `留` and the following event.
-
-### Analysis C: shared-location layered composition
+### Event-location scope inside a layered sequence
 
 ```text
-留 + [喺屋企] + 睇電視
+留 + [喺屋企] + [睇電視]
 ```
 
-The overt location is interpreted with both remaining and watching, without requiring exclusive syntactic attachment to either predicate.
+The PP has independently supported event-location scope over `睇電視`, while the full sequence still preserves lexical `留` and does not decide an exclusive constituent boundary.
 
-Current direct evidence does not choose among these analyses. A parser may preserve the visible components and an unresolved attachment trace rather than inventing a unique hierarchy.
+### Shared-location interpretation
+
+The overt place may be interpreted with both the stay situation and the watching event. This is a semantic scope possibility, not a claim that one hidden syntactic node or deleted marker exists.
+
+Current evidence does not choose one hierarchy. A parser may preserve the overt components and unresolved attachment rather than inventing a clausal complement after `留`.
 
 ## Neighboring profiles excluded
 
@@ -198,27 +197,28 @@ Keep I078 separate from:
 - progressive `喺度 + VP`;
 - static `subject + 喺 + place` predication;
 - overt conjunctions such as `同埋`, `而且`, or `然後`;
-- covert purpose ‘stay in order to watch’ unless context independently supplies it;
+- covert purpose ‘stay in order to watch’ unless context supplies it;
 - complement clauses selected by cognition or speech verbs;
-- fragments that depend on a prior subject;
-- lexical senses of `留` meaning leave behind, retain an object, reserve, detain, or leave a message.
+- fragments requiring a prior subject;
+- non-locative lexical senses of `留` such as leave behind, retain an object, reserve, detain, or leave a message.
 
 ## Repository consequence
 
-Current AA80 `OvertPlaceExpressionWrapper` is a parser representation over several overt spatial environments. Its accepted profile explicitly says it does not determine whether the place expression is a subject, topic, adjunct, predicate, goal, result, or coda.
+AA80 `OvertPlaceExpressionWrapper` is a parser representation over several overt spatial environments. Its accepted profile explicitly does not determine whether a place expression is a subject, topic, adjunct, predicate, goal, result, or coda.
 
-I078 confirms why that limitation matters. AA80 may preserve the `喺屋企` surface span, but it cannot serve as linguistic evidence for the event-location role or decide attachment to `留` versus `睇電視`.
+AA80 may preserve the `喺屋企` surface span, but it cannot serve as linguistic evidence for event-location role or decide attachment to `留` versus `睇電視`.
 
-No current permanent identity found in the bounded audit directly owns the complete lexical-stay + location + activity relation. This is a possible composition gap, not an instruction to allocate a UUID.
+No current permanent identity found in the bounded audit directly owns the complete stay + location + activity relation. This is a possible composition gap, not an instruction to allocate a UUID.
 
 ## Terminal outcome
 
 - `留` stay/remain: `LEXICALLY_SUPPORTED`.
-- `留喺 + place`: `CONTEXTUALLY_ATTESTED`.
+- bare `留喺 + place + activity`: `CONTEXTUALLY_ATTESTED`.
 - `喺 + place + VP`: `DIRECTLY_SUPPORTED_EVENT_LOCATION_PROFILE`.
 - circumstance relation: `DIRECTLY_DOCUMENTED_CLOSE_PROFILE`.
 - I078: `SUPPORTED_COMPONENTS_WITH_UNRESOLVED_ATTACHMENT`.
 - exact circumstance-SVC classification: `COMPATIBLE_NOT_ESTABLISHED`.
+- `留` selecting a locative activity clause: `NOT_SUPPORTED`.
 - progressive analysis: `NOT_SUPPORTED_BY_OVERT_FORM`.
 - purpose relation: `NOT_ESTABLISHED`.
 - AA80 semantic-role transfer: `NOT_AUTHORIZED`.
@@ -226,13 +226,13 @@ No current permanent identity found in the bounded audit directly owns the compl
 
 ## Next separately claimed action
 
-Open one bounded parser-output audit for I078 and controlled contrasts. It should test whether current output preserves:
+Open one bounded parser-output audit for I078 and controlled contrasts. It should preserve:
 
 1. lexical `留` as an overt predicate;
 2. the complete `喺屋企` place span;
 3. `睇電視` as a following activity VP;
 4. one overt subject without inserting a second subject;
-5. no hidden conjunction, purpose marker, or progressive marker;
+5. no hidden conjunction, purpose marker, progressive marker, or selected clausal complement;
 6. AA80 only as a role-neutral compatibility wrapper, if it appears;
 7. punctuation and full surface fidelity.
 
@@ -245,9 +245,9 @@ Contrast set:
 - a postverbal result-location example;
 - a motion-purpose example;
 - a posture SVC example;
-- lexical non-locative `留` examples.
+- non-locative lexical `留` examples.
 
-A contextual corpus inventory should then collect `留喺 + place + activity` examples with full surrounding context. Only if the corpus and parser audit expose a stable relation not preserved compositionally should a separate identity/composition issue be opened.
+A contextual corpus inventory should collect `留喺 + place + activity` examples with full surrounding context. Only if corpus and parser evidence expose a stable relation not preserved compositionally should a separate identity/composition issue be opened.
 
 ## Protected-state confirmation
 
