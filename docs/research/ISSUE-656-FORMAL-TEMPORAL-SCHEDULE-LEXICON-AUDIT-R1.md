@@ -45,7 +45,7 @@ rather than replacing the immutable source gloss.
 
 ### Register limit
 
-The lexeme has historical and written associations, but the checked sources used here do not establish a categorical formal, literary, rare, or non-colloquial label for contemporary Hong Kong Cantonese. A contextual corpus is required before assigning register or beginner-frequency metadata.
+The checked lexical sources establish historical origin, form, reading, and meaning. They do not establish a categorical formal, literary, written, rare, or non-colloquial label for contemporary Hong Kong Cantonese. A contextual corpus is required before assigning register or beginner-frequency metadata.
 
 Terminal result:
 
@@ -67,31 +67,22 @@ Checked Cantonese lexical evidence gives:
 schedule; itinerary
 ```
 
-The term can refer to an ordered plan of activities, appointments, or travel stages. The Week 18 gloss `schedule` is accurate as a basic gloss but does not show the itinerary/program range.
+The term can refer to an ordered plan of activities or travel stages. The Week 18 gloss `schedule` is accurate as a basic gloss but does not show the itinerary/program range.
 
 ### Cantonese and written-language boundary
 
 A checked dictionary explicitly records the term as used in Cantonese and in Mandarin or Standard Written Chinese. This supports lexical availability across those varieties. It does **not** establish:
 
 - ordinary spoken frequency in Hong Kong Cantonese;
-- preference over `時間表`, `行程`, or another context-specific expression;
+- preference over a context-specific alternative;
 - an exclusively written or formal register;
 - A1 suitability.
 
 The safe classification is a valid shared lexical item whose contextual distribution remains to be measured.
 
-### Neighboring terms
+### Candidate comparison terms
 
-Keep separate:
-
-- `日曆` calendar;
-- `時間表` timetable or schedule organized by times;
-- `行程` itinerary or course of a trip;
-- `賽程` competition schedule;
-- `議程` agenda;
-- `安排` arrangement or plan.
-
-These comparisons identify semantic neighbors, not universal replacements.
+A later corpus task may compare `日程` with terms such as `行程`, `時間表`, `議程`, `賽程`, and `安排`. This packet does not adjudicate those terms as synonyms or replacements because they were not independently reviewed in this evidence ledger.
 
 Terminal result:
 
@@ -135,16 +126,15 @@ deadline date; cutoff date
 
 The source gloss is therefore broad rather than false.
 
-### Neighboring deadline expressions
+### Checked neighboring deadline expressions
 
-Keep separate:
+The inspected lexical sources support these distinct neighboring profiles:
 
 - `截止時間` cutoff or deadline time;
-- `限期` or `期限` time limit/deadline period;
-- `死線` or borrowed `dead` in particular colloquial environments;
-- `到期日` expiry or due date where independently appropriate.
+- `限期` or `期限` time-limit/deadline period;
+- borrowed `dead det1` in some colloquial deadline or cutoff contexts.
 
-The existence of these alternatives does not make `截止日期` unnatural or justify replacing it. Register, domain, and frequency require contextual evidence.
+These forms are not universal replacements for `截止日期`. Their domain, frequency, and register require contextual evidence.
 
 Terminal result:
 
@@ -216,8 +206,8 @@ REGISTER_AND_A1_STATUS_UNRESOLVED
 
 No current construction identity is needed. The strongest safe next actions are:
 
-1. create a source-preserving teaching annotation that adds the narrower glosses without rewriting source fields;
-2. run a contextual Hong Kong Cantonese corpus/register inventory for all three forms and their principal alternatives;
+1. create a source-preserving teaching annotation that adds narrower glosses without rewriting source fields;
+2. run a contextual Hong Kong Cantonese corpus/register inventory for the three forms and explicitly scoped comparison candidates;
 3. audit lexical representation only if the runtime needs orthographic variants, sense distinctions, or provenance-aware learner labels;
 4. keep construction and parser work out of scope unless full-sentence evidence later reveals a grammatical issue.
 
@@ -238,11 +228,11 @@ No current construction identity is needed. The strongest safe next actions are:
 
 Open one bounded corpus/register inventory using contextual Hong Kong Cantonese examples for:
 
-- `剎那／刹那`, `一剎那`, and ordinary short-time alternatives;
-- `日程`, `行程`, `時間表`, `議程`, and `安排`;
-- `截止日期`, `截止時間`, `限期`, `期限`, and colloquial deadline expressions.
+- `剎那／刹那`, `一剎那`, and explicitly sourced short-time comparison terms;
+- `日程` and candidate schedule/itinerary comparison terms that receive their own lexical verification;
+- `截止日期`, `截止時間`, `限期`, `期限`, and borrowed `dead det1`.
 
-The inventory should record genre, medium, speaker context, meaning, and surrounding syntax. It must not infer register from raw counts alone.
+The inventory should record genre, medium, speaker context, meaning, and surrounding syntax. It must not infer register from raw counts alone, and each comparison term must receive its own provenance row before substantive conclusions are drawn.
 
 A separate source-preserving teaching derivative may then add narrower glosses and orthographic notes. Runtime lexical edits require a fresh design claim.
 
