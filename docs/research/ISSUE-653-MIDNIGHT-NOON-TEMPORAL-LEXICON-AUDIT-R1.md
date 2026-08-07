@@ -22,18 +22,19 @@ The duplicate English gloss `midnight` materially compresses a learner-relevant 
 
 The duplicate English gloss `noon` is acceptable as a basic gloss for both `正午` and `中午`. Current checked lexicographic evidence explicitly defines `中午` as equivalent to `正午` at daytime twelve, while `正午` is the more exact “high noon / twelve o’clock in the daytime” expression. The available evidence does not justify a strong universal colloquial-versus-formal rule.
 
-The Week 18 `半夜 bun3 je6` reading is **not declared categorically wrong**. Current sources conflict in notation:
+The Week 18 `半夜 bun3 je6` reading is **not declared categorically wrong**. Current sources differ in pronunciation notation:
 
-- Words.hk gives the lexical entry as `bun3 je2`;
-- CantoDict records `bun3 je6/6*2`, explicitly preserving a tone-6 base and a changed-tone-2 representation;
-- direct changed-tone scholarship establishes the general Cantonese process of replacing a base tone with a high-rising or high-level tone in derived lexical environments, but the inspected article does not analyze `半夜` itself.
+- Words.hk gives `bun3 je2`;
+- CantoDict displays `bun3 je6/6*2`;
+- direct scholarship establishes Cantonese changed tone generally but does not analyze `半夜` in the inspected evidence.
 
 The safe disposition is therefore:
 
 ```text
 SOURCE_BUN3_JE6_PRESERVED;
-CURRENT_LEARNER_FACING_CHANGED_TONE_BUN3_JE2_ATTESTED;
-EXACT_VARIANT_DISTRIBUTION_NOT_ESTABLISHED
+HIGH_RISING_BUN3_JE2_SURFACE_ATTESTED;
+CHANGED_TONE_INTERPRETATION_COMPATIBLE_NOT_LEXEME_SPECIFICALLY_PROVEN;
+EXACT_VARIANT_DISTRIBUTION_AND_LEARNER_PREFERENCE_NOT_ESTABLISHED
 ```
 
 No immutable source, runtime lexicon, pronunciation table, construction identity, status, corpus classification, survey, release, or deployment state is changed.
@@ -55,19 +56,20 @@ This term can occur inside a temporal PP or time expression, as in a source exam
 
 Terminal result: `VALID_MIDNIGHT_CENTERED_NOUN`.
 
-### 半夜 `bun3 je2` or base/changed-tone notation
+### 半夜 and the `je6／je2` notation difference
 
-Words.hk classifies `半夜` as a noun and gives the pronunciation `bun3 je2`. Its definition covers the period after twelve at night until dawn, with English glosses including “midnight” and “late at night.”
+Words.hk classifies `半夜` as a noun, gives `bun3 je2`, and defines a period after twelve at night until dawn, with English glosses including “midnight” and “late at night.”
 
-This range is broader than the checked `午夜` definition. In many contexts, translating either term as “midnight” is possible, but the source gloss does not teach the difference between a clock-centered term and a broader late-night interval.
+This range is broader than the checked `午夜` definition. Translating either term as “midnight” can be possible in context, but the source gloss does not teach the clock-centered versus broader-interval distinction.
 
-CantoDict records `半夜` as `bun3 je6/6*2`. That notation is compatible with a base tone 6 and a changed-tone realization 2. It demonstrates that `bun3 je6` is not safely dismissible as an arbitrary error, while also showing that the source’s single unqualified reading is insufficient for a learner-facing pronunciation decision.
+CantoDict displays `半夜` as `bun3 je6/6*2`. The entry establishes that one dictionary preserves both tone-6 and tone-2-related notation for the second syllable. Combined with general changed-tone scholarship, this is compatible with a base-versus-changed-tone interpretation. The entry and inspected scholarship do not establish the exact lexeme-specific analysis, distribution, or preferred learner form.
 
 Terminal result:
 
 ```text
 VALID_BROADER_LATE_NIGHT_NOUN;
 SOURCE_GLOSS_UNDERSPECIFIED;
+HIGH_RISING_JE2_SURFACE_ATTESTED;
 PRONUNCIATION_VARIANT_REVIEW_REQUIRED
 ```
 
@@ -83,7 +85,7 @@ Terminal result: `VALID_EXACT_NOON_NOUN`.
 
 Words.hk defines `中午` as equivalent to `正午`, daytime twelve o’clock, with glosses “noon; midday.” The same entry records a separate Macau-specific lexical sense meaning “lunch,” abbreviated from `中午飯`.
 
-For ordinary Hong Kong Cantonese temporal use, the checked source does not establish a categorical semantic opposition between `中午` and `正午`. `中午` is compatible with a broader everyday “noon / midday” label, while `正午` explicitly encodes exact noon in the dictionary definitions, but frequency and register require corpus evidence.
+For ordinary Hong Kong Cantonese temporal use, the checked source does not establish a categorical semantic opposition between `中午` and `正午`. `中午` is compatible with an ordinary “noon / midday” label, while `正午` explicitly encodes exact noon in the dictionary definitions, but frequency and register require corpus evidence.
 
 Terminal result:
 
@@ -93,28 +95,29 @@ TEMPORAL_GLOSS_ACCEPTABLE;
 MACAU_LUNCH_SENSE_SEPARATE
 ```
 
-## Changed-tone boundary for 半夜
+## Changed-tone interpretation boundary
 
-Alderete, Chan, and Tanaka analyze Cantonese changed tone as morphological replacement of a base tone by a high-level or high-rising tone in certain derived environments. The article establishes:
+Alderete, Chan, and Tanaka analyze Cantonese changed tone as morphological replacement of a base tone by a high-level or high-rising tone in selected derived environments. The article establishes:
 
 - changed tone is a real Cantonese morphological phenomenon;
-- base and changed-tone information may both be relevant to lexical representation;
-- the process has lexical and constructional limits and cannot be applied mechanically to every compound.
+- lexical representations may need to distinguish base and derived tonal information;
+- the process has empirical limits and cannot be applied mechanically to every compound.
 
-The article does not list `半夜` in the inspected evidence used here. Therefore it supports interpretation of the dictionary notation but does not independently prove:
+The article does not list `半夜` in the inspected evidence used here. It therefore supports interpretation of the dictionary disagreement only at a general level and does not independently prove:
 
+- that `je2` in `半夜` is derived by that process;
 - that every speaker uses `bun3 je2`;
-- that `bun3 je6` is impossible;
-- that the alternation is optional in all registers;
-- that the source intended an underlying rather than spoken form;
+- that `bun3 je6` is impossible or citation-only;
+- that the alternation is optional in every register;
+- that the Week 18 source intended an underlying form;
 - that a global tone-change rule should be implemented.
 
 The exact lexeme-specific evidence remains dictionary-level:
 
-- one checked source foregrounds `bun3 je2`;
-- another preserves `je6/6*2`.
+- one checked source gives `bun3 je2`;
+- another displays `je6/6*2`.
 
-A corrected teaching derivative should foreground the currently attested spoken changed-tone form while recording the base/variant notation and source disagreement. It should not rewrite the immutable Week 18 row.
+A later lexical-design and contextual pronunciation review must decide learner-facing preference. This packet does not instruct a corrected derivative to foreground either form.
 
 ## Lexical-class and syntax boundary
 
@@ -144,11 +147,12 @@ Keep separate:
 
 The Week 18 source places all four terms in an A1 lesson, but source placement does not prove ordinary A1 frequency or register.
 
-Checked dictionaries establish lexical validity, not acquisition level. The available evidence supports these limited observations:
+Checked dictionaries establish lexical validity, not acquisition level. The available evidence supports only:
 
-- `午夜` and `正午` are exact clock-centered terms in their definitions;
-- `半夜` and `中午` have broader ordinary temporal ranges or uses;
-- a stronger claim that the first pair is formal and the second pair colloquial requires corpus or controlled register evidence.
+- `午夜` and `正午` have exact clock-centered definitions;
+- `半夜` has a broader late-night/post-midnight range;
+- `中午` overlaps with exact noon and has a separate regional lunch sense;
+- stronger formal/colloquial or frequency claims require corpus or controlled register evidence.
 
 No CEFR or learner-level reclassification is authorized.
 
@@ -168,7 +172,8 @@ NO_PRONUNCIATION_BLOCKER
 RETAIN_VALID_LEXEME;
 GLOSS_MIDNIGHT_TOO_NARROW_AS_SOLE_TEACHING_GLOSS;
 SOURCE_BUN3_JE6_PRESERVED;
-BUN3_JE2_CHANGED_TONE_ATTESTED;
+HIGH_RISING_BUN3_JE2_SURFACE_ATTESTED;
+CHANGED_TONE_ANALYSIS_COMPATIBLE_NOT_PROVEN_FOR_LEXEME;
 VARIANT_DISTRIBUTION_UNRESOLVED
 ```
 
@@ -190,13 +195,14 @@ MIDDAY_AND_MACAU_LUNCH_SENSES_RECORDED_SEPARATELY
 
 ## Repository consequence
 
-No current construction identity is needed for these lexical distinctions. The strongest later action is a source-preserving corrected teaching derivative or lexical annotation record that:
+No current construction identity is needed for these lexical distinctions. The strongest later action is a lexical-representation design audit or source-preserving annotation record that:
 
 1. distinguishes `午夜` from the broader `半夜` interval;
-2. records `半夜 bun3 je2` as a current learner-facing pronunciation while preserving the Week 18 `bun3 je6` source value and CantoDict base/changed-tone notation;
-3. treats `正午` and `中午` as overlapping noon terms without inventing a hard register split;
-4. keeps the Macau “lunch” sense of `中午` separate;
-5. does not alter runtime until a homograph/variant-aware lexical design is reviewed.
+2. preserves Week 18 `bun3 je6`, records current `bun3 je2` and CantoDict’s dual notation, and keeps the changed-tone interpretation explicitly provisional at lexeme level;
+3. determines learner-facing preference only after contextual pronunciation and register review;
+4. treats `正午` and `中午` as overlapping noon terms without inventing a hard register split;
+5. keeps the Macau “lunch” sense of `中午` separate;
+6. does not alter runtime until a variant-aware lexical design is reviewed.
 
 ## Terminal outcome
 
@@ -206,8 +212,9 @@ No current construction identity is needed for these lexical distinctions. The s
 - `正午` versus `中午`: `SUBSTANTIAL_TEMPORAL_OVERLAP_WITH_DIFFERENT_DEFINITIONAL_FOCUS`.
 - source duplicate “noon” gloss: `ACCEPTABLE_BASIC_GLOSS`.
 - `半夜 bun3 je6`: `PRESERVE_AS_SOURCE_READING_NOT_CATEGORICALLY_REJECTED`.
-- `半夜 bun3 je2`: `CURRENT_CHANGED_TONE_SURFACE_ATTESTED`.
-- exact pronunciation distribution: `UNRESOLVED`.
+- `半夜 bun3 je2`: `HIGH_RISING_SURFACE_ATTESTED`.
+- lexeme-specific changed-tone derivation: `COMPATIBLE_NOT_PROVEN`.
+- exact pronunciation distribution and learner preference: `UNRESOLVED`.
 - global changed-tone rule: `NOT_AUTHORIZED`.
 - source/runtime/status change: no.
 
@@ -216,13 +223,13 @@ No current construction identity is needed for these lexical distinctions. The s
 Open one bounded lexical-representation design audit before any runtime edit. It should determine whether the project’s lexicon can preserve:
 
 - immutable source reading;
-- citation/base tone;
-- changed-tone surface;
+- alternative dictionary surfaces and notations;
+- hypothesized base/derived relationships separately from directly attested pronunciation;
 - regional or register variants;
-- learner-facing preferred form;
+- learner-facing preferred form only after evidence review;
 - provenance per variant.
 
-A small corpus/register inventory should separately compare `午夜／半夜` and `正午／中午` in contextual Hong Kong Cantonese. It should measure time range and register without using raw frequency as proof of interchangeability.
+A small corpus/register and pronunciation inventory should separately compare `午夜／半夜` and `正午／中午` in contextual Hong Kong Cantonese. It should not use raw frequency as proof of interchangeability or use general changed-tone theory as lexeme-specific pronunciation proof.
 
 ## Protected-state confirmation
 
