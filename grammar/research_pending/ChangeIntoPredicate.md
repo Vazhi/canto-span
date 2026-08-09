@@ -47,10 +47,10 @@ independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/ChangeIntoPredicate.json"
 standard_test_coverage: "positive_and_boundary"
-standard_positive_test_count: 1
-standard_boundary_test_count: 2
+standard_positive_test_count: 4
+standard_boundary_test_count: 12
 standard_implementation_probe_count: 0
-standard_executable_test_count: 3
+standard_executable_test_count: 16
 source_ids: ["SRC-LAI-PANG-2023", "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"]
 runtime_active: true
 workflow_state: "archived"

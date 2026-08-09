@@ -1,9 +1,9 @@
 {
   "id": "canto-span",
   "name": "Canto Span",
-  "version": "0.5.219",
+  "version": "0.5.220",
   "minAppVersion": "1.5.0",
-  "description": "v0.5.219 narrows AA61 final-未 experiential questions to typed overt domains and explicit context-linked 食過未.",
+  "description": "v0.5.220 narrows AA11 to exact adjacent 變成 + 點 and closes neighboring result-complement boundaries.",
   "author": "Chris Crawford / OpenAI ChatGPT",
   "authorUrl": "",
   "isDesktopOnly": false

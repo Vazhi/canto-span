@@ -15,7 +15,8 @@ const createCantoSpanPlugin = require("./plugin/canto-span-plugin");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.219";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.220";
+// v0.5.220: narrows AA11 to exact adjacent 變成 + 點, records bounded VP scope/provenance, and closes neighboring wh/result boundaries.
 // v0.5.219: narrows AA61 final-未 experiential questions to overt typed experiential domains and context-licenses only the source-backed 食過未 short profile.
 // v0.5.218: closes AB15 structural boundaries with transparent modifier-bearing NP composition while preserving established bare and quantified NP behavior.
 // v0.5.217: separates unit-word category, lexical evidence, visible NP structure, and downstream policy while preserving the exact twelve-rule acceptance outcomes.

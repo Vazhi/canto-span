@@ -32,6 +32,113 @@
       "expected_profile": "ChangeIntoPredicate absent for a distinct causative-resultative strategy",
       "assertion": "construction_absent",
       "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#CIP-C04"
+    },
+    {
+      "case_id": "AA11-R1-01",
+      "source": "變成點？",
+      "class": "exact_bare_aa11_positive",
+      "expected_profile": "ChangeIntoPredicate spans only exact adjacent 變成點",
+      "assertion": "construction_present",
+      "provenance": "docs/research/ISSUE-614-BINSING-DIM-COMPLEMENT-PROFILES-R1.md#positive-aa11-cells"
+    },
+    {
+      "case_id": "AA11-R1-02",
+      "source": "佢變成點？",
+      "class": "subject_outside_exact_aa11_positive",
+      "expected_profile": "ChangeIntoPredicate remains the narrow 變成點 subspan while the overt subject stays outside",
+      "assertion": "construction_present",
+      "provenance": "docs/research/ISSUE-614-BINSING-DIM-COMPLEMENT-PROFILES-R1.md#span-and-composition-contract"
+    },
+    {
+      "case_id": "AA11-R1-03",
+      "source": "成個社會會變成點呀？",
+      "class": "modal_and_particle_outside_exact_aa11_positive",
+      "expected_profile": "ChangeIntoPredicate remains exact 變成點 under independently composed modal/question material",
+      "assertion": "construction_present",
+      "provenance": "docs/research/ISSUE-614-BINSING-DIM-COMPLEMENT-PROFILES-R1.md#positive-aa11-cells",
+      "source_ids": [
+        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+      ]
+    },
+    {
+      "case_id": "AA11-R1-04",
+      "source": "佢會變成點樣？",
+      "class": "dimjoeng_neighboring_wh_boundary",
+      "expected_profile": "ChangeIntoPredicate absent for attested neighboring 變成點樣 profile",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-614-BINSING-DIM-COMPLEMENT-PROFILES-R1.md#profile-dispositions"
+    },
+    {
+      "case_id": "AA11-R1-05",
+      "source": "佢會變成乜嘢？",
+      "class": "matje_result_identity_wh_boundary",
+      "expected_profile": "ChangeIntoPredicate absent for result-identity 變成乜嘢 profile",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-614-BINSING-DIM-COMPLEMENT-PROFILES-R1.md#profile-dispositions"
+    },
+    {
+      "case_id": "AA11-R1-06",
+      "source": "佢會變成點樣嘅人？",
+      "class": "dimjoeng_relative_np_boundary",
+      "expected_profile": "ChangeIntoPredicate absent for 變成點樣嘅 NP material",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-614-BINSING-DIM-COMPLEMENT-PROFILES-R1.md#neighboring-wh-profiles-that-must-not-silently-become-aa11"
+    },
+    {
+      "case_id": "AA11-R1-07",
+      "source": "佢變成老師。",
+      "class": "nominal_result_boundary",
+      "expected_profile": "ChangeIntoPredicate absent for ordinary lexical 變成 + NP result",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-614-BINSING-DIM-COMPLEMENT-PROFILES-R1.md#lexical-result-and-aspect-boundaries"
+    },
+    {
+      "case_id": "AA11-R1-08",
+      "source": "佢變成咗老師。",
+      "class": "aspectual_nominal_result_boundary",
+      "expected_profile": "ChangeIntoPredicate absent when perfective 咗 intervenes before a nominal result",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-614-BINSING-DIM-COMPLEMENT-PROFILES-R1.md#lexical-result-and-aspect-boundaries"
+    },
+    {
+      "case_id": "AA11-R1-09",
+      "source": "佢變緊做老師。",
+      "class": "progressive_bindo_transformation_boundary",
+      "expected_profile": "ChangeIntoPredicate absent for separate 變緊做 + NP transformation strategy",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-614-BINSING-DIM-COMPLEMENT-PROFILES-R1.md#lexical-result-and-aspect-boundaries"
+    },
+    {
+      "case_id": "AA11-R1-10",
+      "source": "佢成為咗老師。",
+      "class": "singwai_lexical_strategy_boundary",
+      "expected_profile": "ChangeIntoPredicate absent for separate 成為 + NP lexical strategy",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-614-BINSING-DIM-COMPLEMENT-PROFILES-R1.md#profile-dispositions"
+    },
+    {
+      "case_id": "AA11-R1-11",
+      "source": "佢變高咗。",
+      "class": "bare_change_property_boundary",
+      "expected_profile": "ChangeIntoPredicate absent for bare 變 + property change-state profile",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-614-BINSING-DIM-COMPLEMENT-PROFILES-R1.md#lexical-result-and-aspect-boundaries"
+    },
+    {
+      "case_id": "AA11-R1-12",
+      "source": "佢會變成？",
+      "class": "omitted_result_complement_boundary",
+      "expected_profile": "ChangeIntoPredicate absent when 變成 lacks overt 點/result material",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-614-BINSING-DIM-COMPLEMENT-PROFILES-R1.md#span-and-composition-contract"
+    },
+    {
+      "case_id": "AA11-R1-13",
+      "source": "佢會變成快啲點？",
+      "class": "intervening_material_boundary",
+      "expected_profile": "ChangeIntoPredicate absent when material intervenes between 變成 and 點",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-614-BINSING-DIM-COMPLEMENT-PROFILES-R1.md#span-and-composition-contract"
     }
   ],
   "np_cases": [],
@@ -39,14 +146,14 @@
   "coverage": {
     "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 0,
-    "focused_positive_count": 1,
-    "focused_boundary_count": 2,
+    "focused_positive_count": 4,
+    "focused_boundary_count": 12,
     "focused_review_only_count": 0,
     "np_case_count": 0,
     "implementation_probe_count": 0,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 1,
-    "boundary_case_count": 2,
-    "executable_case_count": 3
+    "positive_case_count": 4,
+    "boundary_case_count": 12,
+    "executable_case_count": 16
   }
 }
