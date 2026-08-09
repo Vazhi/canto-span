@@ -431,7 +431,12 @@ module.exports = function createANotAQuestionDetectors(dependencies = {}) {
         construction_type: "SubjectPredicateClause",
         template_family: "copular_a_not_a_bounded_complement",
         template: assignedSlots.map((slot) => `${slot}!`),
-        rule: "每 + subject + 都 + visible 鍾意 predicate material",
+        rule: ({
+          typed_vp: "每 + subject + 都 + 鍾意 + typed VP",
+          typed_object: "每 + subject + 都 + 鍾意 + typed NP",
+          perfective_np_object: "每 + subject + 都 + 鍾意 + 咗 + typed NP",
+          alternative_scalar: "每 + subject + 都 + 鍾意 + alternative material + 定係 + alternative material + 多啲",
+        })[predicateParts.profile] || `每 + subject + 都 + 鍾意 + reviewed profile ${predicateParts.profile}`,
         assigned_slots: assignedSlots,
         surfaces: children.map((node) => flattenSurface(node)),
         reason: "Reconstructs the reviewed bounded copular-question complement from visible preference material without certifying an accidental ModifierNP or restoring broad AB33 PreferenceVP matching.",
