@@ -57,12 +57,13 @@ test("A-not-A repeated verbs use distinct runtime structured offsets", () => {
   const root = record.construction_traces.find((trace) => trace.construction === "ANotAQuestion");
   const verbs = root.slot_bindings.filter((binding) => binding.slot === "action_verb");
   assert.equal(verbs.length, 2);
-  assert.deepEqual(
-    verbs.map((binding) => [binding.relative_span.start, binding.relative_span.end]),
-    [[1, 2], [3, 4]],
-  );
+  assert.equal(verbs[0].relative_span.start, 1);
+  assert.equal(verbs[0].relative_span.end, 2);
+  assert.equal(verbs[1].relative_span.start, 3);
+  assert.equal(verbs[1].relative_span.end, 4);
   assert(verbs.every((binding) => binding.relative_span.resolution === "runtime_structured_binding"));
-  assert.deepEqual(verbs.map((binding) => binding.source_span.start), [1, 3]);
+  assert.equal(verbs[0].source_span.start, 1);
+  assert.equal(verbs[1].source_span.start, 3);
 });
 
 test("nested predicate slots come directly from runtime child identity", () => {
