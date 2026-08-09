@@ -14,6 +14,7 @@ const commands = [
   ["construction_files", path.join(root, "tests", "run-constructions.js")],
   ["glossika_week16_lexicon", path.join(root, "tests", "tooling", "lexicon", "glossika-week16-runtime-lexicon.test.js")],
   ["unit_word_evidence", path.join(root, "tests", "tooling", "runtime", "unit-word-evidence.test.js")],
+  ["label_transition_policy", path.join(root, "tests", "tooling", "runtime", "label-transition-policy.test.js")],
   ["parser_coverage_auditor", path.join(root, "tests", "tooling", "parser-coverage", "coverage.test.js")],
   ["parser_coverage_enhanced", path.join(root, "tests", "tooling", "parser-coverage", "enhanced.test.js")],
 ];
