@@ -2,11 +2,45 @@
 
 module.exports = function createCompletionExperientialQuestionDetectors(dependencies = {}) {
   const {
-    construction, flattenSurface, hasConstruction, hasSurface, isParticle,
+    construction, firstToken, flattenSurface, hasConstruction, hasSurface, isParticle,
     isProductiveVo, isToken, nodeCanFillSlot, optionalSubjectOffset, traceInfo,
   } = dependencies;
 
+function objectlessExperientialFinalMeiNeedsContext(core) {
+  const offset = optionalSubjectOffset(core);
+  const experientialIndex = core.findIndex((node, index) => index >= offset && nodeCanFillSlot(node, "experiential_vp"));
+  if (experientialIndex !== offset) return null;
+  const meiIndex = core.findIndex((node, index) => index > experientialIndex && isToken(node, "未"));
+  if (meiIndex !== experientialIndex + 1) return null;
+  if (!core.slice(meiIndex + 1).every((node) => node.kind === "text" || isParticle(node))) return null;
+  const experiential = core[experientialIndex];
+  if (["object", "goal", "location"].some((slot) => nodeCanFillSlot(experiential, slot))) return null;
+  const head = firstToken(experiential);
+  if (!head || !nodeCanFillSlot(head, "action_verb")) return null;
+  return construction("NeedsContext", "needs context", core, {
+    slots: ["needs_context", "review_candidate", "problem_span"],
+    note: "Objectless V過未 is not accepted as AA61 without an explicit compatible discourse antecedent.",
+    trace: traceInfo("special_ambiguity_rule", {
+      construction_type: "NeedsContext",
+      candidate_construction_type: "ExperientialQuestion",
+      candidate_profile: "objectless_experiential_final_mei",
+      context_requirement_status: "context_required",
+      missing_argument_slots: ["object_or_experiential_domain"],
+      antecedent_status: "not_observed",
+      discourse_license_not_observed: true,
+      event_head_surface: flattenSurface(head),
+      question_marker_surface: "未",
+      source_backed_contextual_short_head_surfaces: ["食"],
+      hidden_object_insertion: false,
+      reason: "The overt V過 + final 未 sequence is structurally compatible with AA61, but the reviewed objectless short profile is discourse-dependent. Only separately licensed context may resolve it.",
+      not_claims: ["not_context_free_aa61", "not_fabricated_object", "not_generalized_object_omission"],
+    }),
+  });
+}
+
 function completionQuestionFallback(core) {
+  const objectlessExperiential = objectlessExperientialFinalMeiNeedsContext(core);
+  if (objectlessExperiential) return objectlessExperiential;
   const offset = optionalSubjectOffset(core);
   if (core.length - offset < 2) return null;
   const meiIndex = core.findIndex((node, index) => index >= offset && isToken(node, "未"));
@@ -79,18 +113,37 @@ function experientialQuestionBoundaryFallback(core) {
       }),
     });
   }
-  const finalMeiIndex = core.findIndex((node, index) => index > experientialIndex && flattenSurface(node) === "未");
+  const finalMeiIndex = core.findIndex((node, index) => index > experientialIndex && isToken(node, "未"));
   const finalMeiTailIsOnlyParticles = finalMeiIndex >= 0 && core.slice(finalMeiIndex + 1).every((node) => node.kind === "text" || isParticle(node));
-  if (experientialIndex >= 0 && finalMeiIndex >= 0 && finalMeiTailIsOnlyParticles) {
+  const prefix = experientialIndex >= 0 ? core.slice(0, experientialIndex) : [];
+  const prefixIsOnlyOptionalSubject = prefix.length === 0 || (prefix.length === 1 && nodeCanFillSlot(prefix[0], "subject"));
+  const intervening = experientialIndex >= 0 && finalMeiIndex >= 0 ? core.slice(experientialIndex + 1, finalMeiIndex) : [];
+  const interveningIsTypedDomain = intervening.every((node) => ["object", "goal", "location"].some((slot) => nodeCanFillSlot(node, slot)));
+  const experientialCarriesTypedDomain = experientialIndex >= 0 && ["object", "goal", "location"].some((slot) => nodeCanFillSlot(core[experientialIndex], slot));
+  const hasOvertTypedDomain = experientialCarriesTypedDomain || intervening.length > 0;
+  if (experientialIndex >= 0 && finalMeiIndex >= 0 && finalMeiTailIsOnlyParticles
+      && prefixIsOnlyOptionalSubject && interveningIsTypedDomain && hasOvertTypedDomain) {
+    const assignedSlots = core.map((node, index) => {
+      if (index < experientialIndex) return "subject";
+      if (index === experientialIndex) return "experiential_vp";
+      if (index > experientialIndex && index < finalMeiIndex) return "topic_or_object";
+      if (index === finalMeiIndex) return "question_marker";
+      return isParticle(node) ? "particle" : "retained_terminal_text";
+    });
     return construction("ExperientialQuestion", "Exp未", core, {
-      note: "Source-linked final-未 experiential question: overt experiential VP followed by final 未 and optional particle.",
-      trace: traceInfo("generative_template", {
+      note: "Source-linked final-未 experiential question with typed overt experiential domain and controlled final-particle tail.",
+      trace: traceInfo("construction_template", {
         construction_type: "ExperientialQuestion",
-        template_family: "generative_template",
+        template_family: "construction_template",
         template: ["subject?", "experiential_vp!", "topic_or_object?", "question_marker!", "particle?"],
-        constraints: { final_mei_after_experiential_material: true },
+        constraints: {
+          slot_surface_in: { question_marker: ["未"] },
+          typed_experiential_domain_required: true,
+          unrelated_intervening_material_disallowed: true,
+        },
+        assigned_slots: assignedSlots,
         surfaces: core.map((node) => flattenSurface(node)),
-        reason: "The final 未 profile is distinct from preverbal 未 negative experiential statements and 有冇 experiential questions.",
+        reason: "AA61 requires a typed experiential child plus overt typed domain material and final 未; unrelated interveners and context-free object omission remain outside this matcher.",
       }),
     });
   }

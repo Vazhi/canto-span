@@ -4040,8 +4040,13 @@ var require_construction_templates = __commonJS({
       {
         type: "ExperientialQuestion",
         label: "Exp未",
+        template_family: "construction_template",
         template: ["subject?", "experiential_vp!", "question_marker!", "particle?"],
-        note: "Experiential question with final 未: experiential VP + question marker."
+        constraints: {
+          slot_surface_in: { question_marker: ["未"] },
+          slot_must_have_any_slots: { experiential_vp: ["object", "goal", "location"] }
+        },
+        note: "Bounded source-linked experiential question with overt typed experiential predicate/domain followed by final 未 and optional particle. Objectless short forms require separate explicit discourse licensing."
       },
       {
         type: "NegativeExperiential",
@@ -6517,6 +6522,17 @@ var require_template_matcher = __commonJS({
           for (const slot of guardedSlots) {
             const matchingAssignments = assignments.filter((item) => item.slot === slot);
             if (!matchingAssignments.length || matchingAssignments.some((item) => !nodeCanLicenseEvidenceGatedObject2(item.node))) return false;
+          }
+        }
+        if (constraints.slot_must_have_any_slots) {
+          for (const [slot, requiredSlots] of Object.entries(constraints.slot_must_have_any_slots || {})) {
+            const required = requiredSlots || [];
+            const matchingAssignments = assignments.filter((item) => item.slot === slot);
+            if (!matchingAssignments.length) return false;
+            if (matchingAssignments.some((item) => {
+              const slots = nodeSlots2(item.node);
+              return !required.some((requiredSlot) => slots.includes(requiredSlot));
+            })) return false;
           }
         }
         if (constraints.slot_must_not_have_slots) {
@@ -10241,6 +10257,7 @@ var require_completion_experiential = __commonJS({
     module2.exports = function createCompletionExperientialQuestionDetectors2(dependencies = {}) {
       const {
         construction: construction2,
+        firstToken: firstToken2,
         flattenSurface: flattenSurface2,
         hasConstruction: hasConstruction2,
         hasSurface: hasSurface2,
@@ -10251,7 +10268,40 @@ var require_completion_experiential = __commonJS({
         optionalSubjectOffset: optionalSubjectOffset2,
         traceInfo: traceInfo2
       } = dependencies;
+      function objectlessExperientialFinalMeiNeedsContext(core) {
+        const offset = optionalSubjectOffset2(core);
+        const experientialIndex = core.findIndex((node, index) => index >= offset && nodeCanFillSlot2(node, "experiential_vp"));
+        if (experientialIndex !== offset) return null;
+        const meiIndex = core.findIndex((node, index) => index > experientialIndex && isToken2(node, "未"));
+        if (meiIndex !== experientialIndex + 1) return null;
+        if (!core.slice(meiIndex + 1).every((node) => node.kind === "text" || isParticle2(node))) return null;
+        const experiential = core[experientialIndex];
+        if (["object", "goal", "location"].some((slot) => nodeCanFillSlot2(experiential, slot))) return null;
+        const head = firstToken2(experiential);
+        if (!head || !nodeCanFillSlot2(head, "action_verb")) return null;
+        return construction2("NeedsContext", "needs context", core, {
+          slots: ["needs_context", "review_candidate", "problem_span"],
+          note: "Objectless V過未 is not accepted as AA61 without an explicit compatible discourse antecedent.",
+          trace: traceInfo2("special_ambiguity_rule", {
+            construction_type: "NeedsContext",
+            candidate_construction_type: "ExperientialQuestion",
+            candidate_profile: "objectless_experiential_final_mei",
+            context_requirement_status: "context_required",
+            missing_argument_slots: ["object_or_experiential_domain"],
+            antecedent_status: "not_observed",
+            discourse_license_not_observed: true,
+            event_head_surface: flattenSurface2(head),
+            question_marker_surface: "未",
+            source_backed_contextual_short_head_surfaces: ["食"],
+            hidden_object_insertion: false,
+            reason: "The overt V過 + final 未 sequence is structurally compatible with AA61, but the reviewed objectless short profile is discourse-dependent. Only separately licensed context may resolve it.",
+            not_claims: ["not_context_free_aa61", "not_fabricated_object", "not_generalized_object_omission"]
+          })
+        });
+      }
       function completionQuestionFallback2(core) {
+        const objectlessExperiential = objectlessExperientialFinalMeiNeedsContext(core);
+        if (objectlessExperiential) return objectlessExperiential;
         const offset = optionalSubjectOffset2(core);
         if (core.length - offset < 2) return null;
         const meiIndex = core.findIndex((node, index) => index >= offset && isToken2(node, "未"));
@@ -10320,18 +10370,36 @@ var require_completion_experiential = __commonJS({
             })
           });
         }
-        const finalMeiIndex = core.findIndex((node, index) => index > experientialIndex && flattenSurface2(node) === "未");
+        const finalMeiIndex = core.findIndex((node, index) => index > experientialIndex && isToken2(node, "未"));
         const finalMeiTailIsOnlyParticles = finalMeiIndex >= 0 && core.slice(finalMeiIndex + 1).every((node) => node.kind === "text" || isParticle2(node));
-        if (experientialIndex >= 0 && finalMeiIndex >= 0 && finalMeiTailIsOnlyParticles) {
+        const prefix = experientialIndex >= 0 ? core.slice(0, experientialIndex) : [];
+        const prefixIsOnlyOptionalSubject = prefix.length === 0 || prefix.length === 1 && nodeCanFillSlot2(prefix[0], "subject");
+        const intervening = experientialIndex >= 0 && finalMeiIndex >= 0 ? core.slice(experientialIndex + 1, finalMeiIndex) : [];
+        const interveningIsTypedDomain = intervening.every((node) => ["object", "goal", "location"].some((slot) => nodeCanFillSlot2(node, slot)));
+        const experientialCarriesTypedDomain = experientialIndex >= 0 && ["object", "goal", "location"].some((slot) => nodeCanFillSlot2(core[experientialIndex], slot));
+        const hasOvertTypedDomain = experientialCarriesTypedDomain || intervening.length > 0;
+        if (experientialIndex >= 0 && finalMeiIndex >= 0 && finalMeiTailIsOnlyParticles && prefixIsOnlyOptionalSubject && interveningIsTypedDomain && hasOvertTypedDomain) {
+          const assignedSlots = core.map((node, index) => {
+            if (index < experientialIndex) return "subject";
+            if (index === experientialIndex) return "experiential_vp";
+            if (index > experientialIndex && index < finalMeiIndex) return "topic_or_object";
+            if (index === finalMeiIndex) return "question_marker";
+            return isParticle2(node) ? "particle" : "retained_terminal_text";
+          });
           return construction2("ExperientialQuestion", "Exp未", core, {
-            note: "Source-linked final-未 experiential question: overt experiential VP followed by final 未 and optional particle.",
-            trace: traceInfo2("generative_template", {
+            note: "Source-linked final-未 experiential question with typed overt experiential domain and controlled final-particle tail.",
+            trace: traceInfo2("construction_template", {
               construction_type: "ExperientialQuestion",
-              template_family: "generative_template",
+              template_family: "construction_template",
               template: ["subject?", "experiential_vp!", "topic_or_object?", "question_marker!", "particle?"],
-              constraints: { final_mei_after_experiential_material: true },
+              constraints: {
+                slot_surface_in: { question_marker: ["未"] },
+                typed_experiential_domain_required: true,
+                unrelated_intervening_material_disallowed: true
+              },
+              assigned_slots: assignedSlots,
               surfaces: core.map((node) => flattenSurface2(node)),
-              reason: "The final 未 profile is distinct from preverbal 未 negative experiential statements and 有冇 experiential questions."
+              reason: "AA61 requires a typed experiential child plus overt typed domain material and final 未; unrelated interveners and context-free object omission remain outside this matcher."
             })
           });
         }
@@ -21107,6 +21175,66 @@ var require_licensed_fragments = __commonJS({
         };
         return formula;
       }
+      function licensedContextShortExperientialQuestion2(structural, explicitContext) {
+        if (!explicitContext || !explicitContext.turns || !explicitContext.turns.length) return null;
+        if (structural.length !== 1 || structural[0].kind !== "construction" || structural[0].type !== "NeedsContext") return null;
+        const candidate = structural[0];
+        const trace = candidate.trace || {};
+        if (trace.candidate_construction_type !== "ExperientialQuestion" || trace.candidate_profile !== "objectless_experiential_final_mei" || trace.context_requirement_status !== "context_required") return null;
+        const headSurface = String(trace.event_head_surface || "");
+        if (headSurface !== "食") return null;
+        const latestTurn = explicitContext.turns[explicitContext.turns.length - 1];
+        if (!latestTurn || !latestTurn.analysis) return null;
+        const contextTokens = flattenNodes2(latestTurn.analysis.nodes || []).filter((row) => row.kind === "token");
+        const headIndex = contextTokens.findIndex((row) => row.surface === headSurface && (row.slots || []).includes("action_verb"));
+        if (headIndex < 0) return null;
+        const tail = contextTokens.slice(headIndex + 1);
+        const nextPredicateIndex = tail.findIndex((row) => {
+          const slots = row.slots || [];
+          return slots.includes("action_verb") || slots.includes("main_verb") || slots.includes("stative_predicate");
+        });
+        const sameEventTail = nextPredicateIndex < 0 ? tail : tail.slice(0, nextPredicateIndex);
+        const domainTokens = sameEventTail.filter((row) => {
+          const slots = row.slots || [];
+          return !slots.includes("subject") && (slots.includes("object") || slots.includes("theme"));
+        });
+        const domainSurface = domainTokens.map((row) => row.surface).join("");
+        if (!domainSurface) return null;
+        const children = candidate.children || [];
+        const missing = trace.missing_argument_slots || ["object_or_experiential_domain"];
+        const assignedSlots = children.map((node) => {
+          if (nodeCanFillSlot2(node, "subject")) return "subject";
+          if (nodeCanFillSlot2(node, "experiential_vp")) return "experiential_vp";
+          if (isToken2(node, "未")) return "question_marker";
+          if (nodeCanFillSlot2(node, "particle")) return "particle";
+          return "retained_material";
+        });
+        return construction2("ExperientialQuestion", "Exp未", children, {
+          slots: templateDerivedSlots2("ExperientialQuestion", children),
+          note: "Source-backed discourse-recoverable 食過未 short profile. The omitted food/activity domain is linked to explicit compatible context; no hidden token is inserted.",
+          trace: traceInfo2("governed_discourse_wrapper", {
+            construction_type: "ExperientialQuestion",
+            structural_scope: "clause",
+            rule: "subject? + 食過 + 未 + particle?, licensed by explicit same-event overt-object context",
+            assigned_slots: assignedSlots,
+            surfaces: children.map((node) => flattenSurface2(node)),
+            context_requirement_status: "context_licensed",
+            missing_argument_slots: missing,
+            missing_slot_details: missing.map((slot) => ({ slot, license_status: "licensed", licensed_by: latestTurn.id })),
+            antecedent_status: "linked",
+            discourse_license_not_observed: false,
+            context_turn_id: latestTurn.id,
+            antecedent_span: latestTurn.source,
+            event_head_surface: headSurface,
+            event_domain_antecedent_surface: domainSurface,
+            omission_status: "context_licensed_discourse_recovery",
+            hidden_object_insertion: false,
+            source_backed_short_profile: "SRC-WFB-K3-NOODLES-2025",
+            reason: "The reviewed school transcript supports objectless 食過未 only with a recoverable food referent. Runtime licensing therefore requires explicit preceding same-head event structure with an overt object/domain.",
+            not_claims: ["not_context_free_aa61", "not_fabricated_object", "not_generalized_object_omission", "not_syntactic_null_object_claim"]
+          })
+        });
+      }
       function licensedContextHaveOrNotEventQuestion2(structural, explicitContext) {
         if (!explicitContext || !explicitContext.turns || !explicitContext.turns.length) return null;
         if (structural.length !== 1 || structural[0].kind !== "construction") return null;
@@ -21541,6 +21669,7 @@ var require_licensed_fragments = __commonJS({
         licensedContextFragmentQuestion: licensedContextFragmentQuestion2,
         licensedContextNegatedExistentialFragment: licensedContextNegatedExistentialFragment2,
         contextualPositiveExistentialAcknowledgementRepetition: contextualPositiveExistentialAcknowledgementRepetition2,
+        licensedContextShortExperientialQuestion: licensedContextShortExperientialQuestion2,
         licensedContextHaveOrNotEventQuestion: licensedContextHaveOrNotEventQuestion2,
         licensedContextEllipticalExistentialQuestion: licensedContextEllipticalExistentialQuestion2,
         typedContextDependentFragmentBoundary: typedContextDependentFragmentBoundary2,
@@ -21578,6 +21707,7 @@ var require_apply_context_contract = __commonJS({
         licensedContextNegatedExistentialFragment: licensedContextNegatedExistentialFragment2,
         licensedContextOpinionStanceFrame: licensedContextOpinionStanceFrame2,
         licensedContextQuantifiedTimeNP: licensedContextQuantifiedTimeNP2,
+        licensedContextShortExperientialQuestion: licensedContextShortExperientialQuestion2,
         licensedContextStancePredicateAnswer: licensedContextStancePredicateAnswer2,
         licensedFragmentAnswer: licensedFragmentAnswer2,
         needsContextAroundExisting: needsContextAroundExisting2,
@@ -21634,6 +21764,10 @@ var require_apply_context_contract = __commonJS({
         const licensedQuestionFragment = licensedContextFragmentQuestion2(structural, explicitContext);
         if (licensedQuestionFragment) {
           return { nodes: [licensedQuestionFragment, ...terminal], resolution: licensedQuestionFragment.trace };
+        }
+        const licensedShortExperientialQuestion = licensedContextShortExperientialQuestion2(structural, explicitContext);
+        if (licensedShortExperientialQuestion) {
+          return { nodes: [licensedShortExperientialQuestion, ...terminal], resolution: licensedShortExperientialQuestion.trace };
         }
         const licensedNegatedExistentialFragment = licensedContextNegatedExistentialFragment2(structural, explicitContext);
         if (licensedNegatedExistentialFragment) {
@@ -22120,7 +22254,7 @@ var {
 } = require_learner_glosses();
 var createLearnerDisplay = require_learner_display();
 var createCantoSpanPlugin = require_canto_span_plugin();
-var CANTO_SPAN_RUNTIME_VERSION = "0.5.218";
+var CANTO_SPAN_RUNTIME_VERSION = "0.5.219";
 var {
   runtimeConstructionRegistryVersion: RUNTIME_CONSTRUCTION_REGISTRY_VERSION,
   constructionLabelRegistry,
@@ -23771,6 +23905,7 @@ var {
   interestDomainExistentialQuestionFallback
 } = createCompletionExperientialQuestionDetectors({
   construction,
+  firstToken,
   flattenSurface,
   hasConstruction,
   hasSurface,
@@ -24884,6 +25019,7 @@ var {
   contextualPositiveExistentialAcknowledgementRepetition,
   licensedContextHaveOrNotEventQuestion,
   licensedContextEllipticalExistentialQuestion,
+  licensedContextShortExperientialQuestion,
   typedContextDependentFragmentBoundary,
   saturatedCompletionBoundary,
   licensedContextOpinionStanceFrame,
@@ -24913,6 +25049,7 @@ var {
   licensedContextNegatedExistentialFragment,
   licensedContextOpinionStanceFrame,
   licensedContextQuantifiedTimeNP,
+  licensedContextShortExperientialQuestion,
   licensedContextStancePredicateAnswer,
   licensedFragmentAnswer,
   needsContextAroundExisting,

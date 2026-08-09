@@ -32,6 +32,105 @@
       "expected_profile": "ExperientialQuestion absent for the separate 有冇 experiential strategy",
       "assertion": "construction_absent",
       "provenance": "docs/research/PARSER-CONSTRUCTION-SOURCE-MATRIX-CP021B-R37.tsv#EQ-C03"
+    },
+    {
+      "case_id": "AA61-R1-01",
+      "source": "你飲過茶未呀？",
+      "class": "controlled_source_backed_object_plus_particle_positive",
+      "expected_profile": "ExperientialQuestion present for an overt typed experiential object + final 未 + optional 呀; the object frame and particle position are independently source-backed in the AA61 inventory.",
+      "assertion": "construction_present",
+      "provenance": "docs/research/ISSUE-617-GWO-FINAL-MEI-SOURCE-INVENTORY-R1.md#full-overt-object-experiential-question",
+      "source_ids": [
+        "SRC-ZHANG-1970-PREDICATIVE-SUFFIXES",
+        "SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA",
+        "SRC-CUHK-ILC-EXP-FINAL-MEI"
+      ],
+      "source_locator": "controlled contrast combining source-backed 飲過茶未 with independently attested optional final 呀 position"
+    },
+    {
+      "case_id": "AA61-R1-02",
+      "source": "你去過美國未呀？",
+      "class": "typed_motion_goal_experiential_positive",
+      "expected_profile": "ExperientialQuestion present when the experiential child independently carries a typed motion goal before final 未",
+      "assertion": "construction_present",
+      "provenance": "docs/research/ISSUE-617-GWO-FINAL-MEI-PROFILES-R1.md#positive-aa61-cells",
+      "source_ids": [
+        "SRC-CUHK-ILC-EXP-FINAL-MEI",
+        "SRC-CUHK-ILC-EXP-INVENTORY"
+      ]
+    },
+    {
+      "case_id": "AA61-R1-03",
+      "source": "你食過未？",
+      "context_source": "頭先講緊食飯。",
+      "class": "source_backed_context_linked_objectless_short_positive",
+      "expected_profile": "ExperientialQuestion present only because explicit same-event discourse supplies an overt recoverable food/activity domain",
+      "assertion": "construction_present",
+      "provenance": "docs/research/ISSUE-617-GWO-FINAL-MEI-SOURCE-INVENTORY-R1.md#objectless-short-question",
+      "source_ids": [
+        "SRC-WFB-K3-NOODLES-2025"
+      ]
+    },
+    {
+      "case_id": "AA61-R1-04",
+      "source": "你食過未？",
+      "class": "objectless_short_without_context_boundary",
+      "expected_profile": "ExperientialQuestion absent without explicit compatible discourse context",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-617-GWO-FINAL-MEI-PROFILES-R1.md#profile-dispositions"
+    },
+    {
+      "case_id": "AA61-R1-05",
+      "source": "你食過未？",
+      "context_source": "我今日返屋企。",
+      "class": "objectless_short_with_unrelated_context_boundary",
+      "expected_profile": "ExperientialQuestion absent when supplied context does not contain the compatible same-head overt object/domain relation",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-617-GWO-FINAL-MEI-PROFILES-R1.md#span-and-composition-contract"
+    },
+    {
+      "case_id": "AA61-R1-06",
+      "source": "你去過未？",
+      "context_source": "頭先講緊去美國。",
+      "class": "unsupported_generalized_objectless_short_boundary",
+      "expected_profile": "ExperientialQuestion absent because the only independently sourced objectless short profile in this packet is 食過未",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-617-GWO-FINAL-MEI-SOURCE-INVENTORY-R1.md#source-conflicts-and-unresolved-questions"
+    },
+    {
+      "case_id": "AA61-R1-07",
+      "source": "你食咗飯未？",
+      "class": "perfective_completion_question_boundary",
+      "expected_profile": "ExperientialQuestion absent for V咗 object 未 completion question",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-617-GWO-FINAL-MEI-SOURCE-INVENTORY-R1.md#completion-question-with-final-未",
+      "source_ids": [
+        "SRC-CUHK-ILC-COMPLETION-MEI"
+      ]
+    },
+    {
+      "case_id": "AA61-R1-08",
+      "source": "你飲過茶琴日未？",
+      "class": "unrelated_temporal_intervener_boundary",
+      "expected_profile": "ExperientialQuestion absent when unrelated temporal material intervenes between the typed experiential predicate/domain and final 未",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-617-GWO-FINAL-MEI-PROFILES-R1.md#negative-and-collision-cells"
+    },
+    {
+      "case_id": "AA61-R1-09",
+      "source": "你飲過茶我返屋企未？",
+      "class": "second_clause_intervener_boundary",
+      "expected_profile": "ExperientialQuestion absent when a second clause intervenes before final 未",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-617-GWO-FINAL-MEI-PROFILES-R1.md#negative-and-collision-cells"
+    },
+    {
+      "case_id": "AA61-R1-10",
+      "source": "你飲過茶未今日？",
+      "class": "nonparticle_tail_boundary",
+      "expected_profile": "ExperientialQuestion absent when nonparticle material follows final 未",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-617-GWO-FINAL-MEI-PROFILES-R1.md#negative-and-collision-cells"
     }
   ],
   "np_cases": [],
@@ -39,14 +138,14 @@
   "coverage": {
     "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 0,
-    "focused_positive_count": 1,
-    "focused_boundary_count": 2,
+    "focused_positive_count": 4,
+    "focused_boundary_count": 9,
     "focused_review_only_count": 0,
     "np_case_count": 0,
     "implementation_probe_count": 0,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 1,
-    "boundary_case_count": 2,
-    "executable_case_count": 3
+    "positive_case_count": 4,
+    "boundary_case_count": 9,
+    "executable_case_count": 13
   }
 }

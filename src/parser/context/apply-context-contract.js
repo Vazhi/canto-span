@@ -17,6 +17,7 @@ module.exports = function createContextContractApplication(dependencies = {}) {
     licensedContextNegatedExistentialFragment,
     licensedContextOpinionStanceFrame,
     licensedContextQuantifiedTimeNP,
+    licensedContextShortExperientialQuestion,
     licensedContextStancePredicateAnswer,
     licensedFragmentAnswer,
     needsContextAroundExisting,
@@ -75,6 +76,10 @@ module.exports = function createContextContractApplication(dependencies = {}) {
     const licensedQuestionFragment = licensedContextFragmentQuestion(structural, explicitContext);
     if (licensedQuestionFragment) {
       return { nodes: [licensedQuestionFragment, ...terminal], resolution: licensedQuestionFragment.trace };
+    }
+    const licensedShortExperientialQuestion = licensedContextShortExperientialQuestion(structural, explicitContext);
+    if (licensedShortExperientialQuestion) {
+      return { nodes: [licensedShortExperientialQuestion, ...terminal], resolution: licensedShortExperientialQuestion.trace };
     }
     const licensedNegatedExistentialFragment = licensedContextNegatedExistentialFragment(structural, explicitContext);
     if (licensedNegatedExistentialFragment) {
