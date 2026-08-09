@@ -149,6 +149,8 @@ function constructionTraceRows(finalRows = []) {
       trace_taxonomy_schema: detail.trace_taxonomy_schema || "",
       taxonomy_status: detail.taxonomy_status || "",
       taxonomy_issues: Array.isArray(detail.taxonomy_issues) ? detail.taxonomy_issues : [],
+      structural_scope: detail.structural_scope || "",
+      structural_scope_source: detail.structural_scope_source || "",
       rule: detail.rule || "",
       template: Array.isArray(detail.template) ? detail.template : [],
       assigned_slots: Array.isArray(detail.assigned_slots) ? [...detail.assigned_slots] : [],
@@ -341,19 +343,19 @@ function structuralSanityFindings(summary = {}, constructionTraces = []) {
     }
 
     if (
-      trace.depth === 0 &&
-      /VP$/.test(trace.construction) &&
-      trace.assigned_slots.some((slot) => slot === "subject" || slot === "overt_subject")
+      trace.structural_scope === "vp" &&
+      trace.assigned_slots.some((slot) => slot === "subject" || slot === "overt_subject" || slot === "topic")
     ) {
       findings.push(sanityFinding(
-        "root_vp_binds_subject",
-        "warning",
-        "A root construction named as a VP explicitly binds a subject slot; inspect whether the runtime label or span boundary is clause-sized.",
+        "vp_scope_binds_clause_level_slot",
+        "error",
+        "A construction explicitly categorized as VP binds a clause-level subject/topic slot.",
         {
           construction: trace.construction,
           surface: trace.surface,
-          subject_bindings: trace.slot_bindings.filter((binding) => (
-            binding.slot === "subject" || binding.slot === "overt_subject"
+          structural_scope: trace.structural_scope,
+          clause_level_bindings: trace.slot_bindings.filter((binding) => (
+            binding.slot === "subject" || binding.slot === "overt_subject" || binding.slot === "topic"
           )),
         },
       ));

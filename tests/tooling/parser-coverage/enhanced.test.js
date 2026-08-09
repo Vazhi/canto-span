@@ -239,3 +239,34 @@ test("unknown taxonomy values fail closed instead of receiving heuristic default
   assert.equal(unreviewedTemplate.template_family, "");
   assert(unreviewedTemplate.taxonomy_issues.some((issue) => issue.code === "template_family_missing"));
 });
+
+
+test("subject-binding public VP identities expose clause structural scope without renaming", () => {
+  const cases = [
+    ["我要飲水。", "ModalVP"],
+    ["我想睇電視。", "DesiderativeVP"],
+    ["佢慢慢噉食飯。", "MannerAdverbialVP"],
+    ["我鍾意食飯。", "PreferenceVP"],
+  ];
+  for (const [source, construction] of cases) {
+    const [record] = recordsForSentences([source]);
+    const trace = record.construction_traces.find((item) => item.construction === construction);
+    assert(trace, `missing ${construction} for ${source}`);
+    assert.equal(trace.structural_scope, "clause");
+    assert.equal(trace.structural_scope_source, "clause_level_slot");
+    assert(!record.sanity_findings.some((finding) => finding.code === "vp_scope_binds_clause_level_slot"));
+  }
+});
+
+test("explicit VP scope with clause-level slot fails closed", () => {
+  const normalized = normalizeTraceTaxonomy({
+    kind: "generative_template",
+    template_family: "generative_template",
+    structural_scope: "vp",
+    template: ["subject?", "modal!", "vp!"],
+    constraints: {},
+    assigned_slots: ["subject", "modal", "vp"],
+  }, { constructionType: "SyntheticVP" });
+  assert.equal(normalized.taxonomy_status, "invalid");
+  assert(normalized.taxonomy_issues.some((issue) => issue.code === "vp_scope_binds_clause_level_slot"));
+});
