@@ -83,6 +83,53 @@ const templateTraceKinds = new Set(["generative_template", "construction_templat
 const registeredTraceKinds = new Set(parserDecisionTraceKindRegistry.map(([kind]) => kind));
 const registeredTemplateFamilies = new Set(templateFamilyRegistry.map(([family]) => family));
 
+const structuralScopeRegistry = [
+  ["clause", "Clause-sized construction or wrapper capable of binding a clause-level subject/topic."],
+  ["vp", "Verb-phrase-sized construction that must not itself bind a clause-level subject/topic."],
+  ["np", "Noun-phrase-sized construction."],
+  ["phrase", "Other phrase-sized construction."],
+  ["discourse", "Discourse or interclausal structural wrapper."],
+  ["diagnostic", "Diagnostic/ambiguity/error-analysis construction rather than a direct constituent scope claim."],
+  ["unspecified", "Structural scope not yet authored or derivable from controlled runtime metadata."],
+];
+const registeredStructuralScopes = new Set(structuralScopeRegistry.map(([scope]) => scope));
+const clauseLevelStructuralSlots = new Set(["subject", "overt_subject", "topic"]);
+const reviewedMixedClauseVpConstructions = new Set([
+  "ModalVP",
+  "DesiderativeVP",
+  "MannerAdverbialVP",
+  "PreferenceVP",
+]);
+
+function templateSlotName(item) {
+  return String(item || "").replace(/[!?+*]+$/g, "");
+}
+
+function traceDeclaresClauseLevelSlot(trace = {}) {
+  const assigned = Array.isArray(trace.assigned_slots) ? trace.assigned_slots : [];
+  const authored = Array.isArray(trace.template) ? trace.template.map(templateSlotName) : [];
+  return [...assigned, ...authored].some((slot) => clauseLevelStructuralSlots.has(slot));
+}
+
+function deriveStructuralScope(trace = {}, options = {}) {
+  const explicit = String(trace.structural_scope || "");
+  const constructionType = String(options.constructionType || trace.construction_type || "");
+  if (explicit) return { structural_scope: explicit, structural_scope_source: "explicit" };
+  if (traceDeclaresClauseLevelSlot(trace)) {
+    return { structural_scope: "clause", structural_scope_source: "clause_level_slot" };
+  }
+  if (reviewedMixedClauseVpConstructions.has(constructionType)) {
+    return { structural_scope: "vp", structural_scope_source: "reviewed_mixed_clause_vp_definition" };
+  }
+  if (trace.kind === "governed_discourse_wrapper") {
+    return { structural_scope: "discourse", structural_scope_source: "trace_kind" };
+  }
+  if (trace.kind === "special_ambiguity_rule") {
+    return { structural_scope: "diagnostic", structural_scope_source: "trace_kind" };
+  }
+  return { structural_scope: "unspecified", structural_scope_source: "not_authored" };
+}
+
 const legacyTemplateSubtypeFamilyMap = new Map([
   ["first_syllable_preference_a_not_a", {
     template_family: "construction_template",
@@ -221,10 +268,28 @@ function normalizeTraceTaxonomy(trace = {}, options = {}) {
     if (!templateFamily) templateFamilySource = "not_applicable";
   }
 
+  const structuralScope = deriveStructuralScope(normalized, { constructionType });
+  if (!registeredStructuralScopes.has(structuralScope.structural_scope)) {
+    issues.push(taxonomyIssue(
+      "unregistered_structural_scope",
+      `Structural scope ${structuralScope.structural_scope || "(missing)"} is not registered.`,
+      { structural_scope: structuralScope.structural_scope, construction_type: constructionType },
+    ));
+  }
+  if (structuralScope.structural_scope === "vp" && traceDeclaresClauseLevelSlot(normalized)) {
+    issues.push(taxonomyIssue(
+      "vp_scope_binds_clause_level_slot",
+      "A trace structurally categorized as VP declares or realizes a clause-level subject/topic slot.",
+      { construction_type: constructionType },
+    ));
+  }
+
   normalized.trace_taxonomy_schema = TRACE_TAXONOMY_SCHEMA;
   normalized.template_family = templateFamily;
   normalized.template_subtype = templateSubtype;
   normalized.template_family_source = templateFamilySource;
+  normalized.structural_scope = structuralScope.structural_scope;
+  normalized.structural_scope_source = structuralScope.structural_scope_source;
   normalized.taxonomy_status = issues.length ? "invalid" : "valid";
   normalized.taxonomy_issues = issues;
   return normalized;
@@ -345,6 +410,11 @@ module.exports = {
   parserDecisionTraceKindRegistry,
   templateFamilyRegistry,
   templateTraceKinds,
+  structuralScopeRegistry,
+  clauseLevelStructuralSlots,
+  reviewedMixedClauseVpConstructions,
+  traceDeclaresClauseLevelSlot,
+  deriveStructuralScope,
   legacyTemplateSubtypeFamilyMap,
   reviewedMissingTemplateFamilyDefaults,
   normalizeTraceTaxonomy,
