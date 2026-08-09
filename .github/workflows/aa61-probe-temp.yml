@@ -1,0 +1,66 @@
+name: AA61 temporary diagnostic probe
+
+on:
+  pull_request:
+    paths:
+      - "**"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    if: github.event.pull_request.head.ref == 'agent/aa61-gwo-final-mei-boundaries'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Probe AA61 current structure
+        run: |
+          node <<'NODE'
+          const { loadRuntimeApi, internalConstruction } = require('./tests/lib/runtime-api');
+          const api = loadRuntimeApi();
+          const cases = [
+            ['full_object','你飲過茶未？', null],
+            ['place_particle','你去過澳門未呀？', null],
+            ['short_no_context','你食過未？', null],
+            ['short_with_context','你食過未？', '頭先講緊晚餐。'],
+            ['time_intervener','你飲過茶琴日未？', null],
+            ['second_clause_intervener','你飲過茶我返屋企未？', null],
+            ['nonparticle_tail','你飲過茶未今日？', null],
+            ['completion_zo','你食咗飯未？', null],
+            ['have_or_not','你有冇去過澳門呀？', null],
+            ['preverbal_mei','我未去過美國。', null],
+          ];
+          function slimNode(node) {
+            return {
+              kind: node.kind,
+              construction: internalConstruction(node),
+              surface: api.surfaceOf ? api.surfaceOf(node) : undefined,
+              display: node.surface || node.text || undefined,
+              slots: node.slots || [],
+              label: node.label || null,
+              syntax: node.syntax || null,
+              trace: node.trace_detail || node.trace || null,
+              children: (node.children || []).map(slimNode),
+            };
+          }
+          for (const [id, source, context] of cases) {
+            const analyzed = api.analyzeLine(source, context);
+            console.log('\n===', id, source, context ? `CTX=${context}` : '', '===');
+            console.log(JSON.stringify({
+              analyzed: Array.isArray(analyzed) ? analyzed.map(slimNode) : slimNode(analyzed),
+              finalRows: api.diagnosticFinalRows(analyzed).map((row) => ({
+                kind: row.kind,
+                construction: internalConstruction(row),
+                surface: row.surface,
+                slots: row.slots,
+                trace_detail: row.trace_detail,
+              })),
+            }, null, 2));
+          }
+          NODE
