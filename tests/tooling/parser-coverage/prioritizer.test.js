@@ -8,6 +8,7 @@ const {
   buildPriorityReport,
   formatHuman,
   gapPointsForCounts,
+  unknownLexicalSpansForRecord,
   unknownLexiconQueue,
 } = require("../../../tools/parser-work-prioritizer");
 
@@ -101,6 +102,7 @@ test("prioritizer ranks development work from explicit decomposed factors", () =
   assert.equal(report.policy.linguistic_confidence, null);
   assert.equal(report.policy.frequency_is_linguistic_evidence, false);
   assert.equal(report.policy.learner_value_factor, "not_available_in_canonical_inputs_and_not_invented");
+  assert.equal(report.policy.canonical_readiness_score_used_in_rank, false);
 
   assert.deepEqual(report.ranked_construction_work.map((row) => row.construction_code), ["AA01", "AA02"]);
   const first = report.ranked_construction_work[0];
@@ -132,6 +134,29 @@ test("unknown lexicon is a separate queue, not construction evidence", () => {
   assert.equal(queue[0].action_class, "lexicon_work");
   assert.equal(queue[0].evidence_weight, 0);
   assert.equal(queue[0].linguistic_confidence, null);
+});
+
+test("contiguous unknown atoms are grouped into lexical spans when ordered source spans are available", () => {
+  const passwordTokens = Array.from("password").map((surface, index) => ({
+    surface,
+    lexical_status: "unknown",
+    source_span: { status: "unique", start: index, end: index + 1 },
+  }));
+  const chineseTokens = [
+    { surface: "繁", lexical_status: "unknown", source_span: { status: "unique", start: 0, end: 1 } },
+    { surface: "殖", lexical_status: "unknown", source_span: { status: "unique", start: 1, end: 2 } },
+  ];
+  const spanRecords = [
+    coverageRecord("password", "UNKNOWN_LEXICON", [], { tokens: passwordTokens }),
+    coverageRecord("繁殖", "UNKNOWN_LEXICON", [], { tokens: chineseTokens }),
+  ];
+  assert.deepEqual(unknownLexicalSpansForRecord(spanRecords[0]), [
+    { surface: "password", start: 0, end: 8, token_count: 8, span_status: "unique" },
+  ]);
+  const queue = unknownLexiconQueue(spanRecords, 2);
+  assert(queue.some((row) => row.surface === "password"));
+  assert(queue.some((row) => row.surface === "繁殖"));
+  assert(!queue.some((row) => row.surface === "p"));
 });
 
 test("unmapped structural gaps remain explicit instead of receiving fabricated construction mappings", () => {

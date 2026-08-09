@@ -141,13 +141,68 @@ function scoreCandidate(candidate) {
   };
 }
 
+function validUniqueSourceSpan(span = {}) {
+  return span && span.status === "unique"
+    && Number.isInteger(span.start) && Number.isInteger(span.end)
+    && span.start >= 0 && span.end >= span.start;
+}
+
+function unknownLexicalSpansForRecord(record = {}) {
+  const source = String(record.source || record.parser_shadow_source || "");
+  const spans = [];
+  let current = null;
+
+  function flush() {
+    if (!current) return;
+    const surface = current.span_backed && source && current.end <= source.length
+      ? source.slice(current.start, current.end)
+      : current.parts.join("");
+    if (surface) {
+      spans.push({
+        surface,
+        start: current.span_backed ? current.start : null,
+        end: current.span_backed ? current.end : null,
+        token_count: current.parts.length,
+        span_status: current.span_backed ? "unique" : "unavailable",
+      });
+    }
+    current = null;
+  }
+
+  for (const token of record.token_provenance || []) {
+    if (token.lexical_status !== "unknown" || !token.surface) {
+      flush();
+      continue;
+    }
+    const span = token.source_span || {};
+    if (!validUniqueSourceSpan(span)) {
+      flush();
+      spans.push({ surface: token.surface, start: null, end: null, token_count: 1, span_status: "unavailable" });
+      continue;
+    }
+    if (current && current.span_backed && current.end === span.start) {
+      current.end = span.end;
+      current.parts.push(token.surface);
+      continue;
+    }
+    flush();
+    current = {
+      span_backed: true,
+      start: span.start,
+      end: span.end,
+      parts: [token.surface],
+    };
+  }
+  flush();
+  return spans;
+}
+
 function unknownLexiconQueue(records = [], sampleLimit = DEFAULT_SAMPLE_LIMIT) {
   const grouped = new Map();
   for (const record of records) {
-    for (const token of record.token_provenance || []) {
-      if (token.lexical_status !== "unknown" || !token.surface) continue;
-      if (!grouped.has(token.surface)) grouped.set(token.surface, { surface: token.surface, executable_case_count: 0, examples: [] });
-      const item = grouped.get(token.surface);
+    for (const span of unknownLexicalSpansForRecord(record)) {
+      if (!grouped.has(span.surface)) grouped.set(span.surface, { surface: span.surface, executable_case_count: 0, examples: [] });
+      const item = grouped.get(span.surface);
       item.executable_case_count += 1;
       if (item.examples.length < sampleLimit && !item.examples.includes(record.source)) item.examples.push(record.source);
     }
@@ -160,7 +215,7 @@ function unknownLexiconQueue(records = [], sampleLimit = DEFAULT_SAMPLE_LIMIT) {
       ...item,
       linguistic_confidence: null,
       evidence_weight: 0,
-      reason: "Unknown token observed in the executable development corpus. Count is a test/development reach signal only, not lexical productivity or frequency evidence.",
+      reason: "Unknown contiguous lexical span observed in the executable development corpus. Count is a test/development reach signal only, not lexical productivity or frequency evidence.",
     }));
 }
 
@@ -273,6 +328,7 @@ function buildPriorityReport(options = {}) {
       architecture_cleanliness_is_linguistic_evidence: false,
       test_count_is_linguistic_evidence: false,
       learner_value_factor: "not_available_in_canonical_inputs_and_not_invented",
+      canonical_readiness_score_used_in_rank: false,
       ranking_scope: "development sequencing; never promotion or grammaticality",
       gap_status_points: GAP_STATUS_POINTS,
       gap_status_cap: GAP_STATUS_CAP,
@@ -386,6 +442,7 @@ module.exports = {
   readinessLookup,
   gapPointsForCounts,
   debtPointsForCount,
+  unknownLexicalSpansForRecord,
   unknownLexiconQueue,
   unmappedGapBuckets,
   scoreCandidate,
