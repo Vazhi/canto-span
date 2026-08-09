@@ -28,7 +28,8 @@ jobs:
             ['full_object','你飲過茶未？', null],
             ['place_particle','你去過澳門未呀？', null],
             ['short_no_context','你食過未？', null],
-            ['short_with_context','你食過未？', '頭先講緊晚餐。'],
+            ['short_with_context','你食過未？', '頭先講緊食飯。'],
+            ['unrelated_context','你食過未？', '我今日返屋企。'],
             ['time_intervener','你飲過茶琴日未？', null],
             ['second_clause_intervener','你飲過茶我返屋企未？', null],
             ['nonparticle_tail','你飲過茶未今日？', null],
@@ -66,8 +67,12 @@ jobs:
           }
           process.stdout.write(JSON.stringify(report, null, 2));
           NODE
+      - name: Export exact branch snapshot
+        run: git archive --format=zip --output=aa61-repo.zip HEAD
       - uses: actions/upload-artifact@v4
         with:
-          name: aa61-probe
-          path: aa61-probe.json
+          name: aa61-diagnostics
+          path: |
+            aa61-probe.json
+            aa61-repo.zip
           retention-days: 1
