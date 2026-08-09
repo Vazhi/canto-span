@@ -22,16 +22,30 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
-      - name: Apply reviewed AA61 source patch
+      - name: Reassemble and verify reviewed AA61 patch
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          curl -fsSL \
-            -H "Authorization: Bearer ${GH_TOKEN}" \
-            -H "Accept: application/vnd.github+json" \
-            "https://api.github.com/repos/Vazhi/canto-span/git/blobs/fd134f933976f5b5f896b1a88ba9c9c5a6b4c101" \
-            | jq -r '.content' | tr -d '\n' | base64 -d > /tmp/aa61.patch.gz
+          : > /tmp/aa61.patch.b64
+          for sha in \
+            ae166b9d39ef047af1725a268bba749ebb934aa2 \
+            0e871041aa4bf2f0f65bf5982d71958a6257feb7 \
+            55faaf30a945b0aa3425a4b4d14a45c26eede64f \
+            ba9c010e251958b49f457b160dcbacd3e17e169a
+          do
+            curl -fsSL \
+              -H "Authorization: Bearer ${GH_TOKEN}" \
+              -H "Accept: application/vnd.github+json" \
+              "https://api.github.com/repos/Vazhi/canto-span/git/blobs/${sha}" \
+              | jq -r '.content' | tr -d '\n' | base64 -d >> /tmp/aa61.patch.b64
+          done
+          test "$(wc -c < /tmp/aa61.patch.b64)" -eq 9104
+          base64 -d /tmp/aa61.patch.b64 > /tmp/aa61.patch.gz
+          test "$(wc -c < /tmp/aa61.patch.gz)" -eq 6828
+          echo 'b28f16150c460216978a3862929b739a1388326e63cbb67cbe9936fbfc81727b  /tmp/aa61.patch.gz' | sha256sum -c -
+          gzip -t /tmp/aa61.patch.gz
           gzip -dc /tmp/aa61.patch.gz > /tmp/aa61.patch
+          echo 'ea8c9b72681b9c6137059da924430c309e9a3c41fb4453215928f2a7c3e53a08  /tmp/aa61.patch' | sha256sum -c -
           git apply --check /tmp/aa61.patch
           git apply /tmp/aa61.patch
       - name: Regenerate controlled metadata and runtime
