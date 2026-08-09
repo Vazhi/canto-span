@@ -30,8 +30,8 @@ human
 ```
 
 Availability does not assign work. A task still requires valid routing, an explicit
-pickup owner, a matching work claim, a branch, applicable checks, and the mandatory
-user merge-review stop.
+pickup owner, a matching work claim, a branch, applicable checks, and valid merge
+authority with live safety checks under `USER-MERGE-REVIEW.md`.
 
 ## Enabled-state rules
 
@@ -94,7 +94,9 @@ Changing `codex.enabled` is repository-wide workflow policy. It requires:
 2. a branch-scoped edit to `config/agent-workflow-settings.json`;
 3. focused settings tests plus coordination and core verification;
 4. one reviewed pull request;
-5. explicit user approval for that pull request and unchanged head before merge.
+5. authorization for the availability-policy decision and merge handling under
+   `USER-MERGE-REVIEW.md`. If the active issue already carries that authorization,
+   do not add a separate per-PR approval requirement.
 
 Do not emulate the toggle through labels, comments, issue assignment alone, cached
 prompts, or a temporary agent statement. Those signals cannot override the checked-in
