@@ -39,7 +39,9 @@ for (const file of fs.readdirSync(constructionDir).filter((name) => name.endsWit
 const scopeCounts = {};
 const scopeSourceCounts = {};
 const targetCounts = {};
-const targetWrongScope = [];
+const targetClauseCapableCounts = {};
+const targetUnspecifiedNonClauseCounts = {};
+const targetClauseCapableWrongScope = [];
 const vpViolations = [];
 const historicalNameScopeMismatches = [];
 const sanityCounts = {};
@@ -61,23 +63,35 @@ for (const item of corpus.values()) {
     const record = enhanceCoverageRecord(api.diagnosticSummary(analysis), rows, { source: item.source });
     for (const trace of record.construction_traces || []) {
       constructionRows += 1;
+      const clauseCapable = declaresClauseSlot(trace);
       bump(scopeCounts, trace.structural_scope || "missing");
       bump(scopeSourceCounts, trace.structural_scope_source || "missing");
       if (!registeredScopes.has(trace.structural_scope)) {
         vpViolations.push({ source: item.source, construction: trace.construction, reason: "unregistered_scope", scope: trace.structural_scope || "" });
       }
-      if (trace.structural_scope === "vp" && declaresClauseSlot(trace)) {
+      if (trace.structural_scope === "vp" && clauseCapable) {
         vpViolations.push({ source: item.source, construction: trace.construction, reason: "vp_binds_clause_slot" });
       }
       if (targetLabels.has(trace.construction)) {
         bump(targetCounts, trace.construction);
-        if (trace.structural_scope !== "clause") {
-          targetWrongScope.push({ source: item.source, construction: trace.construction, scope: trace.structural_scope || "", slots: trace.assigned_slots });
+        if (clauseCapable) {
+          bump(targetClauseCapableCounts, trace.construction);
+          if (trace.structural_scope !== "clause") {
+            targetClauseCapableWrongScope.push({
+              source: item.source,
+              construction: trace.construction,
+              scope: trace.structural_scope || "",
+              slots: trace.assigned_slots,
+              template: trace.template,
+            });
+          }
+        } else if (trace.structural_scope === "unspecified") {
+          bump(targetUnspecifiedNonClauseCounts, trace.construction);
         }
       }
-      // Historical cross-check only: this probe may use the old naming symptom to
-      // prove it has been eliminated. Production sanity logic must not use it.
-      if (/VP$/.test(trace.construction) && declaresClauseSlot(trace) && trace.structural_scope !== "clause") {
+      // Historical cross-check only: prove the old suffix-based symptom is gone.
+      // Production sanity logic does not use construction names or /VP$/.
+      if (/VP$/.test(trace.construction) && clauseCapable && trace.structural_scope !== "clause") {
         historicalNameScopeMismatches.push({ source: item.source, construction: trace.construction, scope: trace.structural_scope || "" });
       }
     }
@@ -87,11 +101,11 @@ for (const item of corpus.values()) {
   }
 }
 
-const blockingCount = parseFailures.length + vpViolations.length + targetWrongScope.length + historicalNameScopeMismatches.length
-  + Number(sanityCounts.vp_scope_binds_clause_level_slot || 0);
+const blockingCount = parseFailures.length + vpViolations.length + targetClauseCapableWrongScope.length
+  + historicalNameScopeMismatches.length + Number(sanityCounts.vp_scope_binds_clause_level_slot || 0);
 
 console.log(JSON.stringify({
-  schema: "canto-span-structural-scope-acceptance-v1",
+  schema: "canto-span-structural-scope-acceptance-v2",
   runtime_version: api.runtimeVersion,
   corpus: {
     unique_source_context_pairs: corpus.size,
@@ -102,15 +116,18 @@ console.log(JSON.stringify({
   structural_scope_counts: scopeCounts,
   structural_scope_source_counts: scopeSourceCounts,
   target_construction_counts: targetCounts,
-  target_wrong_scope_count: targetWrongScope.length,
+  target_clause_capable_counts: targetClauseCapableCounts,
+  target_unspecified_non_clause_counts: targetUnspecifiedNonClauseCounts,
+  target_clause_capable_wrong_scope_count: targetClauseCapableWrongScope.length,
   explicit_vp_violation_count: vpViolations.length,
   historical_name_scope_mismatch_count: historicalNameScopeMismatches.length,
   sanity_finding_counts: sanityCounts,
   blocking_count: blockingCount,
-  target_wrong_scope: targetWrongScope.slice(0, 20),
+  target_clause_capable_wrong_scope: targetClauseCapableWrongScope.slice(0, 20),
   vp_violations: vpViolations.slice(0, 20),
   historical_name_scope_mismatches: historicalNameScopeMismatches.slice(0, 20),
   parse_failures: parseFailures.slice(0, 20),
+  note: "Target-label occurrences without authored/realized clause-level slots may remain unspecified; they are informational and are not the subject-binding structural defect addressed by #682.",
 }, null, 2));
 
 process.exit(1);
