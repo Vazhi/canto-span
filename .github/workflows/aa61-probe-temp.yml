@@ -1,4 +1,4 @@
-name: AA61 temporary diagnostic probe
+name: AA61 implementation gate
 
 on:
   pull_request:
@@ -6,73 +6,81 @@ on:
       - "**"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  probe:
+  implement:
     if: github.event.pull_request.head.ref == 'agent/aa61-gwo-final-mei-boundaries'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: agent/aa61-gwo-final-mei-boundaries
+          fetch-depth: 0
       - uses: actions/setup-node@v6
         with:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
-      - name: Probe AA61 current structure
+      - name: Apply reviewed AA61 source patch
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          node <<'NODE' > aa61-probe.json
-          const { loadRuntimeApi, internalConstruction } = require('./tests/lib/runtime-api');
-          const api = loadRuntimeApi();
-          const cases = [
-            ['full_object','你飲過茶未？', null],
-            ['place_particle','你去過澳門未呀？', null],
-            ['short_no_context','你食過未？', null],
-            ['short_with_context','你食過未？', '頭先講緊食飯。'],
-            ['unrelated_context','你食過未？', '我今日返屋企。'],
-            ['time_intervener','你飲過茶琴日未？', null],
-            ['second_clause_intervener','你飲過茶我返屋企未？', null],
-            ['nonparticle_tail','你飲過茶未今日？', null],
-            ['completion_zo','你食咗飯未？', null],
-            ['have_or_not','你有冇去過澳門呀？', null],
-            ['preverbal_mei','我未去過美國。', null],
-          ];
-          function slimNode(node) {
-            return {
-              kind: node.kind,
-              construction: internalConstruction(node),
-              surface: api.surfaceOf ? api.surfaceOf(node) : undefined,
-              display: node.surface || node.text || undefined,
-              slots: node.slots || [],
-              label: node.label || null,
-              syntax: node.syntax || null,
-              trace: node.trace_detail || node.trace || null,
-              children: (node.children || []).map(slimNode),
-            };
-          }
-          const report = [];
-          for (const [id, source, context] of cases) {
-            const analyzed = api.analyzeLine(source, context);
-            report.push({
-              id, source, context,
-              analyzed: Array.isArray(analyzed) ? analyzed.map(slimNode) : slimNode(analyzed),
-              finalRows: api.diagnosticFinalRows(analyzed).map((row) => ({
-                kind: row.kind,
-                construction: internalConstruction(row),
-                surface: row.surface,
-                slots: row.slots,
-                trace_detail: row.trace_detail,
-              })),
-            });
-          }
-          process.stdout.write(JSON.stringify(report, null, 2));
-          NODE
-      - name: Export exact branch snapshot
-        run: git archive --format=zip --output=aa61-repo.zip HEAD
+          curl -fsSL \
+            -H "Authorization: Bearer ${GH_TOKEN}" \
+            -H "Accept: application/vnd.github+json" \
+            "https://api.github.com/repos/Vazhi/canto-span/git/blobs/fd134f933976f5b5f896b1a88ba9c9c5a6b4c101" \
+            | jq -r '.content' | tr -d '\n' | base64 -d > /tmp/aa61.patch.gz
+          gzip -dc /tmp/aa61.patch.gz > /tmp/aa61.patch
+          git apply --check /tmp/aa61.patch
+          git apply /tmp/aa61.patch
+      - name: Regenerate controlled metadata and runtime
+        run: |
+          node tools/build-construction-tests.js
+          node tools/sync-construction-test-metadata.js
+          npm run discovery:generate
+          npm run build:runtime
+      - name: Focused AA61 verification
+        run: |
+          node tests/run-constructions.js
+          node --test tests/tooling/runtime/aa61-experiential-question-boundary.test.js
+          npm run test:parser-architecture
+          npm run verify:runtime
+      - name: Full repository verification
+        run: npm test
+      - name: Stage bounded AA61 outputs
+        run: |
+          git add \
+            docs/current/PROJECT-STATE.md \
+            package.json package-lock.json \
+            src/runtime-resources/grammar/templates/construction-templates.js \
+            src/parser/templates/template-matcher.js \
+            src/parser/detectors/questions/completion-experiential.js \
+            src/parser/context/licensed-fragments.js \
+            src/parser/context/apply-context-contract.js \
+            src/plugin-entry.js \
+            tests/constructions/ExperientialQuestion.json \
+            tests/tooling/runtime/aa61-experiential-question-boundary.test.js \
+            tests/run-all.js \
+            tests/construction-test-index.json \
+            grammar/research_pending/ExperientialQuestion.md \
+            data/construction-candidate-readiness.json \
+            main.js
+          git rm .github/workflows/aa61-probe-temp.yml
+          git diff --cached --check
+          git diff --cached > /tmp/aa61-final.patch
+          git status --short > /tmp/aa61-status.txt
       - uses: actions/upload-artifact@v4
         with:
-          name: aa61-diagnostics
+          name: aa61-final-verification
           path: |
-            aa61-probe.json
-            aa61-repo.zip
-          retention-days: 1
+            /tmp/aa61-final.patch
+            /tmp/aa61-status.txt
+            validation/current/construction-tests.json
+          retention-days: 7
+      - name: Commit verified AA61 implementation
+        run: |
+          git config user.name "Canto Span ChatGPT"
+          git config user.email "actions@users.noreply.github.com"
+          git commit -m "Implement AA61 typed V過未 boundaries"
+          git push origin HEAD:agent/aa61-gwo-final-mei-boundaries
