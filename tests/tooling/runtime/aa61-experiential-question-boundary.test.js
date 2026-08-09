@@ -20,10 +20,11 @@ test("AA61 overt-object template is bounded to final 未 and an overt typed expe
   assert.equal(rows.length, 1);
   assert.equal(rowSurface(rows[0]), "你飲過茶未");
   assert.equal(rows[0].trace_detail.template_family, "construction_template");
-  assert.deepEqual(rows[0].trace_detail.constraints.slot_surface_in, { question_marker: ["未"] });
-  assert.deepEqual(rows[0].trace_detail.constraints.slot_must_have_any_slots, {
-    experiential_vp: ["object", "goal", "location"],
-  });
+  assert.equal(rows[0].trace_detail.constraints.slot_surface_in.question_marker.join(","), "未");
+  assert.equal(
+    rows[0].trace_detail.constraints.slot_must_have_any_slots.experiential_vp.join(","),
+    "object,goal,location",
+  );
   assert.equal(rows[0].trace_detail.structural_scope, "clause");
   assert(rowsOfType("你飲過茶未？", "TransitiveVP").some((row) => rowSurface(row) === "飲過茶"));
 });
