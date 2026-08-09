@@ -33,18 +33,19 @@ function assertOuterQuestion(source, construction) {
 }
 
 test("copular A-not-A preserves reviewed preference composition without ModifierNP certification", () => {
-  const sources = [
-    "係唔係每個學生都鍾意睇電視呀？",
-    "係唔係每個學生都鍾意音樂呀？",
-    "係唔係每個學生都鍾意咗個學生呀？",
-    "係唔係每個學生都鍾意燒鵝定係燒鴨多啲呀？",
-  ];
-  for (const source of sources) {
+  const profiles = new Map([
+    ["係唔係每個學生都鍾意睇電視呀？", "每 + subject + 都 + 鍾意 + typed VP"],
+    ["係唔係每個學生都鍾意音樂呀？", "每 + subject + 都 + 鍾意 + typed NP"],
+    ["係唔係每個學生都鍾意咗個學生呀？", "每 + subject + 都 + 鍾意 + 咗 + typed NP"],
+    ["係唔係每個學生都鍾意燒鵝定係燒鴨多啲呀？", "每 + subject + 都 + 鍾意 + alternative material + 定係 + alternative material + 多啲"],
+  ]);
+  for (const [source, expectedRule] of profiles) {
     const rows = assertOuterQuestion(source, "CopularANotAQuestion");
     const boundedClause = rows.find((row) => row.kind === "construction" && row.construction === "SubjectPredicateClause");
     assert.ok(boundedClause, `${source}: expected bounded SubjectPredicateClause complement`);
     assert.equal(boundedClause.trace_detail.template_family, "construction_template");
     assert.equal(boundedClause.trace_detail.template_subtype, "copular_a_not_a_bounded_complement");
+    assert.equal(boundedClause.trace_detail.rule, expectedRule);
     assert.equal(boundedClause.trace_detail.binding_contract_status, "complete");
   }
 });
