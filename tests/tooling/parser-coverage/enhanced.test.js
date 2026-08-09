@@ -66,7 +66,7 @@ test("A-not-A repeated verbs receive distinct ordered token offsets", () => {
 });
 
 test("nested predicate slots can be reconstructed from contained ordered tokens", () => {
-  const [record] = recordsForSentences(["我食飯。"]);
+  const [record] = recordsForSentences(["我食飯。"]);
   const root = record.construction_traces.find((trace) => trace.construction === "SubjectPredicateClause");
   const predicate = root.slot_bindings.find((binding) => binding.slot === "predicate");
   assert.equal(predicate.surface, "食飯");
@@ -76,7 +76,7 @@ test("nested predicate slots can be reconstructed from contained ordered tokens"
 });
 
 test("live reusable construction matcher identity is stable across vocabulary changes", () => {
-  const records = recordsForSentences(["我食飯。", "你食飯。"]);
+  const records = recordsForSentences(["我食飯。", "你食飯。"]);
   const roots = records.map((record) => record.construction_traces.find((trace) => trace.construction === "SubjectPredicateClause"));
   assert(roots[0]);
   assert(roots[1]);
@@ -119,7 +119,7 @@ test("ordered surface fallback remains deterministic when token rows are unavail
 });
 
 test("aggregate report counts matcher identities and leaves no unresolved slots for smoke examples", () => {
-  const records = recordsForSentences(["我食飯。", "你食唔食飯？", "我要飲水。"]);
+  const records = recordsForSentences(["我食飯。", "你食唔食飯？", "我要飲水。"]);
   const report = aggregateCoverage(records);
   assert(Object.keys(report.matcher_counts).length > 0);
   assert(report.slot_span_resolution_counts.ordered_token_sequence > 0);
