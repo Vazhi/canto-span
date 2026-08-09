@@ -1,0 +1,79 @@
+name: AA11 repair staging verification
+
+on:
+  pull_request:
+    paths:
+      - "**"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    if: github.event.pull_request.head.ref == 'agent/aa11-postmerge-repair'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Restore authorized version atoms in workspace
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+          pkg.version = '0.5.219';
+          fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
+          const manifest = JSON.parse(fs.readFileSync('manifest.json', 'utf8'));
+          manifest.version = '0.5.219';
+          manifest.description = 'v0.5.219 narrows AA61 final-未 experiential questions to overt typed experiential domains and context-licenses only the source-backed 食過未 short profile.';
+          fs.writeFileSync('manifest.json', JSON.stringify(manifest, null, 2) + '\n');
+          let plugin = fs.readFileSync('src/plugin-entry.js', 'utf8');
+          plugin = plugin.replace('const CANTO_SPAN_RUNTIME_VERSION = "0.5.220";', 'const CANTO_SPAN_RUNTIME_VERSION = "0.5.219";');
+          plugin = plugin.replace('// v0.5.220: narrows AA11 to exact adjacent 變成 + 點, records bounded VP scope/provenance, and closes neighboring wh/result boundaries.\n', '');
+          fs.writeFileSync('src/plugin-entry.js', plugin);
+          let state = fs.readFileSync('docs/current/PROJECT-STATE.md', 'utf8');
+          state = state.replace('| Runtime | v0.5.220 |', '| Runtime | v0.5.219 |');
+          state = state.replace(/per-construction assertions: \*\*[0-9,]+\*\* across \*\*134\*\* files;/, 'per-construction assertions: **1,617** across **134** files;');
+          state = state.replace(/\| Per-construction assertions \| [0-9,]+ \|/, '| Per-construction assertions | 1,617 |');
+          fs.writeFileSync('docs/current/PROJECT-STATE.md', state);
+          NODE
+          npm install --package-lock-only --ignore-scripts
+          npm ci
+      - name: Regenerate deterministic outputs in workspace
+        run: |
+          node tools/build-construction-tests.js
+          node tools/sync-construction-test-metadata.js
+          npm run discovery:generate
+          npm run build:runtime
+      - name: Focused AA11 repair test
+        run: node --test tests/tooling/runtime/aa11-change-into-dim-boundary.test.js
+      - name: Construction suite
+        run: npm run test:constructions
+      - name: Runtime verification
+        run: npm run verify:runtime
+      - name: Architecture verification
+        run: |
+          npm run test:parser-architecture
+          npm run audit:parser-architecture
+      - name: Core verification
+        run: npm run verify
+      - name: Research verification
+        run: npm run verify:research
+      - name: Full verification
+        run: npm run verify:all
+      - name: Upload staged canonical/generated files
+        uses: actions/upload-artifact@v4
+        with:
+          name: aa11-repair-staged-files
+          path: |
+            package-lock.json
+            manifest.json
+            src/plugin-entry.js
+            main.js
+            tests/construction-test-index.json
+            grammar/research_pending/ChangeIntoPredicate.md
+            data/construction-candidate-readiness.json
+            docs/current/PROJECT-STATE.md
+          if-no-files-found: error
