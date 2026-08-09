@@ -289,5 +289,6 @@ test("live source runtime exposes slot provenance for the basic smoke anomalies"
   assert(modal.sanity_findings.some((finding) => finding.code === "root_vp_binds_subject"));
   assert(desiderative.construction_traces[0].slot_bindings.some((binding) => binding.slot === "subject"));
   assert(desiderative.sanity_findings.some((finding) => finding.code === "root_vp_binds_subject"));
-  assert(copular.sanity_findings.some((finding) => finding.code === "template_family_missing"));
+  assert.equal(copular.construction_traces[0].template_family, "generative_template");
+  assert(!copular.sanity_findings.some((finding) => finding.code === "template_family_missing"));
 });

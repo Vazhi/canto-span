@@ -31017,7 +31017,8 @@
               "surfaces": [
                 "你",
                 "要唔要"
-              ]
+              ],
+              "template_family": "generative_template"
             }
           },
           {
@@ -106901,7 +106902,8 @@
               "surfaces": [
                 "係",
                 "呀"
-              ]
+              ],
+              "template_family": "construction_template"
             }
           },
           {
@@ -107371,7 +107373,8 @@
               "surfaces": [
                 "係",
                 "呀"
-              ]
+              ],
+              "template_family": "construction_template"
             }
           },
           {
@@ -108071,7 +108074,8 @@
               "surfaces": [
                 "係",
                 "呀"
-              ]
+              ],
+              "template_family": "construction_template"
             }
           },
           {
@@ -108612,7 +108616,8 @@
               "surfaces": [
                 "係",
                 "啊"
-              ]
+              ],
+              "template_family": "construction_template"
             }
           },
           {
@@ -109109,7 +109114,8 @@
               "surfaces": [
                 "係",
                 "啊"
-              ]
+              ],
+              "template_family": "construction_template"
             }
           },
           {
@@ -109291,7 +109297,8 @@
               "surfaces": [
                 "係",
                 "喇"
-              ]
+              ],
+              "template_family": "construction_template"
             }
           },
           {
@@ -109566,7 +109573,8 @@
               "surfaces": [
                 "係",
                 "喇"
-              ]
+              ],
+              "template_family": "construction_template"
             }
           },
           {
@@ -109792,7 +109800,8 @@
               "surfaces": [
                 "係",
                 "喇"
-              ]
+              ],
+              "template_family": "construction_template"
             }
           },
           {
@@ -122292,7 +122301,8 @@
               "surfaces": [
                 "份",
                 "功課"
-              ]
+              ],
+              "template_family": "generative_template"
             }
           },
           {
@@ -130322,7 +130332,8 @@
               "surfaces": [
                 "杯",
                 "咖啡"
-              ]
+              ],
+              "template_family": "generative_template"
             }
           },
           {
@@ -153007,7 +153018,8 @@
                 "佢",
                 "係",
                 "老師"
-              ]
+              ],
+              "template_family": "generative_template"
             }
           },
           {
@@ -153221,7 +153233,8 @@
                 "呢個",
                 "係",
                 "問題"
-              ]
+              ],
+              "template_family": "generative_template"
             }
           },
           {
@@ -155925,7 +155938,8 @@
                 "not_every_m4_goi1_is_an_imperative",
                 "not_equivalent_to_cing2_in_all_registers",
                 "not_unrestricted_productivity"
-              ]
+              ],
+              "template_family": "construction_template"
             }
           },
           {

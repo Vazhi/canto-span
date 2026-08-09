@@ -243,7 +243,7 @@ function annotateTraceTaxonomy(nodes = []) {
   function visit(node) {
     if (!node || typeof node !== "object") return;
     if (node.kind === "construction") {
-      node.trace = normalizeTraceTaxonomy(node.trace || {}, { constructionType: node.type || node.compatibility_alias || "" });
+      node.trace = normalizeTraceTaxonomy(node.trace || {}, { constructionType: node.compatibility_alias || node.type || "" });
       summary.construction_trace_count += 1;
       if (node.trace.taxonomy_status === "valid") {
         summary.valid_count += 1;
