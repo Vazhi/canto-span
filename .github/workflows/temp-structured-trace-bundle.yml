@@ -21,7 +21,21 @@ jobs:
         with:
           node-version: 24
       - run: npm ci
-      - run: node tools/temp-apply-trace-binding-migration.js
+      - name: Correct temporary helper literal and apply migration
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('tools/temp-apply-trace-binding-migration.js')
+          text = p.read_text()
+          old = '  record.policy = `${record.policy} Matcher fingerprints and ordered offsets identify implementation behavior only.`;'
+          new = '  record.policy = record.policy + " Matcher fingerprints and ordered offsets identify implementation behavior only.";'
+          if old not in text:
+              raise SystemExit('temporary helper correction marker missing')
+          p.write_text(text.replace(old, new))
+          PY
+          node tools/temp-apply-trace-binding-migration.js
+          git checkout -- tools/temp-apply-trace-binding-migration.js
       - run: npm run build:runtime
       - name: Commit claimed migration outputs only
         shell: bash
