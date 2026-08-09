@@ -26,9 +26,43 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
+  bundle-sync:
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'agent/structured-parser-trace-bindings'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/structured-parser-trace-bindings
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - run: npm run build:runtime
+      - name: Commit deterministic bundle only
+        shell: bash
+        run: |
+          unexpected="$(git status --short | grep -v '^ M main.js$' || true)"
+          if [ -n "$unexpected" ]; then
+            echo "Unexpected files changed during runtime build:"
+            echo "$unexpected"
+            exit 1
+          fi
+          if git diff --quiet -- main.js; then
+            echo "main.js already current"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add main.js
+          git diff --cached --check
+          git commit -m "Regenerate structured trace runtime bundle"
+          git push origin HEAD:agent/structured-parser-trace-bindings
+
   verify:
     runs-on: ubuntu-latest
     steps:
