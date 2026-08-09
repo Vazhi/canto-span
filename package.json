@@ -12,6 +12,8 @@
     "audit:parser-coverage": "node tools/parser-coverage-enhanced.js",
     "test:parser-architecture": "node --test tests/tooling/parser-coverage/architecture-audit.test.js",
     "audit:parser-architecture": "node tools/parser-architecture-audit.js",
+    "test:parser-priorities": "node --test tests/tooling/parser-coverage/prioritizer.test.js",
+    "audit:parser-priorities": "node tools/parser-work-prioritizer.js",
     "test:constructions": "node tests/run-constructions.js",
     "test:regression": "node tests/run-regression.js",
     "test:np": "node tests/run-np-subsystem.js",
