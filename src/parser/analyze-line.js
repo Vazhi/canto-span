@@ -1,10 +1,12 @@
 "use strict";
 
+const defaultTraceBindingAnnotator = require("./diagnostics/trace-bindings")();
+
 module.exports = function createAnalyzeLine(dependencies = {}) {
   const {
     analyzedExplicitContext,
     annotateRawDisplaySurfaces,
-    annotateTraceBindings,
+    annotateTraceBindings = defaultTraceBindingAnnotator.annotateTraceBindings,
     applyConstructionPatternsByPunctuation,
     applyExplicitContextContract,
     normalizeInputForParser,
