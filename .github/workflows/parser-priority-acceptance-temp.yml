@@ -1,0 +1,36 @@
+name: Parser priority temporary acceptance
+
+on:
+  pull_request:
+    paths:
+      - "**"
+
+permissions:
+  contents: read
+
+jobs:
+  acceptance:
+    if: github.event.pull_request.head.ref == 'agent/evidence-coverage-prioritizer'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Focused prioritizer tests
+        run: npm run test:parser-priorities
+      - name: Build full deterministic priority report
+        run: npm run audit:parser-priorities -- --json --limit 20 --samples 5 > parser-priorities.json
+      - name: Permanent architecture gate
+        run: npm run audit:parser-architecture
+      - name: Core and research verification
+        run: |
+          npm run verify
+          npm run verify:research
+      - uses: actions/upload-artifact@v4
+        with:
+          name: parser-priority-acceptance
+          path: parser-priorities.json
+          retention-days: 1
