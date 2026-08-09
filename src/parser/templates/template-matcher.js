@@ -99,6 +99,17 @@ module.exports = function createTemplateMatcher(dependencies = {}) {
         if (!matchingAssignments.length || matchingAssignments.some((item) => !nodeCanLicenseEvidenceGatedObject(item.node))) return false;
       }
     }
+    if (constraints.slot_must_have_any_slots) {
+      for (const [slot, requiredSlots] of Object.entries(constraints.slot_must_have_any_slots || {})) {
+        const required = requiredSlots || [];
+        const matchingAssignments = assignments.filter((item) => item.slot === slot);
+        if (!matchingAssignments.length) return false;
+        if (matchingAssignments.some((item) => {
+          const slots = nodeSlots(item.node);
+          return !required.some((requiredSlot) => slots.includes(requiredSlot));
+        })) return false;
+      }
+    }
     if (constraints.slot_must_not_have_slots) {
       for (const [slot, disallowedSlots] of Object.entries(constraints.slot_must_not_have_slots || {})) {
         const disallowed = disallowedSlots || [];

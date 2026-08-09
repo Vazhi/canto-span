@@ -154,8 +154,13 @@ module.exports = [
   {
     type: "ExperientialQuestion",
     label: "Exp未",
+    template_family: "construction_template",
     template: ["subject?", "experiential_vp!", "question_marker!", "particle?"],
-    note: "Experiential question with final 未: experiential VP + question marker."
+    constraints: {
+      slot_surface_in: { question_marker: ["未"] },
+      slot_must_have_any_slots: { experiential_vp: ["object", "goal", "location"] }
+    },
+    note: "Bounded source-linked experiential question with overt typed experiential predicate/domain followed by final 未 and optional particle. Objectless short forms require separate explicit discourse licensing."
   },
   {
     type: "NegativeExperiential",

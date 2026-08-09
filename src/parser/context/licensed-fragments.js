@@ -223,6 +223,71 @@ module.exports = function createLicensedContextFragments(dependencies = {}) {
     return formula;
   }
 
+  function licensedContextShortExperientialQuestion(structural, explicitContext) {
+    if (!explicitContext || !explicitContext.turns || !explicitContext.turns.length) return null;
+    if (structural.length !== 1 || structural[0].kind !== "construction" || structural[0].type !== "NeedsContext") return null;
+    const candidate = structural[0];
+    const trace = candidate.trace || {};
+    if (trace.candidate_construction_type !== "ExperientialQuestion"
+        || trace.candidate_profile !== "objectless_experiential_final_mei"
+        || trace.context_requirement_status !== "context_required") return null;
+    const headSurface = String(trace.event_head_surface || "");
+    if (headSurface !== "食") return null;
+
+    const latestTurn = explicitContext.turns[explicitContext.turns.length - 1];
+    if (!latestTurn || !latestTurn.analysis) return null;
+    const contextTokens = flattenNodes(latestTurn.analysis.nodes || []).filter((row) => row.kind === "token");
+    const headIndex = contextTokens.findIndex((row) => row.surface === headSurface && (row.slots || []).includes("action_verb"));
+    if (headIndex < 0) return null;
+    const tail = contextTokens.slice(headIndex + 1);
+    const nextPredicateIndex = tail.findIndex((row) => {
+      const slots = row.slots || [];
+      return slots.includes("action_verb") || slots.includes("main_verb") || slots.includes("stative_predicate");
+    });
+    const sameEventTail = nextPredicateIndex < 0 ? tail : tail.slice(0, nextPredicateIndex);
+    const domainTokens = sameEventTail.filter((row) => {
+      const slots = row.slots || [];
+      return !slots.includes("subject") && (slots.includes("object") || slots.includes("theme"));
+    });
+    const domainSurface = domainTokens.map((row) => row.surface).join("");
+    if (!domainSurface) return null;
+
+    const children = candidate.children || [];
+    const missing = trace.missing_argument_slots || ["object_or_experiential_domain"];
+    const assignedSlots = children.map((node) => {
+      if (nodeCanFillSlot(node, "subject")) return "subject";
+      if (nodeCanFillSlot(node, "experiential_vp")) return "experiential_vp";
+      if (isToken(node, "未")) return "question_marker";
+      if (nodeCanFillSlot(node, "particle")) return "particle";
+      return "retained_material";
+    });
+    return construction("ExperientialQuestion", "Exp未", children, {
+      slots: templateDerivedSlots("ExperientialQuestion", children),
+      note: "Source-backed discourse-recoverable 食過未 short profile. The omitted food/activity domain is linked to explicit compatible context; no hidden token is inserted.",
+      trace: traceInfo("governed_discourse_wrapper", {
+        construction_type: "ExperientialQuestion",
+        structural_scope: "clause",
+        rule: "subject? + 食過 + 未 + particle?, licensed by explicit same-event overt-object context",
+        assigned_slots: assignedSlots,
+        surfaces: children.map((node) => flattenSurface(node)),
+        context_requirement_status: "context_licensed",
+        missing_argument_slots: missing,
+        missing_slot_details: missing.map((slot) => ({ slot, license_status: "licensed", licensed_by: latestTurn.id })),
+        antecedent_status: "linked",
+        discourse_license_not_observed: false,
+        context_turn_id: latestTurn.id,
+        antecedent_span: latestTurn.source,
+        event_head_surface: headSurface,
+        event_domain_antecedent_surface: domainSurface,
+        omission_status: "context_licensed_discourse_recovery",
+        hidden_object_insertion: false,
+        source_backed_short_profile: "SRC-WFB-K3-NOODLES-2025",
+        reason: "The reviewed school transcript supports objectless 食過未 only with a recoverable food referent. Runtime licensing therefore requires explicit preceding same-head event structure with an overt object/domain.",
+        not_claims: ["not_context_free_aa61", "not_fabricated_object", "not_generalized_object_omission", "not_syntactic_null_object_claim"],
+      }),
+    });
+  }
+
   function licensedContextHaveOrNotEventQuestion(structural, explicitContext) {
     if (!explicitContext || !explicitContext.turns || !explicitContext.turns.length) return null;
     if (structural.length !== 1 || structural[0].kind !== "construction") return null;
@@ -692,6 +757,7 @@ module.exports = function createLicensedContextFragments(dependencies = {}) {
     licensedContextFragmentQuestion,
     licensedContextNegatedExistentialFragment,
     contextualPositiveExistentialAcknowledgementRepetition,
+    licensedContextShortExperientialQuestion,
     licensedContextHaveOrNotEventQuestion,
     licensedContextEllipticalExistentialQuestion,
     typedContextDependentFragmentBoundary,

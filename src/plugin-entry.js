@@ -15,7 +15,8 @@ const createCantoSpanPlugin = require("./plugin/canto-span-plugin");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.218";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.219";
+// v0.5.219: narrows AA61 final-未 experiential questions to overt typed experiential domains and context-licenses only the source-backed 食過未 short profile.
 // v0.5.218: closes AB15 structural boundaries with transparent modifier-bearing NP composition while preserving established bare and quantified NP behavior.
 // v0.5.217: separates unit-word category, lexical evidence, visible NP structure, and downstream policy while preserving the exact twelve-rule acceptance outcomes.
 // v0.5.216: records evidence and ontology dispositions for all 52 active unsupported/internal labels and adds invariant probes without changing parser recognition or linguistic status.
@@ -1909,7 +1910,7 @@ const {
   experientialYesNoQuestionFallback,
   interestDomainExistentialQuestionFallback,
 } = createCompletionExperientialQuestionDetectors({
-  construction, flattenSurface, hasConstruction, hasSurface, isParticle,
+  construction, firstToken, flattenSurface, hasConstruction, hasSurface, isParticle,
   isProductiveVo, isToken, nodeCanFillSlot, optionalSubjectOffset, traceInfo,
 });
 
@@ -2916,6 +2917,7 @@ const {
   contextualPositiveExistentialAcknowledgementRepetition,
   licensedContextHaveOrNotEventQuestion,
   licensedContextEllipticalExistentialQuestion,
+  licensedContextShortExperientialQuestion,
   typedContextDependentFragmentBoundary,
   saturatedCompletionBoundary,
   licensedContextOpinionStanceFrame,
@@ -2939,7 +2941,7 @@ const {
   licensedContextEllipticalExistentialQuestion, licensedContextFragmentQuestion,
   licensedContextHaveOrNotEventQuestion, licensedContextNegatedExistentialFragment,
   licensedContextOpinionStanceFrame, licensedContextQuantifiedTimeNP,
-  licensedContextStancePredicateAnswer, licensedFragmentAnswer,
+  licensedContextShortExperientialQuestion, licensedContextStancePredicateAnswer, licensedFragmentAnswer,
   needsContextAroundExisting, saturatedCompletionBoundary, splitTerminalContextNodes,
   targetDescriptorForContext, typedContextDependentFragmentBoundary,
   withoutIgnorableSpaceText,
