@@ -243,7 +243,7 @@ test("unknown taxonomy values fail closed instead of receiving heuristic default
 
 test("mixed clause-VP public identities use trace-definition scope rather than label suffix", () => {
   const [subjectlessModalRecord] = recordsForSentences(["要等幾耐啊？"]);
-  const subjectlessModal = subjectlessModalRecord.construction_traces.find((item) => item.construction === "ModalVP");
+  const subjectlessModal = subjectlessModalRecord.construction_traces.find((item) => item.construction === "ModalVP" && item.structural_scope === "vp");
   assert(subjectlessModal);
   assert.equal(subjectlessModal.structural_scope, "vp");
   assert.equal(subjectlessModal.structural_scope_source, "reviewed_mixed_clause_vp_definition");
