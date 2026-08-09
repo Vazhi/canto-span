@@ -9816,12 +9816,14 @@ var require_a_not_a = __commonJS({
             "preference_predicate",
             ...templateDerivedSlots2("SubjectPredicateClause", children)
           ]),
-          trace: traceInfo2("construction_function", {
+          trace: traceInfo2("generative_template", {
             construction_type: "SubjectPredicateClause",
+            template_family: "copular_a_not_a_bounded_complement",
+            template: assignedSlots.map((slot) => `${slot}!`),
             rule: "每 + subject + 都 + visible 鍾意 predicate material",
             assigned_slots: assignedSlots,
             surfaces: children.map((node) => flattenSurface2(node)),
-            reason: "Reconstructs the reviewed copular-question complement from visible preference material without certifying an accidental ModifierNP or restoring broad AB33 PreferenceVP matching."
+            reason: "Reconstructs the reviewed bounded copular-question complement from visible preference material without certifying an accidental ModifierNP or restoring broad AB33 PreferenceVP matching."
           })
         });
       }

@@ -427,12 +427,14 @@ module.exports = function createANotAQuestionDetectors(dependencies = {}) {
         "preference_predicate",
         ...templateDerivedSlots("SubjectPredicateClause", children),
       ]),
-      trace: traceInfo("construction_function", {
+      trace: traceInfo("generative_template", {
         construction_type: "SubjectPredicateClause",
+        template_family: "copular_a_not_a_bounded_complement",
+        template: assignedSlots.map((slot) => `${slot}!`),
         rule: "每 + subject + 都 + visible 鍾意 predicate material",
         assigned_slots: assignedSlots,
         surfaces: children.map((node) => flattenSurface(node)),
-        reason: "Reconstructs the reviewed copular-question complement from visible preference material without certifying an accidental ModifierNP or restoring broad AB33 PreferenceVP matching.",
+        reason: "Reconstructs the reviewed bounded copular-question complement from visible preference material without certifying an accidental ModifierNP or restoring broad AB33 PreferenceVP matching.",
       }),
     });
   }
