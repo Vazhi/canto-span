@@ -40,7 +40,7 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
-      - run: node tools/temp-apply-matcher-variants.js
+      - run: node tools/temp-run-matcher-variant-helper.js
       - run: npm run build:runtime
       - name: Commit claimed matcher-variant outputs only
         shell: bash
