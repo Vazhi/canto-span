@@ -48,6 +48,21 @@ jobs:
           echo 'ea8c9b72681b9c6137059da924430c309e9a3c41fb4453215928f2a7c3e53a08  /tmp/aa61.patch' | sha256sum -c -
           git apply --check /tmp/aa61.patch
           git apply /tmp/aa61.patch
+          cat > /tmp/aa61-supp.patch <<'PATCH'
+          --- a/src/plugin-entry.js
+          +++ b/src/plugin-entry.js
+          @@ -2917,6 +2917,7 @@
+             contextualPositiveExistentialAcknowledgementRepetition,
+             licensedContextHaveOrNotEventQuestion,
+             licensedContextEllipticalExistentialQuestion,
+          +  licensedContextShortExperientialQuestion,
+             typedContextDependentFragmentBoundary,
+             saturatedCompletionBoundary,
+             licensedContextOpinionStanceFrame,
+          PATCH
+          echo '78929c068fca1535bf9f845d6530a69ec040e37d77aec109b1ad7e31b48e88b3  /tmp/aa61-supp.patch' | sha256sum -c -
+          git apply --check /tmp/aa61-supp.patch
+          git apply /tmp/aa61-supp.patch
       - name: Regenerate controlled metadata and runtime
         run: |
           node tools/build-construction-tests.js
