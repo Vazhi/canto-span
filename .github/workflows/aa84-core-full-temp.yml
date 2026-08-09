@@ -1,4 +1,4 @@
-name: AA84 temporary project-state reconciliation
+name: AA84 temporary core and full verification
 
 on:
   pull_request:
@@ -6,44 +6,35 @@ on:
       - "**"
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  reconcile:
+  verify:
     if: github.event.pull_request.head.ref == 'agent/aa84-marked-reduplicated-manner'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          ref: agent/aa84-marked-reduplicated-manner
-          fetch-depth: 0
-      - name: Reconcile derived project-state fields only
-        shell: bash
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Core verification
+        run: npm run verify
+      - name: Full diagnostic sweep
+        continue-on-error: true
+        run: npm run verify:all -- --keep-going --output /tmp/aa84-full-verification.json
+      - name: Require every non-release profile to pass
         run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          p = Path('docs/current/PROJECT-STATE.md')
-          s = p.read_text()
-          replacements = [
-              ('| `boundary_ready` | 1 |', '| `boundary_ready` | 2 |'),
-              ('| `source_supported` | 63 |', '| `source_supported` | 62 |'),
-              ('per-construction assertions: **1,578** across **134** files;', 'per-construction assertions: **1,593** across **134** files;'),
-              ('| Per-construction assertions | 1,578 |', '| Per-construction assertions | 1,593 |'),
-          ]
-          for old, new in replacements:
-              if old not in s:
-                  raise SystemExit(f'missing expected project-state text: {old}')
-              s = s.replace(old, new, 1)
-          p.write_text(s)
-          PY
-          git diff --check
-          git diff -- docs/current/PROJECT-STATE.md
-      - name: Commit project-state reconciliation
-        shell: bash
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/current/PROJECT-STATE.md
-          git diff --cached --quiet && { echo "Project state already reconciled"; exit 0; }
-          git commit -m "Reconcile AA84 derived project-state counts"
-          git push origin HEAD:agent/aa84-marked-reduplicated-manner
+          node <<'NODE'
+          const fs = require('node:fs');
+          const report = JSON.parse(fs.readFileSync('/tmp/aa84-full-verification.json', 'utf8'));
+          const failures = (report.results || []).filter((item) => item.profile !== 'release' && item.status !== 'PASS');
+          if (failures.length) throw new Error(`Non-release failures: ${JSON.stringify(failures)}`);
+          const releaseFailures = (report.results || []).filter((item) => item.profile === 'release' && item.status !== 'PASS');
+          console.log(JSON.stringify({
+            executed: report.executed_command_count,
+            non_release_failures: 0,
+            release_failures: releaseFailures.map((item) => item.id),
+          }, null, 2));
+          NODE
