@@ -8,6 +8,7 @@ const {
   buildCoverageRecord,
   categoriesForSummary,
   formatRecordDetails,
+  recordsForSentences,
   recordsFromFullDiagnostics,
   structuralSanityFindings,
   uniqueRelativeSpan,
@@ -276,4 +277,17 @@ test("detailed human output exposes slots and sanity findings", () => {
   const text = formatRecordDetails(record);
   assert(text.includes("slot subject = [我]"));
   assert(text.includes("template_family_missing"));
+});
+
+test("live source runtime exposes slot provenance for the basic smoke anomalies", () => {
+  const records = recordsForSentences(["我要飲水。", "我想睇電視。", "我係老師。"]).toSorted((a, b) => a.source.localeCompare(b.source));
+  const modal = records.find((record) => record.source === "我要飲水。");
+  const desiderative = records.find((record) => record.source === "我想睇電視。");
+  const copular = records.find((record) => record.source === "我係老師。");
+
+  assert(modal.construction_traces[0].slot_bindings.some((binding) => binding.slot === "subject"));
+  assert(modal.sanity_findings.some((finding) => finding.code === "root_vp_binds_subject"));
+  assert(desiderative.construction_traces[0].slot_bindings.some((binding) => binding.slot === "subject"));
+  assert(desiderative.sanity_findings.some((finding) => finding.code === "root_vp_binds_subject"));
+  assert(copular.sanity_findings.some((finding) => finding.code === "template_family_missing"));
 });
