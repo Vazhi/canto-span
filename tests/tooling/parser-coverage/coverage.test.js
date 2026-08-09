@@ -181,7 +181,7 @@ test("parent-relative construction spans are exposed when uniquely locatable", (
   assert.equal(record.sanity_findings.length, 0);
 });
 
-test("structural sanity checks surface provenance inconsistencies", () => {
+test("structural sanity checks use explicit scope rather than construction suffix", () => {
   const summary = {
     root_span_coverage_status: "PASS",
     unwrapped_root_surfaces: ["尾"],
@@ -196,6 +196,7 @@ test("structural sanity checks surface provenance inconsistencies", () => {
       parent_relative_span: { status: "root", start: 0, end: 4 },
       trace_kind: "generative_template",
       template_family: "",
+      structural_scope: "vp",
       assigned_slots: ["subject", "modal", "vp"],
       slot_surfaces: ["我", "要"],
       slot_bindings: [
@@ -208,7 +209,7 @@ test("structural sanity checks surface provenance inconsistencies", () => {
     findings.map((finding) => finding.code).sort(),
     [
       "pass_with_unwrapped_root_surface",
-      "root_vp_binds_subject",
+      "vp_scope_binds_clause_level_slot",
       "slot_surface_count_mismatch",
       "template_family_missing",
     ].sort(),
@@ -279,16 +280,22 @@ test("detailed human output exposes slots and sanity findings", () => {
   assert(text.includes("template_family_missing"));
 });
 
-test("live source runtime exposes slot provenance for the basic smoke anomalies", () => {
+test("live source runtime exposes clause scope for subject-binding public VP identities", () => {
   const records = recordsForSentences(["我要飲水。", "我想睇電視。", "我係老師。"]).toSorted((a, b) => a.source.localeCompare(b.source));
   const modal = records.find((record) => record.source === "我要飲水。");
   const desiderative = records.find((record) => record.source === "我想睇電視。");
   const copular = records.find((record) => record.source === "我係老師。");
 
   assert(modal.construction_traces[0].slot_bindings.some((binding) => binding.slot === "subject"));
-  assert(modal.sanity_findings.some((finding) => finding.code === "root_vp_binds_subject"));
+  assert.equal(modal.construction_traces[0].structural_scope, "clause");
+  assert(!modal.sanity_findings.some((finding) => finding.code === "vp_scope_binds_clause_level_slot"));
+  assert(!modal.sanity_findings.some((finding) => finding.code === "root_vp_binds_subject"));
+
   assert(desiderative.construction_traces[0].slot_bindings.some((binding) => binding.slot === "subject"));
-  assert(desiderative.sanity_findings.some((finding) => finding.code === "root_vp_binds_subject"));
+  assert.equal(desiderative.construction_traces[0].structural_scope, "clause");
+  assert(!desiderative.sanity_findings.some((finding) => finding.code === "vp_scope_binds_clause_level_slot"));
+  assert(!desiderative.sanity_findings.some((finding) => finding.code === "root_vp_binds_subject"));
+
   assert.equal(copular.construction_traces[0].template_family, "generative_template");
   assert(!copular.sanity_findings.some((finding) => finding.code === "template_family_missing"));
 });
