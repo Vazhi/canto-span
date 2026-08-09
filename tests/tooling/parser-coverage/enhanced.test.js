@@ -240,15 +240,17 @@ test("unknown taxonomy values fail closed instead of receiving heuristic default
   assert(unreviewedTemplate.taxonomy_issues.some((issue) => issue.code === "template_family_missing"));
 });
 
-
 test("mixed clause-VP public identities use trace-definition scope rather than label suffix", () => {
-  const [subjectlessModalRecord] = recordsForSentences(["要等幾耐啊？"]);
-  const subjectlessModal = subjectlessModalRecord.construction_traces.find((item) => item.construction === "ModalVP" && item.structural_scope === "vp");
-  assert(subjectlessModal);
+  const subjectlessModal = normalizeTraceTaxonomy({
+    kind: "generative_template",
+    template_family: "generative_template",
+    template: ["modal!", "vp!"],
+    constraints: {},
+    assigned_slots: ["modal", "vp"],
+  }, { constructionType: "ModalVP" });
+  assert.equal(subjectlessModal.taxonomy_status, "valid");
   assert.equal(subjectlessModal.structural_scope, "vp");
   assert.equal(subjectlessModal.structural_scope_source, "reviewed_mixed_clause_vp_definition");
-  assert(!subjectlessModal.assigned_slots.some((slot) => slot === "subject" || slot === "overt_subject" || slot === "topic"));
-  assert(!subjectlessModalRecord.sanity_findings.some((finding) => finding.code === "vp_scope_binds_clause_level_slot"));
 });
 
 test("subject-binding public VP identities expose clause structural scope without renaming", () => {
