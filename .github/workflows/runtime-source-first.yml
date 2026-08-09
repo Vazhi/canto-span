@@ -48,6 +48,7 @@ jobs:
           else
             node tools/temp-apply-ab33-question-repair.js
           fi
+      - run: node tools/temp-adjust-ab33-copular-trace.js
       - run: npm run build:runtime
       - name: Commit claimed AB33 outputs only
         shell: bash
@@ -65,7 +66,7 @@ jobs:
           git add main.js src/parser/detectors/questions/a-not-a.js tests/constructions/ANotAQuestion.json tests/constructions/CopularANotAQuestion.json
           git diff --cached --check
           git diff --cached --quiet && { echo "No claimed AB33 output changes"; exit 0; }
-          git commit -m "Repair AB33 outer-question composition"
+          git commit -m "Preserve bounded AB33 copular trace classification"
           git push origin HEAD:agent/ab33-outer-question-composition
 
   verify:
