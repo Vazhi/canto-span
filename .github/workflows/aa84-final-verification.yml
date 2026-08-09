@@ -1,0 +1,26 @@
+name: AA84 temporary final verification
+
+on:
+  pull_request:
+    paths:
+      - "**"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    if: github.event.pull_request.head.ref == 'agent/aa84-marked-reduplicated-manner'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Core verification
+        run: npm run verify
+      - name: Full diagnostic sweep
+        if: always()
+        run: npm run verify:all -- --keep-going --output /tmp/aa84-full-verification.json
