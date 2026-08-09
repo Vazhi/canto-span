@@ -15,6 +15,7 @@ const commands = [
   ["glossika_week16_lexicon", path.join(root, "tests", "tooling", "lexicon", "glossika-week16-runtime-lexicon.test.js")],
   ["unit_word_evidence", path.join(root, "tests", "tooling", "runtime", "unit-word-evidence.test.js")],
   ["parser_coverage_auditor", path.join(root, "tests", "tooling", "parser-coverage", "coverage.test.js")],
+  ["parser_audit_smoke_10", path.join(root, "tests", "tooling", "parser-coverage", "audit-smoke-10.test.js")],
 ];
 const generatedPaths = [
   "validation/current/regression-suite.json",
