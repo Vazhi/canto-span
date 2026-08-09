@@ -42,30 +42,30 @@
       "source_locator": "printed p. 55 / PDF p. 65"
     },
     {
-      "case_id": "AB33-ZUNGJI-COPA-N01",
+      "case_id": "AB33-ZUNGJI-COPA-P03",
       "source": "係唔係每個學生都鍾意音樂呀？",
-      "class": "copular_a_not_a_preference_np_object_outside_ab33",
-      "expected_profile": "construction_absent",
-      "assertion": "construction_absent",
+      "class": "copular_a_not_a_np_preference_outer_question_preserved",
+      "expected_profile": "construction_present",
+      "assertion": "construction_present",
       "provenance": "docs/research/ISSUE-608-ZUNGJI-COMPLEMENT-PROFILES-R1.md#composition-cells",
       "source_ids": [
         "SRC-YIP-MATTHEWS-2000-BASIC"
       ]
     },
     {
-      "case_id": "AB33-ZUNGJI-COPA-N02",
+      "case_id": "AB33-ZUNGJI-COPA-P04",
       "source": "係唔係每個學生都鍾意咗個學生呀？",
-      "class": "copular_a_not_a_aspect_marked_np_preference_outside_ab33",
-      "expected_profile": "construction_absent",
-      "assertion": "construction_absent",
+      "class": "copular_a_not_a_aspect_np_preference_outer_question_preserved",
+      "expected_profile": "construction_present",
+      "assertion": "construction_present",
       "provenance": "docs/research/ISSUE-608-ZUNGJI-COMPLEMENT-PROFILES-R1.md#composition-cells"
     },
     {
-      "case_id": "AB33-ZUNGJI-COPA-N03",
+      "case_id": "AB33-ZUNGJI-COPA-P05",
       "source": "係唔係每個學生都鍾意燒鵝定係燒鴨多啲呀？",
-      "class": "copular_a_not_a_alternative_scalar_preference_outside_ab33",
-      "expected_profile": "construction_absent",
-      "assertion": "construction_absent",
+      "class": "copular_a_not_a_alternative_scalar_outer_question_preserved",
+      "expected_profile": "construction_present",
+      "assertion": "construction_present",
       "provenance": "docs/research/ISSUE-608-ZUNGJI-COMPLEMENT-PROFILES-R1.md#composition-cells",
       "source_ids": [
         "SRC-CUHK-ILC-CANTONESE-TUTORIAL-ZUNGJI"
@@ -100,14 +100,14 @@
   "coverage": {
     "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 0,
-    "focused_positive_count": 2,
-    "focused_boundary_count": 4,
+    "focused_positive_count": 5,
+    "focused_boundary_count": 1,
     "focused_review_only_count": 0,
     "np_case_count": 0,
     "implementation_probe_count": 2,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 2,
-    "boundary_case_count": 4,
+    "positive_case_count": 5,
+    "boundary_case_count": 1,
     "executable_case_count": 8
   }
 }
