@@ -26,41 +26,9 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  aa84-sync:
-    if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'agent/aa84-marked-reduplicated-manner'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          ref: agent/aa84-marked-reduplicated-manner
-          fetch-depth: 0
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 24
-          package-manager-cache: false
-      - run: npm ci
-      - run: npm run build:runtime
-      - name: Commit generated runtime only
-        shell: bash
-        run: |
-          status="$(git status --short)"
-          unexpected="$(printf '%s\n' "$status" | grep -Ev '^ M main\.js$' | sed '/^$/d' || true)"
-          if [ -n "$unexpected" ]; then
-            echo "Unexpected files changed during AA84 runtime build:"
-            echo "$unexpected"
-            exit 1
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add main.js
-          git diff --cached --check
-          git diff --cached --quiet && { echo "No generated runtime change"; exit 0; }
-          git commit -m "Rebuild runtime after AA84 time-boundary guard"
-          git push origin HEAD:agent/aa84-marked-reduplicated-manner
-
   verify:
     runs-on: ubuntu-latest
     steps:
