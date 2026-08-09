@@ -62,7 +62,7 @@
     },
     {
       "case_id": "AA11-R1-14",
-      "source": "我知成個社會會變成點。",
+      "source": "我知佢變成點。",
       "class": "embedded_cognition_content_composition_positive",
       "expected_profile": "ChangeIntoPredicate remains exact 變成點 while an independently typed CognitionContentFrame owns the embedding structure",
       "assertion": "construction_present",
