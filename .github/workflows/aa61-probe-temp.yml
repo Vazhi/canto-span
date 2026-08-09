@@ -63,6 +63,36 @@ jobs:
           echo '78929c068fca1535bf9f845d6530a69ec040e37d77aec109b1ad7e31b48e88b3  /tmp/aa61-supp.patch' | sha256sum -c -
           git apply --check /tmp/aa61-supp.patch
           git apply /tmp/aa61-supp.patch
+          cat > /tmp/aa61-testfix.patch <<'PATCH'
+          --- a/tests/constructions/ExperientialQuestion.json
+          +++ b/tests/constructions/ExperientialQuestion.json
+          @@ -35,15 +35,17 @@
+               },
+               {
+                 "case_id": "AA61-R1-01",
+          -      "source": "你食過醉雞未呀？",
+          -      "class": "source_linked_overt_object_and_particle_positive",
+          -      "expected_profile": "ExperientialQuestion present for overt typed experiential object + final 未 + 呀",
+          +      "source": "你飲過茶未呀？",
+          +      "class": "controlled_source_backed_object_plus_particle_positive",
+          +      "expected_profile": "ExperientialQuestion present for an overt typed experiential object + final 未 + optional 呀; the object frame and particle position are independently source-backed in the AA61 inventory.",
+                 "assertion": "construction_present",
+                 "provenance": "docs/research/ISSUE-617-GWO-FINAL-MEI-SOURCE-INVENTORY-R1.md#full-overt-object-experiential-question",
+                 "source_ids": [
+          -        "SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA"
+          +        "SRC-ZHANG-1970-PREDICATIVE-SUFFIXES",
+          +        "SRC-MATTHEWS-YIP-2011-ASPECT-MULTIMEDIA",
+          +        "SRC-CUHK-ILC-EXP-FINAL-MEI"
+                 ],
+          -      "source_locator": "Chapter 11, section 11.2.5"
+          +      "source_locator": "controlled contrast combining source-backed 飲過茶未 with independently attested optional final 呀 position"
+               },
+               {
+                 "case_id": "AA61-R1-02",
+          PATCH
+          echo '8d4832ecc1aa40b3b33ee7783d3fe1857cac16ed85ced32a4a6c4d3688700220  /tmp/aa61-testfix.patch' | sha256sum -c -
+          git apply --check /tmp/aa61-testfix.patch
+          git apply /tmp/aa61-testfix.patch
       - name: Regenerate controlled metadata and runtime
         run: |
           node tools/build-construction-tests.js
