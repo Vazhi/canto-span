@@ -42,23 +42,25 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
+      - name: Apply accepted AA84 test and snapshot transitions
+        run: node tools/temp-finalize-aa84-fixtures.js
       - run: npm run build:runtime
-      - name: Commit generated runtime only
+      - name: Commit claimed AA84 outputs only
         shell: bash
         run: |
           status="$(git status --short)"
-          unexpected="$(printf '%s\n' "$status" | grep -Ev '^ M main\.js$' | sed '/^$/d' || true)"
+          unexpected="$(printf '%s\n' "$status" | grep -Ev '^ M (main\.js|tests/fixtures/regression-snapshots\.json|tests/tooling/parser-coverage/enhanced\.test\.js)$' | sed '/^$/d' || true)"
           if [ -n "$unexpected" ]; then
-            echo "Unexpected files changed during AA84 runtime build:"
+            echo "Unexpected files changed during AA84 finalization:"
             echo "$unexpected"
             exit 1
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add main.js
+          git add main.js tests/fixtures/regression-snapshots.json tests/tooling/parser-coverage/enhanced.test.js
           git diff --cached --check
-          git diff --cached --quiet && { echo "No generated runtime change"; exit 0; }
-          git commit -m "Rebuild runtime for AA84 boundary repair"
+          git diff --cached --quiet && { echo "No claimed AA84 output changes"; exit 0; }
+          git commit -m "Finalize AA84 architecture and regression fixtures"
           git push origin HEAD:agent/aa84-marked-reduplicated-manner
 
   verify:
