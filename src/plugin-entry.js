@@ -3041,12 +3041,7 @@ function labelTransitionTracePolicy(row) {
   const trace = row && row.trace ? row.trace : {};
   const kind = trace.kind || "unspecified";
   if (kind === "generative_template" && trace.template_family === "construction_template") {
-    return {
-      bucket: "construction_template_family",
-      status: "migration_candidate",
-      priority: 15,
-      action: "Remove remaining surface/vocabulary constraints once generated slots can license this template.",
-    };
+    return LABEL_TRANSITION_KIND_POLICY.construction_template;
   }
   if (kind === "generative_template" && trace.template_family === "generative_template") {
     return LABEL_TRANSITION_KIND_POLICY.generative_template;
@@ -3144,18 +3139,21 @@ function labelTransitionAuditSummary(analysis) {
     countByBucket[row.transition_bucket] = (countByBucket[row.transition_bucket] || 0) + 1;
     countByStatus[row.transition_status] = (countByStatus[row.transition_status] || 0) + 1;
   }
-  const migrationStatuses = new Set(["migration_candidate", "transition_trace"]);
+  const migrationStatuses = new Set(["migration_candidate"]);
   const migrationCandidates = rows
     .filter((row) => migrationStatuses.has(row.transition_status))
     .sort((a, b) => a.transition_priority - b.transition_priority || String(a.construction).localeCompare(String(b.construction)));
   const unknownRows = rows.filter((row) => row.transition_status === "needs_registry_decision");
   return {
     status: unknownRows.length ? "WARN" : "PASS",
-    policy: "Diagnostic inventory for transitioning remaining construction labels/rules toward governed generative templates or accepted structural wrappers. PASS means every construction trace was classified; migration candidates may still remain.",
+    policy: "Diagnostic inventory separating accepted runtime architectures from actionable migration debt. Declarative templates are preferred where they cleanly fit; governed specialized implementations may remain first-class. PASS means every construction trace was classified; migration candidates may still remain.",
     construction_row_count: rows.length,
-    already_generative_count: countByStatus.already_generative || 0,
+    accepted_template_count: (countByStatus.accepted_reusable_template || 0) + (countByStatus.accepted_bounded_template || 0),
+    accepted_specialized_count: (countByStatus.accepted_specialized_implementation || 0) + (countByStatus.accepted_guardrail || 0) + (countByStatus.accepted_closed_table || 0) + (countByStatus.accepted_internal_support || 0),
+    transition_review_count: countByStatus.transition_review || 0,
+    already_generative_count: countByStatus.accepted_reusable_template || 0,
     migration_candidate_count: migrationCandidates.length,
-    reviewed_table_or_guardrail_count: (countByStatus.reviewed_table || 0) + (countByStatus.review_guardrail || 0) + (countByStatus.intentionally_opaque || 0) + (countByStatus.accepted_structural_wrapper || 0),
+    reviewed_table_or_guardrail_count: (countByStatus.accepted_specialized_implementation || 0) + (countByStatus.accepted_guardrail || 0) + (countByStatus.accepted_closed_table || 0),
     needs_registry_decision_count: unknownRows.length,
     transition_bucket_counts: countByBucket,
     transition_status_counts: countByStatus,
