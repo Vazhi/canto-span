@@ -91,9 +91,15 @@ jobs:
           )
           : > /tmp/tree-elements.jsonl
           for path in "${paths[@]}"; do
-            content=$(base64 -w0 "$path")
-            blob_sha=$(jq -n --arg content "$content" '{content:$content,encoding:"base64"}' \
-              | gh api --method POST "repos/${GITHUB_REPOSITORY}/git/blobs" --input - --jq '.sha')
+            PATH_TO_STAGE="$path" python3 <<'PY'
+          import base64, json, os
+          path = os.environ['PATH_TO_STAGE']
+          with open(path, 'rb') as handle:
+              content = base64.b64encode(handle.read()).decode('ascii')
+          with open('/tmp/blob-request.json', 'w', encoding='utf-8') as handle:
+              json.dump({'content': content, 'encoding': 'base64'}, handle)
+          PY
+            blob_sha=$(gh api --method POST "repos/${GITHUB_REPOSITORY}/git/blobs" --input /tmp/blob-request.json --jq '.sha')
             jq -n --arg path "$path" --arg sha "$blob_sha" \
               '{path:$path,mode:"100644",type:"blob",sha:$sha}' >> /tmp/tree-elements.jsonl
           done
