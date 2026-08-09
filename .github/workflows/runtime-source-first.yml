@@ -5,7 +5,8 @@ on:
     paths:
       - "src/**"
       - "tests/**"
-      - "tools/**"
+      - "tools/build-runtime.js"
+      - "tools/verify-current-state.js"
       - "config/verification-profiles.json"
       - "package.json"
       - "package-lock.json"
@@ -15,7 +16,8 @@ on:
     paths:
       - "src/**"
       - "tests/**"
-      - "tools/**"
+      - "tools/build-runtime.js"
+      - "tools/verify-current-state.js"
       - "config/verification-profiles.json"
       - "package.json"
       - "package-lock.json"
@@ -24,43 +26,9 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  label-policy-sync:
-    if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'agent/label-transition-policy'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          ref: agent/label-transition-policy
-          fetch-depth: 0
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 24
-          package-manager-cache: false
-      - run: npm ci
-      - run: node tools/temp-apply-label-transition-policy.js
-      - run: npm run build:runtime
-      - name: Commit claimed policy outputs only
-        shell: bash
-        run: |
-          allowed='^( M (main\.js|src/runtime-resources/diagnostics/trace-metadata\.js|src/plugin-entry\.js))$'
-          status="$(git status --short)"
-          unexpected="$(printf '%s\n' "$status" | grep -Ev "$allowed" | sed '/^$/d' || true)"
-          if [ -n "$unexpected" ]; then
-            echo "Unexpected files changed during label-transition policy migration/build:"
-            echo "$unexpected"
-            exit 1
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add main.js src/runtime-resources/diagnostics/trace-metadata.js src/plugin-entry.js
-          git diff --cached --check
-          git diff --cached --quiet && { echo "No claimed policy output changes"; exit 0; }
-          git commit -m "Reconcile label-transition diagnostic policy"
-          git push origin HEAD:agent/label-transition-policy
-
   verify:
     runs-on: ubuntu-latest
     steps:
