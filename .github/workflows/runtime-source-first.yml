@@ -42,25 +42,25 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
-      - run: node tools/temp-apply-trace-taxonomy-auditor.js
+      - run: node tools/temp-apply-trace-taxonomy-followup.js
       - run: npm run build:runtime
-      - name: Commit claimed outputs only
+      - name: Commit claimed follow-up outputs only
         shell: bash
         run: |
-          allowed='^( M (main\.js|tools/parser-coverage-report\.js))$'
+          allowed='^( M (main\.js|src/runtime-resources/diagnostics/trace-metadata\.js|tests/tooling/parser-coverage/coverage\.test\.js|tests/fixtures/regression-snapshots\.json))$'
           status="$(git status --short)"
           unexpected="$(printf '%s\n' "$status" | grep -Ev "$allowed" | sed '/^$/d' || true)"
           if [ -n "$unexpected" ]; then
-            echo "Unexpected files changed during taxonomy patch/build:"
+            echo "Unexpected files changed during taxonomy follow-up/build:"
             echo "$unexpected"
             exit 1
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add main.js tools/parser-coverage-report.js
+          git add main.js src/runtime-resources/diagnostics/trace-metadata.js tests/tooling/parser-coverage/coverage.test.js tests/fixtures/regression-snapshots.json
           git diff --cached --check
-          git diff --cached --quiet && { echo "No claimed output changes"; exit 0; }
-          git commit -m "Apply controlled trace taxonomy"
+          git diff --cached --quiet && { echo "No claimed follow-up changes"; exit 0; }
+          git commit -m "Complete controlled trace taxonomy normalization"
           git push origin HEAD:agent/trace-taxonomy-registry
 
   verify:
