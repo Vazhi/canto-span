@@ -73,6 +73,26 @@ module.exports = function createANotAQuestionDetectors(dependencies = {}) {
     };
   }
 
+  function alternativeScalarQuestionTail(nodes) {
+    const compact = withoutIgnorableSpaceText(nodes || []);
+    if (compact.length < 4) return null;
+    const connectorIndex = compact.findIndex((node) => isToken(node, "定係"));
+    if (connectorIndex <= 0 || connectorIndex >= compact.length - 2) return null;
+    if (surfaceOf(compact[compact.length - 1]) !== "多啲") return null;
+    const left = compact.slice(0, connectorIndex);
+    const right = compact.slice(connectorIndex + 1, -1);
+    if (!left.length || !right.length) return null;
+    if ([...left, ...right].some((node) => isParticle(node) || isQuestionPunctuationText(node))) return null;
+    return {
+      children: compact,
+      assignedSlots: compact.map((node, index) => {
+        if (index === connectorIndex) return "question_fragment";
+        if (index === compact.length - 1) return "degree";
+        return "predicate";
+      }),
+    };
+  }
+
   function preferenceANotAQuestionFallback(core) {
     const { bareCore, particles } = splitFinalQuestionMaterial(core);
     const compact = withoutIgnorableSpaceText(bareCore);
@@ -86,33 +106,64 @@ module.exports = function createANotAQuestionDetectors(dependencies = {}) {
     const complementCore = compact.slice(offset + 3);
     if (!complementCore.length) return null;
     const wrappedComplement = applyConstructionPatterns(complementCore);
-    if (wrappedComplement.length !== 1) return null;
-    const complement = wrappedComplement[0];
-    const complementSlot = nodeCanFillSlot(complement, "vp")
-      ? "vp"
-      : (nodeCanFillSlot(complement, "np") || nodeCanFillSlot(complement, "object") ? "object" : "");
-    if (!complementSlot) return null;
+    if (wrappedComplement.length === 1) {
+      const complement = wrappedComplement[0];
+      const complementSlot = nodeCanFillSlot(complement, "vp")
+        ? "vp"
+        : (nodeCanFillSlot(complement, "np") || nodeCanFillSlot(complement, "object") ? "object" : "");
+      if (!complementSlot) return null;
 
-    const children = [...compact.slice(0, offset), firstSyllable, negator, preferencePredicate, complement, ...particles];
+      const children = [...compact.slice(0, offset), firstSyllable, negator, preferencePredicate, complement, ...particles];
+      const assignedSlots = [
+        ...compact.slice(0, offset).map(() => "subject"),
+        "a_not_a_first_syllable",
+        "negator",
+        "preference_predicate",
+        complementSlot,
+        ...particles.map(() => "particle"),
+      ];
+      return construction("ANotAQuestion", "A-not-A", children, {
+        note: "Bounded first-syllable preference A-not-A question: optional subject + 鍾唔鍾意 + overt typed NP/VP complement.",
+        slots: cleanSlots(["question_fragment", "predicate", "negator", complementSlot, ...templateDerivedSlots("ANotAQuestion", children)]),
+        trace: traceInfo("generative_template", {
+          construction_type: "ANotAQuestion",
+          template_family: "first_syllable_preference_a_not_a",
+          template: ["subject?", "a_not_a_first_syllable!", "negator!", "preference_predicate!", `${complementSlot}!`, "particle?"],
+          assigned_slots: assignedSlots,
+          surfaces: children.map((node) => flattenSurface(node)),
+          copied_surface_profile: "first_syllable_plus_full_preference_predicate",
+          reason: "Preserves reviewed 鍾唔鍾意 + overt typed complement questions without reclassifying them as AB33 PreferenceVP.",
+        }),
+      });
+    }
+
+    const alternative = alternativeScalarQuestionTail(complementCore);
+    if (!alternative) return null;
+    const children = [
+      ...compact.slice(0, offset),
+      firstSyllable,
+      negator,
+      preferencePredicate,
+      ...alternative.children,
+      ...particles,
+    ];
     const assignedSlots = [
       ...compact.slice(0, offset).map(() => "subject"),
       "a_not_a_first_syllable",
       "negator",
       "preference_predicate",
-      complementSlot,
+      ...alternative.assignedSlots,
       ...particles.map(() => "particle"),
     ];
     return construction("ANotAQuestion", "A-not-A", children, {
-      note: "Bounded first-syllable preference A-not-A question: optional subject + 鍾唔鍾意 + overt typed NP/VP complement.",
-      slots: cleanSlots(["question_fragment", "predicate", "negator", complementSlot, ...templateDerivedSlots("ANotAQuestion", children)]),
-      trace: traceInfo("generative_template", {
+      note: "Bounded first-syllable preference A-not-A question with separately preserved alternative/scalar material.",
+      slots: cleanSlots(["question_fragment", "predicate", "negator", "degree", ...templateDerivedSlots("ANotAQuestion", children)]),
+      trace: traceInfo("construction_function", {
         construction_type: "ANotAQuestion",
-        template_family: "first_syllable_preference_a_not_a",
-        template: ["subject?", "a_not_a_first_syllable!", "negator!", "preference_predicate!", `${complementSlot}!`, "particle?"],
+        rule: "subject? + 鍾 + 唔 + 鍾意 + alternative material + 定係 + alternative material + 多啲 + particle?",
         assigned_slots: assignedSlots,
         surfaces: children.map((node) => flattenSurface(node)),
-        copied_surface_profile: "first_syllable_plus_full_preference_predicate",
-        reason: "Preserves reviewed 鍾唔鍾意 + overt typed complement questions without reclassifying them as AB33 PreferenceVP.",
+        reason: "Preserves the reviewed outer first-syllable A-not-A question while leaving alternative/scalar material transparent and outside AB33 PreferenceVP.",
       }),
     });
   }
@@ -299,44 +350,98 @@ module.exports = function createANotAQuestionDetectors(dependencies = {}) {
     return null;
   }
 
+  function typedPreferencePredicateParts(nodes) {
+    const compact = withoutIgnorableSpaceText(nodes || []);
+    if (compact.length === 1 && compact[0] && compact[0].kind === "construction" && compact[0].type === "ModifierNP") {
+      const modifierChildren = withoutIgnorableSpaceText(compact[0].children || []);
+      if (modifierChildren.length !== 2 || !isToken(modifierChildren[0], "鍾意")) return null;
+      const complement = modifierChildren[1];
+      const complementSlot = nodeCanFillSlot(complement, "vp")
+        ? "vp"
+        : (nodeCanFillSlot(complement, "np") || nodeCanFillSlot(complement, "object") ? "object" : "");
+      if (!complementSlot) return null;
+      return {
+        children: [modifierChildren[0], complement],
+        assignedSlots: ["preference_predicate", complementSlot],
+        profile: `typed_${complementSlot}`,
+      };
+    }
+
+    if (compact.length === 2 && isToken(compact[0], "鍾意")) {
+      const complementSlot = nodeCanFillSlot(compact[1], "vp")
+        ? "vp"
+        : (nodeCanFillSlot(compact[1], "np") || nodeCanFillSlot(compact[1], "object") ? "object" : "");
+      if (complementSlot) {
+        return {
+          children: compact,
+          assignedSlots: ["preference_predicate", complementSlot],
+          profile: `typed_${complementSlot}`,
+        };
+      }
+    }
+
+    if (compact.length === 3
+        && isToken(compact[0], "鍾意")
+        && isToken(compact[1], "咗")
+        && (nodeCanFillSlot(compact[2], "np") || nodeCanFillSlot(compact[2], "object"))) {
+      return {
+        children: compact,
+        assignedSlots: ["preference_predicate", "perfective_aspect", "object"],
+        profile: "perfective_np_object",
+      };
+    }
+
+    if (compact.length >= 5 && isToken(compact[0], "鍾意")) {
+      const alternative = alternativeScalarQuestionTail(compact.slice(1));
+      if (alternative) {
+        return {
+          children: [compact[0], ...alternative.children],
+          assignedSlots: ["preference_predicate", ...alternative.assignedSlots],
+          profile: "alternative_scalar",
+        };
+      }
+    }
+    return null;
+  }
+
   function copularANotAQuantifiedPreferenceClauseCandidate(complementCore) {
     const compact = withoutIgnorableSpaceText(applyConstructionPatterns(complementCore));
-    if (compact.length !== 4) return null;
-    const [quantifier, subject, focus, predicate] = compact;
+    if (compact.length < 4) return null;
+    const [quantifier, subject, focus, ...predicateNodes] = compact;
     if (!isToken(quantifier, "每")) return null;
     if (!nodeCanFillSlot(subject, "subject")) return null;
     if (!isToken(focus, "都") || !nodeCanFillSlot(focus, "focus_adverb")) return null;
-    if (!isPreferencePredicateWithTypedActivityComplement(predicate)) return null;
 
-    const children = [quantifier, subject, focus, predicate];
+    const predicateParts = typedPreferencePredicateParts(predicateNodes);
+    if (!predicateParts) return null;
+    const children = [quantifier, subject, focus, ...predicateParts.children];
+    const assignedSlots = ["distributive_quantifier", "subject", "focus_adverb", ...predicateParts.assignedSlots];
     return construction("SubjectPredicateClause", "SubjPred", children, {
-      note: "Bounded copular A-not-A complement: 每 + overt subject + 都 + overt preference predicate.",
+      note: "Bounded copular A-not-A complement: 每 + overt subject + 都 + visible preference predicate material.",
       slots: cleanSlots([
         "subject_predicate_clause",
         "clause",
         "subject",
         "focus_adverb",
         "predicate",
+        "preference_predicate",
         ...templateDerivedSlots("SubjectPredicateClause", children),
       ]),
       trace: traceInfo("generative_template", {
         construction_type: "SubjectPredicateClause",
         template_family: "copular_a_not_a_bounded_complement",
-        template: ["distributive_quantifier!", "subject!", "focus_adverb!", "predicate!"],
-        assigned_slots: ["distributive_quantifier", "subject", "focus_adverb", "predicate"],
+        template: assignedSlots.map((slot) => `${slot}!`),
+        rule: ({
+          typed_vp: "每 + subject + 都 + 鍾意 + typed VP",
+          typed_object: "每 + subject + 都 + 鍾意 + typed NP",
+          perfective_np_object: "每 + subject + 都 + 鍾意 + 咗 + typed NP",
+          alternative_scalar: "每 + subject + 都 + 鍾意 + alternative material + 定係 + alternative material + 多啲",
+        })[predicateParts.profile] || `每 + subject + 都 + 鍾意 + reviewed profile ${predicateParts.profile}`,
+        assigned_slots: assignedSlots,
         surfaces: children.map((node) => flattenSurface(node)),
-        reason: "Keeps the sourced 每...都 preference predicate visible as a copular A-not-A complement without restoring broad PreferenceVP matching.",
+        reason: "Reconstructs the reviewed bounded copular-question complement from visible preference material without certifying an accidental ModifierNP or restoring broad AB33 PreferenceVP matching.",
       }),
     });
-  }
-
-  function isPreferencePredicateWithTypedActivityComplement(node) {
-    if (!node || node.kind !== "construction" || node.type !== "ModifierNP") return false;
-    const children = withoutIgnorableSpaceText(node.children || []);
-    if (children.length !== 2 || !isToken(children[0], "鍾意")) return false;
-    const complement = children[1];
-    if (!nodeCanFillSlot(complement, "vp")) return false;
-    return ["TransitiveVP", "ProductiveVO", "DirectionalMotionVP", "CompoundDirectionalMotionVP", "VerbComplementVP"].includes(complement.type);
   }
 
   function isQuestionPunctuationText(node) {
