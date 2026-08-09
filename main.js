@@ -8100,7 +8100,7 @@ var require_adjustment = __commonJS({
         if (wrapped.length !== 1) return null;
         const candidate = wrapped[0];
         if (!candidate || candidate.kind !== "construction" || !nodeCanFillSlot2(candidate, "vp")) return null;
-        if (nodeCanFillSlot2(candidate, "clause") || nodeCanFillSlot2(candidate, "subject")) return null;
+        if (nodeCanFillSlot2(candidate, "clause") || nodeCanFillSlot2(candidate, "subject") || nodeCanFillSlot2(candidate, "time")) return null;
         return candidate;
       }
       function markedMannerVPForCore(core) {
@@ -8136,7 +8136,8 @@ var require_adjustment = __commonJS({
               marker_surface_in: ["咁", "噉"],
               overt_marker_required: true,
               bare_reduplication_route: false,
-              following_vp_typing: "independent_required"
+              following_vp_typing: "independent_required",
+              following_vp_clause_time_material: "excluded"
             },
             assigned_slots: ["reduplicated_manner_part", "reduplicated_manner_part", "manner_adverbializer", "vp"],
             surfaces: children.map((node) => flattenSurface2(node)),
