@@ -143,6 +143,7 @@ console.log(JSON.stringify({
   matcher_fingerprint_variant_conflict_count: (report.matcher_fingerprint_variant_conflicts || []).length,
   matcher_fingerprint_variant_conflicts: report.matcher_fingerprint_variant_conflicts || [],
   matcher_variant_consistency_status: report.matcher_variant_consistency_status,
+  acceptance_expected_blocking_count: 0,
   blocking_count: blockingCount,
   parse_failures: parseFailures.slice(0, 20),
   note: "Authored matcher variants distinguish only reviewed same-visible-rule controlled runtime definitions. Fingerprints remain machine integrity provenance; neither is linguistic evidence. This temporary probe deliberately exits nonzero after printing acceptance results.",
