@@ -45,7 +45,7 @@ test("AA11 span excludes subject, higher modal, and final particle", () => {
 });
 
 test("AA11 remains the narrow inner VP inside an independently typed cognition embedding frame", () => {
-  const source = "我知成個社會會變成點。";
+  const source = "我知佢變成點。";
   const rows = constructionRows(source);
   const aa11 = rows.filter((row) => internalConstruction(row) === "ChangeIntoPredicate");
   const cognition = rows.filter((row) => internalConstruction(row) === "CognitionContentFrame");
@@ -55,7 +55,7 @@ test("AA11 remains the narrow inner VP inside an independently typed cognition e
   assert.equal(aa11[0].trace_detail.structural_scope, "vp");
   assert.equal(aa11[0].trace_detail.binding_contract_status, "complete");
   assert.equal(cognition.length, 1, "expected independently typed CognitionContentFrame embedding");
-  assert.ok(rowSurface(cognition[0]).includes("成個社會會變成點"));
+  assert.equal(rowSurface(cognition[0]), "我知佢變成點");
 
   const innerSpan = aa11[0].trace_detail.construction_provenance.source_span;
   const outerSpan = cognition[0].trace_detail.construction_provenance.source_span;
