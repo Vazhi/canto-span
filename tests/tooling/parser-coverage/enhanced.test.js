@@ -9,6 +9,9 @@ const {
   matcherIdentityForTrace,
   recordsForSentences,
 } = require("../../../tools/parser-coverage-enhanced");
+const {
+  normalizeTraceTaxonomy,
+} = require("../../../src/runtime-resources/diagnostics/trace-metadata");
 
 test("matcher fingerprint ignores instance surfaces but changes with controlled definition", () => {
   const trace = {
@@ -182,4 +185,57 @@ test("aggregate report counts runtime structured spans and leaves no unresolved 
   assert(Object.keys(report.matcher_counts).length > 0);
   assert(report.slot_span_resolution_counts.runtime_structured_binding > 0);
   assert.equal(report.unresolved_slot_span_count, 0);
+});
+
+test("controlled taxonomy fills reviewed missing template families without changing recognition", () => {
+  const records = recordsForSentences(["係呀。", "我係老師。", "我鍾意食飯。", "書同筆。"]) ;
+  const formula = records[0].construction_traces.find((trace) => trace.construction === "FormulaDiscourseUnit");
+  const copular = records[1].construction_traces.find((trace) => trace.construction === "CopularIdentificationFrame");
+  const preference = records[2].construction_traces.find((trace) => trace.construction === "PreferenceVP");
+  const coordination = records[3].construction_traces.find((trace) => trace.construction === "CoordinatedNP");
+  assert(formula && copular && preference && coordination);
+  assert.equal(formula.taxonomy_status, "valid");
+  assert.equal(formula.template_family, "construction_template");
+  assert.equal(copular.template_family, "generative_template");
+  assert.equal(preference.template_family, "construction_template");
+  assert.equal(coordination.template_family, "generative_template");
+  assert([formula, copular, preference, coordination].every((trace) => trace.template_family_applicability === "required"));
+});
+
+test("narrow legacy family labels become controlled construction-template subtypes", () => {
+  const records = recordsForSentences([
+    "你鍾唔鍾意音樂呀？",
+    "係唔係每個學生都鍾意睇電視呀？",
+  ]);
+  const preference = records[0].construction_traces.find((trace) => trace.template_subtype === "first_syllable_preference_a_not_a");
+  const copular = records[1].construction_traces.find((trace) => trace.template_subtype === "copular_a_not_a_bounded_complement");
+  assert(preference && copular);
+  assert.equal(preference.template_family, "construction_template");
+  assert.equal(copular.template_family, "construction_template");
+  assert.equal(preference.taxonomy_status, "valid");
+  assert.equal(copular.taxonomy_status, "valid");
+});
+
+test("source-linked runtime matcher is a registered non-template trace kind", () => {
+  const [record] = recordsForSentences(["我有得去。"]);
+  const trace = record.construction_traces.find((item) => item.trace_kind === "source_linked_runtime_matcher");
+  assert(trace);
+  assert.equal(trace.taxonomy_status, "valid");
+  assert.equal(trace.template_family_applicability, "not_applicable");
+  assert.equal(trace.template_family, "");
+});
+
+test("unknown taxonomy values fail closed instead of receiving heuristic defaults", () => {
+  const unknownKind = normalizeTraceTaxonomy({ kind: "future_unregistered_trace" }, { constructionType: "FutureTrace" });
+  assert.equal(unknownKind.taxonomy_status, "invalid");
+  assert(unknownKind.taxonomy_issues.some((issue) => issue.code === "unregistered_trace_kind"));
+
+  const unreviewedTemplate = normalizeTraceTaxonomy({
+    kind: "generative_template",
+    template: ["future_slot!"],
+    constraints: {},
+  }, { constructionType: "FutureTemplate" });
+  assert.equal(unreviewedTemplate.taxonomy_status, "invalid");
+  assert.equal(unreviewedTemplate.template_family, "");
+  assert(unreviewedTemplate.taxonomy_issues.some((issue) => issue.code === "template_family_missing"));
 });

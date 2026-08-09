@@ -142,6 +142,13 @@ function constructionTraceRows(finalRows = []) {
       },
       trace_kind: traceKind,
       template_family: detail.template_family || "",
+      template_family_applicability: detail.template_family_applicability || "",
+      template_family_source: detail.template_family_source || "",
+      template_subtype: detail.template_subtype || "",
+      legacy_template_family: detail.legacy_template_family || "",
+      trace_taxonomy_schema: detail.trace_taxonomy_schema || "",
+      taxonomy_status: detail.taxonomy_status || "",
+      taxonomy_issues: Array.isArray(detail.taxonomy_issues) ? detail.taxonomy_issues : [],
       rule: detail.rule || "",
       template: Array.isArray(detail.template) ? detail.template : [],
       assigned_slots: Array.isArray(detail.assigned_slots) ? [...detail.assigned_slots] : [],
@@ -253,6 +260,21 @@ function structuralSanityFindings(summary = {}, constructionTraces = []) {
         "error",
         "A non-slot trace exposes semantic bindings despite declaring the binding contract not applicable.",
         { construction: trace.construction, surface: trace.surface },
+      ));
+    }
+
+    if (trace.trace_taxonomy_schema && trace.taxonomy_status === "invalid") {
+      findings.push(sanityFinding(
+        "trace_taxonomy_invalid",
+        "error",
+        "Runtime trace metadata violates the controlled trace taxonomy.",
+        {
+          construction: trace.construction,
+          surface: trace.surface,
+          trace_kind: trace.trace_kind,
+          template_family: trace.template_family,
+          taxonomy_issues: trace.taxonomy_issues,
+        },
       ));
     }
 
