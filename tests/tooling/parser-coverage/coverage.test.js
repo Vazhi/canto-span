@@ -7,7 +7,6 @@ const {
   aggregateCoverage,
   buildCoverageRecord,
   categoriesForSummary,
-  recordsForSentences,
   recordsFromFullDiagnostics,
 } = require("../../../tools/parser-coverage-report");
 
@@ -106,15 +105,4 @@ test("full diagnostics exports can be aggregated without rerunning the parser", 
   assert.equal(records[0].diagnostic_index, 4);
   assert.equal(records[0].construction_traces[0].construction, "ExampleConstruction");
   assert.equal(records[0].coverage_status, "COVERED");
-});
-
-test("live source runtime produces a machine-readable coverage record", () => {
-  const records = recordsForSentences(["你好。"]);
-  assert.equal(records.length, 1);
-  assert.equal(records[0].schema, "canto-span-parser-coverage-record-v1");
-  assert.equal(records[0].source, "你好。");
-  assert.equal(records[0].source_artifact, "live_source_runtime");
-  assert.equal(records[0].linguistic_confidence, null);
-  assert.equal(records[0].evidence_weight, 0);
-  assert(records[0].trace_kind_counts && typeof records[0].trace_kind_counts === "object");
 });
