@@ -16,8 +16,6 @@ const commands = [
   ["unit_word_evidence", path.join(root, "tests", "tooling", "runtime", "unit-word-evidence.test.js")],
   ["parser_coverage_auditor", path.join(root, "tests", "tooling", "parser-coverage", "coverage.test.js")],
   ["parser_coverage_enhanced", path.join(root, "tests", "tooling", "parser-coverage", "enhanced.test.js")],
-  // Temporary branch-only repo-wide acceptance probe; removed before readiness.
-  ["trace_binding_probe", path.join(root, "tests", "tooling", "parser-coverage", "trace-binding-probe.js")],
 ];
 const generatedPaths = [
   "validation/current/regression-suite.json",
