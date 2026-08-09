@@ -7,20 +7,20 @@
   "retired_record_count": 48,
   "promotion_eligible_now_count": 0,
   "state_counts": {
-    "boundary_ready": 1,
+    "boundary_ready": 2,
     "excluded_nonlanguage": 38,
     "lexicalized_review": 2,
     "narrowing_candidate": 30,
     "retired_evidence_rehome_candidate": 42,
     "retired_research_gap": 6,
-    "source_supported": 63
+    "source_supported": 62
   },
   "nearest_missing_gate_counts": {
     "language_claim_defined": 38,
     "negative_boundaries_complete": 28,
-    "reviewed_corpus_evidence": 2,
+    "reviewed_corpus_evidence": 3,
     "role_neutral_panel_threshold": 1,
-    "runtime_research_alignment": 18,
+    "runtime_research_alignment": 17,
     "source_scope_matches_claim": 47
   },
   "records": [
@@ -116,6 +116,94 @@
       "next_best_action": "run or complete a locked role-neutral panel instrument with critical contrasts",
       "automatic_risk_flags": [],
       "source_path": "grammar/research_pending/PostverbalZoPerfectiveVP.md"
+    },
+    {
+      "construction_uuid": "28bbdab0-a637-5842-b93a-a129c8a55d7b",
+      "construction_code": "AA84",
+      "canonical_name": "GamMarkedReduplicatedMannerVP",
+      "legacy_label": "MannerAdverbialVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "family_id": null,
+      "family_name": "MannerAndReduplication",
+      "profile_name": "ReduplicatedPropertyGamActionVP",
+      "learner_label": null,
+      "source_ids": [
+        "SRC-LEUNG-2014-COVERBS",
+        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
+      ],
+      "preserved_source_ids": [],
+      "future_research_preserved_as": "",
+      "standard_positive_test_count": 4,
+      "standard_boundary_test_count": 14,
+      "gates": {
+        "language_claim_defined": {
+          "status": "pass",
+          "evidence": "plain_language_claim_present"
+        },
+        "independent_source_support": {
+          "status": "pass",
+          "evidence": "all_cited_sources_verified_and_independent",
+          "detail": "2/2"
+        },
+        "source_scope_matches_claim": {
+          "status": "pass",
+          "evidence": "current_standard_reaudit_complete_with_verified_sources"
+        },
+        "runtime_research_alignment": {
+          "status": "pass",
+          "evidence": "code_document_reconciled_with_current_metadata"
+        },
+        "executable_positive_cases_present": {
+          "status": "pass",
+          "evidence": "executable_positive_cases_present_implementation_only",
+          "detail": "4"
+        },
+        "negative_boundaries_complete": {
+          "status": "pass",
+          "evidence": "complete_executable_passing_negative_inventory"
+        },
+        "reviewed_corpus_evidence": {
+          "status": "not_started",
+          "evidence": "no_reviewed_corpus_evidence"
+        },
+        "role_neutral_panel_threshold": {
+          "status": "not_started",
+          "evidence": "no_eligible_panel_evidence",
+          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":true,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
+        },
+        "held_out_validation": {
+          "status": "not_started",
+          "evidence": "no_passing_held_out_record"
+        },
+        "ontology_conflicts_resolved": {
+          "status": "partial",
+          "evidence": "identity_label_review_in_progress",
+          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"runtime_broader\",\"terminology_alignment\":\"neutral_descriptive_preferred\",\"recommended_action\":\"rename_retain_narrow\",\"automatic_risk_flags\":[],\"review_notes\":\"Expert adjudication 2026-07-24. MannerAdverbialVP is broader than the evidence and hides the overt adverbializer and reduplication that define the supported path. The same UUID can be retained for the source-linked overt profile, but the bare fallback must not inherit this identity or its source weight. GamMarkedReduplicatedMannerVP makes the marker and reduplicated form explicit without importing the source's theory-specific syntactic-height analysis. Status recommendation: retain research_pending for the overt 咁／噉 profile; remove, quarantine, or separately internalize the bare reduplicated fallback before any promotion review\"}"
+        }
+      },
+      "supported_gate_eligible": false,
+      "supported_gate_blockers": [
+        "requirement_failed:locked_clean_panel_instrument",
+        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
+        "requirement_failed:instrument_quality_resolved",
+        "requirement_failed:quality_screen_complete",
+        "requirement_failed:panel_adjudication_complete",
+        "requirement_failed:critical_contrast_coverage_complete",
+        "requirement_failed:positive_and_negative_contrasts_reviewed"
+      ],
+      "discovery_hard_blockers": [
+        "discovery_gate:reviewed_corpus_evidence",
+        "discovery_gate:held_out_validation",
+        "discovery_gate:ontology_conflicts_resolved"
+      ],
+      "readiness_score": 73,
+      "candidate_state": "boundary_ready",
+      "nearest_missing_gate": "reviewed_corpus_evidence",
+      "next_best_action": "review and classify diverse corpus candidates, including false positives and ambiguous hits",
+      "automatic_risk_flags": [],
+      "source_path": "grammar/research_pending/MannerAdverbialVP.md"
     },
     {
       "construction_uuid": "4f6df953-62d1-5036-80b3-40bc8f02937e",
@@ -2438,7 +2526,7 @@
       "preserved_source_ids": [],
       "future_research_preserved_as": "",
       "standard_positive_test_count": 4,
-      "standard_boundary_test_count": 13,
+      "standard_boundary_test_count": 14,
       "gates": {
         "language_claim_defined": {
           "status": "pass",
@@ -2509,95 +2597,6 @@
         "generic_head_requires_boundary_definition"
       ],
       "source_path": "grammar/research_pending/JauDakMouDakAvailabilityPredicate.md"
-    },
-    {
-      "construction_uuid": "28bbdab0-a637-5842-b93a-a129c8a55d7b",
-      "construction_code": "AA84",
-      "canonical_name": "GamMarkedReduplicatedMannerVP",
-      "legacy_label": "MannerAdverbialVP",
-      "lifecycle_state": "current",
-      "claim_layer": "language_construction",
-      "linguistic_status": "research_pending",
-      "family_id": null,
-      "family_name": "MannerAndReduplication",
-      "profile_name": "ReduplicatedPropertyGamActionVP",
-      "learner_label": null,
-      "source_ids": [
-        "SRC-LEUNG-2014-COVERBS",
-        "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
-      ],
-      "preserved_source_ids": [],
-      "future_research_preserved_as": "",
-      "standard_positive_test_count": 1,
-      "standard_boundary_test_count": 2,
-      "gates": {
-        "language_claim_defined": {
-          "status": "pass",
-          "evidence": "plain_language_claim_present"
-        },
-        "independent_source_support": {
-          "status": "pass",
-          "evidence": "all_cited_sources_verified_and_independent",
-          "detail": "2/2"
-        },
-        "source_scope_matches_claim": {
-          "status": "pass",
-          "evidence": "current_standard_reaudit_complete_with_verified_sources"
-        },
-        "runtime_research_alignment": {
-          "status": "partial",
-          "evidence": "code_document_reconciled_without_complete_current_metadata"
-        },
-        "executable_positive_cases_present": {
-          "status": "pass",
-          "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "1"
-        },
-        "negative_boundaries_complete": {
-          "status": "pass",
-          "evidence": "complete_executable_passing_negative_inventory"
-        },
-        "reviewed_corpus_evidence": {
-          "status": "not_started",
-          "evidence": "no_reviewed_corpus_evidence"
-        },
-        "role_neutral_panel_threshold": {
-          "status": "not_started",
-          "evidence": "no_eligible_panel_evidence",
-          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":true,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
-        },
-        "held_out_validation": {
-          "status": "not_started",
-          "evidence": "no_passing_held_out_record"
-        },
-        "ontology_conflicts_resolved": {
-          "status": "partial",
-          "evidence": "identity_label_review_in_progress",
-          "detail": "{\"review_state\":\"complete\",\"behavior_research_alignment\":\"runtime_broader\",\"terminology_alignment\":\"neutral_descriptive_preferred\",\"recommended_action\":\"rename_retain_narrow\",\"automatic_risk_flags\":[],\"review_notes\":\"Expert adjudication 2026-07-24. MannerAdverbialVP is broader than the evidence and hides the overt adverbializer and reduplication that define the supported path. The same UUID can be retained for the source-linked overt profile, but the bare fallback must not inherit this identity or its source weight. GamMarkedReduplicatedMannerVP makes the marker and reduplicated form explicit without importing the source's theory-specific syntactic-height analysis. Status recommendation: retain research_pending for the overt 咁／噉 profile; remove, quarantine, or separately internalize the bare reduplicated fallback before any promotion review\"}"
-        }
-      },
-      "supported_gate_eligible": false,
-      "supported_gate_blockers": [
-        "requirement_failed:locked_clean_panel_instrument",
-        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
-        "requirement_failed:instrument_quality_resolved",
-        "requirement_failed:quality_screen_complete",
-        "requirement_failed:panel_adjudication_complete",
-        "requirement_failed:critical_contrast_coverage_complete",
-        "requirement_failed:positive_and_negative_contrasts_reviewed",
-        "requirement_failed:current_code_review_metadata"
-      ],
-      "discovery_hard_blockers": [
-        "discovery_gate:reviewed_corpus_evidence",
-        "discovery_gate:held_out_validation",
-        "discovery_gate:ontology_conflicts_resolved"
-      ],
-      "readiness_score": 65,
-      "candidate_state": "source_supported",
-      "nearest_missing_gate": "runtime_research_alignment",
-      "next_best_action": "compare exact runtime paths with the source-supported construction and reconcile code plus documentation",
-      "automatic_risk_flags": [],
-      "source_path": "grammar/research_pending/MannerAdverbialVP.md"
     },
     {
       "construction_uuid": "9e9f0ef7-6526-5481-9161-3cb65b3509ab",
@@ -3078,7 +3077,7 @@
       ],
       "preserved_source_ids": [],
       "future_research_preserved_as": "",
-      "standard_positive_test_count": 2,
+      "standard_positive_test_count": 5,
       "standard_boundary_test_count": 1,
       "gates": {
         "language_claim_defined": {
@@ -3101,7 +3100,7 @@
         "executable_positive_cases_present": {
           "status": "pass",
           "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "2"
+          "detail": "5"
         },
         "negative_boundaries_complete": {
           "status": "partial",
@@ -5631,8 +5630,8 @@
       ],
       "preserved_source_ids": [],
       "future_research_preserved_as": "",
-      "standard_positive_test_count": 10,
-      "standard_boundary_test_count": 2,
+      "standard_positive_test_count": 13,
+      "standard_boundary_test_count": 4,
       "gates": {
         "language_claim_defined": {
           "status": "pass",
@@ -5654,7 +5653,7 @@
         "executable_positive_cases_present": {
           "status": "pass",
           "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "10"
+          "detail": "13"
         },
         "negative_boundaries_complete": {
           "status": "partial",
@@ -13182,7 +13181,7 @@
       "source_ids": [],
       "preserved_source_ids": [],
       "future_research_preserved_as": "",
-      "standard_positive_test_count": 118,
+      "standard_positive_test_count": 119,
       "standard_boundary_test_count": 2,
       "gates": {
         "language_claim_defined": {
@@ -13205,7 +13204,7 @@
         "executable_positive_cases_present": {
           "status": "pass",
           "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "118"
+          "detail": "119"
         },
         "negative_boundaries_complete": {
           "status": "partial",

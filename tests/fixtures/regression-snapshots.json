@@ -154906,7 +154906,7 @@
       "expected": {
         "summary": {
           "top_constructions": [
-            "MannerAdverbialVP"
+            "SubjectPredicateClause"
           ],
           "top_child_constructions": [],
           "context_requirement_status": "context_not_required",
@@ -154923,66 +154923,41 @@
             "depth": 0,
             "parent": "",
             "surface": "佢慢慢噉食飯",
-            "construction": "MannerAdverbialVP",
+            "construction": "SubjectPredicateClause",
             "role": "",
             "syntax": "",
             "jyutping": "",
             "slots": [
-              "action_vp",
-              "co_participant",
-              "construction_span",
-              "head_noun",
-              "how",
-              "manner",
-              "manner_adverbial_vp",
-              "modifier",
-              "np",
-              "object",
+              "clause",
               "predicate",
-              "productive_vo",
-              "recipient",
-              "stance_holder",
               "subject",
-              "topic",
-              "vp"
+              "subject_predicate_clause"
             ],
             "contextual_role_affordances": [],
             "trace": "generative_template",
             "trace_detail": {
               "kind": "generative_template",
-              "construction_type": "MannerAdverbialVP",
-              "template_family": "generative_template",
+              "construction_type": "SubjectPredicateClause",
+              "template_family": "construction_template",
               "template": [
-                "subject?",
-                "reduplicated_manner!",
-                "manner_adverbializer?",
+                "subject!",
                 "predicate!",
                 "particle?"
               ],
               "assigned_slots": [
                 "subject",
-                "manner",
-                "manner",
-                "manner_adverbializer",
                 "predicate"
               ],
               "surfaces": [
                 "佢",
-                "慢",
-                "慢",
-                "噉",
-                "食飯"
-              ],
-              "not_claims": [
-                "not_every_reduplicated_stative_is_manner",
-                "not_every_gam_is_manner_adverbializer"
+                "慢慢噉食飯"
               ]
             }
           },
           {
             "kind": "token",
             "depth": 1,
-            "parent": "MannerAdverbialVP",
+            "parent": "SubjectPredicateClause",
             "surface": "佢",
             "construction": "",
             "role": "who",
@@ -155018,18 +154993,68 @@
             }
           },
           {
-            "kind": "token",
+            "kind": "construction",
             "depth": 1,
+            "parent": "SubjectPredicateClause",
+            "surface": "慢慢噉食飯",
+            "construction": "MannerAdverbialVP",
+            "role": "",
+            "syntax": "",
+            "jyutping": "",
+            "slots": [
+              "action_vp",
+              "how",
+              "manner",
+              "manner_adverbial_vp",
+              "modifier",
+              "predicate",
+              "vp"
+            ],
+            "contextual_role_affordances": [],
+            "trace": "generative_template",
+            "trace_detail": {
+              "kind": "generative_template",
+              "construction_type": "MannerAdverbialVP",
+              "template_family": "construction_template",
+              "template": [
+                "reduplicated_manner_part!",
+                "reduplicated_manner_part!",
+                "manner_adverbializer!",
+                "vp!"
+              ],
+              "assigned_slots": [
+                "reduplicated_manner_part",
+                "reduplicated_manner_part",
+                "manner_adverbializer",
+                "vp"
+              ],
+              "surfaces": [
+                "慢",
+                "慢",
+                "噉",
+                "食飯"
+              ],
+              "not_claims": [
+                "not_generic_bare_reduplication",
+                "not_arbitrary_same_surface_repetition",
+                "not_every_gam_is_manner_adverbializer"
+              ]
+            }
+          },
+          {
+            "kind": "token",
+            "depth": 2,
             "parent": "MannerAdverbialVP",
             "surface": "慢",
             "construction": "",
             "role": "how",
-            "syntax": "reduplicated_manner_adverb",
+            "syntax": "source_linked_reduplicated_manner_modifier",
             "jyutping": "maan6",
             "slots": [
               "how",
               "manner",
-              "modifier"
+              "modifier",
+              "reduplicated_manner"
             ],
             "contextual_role_affordances": [
               {
@@ -155053,17 +155078,18 @@
           },
           {
             "kind": "token",
-            "depth": 1,
+            "depth": 2,
             "parent": "MannerAdverbialVP",
             "surface": "慢",
             "construction": "",
             "role": "how",
-            "syntax": "reduplicated_manner_adverb",
+            "syntax": "source_linked_reduplicated_manner_modifier",
             "jyutping": "maan6",
             "slots": [
               "how",
               "manner",
-              "modifier"
+              "modifier",
+              "reduplicated_manner"
             ],
             "contextual_role_affordances": [
               {
@@ -155087,7 +155113,7 @@
           },
           {
             "kind": "token",
-            "depth": 1,
+            "depth": 2,
             "parent": "MannerAdverbialVP",
             "surface": "噉",
             "construction": "",
@@ -155097,6 +155123,7 @@
             "slots": [
               "how",
               "manner",
+              "manner_adverbializer",
               "modifier"
             ],
             "contextual_role_affordances": [
@@ -155120,7 +155147,7 @@
           },
           {
             "kind": "construction",
-            "depth": 1,
+            "depth": 2,
             "parent": "MannerAdverbialVP",
             "surface": "食飯",
             "construction": "ProductiveVO",
@@ -155156,7 +155183,7 @@
           },
           {
             "kind": "token",
-            "depth": 2,
+            "depth": 3,
             "parent": "ProductiveVO",
             "surface": "食",
             "construction": "",
@@ -155186,7 +155213,7 @@
           },
           {
             "kind": "token",
-            "depth": 2,
+            "depth": 3,
             "parent": "ProductiveVO",
             "surface": "飯",
             "construction": "",
@@ -155257,8 +155284,8 @@
           }
         }
       },
-      "accepted_transition": "v0.5.199_overt_gam_manner_adverbial_source_runtime_reconciliation",
-      "transition_reason": "The source-supported repeated manner expression plus overt 噉 now wraps the complete visible VP while preserving the nested ProductiveVO.",
+      "accepted_transition": "aa84_overt_marked_manner_boundary_repair",
+      "transition_reason": "AA84 now begins at the typed reduplicated manner constituent; overt subject is preserved by an outer SubjectPredicateClause instead of being absorbed into the VP identity.",
       "case_id": "REG-0546"
     },
     {
@@ -156507,6 +156534,6 @@
   },
   "last_absorbed_candidate": "v0.5.218-aa56-positive-participant-runtime",
   "absorbed_current_focused_case_count": 4,
-  "last_intentional_transition": "v0.5.218_aa56_positive_participant_runtime_profile",
+  "last_intentional_transition": "aa84_overt_marked_manner_boundary_repair",
   "abandoned_candidate": "v0.5.183-cp024-p1-demo01-r1"
 }

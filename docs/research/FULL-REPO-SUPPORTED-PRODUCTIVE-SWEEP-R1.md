@@ -12,13 +12,13 @@ The sweep evaluates every permanent identity. It separates construction identity
 
 | State | Records |
 |---|---|
-| `boundary_ready` | 1 |
+| `boundary_ready` | 2 |
 | `excluded_nonlanguage` | 38 |
 | `lexicalized_review` | 2 |
 | `narrowing_candidate` | 30 |
 | `retired_evidence_rehome_candidate` | 42 |
 | `retired_research_gap` | 6 |
-| `source_supported` | 63 |
+| `source_supported` | 62 |
 
 ## Nearest missing gate
 
@@ -26,9 +26,9 @@ The sweep evaluates every permanent identity. It separates construction identity
 |---|---|
 | `language_claim_defined` | 38 |
 | `negative_boundaries_complete` | 28 |
-| `reviewed_corpus_evidence` | 2 |
+| `reviewed_corpus_evidence` | 3 |
 | `role_neutral_panel_threshold` | 1 |
-| `runtime_research_alignment` | 18 |
+| `runtime_research_alignment` | 17 |
 | `source_scope_matches_claim` | 47 |
 
 ## Narrow-construction discovery signals

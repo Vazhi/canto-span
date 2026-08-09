@@ -48,10 +48,10 @@ promotion_gate_version: "v3"
 source_verification_file: "docs/research/CP051-P1-COPULAR-ANOTA-SOURCE-VERIFICATION-R1.tsv"
 standard_test_file: "tests/constructions/CopularANotAQuestion.json"
 standard_test_coverage: "positive_and_boundary"
-standard_positive_test_count: 2
+standard_positive_test_count: 5
 standard_boundary_test_count: 1
-standard_implementation_probe_count: 1
-standard_executable_test_count: 4
+standard_implementation_probe_count: 2
+standard_executable_test_count: 8
 source_ids: ["SRC-LAW-2001-ANOTA", "SRC-LI-2017-ANOTA", "SRC-WONG-2023-LANGUAGE-SAMPLE", "SRC-YIP-1988-NEGATION"]
 runtime_active: true
 workflow_state: "archived"

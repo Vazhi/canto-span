@@ -257,7 +257,6 @@ test("subject-binding public VP identities expose clause structural scope withou
   const cases = [
     ["我要飲水。", "ModalVP"],
     ["我想睇電視。", "DesiderativeVP"],
-    ["佢慢慢噉食飯。", "MannerAdverbialVP"],
     ["我鍾意食飯。", "PreferenceVP"],
   ];
   for (const [source, construction] of cases) {
@@ -268,6 +267,21 @@ test("subject-binding public VP identities expose clause structural scope withou
     assert.equal(trace.structural_scope_source, "clause_level_slot");
     assert(!record.sanity_findings.some((finding) => finding.code === "vp_scope_binds_clause_level_slot"));
   }
+});
+
+test("AA84 keeps the subject in an outer clause while the marked manner construction stays VP-scoped", () => {
+  const [record] = recordsForSentences(["佢慢慢噉食飯。"]);
+  const outer = record.construction_traces.find((item) => item.construction === "SubjectPredicateClause" && item.depth === 0);
+  const manner = record.construction_traces.find((item) => item.construction === "MannerAdverbialVP");
+  assert(outer);
+  assert(manner);
+  assert.equal(outer.structural_scope, "clause");
+  assert.equal(manner.structural_scope, "vp");
+  assert.equal(manner.structural_scope_source, "reviewed_mixed_clause_vp_definition");
+  assert.equal(manner.surface, "慢慢噉食飯");
+  assert.equal(manner.assigned_slots.includes("subject"), false);
+  assert.equal((manner.matcher_definition.template || []).some((slot) => String(slot).startsWith("subject")), false);
+  assert(!record.sanity_findings.some((finding) => finding.code === "vp_scope_binds_clause_level_slot"));
 });
 
 test("explicit VP scope with clause-level slot fails closed", () => {
