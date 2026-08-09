@@ -282,9 +282,13 @@ function structuralSanityFindings(summary = {}, constructionTraces = []) {
     for (const binding of trace.slot_bindings) {
       if (hasStructuredBindings && trace.binding_contract_status === "complete") {
         const span = binding.relative_span || {};
+        const structuredDisplaySpan = trace.construction_provenance && trace.construction_provenance.display_span;
+        const structuredSurfaceLength = structuredDisplaySpan && structuredDisplaySpan.status === "unique"
+          ? Number(structuredDisplaySpan.end) - Number(structuredDisplaySpan.start)
+          : String(trace.construction_provenance && trace.construction_provenance.display_surface || trace.surface || "").length;
         const invalidStructuredBinding = !binding.slot || span.status !== "unique"
           || !Number.isInteger(span.start) || !Number.isInteger(span.end)
-          || span.start < 0 || span.end < span.start || span.end > trace.surface.length;
+          || span.start < 0 || span.end < span.start || span.end > structuredSurfaceLength;
         if (invalidStructuredBinding) {
           findings.push(sanityFinding(
             "structured_binding_schema_violation",
