@@ -37,6 +37,8 @@ repository outcome.
   [`docs/current/PROJECT-STATE.md`](docs/current/PROJECT-STATE.md)
 - Evidence, survey, status, and release governance:
   [`docs/current/GOVERNANCE.md`](docs/current/GOVERNANCE.md)
+- Runtime source, deterministic parser architecture, and generated bundle:
+  [`docs/current/RUNTIME-MODULARIZATION.md`](docs/current/RUNTIME-MODULARIZATION.md)
 - Task routing:
   [`docs/current/CODEX-ISSUE-WORKFLOW.md`](docs/current/CODEX-ISSUE-WORKFLOW.md)
 - Agent availability:
