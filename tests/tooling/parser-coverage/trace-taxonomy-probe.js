@@ -97,8 +97,8 @@ for (const item of corpus.values()) {
       if (templateTraceKinds.has(kind)) {
         if (applicability !== "required") sample("template_family_applicability", { source: item.source, construction, trace_kind: kind, applicability });
         if (!family) sample("template_family_missing", { source: item.source, construction, trace_kind: kind });
-      } else {
-        if (applicability !== "not_applicable") sample("non_template_family_applicability", { source: item.source, construction, trace_kind: kind, applicability });
+      } else if (applicability !== "not_applicable") {
+        sample("non_template_family_applicability", { source: item.source, construction, trace_kind: kind, applicability });
       }
       if (taxonomyStatus !== "valid") {
         sample("taxonomy_invalid", { source: item.source, construction, trace_kind: kind, template_family: family, taxonomy_issues: detail.taxonomy_issues || [] });
@@ -132,5 +132,5 @@ const output = {
 };
 
 console.log(JSON.stringify(output, null, 2));
-// Temporary branch-only probe: deliberately fail after emitting the acceptance report.
+// Temporary branch-only acceptance probe. Deliberate nonzero exit keeps the full report in Actions logs; delete before PR readiness.
 process.exit(1);
