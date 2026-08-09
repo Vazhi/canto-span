@@ -39,7 +39,14 @@ test("copular A-not-A preserves reviewed preference composition without Modifier
     "係唔係每個學生都鍾意咗個學生呀？",
     "係唔係每個學生都鍾意燒鵝定係燒鴨多啲呀？",
   ];
-  for (const source of sources) assertOuterQuestion(source, "CopularANotAQuestion");
+  for (const source of sources) {
+    const rows = assertOuterQuestion(source, "CopularANotAQuestion");
+    const boundedClause = rows.find((row) => row.kind === "construction" && row.construction === "SubjectPredicateClause");
+    assert.ok(boundedClause, `${source}: expected bounded SubjectPredicateClause complement`);
+    assert.equal(boundedClause.trace_detail.template_family, "construction_template");
+    assert.equal(boundedClause.trace_detail.template_subtype, "copular_a_not_a_bounded_complement");
+    assert.equal(boundedClause.trace_detail.binding_contract_status, "complete");
+  }
 });
 
 test("first-syllable preference A-not-A preserves typed and alternative-scalar complements outside AB33", () => {
