@@ -71,7 +71,9 @@ function independentlyTypedFollowingVP(nodes) {
   if (wrapped.length !== 1) return null;
   const candidate = wrapped[0];
   if (!candidate || candidate.kind !== "construction" || !nodeCanFillSlot(candidate, "vp")) return null;
-  if (nodeCanFillSlot(candidate, "clause") || nodeCanFillSlot(candidate, "subject") || nodeCanFillSlot(candidate, "topic")) return null;
+  // Object-bearing VPs can inherit topic affordances from nominal children; that
+  // does not make the VP clause-sized. Actual clause/subject ownership remains excluded.
+  if (nodeCanFillSlot(candidate, "clause") || nodeCanFillSlot(candidate, "subject")) return null;
   return candidate;
 }
 
@@ -94,7 +96,9 @@ function markedMannerVPForCore(core) {
   const children = [...modifier.children, marker, predicate];
   return construction("MannerAdverbialVP", "MannerVP", children, {
     note: "AA84 retained narrowly: source-linked reduplicated manner constituent + overt 咁/噉 + independently typed VP.",
-    slots: cleanSlots(["manner_adverbial_vp", "manner", "modifier", "how", "vp", "action_vp", "predicate", ...templateDerivedSlots("MannerAdverbialVP", children)]),
+    // Do not inherit the legacy MannerAdverbialVP template's optional subject.
+    // The construction helper still propagates slots from the typed VP child.
+    slots: cleanSlots(["manner_adverbial_vp", "manner", "modifier", "how", "vp", "action_vp", "predicate"]),
     trace: traceInfo("generative_template", {
       construction_type: "MannerAdverbialVP",
       template_family: "construction_template",
@@ -116,6 +120,25 @@ function markedMannerVPForCore(core) {
   });
 }
 
+function outerWrapper(type, label, prefixNode, predicate, particles, options) {
+  const children = [prefixNode, predicate, ...particles];
+  const assignedSlots = [options.prefixSlot, "predicate", ...particles.map(() => "particle")];
+  return construction(type, label, children, {
+    note: options.note,
+    slots: cleanSlots(options.slots),
+    trace: traceInfo("generative_template", {
+      construction_type: type,
+      template_family: "construction_template",
+      template_subtype: options.templateSubtype,
+      template: [`${options.prefixSlot}!`, "predicate!", "particle?"],
+      rule: options.rule,
+      assigned_slots: assignedSlots,
+      surfaces: children.map((node) => flattenSurface(node)),
+      reason: options.reason,
+    }),
+  });
+}
+
 function mannerAdverbialVPFallback(core) {
   const { core: bareCore, particles } = withoutTrailingParticles(core);
   const compact = withoutIgnorableSpaceText(bareCore);
@@ -123,26 +146,29 @@ function mannerAdverbialVPFallback(core) {
   const direct = markedMannerVPForCore(compact);
   if (direct && !particles.length) return direct;
 
-  // The subject is clause-level material, not part of AA84. Preserve the
-  // existing public SubjectPredicateClause compatibility view around a narrow
-  // MannerAdverbialVP child that begins at the manner constituent.
   if (compact.length >= 5 && nodeCanFillSlot(compact[0], "subject")) {
     const predicate = markedMannerVPForCore(compact.slice(1));
     if (!predicate) return null;
-    const children = [compact[0], predicate, ...particles];
-    return construction("SubjectPredicateClause", "SubjPred", children, {
+    return outerWrapper("SubjectPredicateClause", "SubjPred", compact[0], predicate, particles, {
+      prefixSlot: "subject",
+      templateSubtype: "aa84_subject_wrapper",
+      rule: "subject + AA84 overt-marked reduplicated manner VP + particle?",
       note: "Transparent clause wrapper around a narrow AA84 marked manner VP; subject/final-particle material remains outside AA84.",
-      slots: cleanSlots(["subject_predicate_clause", "clause", "subject", "predicate", ...templateDerivedSlots("SubjectPredicateClause", children)]),
-      trace: traceInfo("generative_template", {
-        construction_type: "SubjectPredicateClause",
-        template_family: "construction_template",
-        template_subtype: "aa84_subject_wrapper",
-        template: ["subject!", "predicate!", "particle?"],
-        rule: "subject + AA84 overt-marked reduplicated manner VP + particle?",
-        assigned_slots: ["subject", "predicate", ...particles.map(() => "particle")],
-        surfaces: children.map((node) => flattenSurface(node)),
-        reason: "Keeps clause-level subject and final-particle material outside the narrow AA84 VP while preserving all visible material.",
-      }),
+      slots: ["subject_predicate_clause", "clause", "subject", "predicate"],
+      reason: "Keeps clause-level subject and final-particle material outside the narrow AA84 VP while preserving all visible material.",
+    });
+  }
+
+  if (compact.length >= 5 && nodeCanFillSlot(compact[0], "time")) {
+    const predicate = markedMannerVPForCore(compact.slice(1));
+    if (!predicate) return null;
+    return outerWrapper("TemporalClause", "Time", compact[0], predicate, particles, {
+      prefixSlot: "time",
+      templateSubtype: "aa84_temporal_wrapper",
+      rule: "time + AA84 overt-marked reduplicated manner VP + particle?",
+      note: "Transparent temporal wrapper around a narrow AA84 marked manner VP; overt time remains outside AA84.",
+      slots: ["temporal_clause", "time_clause", "clause", "time", "predicate"],
+      reason: "Preserves the attested 琴日 + marked manner VP composition while keeping temporal material outside the narrow AA84 node.",
     });
   }
 
