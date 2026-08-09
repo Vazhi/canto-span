@@ -26,9 +26,43 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
+  taxonomy-sync:
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'agent/trace-taxonomy-registry'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/trace-taxonomy-registry
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - run: node tools/temp-apply-trace-taxonomy-auditor.js
+      - run: npm run build:runtime
+      - name: Commit claimed outputs only
+        shell: bash
+        run: |
+          allowed='^( M (main\.js|tools/parser-coverage-report\.js))$'
+          status="$(git status --short)"
+          unexpected="$(printf '%s\n' "$status" | grep -Ev "$allowed" | sed '/^$/d' || true)"
+          if [ -n "$unexpected" ]; then
+            echo "Unexpected files changed during taxonomy patch/build:"
+            echo "$unexpected"
+            exit 1
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add main.js tools/parser-coverage-report.js
+          git diff --cached --check
+          git diff --cached --quiet && { echo "No claimed output changes"; exit 0; }
+          git commit -m "Apply controlled trace taxonomy"
+          git push origin HEAD:agent/trace-taxonomy-registry
+
   verify:
     runs-on: ubuntu-latest
     steps:
