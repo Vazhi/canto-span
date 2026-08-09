@@ -68,6 +68,23 @@ function sample(kind, item, limit = 20) {
   errors.push({ kind, ...item });
 }
 
+function debugNode(node) {
+  if (!node || typeof node !== "object") return null;
+  const trace = node.trace || {};
+  return {
+    kind: node.kind || "",
+    type: node.type || "",
+    surface: node.surface || "",
+    raw_surface: node.raw_surface || "",
+    display_surface: node.display_surface || "",
+    raw_display_surface: node.raw_display_surface || "",
+    binding_status: trace.binding_contract_status || "",
+    construction_provenance: trace.construction_provenance || null,
+    components: Array.isArray(trace.components) ? trace.components : [],
+    children: (node.children || []).map(debugNode),
+  };
+}
+
 for (const item of corpus.values()) {
   let analysis;
   let rows;
@@ -92,11 +109,21 @@ for (const item of corpus.values()) {
   const alignment = analysis.trace_binding_provenance || {};
   if (alignment.parser_alignment_status !== "PASS") {
     counts.parser_alignment_warnings += 1;
-    sample("parser_alignment", { source: item.source, alignment });
+    sample("parser_alignment", {
+      source: item.source,
+      parser_shadow_source: analysis.parser_shadow_source,
+      alignment,
+      top_level_nodes: (analysis.nodes || []).map(debugNode),
+    });
   }
   if (alignment.source_alignment_status !== "PASS") {
     counts.source_alignment_warnings += 1;
-    sample("source_alignment", { source: item.source, alignment });
+    sample("source_alignment", {
+      source: item.source,
+      parser_shadow_source: analysis.parser_shadow_source,
+      alignment,
+      top_level_nodes: (analysis.nodes || []).map(debugNode),
+    });
   }
 
   const constructionRows = (rows || []).filter((row) => row && row.kind === "construction");
