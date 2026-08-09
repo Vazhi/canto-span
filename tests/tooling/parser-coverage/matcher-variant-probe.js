@@ -4,7 +4,7 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const { loadRuntimeApi } = require("../../lib/runtime-api");
-const { enhanceCoverageRecord, canonicalJson } = require("../../../tools/parser-coverage-enhanced");
+const { enhanceCoverageRecord, aggregateCoverage } = require("../../../tools/parser-coverage-enhanced");
 
 const root = path.resolve(__dirname, "../../..");
 const api = loadRuntimeApi({ apiNames: ["analyzeLine", "diagnosticSummary", "diagnosticFinalRows"] });
@@ -34,22 +34,33 @@ for (const file of fs.readdirSync(constructionDir).filter((name) => name.endsWit
   }
 }
 
-const groups = new Map();
-const parseFailures = [];
-let constructionRows = 0;
+const expectedCounts = {
+  "OpinionStanceFrame.stance_gokdak": 14,
+  "OpinionStanceFrame.stance_jiwai": 1,
+  "OpinionStanceFrame.stance_soengseon": 1,
+  "SubjectPredicateClause.predicate_allowlist_nonnegative": 91,
+  "SubjectPredicateClause.predicate_unconstrained": 16,
+  "SubjectPredicateClause.predicate_allowlist_negative": 11,
+  "DemonstrativeClassifierNP.slot_exclusion_guarded": 37,
+  "DemonstrativeClassifierNP.slot_exclusion_unconstrained": 6,
+  "HeadNP.child_slot_exclusion_guarded": 40,
+  "HeadNP.child_slot_exclusion_unconstrained": 2,
+  "TransitiveVP.object_shape_guarded": 57,
+  "TransitiveVP.object_shape_unconstrained": 7,
+};
+const expectedIds = new Set(Object.keys(expectedCounts));
 
-function publicDefinition(trace) {
-  const definition = trace.matcher_definition || {};
-  return {
-    trace_kind: definition.trace_kind || "",
-    construction_type: definition.construction_type || "",
-    template_family: definition.template_family || "",
-    template: definition.template || [],
-    constraints: definition.constraints || {},
-    rule: definition.rule || "",
-    template_subtype: trace.template_subtype || "",
-    structural_scope: trace.structural_scope || "",
-  };
+const records = [];
+const parseFailures = [];
+const taxonomyIssues = {};
+let constructionRows = 0;
+let requiredTraceCount = 0;
+let coordinatedNpVariantRequiredCount = 0;
+const requiredWithoutId = [];
+const unexpectedVariantIds = [];
+
+function bump(target, key) {
+  target[key] = (target[key] || 0) + 1;
 }
 
 for (const item of corpus.values()) {
@@ -57,75 +68,56 @@ for (const item of corpus.values()) {
     const analysis = api.analyzeLine(item.source, item.context_source || null);
     const rows = api.diagnosticFinalRows(analysis);
     const record = enhanceCoverageRecord(api.diagnosticSummary(analysis), rows, { source: item.source });
+    records.push(record);
     for (const trace of record.construction_traces || []) {
       constructionRows += 1;
-      const construction = trace.construction || trace.internal_construction || "";
-      const key = `${construction}\u0000${trace.rule_descriptor || ""}`;
-      if (!groups.has(key)) groups.set(key, {
-        construction,
-        rule_descriptor: trace.rule_descriptor || "",
-        occurrences: 0,
-        fingerprints: new Map(),
-      });
-      const group = groups.get(key);
-      group.occurrences += 1;
-      const fp = trace.matcher_fingerprint || "";
-      if (!group.fingerprints.has(fp)) group.fingerprints.set(fp, {
-        matcher_id: trace.matcher_id || "",
-        fingerprint: fp,
-        count: 0,
-        definition: publicDefinition(trace),
-        examples: [],
-      });
-      const entry = group.fingerprints.get(fp);
-      entry.count += 1;
-      if (entry.examples.length < 4) entry.examples.push(item.source);
+      if (trace.taxonomy_status === "invalid") {
+        for (const issue of trace.taxonomy_issues || []) bump(taxonomyIssues, issue.code || "unknown");
+      }
+      if (trace.matcher_variant_applicability === "required") {
+        requiredTraceCount += 1;
+        if (!trace.matcher_variant_id && requiredWithoutId.length < 20) {
+          requiredWithoutId.push({ source: item.source, construction: trace.construction, matcher_id: trace.matcher_id || "" });
+        }
+      }
+      if (trace.construction === "CoordinatedNP" && trace.matcher_variant_applicability === "required") {
+        coordinatedNpVariantRequiredCount += 1;
+      }
+      if (trace.matcher_variant_id && !expectedIds.has(trace.matcher_variant_id) && unexpectedVariantIds.length < 20) {
+        unexpectedVariantIds.push({ source: item.source, construction: trace.construction, matcher_variant_id: trace.matcher_variant_id });
+      }
     }
   } catch (error) {
     parseFailures.push({ source: item.source, context_source: item.context_source, error: error.message || String(error) });
   }
 }
 
-const multiFingerprintSameRule = [...groups.values()]
-  .filter((group) => group.fingerprints.size > 1)
-  .map((group) => ({
-    construction: group.construction,
-    rule_descriptor: group.rule_descriptor,
-    occurrences: group.occurrences,
-    fingerprint_count: group.fingerprints.size,
-    variants: [...group.fingerprints.values()].sort((a, b) => b.count - a.count || a.fingerprint.localeCompare(b.fingerprint)),
-  }))
-  .sort((a, b) => b.fingerprint_count - a.fingerprint_count || a.construction.localeCompare(b.construction));
-
-const constructionVariants = new Map();
-for (const group of groups.values()) {
-  if (!constructionVariants.has(group.construction)) constructionVariants.set(group.construction, new Map());
-  const target = constructionVariants.get(group.construction);
-  for (const [fp, entry] of group.fingerprints) if (!target.has(fp)) target.set(fp, entry);
+const report = aggregateCoverage(records);
+const actualCounts = report.matcher_variant_counts || {};
+const countMismatches = [];
+for (const [id, expected] of Object.entries(expectedCounts)) {
+  const actual = Number(actualCounts[id] || 0);
+  if (actual !== expected) countMismatches.push({ matcher_variant_id: id, expected, actual });
 }
-const multiDefinitionConstructions = [...constructionVariants.entries()]
-  .filter(([, variants]) => variants.size > 1)
-  .map(([construction, variants]) => ({
-    construction,
-    definition_count: variants.size,
-    variants: [...variants.values()].sort((a, b) => b.count - a.count || a.fingerprint.localeCompare(b.fingerprint)),
-  }))
-  .sort((a, b) => b.definition_count - a.definition_count || a.construction.localeCompare(b.construction));
-
-const definitionToConstructions = new Map();
-for (const [construction, variants] of constructionVariants) {
-  for (const entry of variants.values()) {
-    const definitionKey = canonicalJson(entry.definition);
-    if (!definitionToConstructions.has(definitionKey)) definitionToConstructions.set(definitionKey, new Set());
-    definitionToConstructions.get(definitionKey).add(construction);
-  }
+for (const id of Object.keys(actualCounts)) {
+  if (!expectedIds.has(id)) countMismatches.push({ matcher_variant_id: id, expected: 0, actual: actualCounts[id] });
 }
-const crossConstructionDefinitionCollisions = [...definitionToConstructions.entries()]
-  .filter(([, constructions]) => constructions.size > 1)
-  .map(([definition, constructions]) => ({ constructions: [...constructions].sort(), definition: JSON.parse(definition) }));
+
+const expectedRequiredTraceCount = Object.values(expectedCounts).reduce((sum, count) => sum + count, 0);
+const blockingCount = parseFailures.length
+  + Object.values(taxonomyIssues).reduce((sum, count) => sum + count, 0)
+  + requiredWithoutId.length
+  + unexpectedVariantIds.length
+  + coordinatedNpVariantRequiredCount
+  + countMismatches.length
+  + Number(report.required_matcher_variant_missing_count || 0)
+  + (report.matcher_variant_fingerprint_conflicts || []).length
+  + (report.matcher_fingerprint_variant_conflicts || []).length
+  + (report.matcher_variant_consistency_status === "PASS" ? 0 : 1)
+  + (requiredTraceCount === expectedRequiredTraceCount ? 0 : 1);
 
 console.log(JSON.stringify({
-  schema: "canto-span-matcher-variant-inventory-v1",
+  schema: "canto-span-matcher-variant-acceptance-v2",
   runtime_version: api.runtimeVersion,
   corpus: {
     unique_source_context_pairs: corpus.size,
@@ -133,14 +125,27 @@ console.log(JSON.stringify({
     parse_failures: parseFailures.length,
     construction_rows: constructionRows,
   },
-  same_visible_rule_multi_fingerprint_group_count: multiFingerprintSameRule.length,
-  same_visible_rule_multi_fingerprint_groups: multiFingerprintSameRule,
-  multi_definition_construction_count: multiDefinitionConstructions.length,
-  multi_definition_constructions: multiDefinitionConstructions,
-  cross_construction_definition_collision_count: crossConstructionDefinitionCollisions.length,
-  cross_construction_definition_collisions: crossConstructionDefinitionCollisions,
+  reviewed_variant_family_count: 5,
+  reviewed_variant_definition_count: expectedIds.size,
+  expected_required_trace_count: expectedRequiredTraceCount,
+  required_trace_count: requiredTraceCount,
+  matcher_variant_counts: actualCounts,
+  count_mismatches: countMismatches,
+  required_without_id_count: requiredWithoutId.length,
+  required_without_id: requiredWithoutId,
+  unexpected_variant_id_count: unexpectedVariantIds.length,
+  unexpected_variant_ids: unexpectedVariantIds,
+  coordinated_np_variant_required_count: coordinatedNpVariantRequiredCount,
+  taxonomy_issue_counts: taxonomyIssues,
+  required_matcher_variant_missing_count: report.required_matcher_variant_missing_count || 0,
+  matcher_variant_fingerprint_conflict_count: (report.matcher_variant_fingerprint_conflicts || []).length,
+  matcher_variant_fingerprint_conflicts: report.matcher_variant_fingerprint_conflicts || [],
+  matcher_fingerprint_variant_conflict_count: (report.matcher_fingerprint_variant_conflicts || []).length,
+  matcher_fingerprint_variant_conflicts: report.matcher_fingerprint_variant_conflicts || [],
+  matcher_variant_consistency_status: report.matcher_variant_consistency_status,
+  blocking_count: blockingCount,
   parse_failures: parseFailures.slice(0, 20),
-  note: "Inventory only. Fingerprints and controlled definitions are implementation provenance, not linguistic evidence. This probe deliberately exits nonzero after printing results.",
+  note: "Authored matcher variants distinguish only reviewed same-visible-rule controlled runtime definitions. Fingerprints remain machine integrity provenance; neither is linguistic evidence. This temporary probe deliberately exits nonzero after printing acceptance results.",
 }, null, 2));
 
 process.exit(1);
