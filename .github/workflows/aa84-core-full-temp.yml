@@ -1,0 +1,40 @@
+name: AA84 temporary core and full verification
+
+on:
+  pull_request:
+    paths:
+      - "**"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    if: github.event.pull_request.head.ref == 'agent/aa84-marked-reduplicated-manner'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Core verification
+        run: npm run verify
+      - name: Full diagnostic sweep
+        continue-on-error: true
+        run: npm run verify:all -- --keep-going --output /tmp/aa84-full-verification.json
+      - name: Require every non-release profile to pass
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const report = JSON.parse(fs.readFileSync('/tmp/aa84-full-verification.json', 'utf8'));
+          const failures = (report.results || []).filter((item) => item.profile !== 'release' && item.status !== 'PASS');
+          if (failures.length) throw new Error(`Non-release failures: ${JSON.stringify(failures)}`);
+          const releaseFailures = (report.results || []).filter((item) => item.profile === 'release' && item.status !== 'PASS');
+          console.log(JSON.stringify({
+            executed: report.executed_command_count,
+            non_release_failures: 0,
+            release_failures: releaseFailures.map((item) => item.id),
+          }, null, 2));
+          NODE
