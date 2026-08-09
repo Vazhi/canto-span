@@ -17,36 +17,67 @@ const cases = [
   "我叫 Chris。"
 ];
 
+function compactBinding(binding) {
+  return {
+    slot: binding.slot || "",
+    binding_scope: binding.binding_scope || "",
+    parser_surface: binding.parser_surface || "",
+    display_surface: binding.display_surface || "",
+    parser_span: binding.parser_span || null,
+    source_span: binding.source_span || null,
+    relative_source_span: binding.relative_source_span || null,
+    provenance: binding.provenance || "",
+  };
+}
+
 function pick(row) {
   const detail = row.trace_detail || {};
   return {
-    kind: row.kind,
     depth: row.depth,
     parent: row.parent || "",
+    construction: row.construction || row.internal_construction || "",
     surface: row.display_surface || row.surface || row.parser_surface || "",
     parser_surface: row.parser_surface || row.surface || "",
-    construction: row.construction || row.internal_construction || "",
-    internal_construction: row.internal_construction || "",
     trace_kind: detail.kind || row.trace || "",
+    binding_schema: detail.trace_binding_schema || "",
+    binding_status: detail.binding_contract_status || "",
+    binding_resolution: detail.binding_resolution || "",
     assigned_slots: Array.isArray(detail.assigned_slots) ? detail.assigned_slots : [],
-    surfaces: Array.isArray(detail.surfaces) ? detail.surfaces : [],
-    rule: detail.rule || "",
-    template: Array.isArray(detail.template) ? detail.template : [],
-    trace_detail: detail,
+    legacy_surface_count: Array.isArray(detail.surfaces) ? detail.surfaces.length : 0,
+    component_count: Array.isArray(detail.components) ? detail.components.length : 0,
+    components: (detail.components || []).map((component) => ({
+      index: component.index,
+      kind: component.kind,
+      parser_surface: component.parser_surface,
+      display_surface: component.display_surface,
+      parser_span: component.parser_span,
+      source_span: component.source_span,
+    })),
+    bindings: (detail.bindings || []).map(compactBinding),
   };
 }
 
 const output = cases.map((source) => {
-  const rows = api.diagnosticFinalRows(api.analyzeLine(source));
+  const analysis = api.analyzeLine(source);
+  const rows = api.diagnosticFinalRows(analysis);
   return {
     source,
+    parser_shadow_source: analysis.parser_shadow_source,
+    alignment: analysis.trace_binding_provenance,
     rows: rows.filter((row) => row && row.kind === "construction").map(pick),
   };
 });
 
+const allRows = output.flatMap((item) => item.rows);
+const statusCounts = {};
+for (const row of allRows) statusCounts[row.binding_status || "missing"] = (statusCounts[row.binding_status || "missing"] || 0) + 1;
+
 console.log(JSON.stringify({
-  schema: "canto-span-trace-binding-probe-v1",
+  schema: "canto-span-trace-binding-probe-v2",
   runtime_version: api.runtimeVersion,
+  construction_rows: allRows.length,
+  binding_status_counts: statusCounts,
+  unresolved: allRows.filter((row) => row.binding_status === "legacy_unresolved").map((row) => ({ construction: row.construction, source: output.find((item) => item.rows.includes(row))?.source || "" })),
   cases: output,
 }, null, 2));
 
