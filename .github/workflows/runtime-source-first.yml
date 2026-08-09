@@ -26,43 +26,9 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  scope-sync:
-    if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'agent/structural-scope-normalization'
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-        with:
-          ref: agent/structural-scope-normalization
-          fetch-depth: 0
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 24
-          package-manager-cache: false
-      - run: npm ci
-      - run: node tools/temp-apply-structural-scope.js
-      - run: npm run build:runtime
-      - name: Commit claimed migration outputs only
-        shell: bash
-        run: |
-          allowed='^( M (main\.js|src/runtime-resources/diagnostics/trace-metadata\.js|tools/parser-coverage-report\.js|tests/tooling/parser-coverage/enhanced\.test\.js))$'
-          status="$(git status --short)"
-          unexpected="$(printf '%s\n' "$status" | grep -Ev "$allowed" | sed '/^$/d' || true)"
-          if [ -n "$unexpected" ]; then
-            echo "Unexpected files changed during structural-scope migration/build:"
-            echo "$unexpected"
-            exit 1
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add main.js src/runtime-resources/diagnostics/trace-metadata.js tools/parser-coverage-report.js tests/tooling/parser-coverage/enhanced.test.js
-          git diff --cached --check
-          git diff --cached --quiet && { echo "No claimed migration changes"; exit 0; }
-          git commit -m "Add controlled parser structural scope"
-          git push origin HEAD:agent/structural-scope-normalization
-
   verify:
     runs-on: ubuntu-latest
     steps:
