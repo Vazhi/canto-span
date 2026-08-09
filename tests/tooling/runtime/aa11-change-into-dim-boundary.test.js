@@ -44,6 +44,26 @@ test("AA11 span excludes subject, higher modal, and final particle", () => {
   assert.equal(modalRows[0].internal_parent || modalRows[0].parent, "ModalVP");
 });
 
+test("AA11 remains the narrow inner VP inside an independently typed cognition embedding frame", () => {
+  const source = "我知成個社會會變成點。";
+  const rows = constructionRows(source);
+  const aa11 = rows.filter((row) => internalConstruction(row) === "ChangeIntoPredicate");
+  const cognition = rows.filter((row) => internalConstruction(row) === "CognitionContentFrame");
+
+  assert.equal(aa11.length, 1);
+  assert.equal(rowSurface(aa11[0]), "變成點");
+  assert.equal(aa11[0].trace_detail.structural_scope, "vp");
+  assert.equal(aa11[0].trace_detail.binding_contract_status, "complete");
+  assert.equal(cognition.length, 1, "expected independently typed CognitionContentFrame embedding");
+  assert.ok(rowSurface(cognition[0]).includes("成個社會會變成點"));
+
+  const innerSpan = aa11[0].trace_detail.construction_provenance.source_span;
+  const outerSpan = cognition[0].trace_detail.construction_provenance.source_span;
+  assert.ok(outerSpan.start <= innerSpan.start);
+  assert.ok(outerSpan.end >= innerSpan.end);
+  assert.ok(outerSpan.start < innerSpan.start || outerSpan.end > innerSpan.end);
+});
+
 test("AA11 does not inherit neighboring wh or lexical result complements", () => {
   for (const source of [
     "佢會變成點樣？",
