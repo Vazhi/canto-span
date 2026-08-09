@@ -15,6 +15,7 @@ const commands = [
   ["glossika_week16_lexicon", path.join(root, "tests", "tooling", "lexicon", "glossika-week16-runtime-lexicon.test.js")],
   ["unit_word_evidence", path.join(root, "tests", "tooling", "runtime", "unit-word-evidence.test.js")],
   ["parser_coverage_auditor", path.join(root, "tests", "tooling", "parser-coverage", "coverage.test.js")],
+  ["parser_coverage_basic_known_phrases_smoke", path.join(root, "tests", "tooling", "parser-coverage", "basic-known-phrases.smoke.js")],
 ];
 const generatedPaths = [
   "validation/current/regression-suite.json",
@@ -42,6 +43,10 @@ try {
       signal: run.signal || "",
       status: run.status === 0 ? "PASS" : "FAIL",
     };
+    if (name === "parser_coverage_basic_known_phrases_smoke") {
+      process.stdout.write(run.stdout || "");
+      process.stderr.write(run.stderr || "");
+    }
     if (run.status !== 0) {
       failed = true;
       result.stdout = run.stdout || "";
