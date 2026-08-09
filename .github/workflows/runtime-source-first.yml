@@ -40,7 +40,14 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
-      - run: node tools/temp-apply-ab33-question-repair.js
+      - name: Apply source migration if needed
+        shell: bash
+        run: |
+          if grep -q 'function typedPreferencePredicateParts' src/parser/detectors/questions/a-not-a.js; then
+            echo "AB33 repair already applied"
+          else
+            node tools/temp-apply-ab33-question-repair.js
+          fi
       - run: npm run build:runtime
       - name: Commit claimed AB33 outputs only
         shell: bash
