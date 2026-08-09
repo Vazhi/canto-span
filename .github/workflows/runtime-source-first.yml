@@ -42,25 +42,26 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
+      - name: Apply final auditor-only structured provenance correction
+        run: node tools/temp-fix-structured-sanity-bound.js
       - run: npm run build:runtime
-      - name: Commit deterministic bundle only
+      - name: Commit claimed outputs only
         shell: bash
         run: |
-          unexpected="$(git status --short | grep -v '^ M main.js$' || true)"
+          allowed='^( M (main\.js|tools/parser-coverage-report\.js))$'
+          status="$(git status --short)"
+          unexpected="$(printf '%s\n' "$status" | grep -Ev "$allowed" | sed '/^$/d' || true)"
           if [ -n "$unexpected" ]; then
-            echo "Unexpected files changed during runtime build:"
+            echo "Unexpected files changed during patch/build:"
             echo "$unexpected"
             exit 1
           fi
-          if git diff --quiet -- main.js; then
-            echo "main.js already current"
-            exit 0
-          fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add main.js
+          git add main.js tools/parser-coverage-report.js
           git diff --cached --check
-          git commit -m "Regenerate structured trace runtime bundle"
+          git diff --cached --quiet && { echo "No claimed output changes"; exit 0; }
+          git commit -m "Use structured provenance for binding sanity bounds"
           git push origin HEAD:agent/structured-parser-trace-bindings
 
   verify:
