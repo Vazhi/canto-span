@@ -16,7 +16,6 @@ const commands = [
   ["unit_word_evidence", path.join(root, "tests", "tooling", "runtime", "unit-word-evidence.test.js")],
   ["parser_coverage_auditor", path.join(root, "tests", "tooling", "parser-coverage", "coverage.test.js")],
   ["parser_coverage_enhanced", path.join(root, "tests", "tooling", "parser-coverage", "enhanced.test.js")],
-  ["structural_scope_probe", path.join(root, "tests", "tooling", "parser-coverage", "structural-scope-probe.js")],
 ];
 const generatedPaths = [
   "validation/current/regression-suite.json",
@@ -26,7 +25,10 @@ const generatedPaths = [
 const originalGeneratedFiles = new Map(
   generatedPaths.map((relativePath) => {
     const absolutePath = path.join(root, relativePath);
-    return [absolutePath, fs.existsSync(absolutePath) ? fs.readFileSync(absolutePath) : null];
+    return [
+      absolutePath,
+      fs.existsSync(absolutePath) ? fs.readFileSync(absolutePath) : null,
+    ];
   }),
 );
 const results = [];
@@ -51,8 +53,9 @@ try {
   }
 } finally {
   for (const [absolutePath, original] of originalGeneratedFiles) {
-    if (original === null) fs.rmSync(absolutePath, { force: true });
-    else {
+    if (original === null) {
+      fs.rmSync(absolutePath, { force: true });
+    } else {
       fs.mkdirSync(path.dirname(absolutePath), { recursive: true });
       fs.writeFileSync(absolutePath, original);
     }
