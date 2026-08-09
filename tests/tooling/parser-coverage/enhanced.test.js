@@ -241,6 +241,16 @@ test("unknown taxonomy values fail closed instead of receiving heuristic default
 });
 
 
+test("mixed clause-VP public identities use trace-definition scope rather than label suffix", () => {
+  const [subjectlessModalRecord] = recordsForSentences(["要等幾耐啊？"]);
+  const subjectlessModal = subjectlessModalRecord.construction_traces.find((item) => item.construction === "ModalVP");
+  assert(subjectlessModal);
+  assert.equal(subjectlessModal.structural_scope, "vp");
+  assert.equal(subjectlessModal.structural_scope_source, "reviewed_mixed_clause_vp_definition");
+  assert(!subjectlessModal.assigned_slots.some((slot) => slot === "subject" || slot === "overt_subject" || slot === "topic"));
+  assert(!subjectlessModalRecord.sanity_findings.some((finding) => finding.code === "vp_scope_binds_clause_level_slot"));
+});
+
 test("subject-binding public VP identities expose clause structural scope without renaming", () => {
   const cases = [
     ["我要飲水。", "ModalVP"],

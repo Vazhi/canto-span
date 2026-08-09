@@ -94,6 +94,12 @@ const structuralScopeRegistry = [
 ];
 const registeredStructuralScopes = new Set(structuralScopeRegistry.map(([scope]) => scope));
 const clauseLevelStructuralSlots = new Set(["subject", "overt_subject", "topic"]);
+const reviewedMixedClauseVpConstructions = new Set([
+  "ModalVP",
+  "DesiderativeVP",
+  "MannerAdverbialVP",
+  "PreferenceVP",
+]);
 
 function templateSlotName(item) {
   return String(item || "").replace(/[!?+*]+$/g, "");
@@ -105,11 +111,15 @@ function traceDeclaresClauseLevelSlot(trace = {}) {
   return [...assigned, ...authored].some((slot) => clauseLevelStructuralSlots.has(slot));
 }
 
-function deriveStructuralScope(trace = {}) {
+function deriveStructuralScope(trace = {}, options = {}) {
   const explicit = String(trace.structural_scope || "");
+  const constructionType = String(options.constructionType || trace.construction_type || "");
   if (explicit) return { structural_scope: explicit, structural_scope_source: "explicit" };
   if (traceDeclaresClauseLevelSlot(trace)) {
     return { structural_scope: "clause", structural_scope_source: "clause_level_slot" };
+  }
+  if (reviewedMixedClauseVpConstructions.has(constructionType)) {
+    return { structural_scope: "vp", structural_scope_source: "reviewed_mixed_clause_vp_definition" };
   }
   if (trace.kind === "governed_discourse_wrapper") {
     return { structural_scope: "discourse", structural_scope_source: "trace_kind" };
@@ -258,7 +268,7 @@ function normalizeTraceTaxonomy(trace = {}, options = {}) {
     if (!templateFamily) templateFamilySource = "not_applicable";
   }
 
-  const structuralScope = deriveStructuralScope(normalized);
+  const structuralScope = deriveStructuralScope(normalized, { constructionType });
   if (!registeredStructuralScopes.has(structuralScope.structural_scope)) {
     issues.push(taxonomyIssue(
       "unregistered_structural_scope",
@@ -402,6 +412,7 @@ module.exports = {
   templateTraceKinds,
   structuralScopeRegistry,
   clauseLevelStructuralSlots,
+  reviewedMixedClauseVpConstructions,
   traceDeclaresClauseLevelSlot,
   deriveStructuralScope,
   legacyTemplateSubtypeFamilyMap,
