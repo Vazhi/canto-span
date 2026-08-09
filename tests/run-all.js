@@ -22,6 +22,7 @@ const commands = [
   ["parser_coverage_auditor", path.join(root, "tests", "tooling", "parser-coverage", "coverage.test.js")],
   ["parser_coverage_enhanced", path.join(root, "tests", "tooling", "parser-coverage", "enhanced.test.js")],
   ["parser_architecture_audit", path.join(root, "tests", "tooling", "parser-coverage", "architecture-audit.test.js")],
+  ["parser_work_prioritizer", path.join(root, "tests", "tooling", "parser-coverage", "prioritizer.test.js")],
 ];
 const generatedPaths = [
   "validation/current/regression-suite.json",
