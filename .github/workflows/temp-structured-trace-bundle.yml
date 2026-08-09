@@ -41,3 +41,5 @@ jobs:
           git diff --cached --check
           git commit -m "Regenerate structured trace runtime bundle"
           git push origin HEAD:agent/structured-parser-trace-bindings
+
+# Temporary branch-only helper; delete before PR readiness.
