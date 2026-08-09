@@ -72,8 +72,8 @@ function independentlyTypedFollowingVP(nodes) {
   const candidate = wrapped[0];
   if (!candidate || candidate.kind !== "construction" || !nodeCanFillSlot(candidate, "vp")) return null;
   // Object-bearing VPs can inherit topic affordances from nominal children; that
-  // does not make the VP clause-sized. Actual clause/subject ownership remains excluded.
-  if (nodeCanFillSlot(candidate, "clause") || nodeCanFillSlot(candidate, "subject")) return null;
+  // does not make the VP clause-sized. Actual clause/subject/time ownership remains excluded.
+  if (nodeCanFillSlot(candidate, "clause") || nodeCanFillSlot(candidate, "subject") || nodeCanFillSlot(candidate, "time")) return null;
   return candidate;
 }
 
@@ -111,6 +111,7 @@ function markedMannerVPForCore(core) {
         overt_marker_required: true,
         bare_reduplication_route: false,
         following_vp_typing: "independent_required",
+        following_vp_clause_time_material: "excluded",
       },
       assigned_slots: ["reduplicated_manner_part", "reduplicated_manner_part", "manner_adverbializer", "vp"],
       surfaces: children.map((node) => flattenSurface(node)),
