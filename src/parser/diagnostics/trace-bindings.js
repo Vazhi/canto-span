@@ -1,33 +1,21 @@
 "use strict";
 
+const nodeShape = require("../nodes/node-shape")({});
+
 const TRACE_BINDING_SCHEMA = "canto-span-trace-bindings-v1";
 const OFFSET_UNIT = "utf16_code_unit";
 
 module.exports = function createTraceBindingAnnotator(dependencies = {}) {
-  const {
-    nodeCanFillSlot,
-    nodeDisplaySurface,
-    nodeParserSurface,
-  } = dependencies;
+  const nodeParserSurface = dependencies.nodeParserSurface || nodeShape.flattenSurface;
+  const nodeDisplaySurface = dependencies.nodeDisplaySurface || nodeShape.flattenDisplaySurface;
+  const externalNodeCanFillSlot = dependencies.nodeCanFillSlot;
 
   function absoluteSpan(start, end, relativeTo) {
-    return {
-      status: "unique",
-      start,
-      end,
-      unit: OFFSET_UNIT,
-      relative_to: relativeTo,
-    };
+    return { status: "unique", start, end, unit: OFFSET_UNIT, relative_to: relativeTo };
   }
 
   function relativeSpan(start, end) {
-    return {
-      status: "unique",
-      start,
-      end,
-      unit: OFFSET_UNIT,
-      relative_to: "construction_start",
-    };
+    return { status: "unique", start, end, unit: OFFSET_UNIT, relative_to: "construction_start" };
   }
 
   function directComponent(node, index, parserStart, sourceStart, constructionParserStart, constructionSourceStart) {
@@ -72,7 +60,6 @@ module.exports = function createTraceBindingAnnotator(dependencies = {}) {
         provenance,
       };
     }
-
     const first = components[0];
     const last = components[components.length - 1];
     return {
@@ -94,13 +81,38 @@ module.exports = function createTraceBindingAnnotator(dependencies = {}) {
     };
   }
 
+  function localNodeCanFillSlot(node, slot) {
+    if (!node) return false;
+    const slots = Array.isArray(node.slots) ? node.slots : [];
+    if (slots.includes(slot)) return true;
+    const normalizedSlot = String(slot || "");
+    const type = node.kind === "construction" ? String(node.compatibility_alias || node.type || "") : "";
+    const label = node.kind === "token" ? String(node.label || "") : "";
+    const syntax = node.kind === "token" ? String(node.syntax || "") : "";
+    const surface = nodeParserSurface(node);
+    if (/topic/.test(normalizedSlot) && (/(?:NP|Nominal|Topic)/.test(type) || ["who", "what", "where"].includes(label))) return true;
+    if (/(?:predicate|vp|content_clause|reported_content)/.test(normalizedSlot)
+        && (/(?:VP|Predicate|Clause|Frame)$/.test(type) || label === "doing" || label === "like" || /verb|stative/.test(syntax))) return true;
+    if (/subject/.test(normalizedSlot) && (/(?:NP|Nominal)$/.test(type) || label === "who" || /pronoun/.test(syntax))) return true;
+    if (/negator/.test(normalizedSlot) && /negat/.test(syntax)) return true;
+    if (/particle|marker/.test(normalizedSlot) && (label === "particle" || /particle|marker/.test(syntax))) return true;
+    if (/modal/.test(normalizedSlot) && /modal/.test(syntax)) return true;
+    if (/use_verb/.test(normalizedSlot) && surface === "用") return true;
+    if (/lai_marker/.test(normalizedSlot) && surface === "嚟") return true;
+    if (/host/.test(normalizedSlot) && label !== "particle") return true;
+    return false;
+  }
+
   function childCanFillSlot(component, slot) {
-    if (!component || !component._node || typeof nodeCanFillSlot !== "function") return false;
-    try {
-      return Boolean(nodeCanFillSlot(component._node, slot));
-    } catch (_error) {
-      return false;
+    if (!component || !component._node) return false;
+    if (typeof externalNodeCanFillSlot === "function") {
+      try {
+        if (externalNodeCanFillSlot(component._node, slot)) return true;
+      } catch (_error) {
+        // Fall through to the local diagnostic-only compatibility matcher.
+      }
     }
+    return localNodeCanFillSlot(component._node, slot);
   }
 
   function orderedSlotStarts(slots, components) {
@@ -124,19 +136,9 @@ module.exports = function createTraceBindingAnnotator(dependencies = {}) {
   function semanticBindingsForConstruction(node, components, constructionProvenance) {
     const trace = node.trace || {};
     const slots = Array.isArray(trace.assigned_slots) ? trace.assigned_slots.filter(Boolean) : [];
-    if (!slots.length) {
-      return {
-        status: "not_applicable",
-        bindings: [],
-        resolution: "no_semantic_slots_declared",
-      };
-    }
+    if (!slots.length) return { status: "not_applicable", bindings: [], resolution: "no_semantic_slots_declared" };
 
-    if (
-      slots.length === 1 &&
-      trace.relation_member_role &&
-      /_relation_member$/.test(slots[0])
-    ) {
+    if (slots.length === 1 && trace.relation_member_role && /_relation_member$/.test(slots[0])) {
       return {
         status: "complete",
         bindings: [combinedBinding(slots[0], components, constructionProvenance, "construction_span", "runtime_construction_span_role")],
@@ -147,13 +149,7 @@ module.exports = function createTraceBindingAnnotator(dependencies = {}) {
     if (slots.length === components.length) {
       return {
         status: "complete",
-        bindings: slots.map((slot, index) => combinedBinding(
-          slot,
-          [components[index]],
-          constructionProvenance,
-          "direct_child",
-          "runtime_child_identity",
-        )),
+        bindings: slots.map((slot, index) => combinedBinding(slot, [components[index]], constructionProvenance, "direct_child", "runtime_child_identity")),
         resolution: "direct_child_identity",
       };
     }
@@ -172,18 +168,10 @@ module.exports = function createTraceBindingAnnotator(dependencies = {}) {
           range.length === 1 ? "runtime_child_affordance" : "runtime_child_range_affordance",
         );
       });
-      return {
-        status: "complete",
-        bindings,
-        resolution: "ordered_child_affordance_ranges",
-      };
+      return { status: "complete", bindings, resolution: "ordered_child_affordance_ranges" };
     }
 
-    return {
-      status: "legacy_unresolved",
-      bindings: [],
-      resolution: "no_deterministic_child_binding",
-    };
+    return { status: "legacy_unresolved", bindings: [], resolution: "no_deterministic_child_binding" };
   }
 
   function publicComponent(component) {
@@ -196,10 +184,7 @@ module.exports = function createTraceBindingAnnotator(dependencies = {}) {
     const displaySurface = nodeDisplaySurface(node);
     const parserEnd = parserStart + parserSurface.length;
     const sourceEnd = sourceStart + displaySurface.length;
-
-    if (!node || node.kind !== "construction") {
-      return { parserEnd, sourceEnd };
-    }
+    if (!node || node.kind !== "construction") return { parserEnd, sourceEnd };
 
     const constructionProvenance = {
       parser_surface: parserSurface,
@@ -215,14 +200,7 @@ module.exports = function createTraceBindingAnnotator(dependencies = {}) {
     let childSourceCursor = sourceStart;
     for (let index = 0; index < (node.children || []).length; index += 1) {
       const child = node.children[index];
-      const component = directComponent(
-        child,
-        index,
-        childParserCursor,
-        childSourceCursor,
-        parserStart,
-        sourceStart,
-      );
+      const component = directComponent(child, index, childParserCursor, childSourceCursor, parserStart, sourceStart);
       components.push(component);
       annotateNode(child, childParserCursor, childSourceCursor);
       childParserCursor = component.parser_span.end;
@@ -239,7 +217,6 @@ module.exports = function createTraceBindingAnnotator(dependencies = {}) {
       bindings: semantic.bindings,
       components: components.map(publicComponent),
     };
-
     return { parserEnd, sourceEnd };
   }
 
@@ -263,8 +240,5 @@ module.exports = function createTraceBindingAnnotator(dependencies = {}) {
     };
   }
 
-  return {
-    TRACE_BINDING_SCHEMA,
-    annotateTraceBindings,
-  };
+  return { TRACE_BINDING_SCHEMA, annotateTraceBindings };
 };
