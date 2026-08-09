@@ -5,8 +5,7 @@ on:
     paths:
       - "src/**"
       - "tests/**"
-      - "tools/build-runtime.js"
-      - "tools/verify-current-state.js"
+      - "tools/**"
       - "config/verification-profiles.json"
       - "package.json"
       - "package-lock.json"
@@ -16,8 +15,7 @@ on:
     paths:
       - "src/**"
       - "tests/**"
-      - "tools/build-runtime.js"
-      - "tools/verify-current-state.js"
+      - "tools/**"
       - "config/verification-profiles.json"
       - "package.json"
       - "package-lock.json"
@@ -26,9 +24,43 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
+  matcher-variant-sync:
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.ref == 'agent/authored-matcher-variants'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/authored-matcher-variants
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - run: node tools/temp-apply-matcher-variants.js
+      - run: npm run build:runtime
+      - name: Commit claimed matcher-variant outputs only
+        shell: bash
+        run: |
+          allowed='^( M (main\.js|src/runtime-resources/diagnostics/trace-metadata\.js|tools/parser-coverage-report\.js|tools/parser-coverage-enhanced\.js|tests/tooling/parser-coverage/enhanced\.test\.js))$'
+          status="$(git status --short)"
+          unexpected="$(printf '%s\n' "$status" | grep -Ev "$allowed" | sed '/^$/d' || true)"
+          if [ -n "$unexpected" ]; then
+            echo "Unexpected files changed during matcher-variant migration/build:"
+            echo "$unexpected"
+            exit 1
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add main.js src/runtime-resources/diagnostics/trace-metadata.js tools/parser-coverage-report.js tools/parser-coverage-enhanced.js tests/tooling/parser-coverage/enhanced.test.js
+          git diff --cached --check
+          git diff --cached --quiet && { echo "No claimed output changes"; exit 0; }
+          git commit -m "Apply authored matcher-variant identities"
+          git push origin HEAD:agent/authored-matcher-variants
+
   verify:
     runs-on: ubuntu-latest
     steps:
