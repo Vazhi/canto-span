@@ -24,7 +24,7 @@ Volatile counts and current work order belong only in
 | Concurrent semantic scope | matching open work claim |
 | Native-panel and survey evidence | active versioned review-packet records |
 | Corpus candidates and decisions | construction-specific packet, workbench, and decision ledger |
-| Per-PR merge authorization | `USER-MERGE-REVIEW.md` |
+| Merge authorization | `USER-MERGE-REVIEW.md` |
 | Historical provenance | research records, immutable batch reports, retired records, archive, and Git history |
 
 Construction availability and agent availability are independent. Parking a
@@ -224,14 +224,18 @@ present-tense facts. Historical reports are immutable provenance. Entry document
 link to specialized owners instead of copying their conclusions.
 
 Semantic claims govern concurrent work. Integrators reconcile integration-owned
-files, regenerate deterministic outputs, make complete PRs ready, notify the user,
-and stop. Merge requires explicit approval for the specific PR and unchanged head.
+files, regenerate deterministic outputs, make complete PRs ready, record the exact
+reviewed head and validation, and then apply `USER-MERGE-REVIEW.md`: merge under
+standing authorization when every live safety condition passes, and stop only when
+that owner requires a safety stop.
 
 Automation follows least privilege. A write-capable workflow requires an exclusive
 claim covering the workflow and target, minimal permissions, checked preconditions,
 branch-limited auditable writes, and no ability to write directly to `main`, expand
 its own scope, adjudicate evidence, promote status, deploy surveys, publish releases,
-merge, enable auto-merge, or infer user approval.
+or infer merge authority outside `USER-MERGE-REVIEW.md`. Automation may merge or
+enable auto-merge only when that file supplies valid authority and every live safety
+condition passes.
 
 Release audits use reviewed SHA-256-pinned baselines under
 `data/release-baselines/`. Runtime release packages remain minimal. Do not publish a
