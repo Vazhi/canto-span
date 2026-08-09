@@ -21273,7 +21273,7 @@ var require_trace_bindings = __commonJS({
         const normalizedDisplaySurface = nodeDisplaySurface2(node);
         if (!node || node.kind !== "construction") {
           const parserSpan = orderedSurfaceSpan(parserText, normalizedParserSurface, parserCursor);
-          const sourceSpan = orderedSurfaceSpan(sourceText, normalizedDisplaySurface, sourceCursor);
+          const sourceSpan = parserText === sourceText ? { start: parserSpan.start, end: parserSpan.end } : orderedSurfaceSpan(sourceText, normalizedDisplaySurface, sourceCursor);
           return {
             parserStart: parserSpan.start,
             parserEnd: parserSpan.end,
@@ -21292,7 +21292,7 @@ var require_trace_bindings = __commonJS({
           childSourceCursor = result.sourceEnd;
         }
         const fallbackParserSpan = orderedSurfaceSpan(parserText, normalizedParserSurface, parserCursor);
-        const fallbackSourceSpan = orderedSurfaceSpan(sourceText, normalizedDisplaySurface, sourceCursor);
+        const fallbackSourceSpan = parserText === sourceText ? { start: fallbackParserSpan.start, end: fallbackParserSpan.end } : orderedSurfaceSpan(sourceText, normalizedDisplaySurface, sourceCursor);
         const parserStart = childResults.length ? childResults[0].parserStart : fallbackParserSpan.start;
         const parserEnd = childResults.length ? childResults[childResults.length - 1].parserEnd : fallbackParserSpan.end;
         const sourceStart = childResults.length ? childResults[0].sourceStart : fallbackSourceSpan.start;
