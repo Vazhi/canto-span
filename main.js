@@ -3293,7 +3293,7 @@ var require_trace_metadata = __commonJS({
         focus_modifier_slot: "focus_adverb"
       };
     }
-    registerReviewedMatcherVariant("OpinionStanceFrame.stance_geidak", {
+    registerReviewedMatcherVariant("OpinionStanceFrame.stance_gokdak", {
       trace_kind: "generative_template",
       construction_type: "OpinionStanceFrame",
       template_family: "generative_template",

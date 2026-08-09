@@ -298,7 +298,7 @@ test("reviewed same-visible-rule definitions expose stable authored matcher vari
     return trace.matcher_variant_id;
   });
   assert.deepEqual(new Set(stanceIds), new Set([
-    "OpinionStanceFrame.stance_geidak",
+    "OpinionStanceFrame.stance_gokdak",
     "OpinionStanceFrame.stance_jiwai",
     "OpinionStanceFrame.stance_soengseon",
   ]));
@@ -322,7 +322,7 @@ test("reviewed matcher-variant families fail closed on a new unregistered constr
 });
 
 test("matcher variant aggregation detects authored-ID to fingerprint conflicts", () => {
-  const records = recordsForSentences(["我都覺得好貴。", "我以為佢走咗."]);
+  const records = recordsForSentences(["我都覺得好貴。", "我以為佢走咗。"]);
   const first = records[0].construction_traces.find((item) => item.matcher_variant_id);
   const second = records[1].construction_traces.find((item) => item.matcher_variant_id);
   assert(first && second);

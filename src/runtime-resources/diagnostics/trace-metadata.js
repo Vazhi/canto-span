@@ -233,7 +233,7 @@ function opinionConstraints(surface) {
     focus_modifier_slot: "focus_adverb",
   };
 }
-registerReviewedMatcherVariant("OpinionStanceFrame.stance_geidak", {
+registerReviewedMatcherVariant("OpinionStanceFrame.stance_gokdak", {
   trace_kind: "generative_template", construction_type: "OpinionStanceFrame", template_family: "generative_template",
   template: opinionTemplate, constraints: opinionConstraints("覺得"), rule: "",
 });
