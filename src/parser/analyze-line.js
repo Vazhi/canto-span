@@ -1,9 +1,12 @@
 "use strict";
 
+const defaultTraceBindingAnnotator = require("./diagnostics/trace-bindings")();
+
 module.exports = function createAnalyzeLine(dependencies = {}) {
   const {
     analyzedExplicitContext,
     annotateRawDisplaySurfaces,
+    annotateTraceBindings = defaultTraceBindingAnnotator.annotateTraceBindings,
     applyConstructionPatternsByPunctuation,
     applyExplicitContextContract,
     normalizeInputForParser,
@@ -24,6 +27,10 @@ function analyzeLine(source, explicitContextInput = null) {
   const initialNodes = annotateRawDisplaySurfaces(applyConstructionPatternsByPunctuation(tokens), source, parserSource);
   const contextApplied = applyExplicitContextContract(initialNodes, explicitContext);
   const nodes = annotateRawDisplaySurfaces(contextApplied.nodes, source, parserSource);
+  const trace_binding_provenance = annotateTraceBindings(nodes, {
+    rawSource: source,
+    parserSource,
+  });
   return {
     source,
     parser_shadow_source: parserSource,
@@ -33,6 +40,7 @@ function analyzeLine(source, explicitContextInput = null) {
     warnings,
     tokens,
     nodes,
+    trace_binding_provenance,
     explicit_context: explicitContext.public,
     context_resolution: contextApplied.resolution,
     diagnostics: true,
