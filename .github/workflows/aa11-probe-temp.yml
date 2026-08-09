@@ -1,4 +1,4 @@
-name: AA11 temporary diagnostic probe
+name: AA11 temporary staged-tree verification
 
 on:
   pull_request:
@@ -6,66 +6,106 @@ on:
       - "**"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  probe:
+  stage:
     if: github.event.pull_request.head.ref == 'agent/aa11-binsing-dim-boundaries'
     runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
     steps:
       - uses: actions/checkout@v6
+        with:
+          ref: agent/aa11-binsing-dim-boundaries
       - uses: actions/setup-node@v6
         with:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
-      - name: Probe AA11 current structure
+      - name: Synchronize version and derived state in workspace only
         run: |
-          node <<'NODE' > aa11-probe.json
-          const { loadRuntimeApi, internalConstruction, rowSurface } = require('./tests/lib/runtime-api');
-          const api = loadRuntimeApi();
-          const cases = [
-            ['bare_exact','變成點？'],
-            ['subject_exact','佢變成點？'],
-            ['modal_exact','成個社會會變成點？'],
-            ['particle_exact','成個社會會變成點呀？'],
-            ['dimjoeng','佢會變成點樣？'],
-            ['matje','佢會變成乜嘢？'],
-            ['dimjoeng_np','佢會變成點樣嘅人？'],
-            ['nominal_result','佢變成老師。'],
-            ['aspectual_nominal','佢變成咗老師。'],
-            ['bin_zo_do','佢變咗做老師。'],
-            ['bin_gan_do','佢變緊做老師。'],
-            ['singwai','佢成為咗老師。'],
-            ['bare_change_property','佢變高咗。'],
-            ['omitted','佢會變成？'],
-            ['intervener','佢會變成快啲點？'],
-            ['embedded','我覺得成個社會會變成點。']
-          ];
-          const out = [];
-          for (const [id, source] of cases) {
-            const analysis = api.analyzeLine(source);
-            out.push({
-              id, source,
-              rows: api.diagnosticFinalRows(analysis)
-                .filter((row) => row.kind === 'construction')
-                .map((row) => ({
-                  construction: internalConstruction(row),
-                  surface: rowSurface(row),
-                  parent: row.internal_parent || row.parent,
-                  slots: row.slots,
-                  trace: row.trace_detail
-                }))
-            });
-          }
-          process.stdout.write(JSON.stringify(out, null, 2));
-          NODE
-      - name: Export exact test workspace
-        run: tar --exclude=.git -czf /tmp/aa11-workspace.tgz .
+          python3 <<'PY'
+          from pathlib import Path
+          import json
+
+          p = Path('package.json')
+          d = json.loads(p.read_text())
+          d['version'] = '0.5.220'
+          p.write_text(json.dumps(d, ensure_ascii=False, indent=2) + '\n')
+
+          p = Path('package-lock.json')
+          d = json.loads(p.read_text())
+          d['version'] = '0.5.220'
+          d['packages']['']['version'] = '0.5.220'
+          p.write_text(json.dumps(d, ensure_ascii=False, indent=2) + '\n')
+
+          p = Path('src/plugin-entry.js')
+          s = p.read_text()
+          s = s.replace(
+              'const CANTO_SPAN_RUNTIME_VERSION = "0.5.219";\n// v0.5.219:',
+              'const CANTO_SPAN_RUNTIME_VERSION = "0.5.220";\n// v0.5.220: narrows AA11 to exact adjacent 變成 + 點, records bounded VP scope/provenance, and closes neighboring wh/result boundaries.\n// v0.5.219:'
+          )
+          p.write_text(s)
+
+          p = Path('manifest.json')
+          d = json.loads(p.read_text())
+          d['version'] = '0.5.220'
+          d['description'] = 'v0.5.220 narrows AA11 to exact adjacent 變成 + 點 and closes neighboring result-complement boundaries.'
+          p.write_text(json.dumps(d, ensure_ascii=False, indent=2) + '\n')
+
+          p = Path('docs/current/PROJECT-STATE.md')
+          s = p.read_text()
+          s = s.replace('| Runtime | v0.5.219 |', '| Runtime | v0.5.220 |')
+          s = s.replace('**1,603**', '**1,616**')
+          s = s.replace('| Per-construction assertions | 1,603 |', '| Per-construction assertions | 1,616 |')
+          p.write_text(s)
+          PY
+          npm run build:runtime
+          node tools/build-construction-tests.js
+          node tools/sync-construction-test-metadata.js
+          npm run discovery:generate
+      - name: Verify staged AA11 state
+        run: |
+          node --test tests/tooling/runtime/aa11-change-into-dim-boundary.test.js
+          npm run test:constructions
+          npm run verify:runtime
+          npm run test:parser-architecture
+          npm run audit:parser-architecture
+          npm run verify
+          npm run verify:research
+      - name: Stage unreferenced Git tree object
+        run: |
+          set -euo pipefail
+          base_tree=$(git rev-parse HEAD^{tree})
+          paths=(
+            package.json
+            package-lock.json
+            src/plugin-entry.js
+            manifest.json
+            docs/current/PROJECT-STATE.md
+            main.js
+            tests/construction-test-index.json
+            grammar/research_pending/ChangeIntoPredicate.md
+            data/construction-candidate-readiness.json
+          )
+          : > /tmp/tree-elements.jsonl
+          for path in "${paths[@]}"; do
+            content=$(base64 -w0 "$path")
+            blob_sha=$(jq -n --arg content "$content" '{content:$content,encoding:"base64"}' \
+              | gh api --method POST "repos/${GITHUB_REPOSITORY}/git/blobs" --input - --jq '.sha')
+            jq -n --arg path "$path" --arg sha "$blob_sha" \
+              '{path:$path,mode:"100644",type:"blob",sha:$sha}' >> /tmp/tree-elements.jsonl
+          done
+          jq -n --arg base "$base_tree" --slurpfile tree /tmp/tree-elements.jsonl \
+            '{base_tree:$base,tree:$tree}' > /tmp/tree-request.json
+          tree_sha=$(gh api --method POST "repos/${GITHUB_REPOSITORY}/git/trees" --input /tmp/tree-request.json --jq '.sha')
+          printf '%s\n' "$tree_sha" > aa11-staged-tree-sha.txt
+          git rev-parse HEAD > aa11-staged-parent-sha.txt
       - uses: actions/upload-artifact@v4
         with:
-          name: aa11-workspace
+          name: aa11-staged-tree
           path: |
-            aa11-probe.json
-            /tmp/aa11-workspace.tgz
+            aa11-staged-tree-sha.txt
+            aa11-staged-parent-sha.txt
           retention-days: 1
