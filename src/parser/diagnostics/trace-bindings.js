@@ -229,7 +229,6 @@ module.exports = function createTraceBindingAnnotator(dependencies = {}) {
       sourceCursor = result.sourceEnd;
     }
     return {
-      nodes,
       schema: TRACE_BINDING_SCHEMA,
       parser_alignment_status: parserCursor === String(options.parserSource || "").length ? "PASS" : "WARN",
       source_alignment_status: sourceCursor === String(options.rawSource || "").length ? "PASS" : "WARN",

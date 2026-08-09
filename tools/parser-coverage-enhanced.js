@@ -84,6 +84,23 @@ function constructionSourceSpans(traces = [], source = "") {
 
   for (let index = 0; index < traces.length; index += 1) {
     const trace = traces[index];
+    const runtimeSpan = trace && trace.construction_provenance && trace.construction_provenance.source_span;
+    if (runtimeSpan && runtimeSpan.status === "unique") {
+      const span = {
+        status: "unique",
+        start: Number(runtimeSpan.start),
+        end: Number(runtimeSpan.end),
+        resolution: "runtime_construction_provenance",
+        unit: runtimeSpan.unit || "utf16_code_unit",
+        relative_to: runtimeSpan.relative_to || "raw_source",
+      };
+      spans.push(span);
+      const depth = Number(trace.depth || 0);
+      while (stack.length && stack[stack.length - 1].depth >= depth) stack.pop();
+      stack.push({ index, depth, trace, span });
+      continue;
+    }
+
     const depth = Number(trace.depth || 0);
     while (stack.length && stack[stack.length - 1].depth >= depth) stack.pop();
     const parent = stack.length ? stack[stack.length - 1] : null;
@@ -92,12 +109,7 @@ function constructionSourceSpans(traces = [], source = "") {
     if (!parent) {
       const start = text.indexOf(trace.surface || "", rootCursor);
       if (start >= 0 && trace.surface) {
-        span = {
-          status: "unique",
-          start,
-          end: start + trace.surface.length,
-          resolution: "ordered_root_surface",
-        };
+        span = { status: "unique", start, end: start + trace.surface.length, resolution: "ordered_root_surface" };
         rootCursor = span.end;
       } else {
         span = { status: trace.surface ? "not_found" : "empty_surface", start: null, end: null };
@@ -167,6 +179,14 @@ function resolveSlotBindings(trace, sourceSpan, tokenRows = []) {
   let tokenCursor = 0;
   let surfaceCursor = 0;
   return trace.slot_bindings.map((binding) => {
+    if (
+      binding.relative_span &&
+      binding.relative_span.status === "unique" &&
+      binding.relative_span.resolution === "runtime_structured_binding"
+    ) {
+      return { ...binding };
+    }
+
     const target = String(binding.surface || "");
     if (!target) return { ...binding };
 
@@ -221,7 +241,7 @@ function enhanceCoverageRecord(summary = {}, finalRows = [], metadata = {}) {
   const record = base.buildCoverageRecord(summary, finalRows, metadata);
   const rawConstructionRows = (finalRows || []).filter((row) => row && row.kind === "construction");
   const rawTokenRows = (finalRows || []).filter((row) => row && row.kind === "token");
-  const sourceForOffsets = record.parser_shadow_source || record.source || "";
+  const sourceForOffsets = record.source || record.parser_shadow_source || "";
   const tokenSpans = orderedTokenSpans(sourceForOffsets, rawTokenRows);
 
   record.token_provenance = record.token_provenance.map((token, index) => ({
@@ -235,11 +255,7 @@ function enhanceCoverageRecord(summary = {}, finalRows = [], metadata = {}) {
     const rawRow = rawConstructionRows[index] || {};
     const sourceSpan = sourceSpans[index] || { status: "unavailable", start: null, end: null };
     const matcher = matcherIdentityForTrace(trace, rawRow);
-    const enhancedTrace = {
-      ...trace,
-      ...matcher,
-      source_span: sourceSpan,
-    };
+    const enhancedTrace = { ...trace, ...matcher, source_span: sourceSpan };
     enhancedTrace.slot_bindings = resolveSlotBindings(enhancedTrace, sourceSpan, record.token_provenance);
     return enhancedTrace;
   });
@@ -248,9 +264,9 @@ function enhanceCoverageRecord(summary = {}, finalRows = [], metadata = {}) {
   record.provenance_enhancement = {
     schema: ENHANCED_SCHEMA,
     matcher_identity: "deterministic fingerprint over diagnostic matcher definition; not linguistic evidence",
-    span_resolution: "ordered token stream first, ordered surface fallback second, prior conservative state otherwise",
+    span_resolution: "runtime structured binding/source provenance first; ordered token/surface reconstruction only for legacy diagnostics",
   };
-  record.policy = `${record.policy} Matcher fingerprints and ordered offsets identify implementation behavior only.`;
+  record.policy = record.policy + " Matcher fingerprints and ordered offsets identify implementation behavior only.";
   return record;
 }
 

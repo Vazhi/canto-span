@@ -57,7 +57,45 @@ function uniqueRelativeSpan(parentSurface = "", childSurface = "") {
   return { status: "unique", start: first, end: first + child.length };
 }
 
+function structuredRelativeSpan(binding = {}) {
+  const span = binding.relative_display_span || binding.relative_source_span || binding.relative_parser_span || null;
+  if (!span || typeof span !== "object") return { status: "unavailable", start: null, end: null };
+  if (span.status !== "unique") {
+    return {
+      status: span.status || "unavailable",
+      start: span.start ?? null,
+      end: span.end ?? null,
+      resolution: "runtime_structured_binding",
+    };
+  }
+  return {
+    status: "unique",
+    start: Number(span.start),
+    end: Number(span.end),
+    resolution: "runtime_structured_binding",
+    unit: span.unit || "utf16_code_unit",
+    relative_to: span.relative_to || "construction_start",
+  };
+}
+
 function slotBindingsForTrace(detail = {}, constructionSurface = "") {
+  if (detail.trace_binding_schema && Array.isArray(detail.bindings)) {
+    return detail.bindings.map((binding, index) => ({
+      index,
+      slot: binding.slot || "",
+      surface: String(binding.display_surface || binding.source_surface || binding.parser_surface || ""),
+      parser_surface: String(binding.parser_surface || ""),
+      source_surface: String(binding.source_surface || binding.display_surface || ""),
+      binding_kind: binding.binding_kind || "semantic_slot",
+      binding_scope: binding.binding_scope || "",
+      provenance: binding.provenance || "",
+      parser_span: binding.parser_span || null,
+      source_span: binding.source_span || null,
+      display_span: binding.display_span || null,
+      relative_span: structuredRelativeSpan(binding),
+    }));
+  }
+
   const slots = Array.isArray(detail.assigned_slots) ? detail.assigned_slots : [];
   const surfaces = Array.isArray(detail.surfaces) ? detail.surfaces : [];
   const length = Math.max(slots.length, surfaces.length);
@@ -108,6 +146,11 @@ function constructionTraceRows(finalRows = []) {
       template: Array.isArray(detail.template) ? detail.template : [],
       assigned_slots: Array.isArray(detail.assigned_slots) ? [...detail.assigned_slots] : [],
       slot_surfaces: Array.isArray(detail.surfaces) ? [...detail.surfaces] : [],
+      trace_binding_schema: detail.trace_binding_schema || "",
+      binding_contract_status: detail.binding_contract_status || "",
+      binding_resolution: detail.binding_resolution || "",
+      construction_provenance: detail.construction_provenance || null,
+      components: Array.isArray(detail.components) ? detail.components : [],
       slot_bindings: slotBindings,
     };
     traces.push(trace);
@@ -165,17 +208,51 @@ function structuralSanityFindings(summary = {}, constructionTraces = []) {
   for (const trace of constructionTraces) {
     const slotCount = trace.assigned_slots.length;
     const surfaceCount = trace.slot_surfaces.length;
-    if ((slotCount || surfaceCount) && slotCount !== surfaceCount) {
+    const hasStructuredBindings = Boolean(trace.trace_binding_schema);
+
+    if (!hasStructuredBindings && (slotCount || surfaceCount) && slotCount !== surfaceCount) {
       findings.push(sanityFinding(
         "slot_surface_count_mismatch",
         "error",
-        "Template trace has different assigned-slot and slot-surface counts.",
+        "Legacy trace has different assigned-slot and slot-surface counts.",
         {
           construction: trace.construction,
           surface: trace.surface,
           assigned_slot_count: slotCount,
           slot_surface_count: surfaceCount,
         },
+      ));
+    }
+
+    if (hasStructuredBindings && trace.binding_contract_status === "legacy_unresolved") {
+      findings.push(sanityFinding(
+        "structured_binding_contract_unresolved",
+        "error",
+        "A trace declares semantic slots but the runtime structured-binding contract could not resolve them deterministically.",
+        { construction: trace.construction, surface: trace.surface, assigned_slots: trace.assigned_slots },
+      ));
+    }
+
+    if (hasStructuredBindings && trace.binding_contract_status === "complete" && slotCount !== trace.slot_bindings.length) {
+      findings.push(sanityFinding(
+        "structured_binding_count_mismatch",
+        "error",
+        "Structured trace binding count does not match its declared semantic slot count.",
+        {
+          construction: trace.construction,
+          surface: trace.surface,
+          assigned_slot_count: slotCount,
+          structured_binding_count: trace.slot_bindings.length,
+        },
+      ));
+    }
+
+    if (hasStructuredBindings && trace.binding_contract_status === "not_applicable" && trace.slot_bindings.length) {
+      findings.push(sanityFinding(
+        "structured_binding_schema_violation",
+        "error",
+        "A non-slot trace exposes semantic bindings despite declaring the binding contract not applicable.",
+        { construction: trace.construction, surface: trace.surface },
       ));
     }
 
@@ -203,7 +280,26 @@ function structuralSanityFindings(summary = {}, constructionTraces = []) {
     }
 
     for (const binding of trace.slot_bindings) {
-      if (binding.surface && binding.relative_span.status === "not_found") {
+      if (hasStructuredBindings && trace.binding_contract_status === "complete") {
+        const span = binding.relative_span || {};
+        const invalidStructuredBinding = !binding.slot || span.status !== "unique"
+          || !Number.isInteger(span.start) || !Number.isInteger(span.end)
+          || span.start < 0 || span.end < span.start || span.end > trace.surface.length;
+        if (invalidStructuredBinding) {
+          findings.push(sanityFinding(
+            "structured_binding_schema_violation",
+            "error",
+            "A complete structured binding is missing a slot or a valid construction-relative display span.",
+            {
+              construction: trace.construction,
+              surface: trace.surface,
+              slot: binding.slot || "",
+              slot_surface: binding.surface || "",
+              relative_span: span,
+            },
+          ));
+        }
+      } else if (binding.surface && binding.relative_span.status === "not_found") {
         findings.push(sanityFinding(
           "slot_surface_outside_construction",
           "error",
