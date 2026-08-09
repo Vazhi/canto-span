@@ -151,6 +151,10 @@ function constructionTraceRows(finalRows = []) {
       taxonomy_issues: Array.isArray(detail.taxonomy_issues) ? detail.taxonomy_issues : [],
       structural_scope: detail.structural_scope || "",
       structural_scope_source: detail.structural_scope_source || "",
+      matcher_variant_schema: detail.matcher_variant_schema || "",
+      matcher_variant_applicability: detail.matcher_variant_applicability || "",
+      matcher_variant_id: detail.matcher_variant_id || "",
+      matcher_variant_source: detail.matcher_variant_source || "",
       rule: detail.rule || "",
       template: Array.isArray(detail.template) ? detail.template : [],
       assigned_slots: Array.isArray(detail.assigned_slots) ? [...detail.assigned_slots] : [],
@@ -277,6 +281,15 @@ function structuralSanityFindings(summary = {}, constructionTraces = []) {
           template_family: trace.template_family,
           taxonomy_issues: trace.taxonomy_issues,
         },
+      ));
+    }
+
+    if (trace.matcher_variant_applicability === "required" && !trace.matcher_variant_id) {
+      findings.push(sanityFinding(
+        "matcher_variant_required_missing",
+        "error",
+        "A reviewed matcher-variant family has no stable authored variant ID for this controlled definition.",
+        { construction: trace.construction, surface: trace.surface },
       ));
     }
 

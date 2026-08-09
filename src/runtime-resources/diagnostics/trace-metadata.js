@@ -155,6 +155,169 @@ function reviewedDefinitionKey(constructionType, template, constraints) {
   }));
 }
 
+const MATCHER_VARIANT_SCHEMA = "canto-span-matcher-variant-v1";
+const matcherVariantFamilyRegistry = new Set();
+const matcherVariantDefinitionRegistry = new Map();
+const matcherVariantIdToDefinitionKey = new Map();
+
+function matcherVariantFamilyKey(spec = {}) {
+  return JSON.stringify(canonicalize({
+    trace_kind: String(spec.trace_kind || ""),
+    construction_type: String(spec.construction_type || ""),
+    template_family: String(spec.template_family || ""),
+    template: Array.isArray(spec.template) ? spec.template : [],
+    rule: String(spec.rule || ""),
+  }));
+}
+
+function matcherVariantDefinitionKey(spec = {}) {
+  return JSON.stringify(canonicalize({
+    trace_kind: String(spec.trace_kind || ""),
+    construction_type: String(spec.construction_type || ""),
+    template_family: String(spec.template_family || ""),
+    template: Array.isArray(spec.template) ? spec.template : [],
+    constraints: spec.constraints && typeof spec.constraints === "object" ? spec.constraints : {},
+    rule: String(spec.rule || ""),
+  }));
+}
+
+function registerReviewedMatcherVariant(id, spec) {
+  const variantId = String(id || "");
+  if (!variantId) throw new Error("Matcher variant ID must be non-empty.");
+  const familyKey = matcherVariantFamilyKey(spec);
+  const definitionKey = matcherVariantDefinitionKey(spec);
+  if (matcherVariantDefinitionRegistry.has(definitionKey) && matcherVariantDefinitionRegistry.get(definitionKey) !== variantId) {
+    throw new Error(`Matcher definition is already registered as ${matcherVariantDefinitionRegistry.get(definitionKey)}.`);
+  }
+  if (matcherVariantIdToDefinitionKey.has(variantId) && matcherVariantIdToDefinitionKey.get(variantId) !== definitionKey) {
+    throw new Error(`Matcher variant ${variantId} maps to more than one controlled definition.`);
+  }
+  matcherVariantFamilyRegistry.add(familyKey);
+  matcherVariantDefinitionRegistry.set(definitionKey, variantId);
+  matcherVariantIdToDefinitionKey.set(variantId, definitionKey);
+}
+
+function matcherVariantSpec(constructionType, trace, templateFamily) {
+  return {
+    trace_kind: String(trace.kind || ""),
+    construction_type: String(constructionType || trace.construction_type || ""),
+    template_family: String(templateFamily || trace.template_family || ""),
+    template: Array.isArray(trace.template) ? trace.template : [],
+    constraints: trace.constraints && typeof trace.constraints === "object" ? trace.constraints : {},
+    rule: String(trace.rule || ""),
+  };
+}
+
+function resolveMatcherVariant(constructionType, trace, templateFamily) {
+  const spec = matcherVariantSpec(constructionType, trace, templateFamily);
+  if (!matcherVariantFamilyRegistry.has(matcherVariantFamilyKey(spec))) {
+    return {
+      matcher_variant_applicability: "not_required",
+      matcher_variant_id: "",
+      matcher_variant_source: "not_required",
+    };
+  }
+  const id = matcherVariantDefinitionRegistry.get(matcherVariantDefinitionKey(spec)) || "";
+  return {
+    matcher_variant_applicability: "required",
+    matcher_variant_id: id,
+    matcher_variant_source: id ? "reviewed_definition_registry" : "unregistered_definition",
+  };
+}
+
+const opinionTemplate = ["subject?", "focus_adverb?", "stance_predicate!", "focus_adverb?", "reported_content!", "particle?"];
+function opinionConstraints(surface) {
+  return {
+    visible_reviewed_content: true,
+    stance_predicate_surfaces: [surface],
+    focus_modifier_slot: "focus_adverb",
+  };
+}
+registerReviewedMatcherVariant("OpinionStanceFrame.stance_geidak", {
+  trace_kind: "generative_template", construction_type: "OpinionStanceFrame", template_family: "generative_template",
+  template: opinionTemplate, constraints: opinionConstraints("覺得"), rule: "",
+});
+registerReviewedMatcherVariant("OpinionStanceFrame.stance_jiwai", {
+  trace_kind: "generative_template", construction_type: "OpinionStanceFrame", template_family: "generative_template",
+  template: opinionTemplate, constraints: opinionConstraints("以為"), rule: "",
+});
+registerReviewedMatcherVariant("OpinionStanceFrame.stance_soengseon", {
+  trace_kind: "generative_template", construction_type: "OpinionStanceFrame", template_family: "generative_template",
+  template: opinionTemplate, constraints: opinionConstraints("相信"), rule: "",
+});
+
+const subjectPredicateTemplate = ["subject!", "predicate!", "particle?"];
+registerReviewedMatcherVariant("SubjectPredicateClause.predicate_allowlist_nonnegative", {
+  trace_kind: "generative_template", construction_type: "SubjectPredicateClause", template_family: "generative_template",
+  template: subjectPredicateTemplate,
+  constraints: {
+    predicate_must_have_any_slots: [
+      "transitive_vp", "productive_vo", "progressive_vp", "perfective_vp", "completion_vp",
+      "locative_posture_vp", "directional_motion_vp", "motion_goal_vp", "motion_purpose_chain", "serial_verb_purpose_chain",
+    ],
+    disallow_child_slots: ["negated_directional_motion_vp", "negated_vp"],
+  },
+  rule: "",
+});
+registerReviewedMatcherVariant("SubjectPredicateClause.predicate_unconstrained", {
+  trace_kind: "generative_template", construction_type: "SubjectPredicateClause", template_family: "generative_template",
+  template: subjectPredicateTemplate, constraints: {}, rule: "",
+});
+registerReviewedMatcherVariant("SubjectPredicateClause.predicate_allowlist_negative", {
+  trace_kind: "generative_template", construction_type: "SubjectPredicateClause", template_family: "generative_template",
+  template: subjectPredicateTemplate,
+  constraints: { predicate_must_have_any_slots: ["negated_directional_motion_vp", "negated_vp"] },
+  rule: "",
+});
+
+const demonstrativeTemplate = ["demonstrative!", "classifier!", "head_noun!"];
+const demonstrativeGuard = {
+  slot_must_not_have_slots: {
+    demonstrative: ["quantity", "wh_determiner", "di_determiner"],
+    classifier: ["quantity", "wh_determiner", "di_determiner"],
+    head_noun: ["quantity", "classifier", "wh_determiner", "di_determiner"],
+  },
+};
+registerReviewedMatcherVariant("DemonstrativeClassifierNP.slot_exclusion_guarded", {
+  trace_kind: "generative_template", construction_type: "DemonstrativeClassifierNP", template_family: "generative_template",
+  template: demonstrativeTemplate, constraints: demonstrativeGuard, rule: "",
+});
+registerReviewedMatcherVariant("DemonstrativeClassifierNP.slot_exclusion_unconstrained", {
+  trace_kind: "generative_template", construction_type: "DemonstrativeClassifierNP", template_family: "generative_template",
+  template: demonstrativeTemplate, constraints: {}, rule: "",
+});
+
+const headTemplate = ["head_noun!"];
+const headGuard = {
+  disallow_child_slots: [
+    "demonstrative", "classifier", "quantity", "modifier", "nominal_linker", "vp", "action_vp", "predicate",
+    "perfective_vp", "progressive_vp", "completion_vp", "result_complement_vp", "potential_result_vp",
+    "negative_potential_complement", "transitive_vp", "productive_vo",
+  ],
+};
+registerReviewedMatcherVariant("HeadNP.child_slot_exclusion_guarded", {
+  trace_kind: "generative_template", construction_type: "HeadNP", template_family: "generative_template",
+  template: headTemplate, constraints: headGuard, rule: "",
+});
+registerReviewedMatcherVariant("HeadNP.child_slot_exclusion_unconstrained", {
+  trace_kind: "generative_template", construction_type: "HeadNP", template_family: "generative_template",
+  template: headTemplate, constraints: {}, rule: "",
+});
+
+const transitiveTemplate = ["action_verb!", "object!"];
+const transitiveGuard = {
+  slot_must_not_be_bare_quantity_token: ["object"],
+  slot_must_not_have_slots: { object: ["approximate_quantity"] },
+};
+registerReviewedMatcherVariant("TransitiveVP.object_shape_guarded", {
+  trace_kind: "generative_template", construction_type: "TransitiveVP", template_family: "generative_template",
+  template: transitiveTemplate, constraints: transitiveGuard, rule: "",
+});
+registerReviewedMatcherVariant("TransitiveVP.object_shape_unconstrained", {
+  trace_kind: "generative_template", construction_type: "TransitiveVP", template_family: "generative_template",
+  template: transitiveTemplate, constraints: {}, rule: "",
+});
+
 const reviewedMissingTemplateFamilyDefaults = new Map();
 function registerReviewedMissingFamily(constructionType, template, constraints, templateFamily) {
   reviewedMissingTemplateFamilyDefaults.set(
@@ -290,6 +453,19 @@ function normalizeTraceTaxonomy(trace = {}, options = {}) {
   normalized.template_family_source = templateFamilySource;
   normalized.structural_scope = structuralScope.structural_scope;
   normalized.structural_scope_source = structuralScope.structural_scope_source;
+
+  const matcherVariant = resolveMatcherVariant(constructionType, normalized, templateFamily);
+  normalized.matcher_variant_schema = MATCHER_VARIANT_SCHEMA;
+  normalized.matcher_variant_applicability = matcherVariant.matcher_variant_applicability;
+  normalized.matcher_variant_id = matcherVariant.matcher_variant_id;
+  normalized.matcher_variant_source = matcherVariant.matcher_variant_source;
+  if (matcherVariant.matcher_variant_applicability === "required" && !matcherVariant.matcher_variant_id) {
+    issues.push(taxonomyIssue(
+      "matcher_variant_unregistered",
+      "A reviewed matcher-variant family contains a controlled definition with no authored variant ID.",
+      { construction_type: constructionType },
+    ));
+  }
   normalized.taxonomy_status = issues.length ? "invalid" : "valid";
   normalized.taxonomy_issues = issues;
   return normalized;
@@ -417,6 +593,14 @@ module.exports = {
   deriveStructuralScope,
   legacyTemplateSubtypeFamilyMap,
   reviewedMissingTemplateFamilyDefaults,
+  MATCHER_VARIANT_SCHEMA,
+  matcherVariantFamilyRegistry,
+  matcherVariantDefinitionRegistry,
+  matcherVariantIdToDefinitionKey,
+  matcherVariantFamilyKey,
+  matcherVariantDefinitionKey,
+  registerReviewedMatcherVariant,
+  resolveMatcherVariant,
   normalizeTraceTaxonomy,
   annotateTraceTaxonomy,
   parserDecisionLabelPolicy,
