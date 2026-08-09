@@ -43,7 +43,7 @@ repository outcome.
   [`docs/current/AGENT-WORKFLOW-SETTINGS.md`](docs/current/AGENT-WORKFLOW-SETTINGS.md)
 - Concurrent work claims:
   [`docs/current/MULTI-AGENT-COORDINATION.md`](docs/current/MULTI-AGENT-COORDINATION.md)
-- Per-pull-request merge approval:
+- Autonomous merge authority and required safety stops:
   [`docs/current/USER-MERGE-REVIEW.md`](docs/current/USER-MERGE-REVIEW.md)
 - Construction completion thresholds:
   [`docs/current/DEFINITION-OF-DONE.md`](docs/current/DEFINITION-OF-DONE.md)
