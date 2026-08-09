@@ -21,7 +21,7 @@ jobs:
       - run: npm ci
       - name: Probe AA61 current structure
         run: |
-          node <<'NODE'
+          node <<'NODE' > aa61-probe.json
           const { loadRuntimeApi, internalConstruction } = require('./tests/lib/runtime-api');
           const api = loadRuntimeApi();
           const cases = [
@@ -49,10 +49,11 @@ jobs:
               children: (node.children || []).map(slimNode),
             };
           }
+          const report = [];
           for (const [id, source, context] of cases) {
             const analyzed = api.analyzeLine(source, context);
-            console.log('\n===', id, source, context ? `CTX=${context}` : '', '===');
-            console.log(JSON.stringify({
+            report.push({
+              id, source, context,
               analyzed: Array.isArray(analyzed) ? analyzed.map(slimNode) : slimNode(analyzed),
               finalRows: api.diagnosticFinalRows(analyzed).map((row) => ({
                 kind: row.kind,
@@ -61,6 +62,12 @@ jobs:
                 slots: row.slots,
                 trace_detail: row.trace_detail,
               })),
-            }, null, 2));
+            });
           }
+          process.stdout.write(JSON.stringify(report, null, 2));
           NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: aa61-probe
+          path: aa61-probe.json
+          retention-days: 1
