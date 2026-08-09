@@ -19,10 +19,12 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
-      - name: Inventory AA49 current fixture families
+      - name: Inventory AA49 current fixture families and runtime spans
         run: |
           node <<'NODE' > aa49-fixture-audit.json
           const fs = require('fs');
+          const { loadRuntimeApi, internalConstruction, rowSurface } = require('./tests/lib/runtime-api');
+          const api = loadRuntimeApi();
           const spec = JSON.parse(fs.readFileSync('tests/constructions/DirectionalMotionVP.json', 'utf8'));
           const cases = [
             ...(spec.snapshot_cases || []).map((row) => ({...row, source_kind: 'snapshot'})),
@@ -43,24 +45,50 @@ jobs:
             if (/[如果因為所以但係話]/u.test(source) || /，/u.test(source)) out.push('higher_clause_or_discourse_composition');
             return out.length ? out : ['other'];
           }
-          const rows = cases.map((row) => ({
-            case_id: row.case_id || row.id || '',
-            source: row.source || '',
-            source_kind: row.source_kind,
-            assertion: row.assertion || '',
-            class: row.class || '',
-            origins: row.origins || [],
-            tags: tags(row.source || ''),
-            linguistic_evidence_weight: row.linguistic_evidence_weight === undefined ? null : row.linguistic_evidence_weight,
-            provenance: row.provenance || '',
-          }));
+          const rows = cases.map((row) => {
+            const source = row.source || '';
+            const analysis = api.analyzeLine(source, row.context_source || null);
+            const motionRows = api.diagnosticFinalRows(analysis)
+              .filter((candidate) => candidate.kind === 'construction' && internalConstruction(candidate) === 'DirectionalMotionVP')
+              .map((candidate) => ({
+                surface: rowSurface(candidate),
+                parent: candidate.internal_parent || candidate.parent || '',
+                depth: candidate.depth,
+                slots: candidate.slots || [],
+                trace_kind: candidate.trace_detail && candidate.trace_detail.kind || '',
+                trace_rule: candidate.trace_detail && candidate.trace_detail.rule || '',
+                structural_scope: candidate.trace_detail && candidate.trace_detail.structural_scope || '',
+              }));
+            return {
+              case_id: row.case_id || row.id || '',
+              source,
+              source_kind: row.source_kind,
+              assertion: row.assertion || '',
+              class: row.class || '',
+              origins: row.origins || [],
+              tags: tags(source),
+              motion_rows: motionRows,
+              linguistic_evidence_weight: row.linguistic_evidence_weight === undefined ? null : row.linguistic_evidence_weight,
+              provenance: row.provenance || '',
+            };
+          });
           const tagCounts = {};
-          for (const row of rows) for (const tag of row.tags) tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+          const motionSurfaceCounts = {};
+          const motionParentCounts = {};
+          for (const row of rows) {
+            for (const tag of row.tags) tagCounts[tag] = (tagCounts[tag] || 0) + 1;
+            for (const motion of row.motion_rows) {
+              motionSurfaceCounts[motion.surface] = (motionSurfaceCounts[motion.surface] || 0) + 1;
+              motionParentCounts[motion.parent || '<root>'] = (motionParentCounts[motion.parent || '<root>'] || 0) + 1;
+            }
+          }
           process.stdout.write(JSON.stringify({
             construction: spec.construction,
             declared_coverage: spec.coverage,
             case_count: rows.length,
             tag_counts: tagCounts,
+            motion_surface_counts: motionSurfaceCounts,
+            motion_parent_counts: motionParentCounts,
             cases: rows,
           }, null, 2));
           NODE
