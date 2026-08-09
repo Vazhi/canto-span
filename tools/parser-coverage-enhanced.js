@@ -299,12 +299,24 @@ function recordsFromFullDiagnostics(payload = {}, sourceArtifact = "") {
 function aggregateCoverage(records = [], options = {}) {
   const report = base.aggregateCoverage(records, options);
   const matcherCounts = {};
+  const matcherVariantCounts = {};
+  const matcherVariantFingerprints = new Map();
+  const fingerprintVariants = new Map();
   const spanResolutionCounts = {};
   let unresolvedSlotSpanCount = 0;
+  let requiredMatcherVariantMissingCount = 0;
 
   for (const record of records) {
     for (const trace of record.construction_traces || []) {
       if (trace.matcher_id) matcherCounts[trace.matcher_id] = (matcherCounts[trace.matcher_id] || 0) + 1;
+      if (trace.matcher_variant_applicability === "required" && !trace.matcher_variant_id) requiredMatcherVariantMissingCount += 1;
+      if (trace.matcher_variant_id) {
+        matcherVariantCounts[trace.matcher_variant_id] = (matcherVariantCounts[trace.matcher_variant_id] || 0) + 1;
+        if (!matcherVariantFingerprints.has(trace.matcher_variant_id)) matcherVariantFingerprints.set(trace.matcher_variant_id, new Set());
+        matcherVariantFingerprints.get(trace.matcher_variant_id).add(trace.matcher_fingerprint || "");
+        if (!fingerprintVariants.has(trace.matcher_fingerprint || "")) fingerprintVariants.set(trace.matcher_fingerprint || "", new Set());
+        fingerprintVariants.get(trace.matcher_fingerprint || "").add(trace.matcher_variant_id);
+      }
       for (const binding of trace.slot_bindings || []) {
         const resolution = binding.relative_span && binding.relative_span.resolution || binding.relative_span && binding.relative_span.status || "unknown";
         spanResolutionCounts[resolution] = (spanResolutionCounts[resolution] || 0) + 1;
@@ -313,10 +325,24 @@ function aggregateCoverage(records = [], options = {}) {
     }
   }
 
+  const matcherVariantFingerprintConflicts = [...matcherVariantFingerprints.entries()]
+    .filter(([, fingerprints]) => fingerprints.size > 1)
+    .map(([matcher_variant_id, fingerprints]) => ({ matcher_variant_id, fingerprints: [...fingerprints].sort() }));
+  const matcherFingerprintVariantConflicts = [...fingerprintVariants.entries()]
+    .filter(([, variants]) => variants.size > 1)
+    .map(([matcher_fingerprint, variants]) => ({ matcher_fingerprint, matcher_variant_ids: [...variants].sort() }));
+
   return {
     ...report,
     schema: ENHANCED_SCHEMA,
     matcher_counts: matcherCounts,
+    matcher_variant_counts: matcherVariantCounts,
+    matcher_variant_fingerprint_conflicts: matcherVariantFingerprintConflicts,
+    matcher_fingerprint_variant_conflicts: matcherFingerprintVariantConflicts,
+    required_matcher_variant_missing_count: requiredMatcherVariantMissingCount,
+    matcher_variant_consistency_status: (
+      !requiredMatcherVariantMissingCount && !matcherVariantFingerprintConflicts.length && !matcherFingerprintVariantConflicts.length
+    ) ? "PASS" : "FAIL",
     slot_span_resolution_counts: spanResolutionCounts,
     unresolved_slot_span_count: unresolvedSlotSpanCount,
   };

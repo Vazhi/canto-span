@@ -282,3 +282,52 @@ test("explicit VP scope with clause-level slot fails closed", () => {
   assert.equal(normalized.taxonomy_status, "invalid");
   assert(normalized.taxonomy_issues.some((issue) => issue.code === "vp_scope_binds_clause_level_slot"));
 });
+
+
+test("reviewed same-visible-rule definitions expose stable authored matcher variants", () => {
+  const records = recordsForSentences([
+    "我都覺得好貴。",
+    "我以為佢走咗。",
+    "我相信如果佢去，我就去。",
+    "因為落雨，所以我冇去。",
+  ]);
+  const stanceIds = records.slice(0, 3).map((record) => {
+    const trace = record.construction_traces.find((item) => item.construction === "OpinionStanceFrame");
+    assert(trace);
+    assert.equal(trace.matcher_variant_applicability, "required");
+    return trace.matcher_variant_id;
+  });
+  assert.deepEqual(new Set(stanceIds), new Set([
+    "OpinionStanceFrame.stance_gokdak",
+    "OpinionStanceFrame.stance_jiwai",
+    "OpinionStanceFrame.stance_soengseon",
+  ]));
+  const negative = records[3].construction_traces.find((item) => (
+    item.construction === "SubjectPredicateClause" && item.matcher_variant_id === "SubjectPredicateClause.predicate_allowlist_negative"
+  ));
+  assert(negative);
+});
+
+test("reviewed matcher-variant families fail closed on a new unregistered constraint definition", () => {
+  const normalized = normalizeTraceTaxonomy({
+    kind: "generative_template",
+    template_family: "generative_template",
+    template: ["action_verb!", "object!"],
+    constraints: { future_unreviewed_guard: true },
+  }, { constructionType: "TransitiveVP" });
+  assert.equal(normalized.matcher_variant_applicability, "required");
+  assert.equal(normalized.matcher_variant_id, "");
+  assert.equal(normalized.taxonomy_status, "invalid");
+  assert(normalized.taxonomy_issues.some((issue) => issue.code === "matcher_variant_unregistered"));
+});
+
+test("matcher variant aggregation detects authored-ID to fingerprint conflicts", () => {
+  const records = recordsForSentences(["我都覺得好貴。", "我以為佢走咗。"]);
+  const first = records[0].construction_traces.find((item) => item.matcher_variant_id);
+  const second = records[1].construction_traces.find((item) => item.matcher_variant_id);
+  assert(first && second);
+  second.matcher_variant_id = first.matcher_variant_id;
+  const report = aggregateCoverage(records);
+  assert.equal(report.matcher_variant_consistency_status, "FAIL");
+  assert(report.matcher_variant_fingerprint_conflicts.some((item) => item.matcher_variant_id === first.matcher_variant_id));
+});
