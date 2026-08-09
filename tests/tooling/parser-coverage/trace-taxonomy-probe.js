@@ -5,8 +5,10 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { loadRuntimeApi } = require("../../lib/runtime-api");
 const {
+  TRACE_TAXONOMY_SCHEMA,
   parserDecisionTraceKindRegistry,
   templateFamilyRegistry,
+  templateTraceKinds,
 } = require("../../../src/runtime-resources/diagnostics/trace-metadata");
 
 const root = path.resolve(__dirname, "../../..");
@@ -39,12 +41,13 @@ for (const file of fs.readdirSync(constructionDir).filter((name) => name.endsWit
 
 const registeredKinds = new Set(parserDecisionTraceKindRegistry.map(([kind]) => kind));
 const registeredFamilies = new Set(templateFamilyRegistry.map(([family]) => family));
-const templateTraceKinds = new Set(["generative_template", "construction_template"]);
 const kindCounts = {};
 const familyCounts = {};
-const missingFamily = new Map();
-const unregisteredKinds = new Map();
-const unregisteredFamilies = new Map();
+const familySourceCounts = {};
+const subtypeCounts = {};
+const taxonomyStatusCounts = {};
+const issueCounts = {};
+const failures = [];
 const parseFailures = [];
 let constructionRows = 0;
 
@@ -52,73 +55,62 @@ function bump(target, key) {
   target[key] = (target[key] || 0) + 1;
 }
 
-function group(map, key, payload, source) {
-  if (!map.has(key)) map.set(key, { ...payload, count: 0, examples: [] });
-  const row = map.get(key);
-  row.count += 1;
-  if (source && !row.examples.includes(source) && row.examples.length < 8) row.examples.push(source);
+function sample(kind, payload) {
+  if (failures.length < 30) failures.push({ kind, ...payload });
 }
 
 for (const item of corpus.values()) {
   try {
-    const rows = api.diagnosticFinalRows(api.analyzeLine(item.source, item.context_source || null));
+    const analysis = api.analyzeLine(item.source, item.context_source || null);
+    if ((analysis.trace_taxonomy_provenance || {}).invalid_count) {
+      sample("analysis_taxonomy_invalid", {
+        source: item.source,
+        summary: analysis.trace_taxonomy_provenance,
+      });
+    }
+    const rows = api.diagnosticFinalRows(analysis);
     for (const row of rows || []) {
       if (!row || row.kind !== "construction") continue;
       constructionRows += 1;
       const detail = row.trace_detail || {};
+      const construction = row.construction || row.internal_construction || detail.construction_type || "";
       const kind = detail.kind || row.trace || "unspecified";
       const family = detail.template_family || "";
-      const construction = row.construction || row.internal_construction || detail.construction_type || "";
+      const subtype = detail.template_subtype || "";
+      const taxonomyStatus = detail.taxonomy_status || "missing";
+      const applicability = detail.template_family_applicability || "missing";
+
       bump(kindCounts, kind);
       bump(familyCounts, family || "(missing)");
+      bump(familySourceCounts, detail.template_family_source || "missing");
+      bump(taxonomyStatusCounts, taxonomyStatus);
+      if (subtype) bump(subtypeCounts, subtype);
+      for (const issue of detail.taxonomy_issues || []) bump(issueCounts, issue.code || "unknown");
 
-      if (!registeredKinds.has(kind)) {
-        group(unregisteredKinds, kind, { trace_kind: kind }, item.source);
+      if (detail.trace_taxonomy_schema !== TRACE_TAXONOMY_SCHEMA) {
+        sample("missing_or_wrong_schema", { source: item.source, construction, schema: detail.trace_taxonomy_schema || "" });
       }
+      if (!registeredKinds.has(kind)) sample("unregistered_trace_kind", { source: item.source, construction, trace_kind: kind });
       if (family && !registeredFamilies.has(family)) {
-        group(unregisteredFamilies, family, {
-          template_family: family,
-          trace_kinds: new Set(),
-          constructions: new Set(),
-        }, item.source);
-        unregisteredFamilies.get(family).trace_kinds.add(kind);
-        unregisteredFamilies.get(family).constructions.add(construction);
+        sample("unregistered_template_family", { source: item.source, construction, trace_kind: kind, template_family: family });
       }
-      if (templateTraceKinds.has(kind) && !family) {
-        const signature = JSON.stringify({
-          construction,
-          kind,
-          rule: detail.rule || "",
-          template: Array.isArray(detail.template) ? detail.template : [],
-          constraints: detail.constraints || {},
-        });
-        group(missingFamily, signature, {
-          construction,
-          trace_kind: kind,
-          rule: detail.rule || "",
-          template: Array.isArray(detail.template) ? detail.template : [],
-          constraints: detail.constraints || {},
-          assigned_slots: Array.isArray(detail.assigned_slots) ? detail.assigned_slots : [],
-        }, item.source);
+      if (templateTraceKinds.has(kind)) {
+        if (applicability !== "required") sample("template_family_applicability", { source: item.source, construction, trace_kind: kind, applicability });
+        if (!family) sample("template_family_missing", { source: item.source, construction, trace_kind: kind });
+      } else {
+        if (applicability !== "not_applicable") sample("non_template_family_applicability", { source: item.source, construction, trace_kind: kind, applicability });
+      }
+      if (taxonomyStatus !== "valid") {
+        sample("taxonomy_invalid", { source: item.source, construction, trace_kind: kind, template_family: family, taxonomy_issues: detail.taxonomy_issues || [] });
       }
     }
   } catch (error) {
-    parseFailures.push({ source: item.source, error: error.message || String(error) });
+    parseFailures.push({ source: item.source, context_source: item.context_source, error: error.message || String(error) });
   }
 }
 
-function serializeFamilyGroup(row) {
-  return {
-    template_family: row.template_family,
-    count: row.count,
-    trace_kinds: [...row.trace_kinds].sort(),
-    constructions: [...row.constructions].sort(),
-    examples: row.examples,
-  };
-}
-
 const output = {
-  schema: "canto-span-trace-taxonomy-inventory-v1",
+  schema: "canto-span-trace-taxonomy-acceptance-v2",
   runtime_version: api.runtimeVersion,
   corpus: {
     unique_source_context_pairs: corpus.size,
@@ -126,19 +118,19 @@ const output = {
     parse_failures: parseFailures.length,
     construction_rows: constructionRows,
   },
-  registry: {
-    trace_kinds: [...registeredKinds].sort(),
-    template_families: [...registeredFamilies].sort(),
-  },
   observed: {
     trace_kind_counts: kindCounts,
     template_family_counts: familyCounts,
+    template_family_source_counts: familySourceCounts,
+    template_subtype_counts: subtypeCounts,
+    taxonomy_status_counts: taxonomyStatusCounts,
+    taxonomy_issue_counts: issueCounts,
   },
-  unregistered_trace_kinds: [...unregisteredKinds.values()].sort((a, b) => b.count - a.count),
-  unregistered_template_families: [...unregisteredFamilies.values()].map(serializeFamilyGroup).sort((a, b) => b.count - a.count),
-  template_traces_missing_family: [...missingFamily.values()].sort((a, b) => b.count - a.count || a.construction.localeCompare(b.construction)),
+  blocking_count: failures.length + parseFailures.length,
+  failures,
   parse_failures: parseFailures.slice(0, 20),
 };
 
 console.log(JSON.stringify(output, null, 2));
+// Temporary branch-only probe: deliberately fail after emitting the acceptance report.
 process.exit(1);
