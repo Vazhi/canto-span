@@ -17,6 +17,7 @@ const commands = [
   ["label_transition_policy", path.join(root, "tests", "tooling", "runtime", "label-transition-policy.test.js")],
   ["parser_coverage_auditor", path.join(root, "tests", "tooling", "parser-coverage", "coverage.test.js")],
   ["parser_coverage_enhanced", path.join(root, "tests", "tooling", "parser-coverage", "enhanced.test.js")],
+  ["label_transition_policy_probe", path.join(root, "tests", "tooling", "runtime", "label-transition-policy-probe.js")],
 ];
 const generatedPaths = [
   "validation/current/regression-suite.json",
