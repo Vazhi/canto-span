@@ -21,3 +21,4 @@ const report = aggregateCoverage(records, { sampleLimit: 10 });
 console.log("CANTO_SPAN_BASIC_PHRASE_SMOKE_START");
 console.log(JSON.stringify({ sentences, records, report }, null, 2));
 console.log("CANTO_SPAN_BASIC_PHRASE_SMOKE_END");
+process.exitCode = 1;
