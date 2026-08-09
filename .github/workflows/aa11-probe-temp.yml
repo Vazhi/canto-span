@@ -1,0 +1,67 @@
+name: AA11 temporary diagnostic probe
+
+on:
+  pull_request:
+    paths:
+      - "**"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    if: github.event.pull_request.head.ref == 'agent/aa11-binsing-dim-boundaries'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Probe AA11 current structure
+        run: |
+          node <<'NODE' > aa11-probe.json
+          const { loadRuntimeApi, internalConstruction, rowSurface } = require('./tests/lib/runtime-api');
+          const api = loadRuntimeApi();
+          const cases = [
+            ['bare_exact','變成點？'],
+            ['subject_exact','佢變成點？'],
+            ['modal_exact','成個社會會變成點？'],
+            ['particle_exact','成個社會會變成點呀？'],
+            ['dimjoeng','佢會變成點樣？'],
+            ['matje','佢會變成乜嘢？'],
+            ['dimjoeng_np','佢會變成點樣嘅人？'],
+            ['nominal_result','佢變成老師。'],
+            ['aspectual_nominal','佢變成咗老師。'],
+            ['bin_zo_do','佢變咗做老師。'],
+            ['bin_gan_do','佢變緊做老師。'],
+            ['singwai','佢成為咗老師。'],
+            ['bare_change_property','佢變高咗。'],
+            ['omitted','佢會變成？'],
+            ['intervener','佢會變成快啲點？'],
+            ['embedded','我覺得成個社會會變成點。']
+          ];
+          const out = [];
+          for (const [id, source] of cases) {
+            const analysis = api.analyzeLine(source);
+            out.push({
+              id, source,
+              rows: api.diagnosticFinalRows(analysis)
+                .filter((row) => row.kind === 'construction')
+                .map((row) => ({
+                  construction: internalConstruction(row),
+                  surface: rowSurface(row),
+                  parent: row.internal_parent || row.parent,
+                  slots: row.slots,
+                  trace: row.trace_detail
+                }))
+            });
+          }
+          process.stdout.write(JSON.stringify(out, null, 2));
+          NODE
+      - uses: actions/upload-artifact@v4
+        with:
+          name: aa11-probe
+          path: aa11-probe.json
+          retention-days: 1
