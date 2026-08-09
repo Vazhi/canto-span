@@ -39,9 +39,9 @@ for (const file of fs.readdirSync(constructionDir).filter((name) => name.endsWit
 const scopeCounts = {};
 const scopeSourceCounts = {};
 const targetCounts = {};
-const targetClauseCapableCounts = {};
-const targetUnspecifiedNonClauseCounts = {};
-const targetClauseCapableWrongScope = [];
+const targetClauseCounts = {};
+const targetVpCounts = {};
+const targetScopePolicyFailures = [];
 const vpViolations = [];
 const historicalNameScopeMismatches = [];
 const sanityCounts = {};
@@ -74,19 +74,19 @@ for (const item of corpus.values()) {
       }
       if (targetLabels.has(trace.construction)) {
         bump(targetCounts, trace.construction);
-        if (clauseCapable) {
-          bump(targetClauseCapableCounts, trace.construction);
-          if (trace.structural_scope !== "clause") {
-            targetClauseCapableWrongScope.push({
-              source: item.source,
-              construction: trace.construction,
-              scope: trace.structural_scope || "",
-              slots: trace.assigned_slots,
-              template: trace.template,
-            });
-          }
-        } else if (trace.structural_scope === "unspecified") {
-          bump(targetUnspecifiedNonClauseCounts, trace.construction);
+        const expectedScope = clauseCapable ? "clause" : "vp";
+        if (expectedScope === "clause") bump(targetClauseCounts, trace.construction);
+        else bump(targetVpCounts, trace.construction);
+        if (trace.structural_scope !== expectedScope) {
+          targetScopePolicyFailures.push({
+            source: item.source,
+            construction: trace.construction,
+            expected_scope: expectedScope,
+            actual_scope: trace.structural_scope || "",
+            scope_source: trace.structural_scope_source || "",
+            slots: trace.assigned_slots,
+            template: trace.template,
+          });
         }
       }
       // Historical cross-check only: prove the old suffix-based symptom is gone.
@@ -101,11 +101,11 @@ for (const item of corpus.values()) {
   }
 }
 
-const blockingCount = parseFailures.length + vpViolations.length + targetClauseCapableWrongScope.length
+const blockingCount = parseFailures.length + vpViolations.length + targetScopePolicyFailures.length
   + historicalNameScopeMismatches.length + Number(sanityCounts.vp_scope_binds_clause_level_slot || 0);
 
 console.log(JSON.stringify({
-  schema: "canto-span-structural-scope-acceptance-v2",
+  schema: "canto-span-structural-scope-acceptance-v3",
   runtime_version: api.runtimeVersion,
   corpus: {
     unique_source_context_pairs: corpus.size,
@@ -116,18 +116,19 @@ console.log(JSON.stringify({
   structural_scope_counts: scopeCounts,
   structural_scope_source_counts: scopeSourceCounts,
   target_construction_counts: targetCounts,
-  target_clause_capable_counts: targetClauseCapableCounts,
-  target_unspecified_non_clause_counts: targetUnspecifiedNonClauseCounts,
-  target_clause_capable_wrong_scope_count: targetClauseCapableWrongScope.length,
+  target_clause_counts: targetClauseCounts,
+  target_vp_counts: targetVpCounts,
+  target_scope_policy_failure_count: targetScopePolicyFailures.length,
   explicit_vp_violation_count: vpViolations.length,
   historical_name_scope_mismatch_count: historicalNameScopeMismatches.length,
   sanity_finding_counts: sanityCounts,
   blocking_count: blockingCount,
-  target_clause_capable_wrong_scope: targetClauseCapableWrongScope.slice(0, 20),
+  target_scope_policy_failures: targetScopePolicyFailures.slice(0, 20),
   vp_violations: vpViolations.slice(0, 20),
   historical_name_scope_mismatches: historicalNameScopeMismatches.slice(0, 20),
   parse_failures: parseFailures.slice(0, 20),
-  note: "Target-label occurrences without authored/realized clause-level slots may remain unspecified; they are informational and are not the subject-binding structural defect addressed by #682.",
+  note: "For the four reviewed mixed clause/VP public identities, actual template/binding shape controls scope: clause-level subject/topic slots => clause; otherwise => vp. Production validation does not infer this invariant from the public *VP suffix.",
 }, null, 2));
 
+// Temporary branch-only acceptance probe: deliberately fail after printing results.
 process.exit(1);
