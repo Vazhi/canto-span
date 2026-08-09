@@ -208,7 +208,9 @@ npm run test:coordination
 ```
 
 That command is task-specific. It does not run on unrelated pull requests and does
-not establish merge eligibility. The user-review stop remains a separate human gate.
+not establish merge eligibility. Merge authority remains separate and is owned by
+[`USER-MERGE-REVIEW.md`](USER-MERGE-REVIEW.md); coordination diagnostics never grant
+it.
 
 ## Reports and generated output
 
@@ -246,5 +248,5 @@ When adding or changing a check:
    state.
 8. Do not add a meta-test whose only purpose is preventing future pruning.
 
-Passing checks never replace expert evidence review or explicit approval for the
-unchanged PR head under [`USER-MERGE-REVIEW.md`](USER-MERGE-REVIEW.md).
+Passing checks never replace expert evidence review or the live merge-authority and
+safety checks required by [`USER-MERGE-REVIEW.md`](USER-MERGE-REVIEW.md).
