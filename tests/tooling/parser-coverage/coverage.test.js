@@ -7,7 +7,10 @@ const {
   aggregateCoverage,
   buildCoverageRecord,
   categoriesForSummary,
+  formatRecordDetails,
   recordsFromFullDiagnostics,
+  structuralSanityFindings,
+  uniqueRelativeSpan,
 } = require("../../../tools/parser-coverage-report");
 
 test("unknown lexical traces remain distinct from structural coverage", () => {
@@ -93,7 +96,20 @@ test("full diagnostics exports can be aggregated without rerunning the parser", 
             surface: "例子",
             depth: 0,
             trace: "generative_template",
-            trace_detail: { kind: "generative_template", template_family: "generative_template" },
+            trace_detail: {
+              kind: "generative_template",
+              template_family: "generative_template",
+              assigned_slots: ["subject", "predicate"],
+              surfaces: ["例", "子"],
+            },
+          },
+          {
+            kind: "token",
+            surface: "例",
+            depth: 1,
+            parent: "ExampleConstruction",
+            trace: "atomic_lexicon",
+            label: "who",
           },
         ],
       },
@@ -104,5 +120,160 @@ test("full diagnostics exports can be aggregated without rerunning the parser", 
   assert.equal(records[0].source_artifact, "sample.json");
   assert.equal(records[0].diagnostic_index, 4);
   assert.equal(records[0].construction_traces[0].construction, "ExampleConstruction");
+  assert.equal(records[0].construction_traces[0].slot_bindings[0].slot, "subject");
+  assert.deepEqual(records[0].construction_traces[0].slot_bindings[0].relative_span, {
+    status: "unique",
+    start: 0,
+    end: 1,
+  });
+  assert.equal(records[0].token_provenance[0].lexical_status, "known_lexicon");
   assert.equal(records[0].coverage_status, "COVERED");
+});
+
+test("parent-relative construction spans are exposed when uniquely locatable", () => {
+  const record = buildCoverageRecord(
+    {
+      source: "我食飯",
+      construction_count: 2,
+      top_constructions: ["SubjectPredicateClause"],
+      trace_summary: { generative_template: 2, atomic_lexicon: 3 },
+      template_family_summary: { generative_template: 2 },
+      root_span_coverage_status: "PASS",
+      root_top_construction_count: 1,
+      semantic_acceptance_status: "MANUAL_REVIEW_ELIGIBLE",
+    },
+    [
+      {
+        kind: "construction",
+        construction: "SubjectPredicateClause",
+        surface: "我食飯",
+        depth: 0,
+        trace: "generative_template",
+        trace_detail: {
+          kind: "generative_template",
+          template_family: "generative_template",
+          assigned_slots: ["subject", "predicate"],
+          surfaces: ["我", "食飯"],
+        },
+      },
+      {
+        kind: "construction",
+        construction: "ProductiveVO",
+        surface: "食飯",
+        depth: 1,
+        parent: "SubjectPredicateClause",
+        trace: "generative_template",
+        trace_detail: {
+          kind: "generative_template",
+          template_family: "generative_template",
+          assigned_slots: ["verb", "object"],
+          surfaces: ["食", "飯"],
+        },
+      },
+    ],
+  );
+  assert.deepEqual(record.construction_traces[1].parent_relative_span, {
+    status: "unique",
+    start: 1,
+    end: 3,
+  });
+  assert.equal(record.sanity_findings.length, 0);
+});
+
+test("structural sanity checks surface provenance inconsistencies", () => {
+  const summary = {
+    root_span_coverage_status: "PASS",
+    unwrapped_root_surfaces: ["尾"],
+  };
+  const findings = structuralSanityFindings(summary, [
+    {
+      construction: "ModalVP",
+      surface: "我要飲水",
+      depth: 0,
+      parent: "",
+      parent_surface: "",
+      parent_relative_span: { status: "root", start: 0, end: 4 },
+      trace_kind: "generative_template",
+      template_family: "",
+      assigned_slots: ["subject", "modal", "vp"],
+      slot_surfaces: ["我", "要"],
+      slot_bindings: [
+        { slot: "subject", surface: "我", relative_span: { status: "unique", start: 0, end: 1 } },
+        { slot: "modal", surface: "要", relative_span: { status: "unique", start: 1, end: 2 } },
+      ],
+    },
+  ]);
+  assert.deepEqual(
+    findings.map((finding) => finding.code).sort(),
+    [
+      "pass_with_unwrapped_root_surface",
+      "root_vp_binds_subject",
+      "slot_surface_count_mismatch",
+      "template_family_missing",
+    ].sort(),
+  );
+});
+
+test("child construction outside parent and slot surface outside construction are flagged", () => {
+  const findings = structuralSanityFindings({}, [
+    {
+      construction: "ChildVP",
+      surface: "飲水",
+      depth: 1,
+      parent: "ParentClause",
+      parent_surface: "我食飯",
+      parent_relative_span: { status: "not_found", start: null, end: null },
+      trace_kind: "generative_template",
+      template_family: "generative_template",
+      assigned_slots: ["verb"],
+      slot_surfaces: ["睇"],
+      slot_bindings: [
+        { slot: "verb", surface: "睇", relative_span: { status: "not_found", start: null, end: null } },
+      ],
+    },
+  ]);
+  assert.deepEqual(
+    findings.map((finding) => finding.code).sort(),
+    ["child_surface_outside_parent", "slot_surface_outside_construction"].sort(),
+  );
+});
+
+test("relative span helper refuses ambiguous repeated surfaces", () => {
+  assert.deepEqual(uniqueRelativeSpan("食食飯", "食"), {
+    status: "ambiguous",
+    start: null,
+    end: null,
+  });
+});
+
+test("detailed human output exposes slots and sanity findings", () => {
+  const record = buildCoverageRecord(
+    {
+      source: "我係老師",
+      construction_count: 1,
+      top_constructions: ["CopularIdentificationFrame"],
+      trace_summary: { generative_template: 1 },
+      template_family_summary: {},
+      root_span_coverage_status: "PASS",
+      root_top_construction_count: 1,
+      semantic_acceptance_status: "MANUAL_REVIEW_ELIGIBLE",
+    },
+    [
+      {
+        kind: "construction",
+        construction: "CopularIdentificationFrame",
+        surface: "我係老師",
+        depth: 0,
+        trace: "generative_template",
+        trace_detail: {
+          kind: "generative_template",
+          assigned_slots: ["subject", "copula", "predicate"],
+          surfaces: ["我", "係", "老師"],
+        },
+      },
+    ],
+  );
+  const text = formatRecordDetails(record);
+  assert(text.includes("slot subject = [我]"));
+  assert(text.includes("template_family_missing"));
 });
