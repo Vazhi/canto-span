@@ -3078,6 +3078,7 @@ var require_learner_display2 = __commonJS({
 var require_trace_metadata = __commonJS({
   "src/runtime-resources/diagnostics/trace-metadata.js"(exports2, module2) {
     "use strict";
+    var TRACE_TAXONOMY_SCHEMA = "canto-span-trace-taxonomy-v1";
     var templateTracePassthroughKeys = [
       "retired_label_alias",
       "predicate_subtype",
@@ -3127,7 +3128,8 @@ var require_trace_metadata = __commonJS({
       "experiential_licensing",
       "hidden_object_insertion",
       "selectional_compatibility_bypass",
-      "subject_insertion_capability"
+      "subject_insertion_capability",
+      "template_subtype"
     ];
     var parserDecisionTraceKindRegistry2 = [
       ["generative_template", "Pattern-based slot-template match over generated affordances. A generative_template trace may carry template_family=construction_template while the family is still bounded or not yet fully POS-general."],
@@ -3144,12 +3146,187 @@ var require_trace_metadata = __commonJS({
       ["special_ambiguity_rule", "Explicit ambiguity guard; may remain non-generative when safer than broad promotion."],
       ["phase4_controlled_grammar_promotion", "Controlled promotion lane where feature predicates are parser-active only in approved scopes."],
       ["construction_function", "Hand-coded construction function; audit target for future template extraction when structurally recurrent."],
-      ["construction_internal_parser_inactive_clone", "Internal child clone used to expose parent construction structure without changing parser-active feature behavior."]
+      ["construction_internal_parser_inactive_clone", "Internal child clone used to expose parent construction structure without changing parser-active feature behavior."],
+      ["source_linked_runtime_matcher", "Deterministic source-linked runtime matcher with separately reviewed bounded constraints. This is a registered non-template trace kind; taxonomy registration does not itself assign migration debt or linguistic status."]
     ];
     var templateFamilyRegistry2 = [
       ["construction_template", "Temporary classification for bounded, constrained, or vocabulary/surface-anchored templates that are not yet fully POS-general."],
       ["generative_template", "Fully pattern-based template intended to apply to new vocabulary that exposes the same generated slots."]
     ];
+    var templateTraceKinds = /* @__PURE__ */ new Set(["generative_template", "construction_template"]);
+    var registeredTraceKinds = new Set(parserDecisionTraceKindRegistry2.map(([kind]) => kind));
+    var registeredTemplateFamilies = new Set(templateFamilyRegistry2.map(([family]) => family));
+    var legacyTemplateSubtypeFamilyMap = /* @__PURE__ */ new Map([
+      ["first_syllable_preference_a_not_a", {
+        template_family: "construction_template",
+        template_subtype: "first_syllable_preference_a_not_a"
+      }],
+      ["copular_a_not_a_bounded_complement", {
+        template_family: "construction_template",
+        template_subtype: "copular_a_not_a_bounded_complement"
+      }]
+    ]);
+    function canonicalize(value) {
+      if (Array.isArray(value)) return value.map(canonicalize);
+      if (!value || typeof value !== "object") return value;
+      return Object.fromEntries(Object.keys(value).sort().map((key) => [key, canonicalize(value[key])]));
+    }
+    function reviewedDefinitionKey(constructionType, template, constraints) {
+      return JSON.stringify(canonicalize({
+        construction_type: String(constructionType || ""),
+        template: Array.isArray(template) ? template : [],
+        constraints: constraints && typeof constraints === "object" ? constraints : {}
+      }));
+    }
+    var reviewedMissingTemplateFamilyDefaults = /* @__PURE__ */ new Map();
+    function registerReviewedMissingFamily(constructionType, template, constraints, templateFamily) {
+      reviewedMissingTemplateFamilyDefaults.set(
+        reviewedDefinitionKey(constructionType, template, constraints),
+        templateFamily
+      );
+    }
+    registerReviewedMissingFamily("FormulaDiscourseUnit", ["agreement_marker!", "particle!"], {}, "construction_template");
+    registerReviewedMissingFamily("ClassifierObjectNP", ["classifier!", "head_noun!"], {}, "generative_template");
+    registerReviewedMissingFamily("CopularIdentificationFrame", ["topic!", "copula!", "np!", "particle?"], {}, "generative_template");
+    registerReviewedMissingFamily("PossessiveClassifierNP", ["possessor!", "classifier_np!"], {}, "generative_template");
+    registerReviewedMissingFamily("PreferenceVP", ["subject!", "preference_predicate!", "vp!", "particle?"], {
+      slot_surface_in: { preference_predicate: ["鍾意"] }
+    }, "construction_template");
+    registerReviewedMissingFamily("ChangeIntoPredicate", ["change_verb!", "result_complement!"], {}, "generative_template");
+    registerReviewedMissingFamily("CoordinatedNP", ["left_np!", "coordinator!", "right_np!"], {}, "generative_template");
+    registerReviewedMissingFamily("CopularRelationFrame", ["topic!", "copula!", "copular_complement!", "explanatory_linker!", "explanatory_particle!"], {
+      required_copula: "係",
+      required_lai_marker: "嚟",
+      required_explanatory_particle: "㗎/架",
+      complement_kind: "wh_definition_complement",
+      formula_guard_reanalysis: "not_needed"
+    }, "construction_template");
+    registerReviewedMissingFamily("DegreeMannerModifiedVP", ["degree_manner_adverbial!", "directional_motion_vp!", "particle?"], {
+      modifier_surface: "快啲",
+      preserve_inner_directional_vp: true
+    }, "construction_template");
+    registerReviewedMissingFamily("IntentionFrame", ["subject!", "intention_predicate!", "vp!", "particle?"], {
+      slot_surface_in: { intention_predicate: ["諗住"] }
+    }, "construction_template");
+    registerReviewedMissingFamily("NamingClause", ["subject!", "naming_verb!", "name!", "particle?"], {}, "generative_template");
+    registerReviewedMissingFamily("PathPhrase", ["path_marker!", "location!"], {}, "generative_template");
+    registerReviewedMissingFamily("PoliteImperativeClause", ["politeness_formula!", "addressee!", "scalar_adjustment!", "particle?"], {}, "construction_template");
+    registerReviewedMissingFamily("PoliteImperativeClause", ["politeness_marker!", "subject!", "path_phrase!", "predicate!", "particle?"], {}, "construction_template");
+    registerReviewedMissingFamily("PriorityMarkerClause", ["subject!", "action_vp!", "priority_marker!", "particle!"], {
+      surface_sequence: "你打電話先啦"
+    }, "construction_template");
+    registerReviewedMissingFamily("SubjectModalPredicateClause", ["subject!", "modal_vp!"], {}, "generative_template");
+    function taxonomyIssue(code, message, extra = {}) {
+      return { code, severity: "error", message, ...extra };
+    }
+    function normalizeTraceTaxonomy(trace = {}, options = {}) {
+      const normalized = { ...trace || {} };
+      const constructionType = String(options.constructionType || normalized.construction_type || "");
+      const kind = String(normalized.kind || "");
+      const issues = [];
+      const isTemplateTrace = templateTraceKinds.has(kind);
+      let templateFamily = String(normalized.template_family || "");
+      let templateSubtype = String(normalized.template_subtype || "");
+      let templateFamilySource = templateFamily ? "explicit_controlled" : "not_set";
+      if (!registeredTraceKinds.has(kind)) {
+        issues.push(taxonomyIssue(
+          "unregistered_trace_kind",
+          `Trace kind ${kind || "(missing)"} is not registered in parserDecisionTraceKindRegistry.`,
+          { trace_kind: kind }
+        ));
+      }
+      if (templateFamily && legacyTemplateSubtypeFamilyMap.has(templateFamily)) {
+        const legacyFamily = templateFamily;
+        const mapping = legacyTemplateSubtypeFamilyMap.get(templateFamily);
+        templateFamily = mapping.template_family;
+        templateSubtype = templateSubtype || mapping.template_subtype;
+        normalized.legacy_template_family = legacyFamily;
+        templateFamilySource = "legacy_subtype_normalized";
+      }
+      if (isTemplateTrace) {
+        normalized.template_family_applicability = "required";
+        if (!templateFamily && kind === "construction_template") {
+          templateFamily = "construction_template";
+          templateFamilySource = "trace_kind_default";
+        }
+        if (!templateFamily && kind === "generative_template") {
+          const reviewedFamily = reviewedMissingTemplateFamilyDefaults.get(reviewedDefinitionKey(
+            constructionType,
+            normalized.template,
+            normalized.constraints
+          ));
+          if (reviewedFamily) {
+            templateFamily = reviewedFamily;
+            templateFamilySource = "reviewed_definition_default";
+          }
+        }
+        if (!templateFamily) {
+          issues.push(taxonomyIssue(
+            "template_family_missing",
+            `Template trace ${kind || "(missing)"} requires a controlled template_family.`,
+            { construction_type: constructionType }
+          ));
+        } else if (!registeredTemplateFamilies.has(templateFamily)) {
+          issues.push(taxonomyIssue(
+            "unregistered_template_family",
+            `Template family ${templateFamily} is not registered in templateFamilyRegistry.`,
+            { template_family: templateFamily, construction_type: constructionType }
+          ));
+        }
+      } else {
+        normalized.template_family_applicability = "not_applicable";
+        if (templateFamily && !registeredTemplateFamilies.has(templateFamily)) {
+          issues.push(taxonomyIssue(
+            "unregistered_template_family",
+            `Non-template trace carries unregistered template family ${templateFamily}.`,
+            { template_family: templateFamily, construction_type: constructionType }
+          ));
+        }
+        if (!templateFamily) templateFamilySource = "not_applicable";
+      }
+      normalized.trace_taxonomy_schema = TRACE_TAXONOMY_SCHEMA;
+      normalized.template_family = templateFamily;
+      normalized.template_subtype = templateSubtype;
+      normalized.template_family_source = templateFamilySource;
+      normalized.taxonomy_status = issues.length ? "invalid" : "valid";
+      normalized.taxonomy_issues = issues;
+      return normalized;
+    }
+    function annotateTraceTaxonomy(nodes = []) {
+      const summary = {
+        schema: TRACE_TAXONOMY_SCHEMA,
+        construction_trace_count: 0,
+        valid_count: 0,
+        invalid_count: 0,
+        issue_counts: {},
+        issue_samples: []
+      };
+      function visit(node) {
+        if (!node || typeof node !== "object") return;
+        if (node.kind === "construction") {
+          node.trace = normalizeTraceTaxonomy(node.trace || {}, { constructionType: node.type || node.compatibility_alias || "" });
+          summary.construction_trace_count += 1;
+          if (node.trace.taxonomy_status === "valid") {
+            summary.valid_count += 1;
+          } else {
+            summary.invalid_count += 1;
+            for (const issue of node.trace.taxonomy_issues || []) {
+              summary.issue_counts[issue.code] = (summary.issue_counts[issue.code] || 0) + 1;
+              if (summary.issue_samples.length < 20) {
+                summary.issue_samples.push({
+                  construction: node.compatibility_alias || node.type || "",
+                  internal_construction: node.type || "",
+                  ...issue
+                });
+              }
+            }
+          }
+        }
+        for (const child of node.children || []) visit(child);
+      }
+      for (const node of nodes || []) visit(node);
+      return summary;
+    }
     var parserDecisionLabelPolicy2 = {
       purpose: "standardize_labels_used_by_active_parser_decisions",
       template_family_boundary: "preserve_construction_template_vs_generative_template_until_all_grammar_is_generative",
@@ -3219,7 +3396,19 @@ var require_trace_metadata = __commonJS({
         action: "Move construction-function fallback into a governed template or classify it as intentionally non-template."
       }
     };
-    module2.exports = { templateTracePassthroughKeys, parserDecisionTraceKindRegistry: parserDecisionTraceKindRegistry2, templateFamilyRegistry: templateFamilyRegistry2, parserDecisionLabelPolicy: parserDecisionLabelPolicy2, labelTransitionKindPolicy };
+    module2.exports = {
+      TRACE_TAXONOMY_SCHEMA,
+      templateTracePassthroughKeys,
+      parserDecisionTraceKindRegistry: parserDecisionTraceKindRegistry2,
+      templateFamilyRegistry: templateFamilyRegistry2,
+      templateTraceKinds,
+      legacyTemplateSubtypeFamilyMap,
+      reviewedMissingTemplateFamilyDefaults,
+      normalizeTraceTaxonomy,
+      annotateTraceTaxonomy,
+      parserDecisionLabelPolicy: parserDecisionLabelPolicy2,
+      labelTransitionKindPolicy
+    };
   }
 });
 
@@ -21358,11 +21547,13 @@ var require_analyze_line = __commonJS({
   "src/parser/analyze-line.js"(exports2, module2) {
     "use strict";
     var defaultTraceBindingAnnotator = require_trace_bindings()();
+    var { annotateTraceTaxonomy: defaultAnnotateTraceTaxonomy } = require_trace_metadata();
     module2.exports = function createAnalyzeLine(dependencies = {}) {
       const {
         analyzedExplicitContext: analyzedExplicitContext2,
         annotateRawDisplaySurfaces: annotateRawDisplaySurfaces2,
         annotateTraceBindings = defaultTraceBindingAnnotator.annotateTraceBindings,
+        annotateTraceTaxonomy = defaultAnnotateTraceTaxonomy,
         applyConstructionPatternsByPunctuation: applyConstructionPatternsByPunctuation2,
         applyExplicitContextContract: applyExplicitContextContract2,
         normalizeInputForParser: normalizeInputForParser2,
@@ -21382,6 +21573,7 @@ var require_analyze_line = __commonJS({
         const initialNodes = annotateRawDisplaySurfaces2(applyConstructionPatternsByPunctuation2(tokens), source, parserSource);
         const contextApplied = applyExplicitContextContract2(initialNodes, explicitContext);
         const nodes = annotateRawDisplaySurfaces2(contextApplied.nodes, source, parserSource);
+        const trace_taxonomy_provenance = annotateTraceTaxonomy(nodes);
         const trace_binding_provenance = annotateTraceBindings(nodes, {
           rawSource: source,
           parserSource
@@ -21395,6 +21587,7 @@ var require_analyze_line = __commonJS({
           warnings,
           tokens,
           nodes,
+          trace_taxonomy_provenance,
           trace_binding_provenance,
           explicit_context: explicitContext.public,
           context_resolution: contextApplied.resolution,
