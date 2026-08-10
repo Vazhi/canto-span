@@ -19,21 +19,25 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
-      - name: Inventory source ownership and baseline traces
+      - name: Inventory source ownership, template engine, and baseline traces
         shell: bash
         run: |
           set -euo pipefail
           {
             echo '=== PRODUCTIVE VO REFERENCES ==='
             grep -R -n -E 'productive-vo|ProductiveVO' src tools tests/lib tests/tooling 2>/dev/null || true
+            echo '=== TEMPLATE ENGINE REFERENCES ==='
+            grep -R -n -E 'category-span-templates|CATEGORY_SPAN|categorySpan|surface_sequence_in|template_family|assigned_slots' src/parser src/plugin-entry.js 2>/dev/null | head -n 800 || true
+            echo '=== LIKELY TEMPLATE ENGINE FILES ==='
+            for f in $(grep -R -l -E 'surface_sequence_in|category-span-templates' src/parser src/plugin-entry.js 2>/dev/null | sort -u); do
+              echo "--- $f ---"
+              nl -ba "$f" | sed -n '1,760p'
+            done
+            echo '=== TRACE METADATA SOURCE-LINKED REFERENCES ==='
+            grep -R -n -E 'source_linked_runtime_matcher' src 2>/dev/null || true
             echo '=== PRODUCTIVE VO RESOURCE ==='
             nl -ba src/runtime-resources/lexicon/productive-vo.js
-            echo '=== CANDIDATE SOURCE FILES ==='
-            for f in $(grep -R -l -E 'productive-vo|ProductiveVO' src 2>/dev/null | sort -u); do
-              echo "--- $f ---"
-              nl -ba "$f" | sed -n '1,520p'
-            done
-          } > ab35-source-inspection.txt
+          } > ab35-engine-inspection.txt
           node <<'NODE' > ab35-baseline-traces.json
           const { loadRuntimeApi, internalConstruction, rowSurface } = require('./tests/lib/runtime-api');
           const api = loadRuntimeApi();
@@ -62,9 +66,9 @@ jobs:
           npm run audit:parser-architecture -- --json > ab35-architecture-baseline.json
       - uses: actions/upload-artifact@v4
         with:
-          name: ab35-seed-runtime-inspection
+          name: ab35-seed-runtime-engine-inspection
           path: |
-            ab35-source-inspection.txt
+            ab35-engine-inspection.txt
             ab35-baseline-traces.json
             ab35-architecture-baseline.json
           retention-days: 1
