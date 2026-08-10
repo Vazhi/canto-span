@@ -80,13 +80,14 @@ Implementation specifications, human artifact requests, corpus ingestion, work c
 
 | Candidate state | Records |
 |---|---:|
+| `behavior_aligned` | 1 |
 | `boundary_ready` | 3 |
-| `source_supported` | 61 |
-| `narrowing_candidate` | 30 |
 | `excluded_nonlanguage` | 38 |
 | `lexicalized_review` | 2 |
+| `narrowing_candidate` | 30 |
 | `retired_evidence_rehome_candidate` | 42 |
 | `retired_research_gap` | 6 |
+| `source_supported` | 60 |
 
 Promotion-ready remains **0**.
 

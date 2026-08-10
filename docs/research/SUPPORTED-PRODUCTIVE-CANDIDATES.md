@@ -12,6 +12,7 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 | `AB15` | `DemonstrativeClassifierNounNP` | `boundary_ready` | 90 | `role_neutral_panel_threshold` | run or complete a locked role-neutral panel instrument with critical contrasts |
 | `AB30` | `ZoMarkedPerfectiveObjectVP` | `boundary_ready` | 90 | `role_neutral_panel_threshold` | run or complete a locked role-neutral panel instrument with critical contrasts |
 | `AA84` | `GamMarkedReduplicatedMannerVP` | `boundary_ready` | 73 | `reviewed_corpus_evidence` | review and classify diverse corpus candidates, including false positives and ambiguous hits |
+| `AB78` | `TransitiveVP` | `behavior_aligned` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AB83` | `JauDakMouDakAvailabilityPredicate` | `source_supported` | 68 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AB28` | `BeiMarkedPostThemeParticipantConstruction` | `source_supported` | 65 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AA11` | `BinSingDimWhComplementVP` | `source_supported` | 60 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
@@ -48,7 +49,6 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 | `AA49` | `IndependentMotionPredicateVP` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA55` | `SubjectJauPossessiveClause` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA76` | `BeiThemeRecipientGiveVP` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
-| `AA86` | `ModalM4ModalInterrogative` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 
 ## Narrowing candidates
 

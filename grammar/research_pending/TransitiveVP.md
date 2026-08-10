@@ -6,7 +6,7 @@ status: "research_pending"
 confidence: "not_assigned_research_pending"
 claim_layer: "language"
 lane: "LANE-10"
-last_reviewed: "unknown"
+last_reviewed: "2026-08-10"
 last_status_migrated: "2026-07-21"
 source_count: 2
 verified_source_count: 2
@@ -37,11 +37,11 @@ corpus_genuine_hit_count: 0
 corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
-code_document_reconciled: false
-code_document_review_date: null
-code_document_review_commit: null
-code_document_code_locations: []
-current_standard_reaudit_complete: false
+code_document_reconciled: true
+code_document_review_date: "2026-08-10"
+code_document_review_commit: "6dd3728f0a99faef9758ab52cb8ee075e341b563"
+code_document_code_locations: ["src/runtime-resources/grammar/templates/category-span-templates.js", "src/parser/detectors/relative-clauses/clauses.js", "src/plugin-entry.js", "tests/constructions/TransitiveVP.json", "tests/tooling/runtime/ab78-transitive-boundary.test.js"]
+current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -77,7 +77,7 @@ The public label `TransitiveVP` is therefore retained provisionally as an umbrel
 - Linguistic status: `research_pending`
 - Linguistic confidence: `not_assigned_research_pending`
 - Source-scope decision: `RETAIN_NARROW_RESEARCH_PENDING`
-- Current action: `retain_transitive_predicate_object_core_pending_runtime_alignment_and_boundary_completion`
+- Current action: `retain_transitive_predicate_object_core_runtime_aligned_boundary_inventory_incomplete`
 - Productive acceptance eligible: **no**
 - Current behavior-first re-audit: `docs/research/ISSUE-736-AB78-TRANSITIVE-SOURCE-INVENTORY-R1.md`
 - Behavior profiles: `docs/research/ISSUE-736-AB78-TRANSITIVE-BEHAVIOR-PROFILES-R1.md`
@@ -167,8 +167,8 @@ These judgments do not validate the current runtime node boundaries.
 ## Implementation state
 
 - Lifecycle: `runtime_referenced_with_accepted_fixtures`
-- Runtime alignment with the 2026-08-10 behavior-first re-audit: **not yet completed**.
-- `code_document_reconciled`: remains false intentionally.
+- Runtime alignment with the 2026-08-10 behavior-first re-audit: **completed at v0.5.223**.
+- `code_document_reconciled`: true; v0.5.223 removes the unsupported approximate-measure AB78 producer while preserving typed-object and explicit relative-gap routes.
 - Current runtime has a substantial source-compatible overt-object core, but the research audit identifies distinct non-overt and approximate-measure realization shapes that require explicit later treatment.
 - No executable expectation is changed by the research re-audit itself.
 
