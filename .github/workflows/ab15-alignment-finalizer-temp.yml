@@ -78,9 +78,9 @@ jobs:
           const statePath = 'docs/current/PROJECT-STATE.md';
           let text = fs.readFileSync(statePath, 'utf8');
           for (const state of states) {
-            const pattern = new RegExp(`\\| \\`${state}\\` \\| \\d+ \\|`);
-            if (!pattern.test(text)) throw new Error(`PROJECT-STATE discovery row missing: ${state}`);
-            text = text.replace(pattern, `| \`${state}\` | ${counts[state]} |`);
+            const pattern = new RegExp('\\| `' + state + '` \\| \\d+ \\|');
+            if (!pattern.test(text)) throw new Error('PROJECT-STATE discovery row missing: ' + state);
+            text = text.replace(pattern, '| `' + state + '` | ' + counts[state] + ' |');
           }
           fs.writeFileSync(statePath, text);
           console.log(JSON.stringify({ synchronized_discovery_state_counts: counts }, null, 2));
