@@ -1,0 +1,141 @@
+name: AB35 ownership-removal inventory temporary
+
+on:
+  pull_request:
+    paths:
+      - "**"
+
+permissions:
+  contents: read
+
+jobs:
+  inventory:
+    if: github.event.pull_request.number == 752 && github.event.pull_request.head.ref == 'agent/ab35-ownership-removal-inventory' && github.event.pull_request.base.ref == 'main'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/ab35-ownership-removal-inventory
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Save whitelist and probe baseline
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs = require('fs');
+          const entries = require('./src/runtime-resources/lexicon/productive-vo.js');
+          if (entries.length !== 43) throw new Error(`Expected 43 AB35 entries, got ${entries.length}`);
+          fs.writeFileSync('/tmp/ab35-entries.json', JSON.stringify(entries.map(([surface, meta]) => ({surface, ...meta})), null, 2));
+          NODE
+          cat > /tmp/ab35-probe.js <<'NODE'
+          const fs = require('fs');
+          const { loadRuntimeApi, internalConstruction, rowSurface } = require(process.cwd() + '/tests/lib/runtime-api');
+          const entries = JSON.parse(fs.readFileSync('/tmp/ab35-entries.json', 'utf8'));
+          const api = loadRuntimeApi();
+          function analyze(source) {
+            const analysis = api.analyzeLine(source, null);
+            const rows = api.diagnosticFinalRows(analysis).map((row) => ({
+              kind: row.kind || '',
+              construction: internalConstruction(row),
+              surface: rowSurface(row),
+              parent: row.internal_parent || row.parent || '',
+              depth: row.depth,
+              slots: row.slots || [],
+              trace_detail: row.kind === 'construction' ? (row.trace_detail || null) : undefined,
+            }));
+            const constructions = rows.filter((row) => row.kind === 'construction');
+            return {
+              source,
+              constructions,
+              nonconstruction_rows: rows.filter((row) => row.kind !== 'construction'),
+              construction_types: [...new Set(constructions.map((row) => row.construction))],
+            };
+          }
+          const records = entries.map((entry) => ({
+            ...entry,
+            bare: analyze(`${entry.surface}。`),
+            subject_hosted: analyze(`我${entry.surface}。`),
+          }));
+          process.stdout.write(JSON.stringify({
+            schema: 'canto-span-ab35-ownership-probe-v1',
+            runtime_version: api.runtimeVersion,
+            entry_count: records.length,
+            records,
+          }, null, 2));
+          NODE
+          node /tmp/ab35-probe.js > /tmp/ab35-baseline.json
+      - name: Probe with only AB35 whitelist disabled
+        shell: bash
+        run: |
+          set -euo pipefail
+          printf '%s\n' '"use strict";' '' 'module.exports = [];' > src/runtime-resources/lexicon/productive-vo.js
+          node /tmp/ab35-probe.js > /tmp/ab35-disabled.json
+          git checkout -- src/runtime-resources/lexicon/productive-vo.js
+      - name: Build combined inventory
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE' > ab35-ownership-inventory.json
+          const fs = require('fs');
+          const baseline = JSON.parse(fs.readFileSync('/tmp/ab35-baseline.json', 'utf8'));
+          const disabled = JSON.parse(fs.readFileSync('/tmp/ab35-disabled.json', 'utf8'));
+          if (baseline.entry_count !== 43 || disabled.entry_count !== 43) throw new Error('Incomplete probe');
+          const bySurface = new Map(disabled.records.map((row) => [row.surface, row]));
+          const has = (record, type) => [record.bare, record.subject_hosted].some((probe) => probe.construction_types.includes(type));
+          const records = baseline.records.map((base) => {
+            const off = bySurface.get(base.surface);
+            if (!off) throw new Error(`Missing disabled result for ${base.surface}`);
+            const disabledTypes = [...new Set([...off.bare.construction_types, ...off.subject_hosted.construction_types])];
+            const currentTypes = [...new Set([...base.bare.construction_types, ...base.subject_hosted.construction_types])];
+            return {
+              surface: base.surface,
+              verb: base.verb,
+              object: base.object,
+              research_role: ['飲茶','游水','沖涼'].includes(base.surface)
+                ? 'source_backed_vo_compound_from_issue_744'
+                : base.surface === '做功課'
+                  ? 'source_direct_ordinary_v_np_from_issue_744'
+                  : 'not_classified_by_runtime_probe',
+              current_types: currentTypes,
+              disabled_types: disabledTypes,
+              disabled_has_transitive_vp: has(off, 'TransitiveVP'),
+              disabled_has_productive_vo: has(off, 'ProductiveVO'),
+              disabled_has_any_construction: disabledTypes.length > 0,
+              baseline: { bare: base.bare, subject_hosted: base.subject_hosted },
+              ab35_disabled: { bare: off.bare, subject_hosted: off.subject_hosted },
+            };
+          });
+          const summary = {
+            surfaces: records.length,
+            disabled_has_transitive_vp: records.filter((r) => r.disabled_has_transitive_vp).length,
+            disabled_has_any_construction: records.filter((r) => r.disabled_has_any_construction).length,
+            disabled_has_no_construction: records.filter((r) => !r.disabled_has_any_construction).length,
+            source_backed_compounds_with_transitive_vp: records.filter((r) => r.research_role === 'source_backed_vo_compound_from_issue_744' && r.disabled_has_transitive_vp).map((r) => r.surface),
+            source_backed_compounds_without_transitive_vp: records.filter((r) => r.research_role === 'source_backed_vo_compound_from_issue_744' && !r.disabled_has_transitive_vp).map((r) => r.surface),
+          };
+          process.stdout.write(JSON.stringify({
+            schema: 'canto-span-ab35-ownership-removal-inventory-v1',
+            linguistic_evidence_weight: 0,
+            purpose: 'development behavior inventory; does not classify grammaticality or compound membership',
+            runtime_version: baseline.runtime_version,
+            summary,
+            records,
+          }, null, 2));
+          NODE
+          git diff --exit-code -- src/runtime-resources/lexicon/productive-vo.js main.js
+      - name: Verify untouched branch state
+        run: |
+          npm run verify:research
+          npm run verify:identities
+          npm run verify:discovery
+          npm run verify
+          npm run audit:parser-architecture -- --json > /tmp/architecture.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ab35-ownership-removal-inventory
+          path: ab35-ownership-inventory.json
+          retention-days: 1
