@@ -6193,7 +6193,7 @@
       ],
       "preserved_source_ids": [],
       "future_research_preserved_as": "",
-      "standard_positive_test_count": 4,
+      "standard_positive_test_count": 3,
       "standard_boundary_test_count": 2,
       "gates": {
         "language_claim_defined": {
@@ -6216,7 +6216,7 @@
         "executable_positive_cases_present": {
           "status": "pass",
           "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "4"
+          "detail": "3"
         },
         "negative_boundaries_complete": {
           "status": "partial",
@@ -7038,8 +7038,8 @@
       ],
       "preserved_source_ids": [],
       "future_research_preserved_as": "",
-      "standard_positive_test_count": 44,
-      "standard_boundary_test_count": 2,
+      "standard_positive_test_count": 36,
+      "standard_boundary_test_count": 10,
       "gates": {
         "language_claim_defined": {
           "status": "pass",
@@ -7061,7 +7061,7 @@
         "executable_positive_cases_present": {
           "status": "pass",
           "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "44"
+          "detail": "36"
         },
         "negative_boundaries_complete": {
           "status": "partial",
@@ -7224,7 +7224,7 @@
       ],
       "preserved_source_ids": [],
       "future_research_preserved_as": "",
-      "standard_positive_test_count": 3,
+      "standard_positive_test_count": 4,
       "standard_boundary_test_count": 2,
       "gates": {
         "language_claim_defined": {
@@ -7247,7 +7247,7 @@
         "executable_positive_cases_present": {
           "status": "pass",
           "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "3"
+          "detail": "4"
         },
         "negative_boundaries_complete": {
           "status": "partial",
@@ -8154,7 +8154,7 @@
       ],
       "preserved_source_ids": [],
       "future_research_preserved_as": "",
-      "standard_positive_test_count": 29,
+      "standard_positive_test_count": 28,
       "standard_boundary_test_count": 2,
       "gates": {
         "language_claim_defined": {
@@ -8177,7 +8177,7 @@
         "executable_positive_cases_present": {
           "status": "pass",
           "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "29"
+          "detail": "28"
         },
         "negative_boundaries_complete": {
           "status": "partial",
@@ -14934,7 +14934,7 @@
       "source_ids": [],
       "preserved_source_ids": [],
       "future_research_preserved_as": "",
-      "standard_positive_test_count": 73,
+      "standard_positive_test_count": 78,
       "standard_boundary_test_count": 2,
       "gates": {
         "language_claim_defined": {
@@ -14957,7 +14957,7 @@
         "executable_positive_cases_present": {
           "status": "pass",
           "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "73"
+          "detail": "78"
         },
         "negative_boundaries_complete": {
           "status": "partial",
@@ -16232,7 +16232,7 @@
       ],
       "preserved_source_ids": [],
       "future_research_preserved_as": "",
-      "standard_positive_test_count": 1,
+      "standard_positive_test_count": 3,
       "standard_boundary_test_count": 2,
       "gates": {
         "language_claim_defined": {
@@ -16255,7 +16255,7 @@
         "executable_positive_cases_present": {
           "status": "pass",
           "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "1"
+          "detail": "3"
         },
         "negative_boundaries_complete": {
           "status": "partial",

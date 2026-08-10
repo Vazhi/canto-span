@@ -6,7 +6,7 @@ This file is the sole present-tense project snapshot. Live GitHub intake and wor
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.221 |
+| Runtime | v0.5.222 |
 | Runtime labels | 134 |
 | Current construction notes | 134 |
 | Available construction notes | 134 |
@@ -120,7 +120,7 @@ All eligible respondents form one anonymized role-neutral panel. No named person
 
 - aggregate regression cases: **551**;
 - NP-subsystem cases: **43**;
-- per-construction assertions: **1,623** across **134** files;
+- per-construction assertions: **1,629** across **134** files;
 - current test coverage: 133 positive-and-boundary and 1 compatibility-alias-only construction file;
 
 Canonical documentation-verifier values:
@@ -129,7 +129,7 @@ Canonical documentation-verifier values:
 |---|---:|
 | Aggregate regression cases | 551 |
 | NP-subsystem cases | 43 |
-| Per-construction assertions | 1,623 |
+| Per-construction assertions | 1,629 |
 | Construction test files | 134 |
 
 Stable task-scoped core verification is `npm run verify`. Runtime verification is `npm run verify:runtime`. The explicit full diagnostic sweep is `npm run verify:all`; it includes core, research, runtime, generated-bundle, promotion, and release checks and is not a routine requirement for unrelated work. Passing tests and implementation reachability have zero independent linguistic evidence weight.

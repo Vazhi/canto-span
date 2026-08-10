@@ -553,17 +553,38 @@ module.exports = function createLicensedContextFragments(dependencies = {}) {
   }
 
   function contextualQuantifiedClassifierNPBoundary(structural, explicitContext) {
-    if (!structural || structural.length !== 1) return null;
-    const phrase = structural[0];
-    const descriptor = quantifiedClassifierEllipsisDescriptor(phrase);
-    if (!descriptor) return null;
-    const turns = (explicitContext && explicitContext.turns) || [];
-    if (!turns.length) return phrase;
-    const latest = turns[turns.length - 1];
+    if (!Array.isArray(structural) || !structural.length) return null;
+    const content = fragmentChildrenFromStructural(structural);
+    const candidates = [];
+    const visit = (nodes) => {
+      for (const node of nodes || []) {
+        if (!node) continue;
+        if (node.kind === "construction" && quantifiedClassifierEllipsisDescriptor(node)) candidates.push(node);
+        if (Array.isArray(node.children)) visit(node.children);
+      }
+    };
+    visit(content);
+    if (candidates.length !== 1) return null;
+    const phrase = candidates[0];
     const missing = Array.isArray(phrase.trace && phrase.trace.missing_argument_slots)
       && phrase.trace.missing_argument_slots.length
       ? phrase.trace.missing_argument_slots.slice()
       : ["nominal_head"];
+    const turns = (explicitContext && explicitContext.turns) || [];
+    if (!turns.length) {
+      const wrapper = needsContextAroundExisting(structural, {
+        context_requirement_status: "context_required",
+        missing_argument_slots: missing,
+        antecedent_status: "not_observed",
+        discourse_license_not_observed: true,
+        embedded_construction: "QuantifiedClassifierNP",
+        fragment_subtype: "quantified_classifier_head_ellipsis",
+        reason: "The visible numeral + classifier structure has an omitted nominal head that requires compatible explicit discourse; no hidden noun is inserted.",
+        not_claims: ["not_fabricated_nominal_head", "not_context_free_head_recovery"],
+      });
+      return { nodes: [wrapper], resolution: wrapper.trace };
+    }
+    const latest = turns[turns.length - 1];
     if (contextSupportsQuantifiedClassifierFragment(latest, phrase)) {
       phrase.trace = {
         ...(phrase.trace || {}),
@@ -574,24 +595,29 @@ module.exports = function createLicensedContextFragments(dependencies = {}) {
         discourse_license_not_observed: false,
         context_turn_id: latest.id,
         antecedent_span: latest.source,
+        np_license_status: "licensed_np",
+        construction_licensing_allowed: true,
+        structural_np_status: "context_licensed_head_ellipsis",
+        downstream_argument_licensing: "allowed_by_context_link",
+        np_license_reason: "Compatible explicit discourse licenses recovery of the omitted nominal domain without inserting a hidden noun token.",
         reason: "The immediately supplied discourse contains a compatible classifier and overt nominal domain, licensing the omitted noun head without inserting a hidden token.",
         not_claims: Array.from(new Set([...(phrase.trace && phrase.trace.not_claims || []), "not_fabricated_nominal_head", "not_context_free_head_recovery"])),
       };
-    } else {
-      phrase.trace = {
-        ...(phrase.trace || {}),
-        context_requirement_status: "context_incompatible",
-        missing_argument_slots: missing,
-        missing_slot_details: missing.map((slot) => ({ slot, license_status: "unresolved" })),
-        antecedent_status: "incompatible",
-        discourse_license_not_observed: true,
-        context_turn_id: latest.id,
-        antecedent_span: latest.source,
-        reason: "Explicit context was supplied, but it does not provide a compatible classifier/nominal domain for the omitted head.",
-        not_claims: Array.from(new Set([...(phrase.trace && phrase.trace.not_claims || []), "not_fabricated_nominal_head", "not_context_free_head_recovery"])),
-      };
+      return { nodes: content, resolution: phrase.trace };
     }
-    return phrase;
+    const wrapper = needsContextAroundExisting(structural, {
+      context_requirement_status: "context_incompatible",
+      missing_argument_slots: missing,
+      antecedent_status: "incompatible",
+      discourse_license_not_observed: true,
+      context_turn_id: latest.id,
+      antecedent_span: latest.source,
+      embedded_construction: "QuantifiedClassifierNP",
+      fragment_subtype: "quantified_classifier_head_ellipsis",
+      reason: "Explicit context was supplied, but it does not provide a compatible classifier/nominal domain for the omitted head.",
+      not_claims: ["not_fabricated_nominal_head", "not_context_free_head_recovery"],
+    });
+    return { nodes: [wrapper], resolution: wrapper.trace };
   }
 
   function conventionalZiDurationConstruction(descriptor, status = {}) {

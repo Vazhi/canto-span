@@ -15,7 +15,8 @@ const createCantoSpanPlugin = require("./plugin/canto-span-plugin");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.221";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.222";
+// v0.5.222: narrows AB45 to source-bounded Num-CL-N structure and explicit context-linked Num-CL noun ellipsis, excluding measure/wh/dimension overreach.
 // v0.5.221: narrows AA49 to independently predicative single motion/path items and removes AA49 ownership from compound, manner-directional, and postverbal directional-complement material.
 // v0.5.220: narrows AA11 to exact adjacent 變成 + 點, records bounded VP scope/provenance, and closes neighboring wh/result boundaries.
 // v0.5.219: narrows AA61 final-未 experiential questions to overt typed experiential domains and context-licenses only the source-backed 食過未 short profile.

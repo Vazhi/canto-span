@@ -102,15 +102,6 @@
       "assertion": "construction_present_in_exact_snapshot"
     },
     {
-      "case_id": "REG-0326",
-      "source": "呢句有幾多個字？",
-      "origins": [
-        "run-a1-approximate-quantified-object.js",
-        "run-a1-conventional-duration-ambiguity-boundary.js"
-      ],
-      "assertion": "construction_present_in_exact_snapshot"
-    },
-    {
       "case_id": "REG-0434",
       "source": "得一個咋。",
       "origins": [
@@ -149,55 +140,6 @@
       "source": "得兩個啫。",
       "origins": [
         "run-a1-restrictive-focus-particle-boundary.js"
-      ],
-      "assertion": "construction_present_in_exact_snapshot"
-    },
-    {
-      "case_id": "REG-0464",
-      "source": "飲七杯。",
-      "origins": [
-        "run-a1-approximate-quantified-object.js",
-        "run-diagnostics-root-span-inventory-unification.js"
-      ],
-      "assertion": "construction_present_in_exact_snapshot"
-    },
-    {
-      "case_id": "REG-0534",
-      "source": "三歲。",
-      "origins": [
-        "run-current-focused.js"
-      ],
-      "assertion": "construction_present_in_exact_snapshot"
-    },
-    {
-      "case_id": "REG-0536",
-      "source": "五百呎。",
-      "origins": [
-        "run-current-focused.js"
-      ],
-      "assertion": "construction_present_in_exact_snapshot"
-    },
-    {
-      "case_id": "REG-0537",
-      "source": "張枱三呎。",
-      "origins": [
-        "run-current-focused.js"
-      ],
-      "assertion": "construction_present_in_exact_snapshot"
-    },
-    {
-      "case_id": "REG-0542",
-      "source": "佢有三歲。",
-      "origins": [
-        "run-current-focused.js"
-      ],
-      "assertion": "construction_present_in_exact_snapshot"
-    },
-    {
-      "case_id": "REG-0545",
-      "source": "呢本書三歲。",
-      "origins": [
-        "run-current-focused.js"
       ],
       "assertion": "construction_present_in_exact_snapshot"
     }
@@ -242,6 +184,95 @@
         "SRC-BOND-SIO-2024-CLASSIFIERS",
         "SRC-CHENG-SYBESMA-2014-NP-STRUCTURE"
       ]
+    },
+    {
+      "case_id": "AB45-R1-P01",
+      "source": "兩本書。",
+      "class": "source_bounded_overt_num_cl_n",
+      "expected_profile": "construction_present",
+      "assertion": "construction_present",
+      "provenance": "docs/research/ISSUE-724-AB45-QUANTIFIED-CLASSIFIER-PROFILES-R1.md#profile-a--overt-numeral--classifier--noun"
+    },
+    {
+      "case_id": "AB45-R1-P02",
+      "source": "三隻貓。",
+      "class": "source_bounded_overt_num_cl_n_lexical_variation",
+      "expected_profile": "construction_present",
+      "assertion": "construction_present",
+      "provenance": "docs/research/ISSUE-724-AB45-QUANTIFIED-CLASSIFIER-PROFILES-R1.md#profile-a--overt-numeral--classifier--noun"
+    },
+    {
+      "case_id": "AB45-R1-P03",
+      "source": "兩本。",
+      "context_source": "我有三本書。",
+      "class": "context_linked_num_cl_noun_ellipsis",
+      "expected_profile": "construction_present_context_licensed",
+      "assertion": "construction_present",
+      "provenance": "docs/research/ISSUE-724-AB45-QUANTIFIED-CLASSIFIER-PROFILES-R1.md#profile-b--numeral--classifier-with-recoverable-omitted-noun"
+    },
+    {
+      "case_id": "AB45-R1-N01",
+      "source": "三杯茶。",
+      "class": "container_measure_outside_ab45",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-724-AB45-QUANTIFIED-CLASSIFIER-PROFILES-R1.md#profile-e--measure-word-np"
+    },
+    {
+      "case_id": "AB45-R1-N02",
+      "source": "兩碗飯。",
+      "class": "container_measure_outside_ab45",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-724-AB45-QUANTIFIED-CLASSIFIER-PROFILES-R1.md#profile-e--measure-word-np"
+    },
+    {
+      "case_id": "AB45-R1-N03",
+      "source": "飲七杯。",
+      "class": "headless_container_measure_outside_ab45",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-724-AB45-QUANTIFIED-CLASSIFIER-PROFILES-R1.md#profile-e--measure-word-np"
+    },
+    {
+      "case_id": "AB45-R1-N04",
+      "source": "三歲。",
+      "class": "age_unit_outside_ab45",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-724-AB45-QUANTIFIED-CLASSIFIER-PROFILES-R1.md#profile-f--age-length-area-and-conventional-dimension-strings"
+    },
+    {
+      "case_id": "AB45-R1-N05",
+      "source": "五百呎。",
+      "class": "dimension_unit_outside_ab45",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-724-AB45-QUANTIFIED-CLASSIFIER-PROFILES-R1.md#profile-f--age-length-area-and-conventional-dimension-strings"
+    },
+    {
+      "case_id": "AB45-R1-N06",
+      "source": "呢句有幾多個字？",
+      "class": "wh_quantity_outside_current_ab45_core",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-724-AB45-QUANTIFIED-CLASSIFIER-PROFILES-R1.md#profile-d--wh-quantity--classifier--noun"
+    },
+    {
+      "case_id": "AB45-R1-N07",
+      "source": "兩。",
+      "class": "bare_numeral_outside_ab45",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-724-AB45-QUANTIFIED-CLASSIFIER-PROFILES-R1.md#profile-h--bare-numeral"
+    },
+    {
+      "case_id": "AB45-R1-N08",
+      "source": "三杯書。",
+      "class": "container_measure_pair_not_ab45_classifier_control",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-724-AB45-QUANTIFIED-CLASSIFIER-PROFILES-R1.md#profile-e--measure-word-np"
     }
   ],
   "np_cases": [
@@ -252,16 +283,6 @@
       "assertion": "np_matrix_case",
       "expected_internal": "QuantifiedClassifierNP",
       "expected_surface": "兩本書",
-      "expected_license": "licensed_np",
-      "expected_classifier_compatibility": "verified_compatible"
-    },
-    {
-      "case_id": "NP-L003",
-      "source": "三杯茶。",
-      "group": "licensed_np_unseen_combination",
-      "assertion": "np_matrix_case",
-      "expected_internal": "QuantifiedClassifierNP",
-      "expected_surface": "三杯茶",
       "expected_license": "licensed_np",
       "expected_classifier_compatibility": "verified_compatible"
     },
@@ -356,41 +377,12 @@
       "expected_classifier_compatibility": "verified_compatible"
     },
     {
-      "case_id": "NP-L013",
-      "source": "兩碗飯。",
-      "group": "licensed_np_unseen_combination",
-      "assertion": "np_matrix_case",
-      "expected_internal": "QuantifiedClassifierNP",
-      "expected_surface": "兩碗飯",
-      "expected_license": "licensed_np",
-      "expected_classifier_compatibility": "verified_compatible"
-    },
-    {
-      "case_id": "NP-P001",
-      "source": "三歲。",
-      "group": "provisional_headless",
-      "assertion": "np_matrix_case",
-      "expected_internal": "QuantifiedClassifierNP",
-      "expected_surface": "三歲",
-      "expected_license": "provisional_np_candidate"
-    },
-    {
       "case_id": "NP-P002",
       "source": "三本水。",
       "group": "classifier_policy_control",
       "assertion": "np_matrix_case",
       "expected_internal": "QuantifiedClassifierNP",
       "expected_surface": "三本水",
-      "expected_license": "provisional_np_candidate",
-      "expected_classifier_compatibility": "incompatible"
-    },
-    {
-      "case_id": "NP-P003",
-      "source": "三杯書。",
-      "group": "classifier_policy_control",
-      "assertion": "np_matrix_case",
-      "expected_internal": "QuantifiedClassifierNP",
-      "expected_surface": "三杯書",
       "expected_license": "provisional_np_candidate",
       "expected_classifier_compatibility": "incompatible"
     },
@@ -438,15 +430,15 @@
   "implementation_probe_cases": [],
   "coverage": {
     "state": "positive_and_boundary",
-    "exact_snapshot_positive_count": 23,
-    "focused_positive_count": 2,
-    "focused_boundary_count": 2,
+    "exact_snapshot_positive_count": 16,
+    "focused_positive_count": 5,
+    "focused_boundary_count": 10,
     "focused_review_only_count": 0,
-    "np_case_count": 19,
+    "np_case_count": 15,
     "implementation_probe_count": 0,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 44,
-    "boundary_case_count": 2,
+    "positive_case_count": 36,
+    "boundary_case_count": 10,
     "executable_case_count": 46
   }
 }

@@ -70,6 +70,18 @@ module.exports = function createTemplateMatcher(dependencies = {}) {
       const allowedSequences = constraints.surface_sequence_in || [];
       if (!allowedSequences.includes(surfaceSequence)) return false;
     }
+    if (constraints.slot_first_token_syntax_must_include_any) {
+      for (const [slot, requiredTerms] of Object.entries(constraints.slot_first_token_syntax_must_include_any || {})) {
+        const required = requiredTerms || [];
+        const matchingAssignments = assignments.filter((item) => item.slot === slot);
+        if (!matchingAssignments.length) return false;
+        if (matchingAssignments.some((item) => {
+          const tok = firstToken(item.node);
+          const syntax = String(tok && tok.syntax || "");
+          return !required.some((term) => syntax.includes(term));
+        })) return false;
+      }
+    }
     if (constraints.slot_surface_in) {
       for (const [slot, allowedSurfaces] of Object.entries(constraints.slot_surface_in || {})) {
         const allowed = allowedSurfaces || [];

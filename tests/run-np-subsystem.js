@@ -59,6 +59,16 @@ for (const testCase of matrix.cases) {
       assert.strictEqual(licensedRows(rows).length, 0, `Unexpected licensed NP: ${licensedRows(rows).map(rowSurface).join(", ")}`);
       checks.push("no_licensed_np");
     }
+    if (testCase.forbid_internal) {
+      assert.strictEqual(rows.filter((row) => internal(row) === testCase.forbid_internal).length, 0,
+        `Unexpected ${testCase.forbid_internal}: ${rows.filter((row) => internal(row) === testCase.forbid_internal).map(rowSurface).join(", ")}`);
+      checks.push("forbidden_internal_absent");
+    }
+    if (testCase.expected_alternative_internal) {
+      assert(rows.some((row) => internal(row) === testCase.expected_alternative_internal),
+        `Missing alternative ${testCase.expected_alternative_internal}`);
+      checks.push("alternative_internal_present");
+    }
     if (testCase.expected_pfv_surface) {
       const pfv = findExact(rows, "PostverbalZoPerfectiveVP", testCase.expected_pfv_surface);
       assert(pfv, `Missing narrow perfective span ${testCase.expected_pfv_surface}`);
