@@ -1,0 +1,83 @@
+name: AB78 temporary runtime producer probe
+
+on:
+  pull_request:
+    paths:
+      - "**"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    if: github.event.pull_request.head.ref == 'agent/ab78-transitive-runtime-alignment'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Locate TransitiveVP producers
+        run: |
+          {
+            echo '=== SOURCE HITS ==='
+            grep -R -n --exclude=main.js --exclude-dir=node_modules --exclude-dir=.git 'TransitiveVP' src || true
+            echo
+            echo '=== TEMPLATE/TYPE HITS ==='
+            grep -R -n --exclude=main.js --exclude-dir=node_modules --exclude-dir=.git -E 'type:[[:space:]]*["'"']TransitiveVP|construction:[[:space:]]*["'"']TransitiveVP' src || true
+          } > ab78-source-hits.txt
+      - name: Probe representative behavior
+        run: |
+          node <<'NODE' > ab78-runtime-probe.json
+          const { loadRuntimeApi, internalConstruction, rowSurface } = require('./tests/lib/runtime-api');
+          const api = loadRuntimeApi();
+          const cases = [
+            ['core_simple', '我講廣東話。'],
+            ['core_quantified', '我食一個蘋果。'],
+            ['core_wh', '你睇邊本書？'],
+            ['core_aspect', '食過飯。'],
+            ['outer_serial', '我去街市買餸煮飯。'],
+            ['relative_gap', '我買嘅書好貴。'],
+            ['measure_root', '飲七杯度喇。'],
+            ['measure_subject', '我飲七杯度喇。'],
+            ['semantic_selection', '食香港。'],
+            ['intransitive', '佢瞓覺。'],
+            ['stative', '佢好高。'],
+            ['cp_candidate', '我記得佢好叻。'],
+            ['ditransitive_candidate', '我教佢廣東話。'],
+            ['pivotal_candidate', '我揀佢做班長。']
+          ];
+          const out=[];
+          for (const [id, source] of cases) {
+            const a=api.analyzeLine(source, null);
+            const rows=api.diagnosticFinalRows(a);
+            out.push({id,source, constructions: rows.filter(r=>r.kind==='construction').map(r=>({
+              construction: internalConstruction(r),
+              surface: rowSurface(r),
+              parent: r.internal_parent || r.parent || '',
+              depth: r.depth,
+              assigned_slots: r.trace_detail && r.trace_detail.assigned_slots || [],
+              surfaces: r.trace_detail && r.trace_detail.surfaces || [],
+              structured_bindings: r.trace_detail && (r.trace_detail.structured_bindings || r.trace_detail.bindings) || null,
+              trace_kind: r.trace_detail && r.trace_detail.kind || '',
+              template_family: r.trace_detail && r.trace_detail.template_family || '',
+              structural_scope: r.trace_detail && r.trace_detail.structural_scope || '',
+              matcher_variant_id: r.trace_detail && r.trace_detail.matcher_variant_id || '',
+              constraints: r.trace_detail && r.trace_detail.constraints || null
+            }))});
+          }
+          process.stdout.write(JSON.stringify(out,null,2));
+          NODE
+      - name: Protected-state checks
+        run: |
+          npm run verify:identities
+          npm run verify:research
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ab78-runtime-probe
+          path: |
+            ab78-source-hits.txt
+            ab78-runtime-probe.json
+          retention-days: 1
