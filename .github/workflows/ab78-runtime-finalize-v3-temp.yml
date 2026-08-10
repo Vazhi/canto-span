@@ -1,0 +1,363 @@
+name: AB78 one-shot runtime finalizer v3
+
+on:
+  pull_request:
+    paths:
+      - "**"
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    if: github.event.pull_request.number == 741 && github.event.pull_request.head.ref == 'agent/ab78-transitive-runtime-alignment' && github.event.pull_request.base.ref == 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/ab78-transitive-runtime-alignment
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+
+      - name: Preconditions
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          test "$(git rev-parse origin/main)" = "34dd42be109a461368c3e0c4bdfc0d08e0ff1a99"
+          test "$(node -p "require('./package.json').version")" = "0.5.222"
+          python3 <<'PY'
+          from pathlib import Path
+          import subprocess
+          s=Path('src/runtime-resources/grammar/templates/category-span-templates.js').read_text()
+          assert s.count('template: ["consumption_verb!", "approximate_quantity!", "particle?"]') == 1
+          assert s.count('approximate_measured_quantity_object') == 1
+          assert s.count('template: ["action_verb!", "object!"]') >= 1
+          q=Path('src/parser/detectors/relative-clauses/clauses.js').read_text()
+          for needle in ['relative_gap_status: "licensed_by_overt_head_noun"','relative_head_surface: headSurface','missing_argument_slots: ["object"]','not_fabricated_object_token']:
+              assert needle in q, needle
+          expected={
+            '.github/workflows/ab78-runtime-probe-temp.yml',
+            '.github/workflows/ab78-runtime-finalize-temp.yml',
+            '.github/workflows/ab78-runtime-finalize-v3-temp.yml',
+          }
+          got=set(subprocess.check_output(['git','diff','--name-only','origin/main...HEAD'],text=True).splitlines())
+          assert got == expected, (got, expected)
+          PY
+
+      - name: Apply accepted AB78 runtime transition
+        run: |
+          set -euo pipefail
+          python3 <<'PY'
+          from pathlib import Path
+          p=Path('src/runtime-resources/grammar/templates/category-span-templates.js')
+          text=p.read_text()
+          anchor='    template: ["consumption_verb!", "approximate_quantity!", "particle?"],'
+          at=text.index(anchor)
+          start=text.rfind('  {\n',0,at)
+          next_anchor='    template: ["action_verb!", "object!"],'
+          next_at=text.index(next_anchor,at+len(anchor))
+          end=text.rfind('  {\n',at,next_at+1)
+          assert start >= 0 and end > start
+          removed=text[start:end]
+          assert 'type: "TransitiveVP"' in removed
+          assert 'approximate_measured_quantity_object' in removed
+          p.write_text(text[:start]+text[end:])
+          PY
+          npm version 0.5.223 --no-git-tag-version
+          python3 <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('src/plugin-entry.js')
+          s=p.read_text()
+          old='const CANTO_SPAN_RUNTIME_VERSION = "0.5.222";\n// v0.5.222:'
+          new='const CANTO_SPAN_RUNTIME_VERSION = "0.5.223";\n// v0.5.223: removes AB78 TransitiveVP ownership from approximate measured-quantity material while preserving typed-object and explicit relative-gap transitive relations.\n// v0.5.222:'
+          assert old in s
+          p.write_text(s.replace(old,new,1))
+          m=Path('manifest.json')
+          obj=json.loads(m.read_text())
+          assert obj['version']=='0.5.222'
+          obj['version']='0.5.223'
+          obj['description']='v0.5.223 aligns AB78 with typed predicate-object behavior and leaves approximate measured quantity outside TransitiveVP.'
+          m.write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n')
+          PY
+          npm run build:runtime
+
+      - name: Reclassify AB78 construction expectations
+        run: |
+          python3 <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('tests/constructions/TransitiveVP.json')
+          d=json.loads(p.read_text())
+          target={'REG-0296','REG-0465'}
+          removed=[x for x in d.get('snapshot_cases',[]) if x.get('case_id') in target]
+          assert {x['case_id'] for x in removed} == target
+          d['snapshot_cases']=[x for x in d.get('snapshot_cases',[]) if x.get('case_id') not in target]
+          add_ids={'AB78-MEASURE-N01','AB78-MEASURE-N02','AB78-CP-N01','AB78-DITRANSITIVE-N01','AB78-PIVOTAL-N01'}
+          focused=[x for x in d.get('focused_cases',[]) if x.get('case_id') not in add_ids]
+          prov='docs/research/ISSUE-736-AB78-TRANSITIVE-BEHAVIOR-PROFILES-R1.md#negative-and-boundary-requirements-for-later-executable-specification'
+          focused += [
+            {'case_id':'AB78-MEASURE-N01','source':'我飲七杯度喇。','class':'approximate_measure_without_typed_object','expected_profile':'construction_absent','assertion':'construction_absent','provenance':prov},
+            {'case_id':'AB78-MEASURE-N02','source':'飲七杯度喇。','class':'approximate_measure_without_typed_object','expected_profile':'construction_absent','assertion':'construction_absent','provenance':prov},
+            {'case_id':'AB78-CP-N01','source':'我記得佢好叻。','class':'clausal_complement_not_simple_object','expected_profile':'construction_absent','assertion':'construction_absent','provenance':prov},
+            {'case_id':'AB78-DITRANSITIVE-N01','source':'我教佢廣東話。','class':'ditransitive_argument_structure_not_simple_object','expected_profile':'construction_absent','assertion':'construction_absent','provenance':prov},
+            {'case_id':'AB78-PIVOTAL-N01','source':'我揀佢做班長。','class':'pivotal_structure_not_simple_object','expected_profile':'construction_absent','assertion':'construction_absent','provenance':prov},
+          ]
+          d['focused_cases']=focused
+          p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
+          PY
+
+      - name: Add permanent AB78 behavior contract
+        run: |
+          cat > tests/tooling/runtime/ab78-transitive-boundary.test.js <<'NODE'
+          "use strict";
+
+          // Permanent reason: protect the high-fanout AB78 predicate-object boundary from
+          // again treating quantity/measure material as an object or fabricating relative objects.
+          const assert = require("assert");
+          const test = require("node:test");
+          const { loadRuntimeApi, internalConstruction, rowSurface } = require("../../lib/runtime-api");
+
+          const api = loadRuntimeApi();
+
+          function rows(source, contextSource = null) {
+            return api.diagnosticFinalRows(api.analyzeLine(source, contextSource));
+          }
+          function constructionRows(source, type, contextSource = null) {
+            return rows(source, contextSource).filter((row) => row.kind === "construction" && internalConstruction(row) === type);
+          }
+          function constructionRow(source, type, surface, contextSource = null) {
+            return constructionRows(source, type, contextSource).find((row) => !surface || rowSurface(row) === surface) || null;
+          }
+
+          test("AB78 ordinary overt objects retain explicit object bindings", () => {
+            assert.strictEqual(api.runtimeVersion, "0.5.223");
+            for (const [source, surface] of [
+              ["我講廣東話。", "講廣東話"],
+              ["我食一個蘋果。", "食一個蘋果"],
+              ["你睇邊本書？", "睇邊本書"],
+              ["食過飯。", "食過飯"],
+            ]) {
+              const vp=constructionRow(source,"TransitiveVP",surface);
+              assert(vp, `expected AB78 ${surface} in ${source}`);
+              assert((vp.trace_detail.assigned_slots || []).includes("object"), `expected object binding in ${source}`);
+            }
+          });
+
+          test("AB78 remains narrow under serial composition", () => {
+            const source="我去街市買餸煮飯。";
+            assert(constructionRow(source,"SerialVerbPurposeChain"));
+            const surfaces=Array.from(constructionRows(source,"TransitiveVP"), rowSurface).sort().join("|");
+            assert.strictEqual(surfaces,"煮飯|買餸");
+          });
+
+          test("AB78 relative object gap is overt-head licensed with no hidden object token", () => {
+            const source="我買嘅書好貴。";
+            assert(constructionRow(source,"RelativeClauseNP","我買嘅書"));
+            const vp=constructionRow(source,"TransitiveVP","買");
+            assert(vp);
+            assert.strictEqual(vp.trace_detail.relative_gap_status,"licensed_by_overt_head_noun");
+            assert.strictEqual(vp.trace_detail.relative_head_surface,"書");
+            assert.deepStrictEqual(Array.from(vp.trace_detail.missing_argument_slots || []),["object"]);
+            assert(!(vp.trace_detail.assigned_slots || []).includes("object"));
+            assert(!(vp.trace_detail.surfaces || []).includes("書"));
+            assert((vp.trace_detail.not_claims || []).includes("not_fabricated_object_token"));
+          });
+
+          test("AB78 excludes approximate measured quantity while preserving quantity typing", () => {
+            for (const source of ["飲七杯度喇。","我飲七杯度喇。"]) {
+              assert.strictEqual(constructionRows(source,"TransitiveVP").length,0,source);
+              assert(constructionRow(source,"ApproximateQuantity","七杯度"),source);
+            }
+            assert.strictEqual(constructionRows("我飲七杯度喇。","ClauseSpan").length,0);
+          });
+
+          test("AB78 keeps semantic selection separate from structural transitivity", () => {
+            assert(constructionRow("食香港。","TransitiveVP","食香港"));
+            assert(constructionRow("食香港。","NeedsContext"));
+          });
+
+          test("AB78 stays absent from neighboring predicate and argument structures", () => {
+            for (const source of ["佢瞓覺。","佢好高。","我記得佢好叻。","我教佢廣東話。","我揀佢做班長。"]) {
+              assert.strictEqual(constructionRows(source,"TransitiveVP").length,0,source);
+            }
+          });
+          NODE
+          python3 <<'PY'
+          from pathlib import Path
+          p=Path('tests/run-all.js')
+          s=p.read_text()
+          anchor='  ["ab45_quantified_classifier_boundary", path.join(root, "tests", "tooling", "runtime", "ab45-quantified-classifier-boundary.test.js")],\n'
+          line='  ["ab78_transitive_boundary", path.join(root, "tests", "tooling", "runtime", "ab78-transitive-boundary.test.js")],\n'
+          assert anchor in s
+          if line not in s:
+              s=s.replace(anchor,anchor+line,1)
+          p.write_text(s)
+          PY
+
+      - name: Precondition and update exactly two aggregate regression snapshots
+        run: |
+          set +e
+          npm run test:regression > /tmp/ab78-regression-before.log 2>&1
+          rc=$?
+          set -e
+          test "$rc" -ne 0
+          python3 <<'PY'
+          import json
+          d=json.load(open('validation/current/regression-suite.json'))
+          got={x['source'] for x in d['failures']}
+          expected={'我飲七杯度喇。','飲七杯度喇。'}
+          assert d['failed']==2 and got==expected, (d['failed'],got)
+          PY
+          python3 <<'PY'
+          from pathlib import Path
+          p=Path('tests/run-regression.js')
+          s=p.read_text()
+          anchor='const cp021bIntentionalSnapshotSources = new Set([\n'
+          assert anchor in s
+          block='''const ab78V05223SnapshotSources = new Set(["我飲七杯度喇。", "飲七杯度喇。"]);\nif (process.argv.includes("--update-ab78-v05223")) {\n  let updated = 0;\n  for (const testCase of fixture.cases) {\n    if (!ab78V05223SnapshotSources.has(testCase.source)) continue;\n    testCase.expected = JSON.parse(JSON.stringify(signature(api, testCase.source, testCase.context_source || null)));\n    testCase.accepted_transition = "v0.5.223_ab78_approximate_measure_boundary";\n    testCase.transition_reason = "AB78 now requires an overt typed object or explicit independently licensed gap relation; approximate measured quantity remains typed but no longer fabricates TransitiveVP or dependent ClauseSpan ownership.";\n    updated += 1;\n  }\n  fixture.runtime_version = api.runtimeVersion;\n  fixture.last_intentional_transition = "v0.5.223_ab78_predicate_object_alignment";\n  fs.writeFileSync(fixturePath, JSON.stringify(fixture, null, 2) + "\\n");\n  console.log(JSON.stringify({ runtime_version: api.runtimeVersion, updated_cases: updated, authorized_sources: ab78V05223SnapshotSources.size }, null, 2));\n  process.exit(updated === ab78V05223SnapshotSources.size ? 0 : 1);\n}\n'''
+          p.write_text(s.replace(anchor,block+anchor,1))
+          PY
+          node tests/run-regression.js --update-ab78-v05223
+          git checkout -- tests/run-regression.js
+          npm run test:regression
+
+      - name: Regenerate tests, metadata, readiness, runtime and project counts
+        run: |
+          node tools/build-construction-tests.js
+          node tools/sync-construction-test-metadata.js
+          npm run discovery:generate
+          npm run build:runtime
+          python3 <<'PY'
+          import json,re
+          from pathlib import Path
+          spec=json.loads(Path('tests/constructions/TransitiveVP.json').read_text())
+          ids={x.get('case_id') for x in spec.get('focused_cases',[])}
+          expected={'AB78-MEASURE-N01','AB78-MEASURE-N02','AB78-CP-N01','AB78-DITRANSITIVE-N01','AB78-PIVOTAL-N01'}
+          assert expected <= ids, expected-ids
+          snapshots={x.get('source') for x in spec.get('snapshot_cases',[])}
+          assert '我飲七杯度喇。' not in snapshots and '飲七杯度喇。' not in snapshots
+          total=0
+          for f in Path('tests/constructions').glob('*.json'):
+              d=json.loads(f.read_text())
+              total += sum(len(d.get(k,[])) for k in ['snapshot_cases','focused_cases','np_cases','implementation_probe_cases','compatibility_alias_probe_cases'])
+          ready=json.loads(Path('data/construction-candidate-readiness.json').read_text())
+          p=Path('docs/current/PROJECT-STATE.md')
+          s=p.read_text().replace('| Runtime | v0.5.222 |','| Runtime | v0.5.223 |',1)
+          s=re.sub(r'- per-construction assertions: \*\*[\d,]+\*\* across \*\*134\*\* files;',f'- per-construction assertions: **{total:,}** across **134** files;',s,count=1)
+          s=re.sub(r'\| Per-construction assertions \| [\d,]+ \|',f'| Per-construction assertions | {total:,} |',s,count=1)
+          for key,value in ready['state_counts'].items():
+              s=re.sub(rf'\| `{re.escape(key)}` \| \d+ \|',f'| `{key}` | {value} |',s,count=1)
+          p.write_text(s)
+          print(json.dumps({'construction_assertions':total,'state_counts':ready['state_counts']},ensure_ascii=False))
+          PY
+
+      - name: Validate accepted runtime state
+        run: |
+          npm run test:regression
+          npm run test:constructions
+          node --test tests/tooling/runtime/ab78-transitive-boundary.test.js
+          npm test
+          npm run test:parser-architecture
+          npm run verify:runtime
+          npm run verify
+          npm run verify:research
+          npm run verify:identities
+          npm run verify:discovery
+          npm run test:generated-runtime
+
+      - name: Commit clean runtime implementation
+        run: |
+          set -euo pipefail
+          rm -f \
+            .github/workflows/ab78-runtime-probe-temp.yml \
+            .github/workflows/ab78-runtime-finalize-temp.yml \
+            .github/workflows/ab78-runtime-finalize-v3-temp.yml
+          git checkout -- validation/current 2>/dev/null || true
+          git clean -fd validation/current || true
+          python3 <<'PY'
+          import subprocess
+          allowed={
+            'src/runtime-resources/grammar/templates/category-span-templates.js','src/plugin-entry.js',
+            'package.json','package-lock.json','manifest.json','main.js',
+            'tests/fixtures/regression-snapshots.json','tests/constructions/TransitiveVP.json','tests/constructions/ClauseSpan.json',
+            'tests/tooling/runtime/ab78-transitive-boundary.test.js','tests/run-all.js','tests/construction-test-index.json',
+            'grammar/research_pending/TransitiveVP.md','grammar/research_pending/ClauseSpan.md',
+            'data/construction-candidate-readiness.json','docs/current/PROJECT-STATE.md'
+          }
+          rows=subprocess.check_output(['git','status','--porcelain'],text=True).splitlines()
+          changed={row[3:] for row in rows if len(row)>=4}
+          unexpected=changed-allowed
+          assert not unexpected, ('unexpected paths',sorted(unexpected))
+          required={'src/runtime-resources/grammar/templates/category-span-templates.js','src/plugin-entry.js','main.js','tests/fixtures/regression-snapshots.json','tests/constructions/TransitiveVP.json','tests/tooling/runtime/ab78-transitive-boundary.test.js'}
+          assert required <= changed, ('missing',sorted(required-changed))
+          print('runtime commit paths:',*sorted(changed),sep='\n- ')
+          PY
+          git config user.name "Canto Span scoped automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Align AB78 runtime to typed predicate-object behavior"
+          echo "IMPL_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+
+      - name: Close AB78 runtime-research alignment metadata against implementation commit
+        run: |
+          set -euo pipefail
+          python3 <<'PY'
+          import os
+          from pathlib import Path
+          sha=os.environ['IMPL_SHA']
+          p=Path('grammar/research_pending/TransitiveVP.md')
+          s=p.read_text()
+          replacements={
+            'last_reviewed: "unknown"':'last_reviewed: "2026-08-10"',
+            'code_document_reconciled: false':'code_document_reconciled: true',
+            'code_document_review_date: null':'code_document_review_date: "2026-08-10"',
+            'code_document_review_commit: null':f'code_document_review_commit: "{sha}"',
+            'code_document_code_locations: []':'code_document_code_locations: ["src/runtime-resources/grammar/templates/category-span-templates.js", "src/parser/detectors/relative-clauses/clauses.js", "src/plugin-entry.js", "tests/constructions/TransitiveVP.json", "tests/tooling/runtime/ab78-transitive-boundary.test.js"]',
+            'current_standard_reaudit_complete: false':'current_standard_reaudit_complete: true',
+            '- Current action: `retain_transitive_predicate_object_core_pending_runtime_alignment_and_boundary_completion`':'- Current action: `retain_transitive_predicate_object_core_runtime_aligned_boundary_inventory_incomplete`',
+            '- Runtime alignment with the 2026-08-10 behavior-first re-audit: **not yet completed**.':'- Runtime alignment with the 2026-08-10 behavior-first re-audit: **completed at v0.5.223**.',
+            '- `code_document_reconciled`: remains false intentionally.':'- `code_document_reconciled`: true; the v0.5.223 runtime removes the unsupported approximate-measure AB78 producer while preserving typed-object and explicit relative-gap routes.',
+            '- No executable expectation is changed by the research re-audit itself.':'- The later accepted-specification alignment changes only the reviewed AB78 approximate-measure expectations and their directly dependent ClauseSpan snapshot; the research re-audit itself remains non-executable evidence.'
+          }
+          for old,new in replacements.items():
+              assert old in s, old
+              s=s.replace(old,new,1)
+          p.write_text(s)
+          PY
+          npm run discovery:generate
+          python3 <<'PY'
+          import json,re
+          from pathlib import Path
+          ready=json.loads(Path('data/construction-candidate-readiness.json').read_text())
+          p=Path('docs/current/PROJECT-STATE.md')
+          s=p.read_text()
+          for key,value in ready['state_counts'].items():
+              s=re.sub(rf'\| `{re.escape(key)}` \| \d+ \|',f'| `{key}` | {value} |',s,count=1)
+          p.write_text(s)
+          PY
+          npm run verify:research
+          npm run verify:discovery
+          npm run verify
+          git add grammar/research_pending/TransitiveVP.md data/construction-candidate-readiness.json docs/current/PROJECT-STATE.md
+          git commit -m "Close AB78 runtime-research alignment metadata"
+
+      - name: Push finalized feature branch
+        run: |
+          set -euo pipefail
+          python3 <<'PY'
+          import subprocess
+          forbidden={
+            '.github/workflows/ab78-runtime-probe-temp.yml',
+            '.github/workflows/ab78-runtime-finalize-temp.yml',
+            '.github/workflows/ab78-runtime-finalize-v3-temp.yml',
+          }
+          tracked=set(subprocess.check_output(['git','ls-files'],text=True).splitlines())
+          assert not (forbidden & tracked), forbidden & tracked
+          assert not subprocess.check_output(['git','status','--porcelain'],text=True).strip()
+          PY
+          git push origin HEAD:agent/ab78-transitive-runtime-alignment
