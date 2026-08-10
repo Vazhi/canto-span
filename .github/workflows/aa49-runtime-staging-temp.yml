@@ -19,59 +19,82 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
-      - name: Stage second-pass AA49 ownership corrections
-        run: node .github/tmp-aa49-second-pass.js
-      - name: Build staged runtime
-        run: npm run build:runtime
-      - name: Probe AA49 and neighboring motion profiles
+      - name: Stage validated AA49 v0.5.221 candidate
+        run: node .github/tmp-aa49-finalize.js
+      - name: Regenerate canonical construction and runtime outputs
         run: |
+          node tools/build-construction-tests.js
+          node tools/sync-construction-test-metadata.js
           node <<'NODE'
-          const { loadRuntimeApi, internalConstruction, rowSurface } = require('./tests/lib/runtime-api');
-          const api = loadRuntimeApi();
-          const cases = [
-            '去。', '我去。', '我去香港。', '嚟。', '佢嚟。',
-            '佢落咗樓下。', '架車走咗。', '你走啦。', '佢走喇。',
-            '會唔會落雨？', '聽日會落雨。',
-            '返嚟。', '返去。', '上嚟。', '落嚟。',
-            '行入去。', '行出嚟。', '行返過嚟。',
-            '我帶咗三部機去啊。', '我攞本書返嚟畀你睇。', '寄返去。',
-            '圖書館係乜嘢嚟㗎。', '呢個用嚟切嘢。',
-            '因為落雨，所以我冇去。', '你使唔使去？'
-          ];
-          for (const source of cases) {
-            const rows = api.diagnosticFinalRows(api.analyzeLine(source))
-              .filter((row) => row.kind === 'construction')
-              .map((row) => ({
-                type: internalConstruction(row), surface: rowSurface(row),
-                parent: row.internal_parent || row.parent || null, depth: row.depth,
-                scope: row.trace_detail && row.trace_detail.structural_scope,
-                rule: row.trace_detail && row.trace_detail.rule,
-              }));
-            console.log(JSON.stringify({source, rows}));
-          }
+          const fs = require('fs');
+          const index = JSON.parse(fs.readFileSync('tests/construction-test-index.json', 'utf8'));
+          const total = index.files.reduce((sum, row) => sum + Number(row.executable_case_count || 0), 0);
+          let state = fs.readFileSync('docs/current/PROJECT-STATE.md', 'utf8');
+          state = state.replace(/per-construction assertions: \*\*[0-9,]+\*\* across \*\*134\*\* files;/, `per-construction assertions: **${total.toLocaleString('en-US')}** across **134** files;`);
+          state = state.replace(/\| Per-construction assertions \| [0-9,]+ \|/, `| Per-construction assertions | ${total.toLocaleString('en-US')} |`);
+          fs.writeFileSync('docs/current/PROJECT-STATE.md', state);
+          console.log(JSON.stringify({ per_construction_assertions: total }));
           NODE
-      - name: Construction and architecture probes
-        continue-on-error: true
+          npm run discovery:generate
+          npm run build:runtime
+      - name: Focused AA49 boundary verification
+        run: node --test tests/tooling/runtime/aa49-independent-motion-boundary.test.js
+      - name: Exact regression and construction suites
         run: |
-          npm run test:constructions || true
-          npm run test:parser-architecture || true
-          npm run audit:parser-architecture || true
-      - name: Upload staged working checkout
+          npm run test:regression
+          npm run test:constructions
+      - name: Parser architecture verification
+        run: |
+          npm run test:parser-architecture
+          npm run audit:parser-architecture
+      - name: Runtime verification
+        run: npm run verify:runtime
+      - name: Core verification
+        run: npm run verify
+      - name: Research verification
+        run: npm run verify:research
+      - name: Full verification record
+        id: full
+        continue-on-error: true
+        run: npm run verify:all
+      - name: Record full verification outcome
+        run: |
+          echo "verify_all_outcome=${{ steps.full.outcome }}"
+          echo "A release-handoff-only baseline mismatch, if present, is reported separately and does not convert an unrelated release record into AA49 evidence."
+      - name: Diff hygiene
+        run: git diff --check
+      - name: Build final patch and artifact
+        run: |
+          git diff --binary > aa49-v0.5.221-final.patch
+          sha256sum aa49-v0.5.221-final.patch
+      - name: Upload final validated candidate
         uses: actions/upload-artifact@v4
         with:
-          name: aa49-staged-working-checkout
+          name: aa49-v0.5.221-final-candidate
           path: |
-            src
-            tests
-            tools
-            grammar
-            data
-            docs/current
-            docs/research
+            aa49-v0.5.221-final.patch
+            src/parser/detectors/motion/directional.js
+            src/parser/detectors/motion/path-goal-source.js
+            src/parser/detectors/environmental/clauses.js
+            src/parser/detectors/manner/adjustment.js
+            src/parser/orchestration/wrap-core.js
+            src/runtime-resources/grammar/templates/category-span-templates.js
+            src/runtime-resources/diagnostics/trace-metadata.js
+            src/runtime-resources/lexicon/token-lexicon/places-and-times.js
+            src/plugin-entry.js
+            tests/fixtures/regression-snapshots.json
+            tests/construction-test-index.json
+            tests/constructions/DirectionalMotionVP.json
+            tests/constructions/ClauseSpan.json
+            tests/constructions/DirectedMannerMotionVP.json
+            tests/tooling/runtime/aa49-independent-motion-boundary.test.js
+            tests/run-all.js
+            grammar/research_pending/DirectionalMotionVP.md
+            data/construction-candidate-readiness.json
+            docs/current/PROJECT-STATE.md
             package.json
             package-lock.json
             manifest.json
             main.js
-            node_modules
-          retention-days: 1
+          retention-days: 2
           if-no-files-found: error
