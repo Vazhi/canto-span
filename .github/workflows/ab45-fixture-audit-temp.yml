@@ -19,7 +19,7 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
-      - name: Inventory AB45 fixture and live rows
+      - name: Summarize AB45 fixture roles
         run: |
           node <<'NODE'
           const fs = require('fs');
@@ -32,17 +32,38 @@ jobs:
             ['np_cases', fixture.np_cases || []],
             ['implementation_probe_cases', fixture.implementation_probe_cases || []],
           ];
+          function classify(c, rows) {
+            if (c.assertion === 'construction_absent') return 'explicit_non_ab45_boundary';
+            if (c.class === 'classifier_policy_control') return 'classifier_noun_compatibility_control';
+            if (c.class === 'demonstrative_plus_quantified_classifier_np') return 'demonstrative_outer_composition';
+            if (/幾多/u.test(c.source)) return 'wh_quantity_unresolved';
+            if (/歲|呎/u.test(c.source)) return 'age_or_dimension_unresolved';
+            if (/杯|碗/u.test(c.source)) return 'container_measure_not_classifier_core';
+            const hasHead = rows.some(r => Array.isArray(r.assigned_slots) && r.assigned_slots.includes('head_noun'));
+            if (hasHead) return 'overt_num_cl_n_core_candidate';
+            if (rows.length) return 'headless_num_cl_ellipsis_candidate';
+            return 'no_live_ab45_row';
+          }
           const all = [];
           for (const [group, cases] of groups) {
             for (const c of cases) {
               const rows = api.diagnosticFinalRows(api.analyzeLine(c.source))
                 .filter(r => r.kind === 'construction' && internalConstruction(r) === 'QuantifiedClassifierNP')
                 .map(r => ({surface: rowSurface(r), parent: r.internal_parent || r.parent || null, depth: r.depth,
-                  template: r.trace_detail && r.trace_detail.template,
-                  assigned_slots: r.trace_detail && r.trace_detail.assigned_slots,
-                  constraints: r.trace_detail && r.trace_detail.constraints}));
-              all.push({group, case_id:c.case_id, source:c.source, assertion:c.assertion, class:c.class || c.group || null, rows});
+                  assigned_slots: r.trace_detail && r.trace_detail.assigned_slots}));
+              all.push({group, case_id:c.case_id, source:c.source, class:c.class || null, role:classify(c, rows), rows});
             }
           }
-          console.log(JSON.stringify({counts:Object.fromEntries(groups.map(([g,c])=>[g,c.length])), total:all.length, cases:all}, null, 2));
+          const roleCounts = {};
+          const roleCases = {};
+          for (const row of all) {
+            roleCounts[row.role] = (roleCounts[row.role] || 0) + 1;
+            (roleCases[row.role] ||= []).push(`${row.case_id}: ${row.source}`);
+          }
+          console.log(JSON.stringify({
+            fixture_counts:Object.fromEntries(groups.map(([g,c])=>[g,c.length])),
+            total:all.length,
+            role_counts:roleCounts,
+            role_cases:roleCases,
+          }, null, 2));
           NODE
