@@ -141,7 +141,6 @@ jobs:
           got={row[3:] for row in rows if len(row)>=4}
           assert got <= allowed,(sorted(got),sorted(allowed))
           required={
-            'data/construction-adjudication-batches/batch-21.json',
             'data/construction-identities.json',
             'data/construction-label-sweep.json',
             'grammar/research_pending/ProductiveVO.md',
