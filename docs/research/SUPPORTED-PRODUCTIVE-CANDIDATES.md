@@ -86,5 +86,6 @@ These broad current labels are not direct promotion candidates. Their source-bac
 | `AA03` | `AcceptabilityClause` | `narrowing_candidate` | 63 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA31` | `CopularANotAQuestion` | `narrowing_candidate` | 63 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AB68` | `SuggestionQuestion` | `narrowing_candidate` | 63 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
+| `AB35` | `ProductiveVO` | `narrowing_candidate` | 43 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 
 Scores rank research efficiency only. Promotion requires every existing supported-productivity requirement plus reviewed corpus evidence, held-out validation, and completed ontology review.

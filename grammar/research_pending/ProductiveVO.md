@@ -42,6 +42,7 @@ code_document_review_date: null
 code_document_review_commit: null
 code_document_code_locations: []
 current_standard_reaudit_complete: true
+source_scope_matches_claim: false
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
