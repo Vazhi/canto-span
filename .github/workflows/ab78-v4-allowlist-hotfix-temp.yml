@@ -1,0 +1,32 @@
+name: AB78 v4 allowlist hotfix
+
+on:
+  pull_request:
+    paths:
+      - "**"
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    if: github.event.pull_request.number == 741 && github.event.pull_request.head.ref == 'agent/ab78-transitive-runtime-alignment' && github.event.pull_request.base.ref == 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/ab78-transitive-runtime-alignment
+          fetch-depth: 0
+      - name: Patch only the deterministic ClauseSpan metadata path
+        run: |
+          set -euo pipefail
+          test -f .github/workflows/ab78-runtime-finalize-v4-temp.yml
+          grep -q "grammar/research_pending/ClauseSpan.md" .github/workflows/ab78-runtime-finalize-v4-temp.yml
+          sed -i 's#grammar/research_pending/ClauseSpan.md#grammar/parser_heuristic/ClauseSpan.md#g' .github/workflows/ab78-runtime-finalize-v4-temp.yml
+          grep -q "grammar/parser_heuristic/ClauseSpan.md" .github/workflows/ab78-runtime-finalize-v4-temp.yml
+          rm .github/workflows/ab78-v4-allowlist-hotfix-temp.yml
+          git config user.name "Canto Span scoped automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Correct AB78 ClauseSpan metadata allowlist"
+          git push origin HEAD:agent/ab78-transitive-runtime-alignment
