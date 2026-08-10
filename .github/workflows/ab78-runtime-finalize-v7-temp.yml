@@ -41,6 +41,7 @@ jobs:
             'tests/tooling/runtime/ab15-current-alignment.test.js',
             'tools/verify-project-state.js',
             '.github/workflows/ab78-runtime-finalize-v7-temp.yml',
+            '.github/workflows/ab78-v7-generated-output-patch-temp.yml',
           }
           got=set(subprocess.check_output(['git','diff','--name-only','origin/main...HEAD'],text=True).splitlines())
           assert got == expected,(sorted(got),sorted(expected))
@@ -326,7 +327,9 @@ jobs:
           npm run verify
           npm run verify:runtime
           node --test tests/tooling/project-state/project-state.test.js
-          git add grammar/research_pending/TransitiveVP.md data/construction-candidate-readiness.json docs/current/PROJECT-STATE.md
+          git checkout -- validation/current 2>/dev/null || true
+          git clean -fd validation/current || true
+          git add grammar/research_pending/TransitiveVP.md data/construction-candidate-readiness.json docs/current/PROJECT-STATE.md docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md docs/research/ORPHANED-CONSTRUCTION-EVIDENCE.md docs/research/CONSTRUCTION-FAMILY-GAPS.md docs/research/FULL-REPO-SUPPORTED-PRODUCTIVE-SWEEP-R1.md
           git commit -m "Close AB78 runtime-research alignment metadata"
           python3 <<'PY'
           import subprocess
