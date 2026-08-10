@@ -7,21 +7,22 @@
   "retired_record_count": 48,
   "promotion_eligible_now_count": 0,
   "state_counts": {
+    "behavior_aligned": 1,
     "boundary_ready": 3,
     "excluded_nonlanguage": 38,
     "lexicalized_review": 2,
     "narrowing_candidate": 30,
     "retired_evidence_rehome_candidate": 42,
     "retired_research_gap": 6,
-    "source_supported": 61
+    "source_supported": 60
   },
   "nearest_missing_gate_counts": {
     "language_claim_defined": 38,
-    "negative_boundaries_complete": 28,
+    "negative_boundaries_complete": 29,
     "reviewed_corpus_evidence": 3,
     "role_neutral_panel_threshold": 2,
     "runtime_research_alignment": 16,
-    "source_scope_matches_claim": 47
+    "source_scope_matches_claim": 46
   },
   "records": [
     {
@@ -296,6 +297,95 @@
       "next_best_action": "review and classify diverse corpus candidates, including false positives and ambiguous hits",
       "automatic_risk_flags": [],
       "source_path": "grammar/research_pending/MannerAdverbialVP.md"
+    },
+    {
+      "construction_uuid": "aede0f2c-920e-544f-9c41-e591bcb57fc7",
+      "construction_code": "AB78",
+      "canonical_name": "TransitiveVP",
+      "legacy_label": "TransitiveVP",
+      "lifecycle_state": "current",
+      "claim_layer": "language_construction",
+      "linguistic_status": "research_pending",
+      "family_id": "L45",
+      "family_name": "ValencyAndArgumentStructure",
+      "profile_name": null,
+      "learner_label": null,
+      "source_ids": [
+        "SRC-ALDERETE-ETAL-2017-SYNOPSIS",
+        "SRC-WONG-2023-LANGUAGE-SAMPLE"
+      ],
+      "preserved_source_ids": [],
+      "future_research_preserved_as": "",
+      "standard_positive_test_count": 26,
+      "standard_boundary_test_count": 7,
+      "gates": {
+        "language_claim_defined": {
+          "status": "pass",
+          "evidence": "plain_language_claim_present"
+        },
+        "independent_source_support": {
+          "status": "pass",
+          "evidence": "all_cited_sources_verified_and_independent",
+          "detail": "2/2"
+        },
+        "source_scope_matches_claim": {
+          "status": "pass",
+          "evidence": "current_standard_reaudit_complete_with_verified_sources"
+        },
+        "runtime_research_alignment": {
+          "status": "pass",
+          "evidence": "code_document_reconciled_with_current_metadata"
+        },
+        "executable_positive_cases_present": {
+          "status": "pass",
+          "evidence": "executable_positive_cases_present_implementation_only",
+          "detail": "26"
+        },
+        "negative_boundaries_complete": {
+          "status": "partial",
+          "evidence": "negative_boundaries_incomplete"
+        },
+        "reviewed_corpus_evidence": {
+          "status": "not_started",
+          "evidence": "no_reviewed_corpus_evidence"
+        },
+        "role_neutral_panel_threshold": {
+          "status": "partial",
+          "evidence": "panel_evidence_incomplete",
+          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
+        },
+        "held_out_validation": {
+          "status": "not_started",
+          "evidence": "no_passing_held_out_record"
+        },
+        "ontology_conflicts_resolved": {
+          "status": "unresolved",
+          "evidence": "identity_label_review_pending"
+        }
+      },
+      "supported_gate_eligible": false,
+      "supported_gate_blockers": [
+        "requirement_failed:locked_clean_panel_instrument",
+        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
+        "requirement_failed:role_neutral_panel",
+        "requirement_failed:instrument_quality_resolved",
+        "requirement_failed:quality_screen_complete",
+        "requirement_failed:panel_adjudication_complete",
+        "requirement_failed:critical_contrast_coverage_complete",
+        "requirement_failed:positive_and_negative_contrasts_reviewed",
+        "requirement_failed:negative_boundary_inventory_complete"
+      ],
+      "discovery_hard_blockers": [
+        "discovery_gate:reviewed_corpus_evidence",
+        "discovery_gate:held_out_validation",
+        "discovery_gate:ontology_conflicts_resolved"
+      ],
+      "readiness_score": 68,
+      "candidate_state": "behavior_aligned",
+      "nearest_missing_gate": "negative_boundaries_complete",
+      "next_best_action": "complete and execute the negative-boundary inventory",
+      "automatic_risk_flags": [],
+      "source_path": "grammar/research_pending/TransitiveVP.md"
     },
     {
       "construction_uuid": "1087ebec-c012-5107-9c1f-6383bf40091c",
@@ -8136,98 +8226,6 @@
       "source_path": "grammar/research_pending/TimeNP.md"
     },
     {
-      "construction_uuid": "aede0f2c-920e-544f-9c41-e591bcb57fc7",
-      "construction_code": "AB78",
-      "canonical_name": "TransitiveVP",
-      "legacy_label": "TransitiveVP",
-      "lifecycle_state": "current",
-      "claim_layer": "language_construction",
-      "linguistic_status": "research_pending",
-      "family_id": "L45",
-      "family_name": "ValencyAndArgumentStructure",
-      "profile_name": null,
-      "learner_label": null,
-      "source_ids": [
-        "SRC-ALDERETE-ETAL-2017-SYNOPSIS",
-        "SRC-WONG-2023-LANGUAGE-SAMPLE"
-      ],
-      "preserved_source_ids": [],
-      "future_research_preserved_as": "",
-      "standard_positive_test_count": 28,
-      "standard_boundary_test_count": 2,
-      "gates": {
-        "language_claim_defined": {
-          "status": "pass",
-          "evidence": "plain_language_claim_present"
-        },
-        "independent_source_support": {
-          "status": "pass",
-          "evidence": "all_cited_sources_verified_and_independent",
-          "detail": "2/2"
-        },
-        "source_scope_matches_claim": {
-          "status": "partial",
-          "evidence": "verified_sources_but_scope_reaudit_incomplete"
-        },
-        "runtime_research_alignment": {
-          "status": "unresolved",
-          "evidence": "runtime_research_alignment_not_reconciled"
-        },
-        "executable_positive_cases_present": {
-          "status": "pass",
-          "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "28"
-        },
-        "negative_boundaries_complete": {
-          "status": "partial",
-          "evidence": "negative_boundaries_incomplete"
-        },
-        "reviewed_corpus_evidence": {
-          "status": "not_started",
-          "evidence": "no_reviewed_corpus_evidence"
-        },
-        "role_neutral_panel_threshold": {
-          "status": "partial",
-          "evidence": "panel_evidence_incomplete",
-          "detail": "{\"clean_instrument\":false,\"minimum_item_n_30\":false,\"role_neutral\":false,\"instrument_quality_resolved\":false,\"quality_screen_complete\":false,\"adjudication_complete\":false,\"critical_contrasts_complete\":false,\"positive_contrasts_reviewed\":false,\"negative_contrasts_reviewed\":false}"
-        },
-        "held_out_validation": {
-          "status": "not_started",
-          "evidence": "no_passing_held_out_record"
-        },
-        "ontology_conflicts_resolved": {
-          "status": "unresolved",
-          "evidence": "identity_label_review_pending"
-        }
-      },
-      "supported_gate_eligible": false,
-      "supported_gate_blockers": [
-        "requirement_failed:locked_clean_panel_instrument",
-        "requirement_failed:minimum_thirty_usable_judgments_per_critical_item",
-        "requirement_failed:role_neutral_panel",
-        "requirement_failed:instrument_quality_resolved",
-        "requirement_failed:quality_screen_complete",
-        "requirement_failed:panel_adjudication_complete",
-        "requirement_failed:critical_contrast_coverage_complete",
-        "requirement_failed:positive_and_negative_contrasts_reviewed",
-        "requirement_failed:negative_boundary_inventory_complete",
-        "requirement_failed:code_document_reconciled",
-        "requirement_failed:current_code_review_metadata",
-        "requirement_failed:current_standard_reaudit_complete"
-      ],
-      "discovery_hard_blockers": [
-        "discovery_gate:reviewed_corpus_evidence",
-        "discovery_gate:held_out_validation",
-        "discovery_gate:ontology_conflicts_resolved"
-      ],
-      "readiness_score": 48,
-      "candidate_state": "source_supported",
-      "nearest_missing_gate": "source_scope_matches_claim",
-      "next_best_action": "complete source-scope reaudit and split any unsupported extensions",
-      "automatic_risk_flags": [],
-      "source_path": "grammar/research_pending/TransitiveVP.md"
-    },
-    {
       "construction_uuid": "eaf07194-ff97-5198-9e22-556e382394a6",
       "construction_code": "AB80",
       "canonical_name": "VerbComplementVP",
@@ -13180,7 +13178,7 @@
       "source_ids": [],
       "preserved_source_ids": [],
       "future_research_preserved_as": "",
-      "standard_positive_test_count": 118,
+      "standard_positive_test_count": 117,
       "standard_boundary_test_count": 2,
       "gates": {
         "language_claim_defined": {
@@ -13203,7 +13201,7 @@
         "executable_positive_cases_present": {
           "status": "pass",
           "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "118"
+          "detail": "117"
         },
         "negative_boundaries_complete": {
           "status": "partial",

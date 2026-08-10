@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-regression-snapshot-v2",
-  "runtime_version": "0.5.222",
+  "runtime_version": "0.5.223",
   "generated_from_runner_count": 548,
   "case_count": 548,
   "errors": [],
@@ -89131,72 +89131,28 @@
       "expected": {
         "summary": {
           "top_constructions": [
-            "SubjectPredicateClause"
+            "ApproximateQuantity"
           ],
           "top_child_constructions": [],
           "context_requirement_status": "context_not_required",
           "antecedent_status": "not_applicable",
           "missing_argument_slots": [],
-          "root_span_coverage_status": "PASS",
+          "root_span_coverage_status": "PARTIAL",
           "root_top_construction_count": 1,
-          "unwrapped_root_nonpunctuation_count": 0,
-          "unwrapped_root_surfaces": []
+          "unwrapped_root_nonpunctuation_count": 2,
+          "unwrapped_root_surfaces": [
+            "我",
+            "飲"
+          ],
+          "semantic_review_flags": [
+            "partial_root_span_unwrapped_material"
+          ]
         },
         "tree": [
           {
-            "kind": "construction",
+            "kind": "token",
             "depth": 0,
             "parent": "",
-            "surface": "我飲七杯度喇",
-            "construction": "SubjectPredicateClause",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "action_verb",
-              "action_vp",
-              "approximate_quantity",
-              "clause",
-              "co_participant",
-              "construction_span",
-              "head_noun",
-              "np",
-              "object",
-              "particle",
-              "predicate",
-              "recipient",
-              "stance_holder",
-              "subject",
-              "subject_predicate_clause",
-              "topic",
-              "transitive_vp",
-              "vp"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "SubjectPredicateClause",
-              "template_family": "generative_template",
-              "template": [
-                "subject!",
-                "predicate!",
-                "particle?"
-              ],
-              "assigned_slots": [
-                "subject",
-                "predicate"
-              ],
-              "surfaces": [
-                "我",
-                "飲七杯度喇"
-              ]
-            }
-          },
-          {
-            "kind": "token",
-            "depth": 1,
-            "parent": "SubjectPredicateClause",
             "surface": "我",
             "construction": "",
             "role": "who",
@@ -89232,66 +89188,20 @@
             }
           },
           {
-            "kind": "construction",
-            "depth": 1,
-            "parent": "SubjectPredicateClause",
-            "surface": "飲七杯度喇",
-            "construction": "TransitiveVP",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "action_verb",
-              "action_vp",
-              "approximate_quantity",
-              "object",
-              "particle",
-              "predicate",
-              "transitive_vp",
-              "vp"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "TransitiveVP",
-              "template_family": "generative_template",
-              "template": [
-                "consumption_verb!",
-                "approximate_quantity!",
-                "particle?"
-              ],
-              "assigned_slots": [
-                "consumption_verb",
-                "approximate_quantity",
-                "particle"
-              ],
-              "surfaces": [
-                "飲",
-                "七杯度",
-                "喇"
-              ],
-              "not_claims": [
-                "not_bare_classifier_head_ellipsis",
-                "not_fabricated_nominal_head",
-                "not_exact_quantity"
-              ]
-            }
-          },
-          {
             "kind": "token",
-            "depth": 2,
-            "parent": "TransitiveVP",
+            "depth": 0,
+            "parent": "",
             "surface": "飲",
             "construction": "",
             "role": "doing",
-            "syntax": "main_verb action_verb consumption_verb",
+            "syntax": "verb transitive_affordance chain_select_drinkable",
             "jyutping": "jam2",
             "slots": [
               "action_verb",
               "consumption_verb",
               "main_verb",
-              "predicate"
+              "predicate",
+              "stative_complement_head"
             ],
             "contextual_role_affordances": [
               {
@@ -89308,8 +89218,8 @@
           },
           {
             "kind": "construction",
-            "depth": 2,
-            "parent": "TransitiveVP",
+            "depth": 0,
+            "parent": "",
             "surface": "七杯度",
             "construction": "ApproximateQuantity",
             "role": "",
@@ -89356,7 +89266,7 @@
           },
           {
             "kind": "token",
-            "depth": 3,
+            "depth": 1,
             "parent": "ApproximateQuantity",
             "surface": "七",
             "construction": "",
@@ -89381,7 +89291,7 @@
           },
           {
             "kind": "token",
-            "depth": 3,
+            "depth": 1,
             "parent": "ApproximateQuantity",
             "surface": "杯",
             "construction": "",
@@ -89406,7 +89316,7 @@
           },
           {
             "kind": "token",
-            "depth": 3,
+            "depth": 1,
             "parent": "ApproximateQuantity",
             "surface": "度",
             "construction": "",
@@ -89438,8 +89348,8 @@
           },
           {
             "kind": "token",
-            "depth": 2,
-            "parent": "TransitiveVP",
+            "depth": 0,
+            "parent": "",
             "surface": "喇",
             "construction": "",
             "role": "particle",
@@ -89512,7 +89422,9 @@
         "analysis_validation_status": "NOT_PERFORMED",
         "disposition": "quarantine_approximate_quantity_fixture_pending_analysis"
       },
-      "case_id": "REG-0296"
+      "case_id": "REG-0296",
+      "accepted_transition": "v0.5.223_ab78_approximate_measure_boundary",
+      "transition_reason": "AB78 now requires an overt typed object or explicit independently licensed gap relation; approximate measured quantity remains typed but no longer fabricates TransitiveVP or dependent ClauseSpan ownership."
     },
     {
       "source": "我想一。",
@@ -129740,79 +129652,38 @@
       "expected": {
         "summary": {
           "top_constructions": [
-            "TransitiveVP"
+            "ApproximateQuantity"
           ],
           "top_child_constructions": [],
           "context_requirement_status": "context_not_required",
           "antecedent_status": "not_applicable",
           "missing_argument_slots": [],
-          "root_span_coverage_status": "PASS",
+          "root_span_coverage_status": "PARTIAL",
           "root_top_construction_count": 1,
-          "unwrapped_root_nonpunctuation_count": 0,
-          "unwrapped_root_surfaces": []
+          "unwrapped_root_nonpunctuation_count": 1,
+          "unwrapped_root_surfaces": [
+            "飲"
+          ],
+          "semantic_review_flags": [
+            "partial_root_span_unwrapped_material"
+          ]
         },
         "tree": [
           {
-            "kind": "construction",
+            "kind": "token",
             "depth": 0,
             "parent": "",
-            "surface": "飲七杯度喇",
-            "construction": "TransitiveVP",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "action_verb",
-              "action_vp",
-              "approximate_quantity",
-              "object",
-              "particle",
-              "predicate",
-              "transitive_vp",
-              "vp"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "TransitiveVP",
-              "template_family": "generative_template",
-              "template": [
-                "consumption_verb!",
-                "approximate_quantity!",
-                "particle?"
-              ],
-              "assigned_slots": [
-                "consumption_verb",
-                "approximate_quantity",
-                "particle"
-              ],
-              "surfaces": [
-                "飲",
-                "七杯度",
-                "喇"
-              ],
-              "not_claims": [
-                "not_bare_classifier_head_ellipsis",
-                "not_fabricated_nominal_head",
-                "not_exact_quantity"
-              ]
-            }
-          },
-          {
-            "kind": "token",
-            "depth": 1,
-            "parent": "TransitiveVP",
             "surface": "飲",
             "construction": "",
             "role": "doing",
-            "syntax": "main_verb action_verb consumption_verb",
+            "syntax": "verb transitive_affordance chain_select_drinkable",
             "jyutping": "jam2",
             "slots": [
               "action_verb",
               "consumption_verb",
               "main_verb",
-              "predicate"
+              "predicate",
+              "stative_complement_head"
             ],
             "contextual_role_affordances": [
               {
@@ -129829,8 +129700,8 @@
           },
           {
             "kind": "construction",
-            "depth": 1,
-            "parent": "TransitiveVP",
+            "depth": 0,
+            "parent": "",
             "surface": "七杯度",
             "construction": "ApproximateQuantity",
             "role": "",
@@ -129877,7 +129748,7 @@
           },
           {
             "kind": "token",
-            "depth": 2,
+            "depth": 1,
             "parent": "ApproximateQuantity",
             "surface": "七",
             "construction": "",
@@ -129902,7 +129773,7 @@
           },
           {
             "kind": "token",
-            "depth": 2,
+            "depth": 1,
             "parent": "ApproximateQuantity",
             "surface": "杯",
             "construction": "",
@@ -129927,7 +129798,7 @@
           },
           {
             "kind": "token",
-            "depth": 2,
+            "depth": 1,
             "parent": "ApproximateQuantity",
             "surface": "度",
             "construction": "",
@@ -129959,8 +129830,8 @@
           },
           {
             "kind": "token",
-            "depth": 1,
-            "parent": "TransitiveVP",
+            "depth": 0,
+            "parent": "",
             "surface": "喇",
             "construction": "",
             "role": "particle",
@@ -130020,7 +129891,9 @@
           }
         }
       },
-      "case_id": "REG-0465"
+      "case_id": "REG-0465",
+      "accepted_transition": "v0.5.223_ab78_approximate_measure_boundary",
+      "transition_reason": "AB78 now requires an overt typed object or explicit independently licensed gap relation; approximate measured quantity remains typed but no longer fabricates TransitiveVP or dependent ClauseSpan ownership."
     },
     {
       "source": "飲返杯咖啡。",
@@ -156087,6 +155960,6 @@
   },
   "last_absorbed_candidate": "v0.5.218-aa56-positive-participant-runtime",
   "absorbed_current_focused_case_count": 4,
-  "last_intentional_transition": "v0.5.222_AB45_source_bounded_quantified_classifier_np",
+  "last_intentional_transition": "v0.5.223_ab78_predicate_object_alignment",
   "abandoned_candidate": "v0.5.183-cp024-p1-demo01-r1"
 }

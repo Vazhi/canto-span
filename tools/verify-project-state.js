@@ -20,16 +20,6 @@ const BASELINE_FIELDS = {
   "Pending UUID adjudications": "pending_uuid_adjudications",
 };
 
-const DISCOVERY_STATES = [
-  "boundary_ready",
-  "source_supported",
-  "narrowing_candidate",
-  "excluded_nonlanguage",
-  "lexicalized_review",
-  "retired_evidence_rehome_candidate",
-  "retired_research_gap",
-];
-
 const FIELD_SOURCES = {
   runtime_version: ["manifest.json", "manifest.version"],
   runtime_labels: ["grammar/<linguistic-status>/*.md", "loadConstructionNotes"],
@@ -55,12 +45,6 @@ for (const status of LINGUISTIC_STATUSES) {
     "loadConstructionNotes",
   ];
 }
-for (const state of DISCOVERY_STATES) {
-  FIELD_SOURCES[`discovery_state.${state}`] = [
-    "data/construction-candidate-readiness.json",
-    "node tools/generate-supported-productive-discovery.js",
-  ];
-}
 
 function readJson(root, relativePath) {
   return JSON.parse(fs.readFileSync(path.join(root, relativePath), "utf8"));
@@ -72,6 +56,14 @@ function countBy(records, field) {
     counts[value] = (counts[value] || 0) + 1;
     return counts;
   }, {});
+}
+
+function sortedNumericObject(object = {}) {
+  return Object.fromEntries(
+    Object.entries(object)
+      .sort(([left], [right]) => left.localeCompare(right))
+      .map(([key, value]) => [key, Number(value || 0)])
+  );
 }
 
 function deriveProjectState(root) {
@@ -109,9 +101,7 @@ function deriveProjectState(root) {
     expert_adjudicated_uuids: identityReviews.complete || 0,
     pending_uuid_adjudications: identityReviews.pending || 0,
     linguistic_status: statusCounts,
-    discovery_state: Object.fromEntries(
-      DISCOVERY_STATES.map((state) => [state, readiness.state_counts[state] || 0])
-    ),
+    discovery_state: sortedNumericObject(readiness.state_counts),
     promotion_ready: readiness.promotion_eligible_now_count,
     regression_cases: regression.cases.length,
     np_subsystem_cases: npSubsystem.cases.length,
@@ -160,12 +150,33 @@ function tableRows(markdown) {
   return rows;
 }
 
+function candidateStateRows(markdown) {
+  const marker = "| Candidate state | Records |";
+  const start = markdown.indexOf(marker);
+  if (start < 0) return new Map();
+  const block = markdown.slice(start).split(/\r?\n\s*\r?\n/, 1)[0];
+  const rows = new Map();
+  for (const line of block.split(/\r?\n/)) {
+    const match = line.match(/^\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|$/);
+    if (!match) continue;
+    const label = cleanCell(match[1]);
+    if (label === "Candidate state" || /^-+$/.test(label)) continue;
+    const value = cleanCell(match[2]);
+    if (/^-+$/.test(value)) continue;
+    const values = rows.get(label) || [];
+    values.push(value);
+    rows.set(label, values);
+  }
+  return rows;
+}
+
 function markerMatches(markdown, pattern, mapMatch) {
   return [...markdown.matchAll(pattern)].map(mapMatch);
 }
 
-function parseProjectState(markdown) {
+function parseProjectState(markdown, discoveryStates = []) {
   const rows = tableRows(markdown);
+  const discoveryRows = candidateStateRows(markdown);
   const fields = {};
 
   for (const [label, field] of Object.entries(BASELINE_FIELDS)) {
@@ -174,8 +185,8 @@ function parseProjectState(markdown) {
   for (const status of LINGUISTIC_STATUSES) {
     fields[`linguistic_status.${status}`] = rows.get(status) || [];
   }
-  for (const state of DISCOVERY_STATES) {
-    fields[`discovery_state.${state}`] = rows.get(state) || [];
+  for (const state of discoveryStates) {
+    fields[`discovery_state.${state}`] = discoveryRows.get(state) || [];
   }
 
   fields.promotion_ready = markerMatches(
@@ -226,6 +237,12 @@ function flattenDerived(derived) {
 }
 
 function sourceFor(field) {
+  if (field.startsWith("discovery_state.")) {
+    return {
+      source: "data/construction-candidate-readiness.json",
+      command: "node tools/generate-supported-productive-discovery.js",
+    };
+  }
   const [source, command] = FIELD_SOURCES[field] || ["canonical derived state", "verify-project-state"];
   return { source, command };
 }
@@ -245,7 +262,9 @@ function invariantFailure(field, declared, derived, source, command) {
 }
 
 function compareProjectState(markdown, derived) {
-  const declared = parseProjectState(markdown);
+  const discoveryStates = Object.keys(derived.discovery_state || {});
+  const declared = parseProjectState(markdown, discoveryStates);
+  const declaredDiscoveryRows = candidateStateRows(markdown);
   const canonical = flattenDerived(derived);
   const failures = [];
 
@@ -263,6 +282,17 @@ function compareProjectState(markdown, derived) {
     if (actual !== expected) {
       failures.push(fieldFailure("stale_declared_field", field, actual, expected));
     }
+  }
+
+  const canonicalDiscoveryStates = new Set(discoveryStates);
+  for (const [state, values] of declaredDiscoveryRows.entries()) {
+    if (canonicalDiscoveryStates.has(state)) continue;
+    failures.push(fieldFailure(
+      "unexpected_declared_discovery_state",
+      `discovery_state.${state}`,
+      values,
+      null
+    ));
   }
 
   const statusTotal = Object.values(derived.linguistic_status).reduce((sum, value) => sum + value, 0);
@@ -385,7 +415,7 @@ if (require.main === module) {
 
 module.exports = {
   BASELINE_FIELDS,
-  DISCOVERY_STATES,
+  candidateStateRows,
   compareProjectState,
   deriveProjectState,
   parseProjectState,

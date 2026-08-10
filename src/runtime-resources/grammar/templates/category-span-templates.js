@@ -542,24 +542,6 @@ module.exports = [
   {
     type: "TransitiveVP",
     label: "VP",
-    template: ["consumption_verb!", "approximate_quantity!", "particle?"],
-    template_family: "generative_template",
-    role_overrides: {
-      consumption_verb: {
-        label: "doing",
-        syntax: "main_verb action_verb consumption_verb",
-        slots: ["action_verb", "main_verb", "predicate", "consumption_verb"],
-        note: "Action verb governing a transparent approximate measured-quantity object."
-      }
-    },
-    output_slots: ["transitive_vp", "vp", "action_vp", "predicate", "action_verb", "object", "approximate_quantity", "particle"],
-    object_semantics: "approximate_measured_quantity_object",
-    not_claims: ["not_bare_classifier_head_ellipsis", "not_fabricated_nominal_head", "not_exact_quantity"],
-    note: "Broad transitive VP with a transparent approximate measured-quantity object and optional final particle."
-  },
-  {
-    type: "TransitiveVP",
-    label: "VP",
     template: ["action_verb!", "object!"],
     constraints: {
       slot_must_not_be_bare_quantity_token: ["object"],
