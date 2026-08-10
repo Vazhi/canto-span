@@ -1,0 +1,247 @@
+diff --git a/tests/constructions/ClauseSpan.json b/tests/constructions/ClauseSpan.json
+index 4a51454..4593734 100644
+--- a/tests/constructions/ClauseSpan.json
++++ b/tests/constructions/ClauseSpan.json
+@@ -556,14 +556,6 @@
+       ],
+       "assertion": "construction_present_in_exact_snapshot"
+     },
+-    {
+-      "case_id": "REG-0204",
+-      "source": "我上去。",
+-      "origins": [
+-        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+-      ],
+-      "assertion": "construction_present_in_exact_snapshot"
+-    },
+     {
+       "case_id": "REG-0205",
+       "source": "我冇去，因為落雨。",
+@@ -856,23 +848,6 @@
+       ],
+       "assertion": "construction_present_in_exact_snapshot"
+     },
+-    {
+-      "case_id": "REG-0300",
+-      "source": "我落嚟。",
+-      "origins": [
+-        "run-current-focused.js:v0.5.160-r2-rendered-accepted",
+-        "run-current-focused.js"
+-      ],
+-      "assertion": "construction_present_in_exact_snapshot"
+-    },
+-    {
+-      "case_id": "REG-0301",
+-      "source": "我落嚟摘芒果食。",
+-      "origins": [
+-        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+-      ],
+-      "assertion": "construction_present_in_exact_snapshot"
+-    },
+     {
+       "case_id": "REG-0303",
+       "source": "我寫三個字。",
+diff --git a/tests/constructions/DirectedMannerMotionVP.json b/tests/constructions/DirectedMannerMotionVP.json
+index f561e16..25acec4 100644
+--- a/tests/constructions/DirectedMannerMotionVP.json
++++ b/tests/constructions/DirectedMannerMotionVP.json
+@@ -82,7 +82,22 @@
+     }
+   ],
+   "np_cases": [],
+-  "implementation_probe_cases": [],
++  "implementation_probe_cases": [
++    {
++      "case_id": "AA49-ALIGN-DMM-01",
++      "source": "行返過嚟。",
++      "class": "aa49_neighboring_complex_path_implementation_probe",
++      "expected_profile": "DirectedMannerMotionVP owns manner + complex path sequence; DirectionalMotionVP absent",
++      "assertion": "construction_present",
++      "provenance": "docs/research/ISSUE-712-AA49-INDEPENDENT-MOTION-PROFILES-R1.md#profile-d-manner--direction-sequence",
++      "source_ids": [
++        "SRC-SHAN-JIN-2025-MOTION-TYPOLOGY"
++      ],
++      "linguistic_evidence_weight": 0,
++      "purpose": "runtime_reachability_only",
++      "source_role": "source_bounded_generated_runtime_probe"
++    }
++  ],
+   "coverage": {
+     "state": "positive_and_boundary",
+     "exact_snapshot_positive_count": 6,
+diff --git b/tests/tooling/runtime/aa49-independent-motion-boundary.test.js b/tests/tooling/runtime/aa49-independent-motion-boundary.test.js
+new file mode 100644
+index 0000000..ec7c43f
+--- /dev/null
++++ b/tests/tooling/runtime/aa49-independent-motion-boundary.test.js
+@@ -0,0 +1,97 @@
++"use strict";
++
++const test = require("node:test");
++const assert = require("node:assert/strict");
++const { loadRuntimeApi, internalConstruction, rowSurface } = require("../../lib/runtime-api");
++
++const api = loadRuntimeApi();
++
++function constructionRows(source) {
++  return api.diagnosticFinalRows(api.analyzeLine(source))
++    .filter((row) => row.kind === "construction");
++}
++
++function rowsOfType(source, type) {
++  return constructionRows(source).filter((row) => internalConstruction(row) === type);
++}
++
++function assertNoAA49(source) {
++  assert.equal(rowsOfType(source, "DirectionalMotionVP").length, 0, source);
++}
++
++test("AA49 remains a one-word independent motion predicate inside goal and aspect structure", () => {
++  const go = rowsOfType("我去香港。", "DirectionalMotionVP");
++  assert.equal(go.length, 1);
++  assert.equal(rowSurface(go[0]), "去");
++  assert.equal(go[0].internal_parent || go[0].parent, "MotionGoalVP");
++  const goSpan = go[0].trace_detail.construction_provenance.source_span;
++  assert.equal(goSpan.status, "unique");
++  assert.equal(goSpan.start, 1);
++  assert.equal(goSpan.end, 2);
++  assert.equal(goSpan.relative_to, "raw_source");
++
++  const down = rowsOfType("佢落咗樓下。", "DirectionalMotionVP");
++  assert.equal(down.length, 1);
++  assert.equal(rowSurface(down[0]), "落");
++  assert.equal(down[0].internal_parent || down[0].parent, "MotionGoalVP");
++  assert.equal(down[0].trace_detail.aa49_scope, "single_independent_motion_predicate");
++
++  const leave = rowsOfType("架車走咗。", "DirectionalMotionVP");
++  assert.equal(leave.length, 1);
++  assert.equal(rowSurface(leave[0]), "走");
++  assert.equal(leave[0].internal_parent || leave[0].parent, "PerfectiveVP");
++  assert.equal(leave[0].trace_detail.aa49_scope, "single_independent_motion_predicate");
++});
++
++test("AA49 does not own multi-part or manner-directional profiles", () => {
++  for (const source of [
++    "返嚟。", "返去。", "上嚟。", "落嚟。",
++    "我上去。", "我落嚟。", "我返嚟。", "我返去。",
++    "行入去。", "行出嚟。", "行返過嚟。",
++  ]) assertNoAA49(source);
++
++  assert.equal(rowsOfType("行入去。", "DirectedMannerMotionVP").length, 1);
++  assert.equal(rowsOfType("行出嚟。", "DirectedMannerMotionVP").length, 1);
++  assert.equal(rowsOfType("行返過嚟。", "DirectedMannerMotionVP").length, 1);
++  assert.equal(rowsOfType("上嚟。", "TemporalClause").length, 0, "上嚟 must not fall into the temporal fallback");
++  assert.equal(rowsOfType("行返過嚟。", "ExperientialVP").length, 0, "path 過 must not become experiential 過");
++});
++
++test("postverbal return-direction material remains a neighboring complement, not AA49", () => {
++  for (const source of [
++    "寄返去。",
++    "攞返嚟。",
++    "我攞本書返嚟畀你睇。",
++    "我帶咗三部機去啊。",
++  ]) assertNoAA49(source);
++
++  assert.equal(rowsOfType("寄返去。", "VerbComplementVP").length, 1);
++  assert.equal(rowsOfType("攞返嚟。", "VerbComplementVP").length, 1);
++  assert.equal(rowsOfType("我攞本書返嚟畀你睇。", "VerbComplementVP").length, 1);
++});
++
++test("outer modifier, particle, and environmental owners retain precedence", () => {
++  assert.equal(rowsOfType("快啲行上去啦。", "DegreeMannerModifiedVP").length, 1);
++  assert.equal(rowsOfType("快啲行上去啦。", "DirectedMannerMotionVP").length, 1);
++  assertNoAA49("快啲行上去啦。");
++
++  const directive = rowsOfType("你走啦。", "DirectionalMotionVP");
++  assert.equal(directive.length, 1);
++  assert.equal(rowSurface(directive[0]), "走");
++  assert.equal(rowsOfType("你走啦。", "DiscourseParticleFrame").length, 1);
++
++  assertNoAA49("聽日會落雨。");
++  assertNoAA49("會唔會落雨？");
++  assert.equal(rowsOfType("聽日會落雨。", "ImpersonalEnvironmentalClause").length, 1);
++  assert.equal(rowsOfType("會唔會落雨？", "ImpersonalEnvironmentalClause").length, 1);
++});
++
++test("non-motion 嚟 and reviewed historical overreach do not regain AA49 through surface matching", () => {
++  for (const source of [
++    "圖書館係乜嘢嚟㗎。",
++    "呢個用嚟切嘢。",
++    "佢會返嚟啩。",
++    "我落嚟摘芒果食。",
++    "落嚟摘芒果食。",
++  ]) assertNoAA49(source);
++});
+diff --git a/tests/run-all.js b/tests/run-all.js
+index 7f6881c..8dde399 100755
+--- a/tests/run-all.js
++++ b/tests/run-all.js
+@@ -17,6 +17,7 @@ const commands = [
+   ["label_transition_policy", path.join(root, "tests", "tooling", "runtime", "label-transition-policy.test.js")],
+   ["ab33_outer_question_composition", path.join(root, "tests", "tooling", "runtime", "ab33-outer-question-composition.test.js")],
+   ["aa11_change_into_dim_boundary", path.join(root, "tests", "tooling", "runtime", "aa11-change-into-dim-boundary.test.js")],
++  ["aa49_independent_motion_boundary", path.join(root, "tests", "tooling", "runtime", "aa49-independent-motion-boundary.test.js")],
+   ["aa61_experiential_question_boundary", path.join(root, "tests", "tooling", "runtime", "aa61-experiential-question-boundary.test.js")],
+   ["aa84_marked_manner_boundary", path.join(root, "tests", "tooling", "runtime", "aa84-marked-manner-boundary.test.js")],
+   ["parser_coverage_auditor", path.join(root, "tests", "tooling", "parser-coverage", "coverage.test.js")],
+diff --git a/package.json b/package.json
+index 61d8723..096c21c 100644
+--- a/package.json
++++ b/package.json
+@@ -1,7 +1,7 @@
+ {
+   "name": "canto-span",
+   "private": true,
+-  "version": "0.5.220",
++  "version": "0.5.221",
+   "description": "Cantonese parser and evidence-governance project",
+   "scripts": {
+     "build:runtime": "node tools/build-runtime.js",
+diff --git a/package-lock.json b/package-lock.json
+index 7254086..6c96cf0 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -1,12 +1,12 @@
+ {
+   "name": "canto-span",
+-  "version": "0.5.220",
++  "version": "0.5.221",
+   "lockfileVersion": 3,
+   "requires": true,
+   "packages": {
+     "": {
+       "name": "canto-span",
+-      "version": "0.5.220",
++      "version": "0.5.221",
+       "devDependencies": {
+         "esbuild": "0.28.1"
+       }
+diff --git a/manifest.json b/manifest.json
+index 3feded1..e2fd764 100644
+--- a/manifest.json
++++ b/manifest.json
+@@ -1,9 +1,9 @@
+ {
+   "id": "canto-span",
+   "name": "Canto Span",
+-  "version": "0.5.220",
++  "version": "0.5.221",
+   "minAppVersion": "1.5.0",
+-  "description": "v0.5.220 narrows AA11 to exact adjacent 變成 + 點 and closes neighboring result-complement boundaries.",
++  "description": "v0.5.221 narrows AA49 to independently predicative single motion/path items while routing complex and postverbal directional material to neighboring structures.",
+   "author": "Chris Crawford / OpenAI ChatGPT",
+   "authorUrl": "",
+   "isDesktopOnly": false
+diff --git a/docs/current/PROJECT-STATE.md b/docs/current/PROJECT-STATE.md
+index 43de4b2..2a65b39 100644
+--- a/docs/current/PROJECT-STATE.md
++++ b/docs/current/PROJECT-STATE.md
+@@ -6,7 +6,7 @@ This file is the sole present-tense project snapshot. Live GitHub intake and wor
+ 
+ | Measure | Current value |
+ |---|---:|
+-| Runtime | v0.5.220 |
++| Runtime | v0.5.221 |
+ | Runtime labels | 134 |
+ | Current construction notes | 134 |
+ | Available construction notes | 134 |
