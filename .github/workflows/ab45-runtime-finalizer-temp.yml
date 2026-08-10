@@ -1,0 +1,166 @@
+name: AB45 one-shot claimed branch finalizer
+
+on:
+  pull_request:
+    types: [synchronize]
+    paths:
+      - "**"
+
+permissions:
+  contents: write
+  pull-requests: read
+
+jobs:
+  finalize:
+    if: >-
+      github.event.pull_request.number == 729 &&
+      github.event.pull_request.head.ref == 'agent/ab45-quantified-classifier-runtime' &&
+      github.event.pull_request.base.ref == 'main'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ab45-runtime-finalizer-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
+    steps:
+      - name: Checkout exact claimed PR head
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - name: Enforce claim, base, and staging preconditions
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${{ github.event.pull_request.number }}" = "729"
+          test "${{ github.event.pull_request.head.ref }}" = "agent/ab45-quantified-classifier-runtime"
+          test "${{ github.event.pull_request.base.ref }}" = "main"
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+          git fetch --no-tags origin main
+          test "$(git merge-base HEAD origin/main)" = "f828eccb062037ec7be0758a9f5030f64ed3a5d8"
+          git diff --name-only origin/main...HEAD | sort > /tmp/ab45-stage.txt
+          cat > /tmp/ab45-expected-stage.txt <<'EOF'
+          .github/ab45-finalize/ab45.patch.gz.b64
+          .github/tmp-ab45-finalize.js
+          .github/workflows/ab45-runtime-finalizer-temp.yml
+          EOF
+          sed -i 's/^          //' /tmp/ab45-expected-stage.txt
+          sort -u /tmp/ab45-expected-stage.txt -o /tmp/ab45-expected-stage.txt
+          diff -u /tmp/ab45-expected-stage.txt /tmp/ab45-stage.txt
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Apply locally validated AB45 source/test/version patch
+        shell: bash
+        run: |
+          set -euo pipefail
+          base64 -d .github/ab45-finalize/ab45.patch.gz.b64 | gzip -dc > /tmp/ab45.patch
+          git apply --check /tmp/ab45.patch
+          git apply /tmp/ab45.patch
+      - name: Add reviewed focused cases and exact regression transition
+        run: node .github/tmp-ab45-finalize.js
+      - name: Canonically regenerate construction metadata, discovery, and runtime
+        shell: bash
+        run: |
+          set -euo pipefail
+          node tools/build-construction-tests.js
+          node tools/sync-construction-test-metadata.js
+          node <<'NODE'
+          const fs = require('fs');
+          const index = JSON.parse(fs.readFileSync('tests/construction-test-index.json', 'utf8'));
+          const total = index.files.reduce((sum, row) => sum + Number(row.executable_case_count || 0), 0);
+          let state = fs.readFileSync('docs/current/PROJECT-STATE.md', 'utf8');
+          state = state.replace(/per-construction assertions: \*\*[0-9,]+\*\* across \*\*134\*\* files;/, `per-construction assertions: **${total.toLocaleString('en-US')}** across **134** files;`);
+          state = state.replace(/\| Per-construction assertions \| [0-9,]+ \|/, `| Per-construction assertions | ${total.toLocaleString('en-US')} |`);
+          fs.writeFileSync('docs/current/PROJECT-STATE.md', state);
+          console.log(JSON.stringify({ per_construction_assertions: total }));
+          NODE
+          npm run discovery:generate
+          npm run build:runtime
+      - name: Focused AB45 and NP boundary checks
+        run: |
+          node --test tests/tooling/runtime/ab45-quantified-classifier-boundary.test.js
+          npm run test:np
+      - name: Regression and construction suites
+        run: |
+          npm run test:regression
+          npm run test:constructions
+      - name: Permanent parser architecture gate
+        run: |
+          npm run test:parser-architecture
+          npm run audit:parser-architecture
+      - name: Runtime, core, research, discovery, identity, coordination
+        run: |
+          npm run verify:runtime
+          npm run verify
+          npm run verify:research
+          npm run verify:discovery
+          npm run verify:identities
+          npm run test:coordination
+      - name: Remove verifier reports and all temporary finalization inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          git restore --source=HEAD --worktree --staged -- validation/current 2>/dev/null || true
+          git clean -fd -- validation/current 2>/dev/null || true
+          rm -rf .github/ab45-finalize
+          rm -f .github/tmp-ab45-finalize.js
+          rm -f .github/workflows/ab45-runtime-finalizer-temp.yml
+      - name: Enforce final claimed scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --check
+          { git diff --name-only HEAD; git ls-files --others --exclude-standard; } | sort -u > /tmp/ab45-final.txt
+          echo '--- final AB45 paths ---'
+          cat /tmp/ab45-final.txt
+          while IFS= read -r p; do
+            case "$p" in
+              data/construction-candidate-readiness.json|
+              docs/current/PROJECT-STATE.md|
+              main.js|
+              manifest.json|
+              package.json|
+              package-lock.json|
+              src/plugin-entry.js|
+              src/parser/templates/template-matcher.js|
+              src/parser/context/descriptors.js|
+              src/parser/context/licensed-fragments.js|
+              src/parser/context/apply-context-contract.js|
+              src/runtime-resources/grammar/templates/category-span-templates.js|
+              tests/fixtures/np-subsystem.json|
+              tests/fixtures/regression-snapshots.json|
+              tests/run-np-subsystem.js|
+              tests/run-all.js|
+              tests/tooling/runtime/ab45-quantified-classifier-boundary.test.js|
+              tests/construction-test-index.json|
+              tests/constructions/*.json|
+              grammar/*/*.md) ;;
+              *) echo "Unexpected path outside AB45 claim: $p" >&2; exit 1 ;;
+            esac
+          done < /tmp/ab45-final.txt
+          for required in \
+            src/runtime-resources/grammar/templates/category-span-templates.js \
+            src/parser/templates/template-matcher.js \
+            src/parser/context/licensed-fragments.js \
+            tests/constructions/QuantifiedClassifierNP.json \
+            tests/fixtures/np-subsystem.json \
+            tests/fixtures/regression-snapshots.json \
+            tests/tooling/runtime/ab45-quantified-classifier-boundary.test.js \
+            main.js; do
+            grep -Fxq "$required" /tmp/ab45-final.txt || { echo "Missing required AB45 final path: $required" >&2; exit 1; }
+          done
+          if grep -E '^\.github/(ab45-finalize|tmp-ab45|workflows/ab45-runtime-finalizer)' /tmp/ab45-final.txt; then
+            echo 'Temporary AB45 finalization files survived cleanup' >&2
+            exit 1
+          fi
+      - name: Commit exactly the verified claimed state
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "Canto Span ChatGPT Integrator"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          git commit -m "Align AB45 runtime to source-bounded classifier NP"
+          git push origin HEAD:agent/ab45-quantified-classifier-runtime
