@@ -145,14 +145,15 @@ jobs:
           cat /tmp/ab15-final.txt
           while IFS= read -r p; do
             case "$p" in
-              .github/workflows/ab15-alignment-finalizer-temp.yml|grammar/research_pending/OvertHeadDemonstrativeClassifierNP.md|tests/run-all.js|tests/tooling/runtime/ab15-current-alignment.test.js|data/construction-candidate-readiness.json|docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md|docs/research/FULL-REPO-SUPPORTED-PRODUCTIVE-SWEEP-R1.md|docs/current/PROJECT-STATE.md) ;;
-              *) echo "Unexpected AB15 alignment path: $p" >&2; exit 1 ;;
+              .github/workflows/ab15-alignment-finalizer-temp.yml|data/construction-candidate-readiness.json|docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md|docs/research/FULL-REPO-SUPPORTED-PRODUCTIVE-SWEEP-R1.md|docs/current/PROJECT-STATE.md) ;;
+              *) echo "Unexpected generated/finalizer path outside AB15 claim: $p" >&2; exit 1 ;;
             esac
           done < /tmp/ab15-final.txt
-          grep -Fxq 'grammar/research_pending/OvertHeadDemonstrativeClassifierNP.md' /tmp/ab15-final.txt
-          grep -Fxq 'tests/tooling/runtime/ab15-current-alignment.test.js' /tmp/ab15-final.txt
           grep -Fxq 'data/construction-candidate-readiness.json' /tmp/ab15-final.txt
           grep -Fxq 'docs/current/PROJECT-STATE.md' /tmp/ab15-final.txt
+          git diff --name-only origin/main...HEAD | grep -Fxq 'grammar/research_pending/OvertHeadDemonstrativeClassifierNP.md'
+          git diff --name-only origin/main...HEAD | grep -Fxq 'tests/tooling/runtime/ab15-current-alignment.test.js'
+          git diff --name-only origin/main...HEAD | grep -Fxq 'tests/run-all.js'
           test ! -e .github/workflows/ab15-alignment-finalizer-temp.yml
           test "$(node -p 'require("./package.json").version')" = "0.5.222"
           git diff --quiet HEAD -- main.js
