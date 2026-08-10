@@ -19,6 +19,9 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
+      - name: Locate category-template loader
+        run: |
+          grep -R -n --exclude=main.js --exclude-dir=node_modules --exclude-dir=.git 'category-span-templates' src > ab78-loader-hits.txt || true
       - name: Apply minimal candidate in checkout only
         run: |
           python3 <<'PY'
@@ -92,6 +95,7 @@ jobs:
         with:
           name: ab78-runtime-candidate
           path: |
+            ab78-loader-hits.txt
             src/runtime-resources/grammar/templates/category-span-templates.js
             main.js
             ab78-removed-template.txt
