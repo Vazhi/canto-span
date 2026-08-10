@@ -42,7 +42,7 @@ code_document_review_date: null
 code_document_review_commit: null
 code_document_code_locations: []
 current_standard_reaudit_complete: true
-source_scope_matches_claim: false
+source_scope_matches_claim: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
 promotion_gate_version: "v3"
@@ -65,18 +65,27 @@ tags: ["canto-span/grammar", "canto-span/status/research_pending", "canto-span/l
 
 # ProductiveVO
 
+## Canonical identity and runtime compatibility
+
+- Permanent identity: **AB35 `VerbObjectCompound`**.
+- Permanent UUID: `1dcefdcf-a978-5cf5-8045-26db1d6f5c1a`.
+- Legacy runtime label and note path: `ProductiveVO`.
+- Accepted profile: `LexicallyRestrictedVerbObjectCompoundPredicate`.
+- Runtime migration: **pending**; the current 43-entry legacy whitelist remains broader than the canonical linguistic identity.
+- Ordinary transparent V–NP behavior belongs to the separately adjudicated AB78 domain where independently justified.
+
 ## Plain-language claim
 
-The legacy `ProductiveVO` runtime family is **not currently supported as one Cantonese construction**. Source-backed ordinary transitive V–NP syntax must be distinguished from lexical/separable verb–object compounds, and developmental GACS “productivity” must not be treated as parser ontology.
+AB35 represents the independently supported Cantonese lexical verb–object-compound domain. Membership is lexical and item-specific: V–O surface order alone does not establish compound identity, unrestricted productivity, separability, or an ordinary semantic object relation between the visible components.
 
-Cantonese does independently have both ordinary transitive VPs and a lexical V–O-compound domain. The current runtime whitelist mixes those domains with unresolved conventionalized activity expressions. Exact item membership and compound diagnostics are lexical/pattern-specific rather than licensed by a generic productive V+noun rule.
+The current `ProductiveVO` runtime compatibility list is broader than this canonical claim and still mixes source-backed compounds with ordinary V–NP and unresolved activity expressions. Runtime behavior therefore remains intentionally unreconciled pending the separately specified migration.
 
 ## Current status
 
 - Linguistic status: `research_pending`
 - Linguistic confidence: `not_assigned_research_pending`
-- Current action: `mixed_legacy_family_requires_rehoming_before_any_retained_runtime_identity`
-- Behavior/source disposition: `MIXED_LEGACY_FAMILY_REQUIRES_REHOMING`
+- Current action: `canonical_identity_narrowed_runtime_migration_pending`
+- Behavior/source disposition: `NARROW_VERB_OBJECT_COMPOUND_IDENTITY_ACCEPTED_RUNTIME_BROADER`
 - Productive acceptance eligible: **no**
 - Last linguistic review: 2026-08-10
 - Runtime/test frequency carries independent linguistic evidence weight: **0**
@@ -176,12 +185,13 @@ Modal, question, particle, locative, temporal, reported-speech, manner, serial, 
 
 ## Open questions and blockers
 
-- Which current whitelist entries remain correctly typed if legacy AB35 ownership is removed?
-- Which transparent V–NP entries should simply resolve through the accepted AB78 predicate–object route?
-- Which current entries have item-specific evidence for lexical V–O-compound status?
-- Which conventionalized activities remain genuinely unresolved and need controlled native/source diagnostics?
-- After a runtime inventory, should permanent AB35 be retired, narrowed/reinterpreted, or split? Naming must follow the supported behavior; the name `ProductiveVO` cannot force retention.
-- A retained compound identity would need explicit boundaries for object replacement/modification/quantification, aspect or duration separation, topicalization where relevant, preservation/loss of lexical meaning, additional-object behavior, and neighboring transitive/serial/resultative/ditransitive/clausal-complement structures.
+- Migrate the broad legacy `ProductiveVO` whitelist without turning all 43 historical entries into `VerbObjectCompound` positives.
+- Implement the initial source-linked current-whitelist compound seed only for `飲茶`, `游水`, and `沖涼`; `讀書` remains a source-backed research example until runtime lexicon expansion is separately authorized.
+- Preserve visible compound components without deriving an ordinary semantic `object` role merely from their V–O order.
+- Rehome directly supported ordinary V–NP material such as `做功課` through AB78 in a separate runtime task.
+- Resolve `煮嘢食`, `下棋`, and `做運動` independently before removing legacy compatibility behavior that still covers them.
+- Keep `食飯`, `打電話`, `打籃球`, and other conventionalized activity candidates unresolved until item-specific evidence settles their analysis.
+- Complete corpus, role-neutral panel, negative-boundary, and held-out gates before any linguistic promotion.
 
 ## Related constructions
 

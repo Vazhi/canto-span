@@ -29,6 +29,7 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 | `AA74` | `NamZyuVPComplementClause` | `source_supported` | 58 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AB53` | `ResourceInitialJungLaiFunctionClause` | `source_supported` | 58 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AB58` | `M4SyunPropertyEvaluation` | `source_supported` | 58 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
+| `AB35` | `VerbObjectCompound` | `source_supported` | 55 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |
 | `AA17` | `ZiClausalComplementClause` | `source_supported` | 53 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA34` | `PreverbalCoverbNPClause` | `source_supported` | 53 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA45` | `SoengVPComplementClause` | `source_supported` | 53 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
@@ -48,7 +49,6 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 | `AA40` | `HouMarkedPropertyPredicate` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA49` | `IndependentMotionPredicateVP` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AA55` | `SubjectJauPossessiveClause` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
-| `AA76` | `BeiThemeRecipientGiveVP` | `source_supported` | 50 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 
 ## Narrowing candidates
 
@@ -86,6 +86,5 @@ These broad current labels are not direct promotion candidates. Their source-bac
 | `AA03` | `AcceptabilityClause` | `narrowing_candidate` | 63 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AA31` | `CopularANotAQuestion` | `narrowing_candidate` | 63 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AB68` | `SuggestionQuestion` | `narrowing_candidate` | 63 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
-| `AB35` | `ProductiveVO` | `narrowing_candidate` | 43 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 
 Scores rank research efficiency only. Promotion requires every existing supported-productivity requirement plus reviewed corpus evidence, held-out validation, and completed ontology review.
