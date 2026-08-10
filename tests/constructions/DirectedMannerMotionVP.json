@@ -5,6 +5,30 @@
   "migration_phase": 5,
   "snapshot_cases": [
     {
+      "case_id": "REG-0092",
+      "source": "行入去。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0093",
+      "source": "行出嚟。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0096",
+      "source": "行返過嚟。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
       "case_id": "REG-0168",
       "source": "佢行入去。",
       "origins": [
@@ -82,18 +106,33 @@
     }
   ],
   "np_cases": [],
-  "implementation_probe_cases": [],
+  "implementation_probe_cases": [
+    {
+      "case_id": "AA49-ALIGN-DMM-01",
+      "source": "行返過嚟。",
+      "class": "aa49_neighboring_complex_path_implementation_probe",
+      "expected_profile": "DirectedMannerMotionVP owns manner + complex path sequence; DirectionalMotionVP absent",
+      "assertion": "construction_present",
+      "provenance": "docs/research/ISSUE-712-AA49-INDEPENDENT-MOTION-PROFILES-R1.md#profile-d-manner--direction-sequence",
+      "source_ids": [
+        "SRC-SHAN-JIN-2025-MOTION-TYPOLOGY"
+      ],
+      "linguistic_evidence_weight": 0,
+      "purpose": "runtime_reachability_only",
+      "source_role": "source_bounded_generated_runtime_probe"
+    }
+  ],
   "coverage": {
     "state": "positive_and_boundary",
-    "exact_snapshot_positive_count": 6,
+    "exact_snapshot_positive_count": 9,
     "focused_positive_count": 0,
     "focused_boundary_count": 2,
     "focused_review_only_count": 0,
     "np_case_count": 0,
-    "implementation_probe_count": 0,
+    "implementation_probe_count": 1,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 6,
+    "positive_case_count": 9,
     "boundary_case_count": 2,
-    "executable_case_count": 8
+    "executable_case_count": 12
   }
 }

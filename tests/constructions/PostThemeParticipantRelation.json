@@ -3,7 +3,17 @@
   "construction": "PostThemeParticipantRelation",
   "runtime_active": true,
   "migration_phase": 5,
-  "snapshot_cases": [],
+  "snapshot_cases": [
+    {
+      "case_id": "REG-0316",
+      "source": "我攞本書返嚟畀你睇。",
+      "origins": [
+        "run-current-focused.js:v0.5.160-r2-rendered-accepted",
+        "run-current-focused-v0.5.162-r1.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    }
+  ],
   "focused_cases": [
     {
       "case_id": "CP060-PTR-01",
@@ -32,15 +42,15 @@
   "implementation_probe_cases": [],
   "coverage": {
     "state": "positive_and_boundary",
-    "exact_snapshot_positive_count": 0,
+    "exact_snapshot_positive_count": 1,
     "focused_positive_count": 1,
     "focused_boundary_count": 2,
     "focused_review_only_count": 0,
     "np_case_count": 0,
     "implementation_probe_count": 0,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 1,
+    "positive_case_count": 2,
     "boundary_case_count": 2,
-    "executable_case_count": 3
+    "executable_case_count": 4
   }
 }

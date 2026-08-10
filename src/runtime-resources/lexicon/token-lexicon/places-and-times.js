@@ -9,6 +9,7 @@ module.exports = [  // Places / times
   ["餐廳", { label: "what", jyutping: "caan1 teng1", syntax: "restaurant_np", classifier_classes: ["building_shop"], note: "restaurant; place entity, but learner-visible role defaults to what/topic unless used as a location." }],
   ["廁所", { label: "where", jyutping: "ci3 so2", syntax: "place_or_goal", note: "bathroom" }],
   ["香港", { label: "where", jyutping: "hoeng1 gong2", syntax: "place_or_goal", note: "Hong Kong" }],
+  ["樓下", { label: "where", jyutping: "lau4 haa6", syntax: "place_or_goal spatial_localizer", note: "downstairs / lower floor; overt location or motion goal." }],
   ["中環", { label: "where", jyutping: "zung1 waan4", syntax: "place_or_goal", note: "Central, Hong Kong" }],
   ["音樂", { label: "what", jyutping: "jam1 ngok6", syntax: "noun_np_modifier_topic", note: "music; can modify 嘢 in 音樂嘅嘢" }],
   ["下", { label: "when", jyutping: "haa6", syntax: "temporal_modifier_next", note: "next / below depending context" }],

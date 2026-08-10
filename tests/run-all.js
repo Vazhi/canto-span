@@ -17,6 +17,7 @@ const commands = [
   ["label_transition_policy", path.join(root, "tests", "tooling", "runtime", "label-transition-policy.test.js")],
   ["ab33_outer_question_composition", path.join(root, "tests", "tooling", "runtime", "ab33-outer-question-composition.test.js")],
   ["aa11_change_into_dim_boundary", path.join(root, "tests", "tooling", "runtime", "aa11-change-into-dim-boundary.test.js")],
+  ["aa49_independent_motion_boundary", path.join(root, "tests", "tooling", "runtime", "aa49-independent-motion-boundary.test.js")],
   ["aa61_experiential_question_boundary", path.join(root, "tests", "tooling", "runtime", "aa61-experiential-question-boundary.test.js")],
   ["aa84_marked_manner_boundary", path.join(root, "tests", "tooling", "runtime", "aa84-marked-manner-boundary.test.js")],
   ["parser_coverage_auditor", path.join(root, "tests", "tooling", "parser-coverage", "coverage.test.js")],

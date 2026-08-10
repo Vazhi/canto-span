@@ -251,13 +251,6 @@ function motionEventSpatialFallback(core) {
     return motionSubjectPredicateClause(subject, predicate, particles);
   }
 
-  // Main directional verb + final deixis, preserving both overt pieces.
-  if (subject && rs.length === 2 && ["上", "落", "入", "出", "返"].includes(rs[0]) && ["嚟", "去"].includes(rs[1])) {
-    const children = [motionEventPartClone(rest[0], { label: "doing", syntax: "main_directional_verb", slots: ["movement_verb", "movement_direction"] }), motionEventPartClone(rest[1], { label: "doing", syntax: "deictic_motion_marker", slots: ["deictic_motion_marker"] })];
-    const predicate = construction("DirectionalMotionVP", "MotionVP", children, { slots: constructionSlotsByType("DirectionalMotionVP", children), trace: traceInfo("generative_template", { construction_type: "DirectionalMotionVP", template_family: "generative_template", template: ["directional_head!", "deictic_motion_marker!"], assigned_slots: ["movement_direction", "deictic_motion_marker"], surfaces: children.map(flattenSurface), deictic_position_status: "outermost_visible_deictic" }) });
-    return motionSubjectPredicateClause(subject, predicate, particles);
-  }
-
   // Motion goal-attainment: 返/行 + 到 + goal.
   if (subject && rs.length === 3 && ["返", "行"].includes(rs[0]) && rs[1] === "到" && nodeCanFillSlot(rest[2], "location")) {
     const children = [motionEventPartClone(rest[0], { label: "doing", syntax: "movement_verb", slots: ["movement_verb", "main_verb"] }), motionEventPartClone(rest[1], { label: "func", syntax: "goal_attainment_complement", slots: ["goal_attainment_complement", "result_marker"], reason: "到 marks successful arrival/attainment before the overt goal." }), motionGoalNode(rest[2])];
@@ -306,16 +299,55 @@ function motionEventSpatialFallback(core) {
     return motionSubjectPredicateClause(subject, chain, particles);
   }
 
+  // Same caused-motion frame after a multi-token object has already been wrapped.
+  if (subject && rs.length === 6 && rest[0] && rest[0].kind === "construction" && rest[0].type === "TransitiveVP"
+      && /^攞/u.test(rs[0]) && rs[1] === "返" && rs[2] === "嚟" && rs[3] === "畀"
+      && nodeCanFillSlot(rest[4], "subject") && nodeCanFillSlot(rest[5], "action_verb")) {
+    const action = rest[0];
+    const returnDirection = motionEventPartClone(rest[1], { label: "doing", syntax: "return_directional_complement", slots: ["verb_complement", "return_motion_verb", "movement_direction"] });
+    const returnDeixis = motionEventPartClone(rest[2], { label: "doing", syntax: "deictic_motion_marker directional_complement_part", slots: ["verb_complement", "deictic_motion_marker"] });
+    const causedMotionChildren = [action, returnDirection, returnDeixis];
+    const causedMotion = construction("VerbComplementVP", "VerbCompVP", causedMotionChildren, {
+      slots: ["verb_complement_vp", "verb_complement", "vp", "action_vp", "predicate", "main_verb", "object", "return_motion_verb", "movement_direction", "deictic_motion_marker"],
+      trace: traceInfo("generative_template", {
+        construction_type: "VerbComplementVP", template_family: "generative_template",
+        template: ["action_object_vp!", "return_directional_complement!", "deictic_motion_marker!"],
+        assigned_slots: ["action_vp", "verb_complement", "deictic_motion_marker"],
+        surfaces: causedMotionChildren.map(flattenSurface), caused_motion_status: "overt_theme_plus_return_direction",
+        not_claims: ["not_aa49_independent_motion_predicate"],
+      }),
+    });
+    const relation = cp021bMakePostThemeRelation({
+      upstreamVP: causedMotion,
+      upstreamPredicateSurface: "攞",
+      upstreamThemeSurface: rs[0].replace(/^攞/u, ""),
+      marker: rest[3],
+      participantNodes: [rest[4]],
+      followingPredicate: rest[5],
+      profile: CP021B_POST_THEME_PREDICATE_PROFILES["攞"],
+    });
+    return motionSubjectPredicateClause(subject, relation, particles);
+  }
+
   // Caused-motion/action + directional return + recipient-purpose frame.
   if (subject && rs.length === 7 && rs[0] === "攞" && nodeCanFillSlot(rest[1], "object") && rs[2] === "返" && rs[3] === "嚟" && rs[4] === "畀" && nodeCanFillSlot(rest[5], "subject") && nodeCanFillSlot(rest[6], "action_verb")) {
     const action = construction("TransitiveVP", "VP", [rest[0], rest[1]], {
       slots: constructionSlotsByType("TransitiveVP", [rest[0], rest[1]]),
       trace: traceInfo("generative_template", { construction_type: "TransitiveVP", template_family: "generative_template", template: ["action_verb!", "object!"], assigned_slots: ["action_verb", "object"], surfaces: [rs[0], rs[1]], subspan: true }),
     });
-    const returnMotionChildren = [motionEventPartClone(rest[2], { label: "doing", syntax: "return_directional_complement", slots: ["return_motion_verb", "movement_direction"] }), motionEventPartClone(rest[3], { label: "doing", syntax: "deictic_motion_marker", slots: ["deictic_motion_marker"] })];
-    const returnMotion = construction("DirectionalMotionVP", "MotionVP", returnMotionChildren, { slots: constructionSlotsByType("DirectionalMotionVP", returnMotionChildren), trace: traceInfo("generative_template", { construction_type: "DirectionalMotionVP", template_family: "generative_template", template: ["return_directional_complement!", "deictic_motion_marker!"], assigned_slots: ["return_motion_verb", "deictic_motion_marker"], surfaces: returnMotionChildren.map(flattenSurface), subspan: true }) });
-    const causedMotionChildren = [action, returnMotion];
-    const causedMotion = construction("VerbComplementVP", "VerbCompVP", causedMotionChildren, { slots: templateDerivedSlots("VerbComplementVP", causedMotionChildren), trace: traceInfo("generative_template", { construction_type: "VerbComplementVP", template_family: "generative_template", template: ["action_object_vp!", "directional_motion_vp!"], assigned_slots: ["action_vp", "directional_motion_vp"], surfaces: causedMotionChildren.map(flattenSurface), caused_motion_status: "overt_theme_plus_return_direction" }) });
+    const returnDirection = motionEventPartClone(rest[2], { label: "doing", syntax: "return_directional_complement", slots: ["verb_complement", "return_motion_verb", "movement_direction"] });
+    const returnDeixis = motionEventPartClone(rest[3], { label: "doing", syntax: "deictic_motion_marker directional_complement_part", slots: ["verb_complement", "deictic_motion_marker"] });
+    const causedMotionChildren = [action, returnDirection, returnDeixis];
+    const causedMotion = construction("VerbComplementVP", "VerbCompVP", causedMotionChildren, {
+      slots: ["verb_complement_vp", "verb_complement", "vp", "action_vp", "predicate", "main_verb", "object", "return_motion_verb", "movement_direction", "deictic_motion_marker"],
+      trace: traceInfo("generative_template", {
+        construction_type: "VerbComplementVP", template_family: "generative_template",
+        template: ["action_object_vp!", "return_directional_complement!", "deictic_motion_marker!"],
+        assigned_slots: ["action_vp", "verb_complement", "deictic_motion_marker"],
+        surfaces: causedMotionChildren.map(flattenSurface), caused_motion_status: "overt_theme_plus_return_direction",
+        not_claims: ["not_aa49_independent_motion_predicate"],
+      }),
+    });
     const relation = cp021bMakePostThemeRelation({
       upstreamVP: causedMotion,
       upstreamPredicateSurface: "攞",
