@@ -1,15 +1,16 @@
 name: AA49 runtime staging probe
 
 on:
-  push:
-    branches:
-      - agent/aa49-independent-motion-runtime
+  pull_request:
+    paths:
+      - "**"
 
 permissions:
   contents: read
 
 jobs:
   probe:
+    if: github.event.pull_request.head.ref == 'agent/aa49-independent-motion-runtime'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
