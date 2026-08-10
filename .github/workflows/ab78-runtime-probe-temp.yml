@@ -24,9 +24,6 @@ jobs:
           {
             echo '=== SOURCE HITS ==='
             grep -R -n --exclude=main.js --exclude-dir=node_modules --exclude-dir=.git 'TransitiveVP' src || true
-            echo
-            echo '=== TEMPLATE/TYPE HITS ==='
-            grep -R -n --exclude=main.js --exclude-dir=node_modules --exclude-dir=.git -E 'type:[[:space:]]*["'"']TransitiveVP|construction:[[:space:]]*["'"']TransitiveVP' src || true
           } > ab78-source-hits.txt
       - name: Probe representative behavior
         run: |
