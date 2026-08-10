@@ -1,0 +1,81 @@
+name: AA49 runtime staging probe
+
+on:
+  push:
+    branches:
+      - agent/aa49-independent-motion-runtime
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Build staged runtime
+        run: npm run build:runtime
+      - name: Probe AA49 and neighboring motion profiles
+        run: |
+          node <<'NODE'
+          const { loadRuntimeApi, internalConstruction, rowSurface } = require('./tests/lib/runtime-api');
+          const api = loadRuntimeApi();
+          const cases = [
+            '去。',
+            '我去。',
+            '我去香港。',
+            '嚟。',
+            '佢嚟。',
+            '佢落咗樓下。',
+            '架車走咗。',
+            '返嚟。',
+            '返去。',
+            '上嚟。',
+            '落嚟。',
+            '行入去。',
+            '行出嚟。',
+            '行返過嚟。',
+            '我帶咗三部機去啊。',
+            '我攞本書返嚟畀你睇。',
+            '寄返去。',
+            '圖書館係乜嘢嚟㗎。',
+            '呢個用嚟切嘢。',
+            '因為落雨，所以我冇去。',
+            '你使唔使去？'
+          ];
+          for (const source of cases) {
+            const rows = api.diagnosticFinalRows(api.analyzeLine(source))
+              .filter((row) => row.kind === 'construction')
+              .map((row) => ({
+                type: internalConstruction(row),
+                surface: rowSurface(row),
+                parent: row.internal_parent || row.parent || null,
+                depth: row.depth,
+                scope: row.trace_detail && row.trace_detail.structural_scope,
+                rule: row.trace_detail && row.trace_detail.rule,
+              }));
+            console.log(JSON.stringify({source, rows}));
+          }
+          NODE
+      - name: Focus neighboring construction suites
+        continue-on-error: true
+        run: |
+          node tests/run-constructions.js --construction DirectionalMotionVP || true
+          node tests/run-constructions.js --construction DirectedMannerMotionVP || true
+          node tests/run-constructions.js --construction CompoundDirectionalMotionVP || true
+      - name: Parser architecture audit
+        continue-on-error: true
+        run: |
+          npm run test:parser-architecture || true
+          npm run audit:parser-architecture || true
+      - name: Upload staged runtime
+        uses: actions/upload-artifact@v4
+        with:
+          name: aa49-staged-runtime
+          path: main.js
+          retention-days: 1
