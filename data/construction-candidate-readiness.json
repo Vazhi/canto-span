@@ -8153,8 +8153,8 @@
       ],
       "preserved_source_ids": [],
       "future_research_preserved_as": "",
-      "standard_positive_test_count": 28,
-      "standard_boundary_test_count": 2,
+      "standard_positive_test_count": 26,
+      "standard_boundary_test_count": 7,
       "gates": {
         "language_claim_defined": {
           "status": "pass",
@@ -8176,7 +8176,7 @@
         "executable_positive_cases_present": {
           "status": "pass",
           "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "28"
+          "detail": "26"
         },
         "negative_boundaries_complete": {
           "status": "partial",
@@ -13180,7 +13180,7 @@
       "source_ids": [],
       "preserved_source_ids": [],
       "future_research_preserved_as": "",
-      "standard_positive_test_count": 118,
+      "standard_positive_test_count": 117,
       "standard_boundary_test_count": 2,
       "gates": {
         "language_claim_defined": {
@@ -13203,7 +13203,7 @@
         "executable_positive_cases_present": {
           "status": "pass",
           "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "118"
+          "detail": "117"
         },
         "negative_boundaries_complete": {
           "status": "partial",

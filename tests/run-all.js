@@ -19,6 +19,7 @@ const commands = [
   ["aa11_change_into_dim_boundary", path.join(root, "tests", "tooling", "runtime", "aa11-change-into-dim-boundary.test.js")],
   ["aa49_independent_motion_boundary", path.join(root, "tests", "tooling", "runtime", "aa49-independent-motion-boundary.test.js")],
   ["ab45_quantified_classifier_boundary", path.join(root, "tests", "tooling", "runtime", "ab45-quantified-classifier-boundary.test.js")],
+  ["ab78_transitive_boundary", path.join(root, "tests", "tooling", "runtime", "ab78-transitive-boundary.test.js")],
   ["aa61_experiential_question_boundary", path.join(root, "tests", "tooling", "runtime", "aa61-experiential-question-boundary.test.js")],
   ["aa84_marked_manner_boundary", path.join(root, "tests", "tooling", "runtime", "aa84-marked-manner-boundary.test.js")],
   ["parser_coverage_auditor", path.join(root, "tests", "tooling", "parser-coverage", "coverage.test.js")],

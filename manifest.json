@@ -1,9 +1,9 @@
 {
   "id": "canto-span",
   "name": "Canto Span",
-  "version": "0.5.222",
+  "version": "0.5.223",
   "minAppVersion": "1.5.0",
-  "description": "v0.5.222 narrows AB45 to numeral + classifier-class unit + overt noun, with explicit context-linked noun ellipsis and measure/wh/dimension boundaries.",
+  "description": "v0.5.223 aligns AB78 with typed predicate-object behavior and leaves approximate measured quantity outside TransitiveVP.",
   "author": "Chris Crawford / OpenAI ChatGPT",
   "authorUrl": "",
   "isDesktopOnly": false

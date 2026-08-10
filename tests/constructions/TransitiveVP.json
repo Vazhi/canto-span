@@ -121,16 +121,6 @@
       "assertion": "construction_present_in_exact_snapshot"
     },
     {
-      "case_id": "REG-0296",
-      "source": "我飲七杯度喇。",
-      "origins": [
-        "run-a1-approximate-quantified-object.js",
-        "run-a1-laa1-laa3-scope-boundary.js",
-        "run-diagnostics-root-span-inventory-unification.js"
-      ],
-      "assertion": "construction_present_in_exact_snapshot"
-    },
-    {
       "case_id": "REG-0303",
       "source": "我寫三個字。",
       "origins": [
@@ -177,20 +167,6 @@
       "source": "食過飯。",
       "origins": [
         "run-current-focused.js:v0.5.160-r2-rendered-accepted"
-      ],
-      "assertion": "construction_present_in_exact_snapshot"
-    },
-    {
-      "case_id": "REG-0465",
-      "source": "飲七杯度喇。",
-      "origins": [
-        "run-a1-approximate-quantified-object.js",
-        "run-a1-bare-classifier-np-context-boundary.js",
-        "run-a1-conventional-duration-ambiguity-boundary.js",
-        "run-a1-laa1-laa3-scope-boundary.js",
-        "run-diagnostics-dual-json-export.js",
-        "run-diagnostics-root-span-inventory-unification.js",
-        "run-diagnostics-root-span-role-provenance.js"
       ],
       "assertion": "construction_present_in_exact_snapshot"
     },
@@ -259,21 +235,61 @@
       "expected_profile": "construction_absent",
       "assertion": "construction_absent",
       "provenance": "docs/research/CP061-P1-HIGH-FANOUT-BOUNDARY-CLOSURE-R1.md#boundary-matrix"
+    },
+    {
+      "case_id": "AB78-MEASURE-N01",
+      "source": "我飲七杯度喇。",
+      "class": "approximate_measure_without_typed_object",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-736-AB78-TRANSITIVE-BEHAVIOR-PROFILES-R1.md#negative-and-boundary-requirements-for-later-executable-specification"
+    },
+    {
+      "case_id": "AB78-MEASURE-N02",
+      "source": "飲七杯度喇。",
+      "class": "approximate_measure_without_typed_object",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-736-AB78-TRANSITIVE-BEHAVIOR-PROFILES-R1.md#negative-and-boundary-requirements-for-later-executable-specification"
+    },
+    {
+      "case_id": "AB78-CP-N01",
+      "source": "我記得佢好叻。",
+      "class": "clausal_complement_not_simple_object",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-736-AB78-TRANSITIVE-BEHAVIOR-PROFILES-R1.md#negative-and-boundary-requirements-for-later-executable-specification"
+    },
+    {
+      "case_id": "AB78-DITRANSITIVE-N01",
+      "source": "我教佢廣東話。",
+      "class": "ditransitive_argument_structure_not_simple_object",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-736-AB78-TRANSITIVE-BEHAVIOR-PROFILES-R1.md#negative-and-boundary-requirements-for-later-executable-specification"
+    },
+    {
+      "case_id": "AB78-PIVOTAL-N01",
+      "source": "我揀佢做班長。",
+      "class": "pivotal_structure_not_simple_object",
+      "expected_profile": "construction_absent",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-736-AB78-TRANSITIVE-BEHAVIOR-PROFILES-R1.md#negative-and-boundary-requirements-for-later-executable-specification"
     }
   ],
   "np_cases": [],
   "implementation_probe_cases": [],
   "coverage": {
     "state": "positive_and_boundary",
-    "exact_snapshot_positive_count": 28,
+    "exact_snapshot_positive_count": 26,
     "focused_positive_count": 0,
-    "focused_boundary_count": 2,
+    "focused_boundary_count": 7,
     "focused_review_only_count": 0,
     "np_case_count": 0,
     "implementation_probe_count": 0,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 28,
-    "boundary_case_count": 2,
-    "executable_case_count": 30
+    "positive_case_count": 26,
+    "boundary_case_count": 7,
+    "executable_case_count": 33
   }
 }
