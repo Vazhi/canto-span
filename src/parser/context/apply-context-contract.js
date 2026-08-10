@@ -122,7 +122,12 @@ module.exports = function createContextContractApplication(dependencies = {}) {
     }
     const quantifiedClassifierBoundary = contextualQuantifiedClassifierNPBoundary(structural, explicitContext);
     if (quantifiedClassifierBoundary) {
-      return { nodes: [quantifiedClassifierBoundary, ...terminal], resolution: quantifiedClassifierBoundary.trace };
+      const boundaryNodes = Array.isArray(quantifiedClassifierBoundary.nodes)
+        ? quantifiedClassifierBoundary.nodes
+        : [quantifiedClassifierBoundary];
+      const resolution = quantifiedClassifierBoundary.resolution
+        || (quantifiedClassifierBoundary.trace || null);
+      return { nodes: [...boundaryNodes, ...terminal], resolution };
     }
     const licensedQuantifiedTime = licensedContextQuantifiedTimeNP(structural, explicitContext);
     if (licensedQuantifiedTime) {

@@ -5,8 +5,24 @@
   "migration_phase": 5,
   "snapshot_cases": [
     {
+      "case_id": "REG-0537",
+      "source": "張枱三呎。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
       "case_id": "REG-0543",
       "source": "呢本書三十。",
+      "origins": [
+        "run-current-focused.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0545",
+      "source": "呢本書三歲。",
       "origins": [
         "run-current-focused.js"
       ],
@@ -62,15 +78,15 @@
   ],
   "coverage": {
     "state": "positive_and_boundary",
-    "exact_snapshot_positive_count": 1,
+    "exact_snapshot_positive_count": 3,
     "focused_positive_count": 0,
     "focused_boundary_count": 2,
     "focused_review_only_count": 0,
     "np_case_count": 0,
     "implementation_probe_count": 1,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 1,
+    "positive_case_count": 3,
     "boundary_case_count": 2,
-    "executable_case_count": 4
+    "executable_case_count": 6
   }
 }

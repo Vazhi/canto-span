@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-regression-snapshot-v2",
-  "runtime_version": "0.5.221",
+  "runtime_version": "0.5.222",
   "generated_from_runner_count": 548,
   "case_count": 548,
   "errors": [],
@@ -2173,7 +2173,7 @@
       "expected": {
         "summary": {
           "top_constructions": [
-            "QuantifiedClassifierNP"
+            "NeedsContext"
           ],
           "top_child_constructions": [],
           "context_requirement_status": "context_required",
@@ -2186,7 +2186,9 @@
           "unwrapped_root_nonpunctuation_count": 0,
           "unwrapped_root_surfaces": [],
           "semantic_review_flags": [
-            "context_required_unresolved"
+            "needs_context_parse",
+            "context_required_unresolved",
+            "review_trace_present"
           ]
         },
         "tree": [
@@ -2194,6 +2196,37 @@
             "kind": "construction",
             "depth": 0,
             "parent": "",
+            "surface": "一個",
+            "construction": "NeedsContext",
+            "role": "",
+            "syntax": "",
+            "jyutping": "",
+            "slots": [
+              "needs_context",
+              "problem_span",
+              "review_candidate"
+            ],
+            "contextual_role_affordances": [],
+            "trace": "special_ambiguity_rule",
+            "trace_detail": {
+              "kind": "special_ambiguity_rule",
+              "construction_type": "NeedsContext",
+              "fragment_subtype": "quantified_classifier_head_ellipsis",
+              "context_requirement_status": "context_required",
+              "antecedent_status": "not_observed",
+              "missing_argument_slots": [
+                "nominal_head"
+              ],
+              "not_claims": [
+                "not_fabricated_nominal_head",
+                "not_context_free_head_recovery"
+              ]
+            }
+          },
+          {
+            "kind": "construction",
+            "depth": 1,
+            "parent": "NeedsContext",
             "surface": "一個",
             "construction": "QuantifiedClassifierNP",
             "role": "",
@@ -2204,7 +2237,6 @@
               "classifier_np",
               "np",
               "object",
-              "particle",
               "quantified_classifier_np",
               "quantity",
               "topic"
@@ -2217,8 +2249,7 @@
               "template_family": "generative_template",
               "template": [
                 "quantity!",
-                "classifier!",
-                "particle?"
+                "classifier!"
               ],
               "assigned_slots": [
                 "quantity",
@@ -2244,7 +2275,7 @@
           },
           {
             "kind": "token",
-            "depth": 1,
+            "depth": 2,
             "parent": "QuantifiedClassifierNP",
             "surface": "一",
             "construction": "",
@@ -2275,7 +2306,7 @@
           },
           {
             "kind": "token",
-            "depth": 1,
+            "depth": 2,
             "parent": "QuantifiedClassifierNP",
             "surface": "個",
             "construction": "",
@@ -2335,7 +2366,9 @@
           }
         }
       },
-      "case_id": "REG-0007"
+      "case_id": "REG-0007",
+      "accepted_transition": "v0.5.222_AB45_source_bounded_quantified_classifier_np",
+      "transition_reason": "AB45 is restricted to source-bounded numeral + classifier + overt noun structure plus explicit context-linked noun ellipsis; measure, wh-quantity, age/dimension, and context-free headless profiles no longer inherit ordinary AB45 licensing."
     },
     {
       "source": "一個人。",
@@ -2988,7 +3021,7 @@
       "expected": {
         "summary": {
           "top_constructions": [
-            "QuantifiedClassifierNP"
+            "NeedsContext"
           ],
           "top_child_constructions": [],
           "context_requirement_status": "context_required",
@@ -3001,7 +3034,9 @@
           "unwrapped_root_nonpunctuation_count": 0,
           "unwrapped_root_surfaces": [],
           "semantic_review_flags": [
-            "context_required_unresolved"
+            "needs_context_parse",
+            "context_required_unresolved",
+            "review_trace_present"
           ]
         },
         "tree": [
@@ -3010,6 +3045,37 @@
             "depth": 0,
             "parent": "",
             "surface": "一個咋",
+            "construction": "NeedsContext",
+            "role": "",
+            "syntax": "",
+            "jyutping": "",
+            "slots": [
+              "needs_context",
+              "problem_span",
+              "review_candidate"
+            ],
+            "contextual_role_affordances": [],
+            "trace": "special_ambiguity_rule",
+            "trace_detail": {
+              "kind": "special_ambiguity_rule",
+              "construction_type": "NeedsContext",
+              "fragment_subtype": "quantified_classifier_head_ellipsis",
+              "context_requirement_status": "context_required",
+              "antecedent_status": "not_observed",
+              "missing_argument_slots": [
+                "nominal_head"
+              ],
+              "not_claims": [
+                "not_fabricated_nominal_head",
+                "not_context_free_head_recovery"
+              ]
+            }
+          },
+          {
+            "kind": "construction",
+            "depth": 1,
+            "parent": "NeedsContext",
+            "surface": "一個",
             "construction": "QuantifiedClassifierNP",
             "role": "",
             "syntax": "",
@@ -3019,7 +3085,6 @@
               "classifier_np",
               "np",
               "object",
-              "particle",
               "quantified_classifier_np",
               "quantity",
               "topic"
@@ -3032,18 +3097,15 @@
               "template_family": "generative_template",
               "template": [
                 "quantity!",
-                "classifier!",
-                "particle?"
+                "classifier!"
               ],
               "assigned_slots": [
                 "quantity",
-                "classifier",
-                "particle"
+                "classifier"
               ],
               "surfaces": [
                 "一",
-                "個",
-                "咋"
+                "個"
               ],
               "fragment_subtype": "quantified_classifier_head_ellipsis",
               "context_requirement_status": "context_required",
@@ -3061,7 +3123,7 @@
           },
           {
             "kind": "token",
-            "depth": 1,
+            "depth": 2,
             "parent": "QuantifiedClassifierNP",
             "surface": "一",
             "construction": "",
@@ -3092,7 +3154,7 @@
           },
           {
             "kind": "token",
-            "depth": 1,
+            "depth": 2,
             "parent": "QuantifiedClassifierNP",
             "surface": "個",
             "construction": "",
@@ -3118,7 +3180,7 @@
           {
             "kind": "token",
             "depth": 1,
-            "parent": "QuantifiedClassifierNP",
+            "parent": "NeedsContext",
             "surface": "咋",
             "construction": "",
             "role": "particle",
@@ -3178,7 +3240,9 @@
           }
         }
       },
-      "case_id": "REG-0011"
+      "case_id": "REG-0011",
+      "accepted_transition": "v0.5.222_AB45_source_bounded_quantified_classifier_np",
+      "transition_reason": "AB45 is restricted to source-bounded numeral + classifier + overt noun structure plus explicit context-linked noun ellipsis; measure, wh-quantity, age/dimension, and context-free headless profiles no longer inherit ordinary AB45 licensing."
     },
     {
       "source": "一個啫。",
@@ -3188,7 +3252,7 @@
       "expected": {
         "summary": {
           "top_constructions": [
-            "QuantifiedClassifierNP"
+            "NeedsContext"
           ],
           "top_child_constructions": [],
           "context_requirement_status": "context_required",
@@ -3201,7 +3265,9 @@
           "unwrapped_root_nonpunctuation_count": 0,
           "unwrapped_root_surfaces": [],
           "semantic_review_flags": [
-            "context_required_unresolved"
+            "needs_context_parse",
+            "context_required_unresolved",
+            "review_trace_present"
           ]
         },
         "tree": [
@@ -3210,6 +3276,37 @@
             "depth": 0,
             "parent": "",
             "surface": "一個啫",
+            "construction": "NeedsContext",
+            "role": "",
+            "syntax": "",
+            "jyutping": "",
+            "slots": [
+              "needs_context",
+              "problem_span",
+              "review_candidate"
+            ],
+            "contextual_role_affordances": [],
+            "trace": "special_ambiguity_rule",
+            "trace_detail": {
+              "kind": "special_ambiguity_rule",
+              "construction_type": "NeedsContext",
+              "fragment_subtype": "quantified_classifier_head_ellipsis",
+              "context_requirement_status": "context_required",
+              "antecedent_status": "not_observed",
+              "missing_argument_slots": [
+                "nominal_head"
+              ],
+              "not_claims": [
+                "not_fabricated_nominal_head",
+                "not_context_free_head_recovery"
+              ]
+            }
+          },
+          {
+            "kind": "construction",
+            "depth": 1,
+            "parent": "NeedsContext",
+            "surface": "一個",
             "construction": "QuantifiedClassifierNP",
             "role": "",
             "syntax": "",
@@ -3219,7 +3316,6 @@
               "classifier_np",
               "np",
               "object",
-              "particle",
               "quantified_classifier_np",
               "quantity",
               "topic"
@@ -3232,18 +3328,15 @@
               "template_family": "generative_template",
               "template": [
                 "quantity!",
-                "classifier!",
-                "particle?"
+                "classifier!"
               ],
               "assigned_slots": [
                 "quantity",
-                "classifier",
-                "particle"
+                "classifier"
               ],
               "surfaces": [
                 "一",
-                "個",
-                "啫"
+                "個"
               ],
               "fragment_subtype": "quantified_classifier_head_ellipsis",
               "context_requirement_status": "context_required",
@@ -3261,7 +3354,7 @@
           },
           {
             "kind": "token",
-            "depth": 1,
+            "depth": 2,
             "parent": "QuantifiedClassifierNP",
             "surface": "一",
             "construction": "",
@@ -3292,7 +3385,7 @@
           },
           {
             "kind": "token",
-            "depth": 1,
+            "depth": 2,
             "parent": "QuantifiedClassifierNP",
             "surface": "個",
             "construction": "",
@@ -3318,7 +3411,7 @@
           {
             "kind": "token",
             "depth": 1,
-            "parent": "QuantifiedClassifierNP",
+            "parent": "NeedsContext",
             "surface": "啫",
             "construction": "",
             "role": "particle",
@@ -3378,7 +3471,9 @@
           }
         }
       },
-      "case_id": "REG-0012"
+      "case_id": "REG-0012",
+      "accepted_transition": "v0.5.222_AB45_source_bounded_quantified_classifier_np",
+      "transition_reason": "AB45 is restricted to source-bounded numeral + classifier + overt noun structure plus explicit context-linked noun ellipsis; measure, wh-quantity, age/dimension, and context-free headless profiles no longer inherit ordinary AB45 licensing."
     },
     {
       "source": "七杯度。",
@@ -83252,28 +83347,60 @@
       "expected": {
         "summary": {
           "top_constructions": [
-            "QuantifiedClassifierNP"
+            "NeedsContext"
           ],
           "top_child_constructions": [],
-          "context_requirement_status": "context_not_required",
-          "antecedent_status": "not_applicable",
-          "missing_argument_slots": [],
-          "root_span_coverage_status": "PARTIAL",
-          "root_top_construction_count": 1,
-          "unwrapped_root_nonpunctuation_count": 2,
-          "unwrapped_root_surfaces": [
-            "我",
-            "得"
+          "context_requirement_status": "context_required",
+          "antecedent_status": "not_observed",
+          "missing_argument_slots": [
+            "nominal_head"
           ],
+          "root_span_coverage_status": "PASS",
+          "root_top_construction_count": 1,
+          "unwrapped_root_nonpunctuation_count": 0,
+          "unwrapped_root_surfaces": [],
           "semantic_review_flags": [
-            "partial_root_span_unwrapped_material"
+            "needs_context_parse",
+            "context_required_unresolved",
+            "review_trace_present"
           ]
         },
         "tree": [
           {
-            "kind": "token",
+            "kind": "construction",
             "depth": 0,
             "parent": "",
+            "surface": "我得一個啫",
+            "construction": "NeedsContext",
+            "role": "",
+            "syntax": "",
+            "jyutping": "",
+            "slots": [
+              "needs_context",
+              "problem_span",
+              "review_candidate"
+            ],
+            "contextual_role_affordances": [],
+            "trace": "special_ambiguity_rule",
+            "trace_detail": {
+              "kind": "special_ambiguity_rule",
+              "construction_type": "NeedsContext",
+              "fragment_subtype": "quantified_classifier_head_ellipsis",
+              "context_requirement_status": "context_required",
+              "antecedent_status": "not_observed",
+              "missing_argument_slots": [
+                "nominal_head"
+              ],
+              "not_claims": [
+                "not_fabricated_nominal_head",
+                "not_context_free_head_recovery"
+              ]
+            }
+          },
+          {
+            "kind": "token",
+            "depth": 1,
+            "parent": "NeedsContext",
             "surface": "我",
             "construction": "",
             "role": "who",
@@ -83310,8 +83437,8 @@
           },
           {
             "kind": "token",
-            "depth": 0,
-            "parent": "",
+            "depth": 1,
+            "parent": "NeedsContext",
             "surface": "得",
             "construction": "",
             "role": "func",
@@ -83335,8 +83462,8 @@
           },
           {
             "kind": "construction",
-            "depth": 0,
-            "parent": "",
+            "depth": 1,
+            "parent": "NeedsContext",
             "surface": "一個",
             "construction": "QuantifiedClassifierNP",
             "role": "",
@@ -83347,7 +83474,6 @@
               "classifier_np",
               "np",
               "object",
-              "particle",
               "quantified_classifier_np",
               "quantity",
               "topic"
@@ -83360,8 +83486,7 @@
               "template_family": "generative_template",
               "template": [
                 "quantity!",
-                "classifier!",
-                "particle?"
+                "classifier!"
               ],
               "assigned_slots": [
                 "quantity",
@@ -83387,7 +83512,7 @@
           },
           {
             "kind": "token",
-            "depth": 1,
+            "depth": 2,
             "parent": "QuantifiedClassifierNP",
             "surface": "一",
             "construction": "",
@@ -83418,7 +83543,7 @@
           },
           {
             "kind": "token",
-            "depth": 1,
+            "depth": 2,
             "parent": "QuantifiedClassifierNP",
             "surface": "個",
             "construction": "",
@@ -83443,8 +83568,8 @@
           },
           {
             "kind": "token",
-            "depth": 0,
-            "parent": "",
+            "depth": 1,
+            "parent": "NeedsContext",
             "surface": "啫",
             "construction": "",
             "role": "particle",
@@ -83504,7 +83629,9 @@
           }
         }
       },
-      "case_id": "REG-0279"
+      "case_id": "REG-0279",
+      "accepted_transition": "v0.5.222_AB45_source_bounded_quantified_classifier_np",
+      "transition_reason": "AB45 is restricted to source-bounded numeral + classifier + overt noun structure plus explicit context-linked noun ellipsis; measure, wh-quantity, age/dimension, and context-free headless profiles no longer inherit ordinary AB45 licensing."
     },
     {
       "source": "我連password都冇。",
@@ -97092,7 +97219,7 @@
       "expected": {
         "summary": {
           "top_constructions": [
-            "QuantifiedClassifierNP"
+            "NeedsContext"
           ],
           "top_child_constructions": [],
           "context_requirement_status": "context_required",
@@ -97105,7 +97232,9 @@
           "unwrapped_root_nonpunctuation_count": 0,
           "unwrapped_root_surfaces": [],
           "semantic_review_flags": [
-            "context_required_unresolved"
+            "needs_context_parse",
+            "context_required_unresolved",
+            "review_trace_present"
           ]
         },
         "tree": [
@@ -97113,6 +97242,37 @@
             "kind": "construction",
             "depth": 0,
             "parent": "",
+            "surface": "兩部",
+            "construction": "NeedsContext",
+            "role": "",
+            "syntax": "",
+            "jyutping": "",
+            "slots": [
+              "needs_context",
+              "problem_span",
+              "review_candidate"
+            ],
+            "contextual_role_affordances": [],
+            "trace": "special_ambiguity_rule",
+            "trace_detail": {
+              "kind": "special_ambiguity_rule",
+              "construction_type": "NeedsContext",
+              "fragment_subtype": "quantified_classifier_head_ellipsis",
+              "context_requirement_status": "context_required",
+              "antecedent_status": "not_observed",
+              "missing_argument_slots": [
+                "nominal_head"
+              ],
+              "not_claims": [
+                "not_fabricated_nominal_head",
+                "not_context_free_head_recovery"
+              ]
+            }
+          },
+          {
+            "kind": "construction",
+            "depth": 1,
+            "parent": "NeedsContext",
             "surface": "兩部",
             "construction": "QuantifiedClassifierNP",
             "role": "",
@@ -97123,7 +97283,6 @@
               "classifier_np",
               "np",
               "object",
-              "particle",
               "quantified_classifier_np",
               "quantity",
               "topic"
@@ -97136,8 +97295,7 @@
               "template_family": "generative_template",
               "template": [
                 "quantity!",
-                "classifier!",
-                "particle?"
+                "classifier!"
               ],
               "assigned_slots": [
                 "quantity",
@@ -97163,7 +97321,7 @@
           },
           {
             "kind": "token",
-            "depth": 1,
+            "depth": 2,
             "parent": "QuantifiedClassifierNP",
             "surface": "兩",
             "construction": "",
@@ -97194,7 +97352,7 @@
           },
           {
             "kind": "token",
-            "depth": 1,
+            "depth": 2,
             "parent": "QuantifiedClassifierNP",
             "surface": "部",
             "construction": "",
@@ -97254,7 +97412,9 @@
           }
         }
       },
-      "case_id": "REG-0321"
+      "case_id": "REG-0321",
+      "accepted_transition": "v0.5.222_AB45_source_bounded_quantified_classifier_np",
+      "transition_reason": "AB45 is restricted to source-bounded numeral + classifier + overt noun structure plus explicit context-linked noun ellipsis; measure, wh-quantity, age/dimension, and context-free headless profiles no longer inherit ordinary AB45 licensing."
     },
     {
       "source": "兩部機。",
@@ -97988,7 +98148,7 @@
       "expected": {
         "summary": {
           "top_constructions": [
-            "QuantifiedClassifierNP"
+            "QuantityNP"
           ],
           "top_child_constructions": [],
           "context_requirement_status": "context_not_required",
@@ -98087,57 +98247,43 @@
             "depth": 0,
             "parent": "",
             "surface": "幾多個字",
-            "construction": "QuantifiedClassifierNP",
+            "construction": "QuantityNP",
             "role": "",
             "syntax": "",
             "jyutping": "",
             "slots": [
-              "classifier",
-              "classifier_np",
+              "head_noun",
               "np",
               "object",
-              "particle",
-              "quantified_classifier_np",
               "quantity",
+              "quantity_np",
+              "subject",
               "topic"
             ],
             "contextual_role_affordances": [],
             "trace": "generative_template",
             "trace_detail": {
               "kind": "generative_template",
-              "construction_type": "QuantifiedClassifierNP",
+              "construction_type": "QuantityNP",
               "template_family": "generative_template",
               "template": [
                 "quantity!",
-                "classifier!",
-                "particle?"
+                "head_noun!"
               ],
               "assigned_slots": [
                 "quantity",
-                "classifier"
+                "head_noun"
               ],
               "surfaces": [
                 "幾多",
                 "個字"
-              ],
-              "fragment_subtype": "quantified_classifier_head_ellipsis",
-              "context_requirement_status": "context_required",
-              "antecedent_status": "not_observed",
-              "missing_argument_slots": [
-                "nominal_head"
-              ],
-              "not_claims": [
-                "not_bare_numeral",
-                "not_overt_head_noun",
-                "not_fabricated_nominal_head",
-                "not_quantified_time_np"
               ]
             }
           },
           {
             "kind": "construction",
             "depth": 1,
-            "parent": "QuantifiedClassifierNP",
+            "parent": "QuantityNP",
             "surface": "幾多",
             "construction": "DegreeStativePredicate",
             "role": "",
@@ -98236,7 +98382,7 @@
           {
             "kind": "construction",
             "depth": 1,
-            "parent": "QuantifiedClassifierNP",
+            "parent": "QuantityNP",
             "surface": "個字",
             "construction": "ModifiedNP",
             "role": "",
@@ -98375,7 +98521,9 @@
         }
       },
       "cp021b_transition": "CP021B_LX1_bounded_lexical_and_jyutping_update_with_construction_freeze_pass",
-      "case_id": "REG-0326"
+      "case_id": "REG-0326",
+      "accepted_transition": "v0.5.222_AB45_source_bounded_quantified_classifier_np",
+      "transition_reason": "AB45 is restricted to source-bounded numeral + classifier + overt noun structure plus explicit context-linked noun ellipsis; measure, wh-quantity, age/dimension, and context-free headless profiles no longer inherit ordinary AB45 licensing."
     },
     {
       "source": "呢本。",
@@ -123228,17 +123376,15 @@
             "trace_detail": {
               "kind": "special_ambiguity_rule",
               "construction_type": "NeedsContext",
+              "fragment_subtype": "quantified_classifier_head_ellipsis",
               "context_requirement_status": "context_required",
               "antecedent_status": "not_observed",
               "missing_argument_slots": [
                 "nominal_head"
               ],
-              "subject_status": null,
-              "aspect": null,
-              "particle_contribution": null,
               "not_claims": [
-                "not_fabricated_antecedent",
-                "not_clean_context_free_clause"
+                "not_fabricated_nominal_head",
+                "not_context_free_head_recovery"
               ]
             }
           },
@@ -123354,7 +123500,6 @@
               "classifier_np",
               "np",
               "object",
-              "particle",
               "quantified_classifier_np",
               "quantity",
               "topic"
@@ -123367,8 +123512,7 @@
               "template_family": "generative_template",
               "template": [
                 "quantity!",
-                "classifier!",
-                "particle?"
+                "classifier!"
               ],
               "assigned_slots": [
                 "quantity",
@@ -123512,7 +123656,9 @@
           }
         }
       },
-      "case_id": "REG-0434"
+      "case_id": "REG-0434",
+      "accepted_transition": "v0.5.222_AB45_source_bounded_quantified_classifier_np",
+      "transition_reason": "AB45 is restricted to source-bounded numeral + classifier + overt noun structure plus explicit context-linked noun ellipsis; measure, wh-quantity, age/dimension, and context-free headless profiles no longer inherit ordinary AB45 licensing."
     },
     {
       "source": "得一個啫。",
@@ -123561,17 +123707,15 @@
             "trace_detail": {
               "kind": "special_ambiguity_rule",
               "construction_type": "NeedsContext",
+              "fragment_subtype": "quantified_classifier_head_ellipsis",
               "context_requirement_status": "context_required",
               "antecedent_status": "not_observed",
               "missing_argument_slots": [
                 "nominal_head"
               ],
-              "subject_status": null,
-              "aspect": null,
-              "particle_contribution": null,
               "not_claims": [
-                "not_fabricated_antecedent",
-                "not_clean_context_free_clause"
+                "not_fabricated_nominal_head",
+                "not_context_free_head_recovery"
               ]
             }
           },
@@ -123687,7 +123831,6 @@
               "classifier_np",
               "np",
               "object",
-              "particle",
               "quantified_classifier_np",
               "quantity",
               "topic"
@@ -123700,8 +123843,7 @@
               "template_family": "generative_template",
               "template": [
                 "quantity!",
-                "classifier!",
-                "particle?"
+                "classifier!"
               ],
               "assigned_slots": [
                 "quantity",
@@ -123845,7 +123987,9 @@
           }
         }
       },
-      "case_id": "REG-0435"
+      "case_id": "REG-0435",
+      "accepted_transition": "v0.5.222_AB45_source_bounded_quantified_classifier_np",
+      "transition_reason": "AB45 is restricted to source-bounded numeral + classifier + overt noun structure plus explicit context-linked noun ellipsis; measure, wh-quantity, age/dimension, and context-free headless profiles no longer inherit ordinary AB45 licensing."
     },
     {
       "source": "得十蚊咋。",
@@ -125222,17 +125366,15 @@
             "trace_detail": {
               "kind": "special_ambiguity_rule",
               "construction_type": "NeedsContext",
+              "fragment_subtype": "quantified_classifier_head_ellipsis",
               "context_requirement_status": "context_required",
               "antecedent_status": "not_observed",
               "missing_argument_slots": [
                 "nominal_head"
               ],
-              "subject_status": null,
-              "aspect": null,
-              "particle_contribution": null,
               "not_claims": [
-                "not_fabricated_antecedent",
-                "not_clean_context_free_clause"
+                "not_fabricated_nominal_head",
+                "not_context_free_head_recovery"
               ]
             }
           },
@@ -125348,7 +125490,6 @@
               "classifier_np",
               "np",
               "object",
-              "particle",
               "quantified_classifier_np",
               "quantity",
               "topic"
@@ -125361,8 +125502,7 @@
               "template_family": "generative_template",
               "template": [
                 "quantity!",
-                "classifier!",
-                "particle?"
+                "classifier!"
               ],
               "assigned_slots": [
                 "quantity",
@@ -125506,7 +125646,9 @@
           }
         }
       },
-      "case_id": "REG-0441"
+      "case_id": "REG-0441",
+      "accepted_transition": "v0.5.222_AB45_source_bounded_quantified_classifier_np",
+      "transition_reason": "AB45 is restricted to source-bounded numeral + classifier + overt noun structure plus explicit context-linked noun ellipsis; measure, wh-quantity, age/dimension, and context-free headless profiles no longer inherit ordinary AB45 licensing."
     },
     {
       "source": "得咋。",
@@ -129445,71 +129587,28 @@
       ],
       "expected": {
         "summary": {
-          "top_constructions": [
-            "TransitiveVP"
-          ],
+          "top_constructions": [],
           "top_child_constructions": [],
           "context_requirement_status": "context_not_required",
           "antecedent_status": "not_applicable",
           "missing_argument_slots": [],
-          "root_span_coverage_status": "PASS",
-          "root_top_construction_count": 1,
-          "unwrapped_root_nonpunctuation_count": 0,
-          "unwrapped_root_surfaces": []
+          "root_span_coverage_status": "NO_TOP_CONSTRUCTION",
+          "root_top_construction_count": 0,
+          "unwrapped_root_nonpunctuation_count": 3,
+          "unwrapped_root_surfaces": [
+            "飲",
+            "七",
+            "杯"
+          ],
+          "semantic_review_flags": [
+            "no_top_construction"
+          ]
         },
         "tree": [
           {
-            "kind": "construction",
+            "kind": "token",
             "depth": 0,
             "parent": "",
-            "surface": "飲七杯",
-            "construction": "TransitiveVP",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "action_verb",
-              "action_vp",
-              "classifier",
-              "classifier_np",
-              "construction_span",
-              "consumption_verb",
-              "main_verb",
-              "np",
-              "object",
-              "particle",
-              "predicate",
-              "quantified_classifier_np",
-              "quantity",
-              "stative_complement_head",
-              "topic",
-              "transitive_vp",
-              "vp"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "TransitiveVP",
-              "template_family": "generative_template",
-              "template": [
-                "action_verb!",
-                "object!"
-              ],
-              "assigned_slots": [
-                "action_verb",
-                "object"
-              ],
-              "surfaces": [
-                "飲",
-                "七杯"
-              ]
-            }
-          },
-          {
-            "kind": "token",
-            "depth": 1,
-            "parent": "TransitiveVP",
             "surface": "飲",
             "construction": "",
             "role": "doing",
@@ -129536,67 +129635,16 @@
             }
           },
           {
-            "kind": "construction",
-            "depth": 1,
-            "parent": "TransitiveVP",
-            "surface": "七杯",
-            "construction": "QuantifiedClassifierNP",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "classifier",
-              "classifier_np",
-              "np",
-              "object",
-              "particle",
-              "quantified_classifier_np",
-              "quantity",
-              "topic"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "QuantifiedClassifierNP",
-              "template_family": "generative_template",
-              "template": [
-                "quantity!",
-                "classifier!",
-                "particle?"
-              ],
-              "assigned_slots": [
-                "quantity",
-                "classifier"
-              ],
-              "surfaces": [
-                "七",
-                "杯"
-              ],
-              "fragment_subtype": "quantified_classifier_head_ellipsis",
-              "context_requirement_status": "context_required",
-              "antecedent_status": "not_observed",
-              "missing_argument_slots": [
-                "nominal_head"
-              ],
-              "not_claims": [
-                "not_bare_numeral",
-                "not_overt_head_noun",
-                "not_fabricated_nominal_head",
-                "not_quantified_time_np"
-              ]
-            }
-          },
-          {
             "kind": "token",
-            "depth": 2,
-            "parent": "QuantifiedClassifierNP",
+            "depth": 0,
+            "parent": "",
             "surface": "七",
             "construction": "",
             "role": "how",
-            "syntax": "quantity count_value numeral",
+            "syntax": "quantity count_value numeral_seven",
             "jyutping": "cat1",
             "slots": [
+              "how",
               "quantity"
             ],
             "contextual_role_affordances": [
@@ -129614,12 +129662,12 @@
           },
           {
             "kind": "token",
-            "depth": 2,
-            "parent": "QuantifiedClassifierNP",
+            "depth": 0,
+            "parent": "",
             "surface": "杯",
             "construction": "",
             "role": "measure_word",
-            "syntax": "general_classifier classifier nominal_head_ellipsis",
+            "syntax": "classifier_container_cup",
             "jyutping": "bui1",
             "slots": [
               "classifier"
@@ -129674,7 +129722,9 @@
           }
         }
       },
-      "case_id": "REG-0464"
+      "case_id": "REG-0464",
+      "accepted_transition": "v0.5.222_AB45_source_bounded_quantified_classifier_np",
+      "transition_reason": "AB45 is restricted to source-bounded numeral + classifier + overt noun structure plus explicit context-linked noun ellipsis; measure, wh-quantity, age/dimension, and context-free headless profiles no longer inherit ordinary AB45 licensing."
     },
     {
       "source": "飲七杯度喇。",
@@ -151790,99 +151840,43 @@
       ],
       "expected": {
         "summary": {
-          "top_constructions": [
-            "QuantifiedClassifierNP"
-          ],
+          "top_constructions": [],
           "top_child_constructions": [],
-          "context_requirement_status": "context_required",
-          "antecedent_status": "not_observed",
-          "missing_argument_slots": [
-            "nominal_head"
+          "context_requirement_status": "context_not_required",
+          "antecedent_status": "not_applicable",
+          "missing_argument_slots": [],
+          "root_span_coverage_status": "NO_TOP_CONSTRUCTION",
+          "root_top_construction_count": 0,
+          "unwrapped_root_nonpunctuation_count": 2,
+          "unwrapped_root_surfaces": [
+            "三",
+            "歲"
           ],
-          "root_span_coverage_status": "PASS",
-          "root_top_construction_count": 1,
-          "unwrapped_root_nonpunctuation_count": 0,
-          "unwrapped_root_surfaces": [],
           "semantic_review_flags": [
-            "context_required_unresolved"
+            "no_top_construction"
           ]
         },
         "tree": [
           {
-            "kind": "construction",
+            "kind": "token",
             "depth": 0,
             "parent": "",
-            "surface": "三歲",
-            "construction": "QuantifiedClassifierNP",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "classifier",
-              "classifier_np",
-              "np",
-              "object",
-              "particle",
-              "quantified_classifier_np",
-              "quantity",
-              "topic"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "QuantifiedClassifierNP",
-              "template_family": "generative_template",
-              "template": [
-                "quantity!",
-                "classifier!",
-                "particle?"
-              ],
-              "assigned_slots": [
-                "quantity",
-                "classifier"
-              ],
-              "surfaces": [
-                "三",
-                "歲"
-              ],
-              "fragment_subtype": "quantified_classifier_head_ellipsis",
-              "context_requirement_status": "context_required",
-              "antecedent_status": "not_observed",
-              "missing_argument_slots": [
-                "nominal_head"
-              ],
-              "not_claims": [
-                "not_bare_numeral",
-                "not_overt_head_noun",
-                "not_fabricated_nominal_head",
-                "not_quantified_time_np"
-              ]
-            }
-          },
-          {
-            "kind": "token",
-            "depth": 1,
-            "parent": "QuantifiedClassifierNP",
             "surface": "三",
             "construction": "",
-            "role": "how",
-            "syntax": "quantity count_value numeral",
+            "role": "like",
+            "syntax": "quantity count_value numeral_three",
             "jyutping": "saam1",
             "slots": [
-              "quantity"
+              "comment_predicate",
+              "modifier",
+              "quantity",
+              "stative_predicate"
             ],
             "contextual_role_affordances": [
               {
                 "role": "like",
                 "source": "lexical_default",
                 "active_before_construction_wrapping": true,
-                "active_in_final_construction": false
-              },
-              {
-                "role": "how",
-                "source": "construction_override",
-                "active_before_construction_wrapping": false,
                 "active_in_final_construction": true
               }
             ],
@@ -151893,15 +151887,17 @@
           },
           {
             "kind": "token",
-            "depth": 1,
-            "parent": "QuantifiedClassifierNP",
+            "depth": 0,
+            "parent": "",
             "surface": "歲",
             "construction": "",
             "role": "measure_word",
-            "syntax": "general_classifier classifier nominal_head_ellipsis",
+            "syntax": "age_unit nominal_measure_unit",
             "jyutping": "seoi3",
             "slots": [
-              "classifier"
+              "age_unit",
+              "classifier",
+              "measure_unit"
             ],
             "contextual_role_affordances": [
               {
@@ -151953,7 +151949,9 @@
           }
         }
       },
-      "case_id": "REG-0534"
+      "case_id": "REG-0534",
+      "accepted_transition": "v0.5.222_AB45_source_bounded_quantified_classifier_np",
+      "transition_reason": "AB45 is restricted to source-bounded numeral + classifier + overt noun structure plus explicit context-linked noun ellipsis; measure, wh-quantity, age/dimension, and context-free headless profiles no longer inherit ordinary AB45 licensing."
     },
     {
       "source": "三十蚊。",
@@ -152191,86 +152189,35 @@
       ],
       "expected": {
         "summary": {
-          "top_constructions": [
-            "QuantifiedClassifierNP"
-          ],
+          "top_constructions": [],
           "top_child_constructions": [],
-          "context_requirement_status": "context_required",
-          "antecedent_status": "not_observed",
-          "missing_argument_slots": [
-            "nominal_head"
+          "context_requirement_status": "context_not_required",
+          "antecedent_status": "not_applicable",
+          "missing_argument_slots": [],
+          "root_span_coverage_status": "NO_TOP_CONSTRUCTION",
+          "root_top_construction_count": 0,
+          "unwrapped_root_nonpunctuation_count": 3,
+          "unwrapped_root_surfaces": [
+            "五",
+            "百",
+            "呎"
           ],
-          "root_span_coverage_status": "PASS",
-          "root_top_construction_count": 1,
-          "unwrapped_root_nonpunctuation_count": 0,
-          "unwrapped_root_surfaces": [],
           "semantic_review_flags": [
-            "context_required_unresolved"
+            "no_top_construction"
           ]
         },
         "tree": [
           {
-            "kind": "construction",
+            "kind": "token",
             "depth": 0,
             "parent": "",
-            "surface": "五百呎",
-            "construction": "QuantifiedClassifierNP",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "classifier",
-              "classifier_np",
-              "np",
-              "object",
-              "particle",
-              "quantified_classifier_np",
-              "quantity",
-              "topic"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "QuantifiedClassifierNP",
-              "template_family": "generative_template",
-              "template": [
-                "quantity!",
-                "classifier!",
-                "particle?"
-              ],
-              "assigned_slots": [
-                "quantity",
-                "classifier"
-              ],
-              "surfaces": [
-                "五",
-                "百呎"
-              ],
-              "fragment_subtype": "quantified_classifier_head_ellipsis",
-              "context_requirement_status": "context_required",
-              "antecedent_status": "not_observed",
-              "missing_argument_slots": [
-                "nominal_head"
-              ],
-              "not_claims": [
-                "not_bare_numeral",
-                "not_overt_head_noun",
-                "not_fabricated_nominal_head",
-                "not_quantified_time_np"
-              ]
-            }
-          },
-          {
-            "kind": "token",
-            "depth": 1,
-            "parent": "QuantifiedClassifierNP",
             "surface": "五",
             "construction": "",
             "role": "how",
-            "syntax": "quantity count_value numeral",
+            "syntax": "quantity count_value numeral_five",
             "jyutping": "ng5",
             "slots": [
+              "how",
               "quantity"
             ],
             "contextual_role_affordances": [
@@ -152287,67 +152234,16 @@
             }
           },
           {
-            "kind": "construction",
-            "depth": 1,
-            "parent": "QuantifiedClassifierNP",
-            "surface": "百呎",
-            "construction": "QuantifiedClassifierNP",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "classifier",
-              "classifier_np",
-              "np",
-              "object",
-              "particle",
-              "quantified_classifier_np",
-              "quantity",
-              "topic"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "QuantifiedClassifierNP",
-              "template_family": "generative_template",
-              "template": [
-                "quantity!",
-                "classifier!",
-                "particle?"
-              ],
-              "assigned_slots": [
-                "quantity",
-                "classifier"
-              ],
-              "surfaces": [
-                "百",
-                "呎"
-              ],
-              "fragment_subtype": "quantified_classifier_head_ellipsis",
-              "context_requirement_status": "context_required",
-              "antecedent_status": "not_observed",
-              "missing_argument_slots": [
-                "nominal_head"
-              ],
-              "not_claims": [
-                "not_bare_numeral",
-                "not_overt_head_noun",
-                "not_fabricated_nominal_head",
-                "not_quantified_time_np"
-              ]
-            }
-          },
-          {
             "kind": "token",
-            "depth": 2,
-            "parent": "QuantifiedClassifierNP",
+            "depth": 0,
+            "parent": "",
             "surface": "百",
             "construction": "",
             "role": "how",
-            "syntax": "quantity count_value numeral",
+            "syntax": "quantity count_value numeral_hundred",
             "jyutping": "baak3",
             "slots": [
+              "how",
               "quantity"
             ],
             "contextual_role_affordances": [
@@ -152365,15 +152261,18 @@
           },
           {
             "kind": "token",
-            "depth": 2,
-            "parent": "QuantifiedClassifierNP",
+            "depth": 0,
+            "parent": "",
             "surface": "呎",
             "construction": "",
             "role": "measure_word",
-            "syntax": "general_classifier classifier nominal_head_ellipsis",
+            "syntax": "measure_unit area_measure_unit length_measure_unit nominal_measure_unit",
             "jyutping": "cek3",
             "slots": [
-              "classifier"
+              "area_measure_unit",
+              "classifier",
+              "length_measure_unit",
+              "measure_unit"
             ],
             "contextual_role_affordances": [
               {
@@ -152425,7 +152324,9 @@
           }
         }
       },
-      "case_id": "REG-0536"
+      "case_id": "REG-0536",
+      "accepted_transition": "v0.5.222_AB45_source_bounded_quantified_classifier_np",
+      "transition_reason": "AB45 is restricted to source-bounded numeral + classifier + overt noun structure plus explicit context-linked noun ellipsis; measure, wh-quantity, age/dimension, and context-free headless profiles no longer inherit ordinary AB45 licensing."
     },
     {
       "source": "張枱三呎。",
@@ -152435,19 +152336,20 @@
       "expected": {
         "summary": {
           "top_constructions": [
-            "ModifiedNP",
-            "QuantifiedClassifierNP"
+            "TopicComment"
           ],
           "top_child_constructions": [],
           "context_requirement_status": "context_not_required",
           "antecedent_status": "not_applicable",
           "missing_argument_slots": [],
-          "root_span_coverage_status": "MULTIPLE_ROOT_CONSTRUCTIONS",
-          "root_top_construction_count": 2,
-          "unwrapped_root_nonpunctuation_count": 0,
-          "unwrapped_root_surfaces": [],
+          "root_span_coverage_status": "PARTIAL",
+          "root_top_construction_count": 1,
+          "unwrapped_root_nonpunctuation_count": 1,
+          "unwrapped_root_surfaces": [
+            "呎"
+          ],
           "semantic_review_flags": [
-            "multiple_top_constructions"
+            "partial_root_span_unwrapped_material"
           ]
         },
         "tree": [
@@ -152455,6 +152357,54 @@
             "kind": "construction",
             "depth": 0,
             "parent": "",
+            "surface": "張枱三",
+            "construction": "TopicComment",
+            "role": "",
+            "syntax": "",
+            "jyutping": "",
+            "slots": [
+              "classifier",
+              "comment",
+              "comment_predicate",
+              "construction_span",
+              "content_topic",
+              "evaluation_clause",
+              "head_noun",
+              "modifier",
+              "np",
+              "object",
+              "opinion_topic",
+              "predicate",
+              "quantity",
+              "reported_content",
+              "stative_predicate",
+              "topic",
+              "topic_comment"
+            ],
+            "contextual_role_affordances": [],
+            "trace": "generative_template",
+            "trace_detail": {
+              "kind": "generative_template",
+              "construction_type": "TopicComment",
+              "template_family": "generative_template",
+              "template": [
+                "opinion_topic!",
+                "comment_predicate!"
+              ],
+              "assigned_slots": [
+                "opinion_topic",
+                "comment_predicate"
+              ],
+              "surfaces": [
+                "張枱",
+                "三"
+              ]
+            }
+          },
+          {
+            "kind": "construction",
+            "depth": 1,
+            "parent": "TopicComment",
             "surface": "張枱",
             "construction": "ModifiedNP",
             "role": "",
@@ -152496,7 +152446,7 @@
           },
           {
             "kind": "token",
-            "depth": 1,
+            "depth": 2,
             "parent": "ModifiedNP",
             "surface": "張",
             "construction": "",
@@ -152521,7 +152471,7 @@
           },
           {
             "kind": "token",
-            "depth": 1,
+            "depth": 2,
             "parent": "ModifiedNP",
             "surface": "枱",
             "construction": "",
@@ -152556,80 +152506,25 @@
             }
           },
           {
-            "kind": "construction",
-            "depth": 0,
-            "parent": "",
-            "surface": "三呎",
-            "construction": "QuantifiedClassifierNP",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "classifier",
-              "classifier_np",
-              "np",
-              "object",
-              "particle",
-              "quantified_classifier_np",
-              "quantity",
-              "topic"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "QuantifiedClassifierNP",
-              "template_family": "generative_template",
-              "template": [
-                "quantity!",
-                "classifier!",
-                "particle?"
-              ],
-              "assigned_slots": [
-                "quantity",
-                "classifier"
-              ],
-              "surfaces": [
-                "三",
-                "呎"
-              ],
-              "fragment_subtype": "quantified_classifier_head_ellipsis",
-              "context_requirement_status": "context_required",
-              "antecedent_status": "not_observed",
-              "missing_argument_slots": [
-                "nominal_head"
-              ],
-              "not_claims": [
-                "not_bare_numeral",
-                "not_overt_head_noun",
-                "not_fabricated_nominal_head",
-                "not_quantified_time_np"
-              ]
-            }
-          },
-          {
             "kind": "token",
             "depth": 1,
-            "parent": "QuantifiedClassifierNP",
+            "parent": "TopicComment",
             "surface": "三",
             "construction": "",
-            "role": "how",
-            "syntax": "quantity count_value numeral",
+            "role": "like",
+            "syntax": "quantity count_value numeral_three",
             "jyutping": "saam1",
             "slots": [
-              "quantity"
+              "comment_predicate",
+              "modifier",
+              "quantity",
+              "stative_predicate"
             ],
             "contextual_role_affordances": [
               {
                 "role": "like",
                 "source": "lexical_default",
                 "active_before_construction_wrapping": true,
-                "active_in_final_construction": false
-              },
-              {
-                "role": "how",
-                "source": "construction_override",
-                "active_before_construction_wrapping": false,
                 "active_in_final_construction": true
               }
             ],
@@ -152640,15 +152535,18 @@
           },
           {
             "kind": "token",
-            "depth": 1,
-            "parent": "QuantifiedClassifierNP",
+            "depth": 0,
+            "parent": "",
             "surface": "呎",
             "construction": "",
             "role": "measure_word",
-            "syntax": "general_classifier classifier nominal_head_ellipsis",
+            "syntax": "measure_unit area_measure_unit length_measure_unit nominal_measure_unit",
             "jyutping": "cek3",
             "slots": [
-              "classifier"
+              "area_measure_unit",
+              "classifier",
+              "length_measure_unit",
+              "measure_unit"
             ],
             "contextual_role_affordances": [
               {
@@ -152682,8 +152580,8 @@
             "status": "PASS"
           },
           "hover": {
-            "status": "PASS",
-            "flagged_hover_target_count": 0,
+            "status": "WARN",
+            "flagged_hover_target_count": 2,
             "missing_plain_learner_gloss_count": 0
           },
           "wrapper": {
@@ -152700,7 +152598,9 @@
           }
         }
       },
-      "case_id": "REG-0537"
+      "case_id": "REG-0537",
+      "accepted_transition": "v0.5.222_AB45_source_bounded_quantified_classifier_np",
+      "transition_reason": "AB45 is restricted to source-bounded numeral + classifier + overt noun structure plus explicit context-linked noun ellipsis; measure, wh-quantity, age/dimension, and context-free headless profiles no longer inherit ordinary AB45 licensing."
     },
     {
       "source": "佢係老師。",
@@ -153571,76 +153471,29 @@
       ],
       "expected": {
         "summary": {
-          "top_constructions": [
-            "ExistentialClause"
-          ],
+          "top_constructions": [],
           "top_child_constructions": [],
           "context_requirement_status": "context_not_required",
           "antecedent_status": "not_applicable",
           "missing_argument_slots": [],
-          "root_span_coverage_status": "PASS",
-          "root_top_construction_count": 1,
-          "unwrapped_root_nonpunctuation_count": 0,
-          "unwrapped_root_surfaces": []
+          "root_span_coverage_status": "NO_TOP_CONSTRUCTION",
+          "root_top_construction_count": 0,
+          "unwrapped_root_nonpunctuation_count": 4,
+          "unwrapped_root_surfaces": [
+            "佢",
+            "有",
+            "三",
+            "歲"
+          ],
+          "semantic_review_flags": [
+            "no_top_construction"
+          ]
         },
         "tree": [
           {
-            "kind": "construction",
+            "kind": "token",
             "depth": 0,
             "parent": "",
-            "surface": "佢有三歲",
-            "construction": "ExistentialClause",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "classifier",
-              "classifier_np",
-              "co_participant",
-              "construction_span",
-              "existential",
-              "existential_clause",
-              "head_noun",
-              "np",
-              "object",
-              "particle",
-              "possessive_clause",
-              "predicate",
-              "quantified_classifier_np",
-              "quantity",
-              "recipient",
-              "stance_holder",
-              "subject",
-              "topic"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "ExistentialClause",
-              "template_family": "generative_template",
-              "template": [
-                "subject?",
-                "existential!",
-                "topic_or_object!",
-                "particle?"
-              ],
-              "assigned_slots": [
-                "subject",
-                "existential",
-                "topic_or_object"
-              ],
-              "surfaces": [
-                "佢",
-                "有",
-                "三歲"
-              ]
-            }
-          },
-          {
-            "kind": "token",
-            "depth": 1,
-            "parent": "ExistentialClause",
             "surface": "佢",
             "construction": "",
             "role": "who",
@@ -153677,8 +153530,8 @@
           },
           {
             "kind": "token",
-            "depth": 1,
-            "parent": "ExistentialClause",
+            "depth": 0,
+            "parent": "",
             "surface": "有",
             "construction": "",
             "role": "func",
@@ -153701,80 +153554,25 @@
             }
           },
           {
-            "kind": "construction",
-            "depth": 1,
-            "parent": "ExistentialClause",
-            "surface": "三歲",
-            "construction": "QuantifiedClassifierNP",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "classifier",
-              "classifier_np",
-              "np",
-              "object",
-              "particle",
-              "quantified_classifier_np",
-              "quantity",
-              "topic"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "QuantifiedClassifierNP",
-              "template_family": "generative_template",
-              "template": [
-                "quantity!",
-                "classifier!",
-                "particle?"
-              ],
-              "assigned_slots": [
-                "quantity",
-                "classifier"
-              ],
-              "surfaces": [
-                "三",
-                "歲"
-              ],
-              "fragment_subtype": "quantified_classifier_head_ellipsis",
-              "context_requirement_status": "context_required",
-              "antecedent_status": "not_observed",
-              "missing_argument_slots": [
-                "nominal_head"
-              ],
-              "not_claims": [
-                "not_bare_numeral",
-                "not_overt_head_noun",
-                "not_fabricated_nominal_head",
-                "not_quantified_time_np"
-              ]
-            }
-          },
-          {
             "kind": "token",
-            "depth": 2,
-            "parent": "QuantifiedClassifierNP",
+            "depth": 0,
+            "parent": "",
             "surface": "三",
             "construction": "",
-            "role": "how",
-            "syntax": "quantity count_value numeral",
+            "role": "like",
+            "syntax": "quantity count_value numeral_three",
             "jyutping": "saam1",
             "slots": [
-              "quantity"
+              "comment_predicate",
+              "modifier",
+              "quantity",
+              "stative_predicate"
             ],
             "contextual_role_affordances": [
               {
                 "role": "like",
                 "source": "lexical_default",
                 "active_before_construction_wrapping": true,
-                "active_in_final_construction": false
-              },
-              {
-                "role": "how",
-                "source": "construction_override",
-                "active_before_construction_wrapping": false,
                 "active_in_final_construction": true
               }
             ],
@@ -153785,15 +153583,17 @@
           },
           {
             "kind": "token",
-            "depth": 2,
-            "parent": "QuantifiedClassifierNP",
+            "depth": 0,
+            "parent": "",
             "surface": "歲",
             "construction": "",
             "role": "measure_word",
-            "syntax": "general_classifier classifier nominal_head_ellipsis",
+            "syntax": "age_unit nominal_measure_unit",
             "jyutping": "seoi3",
             "slots": [
-              "classifier"
+              "age_unit",
+              "classifier",
+              "measure_unit"
             ],
             "contextual_role_affordances": [
               {
@@ -153845,7 +153645,9 @@
           }
         }
       },
-      "case_id": "REG-0542"
+      "case_id": "REG-0542",
+      "accepted_transition": "v0.5.222_AB45_source_bounded_quantified_classifier_np",
+      "transition_reason": "AB45 is restricted to source-bounded numeral + classifier + overt noun structure plus explicit context-linked noun ellipsis; measure, wh-quantity, age/dimension, and context-free headless profiles no longer inherit ordinary AB45 licensing."
     },
     {
       "source": "呢本書三十。",
@@ -154359,19 +154161,20 @@
       "expected": {
         "summary": {
           "top_constructions": [
-            "DemonstrativeClassifierNP",
-            "QuantifiedClassifierNP"
+            "TopicComment"
           ],
           "top_child_constructions": [],
           "context_requirement_status": "context_not_required",
           "antecedent_status": "not_applicable",
           "missing_argument_slots": [],
-          "root_span_coverage_status": "MULTIPLE_ROOT_CONSTRUCTIONS",
-          "root_top_construction_count": 2,
-          "unwrapped_root_nonpunctuation_count": 0,
-          "unwrapped_root_surfaces": [],
+          "root_span_coverage_status": "PARTIAL",
+          "root_top_construction_count": 1,
+          "unwrapped_root_nonpunctuation_count": 1,
+          "unwrapped_root_surfaces": [
+            "歲"
+          ],
           "semantic_review_flags": [
-            "multiple_top_constructions"
+            "partial_root_span_unwrapped_material"
           ]
         },
         "tree": [
@@ -154379,6 +154182,55 @@
             "kind": "construction",
             "depth": 0,
             "parent": "",
+            "surface": "呢本書三",
+            "construction": "TopicComment",
+            "role": "",
+            "syntax": "",
+            "jyutping": "",
+            "slots": [
+              "classifier",
+              "comment",
+              "comment_predicate",
+              "construction_span",
+              "content_topic",
+              "demonstrative",
+              "evaluation_clause",
+              "head_noun",
+              "modifier",
+              "np",
+              "object",
+              "opinion_topic",
+              "predicate",
+              "quantity",
+              "reported_content",
+              "stative_predicate",
+              "topic",
+              "topic_comment"
+            ],
+            "contextual_role_affordances": [],
+            "trace": "generative_template",
+            "trace_detail": {
+              "kind": "generative_template",
+              "construction_type": "TopicComment",
+              "template_family": "generative_template",
+              "template": [
+                "opinion_topic!",
+                "comment_predicate!"
+              ],
+              "assigned_slots": [
+                "opinion_topic",
+                "comment_predicate"
+              ],
+              "surfaces": [
+                "呢本書",
+                "三"
+              ]
+            }
+          },
+          {
+            "kind": "construction",
+            "depth": 1,
+            "parent": "TopicComment",
             "surface": "呢本書",
             "construction": "DemonstrativeClassifierNP",
             "role": "",
@@ -154419,7 +154271,7 @@
           },
           {
             "kind": "token",
-            "depth": 1,
+            "depth": 2,
             "parent": "DemonstrativeClassifierNP",
             "surface": "呢",
             "construction": "",
@@ -154444,7 +154296,7 @@
           },
           {
             "kind": "token",
-            "depth": 1,
+            "depth": 2,
             "parent": "DemonstrativeClassifierNP",
             "surface": "本",
             "construction": "",
@@ -154469,7 +154321,7 @@
           },
           {
             "kind": "token",
-            "depth": 1,
+            "depth": 2,
             "parent": "DemonstrativeClassifierNP",
             "surface": "書",
             "construction": "",
@@ -154504,80 +154356,25 @@
             }
           },
           {
-            "kind": "construction",
-            "depth": 0,
-            "parent": "",
-            "surface": "三歲",
-            "construction": "QuantifiedClassifierNP",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "classifier",
-              "classifier_np",
-              "np",
-              "object",
-              "particle",
-              "quantified_classifier_np",
-              "quantity",
-              "topic"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "QuantifiedClassifierNP",
-              "template_family": "generative_template",
-              "template": [
-                "quantity!",
-                "classifier!",
-                "particle?"
-              ],
-              "assigned_slots": [
-                "quantity",
-                "classifier"
-              ],
-              "surfaces": [
-                "三",
-                "歲"
-              ],
-              "fragment_subtype": "quantified_classifier_head_ellipsis",
-              "context_requirement_status": "context_required",
-              "antecedent_status": "not_observed",
-              "missing_argument_slots": [
-                "nominal_head"
-              ],
-              "not_claims": [
-                "not_bare_numeral",
-                "not_overt_head_noun",
-                "not_fabricated_nominal_head",
-                "not_quantified_time_np"
-              ]
-            }
-          },
-          {
             "kind": "token",
             "depth": 1,
-            "parent": "QuantifiedClassifierNP",
+            "parent": "TopicComment",
             "surface": "三",
             "construction": "",
-            "role": "how",
-            "syntax": "quantity count_value numeral",
+            "role": "like",
+            "syntax": "quantity count_value numeral_three",
             "jyutping": "saam1",
             "slots": [
-              "quantity"
+              "comment_predicate",
+              "modifier",
+              "quantity",
+              "stative_predicate"
             ],
             "contextual_role_affordances": [
               {
                 "role": "like",
                 "source": "lexical_default",
                 "active_before_construction_wrapping": true,
-                "active_in_final_construction": false
-              },
-              {
-                "role": "how",
-                "source": "construction_override",
-                "active_before_construction_wrapping": false,
                 "active_in_final_construction": true
               }
             ],
@@ -154588,15 +154385,17 @@
           },
           {
             "kind": "token",
-            "depth": 1,
-            "parent": "QuantifiedClassifierNP",
+            "depth": 0,
+            "parent": "",
             "surface": "歲",
             "construction": "",
             "role": "measure_word",
-            "syntax": "general_classifier classifier nominal_head_ellipsis",
+            "syntax": "age_unit nominal_measure_unit",
             "jyutping": "seoi3",
             "slots": [
-              "classifier"
+              "age_unit",
+              "classifier",
+              "measure_unit"
             ],
             "contextual_role_affordances": [
               {
@@ -154630,8 +154429,8 @@
             "status": "PASS"
           },
           "hover": {
-            "status": "PASS",
-            "flagged_hover_target_count": 0,
+            "status": "WARN",
+            "flagged_hover_target_count": 2,
             "missing_plain_learner_gloss_count": 0
           },
           "wrapper": {
@@ -154648,7 +154447,9 @@
           }
         }
       },
-      "case_id": "REG-0545"
+      "case_id": "REG-0545",
+      "accepted_transition": "v0.5.222_AB45_source_bounded_quantified_classifier_np",
+      "transition_reason": "AB45 is restricted to source-bounded numeral + classifier + overt noun structure plus explicit context-linked noun ellipsis; measure, wh-quantity, age/dimension, and context-free headless profiles no longer inherit ordinary AB45 licensing."
     },
     {
       "source": "佢慢慢噉食飯。",
@@ -156286,6 +156087,6 @@
   },
   "last_absorbed_candidate": "v0.5.218-aa56-positive-participant-runtime",
   "absorbed_current_focused_case_count": 4,
-  "last_intentional_transition": "v0.5.221_AA49_independent_motion_predicate_boundary",
+  "last_intentional_transition": "v0.5.222_AB45_source_bounded_quantified_classifier_np",
   "abandoned_candidate": "v0.5.183-cp024-p1-demo01-r1"
 }

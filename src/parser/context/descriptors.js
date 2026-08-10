@@ -470,15 +470,28 @@ module.exports = function createContextDescriptors(dependencies = {}) {
         return slots.includes("head_noun") || (/noun|_np/.test(String(row.syntax || "")) && ["what", "who", "where"].includes(row.role || row.label));
       })
     );
-    const compatibleNpConstruction = constructions.some((row) => [
+    const sameClassifierConstructions = constructions.filter((row) => [
       "QuantifiedClassifierNP", "OvertHeadDemonstrativeClassifierNP", "ClassifierObjectNP",
       "OrdinalClassifierNP", "WhClassifierQuestion"
     ].includes(row.type) && String(row.surface || "").includes(descriptor.classifier_surface));
+    const incompatibleAntecedent = sameClassifierConstructions.some((row) => {
+      const trace = row.trace || {};
+      return trace.classifier_head_compatibility_status === "incompatible";
+    });
+    const compatibleNpConstruction = sameClassifierConstructions.some((row) => {
+      const trace = row.trace || {};
+      if (trace.classifier_head_compatibility_status === "incompatible") return false;
+      if (row.type === "QuantifiedClassifierNP") {
+        return (row.children || []).some((child) => child && child.kind === "token" && (child.slots || []).includes("head_noun"));
+      }
+      return true;
+    });
     const sameClassifierQuestionCue = source.includes(`幾${descriptor.classifier_surface}`)
       || source.includes(`邊${descriptor.classifier_surface}`)
       || source.includes(`呢${descriptor.classifier_surface}`)
       || source.includes(`嗰${descriptor.classifier_surface}`);
-    return sameClassifierQuestionCue || sameClassifierWithFollowingHead || compatibleNpConstruction;
+    if (incompatibleAntecedent && !compatibleNpConstruction) return false;
+    return compatibleNpConstruction || sameClassifierQuestionCue || sameClassifierWithFollowingHead;
   }
 
   function conventionalZiDurationDescriptor(structural) {

@@ -1,6 +1,14 @@
 "use strict";
 
 const PRODUCTIVE_VO = Object.fromEntries(require("../../lexicon/productive-vo"));
+const UNIT_WORD_EVIDENCE = require("../unit-word-evidence.json");
+const AB45_CLASSIFIER_TYPES = new Set(["general_classifier", "sortal_classifier", "honorific_classifier"]);
+const AB45_CLASSIFIER_SURFACES = UNIT_WORD_EVIDENCE.noun_choice_rule_records
+  .filter((rule) => {
+    const sense = UNIT_WORD_EVIDENCE.unit_word_senses.find((entry) => entry.unit_word_sense_id === rule.unit_word_sense_id);
+    return sense && AB45_CLASSIFIER_TYPES.has(sense.unit_word_type);
+  })
+  .map((rule) => rule.surface);
 
 module.exports = [
   {
@@ -692,7 +700,12 @@ module.exports = [
   {
     type: "QuantifiedClassifierNP",
     label: "NP",
-    template: ["quantity!", "classifier!", "particle?"],
+    template_family: "generative_template",
+    template: ["quantity!", "classifier!"],
+    constraints: {
+      slot_first_token_syntax_must_include_any: { quantity: ["numeral"] },
+      slot_surface_in: { classifier: AB45_CLASSIFIER_SURFACES }
+    },
     role_overrides: {
       quantity: {
         label: "how",
@@ -707,7 +720,7 @@ module.exports = [
         note: "Visible classifier whose noun head must be recovered from discourse rather than fabricated."
       }
     },
-    output_slots: ["quantified_classifier_np", "classifier_np", "quantity", "classifier", "particle", "np", "topic", "object"],
+    output_slots: ["quantified_classifier_np", "classifier_np", "quantity", "classifier", "np", "topic", "object"],
     context_requirement_status: "context_required",
     missing_argument_slots: ["nominal_head"],
     antecedent_status: "not_observed",
@@ -720,7 +733,12 @@ module.exports = [
   {
     type: "QuantifiedClassifierNP",
     label: "NP",
+    template_family: "generative_template",
     template: ["quantity!", "classifier!", "head_noun!"],
+    constraints: {
+      slot_first_token_syntax_must_include_any: { quantity: ["numeral"] },
+      slot_surface_in: { classifier: AB45_CLASSIFIER_SURFACES }
+    },
     role_overrides: {
       quantity: {
         label: "how",

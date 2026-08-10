@@ -27,14 +27,6 @@
         "run-current-focused-v0.5.162-r1.js"
       ],
       "assertion": "construction_present_in_exact_snapshot"
-    },
-    {
-      "case_id": "REG-0542",
-      "source": "佢有三歲。",
-      "origins": [
-        "run-current-focused.js"
-      ],
-      "assertion": "construction_present_in_exact_snapshot"
     }
   ],
   "focused_cases": [
@@ -69,15 +61,15 @@
   "implementation_probe_cases": [],
   "coverage": {
     "state": "positive_and_boundary",
-    "exact_snapshot_positive_count": 4,
+    "exact_snapshot_positive_count": 3,
     "focused_positive_count": 0,
     "focused_boundary_count": 2,
     "focused_review_only_count": 0,
     "np_case_count": 0,
     "implementation_probe_count": 0,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 4,
+    "positive_case_count": 3,
     "boundary_case_count": 2,
-    "executable_case_count": 6
+    "executable_case_count": 5
   }
 }
