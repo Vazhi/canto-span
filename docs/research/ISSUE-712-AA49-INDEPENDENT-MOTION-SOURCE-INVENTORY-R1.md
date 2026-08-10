@@ -13,7 +13,7 @@ What independently predicative Cantonese motion profile is directly established 
 
 Source ID: `SRC-SHAN-JIN-2025-MOTION-TYPOLOGY`
 
-Citation: Shan, Yunming & Jin, Lixin. 2025. 粵語位移事件編碼類型再探 [Revisiting the encoding typology of motion events in Cantonese]. *Language and Linguistics* 26(2/3), 467–495. DOI `10.1075/lali.00202.sha`.
+Citation: Shan, Yunming & Jin, Lixin. 2025. 粵語位移事件編碼類型再探 [Revisiting the encoding typology of motion events in Cantonese]. *Language and Linguistics* 26(3), 467–495. DOI `10.1075/lali.00202.sha`.
 
 Verification: full article text, CC BY 4.0 author/public full-text copy, cross-checked against publisher metadata.
 
