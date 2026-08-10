@@ -1,0 +1,48 @@
+name: AB45 fixture audit temporary
+
+on:
+  pull_request:
+    paths:
+      - "**"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    if: github.event.pull_request.head.ref == 'agent/ab45-quantified-classifier-source-reaudit'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Inventory AB45 fixture and live rows
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const { loadRuntimeApi, internalConstruction, rowSurface } = require('./tests/lib/runtime-api');
+          const api = loadRuntimeApi();
+          const fixture = JSON.parse(fs.readFileSync('tests/constructions/QuantifiedClassifierNP.json','utf8'));
+          const groups = [
+            ['snapshot_cases', fixture.snapshot_cases || []],
+            ['focused_cases', fixture.focused_cases || []],
+            ['np_cases', fixture.np_cases || []],
+            ['implementation_probe_cases', fixture.implementation_probe_cases || []],
+          ];
+          const all = [];
+          for (const [group, cases] of groups) {
+            for (const c of cases) {
+              const rows = api.diagnosticFinalRows(api.analyzeLine(c.source))
+                .filter(r => r.kind === 'construction' && internalConstruction(r) === 'QuantifiedClassifierNP')
+                .map(r => ({surface: rowSurface(r), parent: r.internal_parent || r.parent || null, depth: r.depth,
+                  template: r.trace_detail && r.trace_detail.template,
+                  assigned_slots: r.trace_detail && r.trace_detail.assigned_slots,
+                  constraints: r.trace_detail && r.trace_detail.constraints}));
+              all.push({group, case_id:c.case_id, source:c.source, assertion:c.assertion, class:c.class || c.group || null, rows});
+            }
+          }
+          console.log(JSON.stringify({counts:Object.fromEntries(groups.map(([g,c])=>[g,c.length])), total:all.length, cases:all}, null, 2));
+          NODE
