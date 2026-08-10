@@ -37,10 +37,10 @@ test("explicit match cannot pass before all cited sources are verified", () => {
   );
 });
 
-test("legacy completed records without explicit outcome remain backward compatible", () => {
+test("legacy completed records without explicit outcome remain byte-compatible", () => {
   assert.deepEqual(
     sourceScopeGate({ current_standard_reaudit_complete: true }, true),
-    { status: "pass", evidence: "legacy_completed_reaudit_without_explicit_scope_outcome" }
+    { status: "pass", evidence: "current_standard_reaudit_complete_with_verified_sources" }
   );
   assert.equal(sourceStageCandidateState(gates("pass")), "source_supported");
 });
