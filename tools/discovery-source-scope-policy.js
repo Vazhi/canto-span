@@ -19,10 +19,10 @@ function sourceScopeGate(frontmatter = {}, allVerified = false) {
   }
 
   // Backward compatibility for already-reviewed records that predate the explicit
-  // audit-outcome field. Completion remains sufficient until those records are
-  // migrated, but an explicit false above always wins.
+  // audit-outcome field. Preserve the exact prior gate/evidence bytes until those
+  // records opt into an explicit true/false outcome.
   if (complete && allVerified) {
-    return gate("pass", "legacy_completed_reaudit_without_explicit_scope_outcome");
+    return gate("pass", "current_standard_reaudit_complete_with_verified_sources");
   }
 
   if (allVerified) {
