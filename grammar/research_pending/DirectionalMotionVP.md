@@ -6,7 +6,7 @@ status: "research_pending"
 confidence: "not_assigned_research_pending"
 claim_layer: "language"
 lane: "LANE-09"
-last_reviewed: "unknown"
+last_reviewed: "2026-08-10"
 last_status_migrated: "2026-07-21"
 source_count: 2
 verified_source_count: 2
@@ -66,35 +66,56 @@ tags: ["canto-span/grammar", "canto-span/status/research_pending", "canto-span/l
 
 ## Plain-language claim
 
-Cantonese may instantiate the structural family represented by DirectionalMotionVP; exact productivity and boundaries require pattern-specific independent evidence.
+Cantonese lexical motion/path verbs can function as independent predicates. AA49 is limited to that **independently predicative motion/path role**; it is not licensed merely by the surface presence of a directional form.
 
-This is a linguistic claim only to the extent allowed by the status and evidence below. The runtime label is not assumed to be standard linguistic terminology.
+Goal/location and aspect material may compose around a valid independent motion predicate where independently supported. Postverbal directional complements, compound directionals, manner + direction sequences, caused-motion directional material, and larger clause/question/discourse wrappers do not become AA49 simply because they contain `去`, `嚟`, or another directional lexeme.
+
+The legacy runtime label `DirectionalMotionVP` is retained for compatibility and is not treated as standard linguistic terminology.
 
 ## Current status
 
 - Linguistic status: `research_pending`
 - Linguistic confidence: `not_assigned_research_pending`
-- Current action: `retain_provisional_pending_pattern_specific_attestation_and_heldout_review`
+- Current action: `retain_narrow_independent_motion_predicate_pending_boundary_and_runtime_alignment`
 - Productive acceptance eligible: **no**
-- Last linguistic review: not recorded
+- Last linguistic review: 2026-08-10
+- Source-scope decision: `RETAIN_NARROW_RESEARCH_PENDING`
+
+## Source-bounded core
+
+The two verified sources jointly support the distinction that matters for AA49:
+
+1. a directional/path or motion verb may itself head an independent motion predicate;
+2. the same or related directional material may instead occur as a postverbal complement or inside a larger directional complex;
+3. those roles must not be collapsed by surface vocabulary alone.
+
+Directly supported independent-predicate examples include `去`, `嚟`, `落`, and `走` profiles. Shan & Jin also discuss a broader inventory of single path verbs, but this note does not convert that broader research inventory into unrestricted runtime productivity.
+
+Directly illustrated surroundings include endpoint/location material and perfective `咗`, for example `去北京`, `去咗辦公室`, `嚟咗辦公室`, `落咗樓下`, and `走咗`. These surroundings do not expand the AA49 identity beyond the independent predicate subspan.
+
+Companion research records:
+
+- `docs/research/ISSUE-712-AA49-INDEPENDENT-MOTION-SOURCE-INVENTORY-R1.md`
+- `docs/research/ISSUE-712-AA49-INDEPENDENT-MOTION-PROFILES-R1.md`
+- `docs/research/ISSUE-712-AA49-CURRENT-TEST-SCOPE-AUDIT-R1.md`
 
 ## Sources
 
 ### SRC-SHAN-JIN-2025-MOTION-TYPOLOGY
 
-- Citation: [Shan, Yunming and Jin, Lixin. 2025. 粵語位移事件編碼類型再探 [Revisiting the Encoding Typology of Motion Events in Cantonese]. Language and Linguistics 26(2).](https://doi.org/10.1075/lali.00202.sha)
-- Locator: §4.1, examples 29-32
+- Citation: [Shan, Yunming and Jin, Lixin. 2025. 粵語位移事件編碼類型再探 [Revisiting the Encoding Typology of Motion Events in Cantonese]. Language and Linguistics 26(3), 467–495.](https://doi.org/10.1075/lali.00202.sha)
+- Locator: §3.1 examples 1–2; §4.1 examples 29–32; §4.3 / Table 2 discussion
 - Verification: `VERIFIED_FULL_TEXT_AUTHOR_UPLOAD_AND_PUBLISHER_METADATA`
-- What it supports: The article separately lists single-verb motion encoding, including 架車走咗, from serial/path-verb and resultative encoding.
-- Limit: Do not infer that all general motion verbs are directional particles or members of the closed directional-verb inventory.
+- What it supports: Cantonese directional/path verbs can function as independent predicates/path verbs; the paper separately analyzes single-verb motion encoding, serial/path encoding, and resultative encoding, including independent `走`.
+- Limit: Do not infer that all general motion verbs are directional particles, that every member of the directional inventory is equally productive in every role, or that serial/compound directional material is one AA49 predicate.
 
 ### SRC-YIU-2016-DIRECTIONAL-ASPECT
 
-- Citation: [Yiu, Carine Yuk-man (姚玉敏). 2016. 粵語繼續體「落去」和開始體「起嚟」的產生. In 漢語研究的新貌：方言、語法與文獻 / New Horizons in the Study of Chinese: Dialectology, Grammar, and Philology, pp. 261-284.](https://www.cuhk.edu.hk/ics/clrc/yue/20_carine_yiu.pdf)
-- Locator: pp. 263-266; examples 10-27
+- Citation: [Yiu, Carine Yuk-man (姚玉敏). 2016. 粵語繼續體「落去」和開始體「起嚟」的產生. In 漢語研究的新貌：方言、語法與文獻 / New Horizons in the Study of Chinese: Dialectology, Grammar, and Philology, pp. 261–284.](https://www.cuhk.edu.hk/ics/clrc/yue/20_carine_yiu.pdf)
+- Locator: pp. 263–267; examples 10–28 and following discussion
 - Verification: `VERIFIED_FULL_TEXT`
-- What it supports: Yiu contrasts independent predicates such as 落咗樓下, 去咗辦公室, and 嚟咗辦公室 with postverbal uses after manner or caused-motion predicates, and distinguishes come/go deixis.
-- Limit: Do not use the surface presence of 嚟/去 to assign one uniform predicate/complement role or one argument structure.
+- What it supports: Yiu contrasts independent predicates such as `落咗樓下`, `去咗（辦公室）`, and `嚟咗（辦公室）` with postverbal directional-complement uses after manner or caused-motion predicates, and separately treats compound directional material.
+- Limit: Do not use the surface presence of `嚟/去/落` to assign one uniform predicate/complement role or one argument structure.
 
 ## Native-speaker review
 
@@ -104,58 +125,83 @@ This is a linguistic claim only to the extent allowed by the status and evidence
 - Structural-analysis validations: 0.
 - Second-speaker state: `NOT_RECORDED`.
 
+The native record therefore does not independently validate the predicate/complement analysis or the current runtime node boundaries.
+
 ## Negative and boundary cases
 
 - Standard executable test file: `tests/constructions/DirectionalMotionVP.json`
 - Evidence state: `fixture_level_not_provenance_linked`
-- Executable or review records containing this label:
-  - `review-packets/cp022-evaluation/EP-CP022-I1A-I01-D1/development-baseline.json`
-  - `review-packets/cp022-evaluation/EP-CP022-I1A-I02-D1/development-baseline.json`
-  - `review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/development-baseline.json`
-  - `review-packets/v0.5.181/IFR01-D1/development-baseline.json`
-  - `review-packets/v0.5.182/IFR02-D1/development-baseline.json`
-  - `test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.json`
-  - `test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.tsv`
-  - `test-data/WECHAT-GX-TRAVEL-002-QUEUE-D-context_disfluency_research.tsv`
-  - `test-data/WECHAT-GX-TRAVEL-002-QUEUE-G-grammar_research_external_evidence.tsv`
-  - `test-data/WECHAT-GX-TRAVEL-002-QUEUE-L-lexicon_jyutping_enrichment.tsv`
-  - `test-data/WECHAT-GX-TRAVEL-002-QUEUE-R-accepted_behavior_regression.tsv`
-  - `test-data/WECHAT-GX-TRAVEL-002-REGRESSION-REMEDIATION-READINESS-R2.json`
-  - `test-data/WECHAT-GX-TRAVEL-002-REGRESSION-REMEDIATION-READINESS-R2.tsv`
-  - `test-data/a1-context-status-fixture.tsv`
-  - `test-data/cp021b-lx1-construction-freeze-baseline.json`
-  - `test-data/grammar-claim-provenance-CP021B.json`
-  - `test-data/grammar-claim-provenance-CP021B.tsv`
-  - `test-data/grammar-legitimacy-audit.json`
-  - `test-data/grammar-legitimacy-audit.tsv`
-  - `test-data/native-speaker-naturalness-evidence-v1.json`
-  - 4 additional matching records are retained in the frozen full-schema snapshot.
+- Current executable coverage: 72 positives + 2 boundaries = 74 cases.
+- 2026-08-10 test-scope audit: 78 live legacy `DirectionalMotionVP` nodes across the 72 positives; only 10 are roots and 68 are nested under outer constructions.
+- Observed simple live surfaces: `去` 55, `嚟` 8, `走` 4.
+- Observed compound/complex live surfaces: `返嚟` 3, `落嚟` 3, `上去` 1, `返去` 1, `行入去` 1, `行出嚟` 1, `行返過嚟` 1.
+- At least 12 current positive cases are outside the narrow source-bounded AA49 identity: the 11 compound/complex-directional cases plus `我帶咗三部機去啊。`, where `去` is a postverbal directional component rather than the independent motion predicate.
+- The directly sourced bare independent `落` profile is not represented by a clean AA49 positive in the current fixture; observed `落` nodes are compound `落嚟`.
+- The two current explicit negatives, `圖書館係乜嘢嚟㗎。` and `呢個用嚟切嘢。`, correctly show that orthographic `嚟` does not itself imply motion.
+- Boundary inventory remains **incomplete** because it does not yet executable-test the central independent-predicate vs directional-complement/compound distinction.
+
+Current fixtures remain unchanged in this research-only task. Passing historical snapshots remain implementation evidence, not linguistic evidence.
+
+Executable or review records containing this label include:
+
+- `review-packets/cp022-evaluation/EP-CP022-I1A-I01-D1/development-baseline.json`
+- `review-packets/cp022-evaluation/EP-CP022-I1A-I02-D1/development-baseline.json`
+- `review-packets/cp022-evaluation/EP-CP022-P1-PFV01-D1/development-baseline.json`
+- `review-packets/v0.5.181/IFR01-D1/development-baseline.json`
+- `review-packets/v0.5.182/IFR02-D1/development-baseline.json`
+- `test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.json`
+- `test-data/WECHAT-GX-TRAVEL-002-ADJUDICATION-MATRIX.tsv`
+- `test-data/WECHAT-GX-TRAVEL-002-QUEUE-D-context_disfluency_research.tsv`
+- `test-data/WECHAT-GX-TRAVEL-002-QUEUE-G-grammar_research_external_evidence.tsv`
+- `test-data/WECHAT-GX-TRAVEL-002-QUEUE-L-lexicon_jyutping_enrichment.tsv`
+- `test-data/WECHAT-GX-TRAVEL-002-QUEUE-R-accepted_behavior_regression.tsv`
+- `test-data/WECHAT-GX-TRAVEL-002-REGRESSION-REMEDIATION-READINESS-R2.json`
+- `test-data/WECHAT-GX-TRAVEL-002-REGRESSION-REMEDIATION-READINESS-R2.tsv`
+- `test-data/a1-context-status-fixture.tsv`
+- `test-data/cp021b-lx1-construction-freeze-baseline.json`
+- `test-data/grammar-claim-provenance-CP021B.json`
+- `test-data/grammar-claim-provenance-CP021B.tsv`
+- `test-data/grammar-legitimacy-audit.json`
+- `test-data/grammar-legitimacy-audit.tsv`
+- `test-data/native-speaker-naturalness-evidence-v1.json`
+- 4 additional matching records are retained in the frozen full-schema snapshot.
 
 ## Implementation state
 
 - Lifecycle: `runtime_referenced_with_accepted_fixtures`
-- Visible/focused tests: `not_assessed_in_current_definition_of_done_review`
+- Source-scope re-audit: `completed_2026-08-10`
+- Current fixture-family scope audit: `completed_2026-08-10`
+- Runtime/test alignment to narrow AA49 identity: **not performed in this research task**
+- Visible/focused tests: historical suite audited for evidentiary role; expectations unchanged
 - Render review: `not_assessed_in_current_definition_of_done_review`
 - Held-out evaluation: `NOT_ESTABLISHED`
-- Regression: `not_assessed_in_current_definition_of_done_review`
-- Code–documentation comparison: `pending_current_definition_of_done_line_by_line_review`
+- Regression: executable historical behavior retained unchanged
+- Code–documentation comparison: runtime alignment remains pending because the current matcher/test family is broader than the source-bounded identity
 
 ## Open questions and blockers
 
-- no explicit external claim-source edge
-- checked_exact_source;one_speaker_positive_negative_review;drafted_negative_boundaries;independent_evidence_beyond_parser_tests
-- all_sources_reverified;all_used_corpus_hits_manually_classified;qualified_native_panel_threshold;executable_negative_boundaries;code_document_alignment;separate_implementation_and_linguistic_reporting;plain_language_claim
-- Runtime metadata and current governance agree in v0.5.184.
-- Research question: Which externally documented Cantonese constructions, if any, justify the scope and boundaries currently represented by DirectionalMotionVP?
-- Next evidence action: Reverify at least one exact source, confirm one independent native-speaker review of the relevant positive and negative examples, and draft boundaries before restoring provisional status.
+- The executable boundary inventory does not yet distinguish independent motion predicates from postverbal directional complements and compound directionals.
+- At least 12 historical positives require later reclassification or narrower child-span assertions.
+- A clean source-linked bare `落` independent-predicate positive is missing from the current AA49 fixture family.
+- The two sources do not establish the full modal, negation, particle, question, discourse, reported-speech, cognition, or clause-linking reach as AA49 linguistic evidence; those are outer-composition questions.
+- Reviewed corpus evidence remains absent.
+- Qualified native structural-analysis evidence remains absent.
+- Held-out evidence remains absent.
+- `code_document_reconciled` remains false until a separate runtime/test alignment task implements the accepted source boundary without regressing neighboring constructions.
+
+Next action: after this source-scope re-audit is merged, open a separate accepted-specification/runtime-alignment issue that narrows the AA49 node to independently predicative single motion/path material, moves compound/complement cases to neighboring identities where possible, and adds the missing controlled positive/negative boundary matrix. Do not promote status as part of that implementation.
 
 ## Related constructions
 
 - [[CompoundDirectionalMotionVP]]
 - [[DirectedMannerMotionVP]]
+- [[MotionGoalVP]]
+- [[NegatedDirectionalMotionVP]]
+- [[VerbComplementVP]]
 
 ## Migration provenance
 
 - Full pre-migration record: `archive/registry-pre-obsidian-v0.5.184/full-construction-registry.json`
 - Status migration date: 2026-07-21.
+- Source-scope re-audit: issue #712 / PR #714.
 - The frozen JSON preserves the former wide schema; this note is the active authoring record.
