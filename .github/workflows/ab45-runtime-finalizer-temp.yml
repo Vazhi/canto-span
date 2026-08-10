@@ -116,26 +116,7 @@ jobs:
           cat /tmp/ab45-final.txt
           while IFS= read -r p; do
             case "$p" in
-              data/construction-candidate-readiness.json|
-              docs/current/PROJECT-STATE.md|
-              main.js|
-              manifest.json|
-              package.json|
-              package-lock.json|
-              src/plugin-entry.js|
-              src/parser/templates/template-matcher.js|
-              src/parser/context/descriptors.js|
-              src/parser/context/licensed-fragments.js|
-              src/parser/context/apply-context-contract.js|
-              src/runtime-resources/grammar/templates/category-span-templates.js|
-              tests/fixtures/np-subsystem.json|
-              tests/fixtures/regression-snapshots.json|
-              tests/run-np-subsystem.js|
-              tests/run-all.js|
-              tests/tooling/runtime/ab45-quantified-classifier-boundary.test.js|
-              tests/construction-test-index.json|
-              tests/constructions/*.json|
-              grammar/*/*.md) ;;
+              .github/ab45-finalize/ab45.patch.gz.b64|.github/tmp-ab45-finalize.js|.github/workflows/ab45-runtime-finalizer-temp.yml|data/construction-candidate-readiness.json|docs/current/PROJECT-STATE.md|main.js|manifest.json|package.json|package-lock.json|src/plugin-entry.js|src/parser/templates/template-matcher.js|src/parser/context/descriptors.js|src/parser/context/licensed-fragments.js|src/parser/context/apply-context-contract.js|src/runtime-resources/grammar/templates/category-span-templates.js|tests/fixtures/np-subsystem.json|tests/fixtures/regression-snapshots.json|tests/run-np-subsystem.js|tests/run-all.js|tests/tooling/runtime/ab45-quantified-classifier-boundary.test.js|tests/construction-test-index.json|tests/constructions/*.json|grammar/*/*.md) ;;
               *) echo "Unexpected path outside AB45 claim: $p" >&2; exit 1 ;;
             esac
           done < /tmp/ab45-final.txt
@@ -150,10 +131,9 @@ jobs:
             main.js; do
             grep -Fxq "$required" /tmp/ab45-final.txt || { echo "Missing required AB45 final path: $required" >&2; exit 1; }
           done
-          if grep -E '^\.github/(ab45-finalize|tmp-ab45|workflows/ab45-runtime-finalizer)' /tmp/ab45-final.txt; then
-            echo 'Temporary AB45 finalization files survived cleanup' >&2
-            exit 1
-          fi
+          test ! -e .github/ab45-finalize
+          test ! -e .github/tmp-ab45-finalize.js
+          test ! -e .github/workflows/ab45-runtime-finalizer-temp.yml
       - name: Commit exactly the verified claimed state
         shell: bash
         run: |
