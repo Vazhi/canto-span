@@ -5608,7 +5608,7 @@
     {
       "construction_uuid": "1dcefdcf-a978-5cf5-8045-26db1d6f5c1a",
       "construction_code": "AB35",
-      "canonical_name": "ProductiveVO",
+      "canonical_name": "VerbObjectCompound",
       "legacy_labels": [
         "ProductiveVO"
       ],
@@ -5616,22 +5616,35 @@
       "linguistic_status": "research_pending",
       "lifecycle_state": "current",
       "source_path": "grammar/research_pending/ProductiveVO.md",
-      "family_name": null,
-      "profile_name": null,
-      "profile_description": "Cantonese may instantiate the structural family represented by ProductiveVO; exact productivity and boundaries require pattern-specific independent evidence.",
+      "family_name": "LexicalCompounding",
+      "profile_name": "LexicallyRestrictedVerbObjectCompoundPredicate",
+      "profile_description": "A Cantonese lexical verb-object compound is licensed by item-specific independent evidence and forms one VP/predicate unit while retaining visible verbal and nominal-looking components. Membership is closed and source-linked rather than generated from arbitrary verb+noun order; ordinary transparent V-NP syntax, unresolved conventionalized activity expressions, unsupported lexical substitutions, and separated forms lacking item-specific evidence remain outside this identity.",
       "learner_label": null,
-      "source_terms": [],
-      "former_names": [],
+      "source_terms": [
+        {
+          "term": "verb-object compounds",
+          "source_id": "SRC-ALDERETE-ETAL-2017-SYNOPSIS",
+          "scope_match": "exact"
+        },
+        {
+          "term": "type-based productive-syntax scoring",
+          "source_id": "SRC-WONG-2023-LANGUAGE-SAMPLE",
+          "scope_match": "contrastive"
+        }
+      ],
+      "former_names": [
+        "ProductiveVO"
+      ],
       "predecessor_uuids": [],
       "successor_uuids": [],
-      "record_revision": 1,
+      "record_revision": 2,
       "label_review": {
-        "review_state": "pending",
-        "behavior_research_alignment": "not_reviewed",
-        "terminology_alignment": "not_reviewed",
-        "recommended_action": "not_reviewed",
+        "review_state": "complete",
+        "behavior_research_alignment": "runtime_broader",
+        "terminology_alignment": "misleading",
+        "recommended_action": "rename_retain_narrow",
         "automatic_risk_flags": [],
-        "review_notes": ""
+        "review_notes": "Expert adjudication 2026-08-10. Behavior-first re-audit shows that the legacy ProductiveVO whitelist conflates ordinary V-NP syntax, genuine lexical V-O compounds, unresolved conventionalized activities, and higher composition. Independent sources nevertheless establish a real Cantonese verb-object-compound domain with lexical and item-specific separability restrictions. This is a narrowing rather than a true split: ordinary transparent predicate-object behavior already has AB78 TransitiveVP, while unresolved activities and transition blockers are not promoted into new successor constructions. Retain the permanent AB35 UUID/code for the surviving source-backed compound domain, replace the unsupported ProductiveVO name with the source-aligned VerbObjectCompound name, and preserve ProductiveVO only as the legacy runtime/former name until a separately reviewed runtime migration. Status recommendation: retain research_pending; the lexical verb-object-compound domain is independently supported, but runtime migration, complete lexical membership and separability boundaries, reviewed corpus diversity, role-neutral panel evidence, and held-out validation remain separate gates"
       }
     },
     {

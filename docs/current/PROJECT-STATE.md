@@ -13,9 +13,9 @@ This file is the sole present-tense project snapshot. Live GitHub intake and wor
 | Parked construction notes | 0 |
 | Retired labels | 48 |
 | Permanent UUID records | 182 |
-| Expert-adjudicated UUIDs | 93 |
-| Pending UUID adjudications | 89 |
-| Accepted adjudication batches | 20 |
+| Expert-adjudicated UUIDs | 94 |
+| Pending UUID adjudications | 88 |
+| Accepted adjudication batches | 21 |
 | Promotion-ready constructions | 0 |
 
 ## Agent workflow availability
@@ -48,10 +48,11 @@ These counts describe current status-note placement. An accepted identity adjudi
 
 The permanent registry contains 134 current and 48 retired records. UUID and short code are immutable. Canonical name, family, profile, claim layer, and learner label change only through accepted UUID-keyed adjudication.
 
-Twenty accepted batches have adjudicated 93 records; 89 remain pending. Canonical decisions live in `data/construction-adjudications.json` and immutable batch files under `data/construction-adjudication-batches/`.
+Twenty-one accepted batches have adjudicated 94 records; 88 remain pending. Canonical decisions live in `data/construction-adjudications.json` and immutable batch files under `data/construction-adjudication-batches/`.
 
 Current consequences include:
 
+- `AB35 VerbObjectCompound` is canonical for the legacy runtime note `ProductiveVO`; the same UUID/code is retained as a source-bounded lexical V–O-compound narrowing, while the broader 43-entry runtime compatibility whitelist remains unreconciled pending a separate migration;
 - `AB30 ZoMarkedPerfectiveObjectVP` remains the nearest direct language-construction candidate and is distinct from broad internal perfective wrappers;
 - `AB53 ResourceInitialJungLaiFunctionClause` is canonical for the legacy runtime note `ResourceUseLaiFunctionRelation`;
 - `AA56 JauMarkedIndefiniteNPPredication` is canonical for the legacy runtime note `ExistentialPresentationalClause`; PR #593 / `833c7e15cb7b6b9f4efa2caae95461f09f9484f5` implements the accepted positive-only runtime profile under that legacy compatibility label, with no status promotion, runtime-label migration, survey, corpus, release, or deployment change;
@@ -84,10 +85,10 @@ Implementation specifications, human artifact requests, corpus ingestion, work c
 | `boundary_ready` | 3 |
 | `excluded_nonlanguage` | 38 |
 | `lexicalized_review` | 2 |
-| `narrowing_candidate` | 31 |
+| `narrowing_candidate` | 30 |
 | `retired_evidence_rehome_candidate` | 42 |
 | `retired_research_gap` | 6 |
-| `source_supported` | 59 |
+| `source_supported` | 60 |
 
 Promotion-ready remains **0**.
 

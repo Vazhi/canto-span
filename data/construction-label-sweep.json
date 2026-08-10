@@ -2,7 +2,7 @@
   "schema": "canto-span-full-repo-label-sweep-v1",
   "identity_registry_schema": "canto-span-construction-identity-registry-v1",
   "record_count": 182,
-  "pending_review_count": 89,
+  "pending_review_count": 88,
   "automatic_flag_counts": {
     "generic_head_requires_boundary_definition": 73,
     "internal_representation_name_review": 20,
@@ -2171,15 +2171,15 @@
     {
       "construction_uuid": "1dcefdcf-a978-5cf5-8045-26db1d6f5c1a",
       "construction_code": "AB35",
-      "canonical_name": "ProductiveVO",
+      "canonical_name": "VerbObjectCompound",
       "lifecycle_state": "current",
       "claim_layer": "language_construction",
       "linguistic_status": "research_pending",
       "source_path": "grammar/research_pending/ProductiveVO.md",
-      "review_state": "pending",
-      "behavior_research_alignment": "not_reviewed",
-      "terminology_alignment": "not_reviewed",
-      "recommended_action": "not_reviewed",
+      "review_state": "complete",
+      "behavior_research_alignment": "runtime_broader",
+      "terminology_alignment": "misleading",
+      "recommended_action": "rename_retain_narrow",
       "automatic_risk_flags": []
     },
     {

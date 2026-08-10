@@ -34,7 +34,7 @@ Family assignments in this report are inherited from existing consolidation reco
 | UNASSIGNED / unassigned | 4 | 4 | 0 | 0 | `family_unassigned` | assign family only after behavior and source scope are reconciled | AA13, AA14, AA15, AA16 |
 | L19 / NominalModificationAndRelatives | 2 | 2 | 0 | 2 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB50, AB66 |
 | L28 / DirectivesRequestsAndSuggestions | 2 | 2 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB68, AB43 |
-| L45 / ValencyAndArgumentStructure | 2 | 2 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB78, AB35 |
 | L03 / TemporalAndSequentialRelations | 1 | 1 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB70 |
 | L32 / SpeechReportingAndCommunicationEffect | 1 | 1 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB52 |
 | L37 / MannerAndReduplication | 1 | 1 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB49 |
+| L45 / ValencyAndArgumentStructure | 1 | 1 | 0 | 1 | `supported_family_without_profile_closure` | define source-bounded profiles and sibling exclusions | AB78 |
