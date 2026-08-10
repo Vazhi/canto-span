@@ -25,17 +25,16 @@ jobs:
           from pathlib import Path
           p = Path('src/runtime-resources/grammar/templates/category-span-templates.js')
           text = p.read_text()
-          start_marker = '''  {
-            type: "TransitiveVP",
-            label: "VP",
-            template: ["consumption_verb!", "approximate_quantity!", "particle?"],'''.replace('          ', '')
-          next_marker = '''  {
-            type: "TransitiveVP",
-            label: "VP",
-            template: ["action_verb!", "object!"],'''.replace('          ', '')
-          start = text.index(start_marker)
-          end = text.index(next_marker, start + 1)
+          anchor = '    template: ["consumption_verb!", "approximate_quantity!", "particle?"],'
+          anchor_at = text.index(anchor)
+          start = text.rfind('  {\n', 0, anchor_at)
+          assert start >= 0
+          next_anchor = '    template: ["action_verb!", "object!"],'
+          next_at = text.index(next_anchor, anchor_at + len(anchor))
+          end = text.rfind('  {\n', anchor_at, next_at + 1)
+          assert end > start
           removed = text[start:end]
+          assert 'type: "TransitiveVP"' in removed
           assert 'approximate_measured_quantity_object' in removed
           assert 'consumption_verb!' in removed
           p.write_text(text[:start] + text[end:])
