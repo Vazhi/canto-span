@@ -23,84 +23,119 @@ const DIRECTIONAL_MOTION_PATTERNS = [
     pattern: "return + upward_direction + deictic_go",
   },
   {
-    surfaces: ["落", "嚟"],
-    type: "DirectionalMotionVP",
-    label: "MotionVP",
-    note: "Directional motion VP: 落 + 嚟 = come down.",
-    pattern: "down_direction + deictic_come",
-  },
-  {
-    surfaces: ["返", "嚟"],
-    type: "DirectionalMotionVP",
-    label: "MotionVP",
-    note: "Directional motion VP: 返 + 嚟 = come back.",
-    pattern: "return + deictic_come",
-  },
-  {
-    surfaces: ["返", "去"],
-    type: "DirectionalMotionVP",
-    label: "MotionVP",
-    note: "Directional motion VP: 返 + 去 = go back / return there.",
-    pattern: "return + deictic_go",
-  },
-  {
-    surfaces: ["上", "嚟"],
-    type: "DirectionalMotionVP",
-    label: "MotionVP",
-    note: "Directional motion VP: 上 + 嚟 = come up.",
-    pattern: "upward_direction + deictic_come",
-  },
-  {
     surfaces: ["嚟"],
     type: "DirectionalMotionVP",
     label: "MotionVP",
-    note: "Motion VP fragment: 嚟 = come.",
-    pattern: "deictic_come",
+    note: "Independent motion predicate: 嚟 = come.",
+    pattern: "independent_deictic_come",
   },
   {
     surfaces: ["去"],
     type: "DirectionalMotionVP",
     label: "MotionVP",
-    note: "Motion VP fragment: 去 = go.",
-    pattern: "deictic_go",
+    note: "Independent motion predicate: 去 = go.",
+    pattern: "independent_deictic_go",
+  },
+  {
+    surfaces: ["落"],
+    type: "DirectionalMotionVP",
+    label: "MotionVP",
+    note: "Independent motion/path predicate: 落 = descend / go down.",
+    pattern: "independent_downward_motion",
+  },
+  {
+    surfaces: ["走"],
+    type: "DirectionalMotionVP",
+    label: "MotionVP",
+    note: "Independent transition-motion predicate: 走 = leave / go away.",
+    pattern: "independent_transition_motion",
   },
 ];
+
+const MULTIPART_DIRECTIONAL_LEFT = new Set(["返", "上", "落", "入", "出", "過"]);
+const MULTIPART_DIRECTIONAL_RIGHT = new Set(["嚟", "去"]);
+const POSTVERBAL_BLOCKING_SLOTS = ["object", "goal", "vp", "action_vp", "predicate", "action_verb", "main_verb"];
+
+function significantNeighbor(nodes, index, direction) {
+  let cursor = index + direction;
+  while (cursor >= 0 && cursor < nodes.length) {
+    const node = nodes[cursor];
+    if (!(node && node.kind === "text" && /^\s*$/u.test(flattenSurface(node)))) return node;
+    cursor += direction;
+  }
+  return null;
+}
+
+function independentMotionPatternAllowedAt(nodes, index, pattern) {
+  if (pattern.type !== "DirectionalMotionVP" || pattern.surfaces.length !== 1) return true;
+  const surface = pattern.surfaces[0];
+  const previous = significantNeighbor(nodes, index, -1);
+  const next = significantNeighbor(nodes, index, 1);
+  const previousSurface = previous ? flattenSurface(previous) : "";
+  const nextSurface = next ? flattenSurface(next) : "";
+
+  // A directional component inside a visible multi-part form is not an
+  // independently predicative AA49 node merely because the same lexeme can
+  // occur independently elsewhere.
+  if (surface === "落" && MULTIPART_DIRECTIONAL_RIGHT.has(nextSurface)) return false;
+  if (MULTIPART_DIRECTIONAL_RIGHT.has(surface) && MULTIPART_DIRECTIONAL_LEFT.has(previousSurface)) return false;
+
+  // Postverbal 去/嚟 after an already formed predicate/object belongs to the
+  // directional-complement/caused-motion system, not AA49. Subject, time and
+  // higher functional material are deliberately not blocked here so existing
+  // outer composition can still own them around a narrow motion predicate.
+  if (previous && POSTVERBAL_BLOCKING_SLOTS.some((slot) => nodeCanFillSlot(previous, slot))) return false;
+  return true;
+}
 
 function directionalMotionPartClone(node, role) {
   const surface = flattenSurface(node);
   const syntaxBySurface = {
     "返": "return_motion_component",
-    "落": "movement_direction_down",
+    "落": "independent_downward_motion_predicate",
     "上": "movement_direction_up",
-    "嚟": "deictic_motion_marker",
-    "去": "deictic_motion_marker",
+    "嚟": "independent_deictic_motion_predicate",
+    "去": "independent_deictic_motion_predicate",
+    "走": "independent_transition_motion_predicate",
   };
   const slotBySurface = {
     "返": "movement_verb",
-    "落": "movement_direction",
+    "落": "movement_verb",
     "上": "movement_direction",
-    "嚟": "deictic_motion_marker",
-    "去": "deictic_motion_marker",
+    "嚟": "movement_verb",
+    "去": "movement_verb",
+    "走": "movement_verb",
   };
   return parserInactiveTokenClone(firstToken(node) || token(surface), {
     label: role || "doing",
     pos: role === "func" ? "function" : "verb",
     syntax: syntaxBySurface[surface] || "directional_motion_part",
     slots: [slotBySurface[surface] || "directional_motion_part"],
-    reason: "Token is parser-inactive inside a directional-motion VP candidate; the parent exposes the VP affordance.",
+    reason: "Visible motion material is parser-inactive inside its owned motion construction; the parent exposes the relevant predicate affordance.",
   });
 }
 
 function makeDirectionalMotionVP(nodes, pattern) {
   const children = nodes.map((node) => directionalMotionPartClone(node, "doing"));
+  const independent = pattern.type === "DirectionalMotionVP" && pattern.surfaces.length === 1;
   return construction(pattern.type, pattern.label, children, {
     slots: ["directional_motion_vp", "vp", "action_vp", "predicate", "movement_verb", "motion_predicate"],
     note: pattern.note,
-    trace: traceInfo("generative_or_heuristic_slot_rule", {
-      rule: "Cantonese directional motion compound",
+    trace: traceInfo(independent ? "construction_template" : "generative_or_heuristic_slot_rule", {
+      construction_type: pattern.type,
+      template_family: independent ? "construction_template" : undefined,
+      template: independent ? ["independent_motion_predicate!"] : undefined,
+      assigned_slots: independent ? ["movement_verb"] : undefined,
+      rule: independent ? "independently predicative single motion/path item" : "Cantonese directional motion compound",
       pattern: pattern.pattern,
       surfaces: pattern.surfaces,
-      reason: "Native directional motion forms such as 落嚟 / 返嚟 / 上嚟 / 返上嚟 should surface as transparent VP candidates without making child feature bundles parser-active.",
+      aa49_scope: independent ? "single_independent_motion_predicate" : undefined,
+      not_claims: independent
+        ? ["not_postverbal_directional_complement", "not_compound_directional", "not_manner_directional_sequence"]
+        : undefined,
+      reason: independent
+        ? "AA49 represents a single lexical motion/path item in independently predicative position; shared directional vocabulary elsewhere does not inherit this identity."
+        : "The multi-part directional form is represented by its separately controlled construction identity.",
     }),
   });
 }
@@ -123,7 +158,8 @@ function directionalPatternAt(nodes, index) {
     const window = nodes.slice(index, index + pattern.surfaces.length);
     if (window.some((node) => node && node.kind === "text")) continue;
     const surfaces = window.map((node) => flattenSurface(node));
-    if (surfaces.every((surface, i) => surface === pattern.surfaces[i])) {
+    if (surfaces.every((surface, i) => surface === pattern.surfaces[i])
+        && independentMotionPatternAllowedAt(nodes, index, pattern)) {
       return { pattern, length: pattern.surfaces.length };
     }
   }
@@ -147,11 +183,15 @@ function wrapDirectionalMotionSubspans(nodes) {
           reason: "Negator is parser-inactive inside a negated directional-motion VP wrapper.",
         }), vp], {
           slots: ["negated_directional_motion_vp", "directional_motion_vp", "vp", "action_vp", "predicate", "movement_verb", "motion_predicate", "negator"],
-          note: "Negated directional motion VP: 唔 + directional motion, e.g. 唔落嚟.",
-          trace: traceInfo("generative_or_heuristic_slot_rule", {
-            rule: "negator + Cantonese directional motion compound",
+          note: "Negated independent motion predicate.",
+          trace: traceInfo("construction_template", {
+            construction_type: "NegatedDirectionalMotionVP",
+            template_family: "construction_template",
+            template: ["negator!", "independent_motion_predicate!"],
+            assigned_slots: ["negator", "motion_predicate"],
+            surfaces: [flattenSurface(nodes[i]), flattenSurface(vp)],
             pattern: negated.pattern.pattern,
-            reason: "Native refusal/negative motion forms such as 唔落嚟 should expose one negated motion VP while child tokens stay parser-inactive.",
+            reason: "Negation is an outer wrapper around the narrow independent motion predicate.",
           }),
         }));
         i += 1 + negated.length;
@@ -171,10 +211,6 @@ function wrapDirectionalMotionSubspans(nodes) {
   }
   return result;
 }
-
-
-
-
 
 function transitionMotionPredicateFallback(core) {
   const { core: bareCore, particles } = withoutTrailingParticles(core);
@@ -214,13 +250,14 @@ function transitionMotionPredicateFallback(core) {
     : construction("DirectionalMotionVP", "MotionVP", [movement], {
         slots: templateDerivedSlots("DirectionalMotionVP", [movement]),
         note: "One-word transition motion predicate headed by standalone 走.",
-        trace: traceInfo("generative_template", {
+        trace: traceInfo("construction_template", {
           construction_type: "DirectionalMotionVP",
-          template_family: "generative_template",
-          template: ["transition_motion_verb!"],
-          assigned_slots: ["transition_motion_verb"],
+          template_family: "construction_template",
+          template: ["independent_motion_predicate!"],
+          assigned_slots: ["movement_verb"],
           surfaces: ["走"],
           contextual_role_resolution: "standalone_motion_predicate_not_result_complement",
+          aa49_scope: "single_independent_motion_predicate",
           subspan: Boolean(subject),
         }),
       });
@@ -239,7 +276,6 @@ function transitionMotionPredicateFallback(core) {
     }),
   });
 }
-
 
 function directionalComplexPart(node, semanticSlot) {
   const surface = flattenSurface(node);
@@ -272,11 +308,12 @@ function directionalCompositionFallback(core) {
   });
 
   if (surfaces.length === 3 && surfaces[0] === "行" && ["入", "出"].includes(surfaces[1]) && ["嚟", "去"].includes(surfaces[2])) {
-    return finish("DirectionalMotionVP", "MotionVP", [directionalComplexPart(compact[0], "movement_verb"), directionalComplexPart(compact[1], "movement_direction"), directionalComplexPart(compact[2], "deictic_motion_marker")], { template: ["movement_verb!", "movement_direction!", "deictic_motion_marker!"], assigned_slots: ["movement_verb", "movement_direction", "deictic_motion_marker"], directional_subtype: "self_motion_path_deictic" });
+    return finish("DirectedMannerMotionVP", "DirectedMotion", [directionalComplexPart(compact[0], "movement_verb"), directionalComplexPart(compact[1], "movement_direction"), directionalComplexPart(compact[2], "deictic_motion_marker")], { template: ["manner_motion_verb!", "movement_direction!", "deictic_motion_marker!"], assigned_slots: ["movement_verb", "movement_direction", "deictic_motion_marker"], directional_subtype: "self_motion_path_deictic" });
   }
-  if (surfaces.join("") === "行返過嚟") {
-    return finish("DirectionalMotionVP", "MotionVP", compact.map((n, i) => directionalComplexPart(n, ["movement_verb", "return_motion_verb", "path_component", "deictic_motion_marker"][i])), { template: ["movement_verb!", "return_motion_verb!", "path_component!", "deictic_motion_marker!"], assigned_slots: ["movement_verb", "return_motion_verb", "path_component", "deictic_motion_marker"], directional_subtype: "return_path_deictic" });
-  }
+  // The reviewed `行返過嚟` profile is multi-part manner + directional material.
+  // No existing accepted identity owns that full shape, so leave it unresolved
+  // rather than preserving the historical AA49 false positive.
+  if (surfaces.join("") === "行返過嚟") return null;
   if (surfaces.length === 3 && ["入", "落", "上", "出"].includes(surfaces[0]) && surfaces[1] === "咗" && ["嚟", "去"].includes(surfaces[2])) {
     return finish("PerfectiveDirectionalVP", "PerfMotion", [directionalComplexPart(compact[0], "movement_direction"), directionalComplexPart(compact[1], "perfective_aspect"), directionalComplexPart(compact[2], "deictic_motion_marker")], { template: ["directional_head!", "perfective_aspect!", "deictic_motion_marker!"], assigned_slots: ["movement_direction", "perfective_aspect", "deictic_motion_marker"], directional_subtype: "perfective_directional" });
   }
@@ -290,8 +327,6 @@ function directionalCompositionFallback(core) {
   }
   return null;
 }
-
-
 
   return {
     directionalCompositionFallback,
