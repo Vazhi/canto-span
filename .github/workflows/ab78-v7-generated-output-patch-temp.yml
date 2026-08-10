@@ -1,0 +1,37 @@
+name: Patch AB78 v7 generated-output handling
+
+on:
+  push:
+    branches: [agent/ab78-transitive-runtime-alignment]
+    paths: [.github/workflows/ab78-v7-generated-output-patch-temp.yml]
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/ab78-transitive-runtime-alignment
+          fetch-depth: 0
+      - name: Treat discovery reports as canonical and validation reports as disposable
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 <<'PY'
+          from pathlib import Path
+          p=Path('.github/workflows/ab78-runtime-finalize-v7-temp.yml')
+          text=p.read_text()
+          old='''          npm run verify:research\n          npm run verify:discovery\n          npm run verify\n          npm run verify:runtime\n          node --test tests/tooling/project-state/project-state.test.js\n          git add grammar/research_pending/TransitiveVP.md data/construction-candidate-readiness.json docs/current/PROJECT-STATE.md\n          git commit -m "Close AB78 runtime-research alignment metadata"\n'''
+          new='''          npm run verify:research\n          npm run verify:discovery\n          npm run verify\n          npm run verify:runtime\n          node --test tests/tooling/project-state/project-state.test.js\n          git checkout -- validation/current 2>/dev/null || true\n          git clean -fd validation/current || true\n          git add grammar/research_pending/TransitiveVP.md data/construction-candidate-readiness.json docs/current/PROJECT-STATE.md docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md docs/research/ORPHANED-CONSTRUCTION-EVIDENCE.md docs/research/CONSTRUCTION-FAMILY-GAPS.md docs/research/FULL-REPO-SUPPORTED-PRODUCTIVE-SWEEP-R1.md\n          git commit -m "Close AB78 runtime-research alignment metadata"\n'''
+          assert text.count(old)==1,text.count(old)
+          p.write_text(text.replace(old,new,1))
+          PY
+          rm .github/workflows/ab78-v7-generated-output-patch-temp.yml
+          git config user.name "Canto Span scoped automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Handle canonical AB78 discovery projections"
+          git push origin HEAD:agent/ab78-transitive-runtime-alignment
