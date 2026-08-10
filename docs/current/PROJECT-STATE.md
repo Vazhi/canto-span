@@ -84,10 +84,10 @@ Implementation specifications, human artifact requests, corpus ingestion, work c
 | `boundary_ready` | 3 |
 | `excluded_nonlanguage` | 38 |
 | `lexicalized_review` | 2 |
-| `narrowing_candidate` | 30 |
+| `narrowing_candidate` | 31 |
 | `retired_evidence_rehome_candidate` | 42 |
 | `retired_research_gap` | 6 |
-| `source_supported` | 60 |
+| `source_supported` | 59 |
 
 Promotion-ready remains **0**.
 

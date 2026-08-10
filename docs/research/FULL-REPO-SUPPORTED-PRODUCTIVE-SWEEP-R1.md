@@ -16,10 +16,10 @@ The sweep evaluates every permanent identity. It separates construction identity
 | `boundary_ready` | 3 |
 | `excluded_nonlanguage` | 38 |
 | `lexicalized_review` | 2 |
-| `narrowing_candidate` | 30 |
+| `narrowing_candidate` | 31 |
 | `retired_evidence_rehome_candidate` | 42 |
 | `retired_research_gap` | 6 |
-| `source_supported` | 60 |
+| `source_supported` | 59 |
 
 ## Nearest missing gate
 
