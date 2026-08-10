@@ -5,6 +5,7 @@ const fs = require("fs");
 const path = require("path");
 const { evaluatePromotion, hasCurrentCodeReviewMetadata } = require("./promotion-gate-lib");
 const { loadConstructionNotes } = require("./construction-notes-lib");
+const { sourceScopeGate, sourceStageCandidateState } = require("./discovery-source-scope-policy");
 
 const root = path.resolve(__dirname, "..");
 const writeMode = process.argv.includes("--write");
@@ -162,11 +163,7 @@ function currentGates(note, identity) {
     : verified > 0
       ? gate("partial", "some_verified_source_support", `${verified}/${cited}; independent=${independent}`)
       : gate("fail", "no_verified_source_support", `${verified}/${cited}`);
-  const scopeGate = fm.current_standard_reaudit_complete === true && allVerified
-    ? gate("pass", "current_standard_reaudit_complete_with_verified_sources")
-    : allVerified
-      ? gate("partial", "verified_sources_but_scope_reaudit_incomplete")
-      : gate("unresolved", "source_scope_not_closed");
+  const scopeGate = sourceScopeGate(fm, allVerified);
   const runtimeGate = fm.code_document_reconciled === true && hasCurrentCodeReviewMetadata(fm)
     ? gate("pass", "code_document_reconciled_with_current_metadata")
     : fm.code_document_reconciled === true
@@ -242,8 +239,8 @@ function candidateState(record) {
     return ["pass", "partial"].includes(gates.independent_source_support.status)
       ? "narrowing_candidate" : "research_candidate";
   }
-  let state = "research_candidate";
-  if (gates.independent_source_support.status === "pass") state = "source_supported";
+  let state = sourceStageCandidateState(gates);
+  if (state === "narrowing_candidate") return state;
   if (state === "source_supported" && gates.source_scope_matches_claim.status === "pass" && gates.runtime_research_alignment.status === "pass") state = "behavior_aligned";
   if (state === "behavior_aligned" && gates.negative_boundaries_complete.status === "pass" && gates.executable_positive_cases_present.status === "pass") state = "boundary_ready";
   if (state === "boundary_ready" && gates.reviewed_corpus_evidence.status === "pass" && gates.role_neutral_panel_threshold.status === "pass") state = "evidence_ready";
