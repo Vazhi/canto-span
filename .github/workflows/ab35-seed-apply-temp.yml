@@ -1,0 +1,335 @@
+name: AB35 seed runtime apply temporary
+
+on:
+  pull_request:
+    paths:
+      - "**"
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.event.pull_request.number == 761 && github.event.pull_request.head.ref == 'agent/ab35-verb-object-compound-seed' && github.event.pull_request.base.ref == 'main'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/ab35-verb-object-compound-seed
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Apply bounded source changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          test "$(git rev-parse origin/main)" = "352b34df0c8a64f1595a0bdfe4ecb75583d3ce83"
+          python3 <<'PY'
+          from pathlib import Path
+          import json
+
+          # 1. Split the three source-backed compounds out of the broad 43-entry compatibility table.
+          p=Path('src/runtime-resources/lexicon/productive-vo.js')
+          text=p.read_text()
+          seed_lines=[]
+          for surface in ['飲茶','游水','沖涼']:
+            matches=[line for line in text.splitlines() if f'["{surface}"' in line]
+            assert len(matches)==1,(surface,matches)
+            seed_lines.extend(matches)
+            text=text.replace(matches[0]+'\n','',1)
+          p.write_text(text)
+          remaining=[line for line in text.splitlines() if line.lstrip().startswith('["')]
+          assert len(remaining)==40,len(remaining)
+
+          Path('src/runtime-resources/lexicon/verb-object-compounds.js').write_text('''"use strict";\n\n// Source-linked seed for canonical AB35 VerbObjectCompound.\n// Membership is lexical/item-specific. This table does not license arbitrary V+noun generation\n// or an ordinary semantic object relation between the visible components.\nmodule.exports = [\n  ["飲茶", { verb: "飲", object: "茶", label: "VP", type: "ProductiveVO", source_specification: "docs/research/ISSUE-753-AB35-LEXICAL-VO-RUNTIME-CONTRACT-R1.md" }],\n  ["游水", { verb: "游", object: "水", label: "VP", type: "ProductiveVO", source_specification: "docs/research/ISSUE-753-AB35-LEXICAL-VO-RUNTIME-CONTRACT-R1.md" }],\n  ["沖涼", { verb: "沖", object: "涼", label: "VP", type: "ProductiveVO", source_specification: "docs/research/ISSUE-753-AB35-LEXICAL-VO-RUNTIME-CONTRACT-R1.md" }],\n];\n''')
+
+          # 2. Validate the new closed lexical resource alongside the legacy compatibility list.
+          p=Path('src/runtime-resources/lexicon/validate.js')
+          text=p.read_text()
+          assert text.count('const productiveVoEntries = require("./productive-vo");')==1
+          text=text.replace('const productiveVoEntries = require("./productive-vo");', 'const productiveVoEntries = require("./productive-vo");\nconst verbObjectCompoundEntries = require("./verb-object-compounds");',1)
+          anchor='''  const productiveVoCount = validateEntryTable("productive VO", productiveVoEntries, (surface, value) => {\n    if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error(`productive VO ${surface} must map to an object`);\n    for (const key of ["verb", "object", "label", "type"]) assertNonEmptyString(value[key], `productive VO ${surface} ${key}`);\n  });\n'''
+          assert text.count(anchor)==1
+          addition=anchor+'''  const verbObjectCompoundCount = validateEntryTable("verb object compounds", verbObjectCompoundEntries, (surface, value) => {\n    if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error(`verb object compound ${surface} must map to an object`);\n    for (const key of ["verb", "object", "label", "type", "source_specification"]) assertNonEmptyString(value[key], `verb object compound ${surface} ${key}`);\n  });\n'''
+          text=text.replace(anchor,addition,1)
+          assert text.count('productive_vo_entries: productiveVoCount.entries,')==1
+          text=text.replace('productive_vo_entries: productiveVoCount.entries,','productive_vo_entries: productiveVoCount.entries,\n    verb_object_compound_entries: verbObjectCompoundCount.entries,',1)
+          p.write_text(text)
+
+          # 3. Add the bounded source-linked category-span definition before the broad legacy ProductiveVO template.
+          p=Path('src/runtime-resources/grammar/templates/category-span-templates.js')
+          text=p.read_text()
+          assert text.count('const PRODUCTIVE_VO = Object.fromEntries(require("../../lexicon/productive-vo"));')==1
+          text=text.replace('const PRODUCTIVE_VO = Object.fromEntries(require("../../lexicon/productive-vo"));', 'const PRODUCTIVE_VO = Object.fromEntries(require("../../lexicon/productive-vo"));\nconst VERB_OBJECT_COMPOUNDS = Object.fromEntries(require("../../lexicon/verb-object-compounds"));',1)
+          legacy='''  {\n    type: "ProductiveVO",\n    label: "VP",\n    template: ["action_verb!", "object!"],\n    template_family: "generative_template",\n    constraints: {\n      surface_sequence_in: Object.keys(PRODUCTIVE_VO)\n    },\n    role_overrides: {\n      action_verb: { label: "doing", syntax: "verb", note: "Action verb heading a productive verb-object VP." },\n      object: { label: "what", syntax: "object", note: "Object noun inside a productive verb-object VP." }\n    },\n    output_slots: ["productive_vo", "vp", "action_vp", "predicate", "object"],\n    note: "Slot-template ProductiveVO: generated action_verb + object pair, constrained to reviewed productive VO sequences while preserving visible children."\n  },\n'''
+          assert text.count(legacy)==1
+          seed='''  {\n    type: "ProductiveVO",\n    label: "VP",\n    template: ["action_verb!", "object!"],\n    trace_kind: "source_linked_runtime_matcher",\n    trace_assigned_slots: [],\n    constraints: {\n      surface_sequence_in: Object.keys(VERB_OBJECT_COMPOUNDS)\n    },\n    output_slots: ["productive_vo", "verb_object_compound", "vp", "action_vp", "predicate"],\n    structural_scope: "vp",\n    lexical_compound_profile: "contiguous_source_linked_seed",\n    source_specification: "docs/research/ISSUE-753-AB35-LEXICAL-VO-RUNTIME-CONTRACT-R1.md",\n    not_claims: [\n      "not_generic_verb_plus_noun_productivity",\n      "not_ordinary_object_relation_from_component_order",\n      "not_generic_separability_licensing"\n    ],\n    note: "Source-linked AB35 VerbObjectCompound seed: exact reviewed contiguous lexical compounds with visible components but no compound-internal ordinary semantic object binding."\n  },\n'''
+          text=text.replace(legacy,seed+legacy,1)
+          p.write_text(text)
+
+          # 4. Let category templates distinguish matching affordances from authored semantic bindings/trace kind.
+          p=Path('src/plugin-entry.js')
+          text=p.read_text()
+          assert text.count('const PRODUCTIVE_VO = Object.fromEntries(require("./runtime-resources/lexicon/productive-vo"));')==1
+          text=text.replace('const PRODUCTIVE_VO = Object.fromEntries(require("./runtime-resources/lexicon/productive-vo"));', 'const PRODUCTIVE_VO = Object.fromEntries(require("./runtime-resources/lexicon/productive-vo"));\nconst VERB_OBJECT_COMPOUNDS = Object.fromEntries(require("./runtime-resources/lexicon/verb-object-compounds"));\nconst PRODUCTIVE_VO_COMPONENT_RULES = Object.freeze({ ...PRODUCTIVE_VO, ...VERB_OBJECT_COMPOUNDS });',1)
+          assert text.count('const PRODUCTIVE_TERMS = Object.keys(PRODUCTIVE_VO).sort((a, b) => b.length - a.length || a.localeCompare(b));')==1
+          text=text.replace('const PRODUCTIVE_TERMS = Object.keys(PRODUCTIVE_VO).sort((a, b) => b.length - a.length || a.localeCompare(b));','const PRODUCTIVE_TERMS = Object.keys(PRODUCTIVE_VO_COMPONENT_RULES).sort((a, b) => b.length - a.length || a.localeCompare(b));',1)
+          assert text.count('const rule = PRODUCTIVE_VO[surface];')==1
+          text=text.replace('const rule = PRODUCTIVE_VO[surface];','const rule = PRODUCTIVE_VO_COMPONENT_RULES[surface];',1)
+          old='''      const assignedSlots = assignments.map((item) => item.slot);\n      const traceDetail = {\n        construction_type: template.type,\n        template_family: templateFamilyForDefinition(template),\n        template: template.template,\n        constraints: template.constraints || {},\n        assigned_slots: assignedSlots,\n        surfaces: children.map((node) => flattenSurface(node)),\n        role_overrides: template.role_overrides || {},\n        subspan: true,\n      };\n'''
+          assert text.count(old)==1
+          new='''      const matchingSlots = assignments.map((item) => item.slot);\n      const traceKind = template.trace_kind || "generative_template";\n      const assignedSlots = Object.prototype.hasOwnProperty.call(template, "trace_assigned_slots")\n        ? cleanSlots(template.trace_assigned_slots || [])\n        : matchingSlots;\n      const traceDetail = {\n        construction_type: template.type,\n        template: template.template,\n        constraints: template.constraints || {},\n        assigned_slots: assignedSlots,\n        surfaces: children.map((node) => flattenSurface(node)),\n        role_overrides: template.role_overrides || {},\n        subspan: true,\n      };\n      if (traceKind === "generative_template" || traceKind === "construction_template") {\n        traceDetail.template_family = templateFamilyForDefinition(template);\n      }\n'''
+          text=text.replace(old,new,1)
+          assert text.count('note: `${template.note} Matched by generated category slots: ${assignedSlots.join(" → ")}.`,')==1
+          text=text.replace('note: `${template.note} Matched by generated category slots: ${assignedSlots.join(" → ")}.`,','note: `${template.note} Matched by generated category slots: ${matchingSlots.join(" → ")}.`,',1)
+          # This exact occurrence is the category-subspan path; templateConstructionFor has its own earlier traceInfo call.
+          category_trace='''        trace: traceInfo("generative_template", traceDetail),\n      });\n    }\n  }\n  return null;\n}\n\n\n\n\n\n\n\nfunction shouldDeferPostverbalZoForFollowingComplement'''
+          assert text.count(category_trace)==1
+          text=text.replace(category_trace,'''        trace: traceInfo(traceKind, traceDetail),\n      });\n    }\n  }\n  return null;\n}\n\n\n\n\n\n\n\nfunction shouldDeferPostverbalZoForFollowingComplement''',1)
+          p.write_text(text)
+
+          # 5. Make authored source-linked template metadata visible to trace taxonomy/scope.
+          p=Path('src/runtime-resources/diagnostics/trace-metadata.js')
+          text=p.read_text()
+          assert text.count('  "template_subtype",\n];')==1
+          text=text.replace('  "template_subtype",\n];','  "template_subtype",\n  "structural_scope",\n  "source_specification",\n  "lexical_compound_profile",\n];',1)
+          p.write_text(text)
+
+          # 6. Add permanent focused tests and register them in the standard suite.
+          Path('tests/tooling/runtime/ab35-verb-object-compound-boundary.test.js').write_text(r'''"use strict";
+
+const test = require("node:test");
+const assert = require("node:assert/strict");
+const compounds = require("../../../src/runtime-resources/lexicon/verb-object-compounds");
+const legacy = require("../../../src/runtime-resources/lexicon/productive-vo");
+const { loadRuntimeApi, internalConstruction, rowSurface } = require("../../lib/runtime-api");
+
+const api = loadRuntimeApi();
+const SEEDS = ["飲茶", "游水", "沖涼"];
+
+function constructionRows(source) {
+  return api.diagnosticFinalRows(api.analyzeLine(source)).filter((row) => row.kind === "construction");
+}
+function productiveRows(source) {
+  return constructionRows(source).filter((row) => internalConstruction(row) === "ProductiveVO");
+}
+function sourceLinkedRows(source) {
+  return productiveRows(source).filter((row) => row.trace_detail && row.trace_detail.kind === "source_linked_runtime_matcher");
+}
+function assertSeed(source, surface) {
+  const rows = sourceLinkedRows(source);
+  assert.equal(rows.length, 1, source);
+  const row = rows[0];
+  assert.equal(rowSurface(row), surface);
+  assert.equal(row.trace_detail.structural_scope, "vp");
+  assert.equal(row.trace_detail.lexical_compound_profile, "contiguous_source_linked_seed");
+  assert.equal(row.trace_detail.template_family_applicability, "not_applicable");
+  assert.equal(row.trace_detail.binding_contract_status, "not_applicable");
+  assert.deepEqual(row.trace_detail.bindings, []);
+  assert.equal(row.slots.includes("object"), false);
+  assert.equal(row.slots.includes("productive_vo"), true);
+  assert.equal(row.slots.includes("verb_object_compound"), true);
+  const components = row.trace_detail.components || [];
+  assert.equal(components.length, 2);
+  assert.equal(components.map((item) => item.source_surface).join(""), surface);
+  for (const component of components) {
+    assert.equal(component.source_span.status, "unique");
+    assert.equal(component.source_span.relative_to, "raw_source");
+  }
+  assert.ok(String(row.trace_detail.source_specification || "").includes("ISSUE-753-AB35-LEXICAL-VO-RUNTIME-CONTRACT-R1.md"));
+  return row;
+}
+
+test("AB35 source-linked seed is exactly the three reviewed current-whitelist compounds", () => {
+  assert.deepEqual(compounds.map(([surface]) => surface), SEEDS);
+  assert.equal(legacy.length, 40);
+  for (const seed of SEEDS) assert.equal(legacy.some(([surface]) => surface === seed), false, seed);
+  assertSeed("飲茶。", "飲茶");
+  assertSeed("游水。", "游水");
+  assertSeed("沖涼。", "沖涼");
+});
+
+test("AB35 seed remains VP-sized under existing outer composition", () => {
+  let row = assertSeed("我飲茶。", "飲茶");
+  assert.equal(row.internal_parent || row.parent, "ClauseSpan");
+  row = assertSeed("我會游水。", "游水");
+  assert.equal(row.internal_parent || row.parent, "ModalVP");
+  row = assertSeed("我想沖涼。", "沖涼");
+  assert.equal(row.internal_parent || row.parent, "DesiderativeVP");
+  row = assertSeed("你飲茶咩？", "飲茶");
+  assert.notEqual(row.internal_parent || row.parent, "", "question material must remain outside the compound");
+});
+
+test("legacy and unresolved ProductiveVO surfaces do not inherit the source-linked compound trace", () => {
+  for (const source of ["做功課。", "食飯。", "打電話。", "打籃球。", "飲水。", "做運動。", "下棋。", "煮嘢食。"]) {
+    assert.equal(sourceLinkedRows(source).length, 0, source);
+  }
+  assert.equal(productiveRows("做功課。").some((row) => row.trace_detail.kind === "generative_template"), true);
+  assert.equal(productiveRows("飲水。").some((row) => row.trace_detail.kind === "generative_template"), true);
+});
+
+test("separated seed components do not receive contiguous lexical-compound identity", () => {
+  for (const source of ["飲咗茶。", "游咗水。", "沖咗涼。"]) {
+    assert.equal(sourceLinkedRows(source).length, 0, source);
+  }
+});
+
+test("generic AB78 semantics never leak into the source-linked compound trace", () => {
+  for (const source of ["飲茶。", "游水。", "沖涼。"]) {
+    const row = assertSeed(source, source.slice(0, -1));
+    assert.equal((row.trace_detail.assigned_slots || []).length, 0);
+    assert.equal((row.trace_detail.bindings || []).some((binding) => binding.slot === "object" || binding.slot === "patient"), false);
+  }
+});
+''')
+
+          p=Path('tests/run-all.js')
+          text=p.read_text()
+          anchor='  ["ab78_transitive_boundary", path.join(root, "tests", "tooling", "runtime", "ab78-transitive-boundary.test.js")],\n'
+          assert text.count(anchor)==1
+          text=text.replace(anchor,anchor+'  ["ab35_verb_object_compound_boundary", path.join(root, "tests", "tooling", "runtime", "ab35-verb-object-compound-boundary.test.js")],\n',1)
+          p.write_text(text)
+
+          # 7. Add three permanent focused construction positives without rewriting historical snapshots.
+          p=Path('tests/constructions/ProductiveVO.json')
+          spec=json.loads(p.read_text())
+          existing={row.get('case_id') for row in spec.get('focused_cases',[])}
+          new_cases=[
+            {"case_id":"AB35-LVC-P01","source":"飲茶。","class":"source_linked_verb_object_compound_seed","expected_profile":"ProductiveVO compatibility label backed by canonical AB35 VerbObjectCompound exact lexical seed","assertion":"construction_present","provenance":"docs/research/ISSUE-753-AB35-LEXICAL-VO-IMPLEMENTATION-MATRIX-R1.md#A.-Initial-source-backed-migration-core"},
+            {"case_id":"AB35-LVC-P02","source":"游水。","class":"source_linked_verb_object_compound_seed","expected_profile":"ProductiveVO compatibility label backed by canonical AB35 VerbObjectCompound exact lexical seed","assertion":"construction_present","provenance":"docs/research/ISSUE-753-AB35-LEXICAL-VO-IMPLEMENTATION-MATRIX-R1.md#A.-Initial-source-backed-migration-core"},
+            {"case_id":"AB35-LVC-P03","source":"沖涼。","class":"source_linked_verb_object_compound_seed","expected_profile":"ProductiveVO compatibility label backed by canonical AB35 VerbObjectCompound exact lexical seed","assertion":"construction_present","provenance":"docs/research/ISSUE-753-AB35-LEXICAL-VO-IMPLEMENTATION-MATRIX-R1.md#A.-Initial-source-backed-migration-core"},
+          ]
+          assert not (existing & {row['case_id'] for row in new_cases})
+          spec.setdefault('focused_cases',[]).extend(new_cases)
+          cov=spec['coverage']
+          cov['focused_positive_count']=sum(1 for row in spec.get('focused_cases',[]) if row.get('assertion')=='construction_present')
+          cov['focused_boundary_count']=sum(1 for row in spec.get('focused_cases',[]) if row.get('assertion')=='construction_absent')
+          cov['focused_review_only_count']=sum(1 for row in spec.get('focused_cases',[]) if row.get('assertion') not in {'construction_present','construction_absent'})
+          cov['positive_case_count']=cov.get('exact_snapshot_positive_count',0)+cov['focused_positive_count']
+          cov['boundary_case_count']=cov['focused_boundary_count']
+          cov['executable_case_count']=cov['positive_case_count']+cov['boundary_case_count']+cov.get('np_case_count',0)+cov.get('implementation_probe_count',0)+cov.get('compatibility_alias_probe_count',0)
+          assert cov['positive_case_count']==25,cov
+          assert cov['boundary_case_count']==2,cov
+          assert cov['executable_case_count']==27,cov
+          p.write_text(json.dumps(spec,ensure_ascii=False,indent=2)+'\n')
+          PY
+      - name: Bump runtime and build deterministic outputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm version 0.5.224 --no-git-tag-version
+          python3 <<'PY'
+          from pathlib import Path
+          p=Path('src/plugin-entry.js')
+          text=p.read_text()
+          assert text.count('const CANTO_SPAN_RUNTIME_VERSION = "0.5.223";')==1
+          text=text.replace('const CANTO_SPAN_RUNTIME_VERSION = "0.5.223";','const CANTO_SPAN_RUNTIME_VERSION = "0.5.224";\n// v0.5.224: narrows canonical AB35 runtime ownership for 飲茶/游水/沖涼 to a source-linked lexical VerbObjectCompound seed with component provenance and no automatic object binding, while retaining the other 40 legacy ProductiveVO compatibility entries.',1)
+          p.write_text(text)
+          p=Path('manifest.json')
+          text=p.read_text()
+          assert text.count('"version": "0.5.223"')==1
+          text=text.replace('"version": "0.5.223"','"version": "0.5.224"',1)
+          p.write_text(text)
+          PY
+          npm run build:runtime
+          node tools/build-construction-tests.js
+          node tools/sync-construction-test-metadata.js
+          npm run discovery:generate
+      - name: Synchronize project-state derived runtime/test count
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 <<'PY'
+          import json
+          from pathlib import Path
+          idx=json.loads(Path('tests/construction-test-index.json').read_text())
+          count=idx.get('summary',{}).get('executable_assertion_count')
+          if count is None:
+            # canonical index has historically used one of these names; fail rather than guess another value
+            count=idx.get('executable_assertion_count')
+          assert count==1634,(count,idx.get('summary'))
+          p=Path('docs/current/PROJECT-STATE.md')
+          text=p.read_text()
+          assert text.count('| Runtime | v0.5.223 |')==1
+          text=text.replace('| Runtime | v0.5.223 |','| Runtime | v0.5.224 |',1)
+          assert text.count('per-construction assertions: **1,631** across **134** files;')==1
+          text=text.replace('per-construction assertions: **1,631** across **134** files;','per-construction assertions: **1,634** across **134** files;',1)
+          assert text.count('| Per-construction assertions | 1,631 |')==1
+          text=text.replace('| Per-construction assertions | 1,631 |','| Per-construction assertions | 1,634 |',1)
+          bullet='- `AB35 VerbObjectCompound` source-linked runtime migration has begun at v0.5.224 for the independently supported current-whitelist seed `飲茶` / `游水` / `沖涼`; those exact nodes expose component provenance without an automatic ordinary object binding, while the other 40 legacy `ProductiveVO` compatibility entries remain unchanged pending later review;\n'
+          anchor='Current consequences include:\n\n'
+          assert text.count(anchor)==1
+          text=text.replace(anchor,anchor+bullet,1)
+          p.write_text(text)
+          PY
+      - name: Verify focused and full scoped acceptance
+        shell: bash
+        run: |
+          set -euo pipefail
+          node tests/tooling/runtime/ab35-verb-object-compound-boundary.test.js
+          npm run test:constructions
+          npm run verify:runtime
+          npm run audit:parser-architecture -- --json > /tmp/ab35-architecture.json
+          node -e 'const r=require("/tmp/ab35-architecture.json"); if (r.blocking_count !== 0 && r.summary?.blocking_count !== 0) { console.error(r); process.exit(1); }'
+          npm run verify
+          npm run verify:research
+          npm run verify:identities
+          npm run verify:discovery
+          npm run test:coordination
+      - name: Verify protected legacy scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const legacy = require('./src/runtime-resources/lexicon/productive-vo');
+          const seed = require('./src/runtime-resources/lexicon/verb-object-compounds');
+          if (legacy.length !== 40) throw new Error(`legacy count ${legacy.length}`);
+          if (seed.length !== 3) throw new Error(`seed count ${seed.length}`);
+          const original = [
+            '食飯','煮飯','摘芒果','買嘢','食嘢','飲水','寫字','寫名','睇書','聽歌','睇戲','跑步','影相','打機','煮嘢食','唱K','做運動','踢波','打波','彈琴','釣魚','唱歌','睇波','下棋','講嘢','打電話','打籃球','聽電話','做功課','返學','放學','瞓覺','洗手','曬太陽','打麻雀','默書','炒股票','發脾氣','食意粉','Book枱'
+          ];
+          const actual=legacy.map(([surface])=>surface);
+          if (JSON.stringify(actual)!==JSON.stringify(original)) throw new Error(JSON.stringify({expected:original,actual}));
+          NODE
+      - name: Commit passing final state and remove temporary workflows
+        shell: bash
+        run: |
+          set -euo pipefail
+          git checkout -- validation/current 2>/dev/null || true
+          git clean -fd validation/current || true
+          rm -f .github/workflows/ab35-seed-inspect-temp.yml
+          rm -f .github/workflows/ab35-seed-apply-temp.yml
+          python3 <<'PY'
+          import subprocess
+          rows=subprocess.check_output(['git','status','--porcelain'],text=True).splitlines()
+          got={row[3:] for row in rows if len(row)>=4}
+          forbidden=[p for p in got if p.startswith('data/construction-adjudication') or p.startswith('data/construction-identit') or p.startswith('review-packets/') or p.startswith('test-data/')]
+          assert not forbidden,forbidden
+          required={
+            'src/runtime-resources/lexicon/productive-vo.js',
+            'src/runtime-resources/lexicon/verb-object-compounds.js',
+            'src/runtime-resources/lexicon/validate.js',
+            'src/runtime-resources/grammar/templates/category-span-templates.js',
+            'src/runtime-resources/diagnostics/trace-metadata.js',
+            'src/plugin-entry.js',
+            'tests/tooling/runtime/ab35-verb-object-compound-boundary.test.js',
+            'tests/constructions/ProductiveVO.json',
+            'tests/run-all.js',
+            'main.js',
+            'package.json','package-lock.json','manifest.json',
+            'tests/construction-test-index.json',
+            'grammar/research_pending/ProductiveVO.md',
+            'data/construction-candidate-readiness.json',
+            'docs/current/PROJECT-STATE.md',
+          }
+          assert required <= got,(sorted(required-got),sorted(got))
+          PY
+          git config user.name "Canto Span scoped automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Implement AB35 source-linked compound seed"
+          git push origin HEAD:agent/ab35-verb-object-compound-seed
