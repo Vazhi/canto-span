@@ -80,8 +80,8 @@ Implementation specifications, human artifact requests, corpus ingestion, work c
 
 | Candidate state | Records |
 |---|---:|
-| `boundary_ready` | 2 |
-| `source_supported` | 62 |
+| `boundary_ready` | 3 |
+| `source_supported` | 61 |
 | `narrowing_candidate` | 30 |
 | `excluded_nonlanguage` | 38 |
 | `lexicalized_review` | 2 |

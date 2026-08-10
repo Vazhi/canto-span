@@ -10,7 +10,7 @@ status: "research_pending"
 confidence: "primary_source_supported_structural_boundaries_runtime_aligned"
 claim_layer: "language"
 lane: "LANE-06"
-last_reviewed: "2026-07-31"
+last_reviewed: "2026-08-10"
 last_status_migrated: "2026-07-21"
 source_count: 7
 verified_source_count: 7
@@ -42,9 +42,9 @@ corpus_false_positive_count: 0
 corpus_ambiguous_hit_count: 0
 corpus_unusable_hit_count: 0
 code_document_reconciled: true
-code_document_review_date: "2026-07-31"
-code_document_review_commit: null
-code_document_code_locations: []
+code_document_review_date: "2026-08-10"
+code_document_review_commit: "f9700e00c1ede04a6586965a68400a222c1e204b"
+code_document_code_locations: ["src/runtime-resources/grammar/templates/category-span-templates.js", "src/parser/detectors/np/token-splits.js", "src/plugin-entry.js", "tests/constructions/OvertHeadDemonstrativeClassifierNP.json", "tests/constructions/ModifiedNP.json"]
 current_standard_reaudit_complete: true
 implementation_validation_separate: true
 independent_evidence_beyond_internal_tests: true
@@ -98,18 +98,32 @@ Seven verified source records support the structural core and its limits. Bond a
 | `本書` | established bare classifier-noun NP behavior; no hidden demonstrative or numeral; not AB15 |
 | `三本書` | existing `QuantifiedClassifierNP`; not AB15 |
 | `呢書` | outside AB15; no hidden-classifier repair |
-| `嗰間新開嘅意大利餐廳` | transparent modifier-bearing `ModifiedNP`; demonstrative, classifier, modifier, `嘅`, nominal modifier, and head noun retained; not AB15 |
+| `嗰間新開嘅意大利餐廳` | broader typed modifier-bearing NP composition; current v0.5.222 runtime uses root `ModifierNP` over nested `ModifiedNP`; the full overt surface is retained and the string remains outside AB15 |
 
 Classifier versus measure-word typing and item-level classifier–noun choice remain separate evidence questions. Absence from the current compatibility table is not categorical ungrammaticality.
 
+## Current code–research alignment review
+
+The current source-first runtime at reviewed main commit `f9700e00c1ede04a6586965a68400a222c1e204b` was re-audited against the accepted source synthesis after the AB45 classifier-NP transition.
+
+Reviewed canonical paths:
+
+- `src/runtime-resources/grammar/templates/category-span-templates.js` — narrow visible `demonstrative + classifier + head_noun` AB15 template;
+- `src/parser/detectors/np/token-splits.js` — bounded lexical disambiguation paths that may emit the same visible subtype without adding hidden material;
+- `src/plugin-entry.js` — current source-first phrase/orchestration fallbacks and transparent historical paths;
+- `tests/constructions/OvertHeadDemonstrativeClassifierNP.json` — executable AB15 positive and sibling boundaries;
+- `tests/constructions/ModifiedNP.json` — modifier-bearing sibling composition coverage.
+
+The re-audit found no source-boundary recognition mismatch. It did find stale documentation wording for the long modifier-bearing control: the current generic composition resolves the whole NP as `ModifierNP` with a nested `ModifiedNP`, rather than using the older whole-span `ModifiedNP` presentation. This is an implementation-label change only. The source-backed requirement is that the longer modifier-bearing phrase remain outside minimal AB15, retain its overt material, and receive broader NP composition; that requirement is still satisfied.
+
 ## Implementation state
 
-- The existing narrow AB15 template remains unchanged.
-- New exact modifier-bearing `ModifiedNP` compositions preserve every overt component and prevent the longer phrase from flattening into AB15.
-- Existing bare classifier-noun and quantified-classifier runtime behavior is preserved rather than retyped.
-- Missing-classifier strings remain outside AB15 with no repair.
+- The existing narrow AB15 template remains unchanged and directly exposes only overt demonstrative, classifier, and nominal head material.
+- `呢三本書` preserves its overt numeral under broader composition with an inner `QuantifiedClassifierNP`; it is not retyped as AB15.
+- Headless demonstrative-classifier, bare classifier-noun, quantified classifier-noun, and missing-classifier siblings remain outside AB15 without hidden-material repair.
+- The current modifier-bearing control is preserved as broader typed NP composition (currently `ModifierNP` over nested `ModifiedNP`) rather than flattened into AB15. Internal sibling labels are implementation evidence, not an independent linguistic claim.
 - The twelve-rule unit-word evidence model and classifier-head compatibility arrays are unchanged.
-- Parser tests establish implementation behavior only and add no independent linguistic evidence.
+- Parser tests establish implementation conformance only and add no independent linguistic evidence.
 
 ## Panel, corpus, and promotion limits
 
