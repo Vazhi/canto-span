@@ -1,0 +1,25 @@
+name: AB35 identity-contract verification temporary
+
+on:
+  pull_request:
+    paths:
+      - "**"
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    if: github.event.pull_request.number == 755 && github.event.pull_request.head.ref == 'agent/ab35-lexical-vo-contract'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - run: npm run verify:research
+      - run: npm run verify:identities
+      - run: npm run verify:discovery
+      - run: npm run verify
