@@ -169,23 +169,85 @@ implementation, tests, and documentation when every affected state dimension and
 gate is declared. Research findings alone still do not authorize promotion or
 runtime broadening.
 
+### Behavior-first development order
+
+Substantive construction work is behavior-first rather than label-first:
+
+**independently supported and audited linguistic behavior → bounded claim →
+canonical name and ontology → executable behavioral contract → runtime
+implementation.**
+
+Current runtime behavior is audited early because it reveals what the software
+actually recognizes, groups, spans, omits, or overgenerates. It remains implementation
+observation with zero independent linguistic-evidence weight. Existing labels,
+fixtures, tests, generated examples, and parser architecture are therefore inputs to
+the audit, not premises that the linguistic analysis must preserve.
+
+Do not begin by trying to prove, defend, or fill out an inherited construction name.
+A UUID or permanent code may provide continuity while the behavior is investigated;
+the canonical name follows the evidence-supported claim. If one inherited label
+covers unrelated behaviors, do not create a broader linguistic story merely to keep
+the label coherent. Split, narrow, reclassify, internalize, or retain compositional
+analysis as the evidence requires.
+
 For substantive construction work:
 
-1. select one bounded UUID-keyed question;
-2. verify external sources and classify every corpus example used as evidence;
-3. state the exact profile, competing analyses, positives, and boundaries;
-4. record or supersede expert adjudication when identity or ontology changes;
-5. create a role-neutral instrument only after the claim is source-narrowed and
-   instrument-ready;
-6. compare the accepted profile with runtime behavior line by line;
-7. implement only the evidence-faithful scope;
-8. update tests, status note, identity relationships, and generated state coherently;
-9. run applicable verification profiles;
-10. report implementation results separately from linguistic confidence;
-11. disposition the work explicitly.
+1. identify one bounded observable behavior, contrast, or parser/research mismatch;
+2. verify independently checkable external sources and classify every corpus or
+   panel observation used as linguistic evidence;
+3. audit the current runtime before deciding the target implementation, recording
+   actual spans, roles, omissions, collisions, overgeneration, fallbacks, and
+   plausible competing analyses;
+4. define the narrowest evidence-supported behavioral contract, including relevant
+   positive cases, negative boundaries, ambiguity or context cases, lexical
+   restrictions, neighboring-construction collisions, compositional cases where no
+   dedicated construction node is justified, and explicit unresolved cases;
+5. determine the linguistic claim from that contract, then determine the canonical
+   name, family/profile placement, and claim layer from the claim rather than forcing
+   the behavior into the inherited ontology;
+6. record or supersede expert adjudication when identity or ontology consequences
+   change; a clarification or narrowing normally retains its UUID and code, while a
+   genuine split receives new collision-checked identities;
+7. create a role-neutral instrument only when native judgments can resolve a precise
+   remaining question and the claim is source-narrowed and instrument-ready;
+8. translate the resolved behavioral contract into executable tests before changing
+   runtime behavior; those tests specify implementation expectations but contribute
+   no independent linguistic evidence;
+9. implement the smallest runtime architecture that satisfies the supported contract
+   without silently broadening it;
+10. compare the resulting runtime behavior back against the contract and neighboring
+    constructions, not merely against whether the focal tests are green;
+11. update status notes, identity relationships, tests, and generated state
+    coherently when their own gates are actually affected;
+12. run the applicable verification profiles, report implementation results
+    separately from linguistic confidence, and disposition the work explicitly.
 
-A true split requires new collision-checked UUIDs. A compatibility alias, umbrella,
-retired record, or parser representation cannot donate evidence automatically.
+An unresolved linguistic boundary is not converted into a guessed binary rule merely
+so a test can be written. Record the uncertainty and test the parser's required
+non-overclaiming behavior where possible; if the uncertainty is critical to a broader
+claim, that broader claim remains blocked until the evidence resolves it.
+
+### Reevaluating earlier decisions
+
+Earlier adjudications, names, and boundaries remain valid provenance and are not
+reopened repository-wide merely because the audit architecture improved. Reevaluate a
+specific prior decision when there is a concrete trigger, such as:
+
+- audited runtime behavior materially differs from the recorded profile;
+- one label is shown to combine multiple materially different behaviors;
+- an alleged construction is better explained compositionally or as parser
+  infrastructure;
+- positive coverage is narrower than the claim asserts;
+- negative or collision cases expose an unrecorded restriction;
+- independent research, reviewed corpus evidence, or role-neutral native judgments
+  contradict the recorded boundary;
+- the canonical name encodes an analysis stronger than the available evidence.
+
+A triggered reevaluation may confirm the earlier decision. The purpose is to correct
+a demonstrated mismatch, not to restart settled work without evidence.
+
+A compatibility alias, umbrella, retired record, or parser representation cannot
+donate evidence automatically.
 
 ## 7. Validation and dispositions
 
