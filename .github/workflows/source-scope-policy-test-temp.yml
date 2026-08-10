@@ -1,15 +1,15 @@
 name: Source-scope policy temporary validation
 
 on:
-  push:
-    branches: [agent/source-scope-outcome-discovery]
-    paths: [.github/workflows/source-scope-policy-test-temp.yml]
+  pull_request:
+    types: [ready_for_review]
 
 permissions:
   contents: write
 
 jobs:
   validate:
+    if: github.event.pull_request.number == 749 && github.event.pull_request.head.ref == 'agent/source-scope-outcome-discovery' && github.event.pull_request.base.ref == 'main'
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
