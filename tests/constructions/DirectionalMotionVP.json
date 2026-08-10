@@ -88,30 +88,6 @@
       "assertion": "construction_present_in_exact_snapshot"
     },
     {
-      "case_id": "REG-0092",
-      "source": "行入去。",
-      "origins": [
-        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
-      ],
-      "assertion": "construction_present_in_exact_snapshot"
-    },
-    {
-      "case_id": "REG-0093",
-      "source": "行出嚟。",
-      "origins": [
-        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
-      ],
-      "assertion": "construction_present_in_exact_snapshot"
-    },
-    {
-      "case_id": "REG-0096",
-      "source": "行返過嚟。",
-      "origins": [
-        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
-      ],
-      "assertion": "construction_present_in_exact_snapshot"
-    },
-    {
       "case_id": "REG-0101",
       "source": "但係佢唔嚟。",
       "origins": [
@@ -308,14 +284,6 @@
       "assertion": "construction_present_in_exact_snapshot"
     },
     {
-      "case_id": "REG-0193",
-      "source": "佢會返嚟啩。",
-      "origins": [
-        "run-a1-final-gwaa3-epistemic-scope-boundary.js"
-      ],
-      "assertion": "construction_present_in_exact_snapshot"
-    },
-    {
       "case_id": "REG-0194",
       "source": "佢會嚟喎？",
       "origins": [
@@ -363,18 +331,18 @@
       "assertion": "construction_present_in_exact_snapshot"
     },
     {
-      "case_id": "REG-0204",
-      "source": "我上去。",
-      "origins": [
-        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
-      ],
-      "assertion": "construction_present_in_exact_snapshot"
-    },
-    {
       "case_id": "REG-0205",
       "source": "我冇去，因為落雨。",
       "origins": [
         "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0211",
+      "source": "我以為佢走咗。",
+      "origins": [
+        "run-current-focused-v0.5.158-a1-final-live-families-broad-closure.js"
       ],
       "assertion": "construction_present_in_exact_snapshot"
     },
@@ -496,14 +464,6 @@
       "assertion": "construction_present_in_exact_snapshot"
     },
     {
-      "case_id": "REG-0278",
-      "source": "我帶咗三部機去啊。",
-      "origins": [
-        "run-a1-bare-classifier-np-context-boundary.js"
-      ],
-      "assertion": "construction_present_in_exact_snapshot"
-    },
-    {
       "case_id": "REG-0298",
       "source": "我想去。",
       "origins": [
@@ -512,44 +472,10 @@
       "assertion": "construction_present_in_exact_snapshot"
     },
     {
-      "case_id": "REG-0300",
-      "source": "我落嚟。",
-      "origins": [
-        "run-current-focused.js:v0.5.160-r2-rendered-accepted",
-        "run-current-focused.js"
-      ],
-      "assertion": "construction_present_in_exact_snapshot"
-    },
-    {
-      "case_id": "REG-0301",
-      "source": "我落嚟摘芒果食。",
-      "origins": [
-        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
-      ],
-      "assertion": "construction_present_in_exact_snapshot"
-    },
-    {
       "case_id": "REG-0307",
       "source": "我覺得如果佢去，我就去。",
       "origins": [
         "accepted-v0.5.159-hierarchical-recursive-clause-linking"
-      ],
-      "assertion": "construction_present_in_exact_snapshot"
-    },
-    {
-      "case_id": "REG-0316",
-      "source": "我攞本書返嚟畀你睇。",
-      "origins": [
-        "run-current-focused.js:v0.5.160-r2-rendered-accepted",
-        "run-current-focused-v0.5.162-r1.js"
-      ],
-      "assertion": "construction_present_in_exact_snapshot"
-    },
-    {
-      "case_id": "REG-0431",
-      "source": "寄返去。",
-      "origins": [
-        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
       ],
       "assertion": "construction_present_in_exact_snapshot"
     },
@@ -566,14 +492,6 @@
       "source": "落雨，所以我冇去。",
       "origins": [
         "accepted-v0.5.159-hierarchical-recursive-clause-linking"
-      ],
-      "assertion": "construction_present_in_exact_snapshot"
-    },
-    {
-      "case_id": "REG-0472",
-      "source": "落嚟摘芒果食。",
-      "origins": [
-        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
       ],
       "assertion": "construction_present_in_exact_snapshot"
     },
@@ -603,14 +521,6 @@
         "run-current-focused-v0.5.156-topic-frame-linker-accounting.js"
       ],
       "assertion": "construction_present_in_exact_snapshot"
-    },
-    {
-      "case_id": "REG-0512",
-      "source": "攞返嚟。",
-      "origins": [
-        "run-current-focused.js:v0.5.160-r2-rendered-accepted"
-      ],
-      "assertion": "construction_present_in_exact_snapshot"
     }
   ],
   "focused_cases": [
@@ -629,21 +539,139 @@
       "expected_profile": "construction_absent",
       "assertion": "construction_absent",
       "provenance": "docs/research/CP061-P1-HIGH-FANOUT-BOUNDARY-CLOSURE-R1.md#boundary-matrix"
+    },
+    {
+      "case_id": "AA49-R1-P01",
+      "source": "佢落咗樓下。",
+      "class": "source_linked_independent_downward_motion_with_perfective_goal",
+      "expected_profile": "DirectionalMotionVP present only over independent predicate 落 under outer MotionGoalVP",
+      "assertion": "construction_present",
+      "provenance": "docs/research/ISSUE-712-AA49-INDEPENDENT-MOTION-PROFILES-R1.md#profile-a-independent-directional-path-predicate",
+      "source_ids": [
+        "SRC-YIU-2016-DIRECTIONAL-ASPECT"
+      ]
+    },
+    {
+      "case_id": "AA49-R1-P02",
+      "source": "架車走咗。",
+      "class": "source_linked_independent_transition_motion_with_aspect",
+      "expected_profile": "DirectionalMotionVP present only over independent predicate 走 under outer aspectual structure",
+      "assertion": "construction_present",
+      "provenance": "docs/research/ISSUE-712-AA49-INDEPENDENT-MOTION-PROFILES-R1.md#profile-b-single-verb-self-motion",
+      "source_ids": [
+        "SRC-SHAN-JIN-2025-MOTION-TYPOLOGY"
+      ]
+    },
+    {
+      "case_id": "AA49-R1-B01",
+      "source": "行入去。",
+      "class": "legacy_surface_directional_boundary",
+      "expected_profile": "DirectionalMotionVP absent because this profile is not an independently predicative single motion/path AA49 node",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-712-AA49-CURRENT-TEST-SCOPE-AUDIT-R1.md#finding-2--at-least-12-current-positives-are-outside-the-narrow-aa49-identity"
+    },
+    {
+      "case_id": "AA49-R1-B02",
+      "source": "行出嚟。",
+      "class": "legacy_surface_directional_boundary",
+      "expected_profile": "DirectionalMotionVP absent because this profile is not an independently predicative single motion/path AA49 node",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-712-AA49-CURRENT-TEST-SCOPE-AUDIT-R1.md#finding-2--at-least-12-current-positives-are-outside-the-narrow-aa49-identity"
+    },
+    {
+      "case_id": "AA49-R1-B03",
+      "source": "行返過嚟。",
+      "class": "legacy_surface_directional_boundary",
+      "expected_profile": "DirectionalMotionVP absent because this profile is not an independently predicative single motion/path AA49 node",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-712-AA49-CURRENT-TEST-SCOPE-AUDIT-R1.md#finding-2--at-least-12-current-positives-are-outside-the-narrow-aa49-identity"
+    },
+    {
+      "case_id": "AA49-R1-B04",
+      "source": "佢會返嚟啩。",
+      "class": "legacy_surface_directional_boundary",
+      "expected_profile": "DirectionalMotionVP absent because this profile is not an independently predicative single motion/path AA49 node",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-712-AA49-CURRENT-TEST-SCOPE-AUDIT-R1.md#finding-2--at-least-12-current-positives-are-outside-the-narrow-aa49-identity"
+    },
+    {
+      "case_id": "AA49-R1-B05",
+      "source": "我上去。",
+      "class": "legacy_surface_directional_boundary",
+      "expected_profile": "DirectionalMotionVP absent because this profile is not an independently predicative single motion/path AA49 node",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-712-AA49-CURRENT-TEST-SCOPE-AUDIT-R1.md#finding-2--at-least-12-current-positives-are-outside-the-narrow-aa49-identity"
+    },
+    {
+      "case_id": "AA49-R1-B06",
+      "source": "我帶咗三部機去啊。",
+      "class": "legacy_surface_directional_boundary",
+      "expected_profile": "DirectionalMotionVP absent because this profile is not an independently predicative single motion/path AA49 node",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-712-AA49-CURRENT-TEST-SCOPE-AUDIT-R1.md#finding-2--at-least-12-current-positives-are-outside-the-narrow-aa49-identity"
+    },
+    {
+      "case_id": "AA49-R1-B07",
+      "source": "我落嚟。",
+      "class": "legacy_surface_directional_boundary",
+      "expected_profile": "DirectionalMotionVP absent because this profile is not an independently predicative single motion/path AA49 node",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-712-AA49-CURRENT-TEST-SCOPE-AUDIT-R1.md#finding-2--at-least-12-current-positives-are-outside-the-narrow-aa49-identity"
+    },
+    {
+      "case_id": "AA49-R1-B08",
+      "source": "我落嚟摘芒果食。",
+      "class": "legacy_surface_directional_boundary",
+      "expected_profile": "DirectionalMotionVP absent because this profile is not an independently predicative single motion/path AA49 node",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-712-AA49-CURRENT-TEST-SCOPE-AUDIT-R1.md#finding-2--at-least-12-current-positives-are-outside-the-narrow-aa49-identity"
+    },
+    {
+      "case_id": "AA49-R1-B09",
+      "source": "我攞本書返嚟畀你睇。",
+      "class": "legacy_surface_directional_boundary",
+      "expected_profile": "DirectionalMotionVP absent because this profile is not an independently predicative single motion/path AA49 node",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-712-AA49-CURRENT-TEST-SCOPE-AUDIT-R1.md#finding-2--at-least-12-current-positives-are-outside-the-narrow-aa49-identity"
+    },
+    {
+      "case_id": "AA49-R1-B10",
+      "source": "寄返去。",
+      "class": "legacy_surface_directional_boundary",
+      "expected_profile": "DirectionalMotionVP absent because this profile is not an independently predicative single motion/path AA49 node",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-712-AA49-CURRENT-TEST-SCOPE-AUDIT-R1.md#finding-2--at-least-12-current-positives-are-outside-the-narrow-aa49-identity"
+    },
+    {
+      "case_id": "AA49-R1-B11",
+      "source": "落嚟摘芒果食。",
+      "class": "legacy_surface_directional_boundary",
+      "expected_profile": "DirectionalMotionVP absent because this profile is not an independently predicative single motion/path AA49 node",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-712-AA49-CURRENT-TEST-SCOPE-AUDIT-R1.md#finding-2--at-least-12-current-positives-are-outside-the-narrow-aa49-identity"
+    },
+    {
+      "case_id": "AA49-R1-B12",
+      "source": "攞返嚟。",
+      "class": "legacy_surface_directional_boundary",
+      "expected_profile": "DirectionalMotionVP absent because this profile is not an independently predicative single motion/path AA49 node",
+      "assertion": "construction_absent",
+      "provenance": "docs/research/ISSUE-712-AA49-CURRENT-TEST-SCOPE-AUDIT-R1.md#finding-2--at-least-12-current-positives-are-outside-the-narrow-aa49-identity"
     }
   ],
   "np_cases": [],
   "implementation_probe_cases": [],
   "coverage": {
     "state": "positive_and_boundary",
-    "exact_snapshot_positive_count": 72,
-    "focused_positive_count": 0,
-    "focused_boundary_count": 2,
+    "exact_snapshot_positive_count": 61,
+    "focused_positive_count": 2,
+    "focused_boundary_count": 14,
     "focused_review_only_count": 0,
     "np_case_count": 0,
     "implementation_probe_count": 0,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 72,
-    "boundary_case_count": 2,
-    "executable_case_count": 74
+    "positive_case_count": 63,
+    "boundary_case_count": 14,
+    "executable_case_count": 77
   }
 }

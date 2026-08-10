@@ -75,34 +75,12 @@ module.exports = [
   {
     type: "DirectionalMotionVP",
     label: "MotionVP",
-    template: ["movement_direction!", "deictic_motion_marker!"],
-    role_overrides: {
-      movement_direction: { label: "doing", syntax: "movement_direction", note: "Directional component inside a directional-motion VP." },
-      deictic_motion_marker: { label: "doing", syntax: "deictic_motion_marker", note: "嚟/去 functions as doing/deictic motion inside a directional-motion VP; this contrasts with func uses in 係...嚟㗎 and 用嚟 frames." }
-    },
-    output_slots: ["directional_motion_vp", "vp", "action_vp", "predicate", "movement_verb", "motion_predicate"],
-    note: "Slot-based directional motion VP: direction + deictic come, e.g. 落嚟 / 上嚟."
-  },
-  {
-    type: "DirectionalMotionVP",
-    label: "MotionVP",
-    template: ["return_motion_verb!", "deictic_motion_marker!"],
-    role_overrides: {
-      return_motion_verb: { label: "doing", syntax: "return_motion_component", note: "返 functions as the return-motion component inside a directional-motion VP." },
-      deictic_motion_marker: { label: "doing", syntax: "deictic_motion_marker", note: "嚟/去 functions as doing/deictic motion inside a directional-motion VP; this contrasts with func uses in 係...嚟㗎 and 用嚟 frames." }
-    },
-    output_slots: ["directional_motion_vp", "vp", "action_vp", "predicate", "movement_verb", "motion_predicate"],
-    note: "Slot-based directional motion VP: return motion + deictic marker, e.g. 返嚟 / 返去."
-  },
-  {
-    type: "DirectionalMotionVP",
-    label: "MotionVP",
     template: ["deictic_motion_marker!"],
     role_overrides: {
       deictic_motion_marker: { label: "doing", syntax: "deictic_motion_marker", note: "嚟 functions as a one-word doing/deictic motion VP; this contrasts with func uses in bounded explanatory/purpose frames." }
     },
     output_slots: ["directional_motion_vp", "vp", "action_vp", "predicate", "movement_verb", "motion_predicate"],
-    note: "Slot-based one-word directional/deictic motion VP: 嚟."
+    note: "Narrow one-word deictic motion predicate. Multi-part directional material is excluded from AA49 and handled by separately accepted structures."
   },
   {
     type: "NegatedDirectionalMotionVP",
@@ -511,7 +489,10 @@ module.exports = [
     label: "VerbCompVP",
     template: ["action_verb!", "verb_complement!", "object!"],
     template_family: "generative_template",
-    constraints: { slot_must_not_be_bare_quantity_token: ["object"] },
+    constraints: {
+      slot_must_not_be_bare_quantity_token: ["object"],
+      slot_must_not_have_slots: { object: ["vp", "action_vp", "predicate", "productive_vo"] }
+    },
     role_overrides: {
       action_verb: {
         label: "doing",
@@ -574,9 +555,9 @@ module.exports = [
     template: ["action_verb!", "object!"],
     constraints: {
       slot_must_not_be_bare_quantity_token: ["object"],
-      slot_must_not_have_slots: { object: ["approximate_quantity"] }
+      slot_must_not_have_slots: { object: ["approximate_quantity", "vp", "action_vp", "predicate", "productive_vo"] }
     },
-    note: "Category-based transitive VP: action verb + object; bare numeral tokens and approximate measured-quantity objects requiring a licensed predicate are not accepted through this generic path."
+    note: "Category-based transitive VP: action verb + nominal object; bare numeral tokens, approximate measured-quantity objects requiring a licensed predicate, and already typed VPs are not accepted through this generic object path."
   },
   {
     type: "DiMarkedNP",

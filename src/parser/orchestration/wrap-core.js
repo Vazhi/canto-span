@@ -25,6 +25,7 @@ module.exports = function createWrapCore(dependencies = {}) {
     desiderativeANotAQuestionFallback,
     desiderativeVPWrapCoreFallback,
     directionalCompositionFallback,
+    downwardMotionPredicateFallback,
     durativeAspectCompositionFallback,
     existentialLocationPresentationalFallback,
     existentialQuestionWithVpMalformedCandidate,
@@ -129,6 +130,9 @@ function wrapCore(core) {
 
   const environmentalClause = impersonalEnvironmentalClauseFallback(core);
   if (environmentalClause) return [environmentalClause];
+
+  const downwardMotionSpan = downwardMotionPredicateFallback(core);
+  if (downwardMotionSpan) return [downwardMotionSpan];
 
   const existentialLocationPresentational = existentialLocationPresentationalFallback(core);
   if (existentialLocationPresentational) return [existentialLocationPresentational];
@@ -327,6 +331,12 @@ function wrapCore(core) {
   core = wrapNegatedVPSubspans(core);
   core = wrapCategorySubspans(core);
   core = wrapCategorySubspans(core);
+
+  const postSubspanMotionEventSpatial = motionEventSpatialFallback(core);
+  if (postSubspanMotionEventSpatial) return [postSubspanMotionEventSpatial];
+
+  const postSubspanTransitionMotionSpan = transitionMotionPredicateFallback(core);
+  if (postSubspanTransitionMotionSpan) return [postSubspanTransitionMotionSpan];
 
   const recomposedPostverbalZo = postverbalZoPerfectiveFromWrappedNodes(core);
   if (recomposedPostverbalZo) core = recomposedPostverbalZo;

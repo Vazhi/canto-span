@@ -16,9 +16,18 @@ function sourceLinkedDegreeMannerModifiedVPFallback(core) {
   const modifier = categorySubspanFor(compact.slice(0, modifierLength), ["DegreeMannerAdverbial"]);
   let predicate = categorySubspanFor(compact.slice(modifierLength), [
     "CompoundDirectionalMotionVP",
+    "DirectedMannerMotionVP",
     "DirectionalMotionVP",
     "VerbComplementVP",
   ]);
+  if (!predicate) {
+    const wrappedPredicate = applyConstructionPatterns(compact.slice(modifierLength));
+    if (wrappedPredicate.length === 1
+        && wrappedPredicate[0].kind === "construction"
+        && ["CompoundDirectionalMotionVP", "DirectedMannerMotionVP", "DirectionalMotionVP", "VerbComplementVP"].includes(wrappedPredicate[0].type)) {
+      predicate = wrappedPredicate[0];
+    }
+  }
   if (!predicate && compact.length === modifierLength + 3) {
     const directional = categorySubspanFor(compact.slice(modifierLength + 1), ["DirectionalMotionVP"]);
     predicate = directional

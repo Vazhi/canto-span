@@ -15,7 +15,8 @@ const createCantoSpanPlugin = require("./plugin/canto-span-plugin");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.220";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.221";
+// v0.5.221: narrows AA49 to independently predicative single motion/path items and removes AA49 ownership from compound, manner-directional, and postverbal directional-complement material.
 // v0.5.220: narrows AA11 to exact adjacent 變成 + 點, records bounded VP scope/provenance, and closes neighboring wh/result boundaries.
 // v0.5.219: narrows AA61 final-未 experiential questions to overt typed experiential domains and context-licenses only the source-backed 食過未 short profile.
 // v0.5.218: closes AB15 structural boundaries with transparent modifier-bearing NP composition while preserving established bare and quantified NP behavior.
@@ -2348,6 +2349,7 @@ const {
 const createDirectionalMotionDetectors = require("./parser/detectors/motion/directional");
 const {
   directionalCompositionFallback,
+  downwardMotionPredicateFallback,
   transitionMotionPredicateFallback,
   wrapDirectionalMotionSubspans,
 } = createDirectionalMotionDetectors({
@@ -2749,6 +2751,7 @@ wrapCoreImplementation = require("./parser/orchestration/wrap-core")({
   desiderativeANotAQuestionFallback,
   desiderativeVPWrapCoreFallback,
   directionalCompositionFallback,
+  downwardMotionPredicateFallback,
   durativeAspectCompositionFallback,
   existentialLocationPresentationalFallback,
   existentialQuestionWithVpMalformedCandidate,

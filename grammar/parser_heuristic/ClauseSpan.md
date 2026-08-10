@@ -47,10 +47,10 @@ independent_evidence_beyond_internal_tests: false
 promotion_gate_version: "v3"
 standard_test_file: "tests/constructions/ClauseSpan.json"
 standard_test_coverage: "positive_and_boundary"
-standard_positive_test_count: 119
+standard_positive_test_count: 118
 standard_boundary_test_count: 2
 standard_implementation_probe_count: 1
-standard_executable_test_count: 122
+standard_executable_test_count: 121
 source_ids: []
 runtime_active: true
 workflow_state: "archived"

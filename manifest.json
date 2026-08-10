@@ -1,9 +1,9 @@
 {
   "id": "canto-span",
   "name": "Canto Span",
-  "version": "0.5.220",
+  "version": "0.5.221",
   "minAppVersion": "1.5.0",
-  "description": "v0.5.220 narrows AA11 to exact adjacent 變成 + 點 and closes neighboring result-complement boundaries.",
+  "description": "v0.5.221 narrows AA49 to independently predicative single motion/path items while routing complex and postverbal directional material to neighboring structures.",
   "author": "Chris Crawford / OpenAI ChatGPT",
   "authorUrl": "",
   "isDesktopOnly": false

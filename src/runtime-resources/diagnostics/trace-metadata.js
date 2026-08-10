@@ -307,7 +307,7 @@ registerReviewedMatcherVariant("HeadNP.child_slot_exclusion_unconstrained", {
 const transitiveTemplate = ["action_verb!", "object!"];
 const transitiveGuard = {
   slot_must_not_be_bare_quantity_token: ["object"],
-  slot_must_not_have_slots: { object: ["approximate_quantity"] },
+  slot_must_not_have_slots: { object: ["approximate_quantity", "vp", "action_vp", "predicate", "productive_vo"] },
 };
 registerReviewedMatcherVariant("TransitiveVP.object_shape_guarded", {
   trace_kind: "generative_template", construction_type: "TransitiveVP", template_family: "generative_template",

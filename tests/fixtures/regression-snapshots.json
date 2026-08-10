@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-regression-snapshot-v2",
-  "runtime_version": "0.5.218",
+  "runtime_version": "0.5.221",
   "generated_from_runner_count": 548,
   "case_count": 548,
   "errors": [],
@@ -23487,7 +23487,7 @@
       "expected": {
         "summary": {
           "top_constructions": [
-            "DirectionalMotionVP"
+            "DirectedMannerMotionVP"
           ],
           "top_child_constructions": [],
           "context_requirement_status": "context_not_required",
@@ -23504,17 +23504,21 @@
             "depth": 0,
             "parent": "",
             "surface": "行入去",
-            "construction": "DirectionalMotionVP",
+            "construction": "DirectedMannerMotionVP",
             "role": "",
             "syntax": "",
             "jyutping": "",
             "slots": [
               "action_vp",
               "deictic_motion_marker",
-              "directional_motion_vp",
-              "motion_predicate",
+              "directed_manner_motion_vp",
+              "goal",
+              "location",
+              "manner_motion",
               "movement_direction",
               "movement_verb",
+              "path_component",
+              "path_phrase",
               "predicate",
               "vp"
             ],
@@ -23522,10 +23526,10 @@
             "trace": "generative_template",
             "trace_detail": {
               "kind": "generative_template",
-              "construction_type": "DirectionalMotionVP",
+              "construction_type": "DirectedMannerMotionVP",
               "template_family": "generative_template",
               "template": [
-                "movement_verb!",
+                "manner_motion_verb!",
                 "movement_direction!",
                 "deictic_motion_marker!"
               ],
@@ -23549,7 +23553,7 @@
           {
             "kind": "token",
             "depth": 1,
-            "parent": "DirectionalMotionVP",
+            "parent": "DirectedMannerMotionVP",
             "surface": "行",
             "construction": "",
             "role": "doing",
@@ -23574,7 +23578,7 @@
           {
             "kind": "token",
             "depth": 1,
-            "parent": "DirectionalMotionVP",
+            "parent": "DirectedMannerMotionVP",
             "surface": "入",
             "construction": "",
             "role": "doing",
@@ -23606,7 +23610,7 @@
           {
             "kind": "token",
             "depth": 1,
-            "parent": "DirectionalMotionVP",
+            "parent": "DirectedMannerMotionVP",
             "surface": "去",
             "construction": "",
             "role": "doing",
@@ -23672,7 +23676,9 @@
           }
         }
       },
-      "case_id": "REG-0092"
+      "case_id": "REG-0092",
+      "accepted_transition": "v0.5.221_AA49_independent_motion_predicate_boundary",
+      "transition_reason": "AA49 is restricted to independently predicative single motion/path material; compound, manner-directional, and postverbal directional-complement profiles are reclassified or left unresolved without linguistic-status promotion."
     },
     {
       "source": "行出嚟。",
@@ -23682,7 +23688,7 @@
       "expected": {
         "summary": {
           "top_constructions": [
-            "DirectionalMotionVP"
+            "DirectedMannerMotionVP"
           ],
           "top_child_constructions": [],
           "context_requirement_status": "context_not_required",
@@ -23699,17 +23705,21 @@
             "depth": 0,
             "parent": "",
             "surface": "行出嚟",
-            "construction": "DirectionalMotionVP",
+            "construction": "DirectedMannerMotionVP",
             "role": "",
             "syntax": "",
             "jyutping": "",
             "slots": [
               "action_vp",
               "deictic_motion_marker",
-              "directional_motion_vp",
-              "motion_predicate",
+              "directed_manner_motion_vp",
+              "goal",
+              "location",
+              "manner_motion",
               "movement_direction",
               "movement_verb",
+              "path_component",
+              "path_phrase",
               "predicate",
               "vp"
             ],
@@ -23717,10 +23727,10 @@
             "trace": "generative_template",
             "trace_detail": {
               "kind": "generative_template",
-              "construction_type": "DirectionalMotionVP",
+              "construction_type": "DirectedMannerMotionVP",
               "template_family": "generative_template",
               "template": [
-                "movement_verb!",
+                "manner_motion_verb!",
                 "movement_direction!",
                 "deictic_motion_marker!"
               ],
@@ -23744,7 +23754,7 @@
           {
             "kind": "token",
             "depth": 1,
-            "parent": "DirectionalMotionVP",
+            "parent": "DirectedMannerMotionVP",
             "surface": "行",
             "construction": "",
             "role": "doing",
@@ -23769,7 +23779,7 @@
           {
             "kind": "token",
             "depth": 1,
-            "parent": "DirectionalMotionVP",
+            "parent": "DirectedMannerMotionVP",
             "surface": "出",
             "construction": "",
             "role": "doing",
@@ -23801,7 +23811,7 @@
           {
             "kind": "token",
             "depth": 1,
-            "parent": "DirectionalMotionVP",
+            "parent": "DirectedMannerMotionVP",
             "surface": "嚟",
             "construction": "",
             "role": "doing",
@@ -23867,7 +23877,9 @@
           }
         }
       },
-      "case_id": "REG-0093"
+      "case_id": "REG-0093",
+      "accepted_transition": "v0.5.221_AA49_independent_motion_predicate_boundary",
+      "transition_reason": "AA49 is restricted to independently predicative single motion/path material; compound, manner-directional, and postverbal directional-complement profiles are reclassified or left unresolved without linguistic-status promotion."
     },
     {
       "source": "行去入。",
@@ -24315,7 +24327,7 @@
       "expected": {
         "summary": {
           "top_constructions": [
-            "DirectionalMotionVP"
+            "DirectedMannerMotionVP"
           ],
           "top_child_constructions": [],
           "context_requirement_status": "context_not_required",
@@ -24332,17 +24344,21 @@
             "depth": 0,
             "parent": "",
             "surface": "行返過嚟",
-            "construction": "DirectionalMotionVP",
+            "construction": "DirectedMannerMotionVP",
             "role": "",
             "syntax": "",
             "jyutping": "",
             "slots": [
               "action_vp",
               "deictic_motion_marker",
-              "directional_motion_vp",
-              "motion_predicate",
+              "directed_manner_motion_vp",
+              "goal",
+              "location",
+              "manner_motion",
+              "movement_direction",
               "movement_verb",
               "path_component",
+              "path_phrase",
               "predicate",
               "return_motion_verb",
               "vp"
@@ -24351,10 +24367,10 @@
             "trace": "generative_template",
             "trace_detail": {
               "kind": "generative_template",
-              "construction_type": "DirectionalMotionVP",
+              "construction_type": "DirectedMannerMotionVP",
               "template_family": "generative_template",
               "template": [
-                "movement_verb!",
+                "manner_motion_verb!",
                 "return_motion_verb!",
                 "path_component!",
                 "deictic_motion_marker!"
@@ -24381,7 +24397,7 @@
           {
             "kind": "token",
             "depth": 1,
-            "parent": "DirectionalMotionVP",
+            "parent": "DirectedMannerMotionVP",
             "surface": "行",
             "construction": "",
             "role": "doing",
@@ -24406,7 +24422,7 @@
           {
             "kind": "token",
             "depth": 1,
-            "parent": "DirectionalMotionVP",
+            "parent": "DirectedMannerMotionVP",
             "surface": "返",
             "construction": "",
             "role": "doing",
@@ -24438,7 +24454,7 @@
           {
             "kind": "token",
             "depth": 1,
-            "parent": "DirectionalMotionVP",
+            "parent": "DirectedMannerMotionVP",
             "surface": "過",
             "construction": "",
             "role": "doing",
@@ -24469,7 +24485,7 @@
           {
             "kind": "token",
             "depth": 1,
-            "parent": "DirectionalMotionVP",
+            "parent": "DirectedMannerMotionVP",
             "surface": "嚟",
             "construction": "",
             "role": "doing",
@@ -24535,7 +24551,9 @@
           }
         }
       },
-      "case_id": "REG-0096"
+      "case_id": "REG-0096",
+      "accepted_transition": "v0.5.221_AA49_independent_motion_predicate_boundary",
+      "transition_reason": "AA49 is restricted to independently predicative single motion/path material; compound, manner-directional, and postverbal directional-complement profiles are reclassified or left unresolved without linguistic-status promotion."
     },
     {
       "source": "行唔入去。",
@@ -54636,29 +54654,33 @@
             "syntax": "",
             "jyutping": "",
             "slots": [
-              "action_vp",
+              "action_verb",
               "clause",
               "co_participant",
               "construction_span",
-              "directional_motion_vp",
+              "deictic_motion_marker",
               "discourse_particle_frame",
               "discourse_scope_particle",
               "epistemic_scope_particle",
               "epistemic_stance",
               "head_noun",
+              "main_verb",
               "modal",
               "modal_predicate",
+              "modal_predicate_clause",
               "modal_vp",
-              "motion_predicate",
               "movement_verb",
               "np",
               "particle",
               "predicate",
               "recipient",
+              "return_motion_verb",
               "scope_host",
               "stance_holder",
               "subject",
+              "subject_modal_predicate_clause",
               "topic",
+              "verb_complement",
               "vp"
             ],
             "contextual_role_affordances": [],
@@ -54696,60 +54718,58 @@
             "depth": 1,
             "parent": "DiscourseParticleFrame",
             "surface": "佢會返嚟",
-            "construction": "ModalVP",
+            "construction": "SubjectModalPredicateClause",
             "role": "",
             "syntax": "",
             "jyutping": "",
             "slots": [
-              "action_vp",
+              "action_verb",
+              "clause",
               "co_participant",
               "construction_span",
-              "directional_motion_vp",
+              "deictic_motion_marker",
               "head_noun",
+              "main_verb",
               "modal",
               "modal_predicate",
+              "modal_predicate_clause",
               "modal_vp",
-              "motion_predicate",
               "movement_verb",
               "np",
               "predicate",
               "recipient",
+              "return_motion_verb",
               "stance_holder",
               "subject",
+              "subject_modal_predicate_clause",
               "topic",
+              "verb_complement",
               "vp"
             ],
             "contextual_role_affordances": [],
             "trace": "generative_template",
             "trace_detail": {
               "kind": "generative_template",
-              "construction_type": "ModalVP",
+              "construction_type": "SubjectModalPredicateClause",
               "template_family": "generative_template",
               "template": [
-                "subject?",
-                "time?",
-                "negator?",
-                "modal!",
-                "manner?",
-                "vp!",
-                "particle?"
+                "subject!",
+                "modal_vp!"
               ],
               "assigned_slots": [
                 "subject",
-                "modal",
-                "vp"
+                "modal_vp"
               ],
               "surfaces": [
                 "佢",
-                "會",
-                "返嚟"
+                "會返嚟"
               ]
             }
           },
           {
             "kind": "token",
             "depth": 2,
-            "parent": "ModalVP",
+            "parent": "SubjectModalPredicateClause",
             "surface": "佢",
             "construction": "",
             "role": "who",
@@ -54785,8 +54805,36 @@
             }
           },
           {
-            "kind": "token",
+            "kind": "construction",
             "depth": 2,
+            "parent": "SubjectModalPredicateClause",
+            "surface": "會返嚟",
+            "construction": "ModalVP",
+            "role": "",
+            "syntax": "",
+            "jyutping": "",
+            "slots": [
+              "action_verb",
+              "deictic_motion_marker",
+              "main_verb",
+              "modal",
+              "modal_predicate",
+              "modal_vp",
+              "movement_verb",
+              "predicate",
+              "return_motion_verb",
+              "verb_complement",
+              "vp"
+            ],
+            "contextual_role_affordances": [],
+            "trace": "generative_or_heuristic_slot_rule",
+            "trace_detail": {
+              "kind": "generative_or_heuristic_slot_rule"
+            }
+          },
+          {
+            "kind": "token",
+            "depth": 3,
             "parent": "ModalVP",
             "surface": "會",
             "construction": "",
@@ -54810,50 +54858,13 @@
             }
           },
           {
-            "kind": "construction",
-            "depth": 2,
-            "parent": "ModalVP",
-            "surface": "返嚟",
-            "construction": "DirectionalMotionVP",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "action_vp",
-              "directional_motion_vp",
-              "motion_predicate",
-              "movement_verb",
-              "predicate",
-              "vp"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "DirectionalMotionVP",
-              "template_family": "generative_template",
-              "template": [
-                "return_motion_verb!",
-                "deictic_motion_marker!"
-              ],
-              "assigned_slots": [
-                "return_motion_verb",
-                "deictic_motion_marker"
-              ],
-              "surfaces": [
-                "返",
-                "嚟"
-              ]
-            }
-          },
-          {
             "kind": "token",
             "depth": 3,
-            "parent": "DirectionalMotionVP",
+            "parent": "ModalVP",
             "surface": "返",
             "construction": "",
             "role": "doing",
-            "syntax": "return_motion_component",
+            "syntax": "movement_verb",
             "jyutping": "faan1",
             "slots": [
               "action_verb",
@@ -54886,18 +54897,20 @@
           {
             "kind": "token",
             "depth": 3,
-            "parent": "DirectionalMotionVP",
+            "parent": "ModalVP",
             "surface": "嚟",
             "construction": "",
             "role": "doing",
-            "syntax": "deictic_motion_marker",
+            "syntax": "movement_verb",
             "jyutping": "lai4",
             "slots": [
               "action_verb",
               "deictic_motion_marker",
               "main_verb",
               "movement_verb",
-              "predicate"
+              "predicate",
+              "return_motion_verb",
+              "verb_complement"
             ],
             "contextual_role_affordances": [
               {
@@ -54965,8 +54978,8 @@
             "status": "PASS"
           },
           "hover": {
-            "status": "PASS",
-            "flagged_hover_target_count": 0,
+            "status": "WARN",
+            "flagged_hover_target_count": 2,
             "missing_plain_learner_gloss_count": 0
           },
           "wrapper": {
@@ -54983,7 +54996,9 @@
           }
         }
       },
-      "case_id": "REG-0193"
+      "case_id": "REG-0193",
+      "accepted_transition": "v0.5.221_AA49_independent_motion_predicate_boundary",
+      "transition_reason": "AA49 is restricted to independently predicative single motion/path material; compound, manner-directional, and postverbal directional-complement profiles are reclassified or left unresolved without linguistic-status promotion."
     },
     {
       "source": "佢會嚟喎？",
@@ -58419,73 +58434,28 @@
       ],
       "expected": {
         "summary": {
-          "top_constructions": [
-            "SubjectPredicateClause"
-          ],
+          "top_constructions": [],
           "top_child_constructions": [],
           "context_requirement_status": "context_not_required",
           "antecedent_status": "not_applicable",
           "missing_argument_slots": [],
-          "root_span_coverage_status": "PASS",
-          "root_top_construction_count": 1,
-          "unwrapped_root_nonpunctuation_count": 0,
-          "unwrapped_root_surfaces": []
+          "root_span_coverage_status": "NO_TOP_CONSTRUCTION",
+          "root_top_construction_count": 0,
+          "unwrapped_root_nonpunctuation_count": 3,
+          "unwrapped_root_surfaces": [
+            "我",
+            "上",
+            "去"
+          ],
+          "semantic_review_flags": [
+            "no_top_construction"
+          ]
         },
         "tree": [
           {
-            "kind": "construction",
+            "kind": "token",
             "depth": 0,
             "parent": "",
-            "surface": "我上去",
-            "construction": "SubjectPredicateClause",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "action_vp",
-              "clause",
-              "co_participant",
-              "construction_span",
-              "deictic_motion_marker",
-              "directional_motion_vp",
-              "head_noun",
-              "motion_predicate",
-              "movement_direction",
-              "movement_verb",
-              "np",
-              "predicate",
-              "recipient",
-              "stance_holder",
-              "subject",
-              "subject_predicate_clause",
-              "topic",
-              "vp"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "SubjectPredicateClause",
-              "template_family": "generative_template",
-              "template": [
-                "subject!",
-                "predicate!",
-                "particle?"
-              ],
-              "assigned_slots": [
-                "subject",
-                "predicate"
-              ],
-              "surfaces": [
-                "我",
-                "上去"
-              ]
-            }
-          },
-          {
-            "kind": "token",
-            "depth": 1,
-            "parent": "SubjectPredicateClause",
             "surface": "我",
             "construction": "",
             "role": "who",
@@ -58521,95 +58491,66 @@
             }
           },
           {
-            "kind": "construction",
-            "depth": 1,
-            "parent": "SubjectPredicateClause",
-            "surface": "上去",
-            "construction": "DirectionalMotionVP",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "action_vp",
-              "deictic_motion_marker",
-              "directional_motion_vp",
-              "motion_predicate",
-              "movement_direction",
-              "movement_verb",
-              "predicate",
-              "vp"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "DirectionalMotionVP",
-              "template_family": "generative_template",
-              "template": [
-                "directional_head!",
-                "deictic_motion_marker!"
-              ],
-              "assigned_slots": [
-                "movement_direction",
-                "deictic_motion_marker"
-              ],
-              "surfaces": [
-                "上",
-                "去"
-              ]
-            }
-          },
-          {
             "kind": "token",
-            "depth": 2,
-            "parent": "DirectionalMotionVP",
+            "depth": 0,
+            "parent": "",
             "surface": "上",
             "construction": "",
-            "role": "doing",
-            "syntax": "main_directional_verb",
+            "role": "when",
+            "syntax": "temporal_modifier_previous movement_direction_up",
             "jyutping": "soeng5",
             "slots": [
+              "modifier",
               "movement_direction",
-              "movement_verb"
+              "movement_verb",
+              "temporal_modifier",
+              "time",
+              "time_head"
             ],
             "contextual_role_affordances": [
               {
                 "role": "when",
                 "source": "lexical_default",
                 "active_before_construction_wrapping": true,
-                "active_in_final_construction": false
+                "active_in_final_construction": true
               },
               {
                 "role": "when",
                 "slot": "temporal_modifier",
                 "source": "time_affordance",
                 "active_before_construction_wrapping": true,
-                "active_in_final_construction": false
+                "active_in_final_construction": true
               },
               {
                 "role": "doing",
                 "slot": "movement_direction",
                 "source": "motion_affordance",
                 "active_before_construction_wrapping": false,
-                "active_in_final_construction": true
+                "active_in_final_construction": false
               }
             ],
-            "trace": "construction_internal_parser_inactive_clone",
+            "trace": "atomic_lexicon",
             "trace_detail": {
-              "kind": "construction_internal_parser_inactive_clone"
+              "kind": "atomic_lexicon"
             }
           },
           {
             "kind": "token",
-            "depth": 2,
-            "parent": "DirectionalMotionVP",
+            "depth": 0,
+            "parent": "",
             "surface": "去",
             "construction": "",
             "role": "doing",
-            "syntax": "deictic_motion_marker",
+            "syntax": "movement_verb",
             "jyutping": "heoi3",
             "slots": [
-              "deictic_motion_marker"
+              "action_verb",
+              "deictic_motion_marker",
+              "main_verb",
+              "movement_verb",
+              "predicate",
+              "return_motion_verb",
+              "verb_complement"
             ],
             "contextual_role_affordances": [
               {
@@ -58626,9 +58567,9 @@
                 "active_in_final_construction": true
               }
             ],
-            "trace": "construction_internal_parser_inactive_clone",
+            "trace": "atomic_lexicon",
             "trace_detail": {
-              "kind": "construction_internal_parser_inactive_clone"
+              "kind": "atomic_lexicon"
             }
           }
         ],
@@ -58668,7 +58609,9 @@
           }
         }
       },
-      "case_id": "REG-0204"
+      "case_id": "REG-0204",
+      "accepted_transition": "v0.5.221_AA49_independent_motion_predicate_boundary",
+      "transition_reason": "AA49 is restricted to independently predicative single motion/path material; compound, manner-directional, and postverbal directional-complement profiles are reclassified or left unresolved without linguistic-status promotion."
     },
     {
       "source": "我冇去，因為落雨。",
@@ -60382,17 +60325,14 @@
             "syntax": "",
             "jyutping": "",
             "slots": [
-              "action_verb",
               "action_vp",
-              "aspect_marker",
               "clause",
               "co_participant",
               "cognition_predicate",
-              "completion_vp",
               "construction_span",
               "content_clause",
+              "directional_motion_vp",
               "head_noun",
-              "main_verb",
               "movement_verb",
               "np",
               "opinion_stance_frame",
@@ -60518,15 +60458,12 @@
             "syntax": "",
             "jyutping": "",
             "slots": [
-              "action_verb",
               "action_vp",
-              "aspect_marker",
               "clause",
               "co_participant",
-              "completion_vp",
               "construction_span",
+              "directional_motion_vp",
               "head_noun",
-              "main_verb",
               "movement_verb",
               "np",
               "perfective_aspect",
@@ -60547,8 +60484,7 @@
               "template_family": "generative_template",
               "template": [
                 "subject!",
-                "predicate!",
-                "particle?"
+                "predicate!"
               ],
               "assigned_slots": [
                 "subject",
@@ -60608,12 +60544,8 @@
             "syntax": "",
             "jyutping": "",
             "slots": [
-              "action_verb",
               "action_vp",
-              "aspect_marker",
-              "completion_vp",
-              "construction_span",
-              "main_verb",
+              "directional_motion_vp",
               "movement_verb",
               "perfective_aspect",
               "perfective_vp",
@@ -60627,11 +60559,11 @@
               "construction_type": "PerfectiveVP",
               "template_family": "generative_template",
               "template": [
-                "transition_motion_verb!",
+                "directional_motion_vp!",
                 "perfective_aspect!"
               ],
               "assigned_slots": [
-                "transition_motion_verb",
+                "motion_predicate",
                 "perfective_aspect"
               ],
               "surfaces": [
@@ -60641,9 +60573,48 @@
             }
           },
           {
-            "kind": "token",
+            "kind": "construction",
             "depth": 3,
             "parent": "PerfectiveVP",
+            "surface": "走",
+            "construction": "DirectionalMotionVP",
+            "role": "",
+            "syntax": "",
+            "jyutping": "",
+            "slots": [
+              "action_vp",
+              "directional_motion_vp",
+              "motion_predicate",
+              "movement_verb",
+              "predicate",
+              "vp"
+            ],
+            "contextual_role_affordances": [],
+            "trace": "construction_template",
+            "trace_detail": {
+              "kind": "construction_template",
+              "construction_type": "DirectionalMotionVP",
+              "template_family": "construction_template",
+              "template": [
+                "independent_motion_predicate!"
+              ],
+              "assigned_slots": [
+                "movement_verb"
+              ],
+              "surfaces": [
+                "走"
+              ],
+              "not_claims": [
+                "not_postverbal_directional_complement",
+                "not_compound_directional",
+                "not_manner_directional_sequence"
+              ]
+            }
+          },
+          {
+            "kind": "token",
+            "depth": 4,
+            "parent": "DirectionalMotionVP",
             "surface": "走",
             "construction": "",
             "role": "doing",
@@ -60737,7 +60708,9 @@
           }
         }
       },
-      "case_id": "REG-0211"
+      "case_id": "REG-0211",
+      "accepted_transition": "v0.5.221_AA49_independent_motion_predicate_boundary",
+      "transition_reason": "AA49 is restricted to independently predicative single motion/path material; compound, manner-directional, and postverbal directional-complement profiles are reclassified or left unresolved without linguistic-status promotion."
     },
     {
       "source": "我去咗中環呀。",
@@ -82883,18 +82856,18 @@
         "summary": {
           "top_constructions": [
             "PerfectiveVP",
-            "QuantifiedClassifierNP",
-            "DirectionalMotionVP"
+            "QuantifiedClassifierNP"
           ],
           "top_child_constructions": [],
           "context_requirement_status": "context_not_required",
           "antecedent_status": "not_applicable",
           "missing_argument_slots": [],
           "root_span_coverage_status": "PARTIAL",
-          "root_top_construction_count": 3,
-          "unwrapped_root_nonpunctuation_count": 1,
+          "root_top_construction_count": 2,
+          "unwrapped_root_nonpunctuation_count": 2,
           "unwrapped_root_surfaces": [
-            "我"
+            "我",
+            "去"
           ],
           "semantic_review_flags": [
             "multiple_top_constructions",
@@ -83168,54 +83141,22 @@
             }
           },
           {
-            "kind": "construction",
+            "kind": "token",
             "depth": 0,
             "parent": "",
             "surface": "去",
-            "construction": "DirectionalMotionVP",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "action_vp",
-              "directional_motion_vp",
-              "motion_predicate",
-              "movement_verb",
-              "predicate",
-              "vp"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "DirectionalMotionVP",
-              "template_family": "generative_template",
-              "template": [
-                "deictic_motion_marker!"
-              ],
-              "assigned_slots": [
-                "deictic_motion_marker"
-              ],
-              "surfaces": [
-                "去"
-              ]
-            }
-          },
-          {
-            "kind": "token",
-            "depth": 1,
-            "parent": "DirectionalMotionVP",
-            "surface": "去",
             "construction": "",
             "role": "doing",
-            "syntax": "deictic_motion_marker",
+            "syntax": "movement_verb",
             "jyutping": "heoi3",
             "slots": [
               "action_verb",
               "deictic_motion_marker",
               "main_verb",
               "movement_verb",
-              "predicate"
+              "predicate",
+              "return_motion_verb",
+              "verb_complement"
             ],
             "contextual_role_affordances": [
               {
@@ -83299,7 +83240,9 @@
           }
         }
       },
-      "case_id": "REG-0278"
+      "case_id": "REG-0278",
+      "accepted_transition": "v0.5.221_AA49_independent_motion_predicate_boundary",
+      "transition_reason": "AA49 is restricted to independently predicative single motion/path material; compound, manner-directional, and postverbal directional-complement profiles are reclassified or left unresolved without linguistic-status promotion."
     },
     {
       "source": "我得一個啫。",
@@ -90256,73 +90199,28 @@
       ],
       "expected": {
         "summary": {
-          "top_constructions": [
-            "SubjectPredicateClause"
-          ],
+          "top_constructions": [],
           "top_child_constructions": [],
           "context_requirement_status": "context_not_required",
           "antecedent_status": "not_applicable",
           "missing_argument_slots": [],
-          "root_span_coverage_status": "PASS",
-          "root_top_construction_count": 1,
-          "unwrapped_root_nonpunctuation_count": 0,
-          "unwrapped_root_surfaces": []
+          "root_span_coverage_status": "NO_TOP_CONSTRUCTION",
+          "root_top_construction_count": 0,
+          "unwrapped_root_nonpunctuation_count": 3,
+          "unwrapped_root_surfaces": [
+            "我",
+            "落",
+            "嚟"
+          ],
+          "semantic_review_flags": [
+            "no_top_construction"
+          ]
         },
         "tree": [
           {
-            "kind": "construction",
+            "kind": "token",
             "depth": 0,
             "parent": "",
-            "surface": "我落嚟",
-            "construction": "SubjectPredicateClause",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "action_vp",
-              "clause",
-              "co_participant",
-              "construction_span",
-              "deictic_motion_marker",
-              "directional_motion_vp",
-              "head_noun",
-              "motion_predicate",
-              "movement_direction",
-              "movement_verb",
-              "np",
-              "predicate",
-              "recipient",
-              "stance_holder",
-              "subject",
-              "subject_predicate_clause",
-              "topic",
-              "vp"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "SubjectPredicateClause",
-              "template_family": "generative_template",
-              "template": [
-                "subject!",
-                "predicate!",
-                "particle?"
-              ],
-              "assigned_slots": [
-                "subject",
-                "predicate"
-              ],
-              "surfaces": [
-                "我",
-                "落嚟"
-              ]
-            }
-          },
-          {
-            "kind": "token",
-            "depth": 1,
-            "parent": "SubjectPredicateClause",
             "surface": "我",
             "construction": "",
             "role": "who",
@@ -90358,56 +90256,22 @@
             }
           },
           {
-            "kind": "construction",
-            "depth": 1,
-            "parent": "SubjectPredicateClause",
-            "surface": "落嚟",
-            "construction": "DirectionalMotionVP",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "action_vp",
-              "deictic_motion_marker",
-              "directional_motion_vp",
-              "motion_predicate",
-              "movement_direction",
-              "movement_verb",
-              "predicate",
-              "vp"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "DirectionalMotionVP",
-              "template_family": "generative_template",
-              "template": [
-                "directional_head!",
-                "deictic_motion_marker!"
-              ],
-              "assigned_slots": [
-                "movement_direction",
-                "deictic_motion_marker"
-              ],
-              "surfaces": [
-                "落",
-                "嚟"
-              ]
-            }
-          },
-          {
             "kind": "token",
-            "depth": 2,
-            "parent": "DirectionalMotionVP",
+            "depth": 0,
+            "parent": "",
             "surface": "落",
             "construction": "",
             "role": "doing",
-            "syntax": "main_directional_verb",
+            "syntax": "movement_direction_down movement_verb",
             "jyutping": "lok6",
             "slots": [
+              "action_verb",
+              "main_verb",
               "movement_direction",
-              "movement_verb"
+              "movement_verb",
+              "predicate",
+              "return_motion_verb",
+              "verb_complement"
             ],
             "contextual_role_affordances": [
               {
@@ -90424,22 +90288,28 @@
                 "active_in_final_construction": true
               }
             ],
-            "trace": "construction_internal_parser_inactive_clone",
+            "trace": "atomic_lexicon",
             "trace_detail": {
-              "kind": "construction_internal_parser_inactive_clone"
+              "kind": "atomic_lexicon"
             }
           },
           {
             "kind": "token",
-            "depth": 2,
-            "parent": "DirectionalMotionVP",
+            "depth": 0,
+            "parent": "",
             "surface": "嚟",
             "construction": "",
             "role": "doing",
-            "syntax": "deictic_motion_marker",
+            "syntax": "movement_verb",
             "jyutping": "lai4",
             "slots": [
-              "deictic_motion_marker"
+              "action_verb",
+              "deictic_motion_marker",
+              "main_verb",
+              "movement_verb",
+              "predicate",
+              "return_motion_verb",
+              "verb_complement"
             ],
             "contextual_role_affordances": [
               {
@@ -90456,9 +90326,9 @@
                 "active_in_final_construction": true
               }
             ],
-            "trace": "construction_internal_parser_inactive_clone",
+            "trace": "atomic_lexicon",
             "trace_detail": {
-              "kind": "construction_internal_parser_inactive_clone"
+              "kind": "atomic_lexicon"
             }
           }
         ],
@@ -90498,7 +90368,9 @@
           }
         }
       },
-      "case_id": "REG-0300"
+      "case_id": "REG-0300",
+      "accepted_transition": "v0.5.221_AA49_independent_motion_predicate_boundary",
+      "transition_reason": "AA49 is restricted to independently predicative single motion/path material; compound, manner-directional, and postverbal directional-complement profiles are reclassified or left unresolved without linguistic-status promotion."
     },
     {
       "source": "我落嚟摘芒果食。",
@@ -90508,70 +90380,29 @@
       "expected": {
         "summary": {
           "top_constructions": [
-            "SubjectPredicateClause"
+            "SerialVerbPurposeChain"
           ],
           "top_child_constructions": [],
           "context_requirement_status": "context_not_required",
           "antecedent_status": "not_applicable",
           "missing_argument_slots": [],
-          "root_span_coverage_status": "PASS",
+          "root_span_coverage_status": "PARTIAL",
           "root_top_construction_count": 1,
-          "unwrapped_root_nonpunctuation_count": 0,
-          "unwrapped_root_surfaces": []
+          "unwrapped_root_nonpunctuation_count": 3,
+          "unwrapped_root_surfaces": [
+            "我",
+            "落",
+            "嚟"
+          ],
+          "semantic_review_flags": [
+            "partial_root_span_unwrapped_material"
+          ]
         },
         "tree": [
           {
-            "kind": "construction",
+            "kind": "token",
             "depth": 0,
             "parent": "",
-            "surface": "我落嚟摘芒果食",
-            "construction": "SubjectPredicateClause",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "action_vp",
-              "clause",
-              "co_participant",
-              "construction_span",
-              "head_noun",
-              "np",
-              "predicate",
-              "purpose_chain",
-              "recipient",
-              "serial_action_chain",
-              "serial_verb_purpose_chain",
-              "stance_holder",
-              "subject",
-              "subject_predicate_clause",
-              "topic",
-              "vp"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "SubjectPredicateClause",
-              "template_family": "generative_template",
-              "template": [
-                "subject!",
-                "predicate!",
-                "particle?"
-              ],
-              "assigned_slots": [
-                "subject",
-                "predicate"
-              ],
-              "surfaces": [
-                "我",
-                "落嚟摘芒果食"
-              ]
-            }
-          },
-          {
-            "kind": "token",
-            "depth": 1,
-            "parent": "SubjectPredicateClause",
             "surface": "我",
             "construction": "",
             "role": "who",
@@ -90607,107 +90438,22 @@
             }
           },
           {
-            "kind": "construction",
-            "depth": 1,
-            "parent": "SubjectPredicateClause",
-            "surface": "落嚟摘芒果食",
-            "construction": "SerialVerbPurposeChain",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "action_vp",
-              "predicate",
-              "purpose_chain",
-              "serial_action_chain",
-              "serial_verb_purpose_chain",
-              "vp"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "SerialVerbPurposeChain",
-              "template_family": "generative_template",
-              "template": [
-                "directional_motion_vp!",
-                "productive_vo!",
-                "purpose_verb!",
-                "particle?"
-              ],
-              "assigned_slots": [
-                "directional_motion_vp",
-                "productive_vo",
-                "purpose_verb"
-              ],
-              "surfaces": [
-                "落嚟",
-                "摘芒果",
-                "食"
-              ],
-              "shared_subject_provenance": {
-                "overt_subject_surface": "我",
-                "licensed_members": [
-                  "落嚟",
-                  "摘芒果",
-                  "食"
-                ],
-                "hidden_subject_inserted": false
-              }
-            }
-          },
-          {
-            "kind": "construction",
-            "depth": 2,
-            "parent": "SerialVerbPurposeChain",
-            "surface": "落嚟",
-            "construction": "DirectionalMotionVP",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "action_vp",
-              "directional_motion_vp",
-              "motion_predicate",
-              "movement_verb",
-              "predicate",
-              "vp"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "DirectionalMotionVP",
-              "template_family": "generative_template",
-              "template": [
-                "movement_direction!",
-                "deictic_motion_marker!"
-              ],
-              "assigned_slots": [
-                "movement_direction",
-                "deictic_motion_marker"
-              ],
-              "surfaces": [
-                "落",
-                "嚟"
-              ]
-            }
-          },
-          {
             "kind": "token",
-            "depth": 3,
-            "parent": "DirectionalMotionVP",
+            "depth": 0,
+            "parent": "",
             "surface": "落",
             "construction": "",
             "role": "doing",
-            "syntax": "movement_direction",
+            "syntax": "movement_direction_down movement_verb",
             "jyutping": "lok6",
             "slots": [
               "action_verb",
               "main_verb",
               "movement_direction",
               "movement_verb",
-              "predicate"
+              "predicate",
+              "return_motion_verb",
+              "verb_complement"
             ],
             "contextual_role_affordances": [
               {
@@ -90731,19 +90477,21 @@
           },
           {
             "kind": "token",
-            "depth": 3,
-            "parent": "DirectionalMotionVP",
+            "depth": 0,
+            "parent": "",
             "surface": "嚟",
             "construction": "",
             "role": "doing",
-            "syntax": "deictic_motion_marker",
+            "syntax": "movement_verb",
             "jyutping": "lai4",
             "slots": [
               "action_verb",
               "deictic_motion_marker",
               "main_verb",
               "movement_verb",
-              "predicate"
+              "predicate",
+              "return_motion_verb",
+              "verb_complement"
             ],
             "contextual_role_affordances": [
               {
@@ -90767,7 +90515,45 @@
           },
           {
             "kind": "construction",
-            "depth": 2,
+            "depth": 0,
+            "parent": "",
+            "surface": "摘芒果食",
+            "construction": "SerialVerbPurposeChain",
+            "role": "",
+            "syntax": "",
+            "jyutping": "",
+            "slots": [
+              "action_vp",
+              "predicate",
+              "purpose_chain",
+              "serial_action_chain",
+              "serial_verb_purpose_chain",
+              "vp"
+            ],
+            "contextual_role_affordances": [],
+            "trace": "generative_template",
+            "trace_detail": {
+              "kind": "generative_template",
+              "construction_type": "SerialVerbPurposeChain",
+              "template_family": "generative_template",
+              "template": [
+                "productive_vo!",
+                "purpose_verb!",
+                "particle?"
+              ],
+              "assigned_slots": [
+                "productive_vo",
+                "purpose_verb"
+              ],
+              "surfaces": [
+                "摘芒果",
+                "食"
+              ]
+            }
+          },
+          {
+            "kind": "construction",
+            "depth": 1,
             "parent": "SerialVerbPurposeChain",
             "surface": "摘芒果",
             "construction": "ProductiveVO",
@@ -90803,7 +90589,7 @@
           },
           {
             "kind": "token",
-            "depth": 3,
+            "depth": 2,
             "parent": "ProductiveVO",
             "surface": "摘",
             "construction": "",
@@ -90830,7 +90616,7 @@
           },
           {
             "kind": "token",
-            "depth": 3,
+            "depth": 2,
             "parent": "ProductiveVO",
             "surface": "芒果",
             "construction": "",
@@ -90866,7 +90652,7 @@
           },
           {
             "kind": "token",
-            "depth": 2,
+            "depth": 1,
             "parent": "SerialVerbPurposeChain",
             "surface": "食",
             "construction": "",
@@ -90931,7 +90717,9 @@
           }
         }
       },
-      "case_id": "REG-0301"
+      "case_id": "REG-0301",
+      "accepted_transition": "v0.5.221_AA49_independent_motion_predicate_boundary",
+      "transition_reason": "AA49 is restricted to independently predicative single motion/path material; compound, manner-directional, and postverbal directional-complement profiles are reclassified or left unresolved without linguistic-status promotion."
     },
     {
       "source": "我話貴。",
@@ -95518,30 +95306,72 @@
       "expected": {
         "summary": {
           "top_constructions": [
-            "VerbComplementVP"
+            "SubjectPredicateClause"
           ],
           "top_child_constructions": [],
           "context_requirement_status": "context_not_required",
           "antecedent_status": "not_applicable",
           "missing_argument_slots": [],
-          "root_span_coverage_status": "PARTIAL",
+          "root_span_coverage_status": "PASS",
           "root_top_construction_count": 1,
-          "unwrapped_root_nonpunctuation_count": 4,
-          "unwrapped_root_surfaces": [
-            "我",
-            "畀",
-            "你",
-            "睇"
-          ],
-          "semantic_review_flags": [
-            "partial_root_span_unwrapped_material"
-          ]
+          "unwrapped_root_nonpunctuation_count": 0,
+          "unwrapped_root_surfaces": []
         },
         "tree": [
           {
-            "kind": "token",
+            "kind": "construction",
             "depth": 0,
             "parent": "",
+            "surface": "我攞本書返嚟畀你睇",
+            "construction": "SubjectPredicateClause",
+            "role": "",
+            "syntax": "",
+            "jyutping": "",
+            "slots": [
+              "action_vp",
+              "clause",
+              "co_participant",
+              "construction_span",
+              "following_predicate",
+              "head_noun",
+              "np",
+              "person_np",
+              "post_theme_link_marker",
+              "post_theme_participant",
+              "post_theme_participant_relation",
+              "predicate",
+              "recipient",
+              "stance_holder",
+              "subject",
+              "subject_predicate_clause",
+              "topic",
+              "vp"
+            ],
+            "contextual_role_affordances": [],
+            "trace": "generative_template",
+            "trace_detail": {
+              "kind": "generative_template",
+              "construction_type": "SubjectPredicateClause",
+              "template_family": "generative_template",
+              "template": [
+                "subject!",
+                "predicate!",
+                "particle?"
+              ],
+              "assigned_slots": [
+                "subject",
+                "predicate"
+              ],
+              "surfaces": [
+                "我",
+                "攞本書返嚟畀你睇"
+              ]
+            }
+          },
+          {
+            "kind": "token",
+            "depth": 1,
+            "parent": "SubjectPredicateClause",
             "surface": "我",
             "construction": "",
             "role": "who",
@@ -95578,8 +95408,64 @@
           },
           {
             "kind": "construction",
-            "depth": 0,
-            "parent": "",
+            "depth": 1,
+            "parent": "SubjectPredicateClause",
+            "surface": "攞本書返嚟畀你睇",
+            "construction": "PostThemeParticipantRelation",
+            "role": "",
+            "syntax": "",
+            "jyutping": "",
+            "slots": [
+              "action_vp",
+              "following_predicate",
+              "np",
+              "person_np",
+              "post_theme_link_marker",
+              "post_theme_participant",
+              "post_theme_participant_relation",
+              "predicate",
+              "vp"
+            ],
+            "contextual_role_affordances": [],
+            "trace": "generative_template",
+            "trace_detail": {
+              "kind": "generative_template",
+              "construction_type": "PostThemeParticipantRelation",
+              "template_family": "construction_template",
+              "template": [
+                "upstream_predicate_theme_vp!",
+                "post_theme_link_marker!",
+                "post_theme_participant!",
+                "following_predicate?"
+              ],
+              "assigned_slots": [
+                "upstream_vp",
+                "post_theme_link_marker",
+                "post_theme_participant",
+                "following_predicate"
+              ],
+              "surfaces": [
+                "攞本書返嚟",
+                "畀",
+                "你",
+                "睇"
+              ],
+              "semantic_review_flags": [
+                "post_theme_participant_role_context_dependent"
+              ],
+              "not_claims": [
+                "not_lexical_give",
+                "not_passive_or_permissive",
+                "not_unified_recipient_or_beneficiary",
+                "not_fixed_marker_category",
+                "not_supported_productive"
+              ]
+            }
+          },
+          {
+            "kind": "construction",
+            "depth": 2,
+            "parent": "PostThemeParticipantRelation",
             "surface": "攞本書返嚟",
             "construction": "VerbComplementVP",
             "role": "",
@@ -95587,9 +95473,12 @@
             "jyutping": "",
             "slots": [
               "action_vp",
-              "directional_motion_vp",
+              "deictic_motion_marker",
               "main_verb",
+              "movement_direction",
+              "object",
               "predicate",
+              "return_motion_verb",
               "verb_complement",
               "verb_complement_vp",
               "vp"
@@ -95601,22 +95490,28 @@
               "construction_type": "VerbComplementVP",
               "template_family": "generative_template",
               "template": [
-                "action_verb!",
-                "directional_motion_vp!"
+                "action_object_vp!",
+                "return_directional_complement!",
+                "deictic_motion_marker!"
               ],
               "assigned_slots": [
-                "action_verb",
-                "directional_motion_vp"
+                "action_vp",
+                "verb_complement",
+                "deictic_motion_marker"
               ],
               "surfaces": [
                 "攞本書",
-                "返嚟"
+                "返",
+                "嚟"
+              ],
+              "not_claims": [
+                "not_aa49_independent_motion_predicate"
               ]
             }
           },
           {
             "kind": "construction",
-            "depth": 1,
+            "depth": 3,
             "parent": "VerbComplementVP",
             "surface": "攞本書",
             "construction": "TransitiveVP",
@@ -95660,7 +95555,7 @@
           },
           {
             "kind": "token",
-            "depth": 2,
+            "depth": 4,
             "parent": "TransitiveVP",
             "surface": "攞",
             "construction": "",
@@ -95687,7 +95582,7 @@
           },
           {
             "kind": "construction",
-            "depth": 2,
+            "depth": 4,
             "parent": "TransitiveVP",
             "surface": "本書",
             "construction": "ModifiedNP",
@@ -95730,7 +95625,7 @@
           },
           {
             "kind": "token",
-            "depth": 3,
+            "depth": 5,
             "parent": "ModifiedNP",
             "surface": "本",
             "construction": "",
@@ -95755,7 +95650,7 @@
           },
           {
             "kind": "token",
-            "depth": 3,
+            "depth": 5,
             "parent": "ModifiedNP",
             "surface": "書",
             "construction": "",
@@ -95790,56 +95685,16 @@
             }
           },
           {
-            "kind": "construction",
-            "depth": 1,
-            "parent": "VerbComplementVP",
-            "surface": "返嚟",
-            "construction": "DirectionalMotionVP",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "action_vp",
-              "directional_motion_vp",
-              "motion_predicate",
-              "movement_verb",
-              "predicate",
-              "vp"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "DirectionalMotionVP",
-              "template_family": "generative_template",
-              "template": [
-                "return_motion_verb!",
-                "deictic_motion_marker!"
-              ],
-              "assigned_slots": [
-                "return_motion_verb",
-                "deictic_motion_marker"
-              ],
-              "surfaces": [
-                "返",
-                "嚟"
-              ]
-            }
-          },
-          {
             "kind": "token",
-            "depth": 2,
-            "parent": "DirectionalMotionVP",
+            "depth": 3,
+            "parent": "VerbComplementVP",
             "surface": "返",
             "construction": "",
             "role": "doing",
-            "syntax": "return_motion_component",
+            "syntax": "return_directional_complement",
             "jyutping": "faan1",
             "slots": [
-              "action_verb",
-              "main_verb",
-              "movement_verb",
-              "predicate",
+              "movement_direction",
               "return_motion_verb",
               "verb_complement"
             ],
@@ -95858,26 +95713,23 @@
                 "active_in_final_construction": true
               }
             ],
-            "trace": "atomic_lexicon",
+            "trace": "construction_internal_parser_inactive_clone",
             "trace_detail": {
-              "kind": "atomic_lexicon"
+              "kind": "construction_internal_parser_inactive_clone"
             }
           },
           {
             "kind": "token",
-            "depth": 2,
-            "parent": "DirectionalMotionVP",
+            "depth": 3,
+            "parent": "VerbComplementVP",
             "surface": "嚟",
             "construction": "",
             "role": "doing",
-            "syntax": "deictic_motion_marker",
+            "syntax": "deictic_motion_marker directional_complement_part",
             "jyutping": "lai4",
             "slots": [
-              "action_verb",
               "deictic_motion_marker",
-              "main_verb",
-              "movement_verb",
-              "predicate"
+              "verb_complement"
             ],
             "contextual_role_affordances": [
               {
@@ -95894,55 +95746,55 @@
                 "active_in_final_construction": true
               }
             ],
-            "trace": "atomic_lexicon",
+            "trace": "construction_internal_parser_inactive_clone",
             "trace_detail": {
-              "kind": "atomic_lexicon"
+              "kind": "construction_internal_parser_inactive_clone"
             }
           },
           {
             "kind": "token",
-            "depth": 0,
-            "parent": "",
+            "depth": 2,
+            "parent": "PostThemeParticipantRelation",
             "surface": "畀",
             "construction": "",
-            "role": "doing",
-            "syntax": "ditransitive_verb",
+            "role": "func",
+            "syntax": "post_theme_link_marker",
             "jyutping": "bei2",
             "slots": [
-              "action_verb",
-              "main_verb",
-              "predicate"
+              "post_theme_link_marker"
             ],
             "contextual_role_affordances": [
               {
                 "role": "doing",
                 "source": "lexical_default",
                 "active_before_construction_wrapping": true,
+                "active_in_final_construction": false
+              },
+              {
+                "role": "func",
+                "source": "construction_override",
+                "active_before_construction_wrapping": false,
                 "active_in_final_construction": true
               }
             ],
-            "trace": "atomic_lexicon",
+            "trace": "construction_internal_parser_inactive_clone",
             "trace_detail": {
-              "kind": "atomic_lexicon"
+              "kind": "construction_internal_parser_inactive_clone"
             }
           },
           {
             "kind": "token",
-            "depth": 0,
-            "parent": "",
+            "depth": 2,
+            "parent": "PostThemeParticipantRelation",
             "surface": "你",
             "construction": "",
             "role": "who",
-            "syntax": "subject_or_topic",
+            "syntax": "subject_or_topic cp021b_post_theme_participant",
             "jyutping": "nei5",
             "slots": [
-              "co_participant",
-              "head_noun",
               "np",
-              "recipient",
-              "stance_holder",
-              "subject",
-              "topic"
+              "person_np",
+              "post_theme_participant"
             ],
             "contextual_role_affordances": [
               {
@@ -95959,23 +95811,23 @@
                 "active_in_final_construction": false
               }
             ],
-            "trace": "atomic_lexicon",
+            "trace": "construction_internal_parser_inactive_clone",
             "trace_detail": {
-              "kind": "atomic_lexicon"
+              "kind": "construction_internal_parser_inactive_clone"
             }
           },
           {
             "kind": "token",
-            "depth": 0,
-            "parent": "",
+            "depth": 2,
+            "parent": "PostThemeParticipantRelation",
             "surface": "睇",
             "construction": "",
             "role": "doing",
-            "syntax": "verb transitive_affordance chain_select_perception",
+            "syntax": "verb transitive_affordance chain_select_perception following_predicate",
             "jyutping": "tai2",
             "slots": [
               "action_verb",
-              "main_verb",
+              "following_predicate",
               "predicate"
             ],
             "contextual_role_affordances": [
@@ -95986,9 +95838,9 @@
                 "active_in_final_construction": true
               }
             ],
-            "trace": "atomic_lexicon",
+            "trace": "construction_internal_parser_inactive_clone",
             "trace_detail": {
-              "kind": "atomic_lexicon"
+              "kind": "construction_internal_parser_inactive_clone"
             }
           }
         ],
@@ -96028,7 +95880,9 @@
           }
         }
       },
-      "case_id": "REG-0316"
+      "case_id": "REG-0316",
+      "accepted_transition": "v0.5.221_AA49_independent_motion_predicate_boundary",
+      "transition_reason": "AA49 is restricted to independently predicative single motion/path material; compound, manner-directional, and postverbal directional-complement profiles are reclassified or left unresolved without linguistic-status promotion."
     },
     {
       "source": "每一日。",
@@ -122887,9 +122741,11 @@
             "jyutping": "",
             "slots": [
               "action_vp",
-              "directional_motion_vp",
+              "deictic_motion_marker",
               "main_verb",
+              "movement_direction",
               "predicate",
+              "return_motion_verb",
               "verb_complement",
               "verb_complement_vp",
               "vp"
@@ -122902,15 +122758,22 @@
               "template_family": "generative_template",
               "template": [
                 "action_verb!",
-                "directional_motion_vp!"
+                "return_directional_complement!",
+                "deictic_motion_marker!",
+                "particle?"
               ],
               "assigned_slots": [
-                "action_verb",
-                "directional_motion_vp"
+                "main_verb",
+                "verb_complement",
+                "deictic_motion_marker"
               ],
               "surfaces": [
                 "寄",
-                "返去"
+                "返",
+                "去"
+              ],
+              "not_claims": [
+                "not_aa49_independent_motion_predicate"
               ]
             }
           },
@@ -122921,12 +122784,10 @@
             "surface": "寄",
             "construction": "",
             "role": "doing",
-            "syntax": "main_verb",
+            "syntax": "directional_composition_part",
             "jyutping": "gei3",
             "slots": [
-              "action_verb",
-              "main_verb",
-              "predicate"
+              "main_verb"
             ],
             "contextual_role_affordances": [
               {
@@ -122936,63 +122797,21 @@
                 "active_in_final_construction": true
               }
             ],
-            "trace": "atomic_lexicon",
+            "trace": "construction_internal_parser_inactive_clone",
             "trace_detail": {
-              "kind": "atomic_lexicon"
-            }
-          },
-          {
-            "kind": "construction",
-            "depth": 1,
-            "parent": "VerbComplementVP",
-            "surface": "返去",
-            "construction": "DirectionalMotionVP",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "action_vp",
-              "directional_motion_vp",
-              "motion_predicate",
-              "movement_verb",
-              "predicate",
-              "vp"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "DirectionalMotionVP",
-              "template_family": "generative_template",
-              "template": [
-                "return_motion_verb!",
-                "deictic_motion_marker!"
-              ],
-              "assigned_slots": [
-                "return_motion_verb",
-                "deictic_motion_marker"
-              ],
-              "surfaces": [
-                "返",
-                "去"
-              ]
+              "kind": "construction_internal_parser_inactive_clone"
             }
           },
           {
             "kind": "token",
-            "depth": 2,
-            "parent": "DirectionalMotionVP",
+            "depth": 1,
+            "parent": "VerbComplementVP",
             "surface": "返",
             "construction": "",
             "role": "doing",
-            "syntax": "return_motion_component",
+            "syntax": "return_directional_complement",
             "jyutping": "faan1",
             "slots": [
-              "action_verb",
-              "main_verb",
-              "movement_verb",
-              "predicate",
-              "return_motion_verb",
               "verb_complement"
             ],
             "contextual_role_affordances": [
@@ -123010,26 +122829,22 @@
                 "active_in_final_construction": true
               }
             ],
-            "trace": "atomic_lexicon",
+            "trace": "construction_internal_parser_inactive_clone",
             "trace_detail": {
-              "kind": "atomic_lexicon"
+              "kind": "construction_internal_parser_inactive_clone"
             }
           },
           {
             "kind": "token",
-            "depth": 2,
-            "parent": "DirectionalMotionVP",
+            "depth": 1,
+            "parent": "VerbComplementVP",
             "surface": "去",
             "construction": "",
             "role": "doing",
-            "syntax": "deictic_motion_marker",
+            "syntax": "deictic_motion_marker_away",
             "jyutping": "heoi3",
             "slots": [
-              "action_verb",
-              "deictic_motion_marker",
-              "main_verb",
-              "movement_verb",
-              "predicate"
+              "deictic_motion_marker"
             ],
             "contextual_role_affordances": [
               {
@@ -123046,9 +122861,9 @@
                 "active_in_final_construction": true
               }
             ],
-            "trace": "atomic_lexicon",
+            "trace": "construction_internal_parser_inactive_clone",
             "trace_detail": {
-              "kind": "atomic_lexicon"
+              "kind": "construction_internal_parser_inactive_clone"
             }
           }
         ],
@@ -123088,7 +122903,9 @@
           }
         }
       },
-      "case_id": "REG-0431"
+      "case_id": "REG-0431",
+      "accepted_transition": "v0.5.221_AA49_independent_motion_predicate_boundary",
+      "transition_reason": "AA49 is restricted to independently predicative single motion/path material; compound, manner-directional, and postverbal directional-complement profiles are reclassified or left unresolved without linguistic-status promotion."
     },
     {
       "source": "得。",
@@ -132016,105 +131833,35 @@
           "context_requirement_status": "context_not_required",
           "antecedent_status": "not_applicable",
           "missing_argument_slots": [],
-          "root_span_coverage_status": "PASS",
+          "root_span_coverage_status": "PARTIAL",
           "root_top_construction_count": 1,
-          "unwrapped_root_nonpunctuation_count": 0,
-          "unwrapped_root_surfaces": []
+          "unwrapped_root_nonpunctuation_count": 2,
+          "unwrapped_root_surfaces": [
+            "落",
+            "嚟"
+          ],
+          "semantic_review_flags": [
+            "partial_root_span_unwrapped_material"
+          ]
         },
         "tree": [
           {
-            "kind": "construction",
+            "kind": "token",
             "depth": 0,
             "parent": "",
-            "surface": "落嚟摘芒果食",
-            "construction": "SerialVerbPurposeChain",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "action_vp",
-              "predicate",
-              "purpose_chain",
-              "serial_action_chain",
-              "serial_verb_purpose_chain",
-              "vp"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "SerialVerbPurposeChain",
-              "template_family": "generative_template",
-              "template": [
-                "directional_motion_vp!",
-                "productive_vo!",
-                "purpose_verb!",
-                "particle?"
-              ],
-              "assigned_slots": [
-                "directional_motion_vp",
-                "productive_vo",
-                "purpose_verb"
-              ],
-              "surfaces": [
-                "落嚟",
-                "摘芒果",
-                "食"
-              ]
-            }
-          },
-          {
-            "kind": "construction",
-            "depth": 1,
-            "parent": "SerialVerbPurposeChain",
-            "surface": "落嚟",
-            "construction": "DirectionalMotionVP",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "action_vp",
-              "directional_motion_vp",
-              "motion_predicate",
-              "movement_verb",
-              "predicate",
-              "vp"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "DirectionalMotionVP",
-              "template_family": "generative_template",
-              "template": [
-                "movement_direction!",
-                "deictic_motion_marker!"
-              ],
-              "assigned_slots": [
-                "movement_direction",
-                "deictic_motion_marker"
-              ],
-              "surfaces": [
-                "落",
-                "嚟"
-              ]
-            }
-          },
-          {
-            "kind": "token",
-            "depth": 2,
-            "parent": "DirectionalMotionVP",
             "surface": "落",
             "construction": "",
             "role": "doing",
-            "syntax": "movement_direction",
+            "syntax": "movement_direction_down movement_verb",
             "jyutping": "lok6",
             "slots": [
               "action_verb",
               "main_verb",
               "movement_direction",
               "movement_verb",
-              "predicate"
+              "predicate",
+              "return_motion_verb",
+              "verb_complement"
             ],
             "contextual_role_affordances": [
               {
@@ -132138,19 +131885,21 @@
           },
           {
             "kind": "token",
-            "depth": 2,
-            "parent": "DirectionalMotionVP",
+            "depth": 0,
+            "parent": "",
             "surface": "嚟",
             "construction": "",
             "role": "doing",
-            "syntax": "deictic_motion_marker",
+            "syntax": "movement_verb",
             "jyutping": "lai4",
             "slots": [
               "action_verb",
               "deictic_motion_marker",
               "main_verb",
               "movement_verb",
-              "predicate"
+              "predicate",
+              "return_motion_verb",
+              "verb_complement"
             ],
             "contextual_role_affordances": [
               {
@@ -132170,6 +131919,44 @@
             "trace": "atomic_lexicon",
             "trace_detail": {
               "kind": "atomic_lexicon"
+            }
+          },
+          {
+            "kind": "construction",
+            "depth": 0,
+            "parent": "",
+            "surface": "摘芒果食",
+            "construction": "SerialVerbPurposeChain",
+            "role": "",
+            "syntax": "",
+            "jyutping": "",
+            "slots": [
+              "action_vp",
+              "predicate",
+              "purpose_chain",
+              "serial_action_chain",
+              "serial_verb_purpose_chain",
+              "vp"
+            ],
+            "contextual_role_affordances": [],
+            "trace": "generative_template",
+            "trace_detail": {
+              "kind": "generative_template",
+              "construction_type": "SerialVerbPurposeChain",
+              "template_family": "generative_template",
+              "template": [
+                "productive_vo!",
+                "purpose_verb!",
+                "particle?"
+              ],
+              "assigned_slots": [
+                "productive_vo",
+                "purpose_verb"
+              ],
+              "surfaces": [
+                "摘芒果",
+                "食"
+              ]
             }
           },
           {
@@ -132338,7 +132125,9 @@
           }
         }
       },
-      "case_id": "REG-0472"
+      "case_id": "REG-0472",
+      "accepted_transition": "v0.5.221_AA49_independent_motion_predicate_boundary",
+      "transition_reason": "AA49 is restricted to independently predicative single motion/path material; compound, manner-directional, and postverbal directional-complement profiles are reclassified or left unresolved without linguistic-status promotion."
     },
     {
       "source": "跟住好多人都做唔晒囖所以。",
@@ -145298,9 +145087,11 @@
             "jyutping": "",
             "slots": [
               "action_vp",
-              "directional_motion_vp",
+              "deictic_motion_marker",
               "main_verb",
+              "movement_direction",
               "predicate",
+              "return_motion_verb",
               "verb_complement",
               "verb_complement_vp",
               "vp"
@@ -145313,15 +145104,22 @@
               "template_family": "generative_template",
               "template": [
                 "action_verb!",
-                "directional_motion_vp!"
+                "return_directional_complement!",
+                "deictic_motion_marker!",
+                "particle?"
               ],
               "assigned_slots": [
-                "action_verb",
-                "directional_motion_vp"
+                "main_verb",
+                "verb_complement",
+                "deictic_motion_marker"
               ],
               "surfaces": [
                 "攞",
-                "返嚟"
+                "返",
+                "嚟"
+              ],
+              "not_claims": [
+                "not_aa49_independent_motion_predicate"
               ]
             }
           },
@@ -145332,12 +145130,10 @@
             "surface": "攞",
             "construction": "",
             "role": "doing",
-            "syntax": "main_verb",
+            "syntax": "caused_motion_action",
             "jyutping": "lo2",
             "slots": [
-              "action_verb",
-              "main_verb",
-              "predicate"
+              "main_verb"
             ],
             "contextual_role_affordances": [
               {
@@ -145347,63 +145143,21 @@
                 "active_in_final_construction": true
               }
             ],
-            "trace": "atomic_lexicon",
+            "trace": "construction_internal_parser_inactive_clone",
             "trace_detail": {
-              "kind": "atomic_lexicon"
-            }
-          },
-          {
-            "kind": "construction",
-            "depth": 1,
-            "parent": "VerbComplementVP",
-            "surface": "返嚟",
-            "construction": "DirectionalMotionVP",
-            "role": "",
-            "syntax": "",
-            "jyutping": "",
-            "slots": [
-              "action_vp",
-              "directional_motion_vp",
-              "motion_predicate",
-              "movement_verb",
-              "predicate",
-              "vp"
-            ],
-            "contextual_role_affordances": [],
-            "trace": "generative_template",
-            "trace_detail": {
-              "kind": "generative_template",
-              "construction_type": "DirectionalMotionVP",
-              "template_family": "generative_template",
-              "template": [
-                "return_motion_verb!",
-                "deictic_motion_marker!"
-              ],
-              "assigned_slots": [
-                "return_motion_verb",
-                "deictic_motion_marker"
-              ],
-              "surfaces": [
-                "返",
-                "嚟"
-              ]
+              "kind": "construction_internal_parser_inactive_clone"
             }
           },
           {
             "kind": "token",
-            "depth": 2,
-            "parent": "DirectionalMotionVP",
+            "depth": 1,
+            "parent": "VerbComplementVP",
             "surface": "返",
             "construction": "",
             "role": "doing",
-            "syntax": "return_motion_component",
+            "syntax": "return_directional_complement",
             "jyutping": "faan1",
             "slots": [
-              "action_verb",
-              "main_verb",
-              "movement_verb",
-              "predicate",
-              "return_motion_verb",
               "verb_complement"
             ],
             "contextual_role_affordances": [
@@ -145421,26 +145175,22 @@
                 "active_in_final_construction": true
               }
             ],
-            "trace": "atomic_lexicon",
+            "trace": "construction_internal_parser_inactive_clone",
             "trace_detail": {
-              "kind": "atomic_lexicon"
+              "kind": "construction_internal_parser_inactive_clone"
             }
           },
           {
             "kind": "token",
-            "depth": 2,
-            "parent": "DirectionalMotionVP",
+            "depth": 1,
+            "parent": "VerbComplementVP",
             "surface": "嚟",
             "construction": "",
             "role": "doing",
-            "syntax": "deictic_motion_marker",
+            "syntax": "deictic_motion_marker_toward",
             "jyutping": "lai4",
             "slots": [
-              "action_verb",
-              "deictic_motion_marker",
-              "main_verb",
-              "movement_verb",
-              "predicate"
+              "deictic_motion_marker"
             ],
             "contextual_role_affordances": [
               {
@@ -145457,9 +145207,9 @@
                 "active_in_final_construction": true
               }
             ],
-            "trace": "atomic_lexicon",
+            "trace": "construction_internal_parser_inactive_clone",
             "trace_detail": {
-              "kind": "atomic_lexicon"
+              "kind": "construction_internal_parser_inactive_clone"
             }
           }
         ],
@@ -145499,7 +145249,9 @@
           }
         }
       },
-      "case_id": "REG-0512"
+      "case_id": "REG-0512",
+      "accepted_transition": "v0.5.221_AA49_independent_motion_predicate_boundary",
+      "transition_reason": "AA49 is restricted to independently predicative single motion/path material; compound, manner-directional, and postverbal directional-complement profiles are reclassified or left unresolved without linguistic-status promotion."
     },
     {
       "source": "攞唔返嚟。",
@@ -156534,6 +156286,6 @@
   },
   "last_absorbed_candidate": "v0.5.218-aa56-positive-participant-runtime",
   "absorbed_current_focused_case_count": 4,
-  "last_intentional_transition": "aa84_overt_marked_manner_boundary_repair",
+  "last_intentional_transition": "v0.5.221_AA49_independent_motion_predicate_boundary",
   "abandoned_candidate": "v0.5.183-cp024-p1-demo01-r1"
 }

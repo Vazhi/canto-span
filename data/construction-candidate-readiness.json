@@ -2802,7 +2802,7 @@
       ],
       "preserved_source_ids": [],
       "future_research_preserved_as": "",
-      "standard_positive_test_count": 1,
+      "standard_positive_test_count": 2,
       "standard_boundary_test_count": 2,
       "gates": {
         "language_claim_defined": {
@@ -2825,7 +2825,7 @@
         "executable_positive_cases_present": {
           "status": "pass",
           "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "1"
+          "detail": "2"
         },
         "negative_boundaries_complete": {
           "status": "partial",
@@ -6099,8 +6099,8 @@
       ],
       "preserved_source_ids": [],
       "future_research_preserved_as": "",
-      "standard_positive_test_count": 72,
-      "standard_boundary_test_count": 2,
+      "standard_positive_test_count": 63,
+      "standard_boundary_test_count": 14,
       "gates": {
         "language_claim_defined": {
           "status": "pass",
@@ -6122,7 +6122,7 @@
         "executable_positive_cases_present": {
           "status": "pass",
           "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "72"
+          "detail": "63"
         },
         "negative_boundaries_complete": {
           "status": "partial",
@@ -13181,7 +13181,7 @@
       "source_ids": [],
       "preserved_source_ids": [],
       "future_research_preserved_as": "",
-      "standard_positive_test_count": 119,
+      "standard_positive_test_count": 118,
       "standard_boundary_test_count": 2,
       "gates": {
         "language_claim_defined": {
@@ -13204,7 +13204,7 @@
         "executable_positive_cases_present": {
           "status": "pass",
           "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "119"
+          "detail": "118"
         },
         "negative_boundaries_complete": {
           "status": "partial",
@@ -13827,7 +13827,7 @@
       ],
       "preserved_source_ids": [],
       "future_research_preserved_as": "",
-      "standard_positive_test_count": 6,
+      "standard_positive_test_count": 9,
       "standard_boundary_test_count": 2,
       "gates": {
         "language_claim_defined": {
@@ -13850,7 +13850,7 @@
         "executable_positive_cases_present": {
           "status": "pass",
           "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "6"
+          "detail": "9"
         },
         "negative_boundaries_complete": {
           "status": "partial",

@@ -7,6 +7,7 @@ module.exports = function createDetectors(dependencies = {}) {
 
 function temporalClauseFallback(core = []) {
   if (core.length < 2 || !firstToken(core[0]) || firstToken(core[0]).label !== "when") return null;
+  if (core.length === 2 && nodeCanFillSlot(core[0], "movement_direction") && nodeCanFillSlot(core[1], "deictic_motion_marker")) return null;
   return construction("TemporalClause", "Time", core, {
     note: "Time expression fallback frames the following predicate.",
     trace: traceInfo("construction_function", {
