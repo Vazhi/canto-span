@@ -285,7 +285,7 @@ jobs:
             'package.json','package-lock.json','manifest.json','main.js',
             'tests/fixtures/regression-snapshots.json','tests/constructions/TransitiveVP.json','tests/constructions/ClauseSpan.json',
             'tests/tooling/runtime/ab78-transitive-boundary.test.js','tests/run-all.js','tests/construction-test-index.json',
-            'grammar/research_pending/TransitiveVP.md','grammar/research_pending/ClauseSpan.md',
+            'grammar/research_pending/TransitiveVP.md','grammar/parser_heuristic/ClauseSpan.md',
             'data/construction-candidate-readiness.json','docs/current/PROJECT-STATE.md'
           }
           rows=subprocess.check_output(['git','status','--porcelain'],text=True).splitlines()
