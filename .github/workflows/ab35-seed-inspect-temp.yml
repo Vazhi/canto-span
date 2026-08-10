@@ -1,0 +1,70 @@
+name: AB35 seed runtime inspection temporary
+
+on:
+  pull_request:
+    paths:
+      - "**"
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    if: github.event.pull_request.head.ref == 'agent/ab35-verb-object-compound-seed'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Inventory source ownership and baseline traces
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            echo '=== PRODUCTIVE VO REFERENCES ==='
+            grep -R -n -E 'productive-vo|ProductiveVO' src tools tests/lib tests/tooling 2>/dev/null || true
+            echo '=== PRODUCTIVE VO RESOURCE ==='
+            nl -ba src/runtime-resources/lexicon/productive-vo.js
+            echo '=== CANDIDATE SOURCE FILES ==='
+            for f in $(grep -R -l -E 'productive-vo|ProductiveVO' src 2>/dev/null | sort -u); do
+              echo "--- $f ---"
+              nl -ba "$f" | sed -n '1,520p'
+            done
+          } > ab35-source-inspection.txt
+          node <<'NODE' > ab35-baseline-traces.json
+          const { loadRuntimeApi, internalConstruction, rowSurface } = require('./tests/lib/runtime-api');
+          const api = loadRuntimeApi();
+          const probes = [
+            '飲茶。','我飲茶。','游水。','我會游水。','沖涼。','我想沖涼。','你飲茶咩？',
+            '做功課。','食飯。','打電話。','打籃球。','飲咗茶。','游咗水。','沖咗涼。','飲水。'
+          ];
+          const rows = probes.map((source) => {
+            const analysis = api.analyzeLine(source, null);
+            const finalRows = api.diagnosticFinalRows(analysis).map((row) => ({
+              kind: row.kind || '',
+              construction: internalConstruction(row),
+              surface: rowSurface(row),
+              parent: row.internal_parent || row.parent || '',
+              depth: row.depth,
+              slots: row.slots || [],
+              trace_detail: row.kind === 'construction' ? (row.trace_detail || null) : undefined,
+            }));
+            return { source, rows: finalRows };
+          });
+          process.stdout.write(JSON.stringify({runtime_version: api.runtimeVersion, probes: rows}, null, 2));
+          NODE
+      - name: Baseline verification
+        run: |
+          npm run verify:runtime
+          npm run audit:parser-architecture -- --json > ab35-architecture-baseline.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ab35-seed-runtime-inspection
+          path: |
+            ab35-source-inspection.txt
+            ab35-baseline-traces.json
+            ab35-architecture-baseline.json
+          retention-days: 1
