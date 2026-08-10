@@ -29,7 +29,8 @@ function fixtureDerived() {
     },
     discovery_state: {
       boundary_ready: 1,
-      source_supported: 1,
+      source_supported: 0,
+      future_state_added_by_canonical_readiness: 1,
       narrowing_candidate: 0,
       excluded_nonlanguage: 0,
       lexicalized_review: 0,
@@ -92,7 +93,8 @@ machine-derived field and must remain outside verifier scope.
 | Candidate state | Records |
 |---|---:|
 | \`boundary_ready\` | 1 |
-| \`source_supported\` | 1 |
+| \`source_supported\` | 0 |
+| \`future_state_added_by_canonical_readiness\` | 1 |
 | \`narrowing_candidate\` | 0 |
 | \`excluded_nonlanguage\` | 0 |
 | \`lexicalized_review\` | 0 |
@@ -111,10 +113,11 @@ Promotion-ready remains **0**.
 `;
 }
 
-test("consistent fixture passes while unrelated expert prose is ignored", () => {
+test("consistent fixture passes while dynamically discovered state names and unrelated prose are handled correctly", () => {
   const result = compareProjectState(fixtureMarkdown(), fixtureDerived());
   assert.equal(result.status, "PASS");
   assert.deepEqual(result.failures, []);
+  assert.equal(result.canonical_values["discovery_state.future_state_added_by_canonical_readiness"], 1);
 });
 
 for (const mismatch of [
@@ -139,6 +142,11 @@ for (const mismatch of [
     field: "discovery_state.boundary_ready",
   },
   {
+    name: "dynamic discovery state",
+    markdown: (text) => text.replace("| `future_state_added_by_canonical_readiness` | 1 |", "| `future_state_added_by_canonical_readiness` | 0 |"),
+    field: "discovery_state.future_state_added_by_canonical_readiness",
+  },
+  {
     name: "verification count",
     markdown: (text) => text.replace("aggregate regression cases: **10**", "aggregate regression cases: **9**"),
     field: "regression_cases",
@@ -153,6 +161,27 @@ for (const mismatch of [
     assert.ok(failure.command);
   });
 }
+
+test("a new canonical discovery state is required without editing verifier source", () => {
+  const markdown = fixtureMarkdown().replace("| `future_state_added_by_canonical_readiness` | 1 |\n", "");
+  const result = compareProjectState(markdown, fixtureDerived());
+  assert.ok(result.failures.some((entry) =>
+    entry.type === "missing_declared_field" &&
+    entry.field === "discovery_state.future_state_added_by_canonical_readiness"
+  ));
+});
+
+test("a stale discovery-state row that canonical readiness no longer emits is rejected", () => {
+  const markdown = fixtureMarkdown().replace(
+    "| `retired_research_gap` | 1 |",
+    "| `retired_research_gap` | 1 |\n| `obsolete_state` | 0 |"
+  );
+  const result = compareProjectState(markdown, fixtureDerived());
+  assert.ok(result.failures.some((entry) =>
+    entry.type === "unexpected_declared_discovery_state" &&
+    entry.field === "discovery_state.obsolete_state"
+  ));
+});
 
 test("arithmetic invariant failure is precise", () => {
   const derived = fixtureDerived();
