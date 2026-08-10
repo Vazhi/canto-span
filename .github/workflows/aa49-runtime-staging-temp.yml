@@ -1,28 +1,52 @@
-name: AA49 runtime staging probe
+name: AA49 one-shot claimed branch finalizer
 
 on:
   pull_request:
+    types: [synchronize]
     paths:
       - "**"
 
 permissions:
-  contents: read
+  contents: write
+  pull-requests: read
 
 jobs:
-  probe:
-    if: github.event.pull_request.head.ref == 'agent/aa49-independent-motion-runtime'
+  finalize:
+    if: >-
+      github.event.pull_request.number == 722 &&
+      github.event.pull_request.head.ref == 'agent/aa49-independent-motion-runtime' &&
+      github.event.pull_request.base.ref == 'main'
     runs-on: ubuntu-latest
+    concurrency:
+      group: aa49-runtime-finalizer-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
     steps:
-      - uses: actions/checkout@v6
+      - name: Checkout exact claimed PR head
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+      - name: Enforce branch and event preconditions
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${{ github.event.pull_request.number }}" = "722"
+          test "${{ github.event.pull_request.head.ref }}" = "agent/aa49-independent-motion-runtime"
+          test "${{ github.event.pull_request.base.ref }}" = "main"
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+          git fetch --no-tags origin main
+          test "$(git merge-base HEAD origin/main)" = "b22cd0d051d7002eee73c5224bad9b68227fe41d"
       - uses: actions/setup-node@v6
         with:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
-      - name: Stage validated AA49 v0.5.221 candidate
+      - name: Stage already validated AA49 candidate
         run: node .github/tmp-aa49-finalize.js
-      - name: Regenerate canonical construction and runtime outputs
+      - name: Regenerate canonical derived outputs
+        shell: bash
         run: |
+          set -euo pipefail
           node tools/build-construction-tests.js
           node tools/sync-construction-test-metadata.js
           node <<'NODE'
@@ -37,64 +61,106 @@ jobs:
           NODE
           npm run discovery:generate
           npm run build:runtime
-      - name: Focused AA49 boundary verification
+      - name: Focused AA49 contract
         run: node --test tests/tooling/runtime/aa49-independent-motion-boundary.test.js
-      - name: Exact regression and construction suites
+      - name: Regression and construction suites
         run: |
           npm run test:regression
           npm run test:constructions
-      - name: Parser architecture verification
+      - name: Permanent parser architecture gate
         run: |
           npm run test:parser-architecture
           npm run audit:parser-architecture
-      - name: Runtime verification
-        run: npm run verify:runtime
-      - name: Core verification
-        run: npm run verify
-      - name: Research verification
-        run: npm run verify:research
-      - name: Full verification record
-        id: full
-        continue-on-error: true
-        run: npm run verify:all
-      - name: Record full verification outcome
+      - name: Runtime, core, research, and discovery verification
         run: |
-          echo "verify_all_outcome=${{ steps.full.outcome }}"
-          echo "A release-handoff-only baseline mismatch, if present, is reported separately and does not convert an unrelated release record into AA49 evidence."
-      - name: Diff hygiene
-        run: git diff --check
-      - name: Build final patch and artifact
+          npm run verify:runtime
+          npm run verify
+          npm run verify:research
+          npm run verify:discovery
+      - name: Remove optional verifier reports and all temporary automation
+        shell: bash
         run: |
-          git diff --binary > aa49-v0.5.221-final.patch
-          sha256sum aa49-v0.5.221-final.patch
-      - name: Upload final validated candidate
-        uses: actions/upload-artifact@v4
-        with:
-          name: aa49-v0.5.221-final-candidate
-          path: |
-            aa49-v0.5.221-final.patch
-            src/parser/detectors/motion/directional.js
-            src/parser/detectors/motion/path-goal-source.js
-            src/parser/detectors/environmental/clauses.js
-            src/parser/detectors/manner/adjustment.js
-            src/parser/orchestration/wrap-core.js
-            src/runtime-resources/grammar/templates/category-span-templates.js
-            src/runtime-resources/diagnostics/trace-metadata.js
-            src/runtime-resources/lexicon/token-lexicon/places-and-times.js
-            src/plugin-entry.js
-            tests/fixtures/regression-snapshots.json
-            tests/construction-test-index.json
-            tests/constructions/DirectionalMotionVP.json
-            tests/constructions/ClauseSpan.json
-            tests/constructions/DirectedMannerMotionVP.json
-            tests/tooling/runtime/aa49-independent-motion-boundary.test.js
-            tests/run-all.js
-            grammar/research_pending/DirectionalMotionVP.md
-            data/construction-candidate-readiness.json
-            docs/current/PROJECT-STATE.md
-            package.json
-            package-lock.json
-            manifest.json
-            main.js
-          retention-days: 2
-          if-no-files-found: error
+          set -euo pipefail
+          for p in \
+            validation/current/construction-tests.json \
+            validation/current/regression-suite.json \
+            validation/current/glossika-week16-runtime-lexicon.json; do
+            if git ls-files --error-unmatch "$p" >/dev/null 2>&1; then
+              git restore --source=HEAD -- "$p"
+            else
+              rm -f "$p"
+            fi
+          done
+          rm -rf .github/aa49-finalize
+          rm -f .github/tmp-aa49-finalize.js .github/tmp-aa49-second-pass.js
+          rm -f .github/workflows/aa49-runtime-staging-temp.yml
+      - name: Enforce exact final change scope
+        shell: bash
+        run: |
+          set -euo pipefail
+          git diff --check
+          git status --porcelain
+          cat > /tmp/aa49-allowed.txt <<'EOF'
+          .github/aa49-finalize/part01.patch
+          .github/aa49-finalize/part02.patch
+          .github/aa49-finalize/part03.patch
+          .github/aa49-finalize/part04.patch
+          .github/tmp-aa49-finalize.js
+          .github/tmp-aa49-second-pass.js
+          .github/workflows/aa49-runtime-staging-temp.yml
+          data/construction-candidate-readiness.json
+          docs/current/PROJECT-STATE.md
+          grammar/parser_heuristic/ClauseSpan.md
+          grammar/research_pending/DirectedMannerMotionVP.md
+          grammar/research_pending/DirectionalMotionVP.md
+          grammar/research_pending/PostThemeParticipantRelation.md
+          main.js
+          manifest.json
+          package-lock.json
+          package.json
+          src/parser/detectors/environmental/clauses.js
+          src/parser/detectors/manner/adjustment.js
+          src/parser/detectors/motion/directional.js
+          src/parser/detectors/motion/path-goal-source.js
+          src/parser/orchestration/wrap-core.js
+          src/plugin-entry.js
+          src/runtime-resources/diagnostics/trace-metadata.js
+          src/runtime-resources/grammar/templates/category-span-templates.js
+          src/runtime-resources/lexicon/token-lexicon/places-and-times.js
+          tests/construction-test-index.json
+          tests/constructions/ClauseSpan.json
+          tests/constructions/DirectedMannerMotionVP.json
+          tests/constructions/DirectionalMotionVP.json
+          tests/constructions/PostThemeParticipantRelation.json
+          tests/fixtures/regression-snapshots.json
+          tests/run-all.js
+          tests/tooling/runtime/aa49-independent-motion-boundary.test.js
+          EOF
+          sed -i 's/^          //' /tmp/aa49-allowed.txt
+          sort -u /tmp/aa49-allowed.txt -o /tmp/aa49-allowed.txt
+          { git diff --name-only HEAD; git ls-files --others --exclude-standard; } | sort -u > /tmp/aa49-actual.txt
+          echo '--- actual finalization paths ---'
+          cat /tmp/aa49-actual.txt
+          if comm -23 /tmp/aa49-actual.txt /tmp/aa49-allowed.txt | grep .; then
+            echo 'Unexpected path(s) outside AA49 claim' >&2
+            exit 1
+          fi
+          for required in \
+            src/parser/detectors/motion/directional.js \
+            tests/constructions/DirectionalMotionVP.json \
+            tests/fixtures/regression-snapshots.json \
+            tests/tooling/runtime/aa49-independent-motion-boundary.test.js \
+            main.js; do
+            grep -Fxq "$required" /tmp/aa49-actual.txt || { echo "Missing required final path: $required" >&2; exit 1; }
+          done
+      - name: Commit exactly the verified claimed state
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "Canto Span ChatGPT Integrator"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --cached --check
+          git commit -m "Align AA49 runtime to independent motion predicate"
+          test "$(git branch --show-current)" = "agent/aa49-independent-motion-runtime" || true
+          git push origin HEAD:agent/aa49-independent-motion-runtime
