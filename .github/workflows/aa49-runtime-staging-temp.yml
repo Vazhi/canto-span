@@ -56,13 +56,22 @@ jobs:
           npm run test:constructions || true
           npm run test:parser-architecture || true
           npm run audit:parser-architecture || true
-      - name: Upload staged second-pass files
+      - name: Upload staged working checkout
         uses: actions/upload-artifact@v4
         with:
-          name: aa49-second-pass-staged-files
+          name: aa49-staged-working-checkout
           path: |
-            src/parser/detectors/motion/directional.js
-            src/runtime-resources/grammar/templates/category-span-templates.js
-            src/plugin-entry.js
+            src
+            tests
+            tools
+            grammar
+            data
+            docs/current
+            docs/research
+            package.json
+            package-lock.json
+            manifest.json
             main.js
+            node_modules
           retention-days: 1
+          if-no-files-found: error
