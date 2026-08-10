@@ -16,6 +16,31 @@ survey, publish a release, or grant merge approval.
 Run the smallest check set that covers the state changed by the task. Broad sweeps are
 for diagnosis or release work, not a routine tax on every pull request.
 
+For construction behavior, executable tests are downstream of the evidence-supported
+behavioral contract defined in [`GOVERNANCE.md`](GOVERNANCE.md). The contract says
+what the runtime is required to do within the currently justified scope; the test
+suite makes those implementation expectations executable. A passing test proves
+conformance to that expectation, not that the expectation is linguistically true.
+
+A construction-level behavioral contract should cover the cases relevant to its
+actual uncertainty and collision surface, including as applicable:
+
+- clear positive cases and exact expected spans or roles;
+- minimally different negative boundaries;
+- ambiguity or context-dependent cases where the runtime must preserve uncertainty;
+- lexical or selectional restrictions that are independently supported;
+- collisions with neighboring constructions and shared subsystems;
+- compositional cases where no dedicated construction node is justified;
+- explicit unresolved cases where available evidence does not license a categorical
+  accept/reject rule.
+
+Do not invent a binary linguistic answer merely to obtain a red/green test. When a
+boundary is unresolved, encode only the behavior that is justified—for example,
+preserving ambiguity, avoiding an unsupported dedicated node, or preventing a broader
+claim from inheriting the case—and record the unresolved linguistic question outside
+the test as evidence state. Tests may also protect parser-internal invariants without
+making a language-construction claim.
+
 ```bash
 npm test                # runtime behavior or executable tests
 npm run verify          # canonical core repository state
@@ -152,8 +177,14 @@ npm test
 The aggregate suite runs regression, NP-subsystem, per-construction executable cases,
 and accepted lexicon regression checks. It builds `src/plugin-entry.js` in memory from
 the canonical source tree and executes that build under an Obsidian stub. It does not
-read committed `main.js`. Those tests protect runtime behavior; implementation probes
-carry no independent linguistic evidence weight.
+read committed `main.js`. Those tests protect runtime behavior and executable
+behavioral contracts; implementation probes carry no independent linguistic evidence
+weight.
+
+A focused test suite is not complete merely because its intended positives pass.
+Where the accepted behavioral contract identifies boundaries or collisions, the
+suite must protect those too. Conversely, a test must not manufacture a linguistic
+boundary that the evidence contract deliberately leaves unresolved.
 
 `npm test` preserves the pre-run contents of its legacy report files and restores them
 before exiting, so a normal passing run does not dirty the working tree.

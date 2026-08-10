@@ -19,10 +19,11 @@ A construction is eligible only when all of the following are true:
       is classified as genuine, false positive, ambiguous, or unusable, and the
       totals account for the full candidate inventory.
 - [ ] **A locked role-neutral native panel covers every critical contrast.** Every critical positive and negative item has at least 30 usable independently submitted adjudicated judgments from eligible respondents using the same locked clean instrument and inclusion criteria. No respondent receives special status or weight.
-- [ ] **Negative and boundary cases are executable.** Every case the construction
-      must not match is present in a passing parser test.
-- [ ] **Implementation matches documentation exactly.** The runtime path has been
-      compared line by line with the accepted canonical profile and status note.
+- [ ] **Negative and boundary cases are executable.** Every resolved case the
+      accepted behavioral contract says the construction must not match is present
+      in a passing parser test. A critical unresolved boundary is recorded and
+      blocks the broader claim rather than being guessed into a binary test.
+- [ ] **Implementation matches the accepted behavioral contract and documentation exactly.** The runtime path has been compared line by line with the evidence-supported canonical profile, executable contract, and status note.
 - [ ] **Implementation and linguistic evidence are reported separately.** Parser,
       render, regression, and held-out results are not presented as source,
       corpus, or panel confidence.
