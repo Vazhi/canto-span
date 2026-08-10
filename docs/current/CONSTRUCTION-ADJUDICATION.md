@@ -7,6 +7,13 @@ mutable runtime labels, status-note placement, and generated discovery scores.
 Every decision is keyed by immutable `construction_uuid` and checked against its
 permanent short code and legacy runtime label.
 
+Adjudication is behavior-first. It does not begin by assuming that an inherited
+runtime label, filename, family, or previous technical name identifies one coherent
+linguistic construction. Independently supported behavior determines the bounded
+claim; the claim determines the canonical name and ontology. Audited runtime behavior
+is essential implementation evidence for comparing the software with that claim, but
+it has zero independent linguistic-evidence weight.
+
 ## Canonical records
 
 The initial accepted decisions are stored in:
@@ -24,35 +31,58 @@ data/construction-adjudication-batches/*.json
 Earlier accepted batches are never rewritten. A correction is a later
 superseding decision with explicit rationale and relationships.
 
-## Current progress
+Volatile adjudication counts, the latest completed batch, and current work order
+belong only in [`PROJECT-STATE.md`](PROJECT-STATE.md). Do not copy those values into
+this durable contract; the accepted UUID-keyed records and immutable batch files are
+the canonical decision history.
 
-- permanent records: **181**;
-- accepted adjudications: **93**;
-- pending adjudications: **88**;
-- accepted batches: **20**;
-- latest batch report:
-  `docs/research/CONSTRUCTION-ADJUDICATION-BATCH-20.md`.
+## Behavior-first adjudication
 
-This count records completed identity and ontology judgments only. It does not
-imply runtime migration, status migration, corpus closure, panel completion,
-held-out validation, or promotion.
+A current UUID or short code is a continuity pointer, not a requirement to preserve
+its inherited analysis. During adjudication:
 
-Batch 20 retains AA56's permanent UUID and code while renaming the source-backed
-positive profile from `ExistentialPresentationalClause` to
-`JauMarkedIndefiniteNPPredication`. The accepted center is positive subjectless
-`有 + overt indefinite NP + overt NP-linked predicate`. Locative predicates are
-one subtype rather than a requirement. Overt-subject possession remains AA55,
-overt-place existence remains AA77, and ordinary `冇人 + predicate` is not
-inherited as a symmetric negative member.
+1. identify the observable behavior or mismatch under review;
+2. establish the independently supported linguistic scope, restrictions, competing
+   analyses, and unresolved boundaries;
+3. audit what the current runtime actually recognizes, spans, groups, omits, and
+   collides with;
+4. define the narrow behavioral claim supported by the evidence;
+5. decide whether the existing identity is the same behavior clarified or narrowed,
+   a genuinely distinct split, a compositional pattern, a lexicalized inventory, or
+   a parser representation;
+6. only then approve the canonical name, family/profile placement, and claim layer.
 
-The legacy runtime label, status-note path, fixtures, and parser behavior remain
-unchanged until a separately reviewed implementation and compatibility migration.
-`research_pending` remains appropriate while role-neutral panel and held-out gates
-are incomplete.
+Do not broaden a claim to make an inherited label internally coherent. If several
+unrelated mechanisms happen to share one runtime wrapper, adjudicate the mechanisms
+rather than inventing one umbrella linguistic construction. Conversely, multiple
+runtime paths may be aligned to one construction only when the evidence supports one
+shared behavioral identity.
 
-No later adjudication batch is fixed as a mandatory queue. The next records are
-selected from the 88 pending identities according to current project benefit,
-evidence opportunity, ontology risk, dependencies, and open-work overlap.
+Canonical names are downstream descriptions of the accepted claim. Prefer observable,
+form-based, theory-neutral wording when the evidence does not settle a stronger
+analysis. A provisional investigation may continue under UUID/code reference without
+forcing an early final name.
+
+## Trigger-based reevaluation
+
+The improved audit architecture does not automatically reopen every accepted
+adjudication. Earlier decisions remain valid provenance until a concrete trigger
+justifies reevaluation. Triggers include:
+
+- audited runtime behavior materially differs from the recorded profile;
+- one label combines multiple materially different behaviors;
+- a supposed construction is better explained compositionally or as parser
+  infrastructure;
+- executable positive coverage is materially narrower than the recorded claim;
+- negative or collision cases expose an unrecorded restriction;
+- independent research, reviewed corpus evidence, or role-neutral native judgments
+  contradict the recorded boundary;
+- the canonical name encodes a theoretical or functional claim stronger than the
+  evidence supports.
+
+A triggered review may confirm the earlier decision. If it changes the decision,
+record a later superseding adjudication; do not rewrite the historical batch. Lack of
+a trigger is not a reason for a repository-wide reaudit.
 
 ## Required decision fields
 
@@ -65,7 +95,8 @@ Each completed decision records:
 - behavior–research alignment;
 - terminology alignment;
 - recommended disposition and status-migration recommendation;
-- exact source, runtime, and test basis;
+- exact source, audited runtime, and test basis, with their evidentiary roles kept
+  separate;
 - source terminology and scope relationship;
 - former names and proposed successor profiles where applicable;
 - rationale and unresolved blockers.
@@ -73,7 +104,8 @@ Each completed decision records:
 ## Identity rules
 
 - Adjudication never changes UUID or assigned short code.
-- A behavior-preserving clarification or rename normally retains the UUID.
+- A behavior-preserving clarification, narrowing, or rename normally retains the
+  UUID.
 - A true construction split creates new UUIDs and predecessor/successor links.
 - Evidence is not transferred automatically to a successor.
 - A wrapper without independent language-construction status may be reclassified
@@ -112,6 +144,10 @@ compatibility. Such a boundary must be explicit in current documentation.
 Runtime-label migration, status-path migration, matcher changes, fixture changes,
 new UUID allocation, and retirement are separate scoped actions. None occurs
 silently merely because adjudication is complete.
+
+Executable tests derived from an accepted behavioral contract establish whether the
+runtime implements that contract; they do not establish the linguistic truth of the
+contract or replace its independent evidence.
 
 ## Relationship to discovery
 
