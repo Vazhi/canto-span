@@ -1,0 +1,159 @@
+diff --git a/src/parser/detectors/motion/directional.js b/src/parser/detectors/motion/directional.js
+index feed237..e3c899c 100644
+--- a/src/parser/detectors/motion/directional.js
++++ b/src/parser/detectors/motion/directional.js
+@@ -230,7 +230,11 @@ function transitionMotionPredicateFallback(core) {
+   const { core: bareCore, particles } = withoutTrailingParticles(core);
+   if (particles.length || !bareCore.length) return null;
+   let cursor = 0;
+-  const subject = nodeCanFillSlot(bareCore[cursor], "subject") ? bareCore[cursor++] : null;
++  const subjectCandidate = bareCore[cursor];
++  const hasFollowingTransition = isToken(bareCore[cursor + 1], "走");
++  const subject = subjectCandidate && (nodeCanFillSlot(subjectCandidate, "subject") || (hasFollowingTransition && nodeCanFillSlot(subjectCandidate, "np")))
++    ? bareCore[cursor++]
++    : null;
+   if (!isToken(bareCore[cursor], "走")) return null;
+   const movementSource = bareCore[cursor++];
+   const aspect = cursor < bareCore.length && ["咗", "過", "緊"].includes(flattenSurface(bareCore[cursor])) ? bareCore[cursor++] : null;
+@@ -302,6 +306,7 @@ function downwardMotionPredicateFallback(core) {
+       template: ["directional_motion_vp!", "perfective_aspect!", "goal!"],
+       assigned_slots: ["motion_predicate", "perfective_aspect", "goal"],
+       surfaces: children.map((node) => flattenSurface(node)),
++      constraints: { slot_must_not_have_slots: { goal: ["location_question", "wh_nominal"] } },
+       aa49_child_scope: "single_independent_motion_predicate",
+     }),
+   });
+@@ -351,13 +356,40 @@ function directionalCompositionFallback(core) {
+     }),
+   });
+ 
+-  if (surfaces.length === 3 && surfaces[0] === "行" && ["入", "出"].includes(surfaces[1]) && ["嚟", "去"].includes(surfaces[2])) {
++  if (surfaces.length === 3 && nodeCanFillSlot(compact[0], "action_verb") && surfaces[1] === "返" && ["嚟", "去"].includes(surfaces[2])) {
++    const children = [
++      directionalComplexPart(compact[0], "main_verb"),
++      directionalComplexPart(compact[1], "verb_complement"),
++      directionalComplexPart(compact[2], "deictic_motion_marker"),
++    ];
++    return construction("VerbComplementVP", "VerbCompVP", [...children, ...particles], {
++      slots: ["verb_complement_vp", "verb_complement", "vp", "action_vp", "predicate", "main_verb", "return_motion_verb", "movement_direction", "deictic_motion_marker"],
++      note: "Action predicate plus overt return-direction complement; directional material is not AA49.",
++      trace: traceInfo("generative_template", {
++        construction_type: "VerbComplementVP", template_family: "generative_template",
++        template: ["action_verb!", "return_directional_complement!", "deictic_motion_marker!", "particle?"],
++        assigned_slots: ["main_verb", "verb_complement", "deictic_motion_marker", ...particles.map(() => "particle")],
++        surfaces: children.map(flattenSurface), directional_subtype: "postverbal_return_direction",
++        not_claims: ["not_aa49_independent_motion_predicate"],
++      }),
++    });
++  }
++
++  if (surfaces.length === 3 && surfaces[0] === "行" && ["入", "出", "上", "落"].includes(surfaces[1]) && ["嚟", "去"].includes(surfaces[2])) {
+     return finish("DirectedMannerMotionVP", "DirectedMotion", [directionalComplexPart(compact[0], "movement_verb"), directionalComplexPart(compact[1], "movement_direction"), directionalComplexPart(compact[2], "deictic_motion_marker")], { template: ["manner_motion_verb!", "movement_direction!", "deictic_motion_marker!"], assigned_slots: ["movement_verb", "movement_direction", "deictic_motion_marker"], directional_subtype: "self_motion_path_deictic" });
+   }
+-  // The reviewed `行返過嚟` profile is multi-part manner + directional material.
+-  // No existing accepted identity owns that full shape, so leave it unresolved
+-  // rather than preserving the historical AA49 false positive.
+-  if (surfaces.join("") === "行返過嚟") return null;
++  if (surfaces.join("") === "行返過嚟") {
++    return finish("DirectedMannerMotionVP", "DirectedMotion", [
++      directionalComplexPart(compact[0], "movement_verb"),
++      directionalComplexPart(compact[1], "return_motion_verb"),
++      directionalComplexPart(compact[2], "path_component"),
++      directionalComplexPart(compact[3], "deictic_motion_marker"),
++    ], {
++      template: ["manner_motion_verb!", "return_motion_verb!", "path_component!", "deictic_motion_marker!"],
++      assigned_slots: ["movement_verb", "return_motion_verb", "path_component", "deictic_motion_marker"],
++      directional_subtype: "self_motion_complex_path_deictic",
++    });
++  }
+   if (surfaces.length === 3 && ["入", "落", "上", "出"].includes(surfaces[0]) && surfaces[1] === "咗" && ["嚟", "去"].includes(surfaces[2])) {
+     return finish("PerfectiveDirectionalVP", "PerfMotion", [directionalComplexPart(compact[0], "movement_direction"), directionalComplexPart(compact[1], "perfective_aspect"), directionalComplexPart(compact[2], "deictic_motion_marker")], { template: ["directional_head!", "perfective_aspect!", "deictic_motion_marker!"], assigned_slots: ["movement_direction", "perfective_aspect", "deictic_motion_marker"], directional_subtype: "perfective_directional" });
+   }
+diff --git a/src/runtime-resources/grammar/templates/category-span-templates.js b/src/runtime-resources/grammar/templates/category-span-templates.js
+index 09f5390..7d39d4f 100644
+--- a/src/runtime-resources/grammar/templates/category-span-templates.js
++++ b/src/runtime-resources/grammar/templates/category-span-templates.js
+@@ -489,7 +489,10 @@ module.exports = [
+     label: "VerbCompVP",
+     template: ["action_verb!", "verb_complement!", "object!"],
+     template_family: "generative_template",
+-    constraints: { slot_must_not_be_bare_quantity_token: ["object"] },
++    constraints: {
++      slot_must_not_be_bare_quantity_token: ["object"],
++      slot_must_not_have_slots: { object: ["vp", "action_vp", "predicate", "productive_vo"] }
++    },
+     role_overrides: {
+       action_verb: {
+         label: "doing",
+@@ -552,9 +555,9 @@ module.exports = [
+     template: ["action_verb!", "object!"],
+     constraints: {
+       slot_must_not_be_bare_quantity_token: ["object"],
+-      slot_must_not_have_slots: { object: ["approximate_quantity"] }
++      slot_must_not_have_slots: { object: ["approximate_quantity", "vp", "action_vp", "predicate", "productive_vo"] }
+     },
+-    note: "Category-based transitive VP: action verb + object; bare numeral tokens and approximate measured-quantity objects requiring a licensed predicate are not accepted through this generic path."
++    note: "Category-based transitive VP: action verb + nominal object; bare numeral tokens, approximate measured-quantity objects requiring a licensed predicate, and already typed VPs are not accepted through this generic object path."
+   },
+   {
+     type: "DiMarkedNP",
+diff --git a/src/runtime-resources/diagnostics/trace-metadata.js b/src/runtime-resources/diagnostics/trace-metadata.js
+index 96cd046..2b909c3 100644
+--- a/src/runtime-resources/diagnostics/trace-metadata.js
++++ b/src/runtime-resources/diagnostics/trace-metadata.js
+@@ -307,7 +307,7 @@ registerReviewedMatcherVariant("HeadNP.child_slot_exclusion_unconstrained", {
+ const transitiveTemplate = ["action_verb!", "object!"];
+ const transitiveGuard = {
+   slot_must_not_be_bare_quantity_token: ["object"],
+-  slot_must_not_have_slots: { object: ["approximate_quantity"] },
++  slot_must_not_have_slots: { object: ["approximate_quantity", "vp", "action_vp", "predicate", "productive_vo"] },
+ };
+ registerReviewedMatcherVariant("TransitiveVP.object_shape_guarded", {
+   trace_kind: "generative_template", construction_type: "TransitiveVP", template_family: "generative_template",
+diff --git a/src/runtime-resources/lexicon/token-lexicon/places-and-times.js b/src/runtime-resources/lexicon/token-lexicon/places-and-times.js
+index 9396641..0cb61bb 100644
+--- a/src/runtime-resources/lexicon/token-lexicon/places-and-times.js
++++ b/src/runtime-resources/lexicon/token-lexicon/places-and-times.js
+@@ -9,6 +9,7 @@ module.exports = [  // Places / times
+   ["餐廳", { label: "what", jyutping: "caan1 teng1", syntax: "restaurant_np", classifier_classes: ["building_shop"], note: "restaurant; place entity, but learner-visible role defaults to what/topic unless used as a location." }],
+   ["廁所", { label: "where", jyutping: "ci3 so2", syntax: "place_or_goal", note: "bathroom" }],
+   ["香港", { label: "where", jyutping: "hoeng1 gong2", syntax: "place_or_goal", note: "Hong Kong" }],
++  ["樓下", { label: "where", jyutping: "lau4 haa6", syntax: "place_or_goal spatial_localizer", note: "downstairs / lower floor; overt location or motion goal." }],
+   ["中環", { label: "where", jyutping: "zung1 waan4", syntax: "place_or_goal", note: "Central, Hong Kong" }],
+   ["音樂", { label: "what", jyutping: "jam1 ngok6", syntax: "noun_np_modifier_topic", note: "music; can modify 嘢 in 音樂嘅嘢" }],
+   ["下", { label: "when", jyutping: "haa6", syntax: "temporal_modifier_next", note: "next / below depending context" }],
+diff --git a/src/parser/detectors/environmental/clauses.js b/src/parser/detectors/environmental/clauses.js
+index ebe6995..d376b48 100644
+--- a/src/parser/detectors/environmental/clauses.js
++++ b/src/parser/detectors/environmental/clauses.js
+@@ -7,6 +7,7 @@ module.exports = function createDetectors(dependencies = {}) {
+ 
+ function temporalClauseFallback(core = []) {
+   if (core.length < 2 || !firstToken(core[0]) || firstToken(core[0]).label !== "when") return null;
++  if (core.length === 2 && nodeCanFillSlot(core[0], "movement_direction") && nodeCanFillSlot(core[1], "deictic_motion_marker")) return null;
+   return construction("TemporalClause", "Time", core, {
+     note: "Time expression fallback frames the following predicate.",
+     trace: traceInfo("construction_function", {
+diff --git a/src/parser/detectors/manner/adjustment.js b/src/parser/detectors/manner/adjustment.js
+index a27eda2..fc7df73 100644
+--- a/src/parser/detectors/manner/adjustment.js
++++ b/src/parser/detectors/manner/adjustment.js
+@@ -16,9 +16,18 @@ function sourceLinkedDegreeMannerModifiedVPFallback(core) {
+   const modifier = categorySubspanFor(compact.slice(0, modifierLength), ["DegreeMannerAdverbial"]);
+   let predicate = categorySubspanFor(compact.slice(modifierLength), [
+     "CompoundDirectionalMotionVP",
++    "DirectedMannerMotionVP",
+     "DirectionalMotionVP",
+     "VerbComplementVP",
+   ]);
++  if (!predicate) {
++    const wrappedPredicate = applyConstructionPatterns(compact.slice(modifierLength));
++    if (wrappedPredicate.length === 1
++        && wrappedPredicate[0].kind === "construction"
++        && ["CompoundDirectionalMotionVP", "DirectedMannerMotionVP", "DirectionalMotionVP", "VerbComplementVP"].includes(wrappedPredicate[0].type)) {
++      predicate = wrappedPredicate[0];
++    }
++  }
+   if (!predicate && compact.length === modifierLength + 3) {
+     const directional = categorySubspanFor(compact.slice(modifierLength + 1), ["DirectionalMotionVP"]);
+     predicate = directional
