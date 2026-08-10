@@ -1,15 +1,16 @@
 name: Patch AB78 v7 generated-output handling
 
 on:
-  push:
-    branches: [agent/ab78-transitive-runtime-alignment]
-    paths: [.github/workflows/ab78-v7-generated-output-patch-temp.yml]
+  pull_request:
+    paths:
+      - ".github/workflows/ab78-v7-generated-output-patch-temp.yml"
 
 permissions:
   contents: write
 
 jobs:
   patch:
+    if: github.event.pull_request.number == 741 && github.event.pull_request.head.ref == 'agent/ab78-transitive-runtime-alignment'
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
