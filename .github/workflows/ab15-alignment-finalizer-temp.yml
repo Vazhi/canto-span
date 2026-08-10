@@ -54,6 +54,37 @@ jobs:
       - run: npm ci
       - name: Generate current readiness/discovery projections
         run: npm run discovery:generate
+      - name: Synchronize derived PROJECT-STATE discovery counts
+        shell: bash
+        run: |
+          set -euo pipefail
+          node <<'NODE'
+          const fs = require('fs');
+          const readiness = JSON.parse(fs.readFileSync('data/construction-candidate-readiness.json', 'utf8'));
+          const records = Array.isArray(readiness) ? readiness : (readiness.records || []);
+          const states = [
+            'boundary_ready',
+            'source_supported',
+            'narrowing_candidate',
+            'excluded_nonlanguage',
+            'lexicalized_review',
+            'retired_evidence_rehome_candidate',
+            'retired_research_gap',
+          ];
+          const counts = Object.fromEntries(states.map((state) => [state, 0]));
+          for (const record of records) {
+            if (Object.prototype.hasOwnProperty.call(counts, record.candidate_state)) counts[record.candidate_state] += 1;
+          }
+          const statePath = 'docs/current/PROJECT-STATE.md';
+          let text = fs.readFileSync(statePath, 'utf8');
+          for (const state of states) {
+            const pattern = new RegExp(`\\| \\`${state}\\` \\| \\d+ \\|`);
+            if (!pattern.test(text)) throw new Error(`PROJECT-STATE discovery row missing: ${state}`);
+            text = text.replace(pattern, `| \`${state}\` | ${counts[state]} |`);
+          }
+          fs.writeFileSync(statePath, text);
+          console.log(JSON.stringify({ synchronized_discovery_state_counts: counts }, null, 2));
+          NODE
       - name: Assert AB15 alignment gate changed for the documented reason only
         shell: bash
         run: |
@@ -121,6 +152,7 @@ jobs:
           grep -Fxq 'grammar/research_pending/OvertHeadDemonstrativeClassifierNP.md' /tmp/ab15-final.txt
           grep -Fxq 'tests/tooling/runtime/ab15-current-alignment.test.js' /tmp/ab15-final.txt
           grep -Fxq 'data/construction-candidate-readiness.json' /tmp/ab15-final.txt
+          grep -Fxq 'docs/current/PROJECT-STATE.md' /tmp/ab15-final.txt
           test ! -e .github/workflows/ab15-alignment-finalizer-temp.yml
           test "$(node -p 'require("./package.json").version')" = "0.5.222"
           git diff --quiet HEAD -- main.js
