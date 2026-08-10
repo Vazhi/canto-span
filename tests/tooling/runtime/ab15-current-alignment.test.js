@@ -19,12 +19,10 @@ function trace(row) {
   return row && row.trace_detail || {};
 }
 
-const REVIEWED_MAIN_COMMIT = "f9700e00c1ede04a6586965a68400a222c1e204b";
-
-test("AB15 current conformance review is bound to the reviewed v0.5.222 main state", () => {
-  assert.strictEqual(api.runtimeVersion, "0.5.222");
-  assert.match(REVIEWED_MAIN_COMMIT, /^[0-9a-f]{40}$/);
-});
+// Current AB15 conformance was reviewed against main commit
+// f9700e00c1ede04a6586965a68400a222c1e204b (runtime v0.5.222).
+// The permanent test intentionally protects the reviewed AB15 behavior below rather
+// than pinning the repository-wide runtime semver, which may advance for unrelated work.
 
 test("AB15 exact overt core remains visible Dem + CL + N with no hidden material", () => {
   for (const [source, surface] of [["呢本書。", "呢本書"], ["嗰間餐廳。", "嗰間餐廳"]]) {
