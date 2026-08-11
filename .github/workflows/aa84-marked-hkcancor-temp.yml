@@ -1,0 +1,45 @@
+name: AA84 marked HKCanCor temporary
+
+on:
+  pull_request:
+    paths:
+      - "external-evidence/aa84-marked-hkcancor/**"
+      - "tests/tooling/corpus-review/test_aa84_marked_hkcancor_profile.py"
+      - ".github/workflows/aa84-marked-hkcancor-temp.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  generate:
+    if: github.event.pull_request.number == 773 && github.event.pull_request.head.ref == 'agent/aa84-marked-hkcancor-review' && github.event.pull_request.base.ref == 'main'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/aa84-marked-hkcancor-review
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - name: Install frozen corpus dependency
+        run: python -m pip install --disable-pip-version-check pycantonese==5.0.0
+      - name: Run profile unit tests
+        run: python -m unittest tests/tooling/corpus-review/test_aa84_marked_hkcancor_profile.py -v
+      - name: Generate deterministic marked inventory
+        run: |
+          python external-evidence/aa84-marked-hkcancor/query-hkcancor-aa84-marked.py \
+            --profile aa84-marked-redup \
+            --output-dir /tmp/aa84-marked-hkcancor \
+            --source-manifest external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256
+      - name: Recheck deterministic outputs
+        run: |
+          python external-evidence/aa84-marked-hkcancor/query-hkcancor-aa84-marked.py \
+            --profile aa84-marked-redup \
+            --output-dir /tmp/aa84-marked-hkcancor \
+            --source-manifest external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256 \
+            --check
+      - uses: actions/upload-artifact@v4
+        with:
+          name: aa84-marked-hkcancor-r1
+          path: /tmp/aa84-marked-hkcancor
+          retention-days: 1
