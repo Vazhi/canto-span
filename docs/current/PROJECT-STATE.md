@@ -53,7 +53,7 @@ Twenty-one accepted batches have adjudicated 94 records; 88 remain pending. Cano
 Current consequences include:
 
 - `AB35 VerbObjectCompound` source-linked runtime migration has begun at v0.5.224 for the independently supported current-whitelist seed `飲茶` / `游水` / `沖涼`; those exact nodes expose component provenance without an automatic ordinary object binding, while the other 40 legacy `ProductiveVO` compatibility entries remain unchanged pending later review;
-- `AB35 VerbObjectCompound` is canonical for the legacy runtime note `ProductiveVO`; the same UUID/code is retained as a source-bounded lexical V–O-compound narrowing, while the broader 43-entry runtime compatibility whitelist remains unreconciled pending a separate migration;
+- `AB35 VerbObjectCompound` is canonical for the legacy runtime note `ProductiveVO`; the same UUID/code is retained as a source-bounded lexical V–O-compound narrowing, while the remaining 40-entry compatibility route is still unresolved and must be audited item-by-item before retirement;
 - `AB30 ZoMarkedPerfectiveObjectVP` remains the nearest direct language-construction candidate and is distinct from broad internal perfective wrappers;
 - `AB53 ResourceInitialJungLaiFunctionClause` is canonical for the legacy runtime note `ResourceUseLaiFunctionRelation`;
 - `AA56 JauMarkedIndefiniteNPPredication` is canonical for the legacy runtime note `ExistentialPresentationalClause`; PR #593 / `833c7e15cb7b6b9f4efa2caae95461f09f9484f5` implements the accepted positive-only runtime profile under that legacy compatibility label, with no status promotion, runtime-label migration, survey, corpus, release, or deployment change;
