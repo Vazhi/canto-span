@@ -1,0 +1,158 @@
+name: Temporary top-2000 lexical R5
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - .github/workflows/top-2000-lexical-r5-temp.yml
+
+permissions:
+  contents: write
+
+jobs:
+  r5:
+    if: github.event.pull_request.head.ref == 'agent/top-2000-lexical-coverage-audit'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/top-2000-lexical-coverage-audit
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: Download pinned Cifu source
+        run: curl -fL --retry 3 https://raw.githubusercontent.com/gwinterstein/Cifu/8d5e4903e419193f903823880a7815712072cc80/Lexicon/Cifu-v1.txt -o /tmp/Cifu-v1.txt
+
+      - name: Apply reviewed R5 lexical additions
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+
+          additions = {
+            'src/runtime-resources/lexicon/token-lexicon/people-and-address.js': [
+              ('女仔', 'who', 'neoi5 zai2', 'person_np female_person_np', 'girl / young woman'),
+              ('男朋友', 'who', 'naam4 pang4 jau5', 'person_np relationship_person_np', 'boyfriend / male friend'),
+              ('男人', 'who', 'naam4 jan2', 'person_np male_person_np', 'man / male'),
+            ],
+            'src/runtime-resources/lexicon/token-lexicon/things.js': [
+              ('汗', 'what', 'hon6', 'object_np substance_np', 'sweat / perspiration'),
+              ('印', 'what', 'jan3', 'object_np mark_or_artifact_np', 'stamp / seal / mark / print'),
+              ('形', 'what', 'jing4', 'abstract_or_object_np shape_np', 'form / shape'),
+              ('翻版', 'what', 'faan1 baan2', 'object_np copy_np', 'reprint / duplicate / clone'),
+            ],
+            'src/runtime-resources/lexicon/token-lexicon/places-and-times.js': [
+              ('海', 'where', 'hoi2', 'place_or_goal natural_place_np', 'ocean / sea'),
+              ('叢林', 'where', 'cung4 lam4', 'place_or_goal natural_place_np', 'jungle / thicket / forest'),
+              ('大陸', 'where', 'daai6 luk6', 'place_or_goal geopolitical_place_np', 'mainland / continent'),
+              ('灘', 'where', 'taan1', 'place_or_goal natural_place_np', 'beach / shoal'),
+              ('西方', 'where', 'sai1 fong1', 'direction_np cardinal_region', 'the West / western region'),
+              ('之前', 'when', 'zi1 cin4', 'temporal_adjunct', 'before / prior to'),
+              ('即刻', 'when', 'zik1 hak1', 'temporal_adjunct immediate_time_adverb', 'immediately / instantly'),
+              ('最後', 'when', 'zeoi3 hau6', 'temporal_adjunct sequence_time_adverb', 'finally / last'),
+              ('今年', 'when', 'gam1 nin4', 'temporal_adjunct time_np', 'this year'),
+              ('早', 'when', 'zou2', 'temporal_adjunct time_adverb', 'early / morning'),
+            ],
+            'src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js': [
+              ('當然', 'how', 'dong1 jin4', 'stance_adverb discourse_marker', 'of course / certainly'),
+              ('究竟', 'how', 'gau3 ging2', 'question_stance_adverb discourse_adverb', 'after all / actually'),
+              ('總之', 'func', 'zung2 zi1', 'discourse_summary_marker', 'in short / in brief'),
+              ('重有', 'how', 'zung6 jau5', 'additive_adverb discourse_adverb', 'furthermore / also'),
+              ('更加', 'how', 'gang3 gaa1', 'degree_adverb comparative_intensifier', 'even more'),
+              ('基本上', 'how', 'gei1 bun2 soeng6', 'stance_adverb discourse_adverb', 'basically / on the whole'),
+              ('突然', 'how', 'dat6 jin4', 'manner_adverb temporal_adverb', 'suddenly'),
+              ('直接', 'how', 'zik6 zip3', 'manner_adverb', 'directly / straightforwardly'),
+            ],
+          }
+
+          added = 0
+          for rel, entries in additions.items():
+              p = Path(rel)
+              text = p.read_text()
+              lines = []
+              for form, label, jyutping, syntax, gloss in entries:
+                  if f'["{form}",' in text:
+                      continue
+                  meta = {'label': label, 'jyutping': jyutping, 'syntax': syntax, 'note': f'{gloss}; Cifu spoken top-2000 R5 lexical audit.'}
+                  lines.append('  [' + json.dumps(form, ensure_ascii=False) + ', ' + json.dumps(meta, ensure_ascii=False, separators=(',', ':')) + '],')
+                  added += 1
+              if lines:
+                  text = text.rsplit('\n];', 1)[0] + '\n\n  // v0.5.227: Cifu spoken top-2000 R5 lexical coverage.\n' + '\n'.join(lines) + '\n];\n'
+                  p.write_text(text)
+
+          if added != 25:
+              raise SystemExit(f'expected 25 R5 additions, added {added}')
+
+          p = Path('manifest.json')
+          obj = json.loads(p.read_text())
+          obj['description'] = 'v0.5.227 adds 165 source-audited high-frequency Cantonese lexical entries from the Cifu spoken top-2000 audit without broadening grammar.'
+          p.write_text(json.dumps(obj, ensure_ascii=False, indent=2) + '\n')
+          p = Path('src/plugin-entry.js')
+          p.write_text(p.read_text().replace('adds 140 source-audited high-frequency lexical entries', 'adds 165 source-audited high-frequency lexical entries'))
+          p = Path('docs/current/PROJECT-STATE.md')
+          p.write_text(p.read_text().replace('adds 140 independently supported high-frequency lexical entries', 'adds 165 independently supported high-frequency lexical entries'))
+          PY
+
+      - name: Regenerate audit and R5 report
+        run: |
+          cp docs/research/LEXICAL-COVERAGE-TOP-2000-R1.md /tmp/R1.md
+          cp docs/research/LEXICAL-COVERAGE-TOP-2000-R2.md /tmp/R2.md
+          cp docs/research/LEXICAL-COVERAGE-TOP-2000-R3.md /tmp/R3.md
+          cp docs/research/LEXICAL-COVERAGE-TOP-2000-R4.md /tmp/R4.md
+          node tools/lexical-coverage/top-2000-audit.mjs --source=/tmp/Cifu-v1.txt
+          cp /tmp/R1.md docs/research/LEXICAL-COVERAGE-TOP-2000-R1.md
+          cp /tmp/R2.md docs/research/LEXICAL-COVERAGE-TOP-2000-R2.md
+          cp /tmp/R3.md docs/research/LEXICAL-COVERAGE-TOP-2000-R3.md
+          cp /tmp/R4.md docs/research/LEXICAL-COVERAGE-TOP-2000-R4.md
+          python - <<'PY'
+          from pathlib import Path
+          from collections import Counter
+          import csv
+
+          rows = list(csv.DictReader(Path('data/lexical-frequency/cifu-spoken-top-2000.tsv').open(), delimiter='\t'))
+          counts = Counter(row['runtime_status'] for row in rows)
+          r5 = ['女仔','男朋友','男人','汗','印','形','海','叢林','大陸','翻版','灘','西方','之前','即刻','最後','今年','早','當然','究竟','總之','重有','更加','基本上','突然','直接']
+          missing = [row for row in rows if row['runtime_status'] == 'missing'][:140]
+          out = [
+              '# Top-2000 spoken Cantonese lexical coverage audit — R5', '',
+              '## Scope', '',
+              'R5 adds 25 remaining high-frequency person nouns, ordinary nouns/places, temporal adverbs, and discourse adverbs whose lexical identity is independently supportable without authorizing a new grammar construction. Classifier-heavy and predicate-sensitive items remain outside this batch.', '',
+              '## Current coverage after cumulative R1–R5 additions', ''
+          ]
+          for key in ['covered_main','covered_variant','handled_structurally','surface_covered_sense_uncertain','missing','manual_review']:
+              out.append(f'- `{key}`: **{counts.get(key, 0)}**')
+          out += ['', '## R5 same-task lexical additions (25)', ''] + [f'- `{x}`' for x in r5]
+          out += ['', '## Highest-frequency remaining lexical-gap candidates', '', '| Rank | Form | Count | Jyutping | Cifu definition |', '|---:|---|---:|---|---|']
+          for row in missing:
+              out.append(f"| {row['rank']} | {row['word']} | {row['cifu_spoken_adult']} | {row['cifu_jyutping']} | {row['cifu_definition'].replace('|','\\|')} |")
+          out += ['', '## Interpretation', '', 'Remaining high-frequency gaps are increasingly dominated by particles, classifier/polysemy problems, predicate-sensitive lexemes, spelling/reading variants, and generated corpus strings. Those require behavior-specific review rather than blind lexical insertion.', '']
+          Path('docs/research/LEXICAL-COVERAGE-TOP-2000-R5.md').write_text('\n'.join(out))
+          print(dict(counts))
+          PY
+
+      - name: Build and verify R5 runtime state
+        run: |
+          npm run build:runtime
+          npm test
+          npm run verify:runtime-build
+          npm run verify
+          npm run verify:runtime
+          npm run verify:research
+          git diff --check
+
+      - name: Commit verified R5 changes
+        run: |
+          git config user.name 'Canto Span scoped automation'
+          git config user.email 'actions@users.noreply.github.com'
+          git add data/lexical-frequency/cifu-spoken-top-2000.tsv \
+            docs/research/LEXICAL-COVERAGE-TOP-2000-R5.md \
+            src/runtime-resources/lexicon/token-lexicon/people-and-address.js \
+            src/runtime-resources/lexicon/token-lexicon/things.js \
+            src/runtime-resources/lexicon/token-lexicon/places-and-times.js \
+            src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js \
+            src/plugin-entry.js manifest.json docs/current/PROJECT-STATE.md main.js
+          git diff --cached --quiet && { echo 'No verified R5 changes to commit'; exit 0; }
+          git commit -m 'Fill additional high-frequency lexical coverage'
+          git push origin HEAD:agent/top-2000-lexical-coverage-audit
