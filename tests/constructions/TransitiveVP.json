@@ -21,6 +21,14 @@
       "assertion": "construction_present_in_exact_snapshot"
     },
     {
+      "case_id": "REG-0062",
+      "source": "再做功課。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
       "case_id": "REG-0078",
       "source": "有冇講過電話啊？",
       "origins": [
@@ -105,10 +113,34 @@
       "assertion": "construction_present_in_exact_snapshot"
     },
     {
+      "case_id": "REG-0221",
+      "source": "我先食飯，再做功課。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0222",
+      "source": "我先食飯，做功課。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
       "case_id": "REG-0255",
       "source": "我食一個蘋果。",
       "origins": [
         "run-a1-bare-numeral-guards.js"
+      ],
+      "assertion": "construction_present_in_exact_snapshot"
+    },
+    {
+      "case_id": "REG-0268",
+      "source": "我食飯，再做功課。",
+      "origins": [
+        "accepted-v0.5.159-hierarchical-recursive-clause-linking"
       ],
       "assertion": "construction_present_in_exact_snapshot"
     },
@@ -275,21 +307,29 @@
       "expected_profile": "construction_absent",
       "assertion": "construction_absent",
       "provenance": "docs/research/ISSUE-736-AB78-TRANSITIVE-BEHAVIOR-PROFILES-R1.md#negative-and-boundary-requirements-for-later-executable-specification"
+    },
+    {
+      "case_id": "AB78-ZGF-P01",
+      "source": "做功課。",
+      "class": "ordinary_predicate_object_rehomed_from_ab35_compatibility",
+      "expected_profile": "typed action verb 做 plus overt object NP 功課",
+      "assertion": "construction_present",
+      "provenance": "docs/research/ISSUE-750-AB35-OWNERSHIP-REMOVAL-DISPOSITION-R1.md"
     }
   ],
   "np_cases": [],
   "implementation_probe_cases": [],
   "coverage": {
     "state": "positive_and_boundary",
-    "exact_snapshot_positive_count": 26,
-    "focused_positive_count": 0,
+    "exact_snapshot_positive_count": 30,
+    "focused_positive_count": 1,
     "focused_boundary_count": 7,
     "focused_review_only_count": 0,
     "np_case_count": 0,
     "implementation_probe_count": 0,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 26,
+    "positive_case_count": 31,
     "boundary_case_count": 7,
-    "executable_case_count": 33
+    "executable_case_count": 38
   }
 }
