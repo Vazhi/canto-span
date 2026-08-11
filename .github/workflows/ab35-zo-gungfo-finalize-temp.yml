@@ -1,0 +1,60 @@
+name: AB35 做功課 rehome temporary
+
+on:
+  pull_request:
+    paths:
+      - "**"
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    if: github.event.pull_request.head.ref == 'agent/ab35-rehome-zo-gungfo' && github.event.pull_request.base.ref == 'main'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Apply in-worktree single-entry ownership probe
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('src/runtime-resources/lexicon/productive-vo.js')
+          text=p.read_text()
+          needle='  ["做功課", { verb: "做", object: "功課", label: "VP", type: "ProductiveVO" }],\n'
+          assert text.count(needle)==1
+          p.write_text(text.replace(needle,'',1))
+          PY
+          npm run build:runtime
+      - name: Show focused ownership after removal
+        run: |
+          node <<'NODE'
+          const { loadRuntimeApi, internalConstruction, rowSurface } = require('./tests/lib/runtime-api');
+          const api = loadRuntimeApi();
+          for (const source of ['做功課。','再做功課。','我先食飯，再做功課。','我先食飯，做功課。','我食飯，再做功課。']) {
+            const rows = api.diagnosticFinalRows(api.analyzeLine(source));
+            console.log(JSON.stringify({source, rows: rows.filter(r=>r.kind==='construction').map(r=>({construction:internalConstruction(r),surface:rowSurface(r),parent:r.internal_parent||r.parent||'',slots:r.slots||[],trace:r.trace_detail||null}))}, null, 2));
+          }
+          NODE
+      - name: Capture exact regression transition set
+        shell: bash
+        run: |
+          set +e
+          npm run test:regression
+          code=$?
+          set -e
+          cat validation/current/regression-suite.json
+          test "$code" -ne 0
+      - name: Check architecture after one-entry removal
+        run: npm run audit:parser-architecture -- --json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ab35-zo-gungfo-probe
+          path: validation/current/regression-suite.json
+          retention-days: 1
