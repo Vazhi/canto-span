@@ -27,9 +27,42 @@ jobs:
         run: curl -fL --retry 3 https://raw.githubusercontent.com/gwinterstein/Cifu/8d5e4903e419193f903823880a7815712072cc80/Lexicon/Cifu-v1.txt -o /tmp/Cifu-v1.txt
       - name: Apply reviewed lexical additions and regenerate audit
         run: node tools/lexical-coverage/top-2000-audit.mjs --source=/tmp/Cifu-v1.txt --apply-r1
-      - name: Build and verify final runtime state
+      - name: Build runtime and rebaseline the one intentional lexical snapshot
         run: |
           npm run build:runtime
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('tests/run-regression.js')
+          s = p.read_text()
+          marker = 'const exclusions = Array.isArray(fixture.current_focused_exclusions) ? fixture.current_focused_exclusions : [];'
+          if marker not in s:
+              raise SystemExit('regression insertion marker not found')
+          block = r'''
+const v05227LexicalSnapshotSources = new Set([
+  "但係，其實人哋咪又係貪你啲錢。",
+]);
+if (process.argv.includes("--update-v05227-lexical")) {
+  let updated = 0;
+  for (const testCase of fixture.cases) {
+    if (!v05227LexicalSnapshotSources.has(testCase.source)) continue;
+    testCase.expected = JSON.parse(JSON.stringify(signature(api, testCase.source, testCase.context_source || null)));
+    testCase.accepted_transition = "v0.5.227_cifu_top2000_lexical_tokenization";
+    testCase.transition_reason = "Source-supported 其實 is now one lexical token with Jyutping and learner-role metadata instead of unknown 其 + 實 tokens.";
+    updated += 1;
+  }
+  fixture.runtime_version = api.runtimeVersion;
+  fixture.last_intentional_transition = "v0.5.227_cifu_top2000_lexical_coverage";
+  fs.writeFileSync(fixturePath, JSON.stringify(fixture, null, 2) + "\n");
+  console.log(JSON.stringify({ runtime_version: api.runtimeVersion, updated_cases: updated, authorized_sources: v05227LexicalSnapshotSources.size }, null, 2));
+  process.exit(updated === v05227LexicalSnapshotSources.size ? 0 : 1);
+}
+'''
+          p.write_text(s.replace(marker, block + '\n' + marker, 1))
+          PY
+          node tests/run-regression.js --update-v05227-lexical
+          git checkout -- tests/run-regression.js
+      - name: Verify final runtime state
+        run: |
           npm test
           npm run verify:runtime-build
           npm run verify
@@ -47,6 +80,7 @@ jobs:
             src/runtime-resources/lexicon/token-lexicon/verbs.js \
             src/runtime-resources/lexicon/token-lexicon/statives.js \
             src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js \
+            tests/fixtures/regression-snapshots.json \
             src/plugin-entry.js package.json package-lock.json manifest.json \
             docs/current/PROJECT-STATE.md main.js
           git diff --cached --quiet && { echo 'No generated or lexical changes to commit'; exit 0; }
