@@ -133,4 +133,16 @@ module.exports = [  // Places / times
   ["外國", {"label":"where","jyutping":"ngoi6 gwok3","syntax":"place_or_goal geopolitical_place_np","note":"foreign country; Cifu spoken top-2000 R4 lexical audit."}],
   ["莊", {"label":"where","jyutping":"zong1","syntax":"place_or_goal settlement_or_estate_np","note":"farmstead / village / manor; Cifu spoken top-2000 R4 lexical audit."}],
   ["將來", {"label":"when","jyutping":"zoeng1 loi4","syntax":"temporal_adjunct future_time_np","note":"the future; Cifu spoken top-2000 R4 lexical audit."}],
+
+  // v0.5.227: Cifu spoken top-2000 R5 lexical coverage.
+  ["海", {"label":"where","jyutping":"hoi2","syntax":"place_or_goal natural_place_np","note":"ocean / sea; Cifu spoken top-2000 R5 lexical audit."}],
+  ["叢林", {"label":"where","jyutping":"cung4 lam4","syntax":"place_or_goal natural_place_np","note":"jungle / thicket / forest; Cifu spoken top-2000 R5 lexical audit."}],
+  ["大陸", {"label":"where","jyutping":"daai6 luk6","syntax":"place_or_goal geopolitical_place_np","note":"mainland / continent; Cifu spoken top-2000 R5 lexical audit."}],
+  ["灘", {"label":"where","jyutping":"taan1","syntax":"place_or_goal natural_place_np","note":"beach / shoal; Cifu spoken top-2000 R5 lexical audit."}],
+  ["西方", {"label":"where","jyutping":"sai1 fong1","syntax":"direction_np cardinal_region","note":"the West / western region; Cifu spoken top-2000 R5 lexical audit."}],
+  ["之前", {"label":"when","jyutping":"zi1 cin4","syntax":"temporal_adjunct","note":"before / prior to; Cifu spoken top-2000 R5 lexical audit."}],
+  ["即刻", {"label":"when","jyutping":"zik1 hak1","syntax":"temporal_adjunct immediate_time_adverb","note":"immediately / instantly; Cifu spoken top-2000 R5 lexical audit."}],
+  ["最後", {"label":"when","jyutping":"zeoi3 hau6","syntax":"temporal_adjunct sequence_time_adverb","note":"finally / last; Cifu spoken top-2000 R5 lexical audit."}],
+  ["今年", {"label":"when","jyutping":"gam1 nin4","syntax":"temporal_adjunct time_np","note":"this year; Cifu spoken top-2000 R5 lexical audit."}],
+  ["早", {"label":"when","jyutping":"zou2","syntax":"temporal_adjunct time_adverb","note":"early / morning; Cifu spoken top-2000 R5 lexical audit."}],
 ];

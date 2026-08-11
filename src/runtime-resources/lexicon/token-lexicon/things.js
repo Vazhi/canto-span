@@ -135,4 +135,10 @@ module.exports = [  // Things / nouns
   ["團", {"label":"what","jyutping":"tyun4","syntax":"collective_np object_np","note":"group / society / regiment; Cifu spoken top-2000 R4 lexical audit."}],
   ["頭", {"label":"what","jyutping":"tau4","syntax":"object_np body_part_np","note":"head; Cifu spoken top-2000 R4 lexical audit."}],
   ["意", {"label":"what","jyutping":"ji3","syntax":"abstract_np idea_or_intention_np","note":"idea / meaning / intention; Cifu spoken top-2000 R4 lexical audit."}],
+
+  // v0.5.227: Cifu spoken top-2000 R5 lexical coverage.
+  ["汗", {"label":"what","jyutping":"hon6","syntax":"object_np substance_np","note":"sweat / perspiration; Cifu spoken top-2000 R5 lexical audit."}],
+  ["印", {"label":"what","jyutping":"jan3","syntax":"object_np mark_or_artifact_np","note":"stamp / seal / mark / print; Cifu spoken top-2000 R5 lexical audit."}],
+  ["形", {"label":"what","jyutping":"jing4","syntax":"abstract_or_object_np shape_np","note":"form / shape; Cifu spoken top-2000 R5 lexical audit."}],
+  ["翻版", {"label":"what","jyutping":"faan1 baan2","syntax":"object_np copy_np","note":"reprint / duplicate / clone; Cifu spoken top-2000 R5 lexical audit."}],
 ];

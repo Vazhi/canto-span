@@ -52,7 +52,7 @@ Twenty-one accepted batches have adjudicated 94 records; 88 remain pending. Cano
 
 Current consequences include:
 
-- v0.5.227 adds 140 independently supported high-frequency lexical entries identified by the Cifu spoken top-2000 audit; compositional corpus strings and grammar-sensitive, variant, or sense-ambiguous forms remain explicit review buckets rather than being lexicalized merely to improve a coverage percentage, and no construction identity, linguistic status, evidence, survey, corpus, release, or deployment state is changed;
+- v0.5.227 adds 165 independently supported high-frequency lexical entries identified by the Cifu spoken top-2000 audit; compositional corpus strings and grammar-sensitive, variant, or sense-ambiguous forms remain explicit review buckets rather than being lexicalized merely to improve a coverage percentage, and no construction identity, linguistic status, evidence, survey, corpus, release, or deployment state is changed;
 
 - v0.5.226 adds bounded behavior-first post-predicate `過` comparison for overt simple nominal target + gradable property + `過` + overt simple nominal standard, represented structurally as `SubjectPredicateClause` with explicit comparison bindings; `矮 ai2` receives the lexical coverage required by the published `細佬矮過我` example, while no new public construction identity, quantity/temporal comparison generalization, `比`/`啲` comparative generalization, status change, or evidence promotion is inferred;
 - `做功課` is no longer owned by the legacy AB35/ProductiveVO compatibility whitelist at v0.5.225; it remains recognized through the accepted AB78 `TransitiveVP` typed `做 + 功課` predicate-object path, while no disposition is inferred for the other 39 unresolved legacy entries;

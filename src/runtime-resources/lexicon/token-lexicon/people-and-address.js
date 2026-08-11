@@ -54,4 +54,9 @@ module.exports = [  // Pronouns / people
   ["同事", { label: "who", jyutping: "tung4 si6", syntax: "person_np", note: "coworker" }],
   ["其他同事", { label: "who", jyutping: "kei4 taa1 tung4 si6", syntax: "person_np", note: "other coworkers; rendered transparently as a modified noun phrase when possible." }],
   ["公司", { label: "what", jyutping: "gung1 si1", syntax: "organization_np head_noun object_np", classifier_classes: ["general_count"], note: "company / organization" }],
+
+  // v0.5.227: Cifu spoken top-2000 R5 lexical coverage.
+  ["女仔", {"label":"who","jyutping":"neoi5 zai2","syntax":"person_np female_person_np","note":"girl / young woman; Cifu spoken top-2000 R5 lexical audit."}],
+  ["男朋友", {"label":"who","jyutping":"naam4 pang4 jau5","syntax":"person_np relationship_person_np","note":"boyfriend / male friend; Cifu spoken top-2000 R5 lexical audit."}],
+  ["男人", {"label":"who","jyutping":"naam4 jan2","syntax":"person_np male_person_np","note":"man / male; Cifu spoken top-2000 R5 lexical audit."}],
 ];
