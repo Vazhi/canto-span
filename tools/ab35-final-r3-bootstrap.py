@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 from pathlib import Path
+import json
 import re
 import subprocess
 
+BASE_COMMIT = "414f5e0ab309c28e627abad3df24da7663053f4e"
 BASE_BLOB = "c26eba2e8a22988aee125915b70b86c16161a47b"
 HELPER = Path("tools/ab35-zo-gungfo-finalize-temp.py")
 
@@ -13,6 +15,18 @@ def run(*args, capture=False):
         return subprocess.check_output(args, text=True).strip()
     subprocess.run(args, check=True)
 
+
+base_index = json.loads(
+    subprocess.check_output(
+        ["git", "show", f"{BASE_COMMIT}:tests/construction-test-index.json"],
+        text=True,
+    )
+)
+base_total = sum(row.get("executable_case_count", 0) for row in base_index.get("files", []))
+assert base_total == 1638, f"unexpected post-#773 base construction total: {base_total}"
+expected_total = base_total + 1
+assert expected_total == 1639
+print(f"canonical checked index: {base_total}; scoped expected total: {expected_total}", flush=True)
 
 run("git", "fetch", "origin", "agent/ab35-rehome-zo-gungfo")
 text = subprocess.check_output(["git", "cat-file", "blob", BASE_BLOB], text=True)
@@ -27,7 +41,7 @@ def once(old, new):
 
 once(
     'BASE = "ed5e482f776779fb9eab556bd8ff244abbcd6427"',
-    'BASE = "414f5e0ab309c28e627abad3df24da7663053f4e"',
+    f'BASE = "{BASE_COMMIT}"',
 )
 once(
     'BRANCH = "agent/ab35-rehome-zo-gungfo"',
@@ -57,6 +71,12 @@ text, newline_count = re.subn(
     count=1,
 )
 assert newline_count == 1, newline_count
+
+# The checked post-#773 index already totals 1,638 even though PROJECT-STATE still says 1,634.
+# This transition adds exactly one executable construction reference, so generated truth is 1,639.
+once('== 1635', '== 1639')
+once('**1,635** across **134** files;', '**1,639** across **134** files;')
+once('| Per-construction assertions | 1,635 |', '| Per-construction assertions | 1,639 |')
 
 marker = 'run("node", "tests/tooling/runtime/ab35-zo-gungfo-rehome.test.js")'
 assert text.count(marker) == 1
