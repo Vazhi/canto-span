@@ -4,13 +4,15 @@ on:
   push:
     branches:
       - agent/ab35-rehome-zo-gungfo-r2
+  pull_request:
+    types: [opened, reopened, synchronize]
 
 permissions:
   contents: write
 
 jobs:
   finalize:
-    if: github.ref == 'refs/heads/agent/ab35-rehome-zo-gungfo-r2'
+    if: github.event_name == 'push' || (github.event.pull_request.number == 775 && github.event.pull_request.head.ref == 'agent/ab35-rehome-zo-gungfo-r2' && github.event.pull_request.base.ref == 'main')
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
