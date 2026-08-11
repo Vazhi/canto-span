@@ -1,0 +1,173 @@
+name: Temporary top-2000 lexical R2
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - .github/workflows/top-2000-lexical-r2-temp.yml
+
+permissions:
+  contents: write
+
+jobs:
+  r2:
+    if: github.event.pull_request.head.ref == 'agent/top-2000-lexical-coverage-audit'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/top-2000-lexical-coverage-audit
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: Download pinned Cifu source
+        run: curl -fL --retry 3 https://raw.githubusercontent.com/gwinterstein/Cifu/8d5e4903e419193f903823880a7815712072cc80/Lexicon/Cifu-v1.txt -o /tmp/Cifu-v1.txt
+      - name: Apply independently supported R2 lexical additions
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+
+          additions = {
+            'src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js': [
+              ('即係', {'label':'func','jyutping':'zik1 hai6','syntax':'discourse_marker reformulation_marker','note':'exactly / that is / i.e.; Cifu spoken top-2000 R2 lexical audit; Wiktionary corroborated.'}),
+              ('或者', {'label':'func','jyutping':'waak6 ze2','syntax':'alternative_connector epistemic_possibility_marker','note':'or / maybe / perhaps; Cifu spoken top-2000 R2 lexical audit; Wiktionary corroborated.'}),
+              ('梗係', {'label':'func','jyutping':'gang2 hai6','syntax':'discourse_marker certainty_marker','note':'of course; Cifu spoken top-2000 R2 lexical audit.'}),
+              ('冇錯', {'label':'func','jyutping':'mou5 co3','syntax':'acknowledgement_formula discourse_marker','note':'that is correct / exactly; Cifu spoken top-2000 R2 lexical audit.'}),
+              ('另外', {'label':'how','jyutping':'ling6 ngoi6','syntax':'additive_adverb discourse_adverb','note':'additionally / besides / separately; Cifu spoken top-2000 R2 lexical audit.'}),
+              ('根本', {'label':'how','jyutping':'gan1 bun2','syntax':'emphatic_adverb discourse_adverb','note':'fundamentally / simply / at all; Cifu spoken top-2000 R2 lexical audit.'}),
+              ('枉', {'label':'how','jyutping':'wong2','syntax':'manner_adverb evaluative_adverb','note':'in vain / wrongly; Cifu spoken top-2000 R2 lexical audit.'}),
+            ],
+            'src/runtime-resources/lexicon/token-lexicon/places-and-times.js': [
+              ('以前', {'label':'when','jyutping':'ji5 cin4','syntax':'temporal_adjunct','note':'before / formerly / ago; Cifu spoken top-2000 R2 lexical audit.'}),
+              ('之間', {'label':'where','jyutping':'zi1 gaan1','syntax':'relational_localizer spatial_nominal','note':'between / among; Cifu spoken top-2000 R2 lexical audit.'}),
+              ('方向', {'label':'where','jyutping':'fong1 hoeng3','syntax':'direction_np spatial_nominal','note':'direction / orientation; Cifu spoken top-2000 R2 lexical audit; Wiktionary corroborated.'}),
+              ('泳池', {'label':'where','jyutping':'wing6 ci4','syntax':'place_or_goal place_np','note':'swimming pool; Cifu spoken top-2000 R2 lexical audit; Wiktionary corroborated.'}),
+              ('位置', {'label':'where','jyutping':'wai6 zi3','syntax':'location_np place_or_goal','note':'position / place / location; Cifu spoken top-2000 R2 lexical audit.'}),
+              ('路', {'label':'where','jyutping':'lou6','syntax':'path_np place_or_goal','note':'road / path / way; Cifu spoken top-2000 R2 lexical audit.'}),
+              ('機場', {'label':'where','jyutping':'gei1 coeng4','syntax':'place_or_goal place_np','note':'airport / airfield; Cifu spoken top-2000 R2 lexical audit.'}),
+              ('迷宮', {'label':'where','jyutping':'mai4 gung1','syntax':'place_or_goal place_np','note':'maze / labyrinth; Cifu spoken top-2000 R2 lexical audit.'}),
+              ('起點', {'label':'where','jyutping':'hei2 dim2','syntax':'source_or_startpoint place_or_goal','note':'starting point; Cifu spoken top-2000 R2 lexical audit.'}),
+              ('南', {'label':'where','jyutping':'naam4','syntax':'direction_np cardinal_direction','note':'south; Cifu spoken top-2000 R2 lexical audit.'}),
+              ('工廠', {'label':'where','jyutping':'gung1 cong2','syntax':'place_or_goal place_np','note':'factory; Cifu spoken top-2000 R2 lexical audit.'}),
+              ('城', {'label':'where','jyutping':'sing4','syntax':'place_or_goal place_np','note':'city / town / city walls; Cifu spoken top-2000 R2 lexical audit.'}),
+              ('球場', {'label':'where','jyutping':'kau4 coeng4','syntax':'place_or_goal place_np','note':'sports ground / court / field; Cifu spoken top-2000 R2 lexical audit.'}),
+              ('宅', {'label':'where','jyutping':'zaak6','syntax':'place_or_goal residence_np','note':'residence; Cifu spoken top-2000 R2 lexical audit.'}),
+            ],
+            'src/runtime-resources/lexicon/token-lexicon/things.js': [
+              ('蛇', {'label':'what','jyutping':'se4','syntax':'object_np animal_np','note':'snake / serpent; Cifu spoken top-2000 R2 lexical audit.'}),
+              ('葡萄', {'label':'what','jyutping':'pou4 tou4','syntax':'object_np food_np','note':'grape; Cifu spoken top-2000 R2 lexical audit.'}),
+              ('腰', {'label':'what','jyutping':'jiu1','syntax':'object_np body_part_np','note':'waist / lower back; Cifu spoken top-2000 R2 lexical audit.'}),
+              ('科技', {'label':'what','jyutping':'fo1 gei6','syntax':'abstract_np domain_np','note':'science and technology; Cifu spoken top-2000 R2 lexical audit.'}),
+              ('社會', {'label':'what','jyutping':'se5 wui2','syntax':'abstract_np collective_np','note':'society; Cifu spoken top-2000 R2 lexical audit.'}),
+              ('方面', {'label':'what','jyutping':'fong1 min6','syntax':'abstract_np aspect_np','note':'aspect / respect / field / side; Cifu spoken top-2000 R2 lexical audit.'}),
+            ],
+            'src/runtime-resources/lexicon/token-lexicon/verbs.js': [
+              ('經過', {'label':'doing','jyutping':'ging1 gwo3','syntax':'verb motion_path_verb','note':'pass through / go through / undergo; lexical core only; Cifu spoken top-2000 R2 lexical audit; Wiktionary corroborated.'}),
+              ('死', {'label':'doing','jyutping':'sei2','syntax':'intransitive_verb change_of_state_verb','note':'die; core intransitive lexical reading only; intensifier/evaluative uses remain context-sensitive; Cifu spoken top-2000 R2 lexical audit; Wiktionary corroborated.'}),
+              ('需要', {'label':'doing','jyutping':'seoi1 jiu3','syntax':'verb necessity_predicate','note':'need / require; Cifu spoken top-2000 R2 lexical audit; Wiktionary corroborated.'}),
+              ('搞', {'label':'doing','jyutping':'gaau2','syntax':'verb','note':'do / make / arrange / handle; Cifu spoken top-2000 R2 lexical audit.'}),
+              ('希望', {'label':'doing','jyutping':'hei1 mong6','syntax':'verb desire_verb','note':'hope / wish for; Cifu spoken top-2000 R2 lexical audit.'}),
+              ('滑雪', {'label':'doing','jyutping':'waat6 syut3','syntax':'verb activity_verb','note':'ski / skiing; Cifu spoken top-2000 R2 lexical audit.'}),
+              ('明白', {'label':'doing','jyutping':'ming4 baak6','syntax':'verb cognition_verb','note':'understand / realize; Cifu spoken top-2000 R2 lexical audit.'}),
+              ('感覺', {'label':'doing','jyutping':'gam2 gok3','syntax':'verb perception_verb','note':'feel / sense; lexical verbal reading; Cifu spoken top-2000 R2 lexical audit.'}),
+            ],
+          }
+
+          count = 0
+          for rel, entries in additions.items():
+              p = Path(rel)
+              text = p.read_text()
+              lines = []
+              for form, meta in entries:
+                  if f'["{form}",' in text:
+                      continue
+                  lines.append('  [' + json.dumps(form, ensure_ascii=False) + ', ' + json.dumps(meta, ensure_ascii=False, separators=(',', ':')) + '],')
+                  count += 1
+              if lines:
+                  if '\n];' not in text:
+                      raise SystemExit(f'unexpected lexicon module ending: {rel}')
+                  text = text.rsplit('\n];', 1)[0] + '\n\n  // v0.5.227: Cifu spoken top-2000 R2 source-audited lexical coverage.\n' + '\n'.join(lines) + '\n];\n'
+                  p.write_text(text)
+          if count != 35:
+              raise SystemExit(f'expected 35 R2 additions, added {count}')
+
+          # Keep the still-unmerged runtime version at v0.5.227 but correct cumulative lexical count.
+          for rel in ['manifest.json']:
+              p = Path(rel)
+              obj = json.loads(p.read_text())
+              obj['description'] = 'v0.5.227 adds 70 source-audited high-frequency Cantonese lexical entries from the Cifu spoken top-2000 audit without broadening grammar.'
+              p.write_text(json.dumps(obj, ensure_ascii=False, indent=2) + '\n')
+          p = Path('src/plugin-entry.js')
+          text = p.read_text().replace('adds 35 source-audited high-frequency lexical entries', 'adds 70 source-audited high-frequency lexical entries')
+          p.write_text(text)
+          p = Path('docs/current/PROJECT-STATE.md')
+          text = p.read_text().replace('adds 35 independently supported high-frequency lexical entries', 'adds 70 independently supported high-frequency lexical entries')
+          p.write_text(text)
+          PY
+      - name: Regenerate current top-2000 coverage and R2 report
+        run: |
+          cp docs/research/LEXICAL-COVERAGE-TOP-2000-R1.md /tmp/LEXICAL-COVERAGE-TOP-2000-R1.md
+          node tools/lexical-coverage/top-2000-audit.mjs --source=/tmp/Cifu-v1.txt
+          python - <<'PY'
+          from pathlib import Path
+          import csv
+          from collections import Counter
+
+          Path('docs/research/LEXICAL-COVERAGE-TOP-2000-R1.md').write_text(Path('/tmp/LEXICAL-COVERAGE-TOP-2000-R1.md').read_text())
+          rows = list(csv.DictReader(Path('data/lexical-frequency/cifu-spoken-top-2000.tsv').open(), delimiter='\t'))
+          counts = Counter(r['runtime_status'] for r in rows)
+          r2 = ['即係','或者','梗係','冇錯','另外','根本','以前','之間','方向','泳池','位置','路','機場','迷宮','起點','南','工廠','城','球場','宅','蛇','葡萄','腰','科技','社會','方面','經過','死','需要','搞','希望','滑雪','明白','感覺','枉']
+          missing = [r for r in rows if r['runtime_status'] == 'missing'][:250]
+          manual = [r for r in rows if r['runtime_status'] == 'manual_review'][:100]
+          out = []
+          out.append('# Top-2000 spoken Cantonese lexical coverage audit — R2\n')
+          out.append('## Relation to R1\n')
+          out.append('R1 established the Cifu `SpokenAdult` top-2,000 baseline and added 35 independently supported lexical entries. R2 reviews the next high-frequency gap slice and adds 35 more ordinary lexemes while leaving grammar-sensitive, variant, generated, and strongly polyfunctional forms unresolved. The canonical TSV is regenerated against the cumulative 70-entry lexical expansion.\n')
+          out.append('## Current coverage after cumulative R1 + R2 additions\n')
+          for key in ['covered_main','covered_variant','handled_structurally','surface_covered_sense_uncertain','missing','manual_review']:
+              out.append(f'- `{key}`: **{counts.get(key,0)}**')
+          out.append('\n## R2 same-task lexical additions (35)\n')
+          out.extend(f'- `{x}`' for x in r2)
+          out.append('\nCifu supplies the frequency, Jyutping and lexical-definition backbone. Wiktionary independently corroborates selected R2 forms where a second lexical source is useful, including 即係, 或者, 方向, 泳池, 經過, 死, and 需要. Frequency remains lexical-discovery evidence only and does not license grammar, construction identity, or status promotion.\n')
+          out.append('## Highest-frequency remaining lexical-gap candidates\n')
+          out.append('| Rank | Form | Count | Jyutping | Cifu definition |')
+          out.append('|---:|---|---:|---|---|')
+          for r in missing:
+              definition = r['cifu_definition'].replace('|','\\|')
+              out.append(f"| {r['rank']} | {r['word']} | {r['cifu_spoken_adult']} | {r['cifu_jyutping']} | {definition} |")
+          out.append('\n## Highest-frequency manual-review forms\n')
+          out.append('| Rank | Form | Count | Jyutping | Cifu definition |')
+          out.append('|---:|---|---:|---|---|')
+          for r in manual:
+              definition = r['cifu_definition'].replace('|','\\|')
+              out.append(f"| {r['rank']} | {r['word']} | {r['cifu_spoken_adult']} | {r['cifu_jyutping']} | {definition} |")
+          out.append('\n## Interpretation\n')
+          out.append('The remaining `missing` bucket is not equivalent to 1:1 safe lexicon work. It still contains particles, spelling/reading variants, classifier-heavy items, lexicalized phrases, strong polysemy, and forms whose parser role would require a grammatical decision. Those remain explicit review targets. Straightforward independently supportable lexical items are added during this task rather than parked merely because the runtime did not already know them.\n')
+          Path('docs/research/LEXICAL-COVERAGE-TOP-2000-R2.md').write_text('\n'.join(out) + '\n')
+          PY
+      - name: Build and test R2 runtime state
+        run: |
+          npm run build:runtime
+          npm test
+          npm run verify:runtime-build
+          npm run verify
+          npm run verify:runtime
+          npm run verify:research
+          git diff --check
+      - name: Commit verified R2 changes
+        run: |
+          git config user.name 'Canto Span scoped automation'
+          git config user.email 'actions@users.noreply.github.com'
+          git add data/lexical-frequency/cifu-spoken-top-2000.tsv \
+            docs/research/LEXICAL-COVERAGE-TOP-2000-R2.md \
+            src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js \
+            src/runtime-resources/lexicon/token-lexicon/places-and-times.js \
+            src/runtime-resources/lexicon/token-lexicon/things.js \
+            src/runtime-resources/lexicon/token-lexicon/verbs.js \
+            src/plugin-entry.js manifest.json docs/current/PROJECT-STATE.md main.js
+          git diff --cached --quiet && { echo 'No R2 changes to commit'; exit 0; }
+          git commit -m 'Fill second high-frequency lexical gap batch'
+          git push origin HEAD:agent/top-2000-lexical-coverage-audit
