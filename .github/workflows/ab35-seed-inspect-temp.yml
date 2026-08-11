@@ -79,28 +79,16 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python3 <<'PY'
-          from pathlib import Path
-          import subprocess
-
-          lines = Path('.github/workflows/ab35-seed-apply-temp.yml').read_text().splitlines()
-          blocks = []
-          i = 0
-          while i < len(lines):
-              if lines[i] == '        run: |':
-                  i += 1
-                  block = []
-                  while i < len(lines) and (lines[i].startswith('          ') or lines[i] == ''):
-                      block.append(lines[i][10:] if lines[i].startswith('          ') else '')
-                      i += 1
-                  blocks.append('\n'.join(block).rstrip() + '\n')
-                  continue
-              i += 1
-
-          if len(blocks) < 6:
-              raise SystemExit(f'expected at least 6 multiline apply blocks, found {len(blocks)}')
-
-          for index, block in enumerate(blocks, start=1):
-              print(f'=== EXECUTING APPLY BLOCK {index}/{len(blocks)} ===', flush=True)
-              subprocess.run(['bash', '-lc', block], check=True)
-          PY
+          ruby <<'RUBY'
+          require 'yaml'
+          path = '.github/workflows/ab35-seed-apply-temp.yml'
+          doc = YAML.load_file(path)
+          steps = doc.fetch('jobs').fetch('apply').fetch('steps')
+          blocks = steps.filter_map { |step| step.is_a?(Hash) ? step['run'] : nil }
+          abort("expected at least 6 multiline apply blocks, found #{blocks.length}") if blocks.length < 6
+          blocks.each_with_index do |block, index|
+            puts "=== EXECUTING APPLY BLOCK #{index + 1}/#{blocks.length} ==="
+            ok = system('bash', '-lc', block)
+            exit($?.exitstatus || 1) unless ok
+          end
+          RUBY
