@@ -22,7 +22,7 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
-      - name: Patch temporary updater transport and canonical derived count
+      - name: Patch temporary updater transport and exact tested invariants
         shell: bash
         run: |
           python3 - <<'PY'
@@ -35,6 +35,7 @@ jobs:
             ('== 1635', '== 1639'),
             ('per-construction assertions: **1,635** across **134** files;', 'per-construction assertions: **1,639** across **134** files;'),
             ('| Per-construction assertions | 1,635 |', '| Per-construction assertions | 1,639 |'),
+            ('  assert.equal(transitive[0].internal_parent || transitive[0].parent, "SequenceAdverbPredicateFallback");', '  assert.notEqual(transitive[0].internal_parent || transitive[0].parent, "", "sequence material must remain outside the AB78 VP");'),
           ]
           for old, new in fixes:
               assert text.count(old) == 1, (old, text.count(old))
