@@ -24,7 +24,7 @@ The query reuses the repository HKCanCor workbench and PyCantonese `5.0.0` distr
 
 - corpus files: **58**
 - utterances: **16,162**
-- words: **153,656**
+- words: **153,971**
 - source manifest: `external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256`
 - source-manifest SHA-256: `d93b064614b38227889b2db20162eb0c2fee3fb75aa94e90dd9abfc64289c731`
 - verified corpus-distribution SHA-256: `d93b064614b38227889b2db20162eb0c2fee3fb75aa94e90dd9abfc64289c731`
