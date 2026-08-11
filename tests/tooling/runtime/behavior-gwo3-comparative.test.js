@@ -35,6 +35,7 @@ function assertComparative(source, predicate, standard) {
 
 test("RED: overt-standard post-predicate 過 comparison exposes predicate, marker, and standard", () => {
   assertComparative("我高過佢。", "高", "佢");
+  assertComparative("細佬矮過我。", "矮", "我");
   assertComparative("佢快過我。", "快", "我");
   assertComparative("今日凍過琴日。", "凍", "琴日");
 });
