@@ -1,6 +1,9 @@
 name: AA84 marked HKCanCor temporary
 
 on:
+  push:
+    branches:
+      - agent/aa84-marked-hkcancor-review
   pull_request:
     paths:
       - "external-evidence/aa84-marked-hkcancor/**"
@@ -12,7 +15,7 @@ permissions:
 
 jobs:
   generate:
-    if: github.event.pull_request.number == 773 && github.event.pull_request.head.ref == 'agent/aa84-marked-hkcancor-review' && github.event.pull_request.base.ref == 'main'
+    if: github.ref == 'refs/heads/agent/aa84-marked-hkcancor-review' || (github.event.pull_request.number == 773 && github.event.pull_request.head.ref == 'agent/aa84-marked-hkcancor-review' && github.event.pull_request.base.ref == 'main')
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
