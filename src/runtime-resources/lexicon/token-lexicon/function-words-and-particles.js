@@ -69,4 +69,29 @@ module.exports = [  // Function words / particles / stance
   ["我覺得", { label: "doing", jyutping: "ngo5 gok3 dak1", syntax: "stance_cognition_frame", note: "I think/feel; compositional phrase should remain learner-visible when possible." }],
   ["我知", { label: "doing", jyutping: "ngo5 zi1", syntax: "cognition_frame", note: "I know; compositional phrase should remain learner-visible when possible." }],
   ["我唔知", { label: "doing", jyutping: "ngo5 m4 zi1", syntax: "negative_cognition_frame", note: "I don't know; compositional phrase should remain learner-visible when possible." }],
+
+  // v0.5.227: source-audited high-frequency lexical coverage.
+  ["其實", {"label":"how","jyutping":"kei4 sat6","syntax":"discourse_adverb stance_adverb","note":"actually / in fact; Cifu spoken top-2000 R1 lexical audit."}],
+  ["譬如", {"label":"func","jyutping":"pei3 jyu4","syntax":"example_introducer discourse_marker","note":"for example / for instance / such as; Cifu spoken top-2000 R1 lexical audit."}],
+  ["但", {"label":"func","jyutping":"daan6","syntax":"connector_contrast","note":"but / however; Cifu spoken top-2000 R1 lexical audit."}],
+  ["亦", {"label":"how","jyutping":"jik6","syntax":"additive_adverb focus_adverb","note":"also / too; Cifu spoken top-2000 R1 lexical audit."}],
+
+  // v0.5.227: Cifu spoken top-2000 R2 source-audited lexical coverage.
+  ["即係", {"label":"func","jyutping":"zik1 hai6","syntax":"discourse_marker reformulation_marker","note":"exactly / that is / i.e.; Cifu spoken top-2000 R2 lexical audit."}],
+  ["或者", {"label":"func","jyutping":"waak6 ze2","syntax":"alternative_connector epistemic_possibility_marker","note":"or / maybe / perhaps; Cifu spoken top-2000 R2 lexical audit."}],
+  ["梗係", {"label":"func","jyutping":"gang2 hai6","syntax":"discourse_marker certainty_marker","note":"of course; Cifu spoken top-2000 R2 lexical audit."}],
+  ["冇錯", {"label":"func","jyutping":"mou5 co3","syntax":"acknowledgement_formula discourse_marker","note":"that is correct / exactly; Cifu spoken top-2000 R2 lexical audit."}],
+  ["另外", {"label":"how","jyutping":"ling6 ngoi6","syntax":"additive_adverb discourse_adverb","note":"additionally / besides / separately; Cifu spoken top-2000 R2 lexical audit."}],
+  ["根本", {"label":"how","jyutping":"gan1 bun2","syntax":"emphatic_adverb discourse_adverb","note":"fundamentally / simply / at all; Cifu spoken top-2000 R2 lexical audit."}],
+  ["枉", {"label":"how","jyutping":"wong2","syntax":"manner_adverb evaluative_adverb","note":"in vain / wrongly; Cifu spoken top-2000 R2 lexical audit."}],
+
+  // v0.5.227: Cifu spoken top-2000 R5 lexical coverage.
+  ["當然", {"label":"how","jyutping":"dong1 jin4","syntax":"stance_adverb discourse_marker","note":"of course / certainly; Cifu spoken top-2000 R5 lexical audit."}],
+  ["究竟", {"label":"how","jyutping":"gau3 ging2","syntax":"question_stance_adverb discourse_adverb","note":"after all / actually; Cifu spoken top-2000 R5 lexical audit."}],
+  ["總之", {"label":"func","jyutping":"zung2 zi1","syntax":"discourse_summary_marker","note":"in short / in brief; Cifu spoken top-2000 R5 lexical audit."}],
+  ["重有", {"label":"how","jyutping":"zung6 jau5","syntax":"additive_adverb discourse_adverb","note":"furthermore / also; Cifu spoken top-2000 R5 lexical audit."}],
+  ["更加", {"label":"how","jyutping":"gang3 gaa1","syntax":"degree_adverb comparative_intensifier","note":"even more; Cifu spoken top-2000 R5 lexical audit."}],
+  ["基本上", {"label":"how","jyutping":"gei1 bun2 soeng6","syntax":"stance_adverb discourse_adverb","note":"basically / on the whole; Cifu spoken top-2000 R5 lexical audit."}],
+  ["突然", {"label":"how","jyutping":"dat6 jin4","syntax":"manner_adverb temporal_adverb","note":"suddenly; Cifu spoken top-2000 R5 lexical audit."}],
+  ["直接", {"label":"how","jyutping":"zik6 zip3","syntax":"manner_adverb","note":"directly / straightforwardly; Cifu spoken top-2000 R5 lexical audit."}],
 ];

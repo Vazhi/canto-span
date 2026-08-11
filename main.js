@@ -1739,7 +1739,11 @@ var require_people_and_address = __commonJS({
       ["其他", { label: "func", pos: "determiner", jyutping: "kei4 taa1", syntax: "nominal_modifier determiner_like_modifier modifier", note: "other; determiner-like nominal modifier before a head noun" }],
       ["同事", { label: "who", jyutping: "tung4 si6", syntax: "person_np", note: "coworker" }],
       ["其他同事", { label: "who", jyutping: "kei4 taa1 tung4 si6", syntax: "person_np", note: "other coworkers; rendered transparently as a modified noun phrase when possible." }],
-      ["公司", { label: "what", jyutping: "gung1 si1", syntax: "organization_np head_noun object_np", classifier_classes: ["general_count"], note: "company / organization" }]
+      ["公司", { label: "what", jyutping: "gung1 si1", syntax: "organization_np head_noun object_np", classifier_classes: ["general_count"], note: "company / organization" }],
+      // v0.5.227: Cifu spoken top-2000 R5 lexical coverage.
+      ["女仔", { "label": "who", "jyutping": "neoi5 zai2", "syntax": "person_np female_person_np", "note": "girl / young woman; Cifu spoken top-2000 R5 lexical audit." }],
+      ["男朋友", { "label": "who", "jyutping": "naam4 pang4 jau5", "syntax": "person_np relationship_person_np", "note": "boyfriend / male friend; Cifu spoken top-2000 R5 lexical audit." }],
+      ["男人", { "label": "who", "jyutping": "naam4 jan2", "syntax": "person_np male_person_np", "note": "man / male; Cifu spoken top-2000 R5 lexical audit." }]
     ];
   }
 });
@@ -1965,7 +1969,73 @@ var require_things = __commonJS({
       ["中價", { label: "what", jyutping: "zung1 gaa3", syntax: "compositional_price_category_source_form", note: "Glossika source form; native-speaker alternatives are documented in the lesson note, not preferred in runtime parsing." }],
       ["錢", { label: "what", jyutping: "cin2", syntax: "object_np", note: "money" }],
       ["蚊", { label: "what", jyutping: "man1", syntax: "currency_unit", note: "dollar / Hong Kong dollar unit" }],
-      ["時間", { label: "when", jyutping: "si4 gaan3", syntax: "time_np", note: "time" }]
+      ["時間", { label: "when", jyutping: "si4 gaan3", syntax: "time_np", note: "time" }],
+      // v0.5.227: source-audited high-frequency lexical coverage.
+      ["線", { "label": "what", "jyutping": "sin3", "syntax": "object_np", "note": "line / string / wire; Cifu spoken top-2000 R1 lexical audit." }],
+      ["樹", { "label": "what", "jyutping": "syu6", "syntax": "object_np", "note": "tree; Cifu spoken top-2000 R1 lexical audit." }],
+      ["政府", { "label": "what", "jyutping": "zing3 fu2", "syntax": "organization_np object_np", "note": "government; Cifu spoken top-2000 R1 lexical audit." }],
+      ["塔", { "label": "what", "jyutping": "taap3", "syntax": "object_np", "note": "tower / pagoda; Cifu spoken top-2000 R1 lexical audit." }],
+      ["馬戲", { "label": "what", "jyutping": "maa5 hei3", "syntax": "object_np", "note": "circus; Cifu spoken top-2000 R1 lexical audit." }],
+      ["角", { "label": "what", "jyutping": "gok3", "syntax": "object_np", "note": "angle / corner / horn; Cifu spoken top-2000 R1 lexical audit." }],
+      ["韻", { "label": "what", "jyutping": "wan6", "syntax": "object_np linguistic_term_np", "note": "rhyme / rime; Cifu spoken top-2000 R1 lexical audit." }],
+      // v0.5.227: Cifu spoken top-2000 R2 source-audited lexical coverage.
+      ["蛇", { "label": "what", "jyutping": "se4", "syntax": "object_np animal_np", "note": "snake / serpent; Cifu spoken top-2000 R2 lexical audit." }],
+      ["葡萄", { "label": "what", "jyutping": "pou4 tou4", "syntax": "object_np food_np", "note": "grape; Cifu spoken top-2000 R2 lexical audit." }],
+      ["腰", { "label": "what", "jyutping": "jiu1", "syntax": "object_np body_part_np", "note": "waist / lower back; Cifu spoken top-2000 R2 lexical audit." }],
+      ["科技", { "label": "what", "jyutping": "fo1 gei6", "syntax": "abstract_np domain_np", "note": "science and technology; Cifu spoken top-2000 R2 lexical audit." }],
+      ["社會", { "label": "what", "jyutping": "se5 wui2", "syntax": "abstract_np collective_np", "note": "society; Cifu spoken top-2000 R2 lexical audit." }],
+      ["方面", { "label": "what", "jyutping": "fong1 min6", "syntax": "abstract_np aspect_np", "note": "aspect / respect / field / side; Cifu spoken top-2000 R2 lexical audit." }],
+      ["煙", { "label": "what", "jyutping": "jin1", "syntax": "object_np substance_np", "note": "smoke / tobacco / cigarette; Cifu spoken top-2000 R2 lexical audit." }],
+      // v0.5.227: Cifu spoken top-2000 R3 noun/place lexical coverage.
+      ["萍", { "label": "what", "jyutping": "ping4", "syntax": "object_np plant_np", "note": "duckweed; Cifu spoken top-2000 R3 lexical audit." }],
+      ["金字塔", { "label": "what", "jyutping": "gam1 zi6 taap3", "syntax": "object_np landmark_np", "note": "pyramid; Cifu spoken top-2000 R3 lexical audit." }],
+      ["農", { "label": "what", "jyutping": "nung4", "syntax": "abstract_np domain_np", "note": "agriculture; Cifu spoken top-2000 R3 lexical audit." }],
+      ["情況", { "label": "what", "jyutping": "cing4 fong3", "syntax": "abstract_np situation_np", "note": "circumstances / situation; Cifu spoken top-2000 R3 lexical audit." }],
+      ["國旗", { "label": "what", "jyutping": "gwok3 kei4", "syntax": "object_np artifact_np", "note": "national flag; Cifu spoken top-2000 R3 lexical audit." }],
+      ["燈塔", { "label": "what", "jyutping": "dang1 taap3", "syntax": "object_np landmark_np", "note": "lighthouse; Cifu spoken top-2000 R3 lexical audit." }],
+      ["纜車", { "label": "what", "jyutping": "laam6 ce1", "syntax": "object_np vehicle_np", "note": "cable car; Cifu spoken top-2000 R3 lexical audit." }],
+      ["效果", { "label": "what", "jyutping": "haau6 gwo2", "syntax": "abstract_np result_np", "note": "result / effect; Cifu spoken top-2000 R3 lexical audit." }],
+      ["文字", { "label": "what", "jyutping": "man4 zi6", "syntax": "object_np linguistic_term_np", "note": "writing / script / characters; Cifu spoken top-2000 R3 lexical audit." }],
+      ["圖", { "label": "what", "jyutping": "tou4", "syntax": "object_np visual_object_np", "note": "diagram / picture / drawing; Cifu spoken top-2000 R3 lexical audit." }],
+      ["銅", { "label": "what", "jyutping": "tung4", "syntax": "object_np material_np", "note": "copper; Cifu spoken top-2000 R3 lexical audit." }],
+      ["地標", { "label": "what", "jyutping": "dei6 biu1", "syntax": "object_np landmark_np", "note": "landmark; Cifu spoken top-2000 R3 lexical audit." }],
+      ["皮", { "label": "what", "jyutping": "pei4", "syntax": "object_np material_or_body_np", "note": "skin / leather; Cifu spoken top-2000 R3 lexical audit." }],
+      ["鬼", { "label": "what", "jyutping": "gwai2", "syntax": "object_np animate_np", "note": "ghost; Cifu spoken top-2000 R3 lexical audit." }],
+      ["電腦", { "label": "what", "jyutping": "din6 nou5", "syntax": "object_np device_np", "note": "computer; Cifu spoken top-2000 R3 lexical audit." }],
+      ["英文", { "label": "what", "jyutping": "jing1 man4", "syntax": "object_np language_np", "note": "English language; Cifu spoken top-2000 R3 lexical audit." }],
+      ["經濟", { "label": "what", "jyutping": "ging1 zai3", "syntax": "abstract_np domain_np", "note": "economy / economics; Cifu spoken top-2000 R3 lexical audit." }],
+      ["理由", { "label": "what", "jyutping": "lei5 jau4", "syntax": "abstract_np reason_np", "note": "reason / grounds / justification; Cifu spoken top-2000 R3 lexical audit." }],
+      ["法律", { "label": "what", "jyutping": "faat3 leot6", "syntax": "abstract_np domain_np", "note": "law; Cifu spoken top-2000 R3 lexical audit." }],
+      // v0.5.227: Cifu spoken top-2000 R4 nominal lexical coverage.
+      ["虛線", { "label": "what", "jyutping": "heoi1 sin3", "syntax": "object_np visual_line_np", "note": "dotted line; Cifu spoken top-2000 R4 lexical audit." }],
+      ["自由", { "label": "what", "jyutping": "zi6 jau4", "syntax": "abstract_np concept_np", "note": "freedom / liberty; Cifu spoken top-2000 R4 lexical audit." }],
+      ["直線", { "label": "what", "jyutping": "zik6 sin3", "syntax": "object_np visual_line_np", "note": "straight line; Cifu spoken top-2000 R4 lexical audit." }],
+      ["性", { "label": "what", "jyutping": "sing3", "syntax": "abstract_np property_np", "note": "nature / property / sex; Cifu spoken top-2000 R4 lexical audit." }],
+      ["關係", { "label": "what", "jyutping": "gwaan1 hai6", "syntax": "abstract_np relation_np", "note": "relation / relationship; Cifu spoken top-2000 R4 lexical audit." }],
+      ["生活", { "label": "what", "jyutping": "sang1 wut6", "syntax": "abstract_np life_np", "note": "life / livelihood; Cifu spoken top-2000 R4 lexical audit." }],
+      ["法", { "label": "what", "jyutping": "faat3", "syntax": "abstract_np method_or_law_np", "note": "law / method / way; Cifu spoken top-2000 R4 lexical audit." }],
+      ["方法", { "label": "what", "jyutping": "fong1 faat3", "syntax": "abstract_np method_np", "note": "method / way / means; Cifu spoken top-2000 R4 lexical audit." }],
+      ["圖案", { "label": "what", "jyutping": "tou4 on3", "syntax": "object_np visual_object_np", "note": "design / pattern; Cifu spoken top-2000 R4 lexical audit." }],
+      ["尾", { "label": "what", "jyutping": "mei5", "syntax": "object_np body_part_np", "note": "tail / end; Cifu spoken top-2000 R4 lexical audit." }],
+      ["意見", { "label": "what", "jyutping": "ji3 gin3", "syntax": "abstract_np opinion_np", "note": "opinion / suggestion; Cifu spoken top-2000 R4 lexical audit." }],
+      ["圖片", { "label": "what", "jyutping": "tou4 pin3", "syntax": "object_np visual_object_np", "note": "image / picture / photograph; Cifu spoken top-2000 R4 lexical audit." }],
+      ["辦法", { "label": "what", "jyutping": "baan6 faat3", "syntax": "abstract_np method_np", "note": "means / method / way; Cifu spoken top-2000 R4 lexical audit." }],
+      ["財政", { "label": "what", "jyutping": "coi4 zing3", "syntax": "abstract_np domain_np", "note": "public finance / finances; Cifu spoken top-2000 R4 lexical audit." }],
+      ["碑", { "label": "what", "jyutping": "bei1", "syntax": "object_np monument_np", "note": "monument / stone tablet; Cifu spoken top-2000 R4 lexical audit." }],
+      ["距離", { "label": "what", "jyutping": "keoi5 lei4", "syntax": "abstract_np distance_np", "note": "distance; Cifu spoken top-2000 R4 lexical audit." }],
+      ["概念", { "label": "what", "jyutping": "koi3 nim6", "syntax": "abstract_np concept_np", "note": "concept / idea; Cifu spoken top-2000 R4 lexical audit." }],
+      ["人權", { "label": "what", "jyutping": "jan4 kyun4", "syntax": "abstract_np rights_np", "note": "human rights; Cifu spoken top-2000 R4 lexical audit." }],
+      ["考試", { "label": "what", "jyutping": "haau2 si3", "syntax": "event_np assessment_np", "note": "exam; Cifu spoken top-2000 R4 lexical audit." }],
+      ["杏", { "label": "what", "jyutping": "hang6", "syntax": "object_np food_or_plant_np", "note": "apricot; Cifu spoken top-2000 R4 lexical audit." }],
+      ["格", { "label": "what", "jyutping": "gaak3", "syntax": "abstract_or_object_np pattern_np", "note": "frame / style / pattern; Cifu spoken top-2000 R4 lexical audit." }],
+      ["團", { "label": "what", "jyutping": "tyun4", "syntax": "collective_np object_np", "note": "group / society / regiment; Cifu spoken top-2000 R4 lexical audit." }],
+      ["頭", { "label": "what", "jyutping": "tau4", "syntax": "object_np body_part_np", "note": "head; Cifu spoken top-2000 R4 lexical audit." }],
+      ["意", { "label": "what", "jyutping": "ji3", "syntax": "abstract_np idea_or_intention_np", "note": "idea / meaning / intention; Cifu spoken top-2000 R4 lexical audit." }],
+      // v0.5.227: Cifu spoken top-2000 R5 lexical coverage.
+      ["汗", { "label": "what", "jyutping": "hon6", "syntax": "object_np substance_np", "note": "sweat / perspiration; Cifu spoken top-2000 R5 lexical audit." }],
+      ["印", { "label": "what", "jyutping": "jan3", "syntax": "object_np mark_or_artifact_np", "note": "stamp / seal / mark / print; Cifu spoken top-2000 R5 lexical audit." }],
+      ["形", { "label": "what", "jyutping": "jing4", "syntax": "abstract_or_object_np shape_np", "note": "form / shape; Cifu spoken top-2000 R5 lexical audit." }],
+      ["翻版", { "label": "what", "jyutping": "faan1 baan2", "syntax": "object_np copy_np", "note": "reprint / duplicate / clone; Cifu spoken top-2000 R5 lexical audit." }]
     ];
   }
 });
@@ -2040,7 +2110,81 @@ var require_places_and_times = __commonJS({
       ["尺", { label: "measure_word", jyutping: "cek3", syntax: "measure_unit length_measure_unit nominal_measure_unit", note: "foot-length measure unit" }],
       ["長", { label: "like", jyutping: "coeng4", syntax: "stative_predicate scalar_dimension_predicate length_dimension_predicate", note: "long; dimensional property predicate" }],
       ["一個人", { label: "who", jyutping: "jat1 go3 jan4", syntax: "quantity_person_np", note: "one person / per person" }],
-      ["兩三百蚊", { label: "like", jyutping: "loeng5 saam1 baak3 man1", syntax: "quantity approximate_money_amount price_np", note: "two or three hundred dollars; approximate price/value descriptor" }]
+      ["兩三百蚊", { label: "like", jyutping: "loeng5 saam1 baak3 man1", syntax: "quantity approximate_money_amount price_np", note: "two or three hundred dollars; approximate price/value descriptor" }],
+      // v0.5.227: source-audited high-frequency lexical coverage.
+      ["中間", { "label": "where", "jyutping": "zung1 gaan1", "syntax": "place_or_goal spatial_localizer", "note": "middle / between; Cifu spoken top-2000 R1 lexical audit." }],
+      ["下面", { "label": "where", "jyutping": "haa6 min6", "syntax": "place_or_goal spatial_localizer", "note": "below / underneath; Cifu spoken top-2000 R1 lexical audit." }],
+      ["沙漠", { "label": "where", "jyutping": "saa1 mok6", "syntax": "place_or_goal", "note": "desert; Cifu spoken top-2000 R1 lexical audit." }],
+      ["終點", { "label": "where", "jyutping": "zung1 dim2", "syntax": "place_or_goal", "note": "endpoint / destination / terminus; Cifu spoken top-2000 R1 lexical audit." }],
+      ["山", { "label": "where", "jyutping": "saan1", "syntax": "place_or_goal", "note": "mountain / hill; Cifu spoken top-2000 R1 lexical audit." }],
+      ["園", { "label": "where", "jyutping": "jyun4", "syntax": "place_or_goal", "note": "garden; Cifu spoken top-2000 R1 lexical audit." }],
+      ["池", { "label": "where", "jyutping": "ci4", "syntax": "place_or_goal", "note": "pond / pool; Cifu spoken top-2000 R1 lexical audit." }],
+      ["茅屋", { "label": "where", "jyutping": "maau4 uk1", "syntax": "place_or_goal", "note": "cottage / hut; Cifu spoken top-2000 R1 lexical audit." }],
+      ["頭先", { "label": "when", "jyutping": "tau4 sin1", "syntax": "temporal_adjunct", "note": "just now / a moment ago; Cifu spoken top-2000 R1 lexical audit." }],
+      ["右邊", { "label": "where", "jyutping": "jau6 bin1", "syntax": "place_or_goal spatial_localizer", "note": "right side; Cifu spoken top-2000 R1 lexical audit." }],
+      ["一路", { "label": "when", "jyutping": "jat1 lou6", "syntax": "temporal_adjunct", "note": "continually / all along; Cifu spoken top-2000 R1 lexical audit." }],
+      ["一直", { "label": "when", "jyutping": "jat1 zik6", "syntax": "temporal_adjunct", "note": "continuously / all along; Cifu spoken top-2000 R1 lexical audit." }],
+      ["左邊", { "label": "where", "jyutping": "zo2 bin1", "syntax": "place_or_goal spatial_localizer", "note": "left side; Cifu spoken top-2000 R1 lexical audit." }],
+      ["港", { "label": "where", "jyutping": "gong2", "syntax": "place_or_goal", "note": "port / harbor; Hong Kong abbreviation in context; Cifu spoken top-2000 R1 lexical audit." }],
+      ["湖", { "label": "where", "jyutping": "wu4", "syntax": "place_or_goal", "note": "lake; Cifu spoken top-2000 R1 lexical audit." }],
+      ["洞", { "label": "where", "jyutping": "dung6", "syntax": "place_or_goal", "note": "cave / hole; Cifu spoken top-2000 R1 lexical audit." }],
+      ["點鐘", { "label": "when", "jyutping": "dim2 zung1", "syntax": "time_np clock_time_unit", "note": "o'clock / clock-hour expression; Cifu spoken top-2000 R1 lexical audit." }],
+      ["廟", { "label": "where", "jyutping": "miu6", "syntax": "place_or_goal place_np", "note": "temple; Cifu spoken top-2000 R1 lexical audit." }],
+      // v0.5.227: Cifu spoken top-2000 R2 source-audited lexical coverage.
+      ["以前", { "label": "when", "jyutping": "ji5 cin4", "syntax": "temporal_adjunct", "note": "before / formerly / ago; Cifu spoken top-2000 R2 lexical audit." }],
+      ["之間", { "label": "where", "jyutping": "zi1 gaan1", "syntax": "relational_localizer spatial_nominal", "note": "between / among; Cifu spoken top-2000 R2 lexical audit." }],
+      ["方向", { "label": "where", "jyutping": "fong1 hoeng3", "syntax": "direction_np spatial_nominal", "note": "direction / orientation; Cifu spoken top-2000 R2 lexical audit." }],
+      ["泳池", { "label": "where", "jyutping": "wing6 ci4", "syntax": "place_or_goal place_np", "note": "swimming pool; Cifu spoken top-2000 R2 lexical audit." }],
+      ["位置", { "label": "where", "jyutping": "wai6 zi3", "syntax": "location_np place_or_goal", "note": "position / place / location; Cifu spoken top-2000 R2 lexical audit." }],
+      ["路", { "label": "where", "jyutping": "lou6", "syntax": "path_np place_or_goal", "note": "road / path / way; Cifu spoken top-2000 R2 lexical audit." }],
+      ["機場", { "label": "where", "jyutping": "gei1 coeng4", "syntax": "place_or_goal place_np", "note": "airport / airfield; Cifu spoken top-2000 R2 lexical audit." }],
+      ["迷宮", { "label": "where", "jyutping": "mai4 gung1", "syntax": "place_or_goal place_np", "note": "maze / labyrinth; Cifu spoken top-2000 R2 lexical audit." }],
+      ["起點", { "label": "where", "jyutping": "hei2 dim2", "syntax": "source_or_startpoint place_or_goal", "note": "starting point; Cifu spoken top-2000 R2 lexical audit." }],
+      ["南", { "label": "where", "jyutping": "naam4", "syntax": "direction_np cardinal_direction", "note": "south; Cifu spoken top-2000 R2 lexical audit." }],
+      ["工廠", { "label": "where", "jyutping": "gung1 cong2", "syntax": "place_or_goal place_np", "note": "factory; Cifu spoken top-2000 R2 lexical audit." }],
+      ["城", { "label": "where", "jyutping": "sing4", "syntax": "place_or_goal place_np", "note": "city / town / city walls; Cifu spoken top-2000 R2 lexical audit." }],
+      ["球場", { "label": "where", "jyutping": "kau4 coeng4", "syntax": "place_or_goal place_np", "note": "sports ground / court / field; Cifu spoken top-2000 R2 lexical audit." }],
+      ["宅", { "label": "where", "jyutping": "zaak6", "syntax": "place_or_goal residence_np", "note": "residence; Cifu spoken top-2000 R2 lexical audit." }],
+      // v0.5.227: Cifu spoken top-2000 R3 noun/place lexical coverage.
+      ["北方", { "label": "where", "jyutping": "bak1 fong1", "syntax": "direction_np cardinal_region", "note": "north / northern region; Cifu spoken top-2000 R3 lexical audit." }],
+      ["東", { "label": "where", "jyutping": "dung1", "syntax": "direction_np cardinal_direction", "note": "east; Cifu spoken top-2000 R3 lexical audit." }],
+      ["碼頭", { "label": "where", "jyutping": "maa5 tau4", "syntax": "place_or_goal place_np", "note": "dock / pier / wharf; Cifu spoken top-2000 R3 lexical audit." }],
+      ["礦場", { "label": "where", "jyutping": "kwong3 coeng4", "syntax": "place_or_goal place_np", "note": "mine / pit; Cifu spoken top-2000 R3 lexical audit." }],
+      ["農莊", { "label": "where", "jyutping": "nung4 zong1", "syntax": "place_or_goal place_np", "note": "farm / ranch; Cifu spoken top-2000 R3 lexical audit." }],
+      ["瀑布", { "label": "where", "jyutping": "buk6 bou3", "syntax": "place_or_goal natural_place_np", "note": "waterfall; Cifu spoken top-2000 R3 lexical audit." }],
+      ["墳場", { "label": "where", "jyutping": "fan4 coeng4", "syntax": "place_or_goal place_np", "note": "cemetery / graveyard; Cifu spoken top-2000 R3 lexical audit." }],
+      ["樹林", { "label": "where", "jyutping": "syu6 lam4", "syntax": "place_or_goal natural_place_np", "note": "woods / grove / forest; Cifu spoken top-2000 R3 lexical audit." }],
+      ["禮堂", { "label": "where", "jyutping": "lai5 tong4", "syntax": "place_or_goal place_np", "note": "assembly hall / auditorium; Cifu spoken top-2000 R3 lexical audit." }],
+      ["地盤", { "label": "where", "jyutping": "dei6 pun4", "syntax": "place_or_goal place_np", "note": "construction site / territory; Cifu spoken top-2000 R3 lexical audit." }],
+      ["市場", { "label": "where", "jyutping": "si5 coeng4", "syntax": "place_or_goal place_np", "note": "market / marketplace; Cifu spoken top-2000 R3 lexical audit." }],
+      ["國", { "label": "where", "jyutping": "gwok3", "syntax": "place_or_goal geopolitical_place_np", "note": "country / nation / state; Cifu spoken top-2000 R3 lexical audit." }],
+      ["西", { "label": "where", "jyutping": "sai1", "syntax": "direction_np cardinal_direction", "note": "west; Cifu spoken top-2000 R3 lexical audit." }],
+      ["水塘", { "label": "where", "jyutping": "seoi2 tong4", "syntax": "place_or_goal natural_place_np", "note": "reservoir / pool; Cifu spoken top-2000 R3 lexical audit." }],
+      ["國家", { "label": "where", "jyutping": "gwok3 gaa1", "syntax": "place_or_goal geopolitical_place_np", "note": "country / nation / state; Cifu spoken top-2000 R3 lexical audit." }],
+      ["世界", { "label": "where", "jyutping": "sai3 gaai3", "syntax": "place_or_goal world_np", "note": "world; Cifu spoken top-2000 R3 lexical audit." }],
+      // v0.5.227: Cifu spoken top-2000 R4 nominal lexical coverage.
+      ["灣", { "label": "where", "jyutping": "waan1", "syntax": "place_or_goal natural_place_np", "note": "bay / gulf; Cifu spoken top-2000 R4 lexical audit." }],
+      ["室", { "label": "where", "jyutping": "sat1", "syntax": "place_or_goal room_np", "note": "room; Cifu spoken top-2000 R4 lexical audit." }],
+      ["樂園", { "label": "where", "jyutping": "lok6 jyun4", "syntax": "place_or_goal place_np", "note": "paradise / pleasure park; Cifu spoken top-2000 R4 lexical audit." }],
+      ["林", { "label": "where", "jyutping": "lam4", "syntax": "place_or_goal natural_place_np", "note": "woods / forest; Cifu spoken top-2000 R4 lexical audit." }],
+      ["東方", { "label": "where", "jyutping": "dung1 fong1", "syntax": "direction_np cardinal_region", "note": "the East / eastern region; Cifu spoken top-2000 R4 lexical audit." }],
+      ["貨倉", { "label": "where", "jyutping": "fo3 cong1", "syntax": "place_or_goal place_np", "note": "warehouse; Cifu spoken top-2000 R4 lexical audit." }],
+      ["店", { "label": "where", "jyutping": "dim3", "syntax": "place_or_goal place_np", "note": "shop / store / inn; Cifu spoken top-2000 R4 lexical audit." }],
+      ["北", { "label": "where", "jyutping": "bak1", "syntax": "direction_np cardinal_direction", "note": "north; Cifu spoken top-2000 R4 lexical audit." }],
+      ["外國", { "label": "where", "jyutping": "ngoi6 gwok3", "syntax": "place_or_goal geopolitical_place_np", "note": "foreign country; Cifu spoken top-2000 R4 lexical audit." }],
+      ["莊", { "label": "where", "jyutping": "zong1", "syntax": "place_or_goal settlement_or_estate_np", "note": "farmstead / village / manor; Cifu spoken top-2000 R4 lexical audit." }],
+      ["將來", { "label": "when", "jyutping": "zoeng1 loi4", "syntax": "temporal_adjunct future_time_np", "note": "the future; Cifu spoken top-2000 R4 lexical audit." }],
+      // v0.5.227: Cifu spoken top-2000 R5 lexical coverage.
+      ["海", { "label": "where", "jyutping": "hoi2", "syntax": "place_or_goal natural_place_np", "note": "ocean / sea; Cifu spoken top-2000 R5 lexical audit." }],
+      ["叢林", { "label": "where", "jyutping": "cung4 lam4", "syntax": "place_or_goal natural_place_np", "note": "jungle / thicket / forest; Cifu spoken top-2000 R5 lexical audit." }],
+      ["大陸", { "label": "where", "jyutping": "daai6 luk6", "syntax": "place_or_goal geopolitical_place_np", "note": "mainland / continent; Cifu spoken top-2000 R5 lexical audit." }],
+      ["灘", { "label": "where", "jyutping": "taan1", "syntax": "place_or_goal natural_place_np", "note": "beach / shoal; Cifu spoken top-2000 R5 lexical audit." }],
+      ["西方", { "label": "where", "jyutping": "sai1 fong1", "syntax": "direction_np cardinal_region", "note": "the West / western region; Cifu spoken top-2000 R5 lexical audit." }],
+      ["之前", { "label": "when", "jyutping": "zi1 cin4", "syntax": "temporal_adjunct", "note": "before / prior to; Cifu spoken top-2000 R5 lexical audit." }],
+      ["即刻", { "label": "when", "jyutping": "zik1 hak1", "syntax": "temporal_adjunct immediate_time_adverb", "note": "immediately / instantly; Cifu spoken top-2000 R5 lexical audit." }],
+      ["最後", { "label": "when", "jyutping": "zeoi3 hau6", "syntax": "temporal_adjunct sequence_time_adverb", "note": "finally / last; Cifu spoken top-2000 R5 lexical audit." }],
+      ["今年", { "label": "when", "jyutping": "gam1 nin4", "syntax": "temporal_adjunct time_np", "note": "this year; Cifu spoken top-2000 R5 lexical audit." }],
+      ["早", { "label": "when", "jyutping": "zou2", "syntax": "temporal_adjunct time_adverb", "note": "early / morning; Cifu spoken top-2000 R5 lexical audit." }]
     ];
   }
 });
@@ -2234,7 +2378,20 @@ var require_verbs = __commonJS({
       ["風", { label: "what", jyutping: "fung1", syntax: "weather_np wind_noun weather_phenomenon environmental_phenomenon", note: "wind; a visible weather-phenomenon component in 打風." }],
       ["天光", { label: "doing", jyutping: "tin1 gwong1", syntax: "environmental_transition_predicate daylight_transition_predicate impersonal_predicate", note: "daybreak / become light; a genuinely subjectless environmental transition predicate." }],
       ["花園", { label: "where", jyutping: "faa1 jyun2", syntax: "place_np garden_noun", note: "garden." }],
-      ["通常", { label: "when", jyutping: "tung1 soeng4", syntax: "habitual_frequency_adverb", note: "usually." }]
+      ["通常", { label: "when", jyutping: "tung1 soeng4", syntax: "habitual_frequency_adverb", note: "usually." }],
+      // v0.5.227: source-audited high-frequency lexical coverage.
+      ["知道", { "label": "doing", "jyutping": "zi1 dou3", "syntax": "cognition_verb", "note": "know / be aware of; Cifu spoken top-2000 R1 lexical audit." }],
+      ["繼續", { "label": "doing", "jyutping": "gai3 zuk6", "syntax": "verb", "note": "continue / proceed; Cifu spoken top-2000 R1 lexical audit." }],
+      ["恨", { "label": "doing", "jyutping": "han6", "syntax": "verb attitude_verb", "note": "hate / regret / long for; Cifu spoken top-2000 R1 lexical audit." }],
+      ["交叉", { "label": "doing", "jyutping": "gaau1 caa1", "syntax": "verb", "note": "cross / intersect; Cifu spoken top-2000 R1 lexical audit." }],
+      // v0.5.227: Cifu spoken top-2000 R2 source-audited lexical coverage.
+      ["經過", { "label": "doing", "jyutping": "ging1 gwo3", "syntax": "verb motion_path_verb", "note": "pass through / go through / undergo; Cifu spoken top-2000 R2 lexical audit." }],
+      ["需要", { "label": "doing", "jyutping": "seoi1 jiu3", "syntax": "verb necessity_predicate", "note": "need / require; Cifu spoken top-2000 R2 lexical audit." }],
+      ["搞", { "label": "doing", "jyutping": "gaau2", "syntax": "verb", "note": "do / make / arrange / handle; Cifu spoken top-2000 R2 lexical audit." }],
+      ["希望", { "label": "doing", "jyutping": "hei1 mong6", "syntax": "verb desire_verb", "note": "hope / wish for; Cifu spoken top-2000 R2 lexical audit." }],
+      ["滑雪", { "label": "doing", "jyutping": "waat6 syut3", "syntax": "verb activity_verb", "note": "ski / skiing; Cifu spoken top-2000 R2 lexical audit." }],
+      ["明白", { "label": "doing", "jyutping": "ming4 baak6", "syntax": "verb cognition_verb", "note": "understand / realize; Cifu spoken top-2000 R2 lexical audit." }],
+      ["感覺", { "label": "doing", "jyutping": "gam2 gok3", "syntax": "verb perception_verb", "note": "feel / sense; Cifu spoken top-2000 R2 lexical audit." }]
     ];
   }
 });
@@ -2305,7 +2462,30 @@ var require_statives = __commonJS({
       ["特別", { label: "like", jyutping: "dak6 bit6", syntax: "modifier_or_stative", note: "special" }],
       ["啱", { label: "like", jyutping: "ngaam1", syntax: "stative_predicate", note: "right / suitable" }],
       ["算", { label: "func", jyutping: "syun3", syntax: "evaluation_verb_or_marker", note: "count as / be considered" }],
-      ["唔算", { label: "func", jyutping: "m4 syun3", syntax: "negative_evaluation_marker", note: "doesn't count as / not considered; tokenizer keeps 唔 + 算 visible in transparent price evaluations." }]
+      ["唔算", { label: "func", jyutping: "m4 syun3", syntax: "negative_evaluation_marker", note: "doesn't count as / not considered; tokenizer keeps 唔 + 算 visible in transparent price evaluations." }],
+      // v0.5.227: source-audited high-frequency lexical coverage.
+      ["香", { "label": "like", "jyutping": "hoeng1", "syntax": "stative_predicate sensory_property", "note": "fragrant / aromatic; Cifu spoken top-2000 R1 lexical audit." }],
+      ["善", { "label": "like", "jyutping": "sin6", "syntax": "stative_predicate evaluative_property", "note": "good / benevolent; Cifu spoken top-2000 R1 lexical audit." }],
+      // v0.5.227: Cifu spoken top-2000 R6 stative lexical coverage.
+      ["傻", { "label": "like", "jyutping": "so4", "syntax": "stative_predicate evaluative_property", "note": "foolish / silly; Cifu spoken top-2000 R6 lexical audit." }],
+      ["勁", { "label": "like", "jyutping": "ging6", "syntax": "stative_predicate scalar_property", "note": "strong / powerful / excellent; Cifu spoken top-2000 R6 lexical audit." }],
+      ["暖", { "label": "like", "jyutping": "nyun5", "syntax": "stative_predicate temperature_property", "note": "warm; Cifu spoken top-2000 R6 lexical audit." }],
+      ["濫", { "label": "like", "jyutping": "laam6", "syntax": "stative_predicate evaluative_property", "note": "excessive / indiscriminate; Cifu spoken top-2000 R6 lexical audit." }],
+      ["小", { "label": "like", "jyutping": "siu2", "syntax": "stative_predicate size_stative scalar_dimension_predicate", "note": "small / tiny; Cifu spoken top-2000 R6 lexical audit." }],
+      ["斜", { "label": "like", "jyutping": "ce4", "syntax": "stative_predicate orientation_property", "note": "slanting / oblique; Cifu spoken top-2000 R6 lexical audit." }],
+      ["瑞", { "label": "like", "jyutping": "seoi6", "syntax": "stative_predicate evaluative_property", "note": "auspicious / lucky; Cifu spoken top-2000 R6 lexical audit." }],
+      ["重要", { "label": "like", "jyutping": "zung6 jiu3", "syntax": "stative_predicate importance_property", "note": "important / significant; Cifu spoken top-2000 R6 lexical audit." }],
+      ["貧", { "label": "like", "jyutping": "pan4", "syntax": "stative_predicate resource_property", "note": "poor / deficient; Cifu spoken top-2000 R6 lexical audit." }],
+      ["彎", { "label": "like", "jyutping": "waan1", "syntax": "stative_predicate shape_property", "note": "bent / curved; Cifu spoken top-2000 R6 lexical audit." }],
+      ["錯", { "label": "like", "jyutping": "co3", "syntax": "stative_predicate evaluative_property", "note": "wrong / mistaken; Cifu spoken top-2000 R6 lexical audit." }],
+      ["舊", { "label": "like", "jyutping": "gau6", "syntax": "stative_predicate age_state_stative", "note": "old / former / worn; Cifu spoken top-2000 R6 lexical audit." }],
+      ["似", { "label": "like", "jyutping": "ci5", "syntax": "stative_predicate similarity_predicate", "note": "similar / resemble / seem; Cifu spoken top-2000 R6 lexical audit." }],
+      ["簡單", { "label": "like", "jyutping": "gaan2 daan1", "syntax": "stative_predicate complexity_property", "note": "simple / uncomplicated; Cifu spoken top-2000 R6 lexical audit." }],
+      ["主要", { "label": "like", "jyutping": "zyu2 jiu3", "syntax": "stative_predicate importance_property modifier", "note": "main / principal / primary; Cifu spoken top-2000 R6 lexical audit." }],
+      ["怪", { "label": "like", "jyutping": "gwaai3", "syntax": "stative_predicate evaluative_property", "note": "strange / odd / uncanny; Cifu spoken top-2000 R6 lexical audit." }],
+      ["幼", { "label": "like", "jyutping": "jau3", "syntax": "stative_predicate age_state_stative", "note": "young; Cifu spoken top-2000 R6 lexical audit." }],
+      ["普通", { "label": "like", "jyutping": "pou2 tung1", "syntax": "stative_predicate evaluative_property", "note": "common / ordinary / average; Cifu spoken top-2000 R6 lexical audit." }],
+      ["直", { "label": "like", "jyutping": "zik6", "syntax": "stative_predicate orientation_property", "note": "straight / upright; Cifu spoken top-2000 R6 lexical audit." }]
     ];
   }
 });
@@ -2383,7 +2563,29 @@ var require_function_words_and_particles = __commonJS({
       ["可能", { label: "func", jyutping: "ho2 nang4", syntax: "stance_possibility", note: "maybe" }],
       ["我覺得", { label: "doing", jyutping: "ngo5 gok3 dak1", syntax: "stance_cognition_frame", note: "I think/feel; compositional phrase should remain learner-visible when possible." }],
       ["我知", { label: "doing", jyutping: "ngo5 zi1", syntax: "cognition_frame", note: "I know; compositional phrase should remain learner-visible when possible." }],
-      ["我唔知", { label: "doing", jyutping: "ngo5 m4 zi1", syntax: "negative_cognition_frame", note: "I don't know; compositional phrase should remain learner-visible when possible." }]
+      ["我唔知", { label: "doing", jyutping: "ngo5 m4 zi1", syntax: "negative_cognition_frame", note: "I don't know; compositional phrase should remain learner-visible when possible." }],
+      // v0.5.227: source-audited high-frequency lexical coverage.
+      ["其實", { "label": "how", "jyutping": "kei4 sat6", "syntax": "discourse_adverb stance_adverb", "note": "actually / in fact; Cifu spoken top-2000 R1 lexical audit." }],
+      ["譬如", { "label": "func", "jyutping": "pei3 jyu4", "syntax": "example_introducer discourse_marker", "note": "for example / for instance / such as; Cifu spoken top-2000 R1 lexical audit." }],
+      ["但", { "label": "func", "jyutping": "daan6", "syntax": "connector_contrast", "note": "but / however; Cifu spoken top-2000 R1 lexical audit." }],
+      ["亦", { "label": "how", "jyutping": "jik6", "syntax": "additive_adverb focus_adverb", "note": "also / too; Cifu spoken top-2000 R1 lexical audit." }],
+      // v0.5.227: Cifu spoken top-2000 R2 source-audited lexical coverage.
+      ["即係", { "label": "func", "jyutping": "zik1 hai6", "syntax": "discourse_marker reformulation_marker", "note": "exactly / that is / i.e.; Cifu spoken top-2000 R2 lexical audit." }],
+      ["或者", { "label": "func", "jyutping": "waak6 ze2", "syntax": "alternative_connector epistemic_possibility_marker", "note": "or / maybe / perhaps; Cifu spoken top-2000 R2 lexical audit." }],
+      ["梗係", { "label": "func", "jyutping": "gang2 hai6", "syntax": "discourse_marker certainty_marker", "note": "of course; Cifu spoken top-2000 R2 lexical audit." }],
+      ["冇錯", { "label": "func", "jyutping": "mou5 co3", "syntax": "acknowledgement_formula discourse_marker", "note": "that is correct / exactly; Cifu spoken top-2000 R2 lexical audit." }],
+      ["另外", { "label": "how", "jyutping": "ling6 ngoi6", "syntax": "additive_adverb discourse_adverb", "note": "additionally / besides / separately; Cifu spoken top-2000 R2 lexical audit." }],
+      ["根本", { "label": "how", "jyutping": "gan1 bun2", "syntax": "emphatic_adverb discourse_adverb", "note": "fundamentally / simply / at all; Cifu spoken top-2000 R2 lexical audit." }],
+      ["枉", { "label": "how", "jyutping": "wong2", "syntax": "manner_adverb evaluative_adverb", "note": "in vain / wrongly; Cifu spoken top-2000 R2 lexical audit." }],
+      // v0.5.227: Cifu spoken top-2000 R5 lexical coverage.
+      ["當然", { "label": "how", "jyutping": "dong1 jin4", "syntax": "stance_adverb discourse_marker", "note": "of course / certainly; Cifu spoken top-2000 R5 lexical audit." }],
+      ["究竟", { "label": "how", "jyutping": "gau3 ging2", "syntax": "question_stance_adverb discourse_adverb", "note": "after all / actually; Cifu spoken top-2000 R5 lexical audit." }],
+      ["總之", { "label": "func", "jyutping": "zung2 zi1", "syntax": "discourse_summary_marker", "note": "in short / in brief; Cifu spoken top-2000 R5 lexical audit." }],
+      ["重有", { "label": "how", "jyutping": "zung6 jau5", "syntax": "additive_adverb discourse_adverb", "note": "furthermore / also; Cifu spoken top-2000 R5 lexical audit." }],
+      ["更加", { "label": "how", "jyutping": "gang3 gaa1", "syntax": "degree_adverb comparative_intensifier", "note": "even more; Cifu spoken top-2000 R5 lexical audit." }],
+      ["基本上", { "label": "how", "jyutping": "gei1 bun2 soeng6", "syntax": "stance_adverb discourse_adverb", "note": "basically / on the whole; Cifu spoken top-2000 R5 lexical audit." }],
+      ["突然", { "label": "how", "jyutping": "dat6 jin4", "syntax": "manner_adverb temporal_adverb", "note": "suddenly; Cifu spoken top-2000 R5 lexical audit." }],
+      ["直接", { "label": "how", "jyutping": "zik6 zip3", "syntax": "manner_adverb", "note": "directly / straightforwardly; Cifu spoken top-2000 R5 lexical audit." }]
     ];
   }
 });
@@ -22609,7 +22811,7 @@ var {
 } = require_learner_glosses();
 var createLearnerDisplay = require_learner_display();
 var createCantoSpanPlugin = require_canto_span_plugin();
-var CANTO_SPAN_RUNTIME_VERSION = "0.5.226";
+var CANTO_SPAN_RUNTIME_VERSION = "0.5.227";
 var {
   runtimeConstructionRegistryVersion: RUNTIME_CONSTRUCTION_REGISTRY_VERSION,
   constructionLabelRegistry,
