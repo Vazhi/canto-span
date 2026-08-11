@@ -169,6 +169,32 @@ implementation, tests, and documentation when every affected state dimension and
 gate is declared. Research findings alone still do not authorize promotion or
 runtime broadening.
 
+### Lexical coverage during active work
+
+Missing lexical coverage is support work, not a default reason to weaken or defer an
+otherwise justified task. When active research, survey design, corpus analysis,
+testing, or runtime implementation exposes a common lexical item needed to preserve
+a stronger source example, clean minimal contrast, semantically coherent stimulus,
+or executable behavioral contract, add the justified lexical coverage in the same
+bounded task.
+
+Use the canonical lexical resource appropriate to that task and the existing schema.
+Record the lexical facts the resource requires, including written form, Jyutping,
+gloss, lexical category, classifier or argument information where relevant,
+source/attestation, and the reason the entry is needed. A lexical addition must be
+independently supportable at the lexical level; generated examples, parser output, or
+the desire to make a test pass are not lexical evidence.
+
+Do not replace a better supported example with an easier already-known vocabulary
+frame, drop a published example from a behavioral gate, or postpone necessary
+coverage solely because the lexicon is incomplete when the missing entries can be
+added within the authorized claim. Conversely, this rule does not authorize an
+unrelated lexicon sweep, speculative lexical semantics, silent construction
+broadening, status promotion, or crossing a protected scope, locked instrument, or
+blinding boundary. When one of those real constraints applies, preserve it and
+record the exact limitation rather than describing ordinary lexical work as a future
+task by default.
+
 ### Behavior-first development order
 
 Substantive construction work is behavior-first rather than label-first:
