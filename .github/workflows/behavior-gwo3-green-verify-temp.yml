@@ -1,0 +1,44 @@
+name: Behavior gwo3 GREEN verify temp
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  green:
+    if: github.event.pull_request.head.ref == 'agent/behavior-gwo3-comparative-tdd'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/behavior-gwo3-comparative-tdd
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Install dependencies
+        run: npm ci
+      - name: Build canonical runtime bundle
+        run: node tools/build-runtime.js
+      - name: Run focused behavior contract
+        run: node tests/tooling/runtime/behavior-gwo3-comparative.test.js
+      - name: Protect experiential boundary
+        run: node tests/tooling/runtime/aa61-experiential-question-boundary.test.js
+      - name: Run complete standard runtime suite
+        run: node tests/run-all.js
+      - name: Check diff hygiene
+        run: git diff --check
+      - name: Commit generated GREEN bundle and remove temporary workflow
+        run: |
+          rm .github/workflows/behavior-gwo3-green-verify-temp.yml
+          git config user.name "Canto Span scoped automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add main.js
+          git add -u .github/workflows/behavior-gwo3-green-verify-temp.yml
+          git commit -m "Build GREEN post-predicate gwo3 comparison runtime"
+          git push origin HEAD:agent/behavior-gwo3-comparative-tdd
