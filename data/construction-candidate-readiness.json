@@ -19,8 +19,8 @@
   "nearest_missing_gate_counts": {
     "language_claim_defined": 38,
     "negative_boundaries_complete": 29,
-    "reviewed_corpus_evidence": 3,
-    "role_neutral_panel_threshold": 2,
+    "reviewed_corpus_evidence": 2,
+    "role_neutral_panel_threshold": 3,
     "runtime_research_alignment": 17,
     "source_scope_matches_claim": 45
   },
@@ -258,8 +258,9 @@
           "evidence": "complete_executable_passing_negative_inventory"
         },
         "reviewed_corpus_evidence": {
-          "status": "not_started",
-          "evidence": "no_reviewed_corpus_evidence"
+          "status": "pass",
+          "evidence": "reviewed_genuine_corpus_hits",
+          "detail": "3/14 genuine"
         },
         "role_neutral_panel_threshold": {
           "status": "not_started",
@@ -287,14 +288,13 @@
         "requirement_failed:positive_and_negative_contrasts_reviewed"
       ],
       "discovery_hard_blockers": [
-        "discovery_gate:reviewed_corpus_evidence",
         "discovery_gate:held_out_validation",
         "discovery_gate:ontology_conflicts_resolved"
       ],
-      "readiness_score": 73,
+      "readiness_score": 83,
       "candidate_state": "boundary_ready",
-      "nearest_missing_gate": "reviewed_corpus_evidence",
-      "next_best_action": "review and classify diverse corpus candidates, including false positives and ambiguous hits",
+      "nearest_missing_gate": "role_neutral_panel_threshold",
+      "next_best_action": "run or complete a locked role-neutral panel instrument with critical contrasts",
       "automatic_risk_flags": [],
       "source_path": "grammar/research_pending/MannerAdverbialVP.md"
     },

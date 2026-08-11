@@ -27,8 +27,8 @@ The sweep evaluates every permanent identity. It separates construction identity
 |---|---|
 | `language_claim_defined` | 38 |
 | `negative_boundaries_complete` | 29 |
-| `reviewed_corpus_evidence` | 3 |
-| `role_neutral_panel_threshold` | 2 |
+| `reviewed_corpus_evidence` | 2 |
+| `role_neutral_panel_threshold` | 3 |
 | `runtime_research_alignment` | 17 |
 | `source_scope_matches_claim` | 45 |
 
