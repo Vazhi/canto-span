@@ -1,0 +1,19 @@
+{
+  "schema": "canto-span-glossika-week16-runtime-lexicon-validation-v1",
+  "source_form_count": 35,
+  "hobby_form_count": 25,
+  "number_form_count": 10,
+  "status": "pass",
+  "checks": {
+    "complete_jyutping": true,
+    "project_native_structures": true,
+    "collision_boundaries": true,
+    "reviewed_readings": true,
+    "compositional_numbers": true,
+    "learner_glosses": true
+  },
+  "limitations": [
+    "Lexical and pronunciation coverage does not establish frequency or unrestricted productivity.",
+    "Glossika's diu3 jyu2 source spelling for 釣魚 was not imported; the runtime retains 魚 jyu4."
+  ]
+}

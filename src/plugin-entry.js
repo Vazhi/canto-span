@@ -15,7 +15,8 @@ const createCantoSpanPlugin = require("./plugin/canto-span-plugin");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.225";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.226";
+// v0.5.226: adds bounded behavior-first overt nominal-standard post-predicate 過 comparison through existing SubjectPredicateClause composition, plus missing 矮 lexical coverage, without changing construction identity or experiential/directional 過 behavior.
 // v0.5.225: removes 做功課 from legacy AB35/ProductiveVO compatibility ownership and preserves it through the accepted AB78 typed predicate-object path; the three source-linked AB35 seeds and other 39 legacy entries remain unchanged.
 // v0.5.224: narrows canonical AB35 runtime ownership for 飲茶/游水/沖涼 to a source-linked lexical VerbObjectCompound seed with component provenance and no automatic object binding, while retaining the other 40 legacy ProductiveVO compatibility entries.
 // v0.5.223: removes AB78 TransitiveVP ownership from approximate measured-quantity material while preserving typed-object and explicit relative-gap transitive relations.
