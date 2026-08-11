@@ -18,7 +18,7 @@ module.exports = function createPostPredicateGwo3ComparativeDetectors(dependenci
   // These are already lexicalized in the runtime as gradable/statative predicates and
   // are sufficient to establish reusable adjective/property + 過 + overt-standard behavior.
   const REVIEWED_SCALAR_PREDICATES = new Set([
-    "大", "細", "貴", "平", "快", "慢", "忙", "遠", "近", "高", "耐",
+    "大", "細", "貴", "平", "快", "慢", "忙", "遠", "近", "高", "矮", "耐",
     "熱", "凍", "難", "易", "正", "抵", "靚", "甜", "熟", "開心",
   ]);
 
