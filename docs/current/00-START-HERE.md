@@ -113,6 +113,12 @@ New constructions, splits, broadenings, status transitions, and runtime changes 
 require exact identity, external evidence, boundaries, tests, documentation, and
 review.
 
+When active work exposes missing lexical coverage needed for a stronger supported
+example, clean contrast, coherent survey item, corpus analysis, or executable test,
+treat that lexical gap as support work to complete in the same bounded task rather
+than as a reason to weaken or defer the task. Follow the lexical-coverage rules and
+exceptions in [`GOVERNANCE.md`](GOVERNANCE.md#lexical-coverage-during-active-work).
+
 ### Identity and evidence
 
 Use `construction_code + canonical_name`; record legacy runtime labels separately.
