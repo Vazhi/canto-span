@@ -6,7 +6,7 @@ This file is the sole present-tense project snapshot. Live GitHub intake and wor
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.226 |
+| Runtime | v0.5.227 |
 | Runtime labels | 134 |
 | Current construction notes | 134 |
 | Available construction notes | 134 |
@@ -51,6 +51,8 @@ The permanent registry contains 134 current and 48 retired records. UUID and sho
 Twenty-one accepted batches have adjudicated 94 records; 88 remain pending. Canonical decisions live in `data/construction-adjudications.json` and immutable batch files under `data/construction-adjudication-batches/`.
 
 Current consequences include:
+
+- v0.5.227 adds 35 independently supported high-frequency lexical entries identified by the Cifu spoken top-2000 audit; compositional corpus strings and grammar-sensitive, variant, or sense-ambiguous forms remain explicit review buckets rather than being lexicalized merely to improve a coverage percentage, and no construction identity, linguistic status, evidence, survey, corpus, release, or deployment state is changed;
 
 - v0.5.226 adds bounded behavior-first post-predicate `過` comparison for overt simple nominal target + gradable property + `過` + overt simple nominal standard, represented structurally as `SubjectPredicateClause` with explicit comparison bindings; `矮 ai2` receives the lexical coverage required by the published `細佬矮過我` example, while no new public construction identity, quantity/temporal comparison generalization, `比`/`啲` comparative generalization, status change, or evidence promotion is inferred;
 - `做功課` is no longer owned by the legacy AB35/ProductiveVO compatibility whitelist at v0.5.225; it remains recognized through the accepted AB78 `TransitiveVP` typed `做 + 功課` predicate-object path, while no disposition is inferred for the other 39 unresolved legacy entries;

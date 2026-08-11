@@ -1,9 +1,9 @@
 {
   "id": "canto-span",
   "name": "Canto Span",
-  "version": "0.5.226",
+  "version": "0.5.227",
   "minAppVersion": "1.5.0",
-  "description": "v0.5.226 adds behavior-first overt nominal-standard post-predicate 過 comparison while preserving experiential and directional 過 boundaries.",
+  "description": "v0.5.227 adds 35 source-audited high-frequency Cantonese lexical entries from the Cifu spoken top-2000 audit without broadening grammar.",
   "author": "Chris Crawford / OpenAI ChatGPT",
   "authorUrl": "",
   "isDesktopOnly": false

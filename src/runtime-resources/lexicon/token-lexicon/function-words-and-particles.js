@@ -69,4 +69,10 @@ module.exports = [  // Function words / particles / stance
   ["我覺得", { label: "doing", jyutping: "ngo5 gok3 dak1", syntax: "stance_cognition_frame", note: "I think/feel; compositional phrase should remain learner-visible when possible." }],
   ["我知", { label: "doing", jyutping: "ngo5 zi1", syntax: "cognition_frame", note: "I know; compositional phrase should remain learner-visible when possible." }],
   ["我唔知", { label: "doing", jyutping: "ngo5 m4 zi1", syntax: "negative_cognition_frame", note: "I don't know; compositional phrase should remain learner-visible when possible." }],
+
+  // v0.5.227: source-audited high-frequency lexical coverage.
+  ["其實", {"label":"how","jyutping":"kei4 sat6","syntax":"discourse_adverb stance_adverb","note":"actually / in fact; Cifu spoken top-2000 R1 lexical audit."}],
+  ["譬如", {"label":"func","jyutping":"pei3 jyu4","syntax":"example_introducer discourse_marker","note":"for example / for instance / such as; Cifu spoken top-2000 R1 lexical audit."}],
+  ["但", {"label":"func","jyutping":"daan6","syntax":"connector_contrast","note":"but / however; Cifu spoken top-2000 R1 lexical audit."}],
+  ["亦", {"label":"how","jyutping":"jik6","syntax":"additive_adverb focus_adverb","note":"also / too; Cifu spoken top-2000 R1 lexical audit."}],
 ];

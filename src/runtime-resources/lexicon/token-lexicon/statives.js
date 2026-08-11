@@ -65,4 +65,8 @@ module.exports = [  // Statives / property predicates
   ["啱", { label: "like", jyutping: "ngaam1", syntax: "stative_predicate", note: "right / suitable" }],
   ["算", { label: "func", jyutping: "syun3", syntax: "evaluation_verb_or_marker", note: "count as / be considered" }],
   ["唔算", { label: "func", jyutping: "m4 syun3", syntax: "negative_evaluation_marker", note: "doesn't count as / not considered; tokenizer keeps 唔 + 算 visible in transparent price evaluations." }],
+
+  // v0.5.227: source-audited high-frequency lexical coverage.
+  ["香", {"label":"like","jyutping":"hoeng1","syntax":"stative_predicate sensory_property","note":"fragrant / aromatic; Cifu spoken top-2000 R1 lexical audit."}],
+  ["善", {"label":"like","jyutping":"sin6","syntax":"stative_predicate evaluative_property","note":"good / benevolent; Cifu spoken top-2000 R1 lexical audit."}],
 ];

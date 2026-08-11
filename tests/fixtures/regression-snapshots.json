@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-regression-snapshot-v2",
-  "runtime_version": "0.5.225",
+  "runtime_version": "0.5.227",
   "generated_from_runner_count": 548,
   "case_count": 548,
   "errors": [],
@@ -25346,11 +25346,10 @@
           "missing_argument_slots": [],
           "root_span_coverage_status": "PARTIAL",
           "root_top_construction_count": 1,
-          "unwrapped_root_nonpunctuation_count": 9,
+          "unwrapped_root_nonpunctuation_count": 8,
           "unwrapped_root_surfaces": [
             "但係",
-            "其",
-            "實",
+            "其實",
             "人哋",
             "咪",
             "又",
@@ -25390,32 +25389,25 @@
             "kind": "token",
             "depth": 0,
             "parent": "",
-            "surface": "其",
+            "surface": "其實",
             "construction": "",
-            "role": "neutral",
-            "syntax": "unknown_cjk_or_text",
-            "jyutping": "",
-            "slots": [],
-            "contextual_role_affordances": [],
-            "trace": "unknown_atomic",
+            "role": "how",
+            "syntax": "discourse_adverb stance_adverb",
+            "jyutping": "kei4 sat6",
+            "slots": [
+              "how"
+            ],
+            "contextual_role_affordances": [
+              {
+                "role": "how",
+                "source": "lexical_default",
+                "active_before_construction_wrapping": true,
+                "active_in_final_construction": true
+              }
+            ],
+            "trace": "atomic_lexicon",
             "trace_detail": {
-              "kind": "unknown_atomic"
-            }
-          },
-          {
-            "kind": "token",
-            "depth": 0,
-            "parent": "",
-            "surface": "實",
-            "construction": "",
-            "role": "neutral",
-            "syntax": "unknown_cjk_or_text",
-            "jyutping": "sat6",
-            "slots": [],
-            "contextual_role_affordances": [],
-            "trace": "unknown_atomic",
-            "trace_detail": {
-              "kind": "unknown_atomic"
+              "kind": "atomic_lexicon"
             }
           },
           {
@@ -25705,7 +25697,7 @@
           },
           "hover": {
             "status": "WARN",
-            "flagged_hover_target_count": 2,
+            "flagged_hover_target_count": 1,
             "missing_plain_learner_gloss_count": 0
           },
           "wrapper": {
@@ -25715,7 +25707,7 @@
           },
           "jyutping": {
             "status": "WARN",
-            "missing_jyutping_count": 2,
+            "missing_jyutping_count": 1,
             "invalid_jyutping_format_count": 0,
             "syllable_count_mismatch_count": 0,
             "dictionary_disagreement_count": 0
@@ -25723,7 +25715,9 @@
         }
       },
       "cp021b_transition": "CP021B_LX1_bounded_lexical_and_jyutping_update_with_construction_freeze_pass",
-      "case_id": "REG-0100"
+      "case_id": "REG-0100",
+      "accepted_transition": "v0.5.227_cifu_top2000_lexical_tokenization",
+      "transition_reason": "Source-supported 其實 is now one lexical token with Jyutping and learner-role metadata instead of unknown 其 + 實 tokens."
     },
     {
       "source": "但係佢唔嚟。",
@@ -156055,6 +156049,6 @@
   },
   "last_absorbed_candidate": "v0.5.218-aa56-positive-participant-runtime",
   "absorbed_current_focused_case_count": 4,
-  "last_intentional_transition": "v0.5.225_ab35_zo_gungfo_rehome_to_ab78",
+  "last_intentional_transition": "v0.5.227_cifu_top2000_lexical_coverage",
   "abandoned_candidate": "v0.5.183-cp024-p1-demo01-r1"
 }

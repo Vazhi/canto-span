@@ -1965,7 +1965,15 @@ var require_things = __commonJS({
       ["中價", { label: "what", jyutping: "zung1 gaa3", syntax: "compositional_price_category_source_form", note: "Glossika source form; native-speaker alternatives are documented in the lesson note, not preferred in runtime parsing." }],
       ["錢", { label: "what", jyutping: "cin2", syntax: "object_np", note: "money" }],
       ["蚊", { label: "what", jyutping: "man1", syntax: "currency_unit", note: "dollar / Hong Kong dollar unit" }],
-      ["時間", { label: "when", jyutping: "si4 gaan3", syntax: "time_np", note: "time" }]
+      ["時間", { label: "when", jyutping: "si4 gaan3", syntax: "time_np", note: "time" }],
+      // v0.5.227: source-audited high-frequency lexical coverage.
+      ["線", { "label": "what", "jyutping": "sin3", "syntax": "object_np", "note": "line / string / wire; Cifu spoken top-2000 R1 lexical audit." }],
+      ["樹", { "label": "what", "jyutping": "syu6", "syntax": "object_np", "note": "tree; Cifu spoken top-2000 R1 lexical audit." }],
+      ["政府", { "label": "what", "jyutping": "zing3 fu2", "syntax": "organization_np object_np", "note": "government; Cifu spoken top-2000 R1 lexical audit." }],
+      ["塔", { "label": "what", "jyutping": "taap3", "syntax": "object_np", "note": "tower / pagoda; Cifu spoken top-2000 R1 lexical audit." }],
+      ["馬戲", { "label": "what", "jyutping": "maa5 hei3", "syntax": "object_np", "note": "circus; Cifu spoken top-2000 R1 lexical audit." }],
+      ["角", { "label": "what", "jyutping": "gok3", "syntax": "object_np", "note": "angle / corner / horn; Cifu spoken top-2000 R1 lexical audit." }],
+      ["韻", { "label": "what", "jyutping": "wan6", "syntax": "object_np linguistic_term_np", "note": "rhyme / rime; Cifu spoken top-2000 R1 lexical audit." }]
     ];
   }
 });
@@ -2040,7 +2048,26 @@ var require_places_and_times = __commonJS({
       ["尺", { label: "measure_word", jyutping: "cek3", syntax: "measure_unit length_measure_unit nominal_measure_unit", note: "foot-length measure unit" }],
       ["長", { label: "like", jyutping: "coeng4", syntax: "stative_predicate scalar_dimension_predicate length_dimension_predicate", note: "long; dimensional property predicate" }],
       ["一個人", { label: "who", jyutping: "jat1 go3 jan4", syntax: "quantity_person_np", note: "one person / per person" }],
-      ["兩三百蚊", { label: "like", jyutping: "loeng5 saam1 baak3 man1", syntax: "quantity approximate_money_amount price_np", note: "two or three hundred dollars; approximate price/value descriptor" }]
+      ["兩三百蚊", { label: "like", jyutping: "loeng5 saam1 baak3 man1", syntax: "quantity approximate_money_amount price_np", note: "two or three hundred dollars; approximate price/value descriptor" }],
+      // v0.5.227: source-audited high-frequency lexical coverage.
+      ["中間", { "label": "where", "jyutping": "zung1 gaan1", "syntax": "place_or_goal spatial_localizer", "note": "middle / between; Cifu spoken top-2000 R1 lexical audit." }],
+      ["下面", { "label": "where", "jyutping": "haa6 min6", "syntax": "place_or_goal spatial_localizer", "note": "below / underneath; Cifu spoken top-2000 R1 lexical audit." }],
+      ["沙漠", { "label": "where", "jyutping": "saa1 mok6", "syntax": "place_or_goal", "note": "desert; Cifu spoken top-2000 R1 lexical audit." }],
+      ["終點", { "label": "where", "jyutping": "zung1 dim2", "syntax": "place_or_goal", "note": "endpoint / destination / terminus; Cifu spoken top-2000 R1 lexical audit." }],
+      ["山", { "label": "where", "jyutping": "saan1", "syntax": "place_or_goal", "note": "mountain / hill; Cifu spoken top-2000 R1 lexical audit." }],
+      ["園", { "label": "where", "jyutping": "jyun4", "syntax": "place_or_goal", "note": "garden; Cifu spoken top-2000 R1 lexical audit." }],
+      ["池", { "label": "where", "jyutping": "ci4", "syntax": "place_or_goal", "note": "pond / pool; Cifu spoken top-2000 R1 lexical audit." }],
+      ["茅屋", { "label": "where", "jyutping": "maau4 uk1", "syntax": "place_or_goal", "note": "cottage / hut; Cifu spoken top-2000 R1 lexical audit." }],
+      ["頭先", { "label": "when", "jyutping": "tau4 sin1", "syntax": "temporal_adjunct", "note": "just now / a moment ago; Cifu spoken top-2000 R1 lexical audit." }],
+      ["右邊", { "label": "where", "jyutping": "jau6 bin1", "syntax": "place_or_goal spatial_localizer", "note": "right side; Cifu spoken top-2000 R1 lexical audit." }],
+      ["一路", { "label": "when", "jyutping": "jat1 lou6", "syntax": "temporal_adjunct", "note": "continually / all along; Cifu spoken top-2000 R1 lexical audit." }],
+      ["一直", { "label": "when", "jyutping": "jat1 zik6", "syntax": "temporal_adjunct", "note": "continuously / all along; Cifu spoken top-2000 R1 lexical audit." }],
+      ["左邊", { "label": "where", "jyutping": "zo2 bin1", "syntax": "place_or_goal spatial_localizer", "note": "left side; Cifu spoken top-2000 R1 lexical audit." }],
+      ["港", { "label": "where", "jyutping": "gong2", "syntax": "place_or_goal", "note": "port / harbor; Hong Kong abbreviation in context; Cifu spoken top-2000 R1 lexical audit." }],
+      ["湖", { "label": "where", "jyutping": "wu4", "syntax": "place_or_goal", "note": "lake; Cifu spoken top-2000 R1 lexical audit." }],
+      ["洞", { "label": "where", "jyutping": "dung6", "syntax": "place_or_goal", "note": "cave / hole; Cifu spoken top-2000 R1 lexical audit." }],
+      ["點鐘", { "label": "when", "jyutping": "dim2 zung1", "syntax": "time_np clock_time_unit", "note": "o'clock / clock-hour expression; Cifu spoken top-2000 R1 lexical audit." }],
+      ["廟", { "label": "where", "jyutping": "miu6", "syntax": "place_or_goal place_np", "note": "temple; Cifu spoken top-2000 R1 lexical audit." }]
     ];
   }
 });
@@ -2234,7 +2261,12 @@ var require_verbs = __commonJS({
       ["風", { label: "what", jyutping: "fung1", syntax: "weather_np wind_noun weather_phenomenon environmental_phenomenon", note: "wind; a visible weather-phenomenon component in 打風." }],
       ["天光", { label: "doing", jyutping: "tin1 gwong1", syntax: "environmental_transition_predicate daylight_transition_predicate impersonal_predicate", note: "daybreak / become light; a genuinely subjectless environmental transition predicate." }],
       ["花園", { label: "where", jyutping: "faa1 jyun2", syntax: "place_np garden_noun", note: "garden." }],
-      ["通常", { label: "when", jyutping: "tung1 soeng4", syntax: "habitual_frequency_adverb", note: "usually." }]
+      ["通常", { label: "when", jyutping: "tung1 soeng4", syntax: "habitual_frequency_adverb", note: "usually." }],
+      // v0.5.227: source-audited high-frequency lexical coverage.
+      ["知道", { "label": "doing", "jyutping": "zi1 dou3", "syntax": "cognition_verb", "note": "know / be aware of; Cifu spoken top-2000 R1 lexical audit." }],
+      ["繼續", { "label": "doing", "jyutping": "gai3 zuk6", "syntax": "verb", "note": "continue / proceed; Cifu spoken top-2000 R1 lexical audit." }],
+      ["恨", { "label": "doing", "jyutping": "han6", "syntax": "verb attitude_verb", "note": "hate / regret / long for; Cifu spoken top-2000 R1 lexical audit." }],
+      ["交叉", { "label": "doing", "jyutping": "gaau1 caa1", "syntax": "verb", "note": "cross / intersect; Cifu spoken top-2000 R1 lexical audit." }]
     ];
   }
 });
@@ -2305,7 +2337,10 @@ var require_statives = __commonJS({
       ["特別", { label: "like", jyutping: "dak6 bit6", syntax: "modifier_or_stative", note: "special" }],
       ["啱", { label: "like", jyutping: "ngaam1", syntax: "stative_predicate", note: "right / suitable" }],
       ["算", { label: "func", jyutping: "syun3", syntax: "evaluation_verb_or_marker", note: "count as / be considered" }],
-      ["唔算", { label: "func", jyutping: "m4 syun3", syntax: "negative_evaluation_marker", note: "doesn't count as / not considered; tokenizer keeps 唔 + 算 visible in transparent price evaluations." }]
+      ["唔算", { label: "func", jyutping: "m4 syun3", syntax: "negative_evaluation_marker", note: "doesn't count as / not considered; tokenizer keeps 唔 + 算 visible in transparent price evaluations." }],
+      // v0.5.227: source-audited high-frequency lexical coverage.
+      ["香", { "label": "like", "jyutping": "hoeng1", "syntax": "stative_predicate sensory_property", "note": "fragrant / aromatic; Cifu spoken top-2000 R1 lexical audit." }],
+      ["善", { "label": "like", "jyutping": "sin6", "syntax": "stative_predicate evaluative_property", "note": "good / benevolent; Cifu spoken top-2000 R1 lexical audit." }]
     ];
   }
 });
@@ -2383,7 +2418,12 @@ var require_function_words_and_particles = __commonJS({
       ["可能", { label: "func", jyutping: "ho2 nang4", syntax: "stance_possibility", note: "maybe" }],
       ["我覺得", { label: "doing", jyutping: "ngo5 gok3 dak1", syntax: "stance_cognition_frame", note: "I think/feel; compositional phrase should remain learner-visible when possible." }],
       ["我知", { label: "doing", jyutping: "ngo5 zi1", syntax: "cognition_frame", note: "I know; compositional phrase should remain learner-visible when possible." }],
-      ["我唔知", { label: "doing", jyutping: "ngo5 m4 zi1", syntax: "negative_cognition_frame", note: "I don't know; compositional phrase should remain learner-visible when possible." }]
+      ["我唔知", { label: "doing", jyutping: "ngo5 m4 zi1", syntax: "negative_cognition_frame", note: "I don't know; compositional phrase should remain learner-visible when possible." }],
+      // v0.5.227: source-audited high-frequency lexical coverage.
+      ["其實", { "label": "how", "jyutping": "kei4 sat6", "syntax": "discourse_adverb stance_adverb", "note": "actually / in fact; Cifu spoken top-2000 R1 lexical audit." }],
+      ["譬如", { "label": "func", "jyutping": "pei3 jyu4", "syntax": "example_introducer discourse_marker", "note": "for example / for instance / such as; Cifu spoken top-2000 R1 lexical audit." }],
+      ["但", { "label": "func", "jyutping": "daan6", "syntax": "connector_contrast", "note": "but / however; Cifu spoken top-2000 R1 lexical audit." }],
+      ["亦", { "label": "how", "jyutping": "jik6", "syntax": "additive_adverb focus_adverb", "note": "also / too; Cifu spoken top-2000 R1 lexical audit." }]
     ];
   }
 });
@@ -22609,7 +22649,7 @@ var {
 } = require_learner_glosses();
 var createLearnerDisplay = require_learner_display();
 var createCantoSpanPlugin = require_canto_span_plugin();
-var CANTO_SPAN_RUNTIME_VERSION = "0.5.226";
+var CANTO_SPAN_RUNTIME_VERSION = "0.5.227";
 var {
   runtimeConstructionRegistryVersion: RUNTIME_CONSTRUCTION_REGISTRY_VERSION,
   constructionLabelRegistry,

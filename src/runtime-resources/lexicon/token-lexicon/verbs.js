@@ -187,4 +187,10 @@ module.exports = [  // Verbs
   ["天光", { label: "doing", jyutping: "tin1 gwong1", syntax: "environmental_transition_predicate daylight_transition_predicate impersonal_predicate", note: "daybreak / become light; a genuinely subjectless environmental transition predicate." }],
   ["花園", { label: "where", jyutping: "faa1 jyun2", syntax: "place_np garden_noun", note: "garden." }],
   ["通常", { label: "when", jyutping: "tung1 soeng4", syntax: "habitual_frequency_adverb", note: "usually." }],
+
+  // v0.5.227: source-audited high-frequency lexical coverage.
+  ["知道", {"label":"doing","jyutping":"zi1 dou3","syntax":"cognition_verb","note":"know / be aware of; Cifu spoken top-2000 R1 lexical audit."}],
+  ["繼續", {"label":"doing","jyutping":"gai3 zuk6","syntax":"verb","note":"continue / proceed; Cifu spoken top-2000 R1 lexical audit."}],
+  ["恨", {"label":"doing","jyutping":"han6","syntax":"verb attitude_verb","note":"hate / regret / long for; Cifu spoken top-2000 R1 lexical audit."}],
+  ["交叉", {"label":"doing","jyutping":"gaau1 caa1","syntax":"verb","note":"cross / intersect; Cifu spoken top-2000 R1 lexical audit."}],
 ];

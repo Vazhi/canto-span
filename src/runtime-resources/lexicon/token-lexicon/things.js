@@ -70,4 +70,13 @@ module.exports = [  // Things / nouns
   ["錢", { label: "what", jyutping: "cin2", syntax: "object_np", note: "money" }],
   ["蚊", { label: "what", jyutping: "man1", syntax: "currency_unit", note: "dollar / Hong Kong dollar unit" }],
   ["時間", { label: "when", jyutping: "si4 gaan3", syntax: "time_np", note: "time" }],
+
+  // v0.5.227: source-audited high-frequency lexical coverage.
+  ["線", {"label":"what","jyutping":"sin3","syntax":"object_np","note":"line / string / wire; Cifu spoken top-2000 R1 lexical audit."}],
+  ["樹", {"label":"what","jyutping":"syu6","syntax":"object_np","note":"tree; Cifu spoken top-2000 R1 lexical audit."}],
+  ["政府", {"label":"what","jyutping":"zing3 fu2","syntax":"organization_np object_np","note":"government; Cifu spoken top-2000 R1 lexical audit."}],
+  ["塔", {"label":"what","jyutping":"taap3","syntax":"object_np","note":"tower / pagoda; Cifu spoken top-2000 R1 lexical audit."}],
+  ["馬戲", {"label":"what","jyutping":"maa5 hei3","syntax":"object_np","note":"circus; Cifu spoken top-2000 R1 lexical audit."}],
+  ["角", {"label":"what","jyutping":"gok3","syntax":"object_np","note":"angle / corner / horn; Cifu spoken top-2000 R1 lexical audit."}],
+  ["韻", {"label":"what","jyutping":"wan6","syntax":"object_np linguistic_term_np","note":"rhyme / rime; Cifu spoken top-2000 R1 lexical audit."}],
 ];
