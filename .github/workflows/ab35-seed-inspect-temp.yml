@@ -75,3 +75,5 @@ jobs:
             ab35-baseline-traces.json
             ab35-architecture-baseline.json
           retention-days: 1
+      - name: Apply and verify bounded AB35 seed
+        run: python3 .github/ab35-seed-apply-temp.py
