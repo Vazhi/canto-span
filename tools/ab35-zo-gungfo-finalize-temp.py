@@ -25,21 +25,18 @@ def replace_once(path, old, new):
     assert count == 1, (path, count, old[:120])
     p.write_text(text.replace(old, new, 1))
 
-
-# Coordination: never overwrite a concurrent main move (especially AA84 #769/#770).
 run("git", "fetch", "origin", "main")
 assert run("git", "rev-parse", "origin/main", capture=True) == BASE
 assert run("git", "branch", "--show-current", capture=True) == BRANCH
 
-# 1. Remove only 做功課 from the legacy ProductiveVO compatibility table.
+# Remove only 做功課 from legacy compatibility ownership.
 p = Path("src/runtime-resources/lexicon/productive-vo.js")
 text = p.read_text()
 needle = '  ["做功課", { verb: "做", object: "功課", label: "VP", type: "ProductiveVO" }],\n'
 assert text.count(needle) == 1
 p.write_text(text.replace(needle, "", 1))
 
-# 2. ProductiveVO fixture: REG-0062 no longer demonstrates ProductiveVO ownership;
-# add an explicit bare 做功課 absence boundary. Mixed sequence snapshots remain because 食飯 still supplies ProductiveVO.
+# ProductiveVO: REG-0062 no longer contains ProductiveVO; add explicit bare absence.
 p = Path("tests/constructions/ProductiveVO.json")
 spec = json.loads(p.read_text())
 removed = [row for row in spec.get("snapshot_cases", []) if row.get("case_id") == "REG-0062"]
@@ -68,7 +65,7 @@ assert cov["focused_boundary_count"] == 3, cov
 assert cov["executable_case_count"] == 27, cov
 p.write_text(json.dumps(spec, ensure_ascii=False, indent=2) + "\n")
 
-# 3. TransitiveVP fixture: make the new owner explicit.
+# TransitiveVP: make the new owner explicit.
 p = Path("tests/constructions/TransitiveVP.json")
 spec = json.loads(p.read_text())
 assert not any(row.get("case_id") == "AB78-ZGF-P01" for row in spec.get("focused_cases", []))
@@ -92,7 +89,7 @@ assert cov["focused_positive_count"] == 1, cov
 assert cov["executable_case_count"] == 34, cov
 p.write_text(json.dumps(spec, ensure_ascii=False, indent=2) + "\n")
 
-# 4. Permanent focused ownership contract.
+# Permanent focused ownership contract.
 Path("tests/tooling/runtime/ab35-zo-gungfo-rehome.test.js").write_text(r'''"use strict";
 
 const test = require("node:test");
@@ -105,16 +102,9 @@ const api = loadRuntimeApi();
 const EXPECTED_LEGACY = [
   "食飯","煮飯","摘芒果","買嘢","食嘢","飲水","寫字","寫名","睇書","聽歌","睇戲","跑步","影相","打機","煮嘢食","唱K","做運動","踢波","打波","彈琴","釣魚","唱歌","睇波","下棋","講嘢","打電話","打籃球","聽電話","返學","放學","瞓覺","洗手","曬太陽","打麻雀","默書","炒股票","發脾氣","食意粉","Book枱"
 ];
-
-function rows(source) {
-  return api.diagnosticFinalRows(api.analyzeLine(source)).filter((row) => row.kind === "construction");
-}
-function byType(source, type) {
-  return rows(source).filter((row) => internalConstruction(row) === type);
-}
-function bindingMap(row) {
-  return Object.fromEntries(Array.from(row.trace_detail && row.trace_detail.bindings || []).map((binding) => [binding.slot, binding.source_surface]));
-}
+function rows(source) { return api.diagnosticFinalRows(api.analyzeLine(source)).filter((row) => row.kind === "construction"); }
+function byType(source, type) { return rows(source).filter((row) => internalConstruction(row) === type); }
+function bindingMap(row) { return Object.fromEntries(Array.from(row.trace_detail && row.trace_detail.bindings || []).map((binding) => [binding.slot, binding.source_surface])); }
 
 test("做功課 is removed only from legacy AB35/ProductiveVO compatibility ownership", () => {
   assert.deepEqual(legacy.map(([surface]) => surface), EXPECTED_LEGACY);
@@ -141,13 +131,11 @@ test("outer sequence composition keeps AB78 ownership of 做功課 without steal
   assert.equal(rowSurface(transitive[0]), "做功課");
   assert.equal(transitive[0].internal_parent || transitive[0].parent, "SequenceAdverbPredicateFallback");
   assert.equal(byType("再做功課。", "ProductiveVO").length, 0);
-
   const mixed = rows("我先食飯，再做功課。");
   const productives = mixed.filter((row) => internalConstruction(row) === "ProductiveVO");
   assert.equal(productives.some((row) => rowSurface(row) === "食飯"), true);
   assert.equal(productives.some((row) => rowSurface(row) === "做功課"), false);
-  const transitiveMixed = mixed.filter((row) => internalConstruction(row) === "TransitiveVP" && rowSurface(row) === "做功課");
-  assert.equal(transitiveMixed.length, 1);
+  assert.equal(mixed.filter((row) => internalConstruction(row) === "TransitiveVP" && rowSurface(row) === "做功課").length, 1);
 });
 
 test("the three source-linked AB35 seeds remain unchanged", () => {
@@ -175,18 +163,13 @@ replace_once(
     '["ab35_verb_object_compound_boundary", path.join(root, "tests", "tooling", "runtime", "ab35-verb-object-compound-boundary.test.js")],\n  ["ab35_zo_gungfo_rehome", path.join(root, "tests", "tooling", "runtime", "ab35-zo-gungfo-rehome.test.js")],'
 )
 
-# 5. Runtime semver because construction ownership changes.
 run("npm", "version", "0.5.225", "--no-git-tag-version")
 replace_once(
     "src/plugin-entry.js",
     'const CANTO_SPAN_RUNTIME_VERSION = "0.5.224";',
     'const CANTO_SPAN_RUNTIME_VERSION = "0.5.225";\n// v0.5.225: removes 做功課 from legacy AB35/ProductiveVO compatibility ownership and preserves it through the accepted AB78 typed predicate-object path; the three source-linked AB35 seeds and other 39 legacy entries remain unchanged.'
 )
-replace_once(
-    "manifest.json",
-    '"version": "0.5.224",',
-    '"version": "0.5.225",'
-)
+replace_once("manifest.json", '"version": "0.5.224",', '"version": "0.5.225",')
 replace_once(
     "manifest.json",
     '"description": "v0.5.224 starts the source-linked AB35 VerbObjectCompound migration for 飲茶, 游水, and 沖涼 without automatic object binding."',
@@ -194,7 +177,7 @@ replace_once(
 )
 run("npm", "run", "build:runtime")
 
-# 6. Rebaseline exactly the four transition snapshots using the repository's own signature implementation.
+# Rebaseline exactly the four probed transition snapshots by reusing the runner's signature function.
 update_js = Path("/tmp/ab35-zo-gungfo-update-regression.js")
 update_js.write_text(r'''"use strict";
 const fs = require("fs");
@@ -225,14 +208,12 @@ eval(prefix + custom);
 run("node", str(update_js))
 update_js.unlink()
 
-# 7. Deterministic construction/discovery projections.
 run("node", "tools/build-construction-tests.js")
 run("node", "tools/sync-construction-test-metadata.js")
 run("npm", "run", "discovery:generate")
 idx = json.loads(Path("tests/construction-test-index.json").read_text())
 assert sum(row.get("executable_case_count", 0) for row in idx.get("files", [])) == 1635
 
-# 8. Present-tense snapshot: only derived version/count/compatibility wording.
 replace_once("docs/current/PROJECT-STATE.md", "| Runtime | v0.5.224 |", "| Runtime | v0.5.225 |")
 replace_once("docs/current/PROJECT-STATE.md", "other 40 legacy `ProductiveVO` compatibility entries", "other 39 legacy `ProductiveVO` compatibility entries")
 replace_once("docs/current/PROJECT-STATE.md", "remaining 40-entry compatibility route", "remaining 39-entry compatibility route")
@@ -242,7 +223,6 @@ anchor = "Current consequences include:\n\n"
 bullet = "- `做功課` is no longer owned by the legacy AB35/ProductiveVO compatibility whitelist at v0.5.225; it remains recognized through the accepted AB78 `TransitiveVP` typed `做 + 功課` predicate-object path, while no disposition is inferred for the other 39 unresolved legacy entries;\n"
 replace_once("docs/current/PROJECT-STATE.md", anchor, anchor + bullet)
 
-# 9. Acceptance checks before any commit.
 run("node", "tests/tooling/runtime/ab35-zo-gungfo-rehome.test.js")
 run("npm", "run", "test:regression")
 run("npm", "run", "test:constructions")
@@ -255,21 +235,18 @@ run("npm", "run", "verify:discovery")
 run("npm", "run", "test:coordination")
 run("git", "diff", "--check")
 
-# 10. Explicit protected-state membership checks.
 check_js = """
 const legacy = require('./src/runtime-resources/lexicon/productive-vo');
 const seed = require('./src/runtime-resources/lexicon/verb-object-compounds');
 const expected = %s;
 if (JSON.stringify(legacy.map(([surface]) => surface)) !== JSON.stringify(expected)) throw new Error('legacy ProductiveVO membership/order changed beyond 做功課 removal');
 if (JSON.stringify(seed.map(([surface]) => surface)) !== JSON.stringify(['飲茶','游水','沖涼'])) throw new Error('AB35 seed membership changed');
-""" %% json.dumps(EXPECTED_LEGACY, ensure_ascii=False)
+""" % json.dumps(EXPECTED_LEGACY, ensure_ascii=False)
 run("node", "-e", check_js)
 
-# Recheck concurrent main just before touching branch history. If AA84 merged, abort and rebase/regenerate instead of overwriting readiness.
 run("git", "fetch", "origin", "main")
 assert run("git", "rev-parse", "origin/main", capture=True) == BASE, "main moved during finalization; rebase required"
 
-# 11. Remove all temporary transport/probe files and validation outputs before permanent commit.
 for temp in [
     ".github/workflows/ab35-zo-gungfo-finalize-temp.yml",
     "tools/ab35-zo-gungfo-finalize-temp.py",
@@ -283,17 +260,12 @@ got = {row[3:] for row in rows if len(row) >= 4}
 assert not any(path.startswith("external-evidence/aa84") or path.startswith("review-packets/corpus-review/AA84") or "MannerAdverbialVP" in path for path in got), sorted(got)
 assert not any(path.startswith(".github/workflows/ab35-zo-gungfo") or path == "tools/ab35-zo-gungfo-finalize-temp.py" for path in got), sorted(got)
 required = {
-    "src/runtime-resources/lexicon/productive-vo.js",
-    "src/plugin-entry.js",
-    "tests/constructions/ProductiveVO.json",
-    "tests/constructions/TransitiveVP.json",
-    "tests/tooling/runtime/ab35-zo-gungfo-rehome.test.js",
-    "tests/run-all.js",
-    "tests/fixtures/regression-snapshots.json",
-    "package.json", "package-lock.json", "manifest.json",
-    "main.js", "tests/construction-test-index.json",
-    "grammar/research_pending/ProductiveVO.md", "grammar/research_pending/TransitiveVP.md",
-    "data/construction-candidate-readiness.json", "docs/current/PROJECT-STATE.md",
+    "src/runtime-resources/lexicon/productive-vo.js", "src/plugin-entry.js",
+    "tests/constructions/ProductiveVO.json", "tests/constructions/TransitiveVP.json",
+    "tests/tooling/runtime/ab35-zo-gungfo-rehome.test.js", "tests/run-all.js",
+    "tests/fixtures/regression-snapshots.json", "package.json", "package-lock.json", "manifest.json",
+    "main.js", "tests/construction-test-index.json", "grammar/research_pending/ProductiveVO.md",
+    "grammar/research_pending/TransitiveVP.md", "data/construction-candidate-readiness.json", "docs/current/PROJECT-STATE.md",
 }
 assert required <= got, (sorted(required - got), sorted(got))
 
