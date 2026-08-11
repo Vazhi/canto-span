@@ -22,5 +22,17 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
+      - name: Patch temporary updater path for Node module resolution
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('tools/ab35-zo-gungfo-finalize-temp.py')
+          text = p.read_text()
+          old = 'update_js = Path("/tmp/ab35-zo-gungfo-update-regression.js")'
+          new = 'update_js = Path("tests/ab35-zo-gungfo-update-regression-temp.js")'
+          assert text.count(old) == 1
+          p.write_text(text.replace(old, new, 1))
+          PY
       - name: Apply, verify, clean, and commit single-entry ownership transition
         run: python3 tools/ab35-zo-gungfo-finalize-temp.py
