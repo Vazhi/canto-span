@@ -23,8 +23,12 @@ base_index = json.loads(
     )
 )
 base_total = sum(row.get("executable_case_count", 0) for row in base_index.get("files", []))
-assert base_total == 1638, f"unexpected post-#773 base construction total: {base_total}"
-expected_total = base_total + 1
+assert base_total == 1634, f"unexpected post-#773 base construction total: {base_total}"
+# Four intentionally rebaselined regression snapshots acquire AB78 exact-snapshot
+# references after 做功課 moves to TransitiveVP, and the focused AB78 ownership
+# case adds one more executable reference. ProductiveVO's removed snapshot is
+# balanced by its explicit outside-AB35 boundary, so its executable total is flat.
+expected_total = base_total + 5
 assert expected_total == 1639
 print(f"canonical checked index: {base_total}; scoped expected total: {expected_total}", flush=True)
 
@@ -72,8 +76,7 @@ text, newline_count = re.subn(
 )
 assert newline_count == 1, newline_count
 
-# The checked post-#773 index already totals 1,638 even though PROJECT-STATE still says 1,634.
-# This transition adds exactly one executable construction reference, so generated truth is 1,639.
+# Replace the superseded 1,635 estimate with the generated, base-derived total.
 once('== 1635', '== 1639')
 once('**1,635** across **134** files;', '**1,639** across **134** files;')
 once('| Per-construction assertions | 1,635 |', '| Per-construction assertions | 1,639 |')
