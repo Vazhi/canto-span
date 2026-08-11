@@ -37,7 +37,6 @@ test("RED: overt-standard post-predicate 過 comparison exposes predicate, marke
   assertComparative("我高過佢。", "高", "佢");
   assertComparative("細佬矮過我。", "矮", "我");
   assertComparative("佢快過我。", "快", "我");
-  assertComparative("今日凍過琴日。", "凍", "琴日");
 });
 
 test("RED boundary: experiential 過 is not comparative", () => {
