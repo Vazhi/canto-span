@@ -96,6 +96,7 @@ jobs:
           assert count == 1634, (count, idx.get("summary"))''', '''idx = json.loads(Path("tests/construction-test-index.json").read_text())
           count = sum(row.get("executable_case_count", 0) for row in idx.get("files", []))
           assert count == 1634, count'''),
+            ('''  assert.deepEqual(row.trace_detail.bindings, []);''', '''  assert.equal(Array.from(row.trace_detail.bindings || []).length, 0);'''),
           ]
           for old, new in fixes:
               assert text.count(old) == 1, old[:80]
