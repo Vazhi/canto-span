@@ -1,0 +1,141 @@
+name: Temporary top-2000 lexical R6
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - .github/workflows/top-2000-lexical-r6-temp.yml
+
+permissions:
+  contents: write
+
+jobs:
+  r6:
+    if: github.event.pull_request.head.ref == 'agent/top-2000-lexical-coverage-audit'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/top-2000-lexical-coverage-audit
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: Download pinned Cifu source
+        run: curl -fL --retry 3 https://raw.githubusercontent.com/gwinterstein/Cifu/8d5e4903e419193f903823880a7815712072cc80/Lexicon/Cifu-v1.txt -o /tmp/Cifu-v1.txt
+
+      - name: Apply R6 stative lexical additions
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+
+          entries = [
+            ('傻', 'so4', 'stative_predicate evaluative_property', 'foolish / silly'),
+            ('勁', 'ging6', 'stative_predicate scalar_property', 'strong / powerful / excellent'),
+            ('暖', 'nyun5', 'stative_predicate temperature_property', 'warm'),
+            ('濫', 'laam6', 'stative_predicate evaluative_property', 'excessive / indiscriminate'),
+            ('小', 'siu2', 'stative_predicate size_stative scalar_dimension_predicate', 'small / tiny'),
+            ('斜', 'ce4', 'stative_predicate orientation_property', 'slanting / oblique'),
+            ('瑞', 'seoi6', 'stative_predicate evaluative_property', 'auspicious / lucky'),
+            ('重要', 'zung6 jiu3', 'stative_predicate importance_property', 'important / significant'),
+            ('貧', 'pan4', 'stative_predicate resource_property', 'poor / deficient'),
+            ('彎', 'waan1', 'stative_predicate shape_property', 'bent / curved'),
+            ('錯', 'co3', 'stative_predicate evaluative_property', 'wrong / mistaken'),
+            ('舊', 'gau6', 'stative_predicate age_state_stative', 'old / former / worn'),
+            ('似', 'ci5', 'stative_predicate similarity_predicate', 'similar / resemble / seem'),
+            ('簡單', 'gaan2 daan1', 'stative_predicate complexity_property', 'simple / uncomplicated'),
+            ('主要', 'zyu2 jiu3', 'stative_predicate importance_property modifier', 'main / principal / primary'),
+            ('怪', 'gwaai3', 'stative_predicate evaluative_property', 'strange / odd / uncanny'),
+            ('幼', 'jau3', 'stative_predicate age_state_stative', 'young'),
+            ('普通', 'pou2 tung1', 'stative_predicate evaluative_property', 'common / ordinary / average'),
+            ('直', 'zik6', 'stative_predicate orientation_property', 'straight / upright'),
+          ]
+
+          p = Path('src/runtime-resources/lexicon/token-lexicon/statives.js')
+          text = p.read_text()
+          lines = []
+          added = 0
+          for form, jyutping, syntax, gloss in entries:
+              if f'["{form}",' in text:
+                  continue
+              meta = {'label':'like','jyutping':jyutping,'syntax':syntax,'note':f'{gloss}; Cifu spoken top-2000 R6 lexical audit.'}
+              lines.append('  [' + json.dumps(form, ensure_ascii=False) + ', ' + json.dumps(meta, ensure_ascii=False, separators=(',', ':')) + '],')
+              added += 1
+          if lines:
+              text = text.rsplit('\n];', 1)[0] + '\n\n  // v0.5.227: Cifu spoken top-2000 R6 stative lexical coverage.\n' + '\n'.join(lines) + '\n];\n'
+              p.write_text(text)
+          if added != 19:
+              raise SystemExit(f'expected 19 R6 additions, added {added}')
+
+          p = Path('manifest.json')
+          obj = json.loads(p.read_text())
+          obj['description'] = 'v0.5.227 adds 184 source-audited high-frequency Cantonese lexical entries from the Cifu spoken top-2000 audit without broadening grammar.'
+          p.write_text(json.dumps(obj, ensure_ascii=False, indent=2) + '\n')
+          p = Path('src/plugin-entry.js')
+          p.write_text(p.read_text().replace('adds 165 source-audited high-frequency lexical entries', 'adds 184 source-audited high-frequency lexical entries'))
+          p = Path('docs/current/PROJECT-STATE.md')
+          p.write_text(p.read_text().replace('adds 165 independently supported high-frequency lexical entries', 'adds 184 independently supported high-frequency lexical entries'))
+          PY
+
+      - name: Regenerate audit and R6 report
+        run: |
+          cp docs/research/LEXICAL-COVERAGE-TOP-2000-R1.md /tmp/R1.md
+          cp docs/research/LEXICAL-COVERAGE-TOP-2000-R2.md /tmp/R2.md
+          cp docs/research/LEXICAL-COVERAGE-TOP-2000-R3.md /tmp/R3.md
+          cp docs/research/LEXICAL-COVERAGE-TOP-2000-R4.md /tmp/R4.md
+          cp docs/research/LEXICAL-COVERAGE-TOP-2000-R5.md /tmp/R5.md
+          node tools/lexical-coverage/top-2000-audit.mjs --source=/tmp/Cifu-v1.txt
+          cp /tmp/R1.md docs/research/LEXICAL-COVERAGE-TOP-2000-R1.md
+          cp /tmp/R2.md docs/research/LEXICAL-COVERAGE-TOP-2000-R2.md
+          cp /tmp/R3.md docs/research/LEXICAL-COVERAGE-TOP-2000-R3.md
+          cp /tmp/R4.md docs/research/LEXICAL-COVERAGE-TOP-2000-R4.md
+          cp /tmp/R5.md docs/research/LEXICAL-COVERAGE-TOP-2000-R5.md
+          python - <<'PY'
+          from pathlib import Path
+          from collections import Counter
+          import csv
+
+          rows = list(csv.DictReader(Path('data/lexical-frequency/cifu-spoken-top-2000.tsv').open(), delimiter='\t'))
+          counts = Counter(row['runtime_status'] for row in rows)
+          r6 = ['傻','勁','暖','濫','小','斜','瑞','重要','貧','彎','錯','舊','似','簡單','主要','怪','幼','普通','直']
+          missing = [row for row in rows if row['runtime_status'] == 'missing'][:120]
+          out = [
+              '# Top-2000 spoken Cantonese lexical coverage audit — R6', '',
+              '## Scope', '',
+              'R6 is a behavior-tested stative batch. Each candidate is first treated only as an existing broad stative lexical type; the full runtime suite determines whether that lexical addition causes an unacceptable parser interaction.', '',
+              '## Current coverage after cumulative R1–R6 additions', ''
+          ]
+          for key in ['covered_main','covered_variant','handled_structurally','surface_covered_sense_uncertain','missing','manual_review']:
+              out.append(f'- `{key}`: **{counts.get(key, 0)}**')
+          out += ['', '## R6 candidate additions (19)', ''] + [f'- `{x}`' for x in r6]
+          out += ['', '## Highest-frequency remaining lexical-gap candidates', '', '| Rank | Form | Count | Jyutping | Cifu definition |', '|---:|---|---:|---|---|']
+          for row in missing:
+              out.append(f"| {row['rank']} | {row['word']} | {row['cifu_spoken_adult']} | {row['cifu_jyutping']} | {row['cifu_definition'].replace('|','\\|')} |")
+          out += ['', '## Interpretation', '', 'Unlike noun-only batches, stative lexicalization can activate existing predicate templates. Any regression that indicates a semantically wrong parse is grounds to remove the triggering lexeme rather than rebaseline the grammar.', '']
+          Path('docs/research/LEXICAL-COVERAGE-TOP-2000-R6.md').write_text('\n'.join(out))
+          print(dict(counts))
+          PY
+
+      - name: Build and verify R6 runtime state
+        run: |
+          npm run build:runtime
+          npm test
+          npm run verify:runtime-build
+          npm run verify
+          npm run verify:runtime
+          npm run verify:research
+          git diff --check
+
+      - name: Commit verified R6 changes
+        run: |
+          git config user.name 'Canto Span scoped automation'
+          git config user.email 'actions@users.noreply.github.com'
+          git add data/lexical-frequency/cifu-spoken-top-2000.tsv \
+            docs/research/LEXICAL-COVERAGE-TOP-2000-R6.md \
+            src/runtime-resources/lexicon/token-lexicon/statives.js \
+            src/plugin-entry.js manifest.json docs/current/PROJECT-STATE.md main.js
+          git diff --cached --quiet && { echo 'No verified R6 changes to commit'; exit 0; }
+          git commit -m 'Fill high-frequency stative lexical gaps'
+          git push origin HEAD:agent/top-2000-lexical-coverage-audit
