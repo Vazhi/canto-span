@@ -9,6 +9,7 @@ module.exports = [  // Pronouns / people
   ["佢哋", { label: "who", jyutping: "keoi5 dei6", syntax: "subject_or_topic", note: "they" }],
   ["媽媽", { label: "who", jyutping: "maa4 maa1", syntax: "person_np", note: "mother" }],
   ["爸爸", { label: "who", jyutping: "baa1 baa1", syntax: "person_np", note: "father" }],
+  ["細佬", { label: "who", jyutping: "sai3 lou2", syntax: "kinship_person_np person_np", note: "younger brother; lexical coverage added so published comparative examples can be tested without substituting vocabulary." }],
   ["老師", { label: "who", jyutping: "lou5 si1", syntax: "person_np", classifier_classes: ["person"], note: "teacher" }],
   ["經理", { label: "who", jyutping: "ging1 lei5", syntax: "person_np title_np", note: "manager; reviewed CP021B heavy-theme boundary participant." }],
   ["朋友", { label: "who", jyutping: "pang4 jau5", syntax: "person_np", note: "friend" }],
