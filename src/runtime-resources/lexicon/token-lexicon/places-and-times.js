@@ -86,4 +86,20 @@ module.exports = [  // Places / times
   ["洞", {"label":"where","jyutping":"dung6","syntax":"place_or_goal","note":"cave / hole; Cifu spoken top-2000 R1 lexical audit."}],
   ["點鐘", {"label":"when","jyutping":"dim2 zung1","syntax":"time_np clock_time_unit","note":"o'clock / clock-hour expression; Cifu spoken top-2000 R1 lexical audit."}],
   ["廟", {"label":"where","jyutping":"miu6","syntax":"place_or_goal place_np","note":"temple; Cifu spoken top-2000 R1 lexical audit."}],
+
+  // v0.5.227: Cifu spoken top-2000 R2 source-audited lexical coverage.
+  ["以前", {"label":"when","jyutping":"ji5 cin4","syntax":"temporal_adjunct","note":"before / formerly / ago; Cifu spoken top-2000 R2 lexical audit."}],
+  ["之間", {"label":"where","jyutping":"zi1 gaan1","syntax":"relational_localizer spatial_nominal","note":"between / among; Cifu spoken top-2000 R2 lexical audit."}],
+  ["方向", {"label":"where","jyutping":"fong1 hoeng3","syntax":"direction_np spatial_nominal","note":"direction / orientation; Cifu spoken top-2000 R2 lexical audit."}],
+  ["泳池", {"label":"where","jyutping":"wing6 ci4","syntax":"place_or_goal place_np","note":"swimming pool; Cifu spoken top-2000 R2 lexical audit."}],
+  ["位置", {"label":"where","jyutping":"wai6 zi3","syntax":"location_np place_or_goal","note":"position / place / location; Cifu spoken top-2000 R2 lexical audit."}],
+  ["路", {"label":"where","jyutping":"lou6","syntax":"path_np place_or_goal","note":"road / path / way; Cifu spoken top-2000 R2 lexical audit."}],
+  ["機場", {"label":"where","jyutping":"gei1 coeng4","syntax":"place_or_goal place_np","note":"airport / airfield; Cifu spoken top-2000 R2 lexical audit."}],
+  ["迷宮", {"label":"where","jyutping":"mai4 gung1","syntax":"place_or_goal place_np","note":"maze / labyrinth; Cifu spoken top-2000 R2 lexical audit."}],
+  ["起點", {"label":"where","jyutping":"hei2 dim2","syntax":"source_or_startpoint place_or_goal","note":"starting point; Cifu spoken top-2000 R2 lexical audit."}],
+  ["南", {"label":"where","jyutping":"naam4","syntax":"direction_np cardinal_direction","note":"south; Cifu spoken top-2000 R2 lexical audit."}],
+  ["工廠", {"label":"where","jyutping":"gung1 cong2","syntax":"place_or_goal place_np","note":"factory; Cifu spoken top-2000 R2 lexical audit."}],
+  ["城", {"label":"where","jyutping":"sing4","syntax":"place_or_goal place_np","note":"city / town / city walls; Cifu spoken top-2000 R2 lexical audit."}],
+  ["球場", {"label":"where","jyutping":"kau4 coeng4","syntax":"place_or_goal place_np","note":"sports ground / court / field; Cifu spoken top-2000 R2 lexical audit."}],
+  ["宅", {"label":"where","jyutping":"zaak6","syntax":"place_or_goal residence_np","note":"residence; Cifu spoken top-2000 R2 lexical audit."}],
 ];

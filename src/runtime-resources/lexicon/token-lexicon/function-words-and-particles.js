@@ -75,4 +75,13 @@ module.exports = [  // Function words / particles / stance
   ["譬如", {"label":"func","jyutping":"pei3 jyu4","syntax":"example_introducer discourse_marker","note":"for example / for instance / such as; Cifu spoken top-2000 R1 lexical audit."}],
   ["但", {"label":"func","jyutping":"daan6","syntax":"connector_contrast","note":"but / however; Cifu spoken top-2000 R1 lexical audit."}],
   ["亦", {"label":"how","jyutping":"jik6","syntax":"additive_adverb focus_adverb","note":"also / too; Cifu spoken top-2000 R1 lexical audit."}],
+
+  // v0.5.227: Cifu spoken top-2000 R2 source-audited lexical coverage.
+  ["即係", {"label":"func","jyutping":"zik1 hai6","syntax":"discourse_marker reformulation_marker","note":"exactly / that is / i.e.; Cifu spoken top-2000 R2 lexical audit."}],
+  ["或者", {"label":"func","jyutping":"waak6 ze2","syntax":"alternative_connector epistemic_possibility_marker","note":"or / maybe / perhaps; Cifu spoken top-2000 R2 lexical audit."}],
+  ["梗係", {"label":"func","jyutping":"gang2 hai6","syntax":"discourse_marker certainty_marker","note":"of course; Cifu spoken top-2000 R2 lexical audit."}],
+  ["冇錯", {"label":"func","jyutping":"mou5 co3","syntax":"acknowledgement_formula discourse_marker","note":"that is correct / exactly; Cifu spoken top-2000 R2 lexical audit."}],
+  ["另外", {"label":"how","jyutping":"ling6 ngoi6","syntax":"additive_adverb discourse_adverb","note":"additionally / besides / separately; Cifu spoken top-2000 R2 lexical audit."}],
+  ["根本", {"label":"how","jyutping":"gan1 bun2","syntax":"emphatic_adverb discourse_adverb","note":"fundamentally / simply / at all; Cifu spoken top-2000 R2 lexical audit."}],
+  ["枉", {"label":"how","jyutping":"wong2","syntax":"manner_adverb evaluative_adverb","note":"in vain / wrongly; Cifu spoken top-2000 R2 lexical audit."}],
 ];

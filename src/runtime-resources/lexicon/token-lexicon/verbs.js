@@ -193,4 +193,13 @@ module.exports = [  // Verbs
   ["繼續", {"label":"doing","jyutping":"gai3 zuk6","syntax":"verb","note":"continue / proceed; Cifu spoken top-2000 R1 lexical audit."}],
   ["恨", {"label":"doing","jyutping":"han6","syntax":"verb attitude_verb","note":"hate / regret / long for; Cifu spoken top-2000 R1 lexical audit."}],
   ["交叉", {"label":"doing","jyutping":"gaau1 caa1","syntax":"verb","note":"cross / intersect; Cifu spoken top-2000 R1 lexical audit."}],
+
+  // v0.5.227: Cifu spoken top-2000 R2 source-audited lexical coverage.
+  ["經過", {"label":"doing","jyutping":"ging1 gwo3","syntax":"verb motion_path_verb","note":"pass through / go through / undergo; Cifu spoken top-2000 R2 lexical audit."}],
+  ["需要", {"label":"doing","jyutping":"seoi1 jiu3","syntax":"verb necessity_predicate","note":"need / require; Cifu spoken top-2000 R2 lexical audit."}],
+  ["搞", {"label":"doing","jyutping":"gaau2","syntax":"verb","note":"do / make / arrange / handle; Cifu spoken top-2000 R2 lexical audit."}],
+  ["希望", {"label":"doing","jyutping":"hei1 mong6","syntax":"verb desire_verb","note":"hope / wish for; Cifu spoken top-2000 R2 lexical audit."}],
+  ["滑雪", {"label":"doing","jyutping":"waat6 syut3","syntax":"verb activity_verb","note":"ski / skiing; Cifu spoken top-2000 R2 lexical audit."}],
+  ["明白", {"label":"doing","jyutping":"ming4 baak6","syntax":"verb cognition_verb","note":"understand / realize; Cifu spoken top-2000 R2 lexical audit."}],
+  ["感覺", {"label":"doing","jyutping":"gam2 gok3","syntax":"verb perception_verb","note":"feel / sense; Cifu spoken top-2000 R2 lexical audit."}],
 ];

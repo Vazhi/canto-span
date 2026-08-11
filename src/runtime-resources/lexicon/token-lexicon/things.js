@@ -79,4 +79,13 @@ module.exports = [  // Things / nouns
   ["馬戲", {"label":"what","jyutping":"maa5 hei3","syntax":"object_np","note":"circus; Cifu spoken top-2000 R1 lexical audit."}],
   ["角", {"label":"what","jyutping":"gok3","syntax":"object_np","note":"angle / corner / horn; Cifu spoken top-2000 R1 lexical audit."}],
   ["韻", {"label":"what","jyutping":"wan6","syntax":"object_np linguistic_term_np","note":"rhyme / rime; Cifu spoken top-2000 R1 lexical audit."}],
+
+  // v0.5.227: Cifu spoken top-2000 R2 source-audited lexical coverage.
+  ["蛇", {"label":"what","jyutping":"se4","syntax":"object_np animal_np","note":"snake / serpent; Cifu spoken top-2000 R2 lexical audit."}],
+  ["葡萄", {"label":"what","jyutping":"pou4 tou4","syntax":"object_np food_np","note":"grape; Cifu spoken top-2000 R2 lexical audit."}],
+  ["腰", {"label":"what","jyutping":"jiu1","syntax":"object_np body_part_np","note":"waist / lower back; Cifu spoken top-2000 R2 lexical audit."}],
+  ["科技", {"label":"what","jyutping":"fo1 gei6","syntax":"abstract_np domain_np","note":"science and technology; Cifu spoken top-2000 R2 lexical audit."}],
+  ["社會", {"label":"what","jyutping":"se5 wui2","syntax":"abstract_np collective_np","note":"society; Cifu spoken top-2000 R2 lexical audit."}],
+  ["方面", {"label":"what","jyutping":"fong1 min6","syntax":"abstract_np aspect_np","note":"aspect / respect / field / side; Cifu spoken top-2000 R2 lexical audit."}],
+  ["煙", {"label":"what","jyutping":"jin1","syntax":"object_np substance_np","note":"smoke / tobacco / cigarette; Cifu spoken top-2000 R2 lexical audit."}],
 ];

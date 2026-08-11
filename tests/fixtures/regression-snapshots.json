@@ -58312,10 +58312,9 @@
           "missing_argument_slots": [],
           "root_span_coverage_status": "NO_TOP_CONSTRUCTION",
           "root_top_construction_count": 0,
-          "unwrapped_root_nonpunctuation_count": 8,
+          "unwrapped_root_nonpunctuation_count": 7,
           "unwrapped_root_surfaces": [
-            "即",
-            "係",
+            "即係",
             "釋",
             "然",
             "咗",
@@ -58332,27 +58331,11 @@
             "kind": "token",
             "depth": 0,
             "parent": "",
-            "surface": "即",
-            "construction": "",
-            "role": "neutral",
-            "syntax": "unknown_cjk_or_text",
-            "jyutping": "",
-            "slots": [],
-            "contextual_role_affordances": [],
-            "trace": "unknown_atomic",
-            "trace_detail": {
-              "kind": "unknown_atomic"
-            }
-          },
-          {
-            "kind": "token",
-            "depth": 0,
-            "parent": "",
-            "surface": "係",
+            "surface": "即係",
             "construction": "",
             "role": "func",
-            "syntax": "copula",
-            "jyutping": "hai6",
+            "syntax": "discourse_marker reformulation_marker",
+            "jyutping": "zik1 hai6",
             "slots": [],
             "contextual_role_affordances": [
               {
@@ -58520,7 +58503,7 @@
           },
           "hover": {
             "status": "WARN",
-            "flagged_hover_target_count": 3,
+            "flagged_hover_target_count": 2,
             "missing_plain_learner_gloss_count": 0
           },
           "wrapper": {
@@ -58530,14 +58513,16 @@
           },
           "jyutping": {
             "status": "WARN",
-            "missing_jyutping_count": 3,
+            "missing_jyutping_count": 2,
             "invalid_jyutping_format_count": 0,
             "syllable_count_mismatch_count": 0,
             "dictionary_disagreement_count": 0
           }
         }
       },
-      "case_id": "REG-0203"
+      "case_id": "REG-0203",
+      "accepted_transition": "v0.5.227_cifu_top2000_r2_lexical_tokenization",
+      "transition_reason": "Source-supported 即係 is now one lexical discourse token instead of unknown 即 + copular 係; no construction promotion is accepted."
     },
     {
       "source": "我上去。",
@@ -156049,6 +156034,6 @@
   },
   "last_absorbed_candidate": "v0.5.218-aa56-positive-participant-runtime",
   "absorbed_current_focused_case_count": 4,
-  "last_intentional_transition": "v0.5.227_cifu_top2000_lexical_coverage",
+  "last_intentional_transition": "v0.5.227_cifu_top2000_r2_lexical_coverage",
   "abandoned_candidate": "v0.5.183-cp024-p1-demo01-r1"
 }
