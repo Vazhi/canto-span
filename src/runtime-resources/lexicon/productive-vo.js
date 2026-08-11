@@ -30,7 +30,6 @@ module.exports = [
   ["打電話", { verb: "打", object: "電話", label: "VP", type: "ProductiveVO" }],
   ["打籃球", { verb: "打", object: "籃球", label: "VP", type: "ProductiveVO" }],
   ["聽電話", { verb: "聽", object: "電話", label: "VP", type: "ProductiveVO" }],
-  ["做功課", { verb: "做", object: "功課", label: "VP", type: "ProductiveVO" }],
   ["返學", { verb: "返", object: "學", label: "VP", type: "ProductiveVO" }],
   ["放學", { verb: "放", object: "學", label: "VP", type: "ProductiveVO" }],
   ["瞓覺", { verb: "瞓", object: "覺", label: "VP", type: "ProductiveVO" }],

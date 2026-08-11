@@ -45,7 +45,7 @@ function assertSeed(source, surface) {
 
 test("AB35 source-linked seed is exactly the three reviewed current-whitelist compounds", () => {
   assert.deepEqual(compounds.map(([surface]) => surface), SEEDS);
-  assert.equal(legacy.length, 40);
+  assert.equal(legacy.length, 39);
   for (const seed of SEEDS) assert.equal(legacy.some(([surface]) => surface === seed), false, seed);
   assertSeed("飲茶。", "飲茶");
   assertSeed("游水。", "游水");
@@ -67,7 +67,7 @@ test("legacy and unresolved ProductiveVO surfaces do not inherit the source-link
   for (const source of ["做功課。", "食飯。", "打電話。", "打籃球。", "飲水。", "做運動。", "下棋。", "煮嘢食。"]) {
     assert.equal(sourceLinkedRows(source).length, 0, source);
   }
-  assert.equal(productiveRows("做功課。").some((row) => row.trace_detail.kind === "generative_template"), true);
+  assert.equal(productiveRows("做功課。").length, 0);
   assert.equal(productiveRows("飲水。").some((row) => row.trace_detail.kind === "generative_template"), true);
 });
 
