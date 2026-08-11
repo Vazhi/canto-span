@@ -43,7 +43,34 @@ jobs:
           assert count == 1634, (count, idx.get("summary"))''', '''idx = json.loads(Path("tests/construction-test-index.json").read_text())
           count = sum(row.get("executable_case_count", 0) for row in idx.get("files", []))
           assert count == 1634, count'''),
-            ('''  assert.deepEqual(row.trace_detail.bindings, []);''', '''  assert.equal(Array.from(row.trace_detail.bindings || []).length, 0);'''),
+            ('''  assert.deepEqual(row.trace_detail.bindings, []);''', '''  assert.equal(Array.from(row.trace_detail.bindings || []).length, 0);
+          assert.equal(row.trace_detail.matcher_variant_id, "ProductiveVO.source_linked_verb_object_compound_seed");'''),
+            ('''replace_once(
+              "src/runtime-resources/diagnostics/trace-metadata.js",
+              '  "template_subtype",\\n];',
+              '  "template_subtype",\\n  "structural_scope",\\n  "source_specification",\\n  "lexical_compound_profile",\\n];',
+          )''', '''replace_once(
+              "src/runtime-resources/diagnostics/trace-metadata.js",
+              '  "template_subtype",\\n];',
+              '  "template_subtype",\\n  "structural_scope",\\n  "source_specification",\\n  "lexical_compound_profile",\\n];',
+          )
+          replace_once(
+              "src/runtime-resources/diagnostics/trace-metadata.js",
+              'const reviewedMissingTemplateFamilyDefaults = new Map();',
+              '''const productiveVoVariantTemplate = ["action_verb!", "object!"];
+          const productiveVoLegacySurfaces = require("../lexicon/productive-vo").map(([surface]) => surface);
+          const verbObjectCompoundSeedSurfaces = require("../lexicon/verb-object-compounds").map(([surface]) => surface);
+          registerReviewedMatcherVariant("ProductiveVO.legacy_whitelist_object_relation", {
+            trace_kind: "generative_template", construction_type: "ProductiveVO", template_family: "generative_template",
+            template: productiveVoVariantTemplate, constraints: { surface_sequence_in: productiveVoLegacySurfaces }, rule: "",
+          });
+          registerReviewedMatcherVariant("ProductiveVO.source_linked_verb_object_compound_seed", {
+            trace_kind: "source_linked_runtime_matcher", construction_type: "ProductiveVO", template_family: "",
+            template: productiveVoVariantTemplate, constraints: { surface_sequence_in: verbObjectCompoundSeedSurfaces }, rule: "",
+          });
+
+          const reviewedMissingTemplateFamilyDefaults = new Map();''',
+          )'''),
             ('''run("npm", "run", "verify:runtime")
           with open("/tmp/ab35-architecture.json", "w") as f:
               subprocess.run(["npm", "run", "audit:parser-architecture", "--", "--json"], check=True, text=True, stdout=f)
@@ -61,12 +88,22 @@ jobs:
           assert g.count(old_assert) == 1
           glossika.write_text(g.replace(old_assert, new_assert, 1))
 
-          # Print the architecture result before the broader runtime wrapper can obscure its root cause.
           run("npm", "run", "audit:parser-architecture", "--", "--json")
           run("npm", "run", "verify:runtime")'''),
+            ('''for temp in [
+              ".github/workflows/ab35-seed-inspect-temp.yml",
+              ".github/workflows/ab35-seed-apply-temp.yml",
+              ".github/ab35-seed-apply-temp.py",
+          ]:''', '''for temp in [
+              ".github/workflows/ab35-seed-inspect-temp.yml",
+              ".github/workflows/ab35-seed-apply-temp.yml",
+              ".github/ab35-seed-apply-temp.py",
+              "tools/ab35-seed-finalize-temp.py",
+              "validation/current/ab35-apply-trigger.txt",
+          ]:'''),
           ]
           for old, new in fixes:
-              assert text.count(old) == 1, old[:100]
+              assert text.count(old) == 1, old[:120]
               text = text.replace(old, new, 1)
           p.write_text(text)
           PY
