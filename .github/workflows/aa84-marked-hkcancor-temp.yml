@@ -46,13 +46,13 @@ jobs:
           npm run verify:research
           npm run verify
           git diff --check
-      - name: Commit only canonical readiness and remove temporary runner
+      - name: Commit canonical discovery outputs and remove temporary runner
         run: |
           set -euo pipefail
           git checkout -- validation/current 2>/dev/null || true
           git clean -fd validation/current 2>/dev/null || true
           git rm .github/workflows/aa84-marked-hkcancor-temp.yml
-          allowed='data/construction-candidate-readiness.json|.github/workflows/aa84-marked-hkcancor-temp.yml'
+          allowed='data/construction-candidate-readiness.json|docs/research/FULL-REPO-SUPPORTED-PRODUCTIVE-SWEEP-R1.md|docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md|.github/workflows/aa84-marked-hkcancor-temp.yml'
           unexpected="$(git status --porcelain | sed 's/^...//' | grep -Ev "^(${allowed})$" || true)"
           if [ -n "$unexpected" ]; then
             echo 'Unexpected post-verification working-tree changes:'
@@ -61,7 +61,10 @@ jobs:
           fi
           git config user.name "Canto Span scoped automation"
           git config user.email "actions@users.noreply.github.com"
-          git add data/construction-candidate-readiness.json
+          git add \
+            data/construction-candidate-readiness.json \
+            docs/research/FULL-REPO-SUPPORTED-PRODUCTIVE-SWEEP-R1.md \
+            docs/research/SUPPORTED-PRODUCTIVE-CANDIDATES.md
           git diff --cached --check
           git commit -m "[aa84-final] Finalize reviewed marked corpus evidence"
           git push origin HEAD:agent/aa84-marked-hkcancor-review
