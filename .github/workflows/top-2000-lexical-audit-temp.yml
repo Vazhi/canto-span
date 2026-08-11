@@ -25,147 +25,81 @@ jobs:
             https://raw.githubusercontent.com/gwinterstein/Cifu/8d5e4903e419193f903823880a7815712072cc80/Lexicon/Cifu-v1.txt \
             -o /tmp/Cifu-v1.txt
 
-      - name: Generate ranked coverage audit
+      - name: Enrich and regenerate audit
         run: |
-          mkdir -p data/lexical-frequency docs/research
-          cat > /tmp/top2000-audit.cjs <<'NODE'
+          cat > /tmp/enrich-top2000.cjs <<'NODE'
           "use strict";
           const fs = require("fs");
-          const path = require("path");
-
-          const sourcePath = "/tmp/Cifu-v1.txt";
-          const raw = fs.readFileSync(sourcePath, "utf8").replace(/^\uFEFF/, "");
-          const lines = raw.split(/\r?\n/).filter(Boolean);
-          const headers = lines[0].split("\t");
-          const idx = Object.fromEntries(headers.map((h, i) => [h, i]));
-          if (idx.Word == null || idx.SpokenAdult == null) {
-            throw new Error(`Unexpected Cifu headers: ${headers.join(" | ")}`);
-          }
-          const jyutpingHeader = ["Jyutping", "jyutping", "Romanization", "Pronunciation"].find((h) => idx[h] != null);
-
-          const byWord = new Map();
-          let duplicateRows = 0;
-          for (let n = 1; n < lines.length; n++) {
-            const cols = lines[n].split("\t");
-            const word = (cols[idx.Word] || "").trim();
-            const spoken = Number.parseInt(cols[idx.SpokenAdult] || "0", 10);
-            if (!word || !Number.isFinite(spoken) || spoken <= 0) continue;
-            const jyutping = jyutpingHeader ? (cols[idx[jyutpingHeader]] || "").trim() : "";
-            const existing = byWord.get(word);
-            if (existing) {
-              duplicateRows++;
-              if (spoken > existing.spoken) byWord.set(word, { word, spoken, jyutping });
-            } else {
-              byWord.set(word, { word, spoken, jyutping });
-            }
-          }
-          const ranked = [...byWord.values()]
-            .sort((a, b) => b.spoken - a.spoken || a.word.localeCompare(b.word, "zh-Hant"))
-            .slice(0, 2000)
-            .map((row, i) => ({ ...row, rank: i + 1 }));
-          if (ranked.length !== 2000) throw new Error(`Expected 2000 ranked rows, got ${ranked.length}`);
-
-          const moduleNames = [
-            "people-and-address",
-            "referents-and-boundaries",
-            "things",
-            "places-and-times",
-            "verbs",
-            "statives",
-            "function-words-and-particles",
-            "degree-and-formulas",
-            "study-suite",
-          ];
-          const lexDir = path.resolve("src/runtime-resources/lexicon/token-lexicon");
-          const direct = new Map();
-          for (const name of moduleNames) {
-            const entries = require(path.join(lexDir, name));
-            for (const entry of entries) {
-              if (!Array.isArray(entry) || typeof entry[0] !== "string") continue;
-              const [form, attrs = {}] = entry;
-              const rec = { module: `${name}.js`, jyutping: String(attrs.jyutping || ""), label: String(attrs.label || ""), syntax: String(attrs.syntax || ""), note: String(attrs.note || "") };
-              if (!direct.has(form)) direct.set(form, []);
-              direct.get(form).push(rec);
-            }
+          const raw = fs.readFileSync("/tmp/Cifu-v1.txt", "utf8").replace(/^\uFEFF/, "");
+          const sourceLines = raw.split(/\r?\n/).filter(Boolean);
+          const h = sourceLines[0].split("\t");
+          const ix = Object.fromEntries(h.map((x,i)=>[x,i]));
+          for (const req of ["Word","JyutPing","SpokenAdult","Definition","Structure"]) if (ix[req] == null) throw new Error(`Missing Cifu header ${req}`);
+          const meta = new Map();
+          for (const line of sourceLines.slice(1)) {
+            const c = line.split("\t");
+            const word = (c[ix.Word] || "").trim();
+            if (!word) continue;
+            meta.set(word, {
+              jyutping: (c[ix.JyutPing] || "").trim(),
+              definition: (c[ix.Definition] || "").trim(),
+              structure: (c[ix.Structure] || "").trim(),
+            });
           }
 
-          function walk(dir, out = []) {
-            for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
-              const p = path.join(dir, ent.name);
-              if (ent.isDirectory()) walk(p, out);
-              else if (ent.isFile() && /\.(?:js|json|md)$/.test(ent.name)) out.push(p);
-            }
-            return out;
-          }
-          const structuralFiles = [...walk(path.resolve("src/parser")), ...walk(path.resolve("src/runtime-resources"))];
-          const sourceCache = structuralFiles.map((p) => [p, fs.readFileSync(p, "utf8")]);
-
+          const p = "data/lexical-frequency/cifu-spoken-top-2000.tsv";
+          const lines = fs.readFileSync(p,"utf8").trimEnd().split(/\r?\n/);
+          const oldH = lines[0].split("\t");
+          const oi = Object.fromEntries(oldH.map((x,i)=>[x,i]));
           const normJ = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9]/g, "");
-          const rows = ranked.map((r) => {
-            const recs = direct.get(r.word) || [];
-            let status = "missing";
-            let runtimeModule = "";
-            let runtimeJyutping = "";
-            let runtimeMeta = "";
-            let structuralPath = "";
-            if (recs.length) {
-              runtimeModule = [...new Set(recs.map((x) => x.module))].join(";");
-              runtimeJyutping = [...new Set(recs.map((x) => x.jyutping).filter(Boolean))].join(";");
-              runtimeMeta = [...new Set(recs.map((x) => [x.label, x.syntax].filter(Boolean).join(":")))].filter(Boolean).join(";");
-              if (r.jyutping && runtimeJyutping && !normJ(runtimeJyutping).includes(normJ(r.jyutping)) && !normJ(r.jyutping).includes(normJ(runtimeJyutping))) {
-                status = "surface_covered_sense_uncertain";
-              } else {
-                status = "covered_main";
-              }
-            } else {
-              const dq = JSON.stringify(r.word);
-              const sq = `'${r.word.replace(/'/g, "\\'")}'`;
-              const hit = sourceCache.find(([p, text]) => !p.includes("token-lexicon") && (text.includes(dq) || text.includes(sq)));
-              if (hit) {
-                status = "handled_structurally";
-                structuralPath = path.relative(process.cwd(), hit[0]);
-              }
+          const rows = lines.slice(1).map((line) => {
+            const c = line.split("\t");
+            const word = c[oi.word];
+            const m = meta.get(word) || {jyutping:"",definition:"",structure:""};
+            let status = c[oi.runtime_status];
+            const runtimeJ = c[oi.runtime_jyutping] || "";
+            if ((status === "covered_main" || status === "surface_covered_sense_uncertain") && m.jyutping && runtimeJ) {
+              const a = normJ(m.jyutping), b = normJ(runtimeJ);
+              status = (a.includes(b) || b.includes(a)) ? "covered_main" : "surface_covered_sense_uncertain";
             }
-            return { ...r, status, runtimeModule, runtimeJyutping, runtimeMeta, structuralPath };
+            return {
+              rank: Number(c[oi.rank]), word,
+              spoken: Number(c[oi.cifu_spoken_adult]),
+              jyutping: m.jyutping,
+              definition: m.definition,
+              structure: m.structure,
+              status,
+              runtimeModule: c[oi.runtime_module] || "",
+              runtimeJ,
+              runtimeMeta: c[oi.runtime_meta] || "",
+              structuralPath: c[oi.structural_path] || "",
+            };
           });
+          if (rows.length !== 2000) throw new Error(`Expected 2000 rows, got ${rows.length}`);
+          const esc=(v)=>String(v??"").replace(/\t/g," ").replace(/\r?\n/g," ");
+          const outH=["rank","word","cifu_spoken_adult","cifu_jyutping","cifu_definition","cifu_structure","runtime_status","runtime_module","runtime_jyutping","runtime_meta","structural_path"];
+          fs.writeFileSync(p,[outH.join("\t"),...rows.map(r=>[r.rank,r.word,r.spoken,r.jyutping,r.definition,r.structure,r.status,r.runtimeModule,r.runtimeJ,r.runtimeMeta,r.structuralPath].map(esc).join("\t"))].join("\n")+"\n");
 
-          const esc = (v) => String(v ?? "").replace(/\t/g, " ").replace(/\r?\n/g, " ");
-          const outHeaders = ["rank","word","cifu_spoken_adult","cifu_jyutping","runtime_status","runtime_module","runtime_jyutping","runtime_meta","structural_path"];
-          const tsv = [outHeaders.join("\t"), ...rows.map((r) => [r.rank,r.word,r.spoken,r.jyutping,r.status,r.runtimeModule,r.runtimeJyutping,r.runtimeMeta,r.structuralPath].map(esc).join("\t"))].join("\n") + "\n";
-          fs.writeFileSync("data/lexical-frequency/cifu-spoken-top-2000.tsv", tsv);
-
-          const counts = rows.reduce((m, r) => (m[r.status] = (m[r.status] || 0) + 1, m), {});
-          const missing = rows.filter((r) => r.status === "missing");
-          const uncertain = rows.filter((r) => r.status === "surface_covered_sense_uncertain");
-          const structural = rows.filter((r) => r.status === "handled_structurally");
-          const topMissing = missing.slice(0, 200);
-          const md = `# Top-2000 spoken Cantonese lexical coverage audit — R1\n\n` +
-            `## Method\n\n` +
-            `Frequency source: Cifu v1 pinned at \`8d5e4903e419193f903823880a7815712072cc80\`, ranked by integer \`SpokenAdult\` frequency. The audit keeps the 2,000 highest-frequency unique non-empty forms with positive spoken frequency; it does not filter by script or anticipated parser usefulness. Cifu is used for ranking and its supplied Jyutping where present. Wiktionary is a permitted secondary lexical-verification source for later gap filling; frequency rank is not taken from Wiktionary.\n\n` +
-            `Runtime baseline: the branch's current Canto Span \`main\` ancestry. Exact token-lexicon form matches are \`covered_main\` unless a non-empty Cifu/runtime Jyutping mismatch requires \`surface_covered_sense_uncertain\`. A non-lexicon form quoted elsewhere in parser/runtime sources is conservatively marked \`handled_structurally\`; this is a review flag, not proof that every lexical sense is supported. All other forms are \`missing\`.\n\n` +
-            `Cifu headers: ${headers.map((h) => `\`${h}\``).join(", ")}\n\n` +
-            `Duplicate source rows collapsed by surface form: ${duplicateRows}.\n\n` +
-            `## Coverage counts\n\n` +
-            Object.entries(counts).sort().map(([k,v]) => `- \`${k}\`: **${v}**`).join("\n") + `\n\n` +
-            `## Highest-frequency direct lexical gaps\n\n` +
-            `| Rank | Form | Cifu spoken count | Cifu Jyutping |\n|---:|---|---:|---|\n` +
-            topMissing.map((r) => `| ${r.rank} | ${r.word.replace(/\|/g,"\\|")} | ${r.spoken} | ${esc(r.jyutping)} |`).join("\n") + `\n\n` +
-            `## Review buckets\n\n- Jyutping/sense uncertainty: ${uncertain.length}\n- Structural-source mentions requiring manual confirmation: ${structural.length}\n- Direct lexical gaps: ${missing.length}\n\n` +
-            `The TSV is the complete 2,000-row audit. Frequency alone does not authorize a lexical sense, grammatical construction, or status change. Clear lexical gaps must be independently verified before runtime insertion.\n`;
-          fs.writeFileSync("docs/research/LEXICAL-COVERAGE-TOP-2000-R1.md", md);
-
-          console.log(JSON.stringify({ headers, ranked: rows.length, counts, duplicateRows, topMissing: topMissing.slice(0, 30).map(({rank,word,spoken,jyutping}) => ({rank,word,spoken,jyutping})) }, null, 2));
+          const counts=rows.reduce((m,r)=>(m[r.status]=(m[r.status]||0)+1,m),{});
+          const missing=rows.filter(r=>r.status==="missing");
+          const uncertain=rows.filter(r=>r.status==="surface_covered_sense_uncertain");
+          const structural=rows.filter(r=>r.status==="handled_structurally");
+          const topMissing=missing.slice(0,200);
+          const md = `# Top-2000 spoken Cantonese lexical coverage audit — R1\n\n`+
+          `## Method\n\nFrequency source: Cifu v1 pinned at \`8d5e4903e419193f903823880a7815712072cc80\`, ranked by integer \`SpokenAdult\` frequency. The list keeps exactly the 2,000 highest-frequency unique non-empty forms with positive spoken frequency and does not filter forms according to expected parser usefulness. Cifu supplies the ranking, Jyutping, definition field, and structure field. Wiktionary is an approved secondary lexical-verification source; Wiktionary page prominence is not used for frequency ranking.\n\nRuntime baseline: Canto Span v0.5.226 ancestry after merged PR #779. Exact token-lexicon matches are \`covered_main\` unless the supplied Cifu/runtime readings do not correspond cleanly, in which case they are \`surface_covered_sense_uncertain\`. Exact source mentions outside the token lexicon are conservatively \`handled_structurally\`; this is a review flag, not proof of complete lexical support. Other surface forms are \`missing\`. Cifu word segmentation includes multi-token/compositional strings, so \`missing\` is not equivalent to “add this whole string to the lexicon.”\n\n`+
+          `## Coverage counts\n\n${Object.entries(counts).sort().map(([k,v])=>`- \`${k}\`: **${v}**`).join("\n")}\n\n`+
+          `## Highest-frequency unmatched forms\n\n| Rank | Form | Count | Jyutping | Cifu definition | Cifu structure |\n|---:|---|---:|---|---|---|\n${topMissing.map(r=>`| ${r.rank} | ${esc(r.word).replace(/\|/g,"\\|")} | ${r.spoken} | ${esc(r.jyutping)} | ${esc(r.definition).replace(/\|/g,"\\|")} | ${esc(r.structure).replace(/\|/g,"\\|")} |`).join("\n")}\n\n`+
+          `## Review buckets\n\n- Jyutping/sense uncertainty: ${uncertain.length}\n- Structural-source mentions requiring manual confirmation: ${structural.length}\n- Unmatched surface forms: ${missing.length}\n\nThe TSV is the complete 2,000-row audit. Frequency alone does not authorize a lexical sense, grammatical construction, or status change. Genuine lexical gaps are filled only after lexical verification; compositional corpus strings remain compositional rather than being added merely to raise the surface-coverage percentage.\n`;
+          fs.writeFileSync("docs/research/LEXICAL-COVERAGE-TOP-2000-R1.md",md);
+          console.log(JSON.stringify({counts, topMissing: topMissing.slice(0,40).map(({rank,word,spoken,jyutping,definition,structure})=>({rank,word,spoken,jyutping,definition,structure}))},null,2));
           NODE
-          node /tmp/top2000-audit.cjs
+          node /tmp/enrich-top2000.cjs
 
-      - name: Commit audit outputs to scoped branch
+      - name: Commit enriched audit outputs
         run: |
           git config user.name "Canto Span scoped automation"
           git config user.email "actions@users.noreply.github.com"
           git add data/lexical-frequency/cifu-spoken-top-2000.tsv docs/research/LEXICAL-COVERAGE-TOP-2000-R1.md
-          if git diff --cached --quiet; then
-            echo "No audit output changes"
-            exit 0
-          fi
-          git commit -m "Generate Cifu spoken top-2000 lexical audit"
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Enrich Cifu top-2000 lexical audit metadata"
           git push origin HEAD:agent/top-2000-lexical-coverage-audit
