@@ -76,4 +76,20 @@ jobs:
             ab35-architecture-baseline.json
           retention-days: 1
       - name: Apply and verify bounded AB35 seed
-        run: python3 .github/ab35-seed-apply-temp.py
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 <<'PY'
+          from pathlib import Path
+          p = Path('.github/ab35-seed-apply-temp.py')
+          text = p.read_text()
+          old = '''assert text.count(old_category) == 2, text.count(old_category)
+          first = text.find(old_category)
+          second = text.find(old_category, first + len(old_category))
+          text = text[:second] + new_category + text[second + len(old_category):]'''
+          new = '''assert text.count(old_category) == 1, text.count(old_category)
+          text = text.replace(old_category, new_category, 1)'''
+          assert text.count(old) == 1
+          p.write_text(text.replace(old, new, 1))
+          PY
+          python3 .github/ab35-seed-apply-temp.py
