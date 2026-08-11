@@ -293,7 +293,7 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 292	月	116	jyut6	moon/month	月	covered_main		function-words-and-particles.js	jyut6	when:time_head temporal month_unit
 293	仲	116	zung6	second month of the season/middle/intermediate/2nd in seniority/surname Zhong	⿰亻中	covered_main		study-suite.js	zung6	how:additive_continuative_adverb
 294	問	116	man6	to ask	⿵門口	covered_main		verbs.js	man6	doing:verb
-295	萍	115	ping4	duckweed	⿱艹泙	missing				-
+295	萍	115	ping4	duckweed	⿱艹泙	covered_main		things.js	ping4	what:object_np plant_np
 296	唔同	114	m4tung4	different	⿰口吾:⿵𠔼口	handled_structurally	lexically_segmentable_as=唔+同;not_proof_of_construction_analysis			-
 297	條線	114	*tiu4sin3	NO DEF	⿰&CDP-8B7A;条[G],⿰&CDP-8B7A;&CDP-8BFB;[TJKV]:⿰糹泉[GT],⿰糸泉[JK]	manual_review	cifu_generated_or_undefined			-
 298	會見	114	wui6gin3	to meet with (sb who is paying a visit)	⿱亼𭥴:⿱目儿	handled_structurally	lexically_segmentable_as=會+見;not_proof_of_construction_analysis			-
@@ -369,19 +369,19 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 368	將	87	zoeng1|zoeng3	will/shall/to use/to take/to checkmate/just a short while ago|general/commander-in-chief (military)/king (chess piece)/to command/to lead	⿰爿&CDP-8BC3;	covered_main		verbs.js	zoeng1	func:disposal_coverb
 369	像	87	zoeng6	(look) like/similar (to)/appearance/to appear/to seem/image/portrait/resemble/seem	⿰亻象	missing				-
 370	二	86	ji6	two/2	⿱一一	covered_main		places-and-times.js	ji6	how:quantity count_value numeral_two_formal
-371	北方	86	bak1fong1	north/the northern part a country/China north of the Yellow River	⿰&CDP-8BC5;匕:⿱亠&CDP-8B6C;	missing				-
+371	北方	86	bak1fong1	north/the northern part a country/China north of the Yellow River	⿰&CDP-8BC5;匕:⿱亠&CDP-8B6C;	covered_main		places-and-times.js	bak1 fong1	where:direction_np cardinal_region
 372	仔	85	zai2|zi2	a son/a suffix used to describe something small/a boy/a kid/a boyfriend/(of domestic animals or fowls) young	⿰亻子	missing				-
 373	半	85	bun3	half/semi-/incomplete/(after a number) and a half	⿱丷&CDP-8BF1;[GTJV],⿱八&CDP-8BF1;[K]	covered_main		study-suite.js	bun3	how:fraction_quantifier
-374	東	84	dung1	east/host (i.e. sitting on east side of guest)/landlord/surname Dong	東	missing				-
-375	金字塔	84	gam1zi6taap3	pyramid	⿱人&CDP-8DE3;:⿱宀子:⿰土荅	missing				-
+374	東	84	dung1	east/host (i.e. sitting on east side of guest)/landlord/surname Dong	東	covered_main		places-and-times.js	dung1	where:direction_np cardinal_direction
+375	金字塔	84	gam1zi6taap3	pyramid	⿱人&CDP-8DE3;:⿱宀子:⿰土荅	covered_main		things.js	gam1 zi6 taap3	what:object_np landmark_np
 376	風車	84	fung1ce1	pinwheel/windmill	⿵几䖝:車	handled_structurally	lexically_segmentable_as=風+車;not_proof_of_construction_analysis			-
 377	越	84	jyut6	generic word for peoples or states of south China or south Asia at different historical periods/abbr. for Vietnam 越南/to exceed/to climb over/to surpass/the more... the more	⿺走戉	missing				-
 378	工	83	gung1	work/worker/skill/profession/trade/craft/labor	工	covered_main		study-suite.js	gung1	what:work_noun object_np head_noun
 379	考	83	haau2	to check/to verify/to test/to examine/to take an exam	⿸耂丂	missing				-
 380	當然	83	dong1jin4	only natural/as it should be/certainly/of course/without doubt	⿱𫩠田:⿱&CDP-8BB5;灬	missing				-
-381	農	83	nung4	agriculture	⿱曲辰	missing				-
-382	碼頭	83	maa5tau4	dock/pier/wharf/CL: 個[go]/the idea of a "pier" symbolises the leaving of the triad life, one's retirement from the life of a triad or prostitute	⿰石馬:⿰豆頁	missing				-
-383	礦場	83	kwong3coeng4	a mine/pit	⿰石廣:⿰土昜	missing				-
+381	農	83	nung4	agriculture	⿱曲辰	covered_main		things.js	nung4	what:abstract_np domain_np
+382	碼頭	83	maa5tau4	dock/pier/wharf/CL: 個[go]/the idea of a "pier" symbolises the leaving of the triad life, one's retirement from the life of a triad or prostitute	⿰石馬:⿰豆頁	covered_main		places-and-times.js	maa5 tau4	where:place_or_goal place_np
+383	礦場	83	kwong3coeng4	a mine/pit	⿰石廣:⿰土昜	covered_main		places-and-times.js	kwong3 coeng4	where:place_or_goal place_np
 384	入	82	jap6	to enter/to charge (with a crime)/entering tone (classical Chinese)	入	covered_main		places-and-times.js	jap6	doing:movement_direction_in movement_direction
 385	女仔	82	neoi5zai2	girl	女:⿰亻子	missing				-
 386	引	82	jan5	to draw (a bow)/to pull/to stretch sth/to extend/to lengthen/to involve in/to attract/to lead/to guide/to divert (water)/unit of distance equal to 10 丈[zhang1], now one-thirtieth km or 33.33 meters	⿰弓丨	missing				-
@@ -393,30 +393,30 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 392	暖	81	nyun5	warm	⿰日爰	missing				-
 393	總之	81	zung2zi1	in a word/in short/in brief	⿰糹悤[GTV],⿰糸悤[JK]:⿱丶&CDP-8661;	missing				-
 394	完全	80	jyun4cyun4	complete/whole/totally/entirely	⿱宀元:⿱人王[GJ],⿱入王[TKV]	handled_structurally	lexically_segmentable_as=完+全;not_proof_of_construction_analysis			-
-395	情況	80	cing4fong3	circumstances/state of affairs/situation	⿰忄青[GTJV],⿰忄靑[K]:⿰氵兄	missing				-
+395	情況	80	cing4fong3	circumstances/state of affairs/situation	⿰忄青[GTJV],⿰忄靑[K]:⿰氵兄	covered_main		things.js	cing4 fong3	what:abstract_np situation_np
 396	甜	80	tim4	sweet	⿰舌甘	covered_main		statives.js	tim4	like:stative_predicate
 397	低	79	dai1	low/beneath/to lower (one's head)/to let droop/to hang down/to incline	⿰亻氐	covered_main		statives.js	dai1	like:stative_predicate directional_result_complement
-398	農莊	79	nung4zong1	farm/ranch	⿱曲辰:⿱艹壯	missing				-
-399	瀑布	79	buk6bou3	waterfall	⿰氵暴:⿸𠂇巾	missing				-
+398	農莊	79	nung4zong1	farm/ranch	⿱曲辰:⿱艹壯	covered_main		places-and-times.js	nung4 zong1	where:place_or_goal place_np
+399	瀑布	79	buk6bou3	waterfall	⿰氵暴:⿸𠂇巾	covered_main		places-and-times.js	buk6 bou3	where:place_or_goal natural_place_np
 400	五	78	ng5	five/5	⿱一𫝀	covered_main		places-and-times.js	ng5	how:quantity count_value numeral_five
 401	辛苦	78	san1fu2	hard/exhausting/with much toil	⿱立十:⿱艹古	covered_main		referents-and-boundaries.js	san1 fu2	like:stative_predicate emotion_state_stative
 402	股	78	gu2	share/portion/section/part/thigh/(classifier for smells, electric currents, spirals etc)/whiff	⿰月殳[GJK],⿰⺼殳[TV]	missing				-
-403	墳場	78	fan4coeng4	grave	⿰土賁:⿰土昜	missing				-
+403	墳場	78	fan4coeng4	grave	⿰土賁:⿰土昜	covered_main		places-and-times.js	fan4 coeng4	where:place_or_goal place_np
 404	出來	77	ceot1loi4	to come out/to emerge	⿱屮凵:⿻木从	missing				-
 405	部	77	bou6	ministry/department/section/part/division/troops/board/(classifier for works of literature, films, machines etc)	⿰咅阝	covered_main		verbs.js	bou6	measure_word:classifier_vehicle_machine
 406	你講	76	*nei5gong2	NO DEF	⿰亻尔:⿰言冓	manual_review	cifu_generated_or_undefined			-
 407	信	76	seon3	letter/CL:封[feng1]/true/to believe/sign/evidence	⿰亻言	covered_main		verbs.js	seon3	doing:belief_verb
-408	樹林	76	syu6lam4	woods/grove/forest	⿰木尌:⿰木木	missing				-
-409	禮堂	76	lai5tong4	assembly hall/auditorium	⿰礻豊[GTV],⿰示豊[JK]:⿱𫩠土	missing				-
+408	樹林	76	syu6lam4	woods/grove/forest	⿰木尌:⿰木木	covered_main		places-and-times.js	syu6 lam4	where:place_or_goal natural_place_np
+409	禮堂	76	lai5tong4	assembly hall/auditorium	⿰礻豊[GTV],⿰示豊[JK]:⿱𫩠土	covered_main		places-and-times.js	lai5 tong4	where:place_or_goal place_np
 410	所	75	so2	actually/place/classifier for houses, small buildings, institutions etc/that which/particle introducing a relative clause or passive	⿰戶斤[GTKV],⿰戸斤[J]	missing				-
 411	所謂	75	so2wai6	so-called	⿰戶斤[GTKV],⿰戸斤[J]:⿰言胃	missing				-
 412	首先	75	sau2sin1	first (of all)/in the first place	⿱䒑自:⿱𠂒儿	handled_structurally	lexically_segmentable_as=首+先;not_proof_of_construction_analysis			-
-413	國旗	75	gwok3kei4	flag (of a country)	⿴囗或:⿰方&CDP-8CFC;	missing				-
+413	國旗	75	gwok3kei4	flag (of a country)	⿴囗或:⿰方&CDP-8CFC;	covered_main		things.js	gwok3 kei4	what:object_np artifact_np
 414	帶	75	daai3|daai2	to carry/to lead/to bring/to look after/to raise/area/zone/region|band/belt/girdle/ribbon/CL:條[tìuh]	⿳&CDP-8C4B;冖巾	covered_main		verbs.js	daai3	doing:verb take_bring_verb
 415	畫到	75	*waak6|waa2dou3	NO DEF	⿳&CDP-8BC6;田一:⿰至刂	manual_review	cifu_generated_or_undefined			-
-416	燈塔	75	dang1taap3	lighthouse	⿰火登:⿰土荅	missing				-
+416	燈塔	75	dang1taap3	lighthouse	⿰火登:⿰土荅	covered_main		things.js	dang1 taap3	what:object_np landmark_np
 417	講呢	75	*gong2ne1|ni1|nei1	NO DEF	⿰言冓:⿰口尼	manual_review	cifu_generated_or_undefined			-
-418	纜車	75	laam6ce1	cable car	⿰糹覽[GT],⿰糸覽[JK]:車	missing				-
+418	纜車	75	laam6ce1	cable car	⿰糹覽[GT],⿰糸覽[JK]:車	covered_main		things.js	laam6 ce1	what:object_np vehicle_np
 419	全部	74	cyun4bou6	whole/entire/complete	⿱人王[GJ],⿱入王[TKV]:⿰咅阝	handled_structurally	lexically_segmentable_as=全+部;not_proof_of_construction_analysis			-
 420	重有	74	zung6jau5	furthermore	重:⿸𠂇月	missing				-
 421	貴	74	gwai3	expensive/noble/your (name)/precious	⿱𠀐貝	covered_main		statives.js	gwai3	like:stative_predicate
@@ -440,21 +440,21 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 439	出去	69	ceot1heoi3	to go out	⿱屮凵:⿱土厶	handled_structurally	lexically_segmentable_as=出+去;not_proof_of_construction_analysis			-
 440	怨	69	jyun3	to blame/to complain	⿱夗心	missing				-
 441	唔記得	69	m4gei3dak1	to forget	⿰口吾:⿰言己:⿰彳㝵	handled_structurally	lexically_segmentable_as=唔+記得;not_proof_of_construction_analysis			-
-442	效果	69	haau6gwo2	result/effect/quality	⿰交攵:⿻日木	missing				-
+442	效果	69	haau6gwo2	result/effect/quality	⿰交攵:⿻日木	covered_main		things.js	haau6 gwo2	what:abstract_np result_np
 443	起	69	hei2	to rise/to raise/to get up/to set out/to start/to appear/to launch/to initiate (action)/to draft/to establish/to get (from a depot or counter)/verb suffix, to start/(before place or time) starting from/classifier for occurrences or unpredictable events: case, instance/classifier for groups: batch, group	⿺走巳[GJK],⿺走己[TV]	missing				-
-444	文字	68	man4zi6	character/script/writing/written language/writing style/phraseology	⿱亠乂:⿱宀子	missing				-
+444	文字	68	man4zi6	character/script/writing/written language/writing style/phraseology	⿱亠乂:⿱宀子	covered_main		things.js	man4 zi6	what:object_np linguistic_term_np
 445	以為	68	ji5wai4	to believe/to think/to consider erroneously/to assume (wrongly)	以:為	covered_main		verbs.js	ji5 wai4	doing:cognition_opinion_predicate belief_predicate mistaken_belief_predicate
 446	打橫	68	daa2waang4	NO DEF	⿰扌丁:⿰木黃	manual_review	cifu_generated_or_undefined			-
 447	通常	68	tung1soeng4	regular/usual/ordinary/normal	⿺辶甬:⿱𫩠巾	covered_main		verbs.js	tung1 soeng4	when:habitual_frequency_adverb
 448	陳	68	can4	surname Chen/Chen of the Southern dynasties (557-589)/to lay out/to exhibit/to display/to narrate/to state/to explain/to tell/old/stale	⿰阝東	covered_main		people-and-address.js	can4	who:surname_element
-449	地盤	67	dei6pun4	a construction site/domain/territory under one's control/foundation of a building/base of operations/crust of earth	⿰土也:⿱般皿	missing				-
+449	地盤	67	dei6pun4	a construction site/domain/territory under one's control/foundation of a building/base of operations/crust of earth	⿰土也:⿱般皿	covered_main		places-and-times.js	dei6 pun4	where:place_or_goal place_np
 450	行到	67	*hang4|haang4|hang6|hong4|hong2dou3	NO DEF	⿰彳亍:⿰至刂	manual_review	cifu_generated_or_undefined			-
 451	杏堂	67	*hang6tong4	NO DEF	⿱木口:⿱𫩠土	manual_review	cifu_generated_or_undefined			-
 452	相信	67	soeng1seon3	be convinced (that something is true)/believe/to accept sth as true	⿰木目:⿰亻言	covered_main		verbs.js	soeng1 seon3	doing:cognition_opinion_predicate belief_predicate
 453	揀	67	gaan2	to choose/to pick/to sort out/to pick up	⿰扌柬	missing				-
 454	項	67	hong6	back of neck/item/thing/term (in a mathematical formula)/sum (of money)/classifier for principles, items, clauses, tasks, research projects etc/surname Xiang	⿰工頁	missing				-
 455	禮拜	67	lai5baai3	week/religious service/worship	⿰礻豊[GTV],⿰示豊[JK]:⿰龵&CDP-8CE7;	covered_main		places-and-times.js	lai5 baai3	when:time_head temporal
-456	市場	66	si5coeng4	market place/market (also in abstract)/abbr. for 超級市場|超级市场 supermarket	⿱亠巾:⿰土昜	missing				-
+456	市場	66	si5coeng4	market place/market (also in abstract)/abbr. for 超級市場|超级市场 supermarket	⿱亠巾:⿰土昜	covered_main		places-and-times.js	si5 coeng4	where:place_or_goal place_np
 457	我講	66	*ngo5gong2	NO DEF	我:⿰言冓	manual_review	cifu_generated_or_undefined			-
 458	尚健	66	*soeng6gin6	NO DEF	⿱⺌冋:⿰亻建	manual_review	cifu_generated_or_undefined			-
 459	蚊	66	man1	mosquito/a dollar	⿰虫文	covered_main		things.js	man1	what:currency_unit
@@ -466,23 +466,23 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 465	六	64	luk6	six/6	⿱亠八	covered_main		places-and-times.js	luk6	how:quantity count_value numeral_six
 466	出現	64	ceot1jin6	to appear/to arise/to emerge	⿱屮凵:⿰王見	missing				-
 467	直情	64	zik6cing4	NO DEF	⿱十&CDP-8BA5;[GT],⿱十⿺𠃊目[JK]:⿰忄青[GTJV],⿰忄靑[K]	manual_review	cifu_generated_or_undefined			-
-468	國	64	gwok3	country/nation/state/CL:個[go]/national/a surname	⿴囗或	missing				-
-469	圖	64	tou4	diagram/to plan/picture/drawing/chart	⿴囗啚	missing				-
-470	西	63	sai1	west/often used as a euphemism for the obscene term for "vagina", 閪 [hāi]/the West/Spain (abbr.)	⿱一𠁤	missing				-
+468	國	64	gwok3	country/nation/state/CL:個[go]/national/a surname	⿴囗或	covered_main		places-and-times.js	gwok3	where:place_or_goal geopolitical_place_np
+469	圖	64	tou4	diagram/to plan/picture/drawing/chart	⿴囗啚	covered_main		things.js	tou4	what:object_np visual_object_np
+470	西	63	sai1	west/often used as a euphemism for the obscene term for "vagina", 閪 [hāi]/the West/Spain (abbr.)	⿱一𠁤	covered_main		places-and-times.js	sai1	where:direction_np cardinal_direction
 471	掂	63	dim1|dim6	to weigh in the hand/to estimate|satisfactory/okay	⿰扌店	missing				-
 472	條路線	63	*tiu4lou6sin3	NO DEF	⿰&CDP-8B7A;条[G],⿰&CDP-8B7A;&CDP-8BFB;[TJKV]:⿰𧾷各:⿰糹泉[GT],⿰糸泉[JK]	manual_review	cifu_generated_or_undefined			-
 473	頂	63	ding2|deng2	apex/top/roof/to carry on the head/to push to the top/to go against/most/to replace/to substitute/to "bump" a forum thread to raise its profile (internet slang)/to bear, to endure, to put up with/an exclamation expressing disappointment, anger, amazement, etc. ("shit!", "damn!", etc.)|apex/top/roof/classifier for hats	⿰丁頁	missing				-
 474	裏邊	63	*leoi5bin1	NO DEF	⿳亠里𧘇:⿺辶臱	manual_review	cifu_generated_or_undefined			-
-475	銅	63	tung4	copper Cu, transition metal, atomic number 29/see 紅銅|红铜 copper, and the alloys brass 黃銅|黄铜 and bronze 青銅|青铜	⿰金同	missing				-
+475	銅	63	tung4	copper Cu, transition metal, atomic number 29/see 紅銅|红铜 copper, and the alloys brass 黃銅|黄铜 and bronze 青銅|青铜	⿰金同	covered_main		things.js	tung4	what:object_np material_np
 476	濫	63	laam6	excessive/indiscriminate	⿰氵監	missing				-
 477	小	62	siu2	small/tiny/few/young/a euphemism for 屌 díu, "fuck"	小	missing				-
 478	冇問題	62	mou5man6tai4	no problem	⿸𠂇冂:⿵門口:⿺是頁	covered_main		degree-and-formulas.js	mou5 man6 tai4	func:formula_discourse_unit
 479	右行	62	*jau6hang4|haang4|hang6|hong4|hong2	NO DEF	⿸𠂇口:⿰彳亍	manual_review	cifu_generated_or_undefined			-
 480	讀書	62	duk6syu1	study/read	⿰言賣[GTV],⿰言𧶠[JK]:⿱&CDP-8BC6;日	handled_structurally	lexically_segmentable_as=讀+書;not_proof_of_construction_analysis			-
 481	不	61	bat1	not/no	⿱一&CDP-8665;	missing				-
-482	水塘	61	seoi2tong4	pool	⿲㇇亅&CDP-85BF;:⿰土唐	missing				-
+482	水塘	61	seoi2tong4	pool	⿲㇇亅&CDP-85BF;:⿰土唐	covered_main		places-and-times.js	seoi2 tong4	where:place_or_goal natural_place_np
 483	件	61	gin6	item/component/classifier for events, things, clothes etc	⿰亻牛	covered_main		referents-and-boundaries.js	gin6	measure_word:classifier_clothing_item
-484	地標	61	dei6biu1	landmark	⿰土也:⿰木票	missing				-
+484	地標	61	dei6biu1	landmark	⿰土也:⿰木票	covered_main		things.js	dei6 biu1	what:object_np landmark_np
 485	收	61	sau1	to receive/to accept/to collect/in care of (used on address line after name)	⿰丩攵	missing				-
 486	更加	61	gang3gaa1	more (than sth else)/even more	⿱一&CDP-89E7;:⿰力口	missing				-
 487	男朋友	61	naam4pang4jau5	male friend/boyfriend	⿱田力:⿰月月:⿸𠂇又	missing				-
@@ -497,11 +497,11 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 496	望	60	mong6	to look at/to view/to hope/to expect/to visit/to gaze (into the distance)/to look towards/towards/full moon	⿱⿰亡月王[GJK],⿱&CDP-8C47;𡈼[TV]	missing				-
 497	提碑	60	*tai4bei1	NO DEF	⿰扌是:⿰石卑	manual_review	cifu_generated_or_undefined			-
 498	工作	59	gung1zok3	job/work/construction/task	工:⿰亻乍	covered_main		study-suite.js	gung1 zok3	what:work_noun activity_noun
-499	皮	59	pei4	leather/skin/fur/ten thousand dollars/level, standard/pico- (one trillionth)/a surname/CL:塊[faai]	皮	missing				-
+499	皮	59	pei4	leather/skin/fur/ten thousand dollars/level, standard/pico- (one trillionth)/a surname/CL:塊[faai]	皮	covered_main		things.js	pei4	what:object_np material_or_body_np
 500	共	59	gung6	common/general/to share/together/total/altogether/abbr. for 共產黨|共产党[gong4 chan3 dang3], Communist party	⿱龷八	missing				-
 501	地	59	dei6	earth/ground/field/place/land/CL:片[pin](Mandarin)/CL:塊[faai]/CL:笪[daat]/-ly/structural particle: used before a verb or adjective, linking it to preceding modifying adverbial adjunct	⿰土也	missing				-
 502	明	59	ming4	bright/clear/to understand/next/public or open/wise/Ming Dynasty (1368-1644)/surname Ming	⿰日月	covered_main		people-and-address.js	ming4	who:name_element
-503	鬼	59	gwai2	ghost/CL:隻[jek]/a westerner/a traitor; an informer within an organisation, a "mole".	⿱甶⿺儿厶	missing				-
+503	鬼	59	gwai2	ghost/CL:隻[jek]/a westerner/a traitor; an informer within an organisation, a "mole".	⿱甶⿺儿厶	covered_main		things.js	gwai2	what:object_np animate_np
 504	最後	59	zeoi3hau6	final/last/finally/ultimate	⿱日取[GJK],⿱冃取[TV]:⿰彳⿱幺夂[GJKV],⿰彳&CDP-8B7B;[HT]	missing				-
 505	憂	59	jau1	to worry/to concern oneself with/worried/anxiety/sorrow/a parent's funeral/inconvenienced by being orphaned	⿱㥑夂[GJK],⿱㥑夊[TV]	missing				-
 506	一次	58	jat1ci3	first/first time/once/(math.) linear (of degree one)	一:⿰冫欠[GJ],⿰二欠[TKV]	covered_main		verbs.js	jat1 ci3	how:frequency_quantity
@@ -510,7 +510,7 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 509	肯定	58	hang2ding6	to be sure/to be certain/sure/certain/definite/to confirm/to affirm/affirmative	⿱止月[GJKV],⿱止⺼[HT]:⿱宀𤴓	covered_main		study-suite.js	hang2 ding6	like:stance_predicate certainty
 510	能夠	58	nang4gau3	be capable of/can/is able	⿰䏍𫧇:⿰多句	missing				-
 511	瑞	58	seoi6	lucky/auspicious/propitious/rayl (acoustical unit)	⿰王耑	missing				-
-512	電腦	58	din6nou5	computer	⿱雨&CDP-8BE8;:⿰月𡿺[GJK],⿰⺼𡿺[TV]	missing				-
+512	電腦	58	din6nou5	computer	⿱雨&CDP-8BE8;:⿰月𡿺[GJK],⿰⺼𡿺[TV]	covered_main		things.js	din6 nou5	what:object_np device_np
 513	領	58	ling5|leng5	neck/collar/to lead/to receive	⿰令頁	missing				-
 514	長	57	coeng4|zoeng2	length/long/forever/always/constantly|chief/head/elder/to grow/to develop/to increase/to enhance	⿳&CDP-884A;一&CDP-8CC6;	covered_main		places-and-times.js	coeng4	like:stative_predicate scalar_dimension_predicate length_dimension_predicate
 515	信心	57	seon3sam1	confidence/faith (in sb or sth)	⿰亻言:心	handled_structurally	lexically_segmentable_as=信+心;not_proof_of_construction_analysis			-
@@ -524,7 +524,7 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 523	坐	56	co5|zo6	to sit/to take a seat/to take (a bus, airplane etc)	⿻土从,⿱𠦏一	covered_main		verbs.js	co5	doing:verb
 524	我話	56	*ngo5waa6|waa2	NO DEF	我:⿰言舌	manual_review	cifu_generated_or_undefined			-
 525	是	56	si6	is/are/am/yes/to be	⿱日𤴓	missing				-
-526	英文	56	jing1man4	English (language)	⿱艹央:⿱亠乂	missing				-
+526	英文	56	jing1man4	English (language)	⿱艹央:⿱亠乂	covered_main		things.js	jing1 man4	what:object_np language_np
 527	真	56	zan1	really/truly/indeed/real/true/genuine	⿱十具	covered_main		verbs.js	zan1	like:stative_predicate truth_stative
 528	貧	56	pan4	poor/inadequate/deficient/garrulous	⿱分貝	missing				-
 529	擺	56	baai2	to arrange/to exhibit/to move to and fro/a pendulum	⿰扌罷	covered_main		verbs.js	baai2	doing:verb action_verb positioning_verb
@@ -549,12 +549,12 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 548	形	53	jing4	to appear/to look/form/shape	⿰开彡	missing				-
 549	直接	53	zik6zip3	direct/opposite: indirect 間接|间接/immediate/directly/straightforward	⿱十&CDP-8BA5;[GT],⿱十⿺𠃊目[JK]:⿰扌妾	missing				-
 550	班	53	baan1	team/class/squad/work shift/classifier for groups/ranking/to gather together/to gather support ("back-up")/to deploy one's gang member/a surname	⿲王&CDP-8BEA;王	missing				-
-551	國家	53	gwok3gaa1	country/nation/state	⿴囗或:⿱宀豕	missing				-
+551	國家	53	gwok3gaa1	country/nation/state	⿴囗或:⿱宀豕	covered_main		places-and-times.js	gwok3 gaa1	where:place_or_goal geopolitical_place_np
 552	第二個	53	*dai6ji6go3	NO DEF	⿱竹𢎨:⿱一一:⿰亻固	covered_main		verbs.js	dai6 ji6 go3	what:object_np headless_choice_np ordinal_or_alternative_np
 553	細個	53	*sai3go3	NO DEF	⿰糹田[GTV],⿰糸田[JK]:⿰亻固	manual_review	cifu_generated_or_undefined			-
 554	幾時	53	gei2si4	what time?/when?	⿹&CDP-8BA4;人:⿰日寺	covered_main		referents-and-boundaries.js	gei2 si4	when:wh_time
 555	傾	53	king1	to chat/to overturn/to collapse/to lean/to tend/to incline/to pour out	⿰亻頃	covered_main		study-suite.js	king1	doing:verb conversation_verb
-556	經濟	53	ging1zai3	economy/economic	⿰糹巠[GTV],⿰糸巠[JK]:⿰氵齊	missing				-
+556	經濟	53	ging1zai3	economy/economic	⿰糹巠[GTV],⿰糸巠[JK]:⿰氵齊	covered_main		things.js	ging1 zai3	what:abstract_np domain_np
 557	點啊	53	*dim2aa3|aa1|aa2	NO DEF	⿰黑占:⿰口阿	manual_review	cifu_generated_or_undefined			-
 558	一係	52	jat1hai6	NO DEF	一:⿰亻系	manual_review	cifu_generated_or_undefined			-
 559	我會	52	*ngo5wui5|wui6|wui2	NO DEF	我:⿱亼𭥴	manual_review	cifu_generated_or_undefined			-
@@ -589,12 +589,12 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 588	林	49	lam4	woods/forest/surname Lin	⿰木木	missing				-
 589	揸	49	zaa1	to hold/to drive/to pilot/to make a decision	⿰扌查[G],⿰扌査[TJK]	missing				-
 590	機	49	gei1	machine/engine/CL:臺|台[tòih](Mandarin)/CL:部[bouh]/opportunity/intention/aircraft/pivot/crucial point/flexible(quick-witted)/organic/a surname	⿰木幾	covered_main		verbs.js	gei1	what:machine_noun object_np head_noun
-591	世界	48	sai3gaai3	world/a situation, a position, a state of affairs/CL:個[go]	世:⿱田介	missing				-
+591	世界	48	sai3gaai3	world/a situation, a position, a state of affairs/CL:個[go]	世:⿱田介	covered_main		places-and-times.js	sai3 gaai3	where:place_or_goal world_np
 592	右上	48	jau6soeng6	upper right	⿸𠂇口:⿱⺊一	handled_structurally	lexically_segmentable_as=右+上;not_proof_of_construction_analysis			-
 593	似	48	ci5	to seem/to appear/to resemble/similar/-like/pseudo-	⿰亻以	missing				-
 594	東方	48	dung1fong1	the East/Eastern countries	東:⿱亠&CDP-8B6C;	missing				-
 595	返工	48	faan1gung1	go to work	⿺辶反:工	handled_structurally	lexically_segmentable_as=返+工;not_proof_of_construction_analysis			-
-596	理由	48	lei5jau4	reason/grounds/justification	⿰王里:由	missing				-
+596	理由	48	lei5jau4	reason/grounds/justification	⿰王里:由	covered_main		things.js	lei5 jau4	what:abstract_np reason_np
 597	着	48	*?	NO DEF	⿸羊目[GT],⿸&CDP-8CCC;目[JK]	manual_review	cifu_generated_or_undefined			-
 598	貨倉	48	fo3cong1	a warehouse	⿱化貝:⿱亽⿸&CDP-89CE;口[G],⿱亼⿸&CDP-89CE;口[TJK]	missing				-
 599	發覺	48	faat3gok3	to find/to detect/to discover	⿱癶𭚧:⿱𦥯見	handled_structurally	lexically_segmentable_as=發+覺;not_proof_of_construction_analysis			-
@@ -606,7 +606,7 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 605	包	47	baau1	to cover/to wrap/to promise/to guarantee/to include/to keep a mistress or second wife/package/wrapper/container/bag/bundle/packet	⿹勹巳[GTKV],⿹勹己[J]	missing				-
 606	未必	47	mei6bit1	not necessarily/maybe not	未:⿻心丿	missing				-
 607	拍	47	paak3	to pat/to clap/to slap/to swat/to take (a photo)/to shoot (a film)/racket (sports)/beat (music)	⿰扌白	missing				-
-608	法律	47	faat3leot6	law	⿰氵去:⿰彳聿	missing				-
+608	法律	47	faat3leot6	law	⿰氵去:⿰彳聿	covered_main		things.js	faat3 leot6	what:abstract_np domain_np
 609	要求	47	jiu1kau4	to request/to require/to stake a claim/to ask/to demand	⿱覀女:⿺&CDP-85DC;丶	missing				-
 610	旅行	47	leoi5hang4	travel	⿰方&CDP-8D55;:⿰彳亍	covered_main		referents-and-boundaries.js	leoi5 hang4	doing:verb activity_predicate travel_activity
 611	影響	47	jing2hoeng2	an influence/an effect/to influence/to affect (usually adversely)/to disturb	⿰景彡:⿱鄉音[GTV],⿱郷音[J],⿱鄕音[K]	missing				-
@@ -1658,7 +1658,7 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 1657	早餐	12	zou2caan1	breakfast	⿱日十:⿱𣦼食	covered_main		study-suite.js	zou2 caan1	what:meal_noun breakfast
 1658	曲線	12	kuk1sin3	curve/curved line/indirect/in a roundabout way	曲:⿰糹泉[GT],⿰糸泉[JK]	missing				-
 1659	西行	12	*sai1hang4|haang4|hang6|hong4|hong2	NO DEF	⿱一𠁤:⿰彳亍	manual_review	cifu_generated_or_undefined			-
-1660	西面	12	sai1min6	west side/west	⿱一𠁤:⿱丆囬	missing				-
+1660	西面	12	sai1min6	west side/west	⿱一𠁤:⿱丆囬	handled_structurally	lexically_segmentable_as=西+面;not_proof_of_construction_analysis			-
 1661	佔	12	zim3	to take possession of/to occupy/to constitute/to make up/to account for/占 sometimes used as traditional character	⿰亻占	missing				-
 1662	判	12	pun3	to judge/to sentence/to discriminate/to discern	⿰半刂	missing				-
 1663	即將	12	zik1zoeng1	on the eve of/to be about to/to be on the verge of	⿰&CDP-8B7C;卩:⿰爿&CDP-8BC3;	missing				-
@@ -1779,7 +1779,7 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 1778	忽然	11	fat1jin4	suddenly/all of a sudden	⿱勿心:⿱&CDP-8BB5;灬	missing				-
 1779	拃	11	*?	NO DEF	⿰扌乍	manual_review	cifu_generated_or_undefined			-
 1780	杯	11	bui1	cup/classifier for drinks: glass, cup	⿰木不	covered_main		referents-and-boundaries.js	bui1	measure_word:classifier_container_cup
-1781	東面	11	dung1min6	east side (of sth)	東:⿱丆囬	missing				-
+1781	東面	11	dung1min6	east side (of sth)	東:⿱丆囬	handled_structurally	lexically_segmentable_as=東+面;not_proof_of_construction_analysis			-
 1782	欣賞	11	jan1soeng2	to appreciate/to enjoy/to admire	⿰斤欠:⿱𫩠貝	missing				-
 1783	股價	11	gu2gaa3	stock price/share price	⿰月殳[GJK],⿰⺼殳[TV]:⿰亻賈	missing				-
 1784	表現	11	biu2jin6	to show/to show off/to display/to manifest/expression/manifestation/show/display/performance (at work etc)	⿱龶𧘇:⿰王見	missing				-

@@ -102,4 +102,22 @@ module.exports = [  // Places / times
   ["城", {"label":"where","jyutping":"sing4","syntax":"place_or_goal place_np","note":"city / town / city walls; Cifu spoken top-2000 R2 lexical audit."}],
   ["球場", {"label":"where","jyutping":"kau4 coeng4","syntax":"place_or_goal place_np","note":"sports ground / court / field; Cifu spoken top-2000 R2 lexical audit."}],
   ["宅", {"label":"where","jyutping":"zaak6","syntax":"place_or_goal residence_np","note":"residence; Cifu spoken top-2000 R2 lexical audit."}],
+
+  // v0.5.227: Cifu spoken top-2000 R3 noun/place lexical coverage.
+  ["北方", {"label":"where","jyutping":"bak1 fong1","syntax":"direction_np cardinal_region","note":"north / northern region; Cifu spoken top-2000 R3 lexical audit."}],
+  ["東", {"label":"where","jyutping":"dung1","syntax":"direction_np cardinal_direction","note":"east; Cifu spoken top-2000 R3 lexical audit."}],
+  ["碼頭", {"label":"where","jyutping":"maa5 tau4","syntax":"place_or_goal place_np","note":"dock / pier / wharf; Cifu spoken top-2000 R3 lexical audit."}],
+  ["礦場", {"label":"where","jyutping":"kwong3 coeng4","syntax":"place_or_goal place_np","note":"mine / pit; Cifu spoken top-2000 R3 lexical audit."}],
+  ["農莊", {"label":"where","jyutping":"nung4 zong1","syntax":"place_or_goal place_np","note":"farm / ranch; Cifu spoken top-2000 R3 lexical audit."}],
+  ["瀑布", {"label":"where","jyutping":"buk6 bou3","syntax":"place_or_goal natural_place_np","note":"waterfall; Cifu spoken top-2000 R3 lexical audit."}],
+  ["墳場", {"label":"where","jyutping":"fan4 coeng4","syntax":"place_or_goal place_np","note":"cemetery / graveyard; Cifu spoken top-2000 R3 lexical audit."}],
+  ["樹林", {"label":"where","jyutping":"syu6 lam4","syntax":"place_or_goal natural_place_np","note":"woods / grove / forest; Cifu spoken top-2000 R3 lexical audit."}],
+  ["禮堂", {"label":"where","jyutping":"lai5 tong4","syntax":"place_or_goal place_np","note":"assembly hall / auditorium; Cifu spoken top-2000 R3 lexical audit."}],
+  ["地盤", {"label":"where","jyutping":"dei6 pun4","syntax":"place_or_goal place_np","note":"construction site / territory; Cifu spoken top-2000 R3 lexical audit."}],
+  ["市場", {"label":"where","jyutping":"si5 coeng4","syntax":"place_or_goal place_np","note":"market / marketplace; Cifu spoken top-2000 R3 lexical audit."}],
+  ["國", {"label":"where","jyutping":"gwok3","syntax":"place_or_goal geopolitical_place_np","note":"country / nation / state; Cifu spoken top-2000 R3 lexical audit."}],
+  ["西", {"label":"where","jyutping":"sai1","syntax":"direction_np cardinal_direction","note":"west; Cifu spoken top-2000 R3 lexical audit."}],
+  ["水塘", {"label":"where","jyutping":"seoi2 tong4","syntax":"place_or_goal natural_place_np","note":"reservoir / pool; Cifu spoken top-2000 R3 lexical audit."}],
+  ["國家", {"label":"where","jyutping":"gwok3 gaa1","syntax":"place_or_goal geopolitical_place_np","note":"country / nation / state; Cifu spoken top-2000 R3 lexical audit."}],
+  ["世界", {"label":"where","jyutping":"sai3 gaai3","syntax":"place_or_goal world_np","note":"world; Cifu spoken top-2000 R3 lexical audit."}],
 ];
