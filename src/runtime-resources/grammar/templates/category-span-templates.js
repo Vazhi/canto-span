@@ -1,6 +1,7 @@
 "use strict";
 
 const PRODUCTIVE_VO = Object.fromEntries(require("../../lexicon/productive-vo"));
+const VERB_OBJECT_COMPOUNDS = Object.fromEntries(require("../../lexicon/verb-object-compounds"));
 const UNIT_WORD_EVIDENCE = require("../unit-word-evidence.json");
 const AB45_CLASSIFIER_TYPES = new Set(["general_classifier", "sortal_classifier", "honorific_classifier"]);
 const AB45_CLASSIFIER_SURFACES = UNIT_WORD_EVIDENCE.noun_choice_rule_records
@@ -224,6 +225,26 @@ module.exports = [
     hidden_subject_inserted: false,
     not_claims: ["not_productive_vo_object_relation", "not_null_referential_subject", "not_hidden_expletive_subject"],
     note: "Conventional environmental event predicate such as 落雨 or 打風. The visible components remain transparent, but the clause has no referential subject or ordinary patient object."
+  },
+  {
+    type: "ProductiveVO",
+    label: "VP",
+    template: ["action_verb!", "object!"],
+    trace_kind: "source_linked_runtime_matcher",
+    trace_assigned_slots: [],
+    constraints: {
+      surface_sequence_in: Object.keys(VERB_OBJECT_COMPOUNDS)
+    },
+    output_slots: ["productive_vo", "verb_object_compound", "vp", "action_vp", "predicate"],
+    structural_scope: "vp",
+    lexical_compound_profile: "contiguous_source_linked_seed",
+    source_specification: "docs/research/ISSUE-753-AB35-LEXICAL-VO-RUNTIME-CONTRACT-R1.md",
+    not_claims: [
+      "not_generic_verb_plus_noun_productivity",
+      "not_ordinary_object_relation_from_component_order",
+      "not_generic_separability_licensing"
+    ],
+    note: "Source-linked AB35 VerbObjectCompound seed: exact reviewed contiguous lexical compounds with visible components but no compound-internal ordinary semantic object binding."
   },
   {
     type: "ProductiveVO",
