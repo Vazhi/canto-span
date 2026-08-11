@@ -1,17 +1,16 @@
 name: AB35 做功課 rehome temporary R2
-# takeover synchronization trigger
 
 on:
-  pull_request:
-    paths:
-      - "**"
+  push:
+    branches:
+      - agent/ab35-rehome-zo-gungfo-r2
 
 permissions:
   contents: write
 
 jobs:
   finalize:
-    if: github.event.pull_request.head.ref == 'agent/ab35-rehome-zo-gungfo-r2' && github.event.pull_request.base.ref == 'main'
+    if: github.ref == 'refs/heads/agent/ab35-rehome-zo-gungfo-r2'
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
