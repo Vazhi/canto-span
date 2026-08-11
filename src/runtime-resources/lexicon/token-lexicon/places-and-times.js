@@ -120,4 +120,17 @@ module.exports = [  // Places / times
   ["水塘", {"label":"where","jyutping":"seoi2 tong4","syntax":"place_or_goal natural_place_np","note":"reservoir / pool; Cifu spoken top-2000 R3 lexical audit."}],
   ["國家", {"label":"where","jyutping":"gwok3 gaa1","syntax":"place_or_goal geopolitical_place_np","note":"country / nation / state; Cifu spoken top-2000 R3 lexical audit."}],
   ["世界", {"label":"where","jyutping":"sai3 gaai3","syntax":"place_or_goal world_np","note":"world; Cifu spoken top-2000 R3 lexical audit."}],
+
+  // v0.5.227: Cifu spoken top-2000 R4 nominal lexical coverage.
+  ["灣", {"label":"where","jyutping":"waan1","syntax":"place_or_goal natural_place_np","note":"bay / gulf; Cifu spoken top-2000 R4 lexical audit."}],
+  ["室", {"label":"where","jyutping":"sat1","syntax":"place_or_goal room_np","note":"room; Cifu spoken top-2000 R4 lexical audit."}],
+  ["樂園", {"label":"where","jyutping":"lok6 jyun4","syntax":"place_or_goal place_np","note":"paradise / pleasure park; Cifu spoken top-2000 R4 lexical audit."}],
+  ["林", {"label":"where","jyutping":"lam4","syntax":"place_or_goal natural_place_np","note":"woods / forest; Cifu spoken top-2000 R4 lexical audit."}],
+  ["東方", {"label":"where","jyutping":"dung1 fong1","syntax":"direction_np cardinal_region","note":"the East / eastern region; Cifu spoken top-2000 R4 lexical audit."}],
+  ["貨倉", {"label":"where","jyutping":"fo3 cong1","syntax":"place_or_goal place_np","note":"warehouse; Cifu spoken top-2000 R4 lexical audit."}],
+  ["店", {"label":"where","jyutping":"dim3","syntax":"place_or_goal place_np","note":"shop / store / inn; Cifu spoken top-2000 R4 lexical audit."}],
+  ["北", {"label":"where","jyutping":"bak1","syntax":"direction_np cardinal_direction","note":"north; Cifu spoken top-2000 R4 lexical audit."}],
+  ["外國", {"label":"where","jyutping":"ngoi6 gwok3","syntax":"place_or_goal geopolitical_place_np","note":"foreign country; Cifu spoken top-2000 R4 lexical audit."}],
+  ["莊", {"label":"where","jyutping":"zong1","syntax":"place_or_goal settlement_or_estate_np","note":"farmstead / village / manor; Cifu spoken top-2000 R4 lexical audit."}],
+  ["將來", {"label":"when","jyutping":"zoeng1 loi4","syntax":"temporal_adjunct future_time_np","note":"the future; Cifu spoken top-2000 R4 lexical audit."}],
 ];
