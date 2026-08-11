@@ -1,0 +1,2001 @@
+rank	word	cifu_spoken_adult	cifu_jyutping	runtime_status	runtime_module	runtime_jyutping	runtime_meta	structural_path
+1	係	15318		covered_main	function-words-and-particles.js	hai6	func:copula	
+2	呢	8009		covered_main	degree-and-formulas.js	ni1	func:demonstrative_determiner	
+3	嘅	7809		covered_main	degree-and-formulas.js	ge3	particle:sentence_final_particle_or_nominalizer	
+4	我	7173		covered_main	people-and-address.js	ngo5	who:subject_or_topic	
+5	你	6947		covered_main	people-and-address.js	nei5	who:subject_or_topic	
+6	就	6377		covered_main	function-words-and-particles.js	zau6	func:focus_or_sequence	
+7	唔	6375		covered_main	function-words-and-particles.js	m4	func:negator	
+8	個	6118		covered_main	places-and-times.js	go3	measure_word:general_classifier	
+9	佢	5918		covered_main	people-and-address.js	keoi5	who:subject_or_topic	
+10	咁	5478		covered_main	function-words-and-particles.js	gam2	func:discourse_marker	
+11	嗰	5413		covered_main	referents-and-boundaries.js	go2	func:demonstrative_determiner	
+12	好	4038		covered_main	degree-and-formulas.js	hou2	how:degree_marker	
+13	啲	4031		covered_main	function-words-and-particles.js	di1	how:quantity_degree_or_plural	
+14	啊	3973		covered_main	degree-and-formulas.js	aa3	particle:sentence_final_particle	
+15	呀	3801		covered_main	degree-and-formulas.js	aa3	particle:sentence_final_particle	
+16	都	3785		covered_main	function-words-and-particles.js	dou1	how:focus_adverb	
+17	喺	3704		covered_main	function-words-and-particles.js	hai2	func:locative_coverb	
+18	有	3683		covered_main	function-words-and-particles.js	jau5	func:existential_or_possessive	
+19	即係	2930		missing				
+20	噉	2599		covered_main	function-words-and-particles.js	gam2	func:discourse_marker demonstrative_manner	
+21	去	2380		covered_main	verbs.js	heoi3	doing:movement_verb	
+22	到	2329		covered_main	function-words-and-particles.js	dou2	func:result_or_attainment	
+23	咗	2220		covered_main	function-words-and-particles.js	zo2	func:perfective_aspect	
+24	冇	2129		covered_main	function-words-and-particles.js	mou5	func:negated_existential	
+25	哋	2116		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+26	嘢	2016		covered_main	things.js	je5	what:object_np	
+27	即	1930		missing				
+28	話	1828		covered_main	verbs.js	waa6	doing:speech_reporting_verb	
+29	唔係	1818		covered_main	function-words-and-particles.js	m4 hai6	func:negated_copula	
+30	跟住	1653		covered_main	study-suite.js	gan1 zyu6	func:sequence_connector discourse_marker	
+31	會	1592		covered_main	function-words-and-particles.js	wui5	func:modal_future_or_habitual	
+32	喇	1491		covered_main	degree-and-formulas.js	laa3	particle:sentence_final_particle change_state_current_relevance_particle	
+33	但係	1423		covered_main	function-words-and-particles.js	daan6 hai6	func:connector_contrast	
+34	又	1356		covered_main	function-words-and-particles.js	jau6	how:focus_adverb	
+35	之後	1279		covered_main	verbs.js	zi1 hau6	when:temporal_connector	
+36	啦	1262		covered_main	degree-and-formulas.js	laa1	particle:sentence_final_particle directive_closure_particle	
+37	要	1256		covered_main	function-words-and-particles.js	jiu3	func:modal_need_or_want	
+38	一個	1246		handled_structurally				src/runtime-resources/presentation/learner-glosses.js
+39	喀	1219		missing				
+40	一	1195		covered_main	places-and-times.js	jat1	like:quantity count_value numeral_one	
+41	喎	1182		covered_main	degree-and-formulas.js	wo3	particle:sentence_final_particle evidential_noteworthiness_particle	
+42	㗎	1155		covered_main	degree-and-formulas.js	gaa3	particle:explanatory_sentence_final_particle	
+43	度	1149		covered_main	verbs.js	dou6	func:locative_postposition	
+44	同埋	1122		covered_main	function-words-and-particles.js	tung4 maai4	func:connector_additive	
+45	覺得	1086		covered_main	verbs.js	gok3 dak1	doing:cognition_opinion_predicate	
+46	做	1064		covered_main	verbs.js	zou6	doing:verb	
+47	可以	1032		covered_main	function-words-and-particles.js	ho2 ji5	func:modal_permission_or_ability	
+48	其實	1015		missing				
+49	向	992		covered_main	places-and-times.js	hoeng3	func:orientation_coverb path_coverb	
+50	人	975		covered_main	people-and-address.js	jan4	who:person_np	
+51	而家	953		covered_main	places-and-times.js	ji4 gaa1	when:temporal_adjunct	
+52	中間	952		missing				
+53	得	921		covered_main	function-words-and-particles.js	dak1	func:acceptability_predicate	
+54	睇	911		covered_main	verbs.js	tai2	doing:verb transitive_affordance chain_select_perception	
+55	上	890		covered_main	places-and-times.js	soeng5	when:temporal_modifier_previous movement_direction_up	
+56	真係	872		missing				
+57	嘞	817		covered_main	degree-and-formulas.js	laak3	particle:sentence_final_particle changed_state_particle	
+58	誒	817		missing				
+59	因為	814		covered_main	function-words-and-particles.js	jan1 wai6	func:connector_reason	
+60	下	811		covered_main	places-and-times.js	haa6	when:temporal_modifier_next	
+61	多	811		covered_main	statives.js	do1	like:stative_or_quantity	
+62	乜	795		covered_main	study-suite.js	mat1	what:wh_thing colloquial_wh	
+63	囉	790		covered_main	degree-and-formulas.js	lo1	particle:sentence_final_particle agreement_particle	
+64	如果	782		covered_main	function-words-and-particles.js	jyu4 gwo2	func:connector_condition	
+65	下面	753		missing				
+66	講	744		covered_main	verbs.js	gong2	doing:verb transitive_affordance chain_select_discourse_content	
+67	咩	736		covered_main	referents-and-boundaries.js	me1	what:wh_thing direct_nominal_wh_determiner question_particle wh_or_particle	
+68	嚟	714		covered_main	verbs.js	lai4	doing:movement_verb	
+69	哦	710		missing				
+70	係咪	709		covered_main	verbs.js	hai6 mai6	func:yes_no_question_marker	
+71	自己	707		covered_main	study-suite.js	zi6 gei2	who:reflexive_pronoun person_np	
+72	咁樣	703		missing				
+73	噉樣	681		missing				
+74	吓	666		covered_main	degree-and-formulas.js	haa2	particle:interjection	
+75	應該	664		covered_main	function-words-and-particles.js	jing1 goi1	func:stance_probability_or_should	
+76	知	662		covered_main	verbs.js	zi1	doing:cognition_verb	
+77	咪	647		covered_main	study-suite.js		func:polysemous_mai_marker	
+78	兜	647		missing				
+79	嗎	646		covered_main	degree-and-formulas.js	maa3	particle:question_particle	
+80	同	640		covered_main	function-words-and-particles.js	tung4	func:connector_or_coverb comitative_coverb interpersonal_coverb	
+81	再	632		covered_main	function-words-and-particles.js	zoi3	how:sequence	
+82	見	617		covered_main	degree-and-formulas.js	gin3	doing:verb	
+83	好似	607		covered_main	function-words-and-particles.js	hou2 ci5	func:stance_seeming	
+84	吖	603		covered_main	degree-and-formulas.js	aa1	particle:sentence_final_particle	
+85	上面	569		covered_main	things.js	soeng6 min6	where:place_or_goal spatial_localizer upper_surface_localizer	
+86	先	569		covered_main	function-words-and-particles.js	sin1	how:sequence_or_focus	
+87	可能	566		covered_main	function-words-and-particles.js	ho2 nang4	func:stance_possibility	
+88	開始	539		covered_main	study-suite.js	hoi1 ci2	doing:verb inception_verb	
+89	諗	528		covered_main	verbs.js	nam2	doing:cognition_verb	
+90	來	491		handled_structurally				src/parser/detectors/definition/intended-function.js
+91	然	483		handled_structurally				src/parser/clause-relations/graph.js
+92	右	472		covered_main	study-suite.js	jau6	where:direction_noun_or_modifier	
+93	經過	459		missing				
+94	時	448		covered_main	study-suite.js	si4	when:time_noun time_head	
+95	大	444		covered_main	statives.js	daai6	like:stative_predicate	
+96	想	437		covered_main	function-words-and-particles.js	soeng2	func:modal_desiderative	
+97	邊	437		covered_main	referents-and-boundaries.js	bin1	func:wh_determiner	
+98	搵	435		covered_main	verbs.js	wan2	doing:verb find_verb	
+99	或者	428		handled_structurally				src/parser/detectors/definition/intended-function.js
+100	字	422		covered_main	verbs.js	zi6	what:object_np writing_content_np	
+101	時候	420		covered_main	verbs.js	si4 hau6	when:time_np	
+102	唔好	419		covered_main	function-words-and-particles.js	m4 hou2	func:prohibitive_marker_or_discourse_unit	
+103	俾	418		covered_main	verbs.js	bei2	doing:ditransitive_verb orthographic_variant_bei	
+104	所以	415		covered_main	function-words-and-particles.js	so2 ji5	func:connector_result	
+105	少少	412		covered_main	degree-and-formulas.js	siu2 siu2	how:quantity_degree	
+106	面	412		covered_main	study-suite.js	min6	where:location_surface_or_side_noun head_noun	
+107	幾	409		covered_main	degree-and-formulas.js	gei2	how:degree_marker	
+108	畀	407		covered_main	verbs.js	bei2	doing:ditransitive_verb	
+109	嘛	402		missing				
+110	住	398		covered_main	study-suite.js	zyu6	doing:verb residence_verb_or_durative_marker_homograph	
+111	過	390		covered_main	function-words-and-particles.js	gwo3	func:experiential_aspect	
+112	譬如	390		missing				
+113	聽	378		covered_main	verbs.js	teng1	doing:verb	
+114	已經	373		covered_main	verbs.js	ji5 ging1	when:temporal_adverb perfective_temporal	
+115	返	373		covered_main	verbs.js	faan1	doing:movement_verb	
+116	嗯	370		missing				
+117	隻	361		covered_main	referents-and-boundaries.js	zek3	measure_word:classifier_animal_body_part_one_of_pair	
+118	左	357		covered_main	study-suite.js	zo2	where:direction_noun_or_modifier	
+119	叫	350		covered_main	verbs.js	giu3	doing:naming_or_calling_verb	
+120	哩	342		missing				
+121	落去	329		missing				
+122	對	329		covered_main	referents-and-boundaries.js	deoi3	func:relational_coverb	
+123	買	328		covered_main	verbs.js	maai5	doing:verb	
+124	然後	323		covered_main	function-words-and-particles.js	jin4 hau6	func:connector_sequence discourse_marker	
+125	方	322		missing				
+126	陣	320		covered_main	study-suite.js	zan6	when:time_or_event_classifier time_head	
+127	點解	317		covered_main	referents-and-boundaries.js	dim2 gaai2	why:wh_reason	
+128	沙漠	314		missing				
+129	最	312		covered_main	verbs.js	zeoi3	how:degree_superlative	
+130	啫	311		covered_main	degree-and-formulas.js	ze1	particle:sentence_final_particle restrictive_focus_particle minimizing_particle	
+131	兩	307		covered_main	places-and-times.js	loeng5	like:quantity count_value numeral_two	
+132	晒	307		covered_main	function-words-and-particles.js	saai3	func:completive_totality_aspect	
+133	喂	303		covered_main	degree-and-formulas.js	wai3	particle:attention_getter	
+134	不過	301		covered_main	function-words-and-particles.js	bat1 gwo3	func:connector_contrast	
+135	樣	301		covered_main	verbs.js	joeng6	measure_word:classifier_kind_item	
+136	嘩	298		missing				
+137	穿過	297		missing				
+138	問題	297		covered_main	things.js	man6 tai4	what:object_np	
+139	兩個	291		missing				
+140	個人	284		missing				
+141	終點	283		missing				
+142	洞	278		missing				
+143	山	271		missing				
+144	上去	270		missing				
+145	行	269		covered_main	function-words-and-particles.js	haang4	doing:verb action_verb walking_verb	
+146	園	265		missing				
+147	角	264		missing				
+148	條	261		covered_main	verbs.js	tiu4	measure_word:classifier_long_thin	
+149	揾	255		missing				
+150	手	254		covered_main	things.js	sau2	what:body_part_np	
+151	哩個	254		missing				
+152	間	254		covered_main	referents-and-boundaries.js	gaan1	measure_word:classifier_building_shop	
+153	亦	250		missing				
+154	點樣	250		covered_main	referents-and-boundaries.js	dim2 joeng2	how:evaluation_wh_predicate	
+155	啱	247		covered_main	statives.js	ngaam1	like:stative_predicate	
+156	有個	245		missing				
+157	唔到	244		missing				
+158	走	241		covered_main	verbs.js	zau2	func:verb_complement directional_result_complement	
+159	大家	239		covered_main	people-and-address.js	daai6 gaa1	who:person_np collective_pronoun	
+160	落	238		covered_main	places-and-times.js	lok6	doing:movement_direction_down movement_verb	
+161	未	235		covered_main	function-words-and-particles.js	mei6	func:aspectual_question	
+162	埋	234		missing				
+163	邊個	232		covered_main	referents-and-boundaries.js	bin1 go3	who:wh_person	
+164	線	230		missing				
+165	但	227		missing				
+166	一定	223		covered_main	verbs.js	jat1 ding6	how:certainty_adverb	
+167	咋	220		covered_main	degree-and-formulas.js	zaa3	particle:sentence_final_particle restrictive_focus_particle exhaustive_limit_particle	
+168	樹	218		missing				
+169	一路	217		missing				
+170	成日	216		covered_main	places-and-times.js	seng4 jat6	when:frequency_adjunct	
+171	政府	211		missing				
+172	點	208		covered_main	referents-and-boundaries.js	dim2	how:wh_manner	
+173	塔	201		missing				
+174	裏	201		missing				
+175	香港	198		covered_main	places-and-times.js	hoeng1 gong2	where:place_or_goal	
+176	錢	198		covered_main	things.js	cin2	what:object_np	
+177	靚	196		covered_main	statives.js	leng3	like:stative_predicate	
+178	公司	195		covered_main	people-and-address.js	gung1 si1	what:organization_np head_noun object_np	
+179	池	192		missing				
+180	茅屋	192		missing				
+181	出	188		covered_main	places-and-times.js	ceot1	doing:movement_direction_out movement_direction	
+182	阿	187		covered_main	people-and-address.js	aa3	who:address_prefix	
+183	知道	186		missing				
+184	用	185		covered_main	verbs.js	jung6	doing:verb use_verb instrument_coverb	
+185	過去	185		missing				
+186	唔使	184		covered_main	function-words-and-particles.js	m4 sai2	func:modal_need_not	
+187	叫做	183		covered_main	verbs.js	giu3 zou6	doing:naming_verb	
+188	頭先	183		missing				
+189	右邊	181		missing				
+190	而	179		missing				
+191	一直	178		missing				
+192	一樣	177		missing				
+193	香	175		missing				
+194	緊	175		covered_main	function-words-and-particles.js	gan2	func:progressive_aspect	
+195	三	174		covered_main	places-and-times.js	saam1	like:quantity count_value numeral_three	
+196	張	174		covered_main	referents-and-boundaries.js	zoeng1	measure_word:classifier_flat_surface_table	
+197	方向	171		missing				
+198	由	171		covered_main	function-words-and-particles.js	jau4	where:source_coverb	
+199	識	171		covered_main	function-words-and-particles.js	sik1	func:modal_know_how	
+200	第一	170		missing				
+201	畫	170		covered_main	verbs.js	waak6	doing:verb action_verb transitive_affordance	
+202	鍾意	169		covered_main	verbs.js	zung1 ji3	like:preference_predicate	
+203	左邊	168		missing				
+204	善	167		missing				
+205	港	167		missing				
+206	繼續	166		missing				
+207	地方	165		covered_main	study-suite.js	dei6 fong1	where:place_noun location_np	
+208	讀	165		covered_main	study-suite.js	duk6	doing:verb reading_pronunciation_verb transitive_verb	
+209	地圖	164		covered_main	verbs.js	dei6 tou4	what:object_np map_noun	
+210	時間	164		covered_main	things.js	si4 gaan3	when:time_np	
+211	場	162		missing				
+212	台	161		missing				
+213	湖	160		missing				
+214	番	159		missing				
+215	邊度	159		covered_main	referents-and-boundaries.js	bin1 dou6	where:wh_place	
+216	事	157		covered_main	study-suite.js	si6	what:event_or_matter_noun head_noun	
+217	唔見	157		missing				
+218	馬戲	157		missing				
+219	兜過	157		missing				
+220	正	156		covered_main	statives.js	zeng3	like:stative_predicate	
+221	個位	156		missing				
+222	比較	155		missing				
+223	冇乜	154		missing				
+224	朋友	154		covered_main	people-and-address.js	pang4 jau5	who:person_np	
+225	恨	154		missing				
+226	紙	154		covered_main	things.js	zi2	what:object_np flat_object_np	
+227	點鐘	154		missing				
+228	交叉	153		missing				
+229	死	153		missing				
+230	年	152		covered_main	function-words-and-particles.js	nin4	when:time_head temporal year_unit	
+231	韻	152		missing				
+232	驚	152		covered_main	referents-and-boundaries.js	geng1	like:stative_predicate emotion_state_stative	
+233	出嚟	151		missing				
+234	返去	150		missing				
+235	日	149		covered_main	function-words-and-particles.js	jat6	when:time_head temporal day_noun day_unit	
+236	位	149		covered_main	study-suite.js	wai2	measure_word:classifier_person polite_person_classifier	
+237	開心	149		covered_main	statives.js	hoi1 sam1	like:stative_predicate	
+238	廟	149		missing				
+239	戀	149		missing				
+240	完	147		covered_main	function-words-and-particles.js	jyun4	func:completive_result	
+241	都會	147		missing				
+242	右面	146		missing				
+243	泳池	146		missing				
+244	需要	146		missing				
+245	左面	145		missing				
+246	變	145		covered_main	verbs.js	bin3	doing:verb change_verb	
+247	成	144		missing				
+248	位置	144		missing				
+249	幾多	144		handled_structurally				src/parser/detectors/transfer/passive-permissive.js
+250	等	143		covered_main	verbs.js	dang2	doing:verb	
+251	路	143		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+252	團	143		missing				
+253	機場	143		missing				
+254	之間	141		missing				
+255	食	141		covered_main	verbs.js	sik6	doing:verb transitive_affordance chain_select_edible	
+256	啱啱	141		missing				
+257	唉	140		missing				
+258	梗係	140		missing				
+259	哎	138		missing				
+260	蛇	138		missing				
+261	枉	136		missing				
+262	高	133		covered_main	statives.js	gou1	like:stative_predicate height_stative scalar_dimension_predicate	
+263	擰	133		missing				
+264	打	132		covered_main	verbs.js	daa2	doing:verb	
+265	丸	131		missing				
+266	公園	131		covered_main	places-and-times.js	gung1 jyun2	where:place_or_goal	
+267	玩	131		covered_main	verbs.js	waan2	doing:verb	
+268	隔離	129		missing				
+269	寫	129		covered_main	verbs.js	se2	doing:verb write_verb	
+270	屋企	128		covered_main	places-and-times.js	uk1 kei2	where:place_or_goal	
+271	幫	128		covered_main	verbs.js	bong1	doing:verb help_benefactive_verb	
+272	搞	127		missing				
+273	葡萄	127		missing				
+274	往	126		missing				
+275	淨係	125		missing				
+276	迷宮	124		missing				
+277	份	123		covered_main	places-and-times.js	fan6	measure_word:general_classifier document_task_classifier	
+278	底	123		missing				
+279	宅	122		missing				
+280	次	121		covered_main	places-and-times.js	ci3	when:time_head temporal	
+281	為	121		missing				
+282	腰	121		missing				
+283	車站	120		missing				
+284	以前	119		missing				
+285	係噉	119		missing				
+286	差唔多	119		missing				
+287	開	119		covered_main	statives.js	hoi1	doing:verb_or_modifier_head	
+288	魚排	118		missing				
+289	諗住	118		covered_main	verbs.js	nam2 zyu6	doing:intention_frame	
+290	另外	117		missing				
+291	科技	117		missing				
+292	月	116		covered_main	function-words-and-particles.js	jyut6	when:time_head temporal month_unit	
+293	仲	116		covered_main	study-suite.js	zung6	how:additive_continuative_adverb	
+294	問	116		covered_main	verbs.js	man6	doing:verb	
+295	萍	115		missing				
+296	唔同	114		missing				
+297	條線	114		missing				
+298	會見	114		missing				
+299	起點	111		missing				
+300	瞓	111		covered_main	verbs.js	fan3	doing:verb	
+301	賣	111		covered_main	verbs.js	maai6	doing:verb	
+302	希望	110		missing				
+303	其他	110		covered_main	people-and-address.js	kei4 taa1	func:nominal_modifier determiner_like_modifier modifier	
+304	十	109		covered_main	places-and-times.js	sap6	how:quantity count_value numeral_ten	
+305	南	109		missing				
+306	今日	108		covered_main	places-and-times.js	gam1 jat6	when:temporal_adjunct	
+307	吔	108		missing				
+308	滑雪	108		missing				
+309	新	107		covered_main	statives.js	san1	like:stative_or_modifier	
+310	明白	106		missing				
+311	等等	106		missing				
+312	中	105		covered_main	things.js	zung1	like:modifier_middle	
+313	定係	105		covered_main	study-suite.js	ding6 hai6	func:alternative_question_connector	
+314	電話	105		covered_main	things.js	din6 waa2	what:object_np	
+315	冇錯	104		missing				
+316	原來	104		covered_main	study-suite.js	jyun4 loi4	func:discourse_marker realization_marker	
+317	根本	104		missing				
+318	盛	104		missing				
+319	燕	104		missing				
+320	大概	103		covered_main	function-words-and-particles.js	daai6 koi3	how:approximation_adverb	
+321	工廠	102		missing				
+322	同學	102		missing				
+323	快	102		covered_main	statives.js	faai3	like:stative_predicate	
+324	傻	102		missing				
+325	算	102		covered_main	statives.js	syun3	func:evaluation_verb_or_marker	
+326	請	101		covered_main	verbs.js	cing2	func:politeness_imperative_marker	
+327	之前	100		handled_structurally				src/parser/clause-relations/graph.js
+328	只	100		handled_structurally				src/parser/clause-relations/graph.js
+329	可	100		missing				
+330	有時	100		missing				
+331	意思	100		covered_main	study-suite.js	ji3 si1	what:abstract_noun meaning_or_intention	
+332	仲有	99		missing				
+333	唧	99		missing				
+334	陪	99		covered_main	verbs.js	pui4	doing:verb	
+335	一齊	98		covered_main	function-words-and-particles.js	jat1 cai4	how:comitative_adverb	
+336	大樹	98		missing				
+337	老	98		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+338	依	98		missing				
+339	咦	98		missing				
+340	停	98		covered_main	verbs.js	ting4	doing:verb stop_verb	
+341	感覺	98		missing				
+342	洗	96		covered_main	verbs.js	sai2	doing:verb	
+343	扮	95		missing				
+344	定	95		covered_main	study-suite.js	ding6	func:alternative_connector_or_decide_verb_homograph	
+345	耐	95		covered_main	statives.js	noi6	like:stative_predicate duration_stative scalar_dimension_predicate	
+346	擁	95		missing				
+347	本身	93		missing				
+348	方面	92		missing				
+349	另	92		missing				
+350	扮汗	92		missing				
+351	格	92		missing				
+352	不如	91		covered_main	function-words-and-particles.js	bat1 jyu4	func:suggestion_marker	
+353	今次	91		missing				
+354	城	90		missing				
+355	球場	90		missing				
+356	多謝	89		covered_main	degree-and-formulas.js	do1 ze6	func:formula_discourse_unit	
+357	汗	89		missing				
+358	社會	89		missing				
+359	莊	89		missing				
+360	幾好	89		missing				
+361	彭	89		missing				
+362	煙	89		missing				
+363	遠	89		covered_main	statives.js	jyun5	like:stative_predicate distance_stative scalar_dimension_predicate	
+364	貧大宅	88		missing				
+365	名	87		covered_main	things.js	meng2	what:object_np	
+366	即刻	87		missing				
+367	勁	87		missing				
+368	將	87		covered_main	verbs.js	zoeng1	func:disposal_coverb	
+369	像	87		missing				
+370	二	86		covered_main	places-and-times.js	ji6	how:quantity count_value numeral_two_formal	
+371	北方	86		missing				
+372	仔	85		missing				
+373	半	85		covered_main	study-suite.js	bun3	how:fraction_quantifier	
+374	東	84		handled_structurally				src/runtime-resources/normalization/simplified-to-traditional.js
+375	金字塔	84		missing				
+376	風車	84		missing				
+377	越	84		missing				
+378	工	83		covered_main	study-suite.js	gung1	what:work_noun object_np head_noun	
+379	考	83		missing				
+380	當然	83		missing				
+381	農	83		missing				
+382	碼頭	83		missing				
+383	礦場	83		missing				
+384	入	82		covered_main	places-and-times.js	jap6	doing:movement_direction_in movement_direction	
+385	女仔	82		missing				
+386	引	82		missing				
+387	先至	82		covered_main	study-suite.js	sin1 zi3	func:sequence_focus_marker	
+388	究竟	82		missing				
+389	前	82		handled_structurally				src/parser/detectors/motion/path-goal-source.js
+390	頭	82		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+391	飲	81		covered_main	verbs.js	jam2	doing:verb transitive_affordance chain_select_drinkable	
+392	暖	81		missing				
+393	總之	81		missing				
+394	完全	80		missing				
+395	情況	80		missing				
+396	甜	80		covered_main	statives.js	tim4	like:stative_predicate	
+397	低	79		covered_main	statives.js	dai1	like:stative_predicate directional_result_complement	
+398	農莊	79		missing				
+399	瀑布	79		missing				
+400	五	78		covered_main	places-and-times.js	ng5	how:quantity count_value numeral_five	
+401	辛苦	78		covered_main	referents-and-boundaries.js	san1 fu2	like:stative_predicate emotion_state_stative	
+402	股	78		missing				
+403	墳場	78		missing				
+404	出來	77		missing				
+405	部	77		covered_main	verbs.js	bou6	measure_word:classifier_vehicle_machine	
+406	你講	76		missing				
+407	信	76		covered_main	verbs.js	seon3	doing:belief_verb	
+408	樹林	76		missing				
+409	禮堂	76		missing				
+410	所	75		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+411	所謂	75		missing				
+412	首先	75		missing				
+413	國旗	75		missing				
+414	帶	75		covered_main	verbs.js	daai3	doing:verb take_bring_verb	
+415	畫到	75		missing				
+416	燈塔	75		missing				
+417	講呢	75		missing				
+418	纜車	75		missing				
+419	全部	74		missing				
+420	重有	74		missing				
+421	貴	74		covered_main	statives.js	gwai3	like:stative_predicate	
+422	四	73		covered_main	places-and-times.js	sei3	how:quantity count_value numeral_four	
+423	服務	73		missing				
+424	書	73		covered_main	things.js	syu1	what:object_np	
+425	覺	73		covered_main	things.js	gaau3	what:object_in_vo	
+426	本	72		covered_main	verbs.js	bun2	measure_word:classifier_book	
+427	特別	72		covered_main	statives.js	dak6 bit6	like:modifier_or_stative	
+428	得到	72		missing				
+429	清楚	72		covered_main	study-suite.js	cing1 co2	like:result_or_stative_predicate clarity_state	
+430	理	72		missing				
+431	種	72		missing				
+432	堂	71		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+433	后	70		handled_structurally				src/runtime-resources/normalization/simplified-to-traditional.js
+434	呃	70		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+435	就算	70		missing				
+436	虛線	70		missing				
+437	太	69		covered_main	degree-and-formulas.js	taai3	how:degree_marker	
+438	少	69		covered_main	statives.js	siu2	like:stative_or_quantity	
+439	出去	69		missing				
+440	怨	69		missing				
+441	唔記得	69		missing				
+442	效果	69		missing				
+443	起	69		missing				
+444	文字	68		missing				
+445	以為	68		covered_main	verbs.js	ji5 wai4	doing:cognition_opinion_predicate belief_predicate mistaken_belief_predicate	
+446	打橫	68		missing				
+447	通常	68		covered_main	verbs.js	tung1 soeng4	when:habitual_frequency_adverb	
+448	陳	68		covered_main	people-and-address.js	can4	who:surname_element	
+449	地盤	67		missing				
+450	行到	67		missing				
+451	杏堂	67		missing				
+452	相信	67		covered_main	verbs.js	soeng1 seon3	doing:cognition_opinion_predicate belief_predicate	
+453	揀	67		missing				
+454	項	67		missing				
+455	禮拜	67		covered_main	places-and-times.js	lai5 baai3	when:time_head temporal	
+456	市場	66		missing				
+457	我講	66		missing				
+458	尚健	66		missing				
+459	蚊	66		covered_main	things.js	man1	what:currency_unit	
+460	印	65		missing				
+461	直	65		missing				
+462	嶺	65		missing				
+463	入去	64		missing				
+464	之	64		missing				
+465	六	64		covered_main	places-and-times.js	luk6	how:quantity count_value numeral_six	
+466	出現	64		missing				
+467	直情	64		missing				
+468	國	64		missing				
+469	圖	64		missing				
+470	西	63		missing				
+471	掂	63		handled_structurally				src/parser/detectors/aspect/potential-result.js
+472	條路線	63		missing				
+473	頂	63		missing				
+474	裏邊	63		missing				
+475	銅	63		missing				
+476	濫	63		missing				
+477	小	62		missing				
+478	冇問題	62		covered_main	degree-and-formulas.js	mou5 man6 tai4	func:formula_discourse_unit	
+479	右行	62		missing				
+480	讀書	62		missing				
+481	不	61		handled_structurally				src/parser/detectors/boundaries/needs-context.js
+482	水塘	61		missing				
+483	件	61		covered_main	referents-and-boundaries.js	gin6	measure_word:classifier_clothing_item	
+484	地標	61		missing				
+485	收	61		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+486	更加	61		missing				
+487	男朋友	61		missing				
+488	唔該	61		covered_main	degree-and-formulas.js	m4 goi1	func:formula_discourse_unit	
+489	愁	61		missing				
+490	一條	60		missing				
+491	八	60		covered_main	places-and-times.js	baat3	how:quantity count_value numeral_eight	
+492	忍	60		missing				
+493	重	60		missing				
+494	將來	60		missing				
+495	斜	60		missing				
+496	望	60		missing				
+497	提碑	60		missing				
+498	工作	59		covered_main	study-suite.js	gung1 zok3	what:work_noun activity_noun	
+499	皮	59		missing				
+500	共	59		missing				
+501	地	59		missing				
+502	明	59		covered_main	people-and-address.js	ming4	who:name_element	
+503	鬼	59		missing				
+504	最後	59		missing				
+505	憂	59		missing				
+506	一次	58		covered_main	verbs.js	jat1 ci3	how:frequency_quantity	
+507	加	58		missing				
+508	受	58		missing				
+509	肯定	58		covered_main	study-suite.js	hang2 ding6	like:stance_predicate certainty	
+510	能夠	58		missing				
+511	瑞	58		missing				
+512	電腦	58		missing				
+513	領	58		missing				
+514	長	57		covered_main	places-and-times.js	coeng4	like:stative_predicate scalar_dimension_predicate length_dimension_predicate	
+515	信心	57		missing				
+516	後尾	57		missing				
+517	重要	57		missing				
+518	意	57		missing				
+519	當	57		missing				
+520	繞	57		missing				
+521	水	56		covered_main	things.js	seoi2	what:object_np liquid drink_object water_noun	
+522	成病	56		missing				
+523	坐	56		covered_main	verbs.js	co5	doing:verb	
+524	我話	56		missing				
+525	是	56		handled_structurally				src/parser/detectors/boundaries/needs-context.js
+526	英文	56		missing				
+527	真	56		covered_main	verbs.js	zan1	like:stative_predicate truth_stative	
+528	貧	56		missing				
+529	擺	56		covered_main	verbs.js	baai2	doing:verb action_verb positioning_verb	
+530	彎	56		missing				
+531	今年	55		missing				
+532	完成	55		missing				
+533	男仔	55		missing				
+534	排	55		covered_main	study-suite.js	paai4	when:time_period_head	
+535	跟	55		missing				
+536	灣	55		missing				
+537	任何	54		missing				
+538	返來	54		missing				
+539	室	54		missing				
+540	記得	54		covered_main	verbs.js	gei3 dak1	doing:cognition_reminder_predicate	
+541	犀利	54		covered_main	study-suite.js	sai1 lei6	like:stative_predicate degree_evaluation	
+542	緊要	54		missing				
+543	憂店	54		missing				
+544	樂	54		missing				
+545	樂園	54		missing				
+546	左上	53		missing				
+547	先生	53		covered_main	people-and-address.js	sin1 saang1	who:person_title	
+548	形	53		missing				
+549	直接	53		missing				
+550	班	53		missing				
+551	國家	53		missing				
+552	第二個	53		covered_main	verbs.js	dai6 ji6 go3	what:object_np headless_choice_np ordinal_or_alternative_np	
+553	細個	53		missing				
+554	幾時	53		covered_main	referents-and-boundaries.js	gei2 si4	when:wh_time	
+555	傾	53		covered_main	study-suite.js	king1	doing:verb conversation_verb	
+556	經濟	53		missing				
+557	點啊	53		missing				
+558	一係	52		missing				
+559	我會	52		missing				
+560	使	52		covered_main	verbs.js	sai2	func:modal_necessity	
+561	突然	52		missing				
+562	海	52		missing				
+563	提	52		missing				
+564	養	52		missing				
+565	錯	52		missing				
+566	叢林	52		missing				
+567	七	51		covered_main	places-and-times.js	cat1	how:quantity count_value numeral_seven	
+568	大陸	51		missing				
+569	平	51		covered_main	statives.js	peng4	like:stative_predicate	
+570	打電話	51		handled_structurally				src/parser/detectors/discourse/priority.js
+571	成個	51		missing				
+572	基本上	51		missing				
+573	碟	51		covered_main	study-suite.js	dip6	measure_word:classifier_dish plate_classifier	
+574	說話	51		missing				
+575	雖然	51		covered_main	function-words-and-particles.js	seoi1 jin4	func:connector_concession	
+576	上行	50		missing				
+577	心	50		covered_main	study-suite.js	sam1	what:body_part_or_abstract_noun head_noun	
+578	自由	50		missing				
+579	每	50		covered_main	function-words-and-particles.js	mui5	func:distributive_quantifier determiner	
+580	直線	50		missing				
+581	穿	50		missing				
+582	哩樣	50		missing				
+583	差	50		covered_main	study-suite.js	caa1	doing:verb subtraction_or_shortfall_marker	
+584	從	50		missing				
+585	舊	50		missing				
+586	呵	49		missing				
+587	性	49		missing				
+588	林	49		missing				
+589	揸	49		missing				
+590	機	49		covered_main	verbs.js	gei1	what:machine_noun object_np head_noun	
+591	世界	48		missing				
+592	右上	48		missing				
+593	似	48		missing				
+594	東方	48		missing				
+595	返工	48		missing				
+596	理由	48		missing				
+597	着	48		missing				
+598	貨倉	48		missing				
+599	發覺	48		missing				
+600	落到	48		missing				
+601	繞過	48		missing				
+602	翻版	48		missing				
+603	一種	47		missing				
+604	以	47		missing				
+605	包	47		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+606	未必	47		missing				
+607	拍	47		missing				
+608	法律	47		missing				
+609	要求	47		missing				
+610	旅行	47		covered_main	referents-and-boundaries.js	leoi5 hang4	doing:verb activity_predicate travel_activity	
+611	影響	47		missing				
+612	學生	47		covered_main	people-and-address.js	hok6 saang1	who:person_np	
+613	講到	47		missing				
+614	關係	47		missing				
+615	灘	47		missing				
+616	女	46		covered_main	study-suite.js	neoi5	who:person_noun female_person	
+617	考慮	46		missing				
+618	男人	46		missing				
+619	某	46		missing				
+620	唔夠	46		missing				
+621	射	46		missing				
+622	會話	46		missing				
+623	電視	46		covered_main	study-suite.js	din6 si6	what:media_noun object_np head_noun	
+624	學校	46		covered_main	places-and-times.js	hok6 haau6	where:place_or_goal	
+625	轉彎	46		missing				
+626	攬	46		missing				
+627	九	45		covered_main	places-and-times.js	gau2	how:quantity count_value numeral_nine	
+628	水平	45		missing				
+629	生活	45		missing				
+630	早晨	45		covered_main	degree-and-formulas.js	zou2 san4	func:greeting_formula	
+631	其中	45		missing				
+632	放	45		covered_main	verbs.js	fong3	doing:verb	
+633	法	45		missing				
+634	教	45		missing				
+635	最好	45		missing				
+636	磅	45		missing				
+637	山路	44		missing				
+638	公共	44		missing				
+639	方法	44		missing				
+640	代表	44		missing				
+641	好過	44		missing				
+642	西方	44		missing				
+643	者	44		missing				
+644	段	44		missing				
+645	難	44		covered_main	statives.js	naan4	like:stative_predicate	
+646	好睇	43		covered_main	statives.js	hou2 tai2	like:lexicalized_stative_predicate sensory_evaluation visual_evaluation degreeable	
+647	早	43		missing				
+648	店	43		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+649	第	43		covered_main	study-suite.js	dai6	func:ordinal_prefix	
+650	發展	43		missing				
+651	圖案	43		missing				
+652	學	43		covered_main	things.js	hok6	what:object_in_vo	
+653	賺	43		missing				
+654	簡單	43		missing				
+655	同一	42		missing				
+656	尾	42		missing				
+657	我見	42		missing				
+658	近	42		covered_main	statives.js	kan5	like:stative_predicate distance_stative scalar_dimension_predicate	
+659	拜拜	42		covered_main	degree-and-formulas.js	baai1 baai3	func:leave_taking_formula	
+660	接受	42		missing				
+661	第二	42		covered_main	verbs.js	dai6 ji6	func:ordinal_modifier sequence_modifier	
+662	貧大	42		missing				
+663	最近	42		covered_main	referents-and-boundaries.js	zeoi3 gan6	when:temporal_adjunct time_expression	
+664	意見	42		missing				
+665	圖片	42		missing				
+666	辦法	42		missing				
+667	入面	41		covered_main	verbs.js	jap6 min6	where:place_np interior_location	
+668	分鐘	41		missing				
+669	北	41		missing				
+670	外國	41		missing				
+671	平時	41		missing				
+672	打開	41		missing				
+673	把	41		covered_main	study-suite.js	baa2	measure_word:classifier_handled_object	
+674	步	41		covered_main	referents-and-boundaries.js	bou6	what:step_noun activity_object	
+675	炒	41		covered_main	verbs.js	caau2	doing:verb	
+676	狗	41		covered_main	people-and-address.js	gau2	who:animal_agent_np person_like_agent_np	
+677	直行	41		covered_main	verbs.js	zik6 haang4	doing:verb motion_verb go_straight	
+678	借	41		covered_main	verbs.js	ze3	doing:verb borrow_verb	
+679	容易	41		covered_main	study-suite.js	jung4 ji6	like:stative_predicate difficulty_scale	
+680	座	41		covered_main	verbs.js	zo6	measure_word:classifier_large_structure	
+681	起碼	41		missing				
+682	偏	41		missing				
+683	報紙	41		covered_main	study-suite.js	bou3 zi2	what:media_noun newspaper_noun	
+684	人工	40		missing				
+685	分	40		covered_main	verbs.js	fan1	doing:verb	
+686	反而	40		missing				
+687	主要	40		missing				
+688	有陣	40		missing				
+689	怪	40		missing				
+690	除	40		missing				
+691	剪	40		missing				
+692	細	40		covered_main	statives.js	sai3	like:stative_predicate	
+693	袋	40		missing				
+694	等陣	40		covered_main	function-words-and-particles.js	dang2 zan6	when:time_np	
+695	閒	40		covered_main	study-suite.js	haan4	like:stative_predicate availability_state	
+696	慢慢	40		missing				
+697	鐘	40		covered_main	study-suite.js	zung1	when:time_unit hour_unit	
+698	三個	39		missing				
+699	女人	39		missing				
+700	幼	39		missing				
+701	同意	39		covered_main	function-words-and-particles.js	tung4 ji3	doing:verb action_verb stance_agreement_predicate intransitive_use	
+702	行過	39		missing				
+703	所有	39		missing				
+704	直落	39		missing				
+705	後	39		handled_structurally				src/runtime-resources/normalization/simplified-to-traditional.js
+706	家	39		covered_main	study-suite.js	gaa1	what:home_family_noun pronunciation_drill_item	
+707	財政	39		missing				
+708	敢	39		missing				
+709	節目	39		covered_main	study-suite.js	zit3 muk6	what:media_or_event_noun program	
+710	點呀	39		missing				
+711	點知	39		covered_main	verbs.js	dim2 zi1	how:wh_cognition_question	
+712	水平線	38		missing				
+713	例如	38		missing				
+714	爸爸	38		covered_main	people-and-address.js	baa1 baa1	who:person_np	
+715	直上	38		missing				
+716	直程	38		missing				
+717	個個	38		missing				
+718	幅	38		covered_main	referents-and-boundaries.js	fuk1	measure_word:classifier_picture_flat_work	
+719	普通	38		missing				
+720	畫個	38		missing				
+721	碑	38		missing				
+722	一半	37		missing				
+723	左右	37		covered_main	function-words-and-particles.js	zo2 jau6	how:approximation_marker	
+724	左行	37		missing				
+725	食飯	37		handled_structurally				src/parser/detectors/motion/purpose-chains.js
+726	距離	37		missing				
+727	概念	37		missing				
+728	環境	37		covered_main	things.js	waan4 ging2	what:object_np	
+729	人權	36		missing				
+730	下行	36		missing				
+731	小姐	36		covered_main	people-and-address.js	siu2 ze2	who:person_title	
+732	包括	36		missing				
+733	生	36		covered_main	people-and-address.js	saang1	who:address_suffix	
+734	因	36		missing				
+735	考試	36		missing				
+736	杏	36		missing				
+737	始終	36		missing				
+738	阿媽	36		covered_main	people-and-address.js	aa3 maa1	who:kinship_person_np	
+739	計	36		missing				
+740	個韻	36		missing				
+741	原本	36		missing				
+742	連	36		handled_structurally				src/parser/context/descriptors.js
+743	港人	36		missing				
+744	試過	36		missing				
+745	對於	36		covered_main	referents-and-boundaries.js	deoi3 jyu1	func:relational_topic_coverb discourse_topic_marker	
+746	轉	36		covered_main	study-suite.js	zyun3	doing:verb direction_change_verb	
+747	大個	35		missing				
+748	公務員	35		missing				
+749	分別	35		covered_main	study-suite.js	fan1 bit6	what:abstract_noun difference	
+750	化	35		missing				
+751	比	35		covered_main	study-suite.js	bei2	func:comparison_marker coverb	
+752	我個	35		missing				
+753	我想	35		missing				
+754	車	35		covered_main	study-suite.js	ce1	what:vehicle_noun object_np head_noun	
+755	放棄	35		missing				
+756	勇	35		missing				
+757	神	35		missing				
+758	得閒	35		covered_main	study-suite.js	dak1 haan4	like:lexicalized_stative_predicate availability_state	
+759	笨	35		missing				
+760	尊重	35		missing				
+761	幾個	35		missing				
+762	棚	35		missing				
+763	會堂	35		missing				
+764	講話	35		missing				
+765	礦	35		missing				
+766	一份	34		missing				
+767	大學	34		missing				
+768	之外	34		missing				
+769	介紹	34		missing				
+770	行為	34		missing				
+771	忍依	34		missing				
+772	投資	34		missing				
+773	架	34		covered_main	verbs.js	gaa3	measure_word:classifier_vehicle	
+774	害	34		missing				
+775	笑	34		covered_main	statives.js;function-words-and-particles.js	siu3	doing:verb;doing:verb action_verb intransitive_verb	
+776	魚	34		covered_main	things.js	jyu4	what:object_np	
+777	堡	34		missing				
+778	當時	34		missing				
+779	路線	34		missing				
+780	興趣	34		covered_main	things.js	hing3 ceoi3	what:object_np	
+781	餐室	34		missing				
+782	黐線	34		missing				
+783	一年	33		missing				
+784	日本	33		covered_main	places-and-times.js	jat6 bun2	where:place_or_goal country_location	
+785	令	33		missing				
+786	右手	33		missing				
+787	外	33		missing				
+788	有錢	33		missing				
+789	至	33		missing				
+790	我知	33		covered_main	function-words-and-particles.js	ngo5 zi1	doing:cognition_frame	
+791	表達	33		missing				
+792	甚至	33		missing				
+793	美	33		missing				
+794	唔緊要	33		covered_main	degree-and-formulas.js	m4 gan2 jiu3	func:formula_discourse_unit	
+795	秩序	33		missing				
+796	能力	33		missing				
+797	棵	33		missing				
+798	廣告	33		missing				
+799	靠	33		missing				
+800	講下	33		missing				
+801	○	32		missing				
+802	上方	32		missing				
+803	只不過	32		missing				
+804	永遠	32		missing				
+805	生意	32		missing				
+806	好玩	32		missing				
+807	字典	32		missing				
+808	房	32		covered_main	places-and-times.js	fong2	where:place_or_goal interior_location	
+809	於	32		missing				
+810	型	32		missing				
+811	盆	32		missing				
+812	飛機	32		missing				
+813	陣時	32		missing				
+814	接近	32		missing				
+815	短	32		missing				
+816	機會	32		missing				
+817	聲	32		covered_main	things.js	seng1	what:object_np	
+818	講得	32		missing				
+819	講過	32		missing				
+820	出面	31		covered_main	places-and-times.js	ceot1 min6	where:place_or_goal spatial_localizer ambient_location_frame	
+821	叻	31		covered_main	verbs.js	lek1	like:stative_predicate degreeable skillful_property	
+822	我要	31		missing				
+823	來講	31		missing				
+824	制度	31		missing				
+825	股票	31		covered_main	things.js	gu2 piu3	what:object_np	
+826	面對	31		missing				
+827	套	31		covered_main	referents-and-boundaries.js	tou3	measure_word:classifier_set_media	
+828	案	31		missing				
+829	晚	31		missing				
+830	無論	31		missing				
+831	圓形	31		missing				
+832	感受	31		missing				
+833	嘍	31		missing				
+834	鼻	31		missing				
+835	嘿	31		missing				
+836	嬋	31		missing				
+837	數碼	31		missing				
+838	誰	31		missing				
+839	一陣	30		missing				
+840	一間	30		missing				
+841	大佬	30		missing				
+842	女朋友	30		missing				
+843	小學	30		missing				
+844	中文	30		missing				
+845	井	30		missing				
+846	令到	30		missing				
+847	去邊	30		missing				
+848	句	30		covered_main	study-suite.js	geoi3	measure_word:classifier_utterance sentence_classifier	
+849	立法	30		missing				
+850	判決	30		missing				
+851	拎	30		missing				
+852	法院	30		missing				
+853	知點	30		missing				
+854	城市	30		missing				
+855	相	30		covered_main	referents-and-boundaries.js	soeng2	what:photograph_noun object_np	
+856	飛	30		covered_main	study-suite.js	fei1	what:ticket_noun colloquial_object_np	
+857	原因	30		missing				
+858	病	30		missing				
+859	純	30		missing				
+860	眼	30		missing				
+861	最多	30		missing				
+862	喥	30		missing				
+863	發生	30		missing				
+864	開頭	30		missing				
+865	塘	30		missing				
+866	歲	30		covered_main	places-and-times.js	seoi3	measure_word:age_unit nominal_measure_unit	
+867	經	30		missing				
+868	講真	30		missing				
+869	下方	29		missing				
+870	包住	29		missing				
+871	行行	29		missing				
+872	形容	29		missing				
+873	身	29		missing				
+874	法官	29		missing				
+875	返學	29		handled_structurally				src/parser/detectors/motion/path-goal-source.js
+876	厘米	29		missing				
+877	問下	29		missing				
+878	跌	29		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+879	搞笑	29		missing				
+880	搭	29		covered_main	study-suite.js	daap3	doing:verb transport_use_verb transitive_verb	
+881	實	29		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+882	撞	29		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+883	一日	28		missing				
+884	上次	28		covered_main	places-and-times.js	soeng6 ci3	when:temporal_adjunct	
+885	中國	28		covered_main	study-suite.js	zung1 gwok3	where:proper_place country_name	
+886	今晚	28		missing				
+887	右手面	28		missing				
+888	左手	28		missing				
+889	平衡	28		missing				
+890	好難	28		missing				
+891	成為	28		missing				
+892	成績	28		missing				
+893	周圍	28		missing				
+894	明明	28		missing				
+895	肥	28		missing				
+896	返到	28		missing				
+897	非常	28		missing				
+898	屋	28		covered_main	verbs.js	uk1	what:object_np house_noun	
+899	科	28		missing				
+900	美國	28		covered_main	study-suite.js	mei5 gwok3	where:proper_place country_name	
+901	送	28		missing				
+902	圈	28		missing				
+903	國際	28		missing				
+904	寄	28		covered_main	places-and-times.js	gei3	doing:verb transitive_affordance transfer_action	
+905	彭銅	28		missing				
+906	無	28		missing				
+907	絕對	28		missing				
+908	跑	28		covered_main	referents-and-boundaries.js	paau2	doing:verb running_verb action_verb	
+909	郵票	28		missing				
+910	經歷	28		missing				
+911	整	28		covered_main	verbs.js	zing2	doing:verb make_fix_verb	
+912	點講	28		missing				
+913	關於	28		covered_main	referents-and-boundaries.js	gwaan1 jyu1	func:relational_topic_coverb discourse_topic_marker	
+914	一下	27		missing				
+915	之下	27		missing				
+916	未來	27		missing				
+917	同事	27		covered_main	people-and-address.js	tung4 si6	who:person_np	
+918	見過	27		missing				
+919	個樣	27		missing				
+920	衰	27		missing				
+921	教書	27		missing				
+922	透過	27		missing				
+923	景點	27		missing				
+924	結果	27		missing				
+925	圓	27		missing				
+926	萬	27		covered_main	referents-and-boundaries.js	maan6	how:quantity numeric_unit ten_thousand_unit	
+927	跳	27		covered_main	verbs.js	tiu3	doing:verb jump_verb	
+928	過程	27		missing				
+929	幣	27		missing				
+930	橢圓	27		missing				
+931	壓力	27		covered_main	referents-and-boundaries.js	aat3 lik6	what:abstract_noun object_np topic_np	
+932	薯	27		missing				
+933	體	27		missing				
+934	小心	26		covered_main	statives.js	siu2 sam1	how:manner_degree_word degree_manner_head	
+935	互聯網	26		missing				
+936	公仔	26		missing				
+937	手邊	26		missing				
+938	北行	26		missing				
+939	正常	26		missing				
+940	企	26		covered_main	verbs.js	kei5	doing:verb	
+941	全	26		covered_main	referents-and-boundaries.js	cyun4	like:stative_predicate completeness_property	
+942	好奇	26		covered_main	referents-and-boundaries.js	hou2 kei4	like:stative_predicate emotion_state_stative	
+943	作為	26		missing				
+944	利益	26		missing				
+945	努力	26		missing				
+946	改革	26		missing				
+947	私營化	26		missing				
+948	法庭	26		missing				
+949	留意	26		missing				
+950	起身	26		missing				
+951	掛住	26		missing				
+952	第日	26		missing				
+953	等如	26		missing				
+954	舒服	26		covered_main	study-suite.js	syu1 fuk6	like:stative_predicate physical_condition	
+955	街	26		covered_main	referents-and-boundaries.js	gaai1	where:place_np street_noun	
+956	開支	26		missing				
+957	亂	26		covered_main	study-suite.js	lyun6	how:manner_adverb disorderly_manner	
+958	愛	26		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+959	腳	26		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+960	旗	26		missing				
+961	認為	26		covered_main	verbs.js	jing6 wai4	doing:cognition_opinion_predicate belief_predicate	
+962	遲啲	26		missing				
+963	頹餐	26		missing				
+964	上市	25		missing				
+965	公約	25		missing				
+966	支持	25		missing				
+967	方式	25		missing				
+968	方便	25		missing				
+969	日子	25		missing				
+970	奶茶	25		missing				
+971	左手面	25		missing				
+972	市	25		covered_main	study-suite.js	si5	what:place_or_market_noun head_noun	
+973	正話	25		missing				
+974	好彩	25		missing				
+975	色	25		covered_main	study-suite.js	sik1	what:color_noun head_noun	
+976	決定	25		missing				
+977	兩年	25		missing				
+978	受害	25		missing				
+979	夜晚	25		covered_main	places-and-times.js	je6 maan5	when:temporal_adjunct	
+980	沿住	25		covered_main	verbs.js	jyun4 zyu6	func:path_coverb	
+981	門	25		covered_main	study-suite.js	mun4	what:door_noun head_noun	
+982	附近	25		covered_main	study-suite.js	fu6 gan6	where:relative_place_expression	
+983	咸	25		missing				
+984	英	25		missing				
+985	唔通	25		missing				
+986	真正	25		missing				
+987	停低	25		missing				
+988	幾年	25		missing				
+989	無聊	25		missing				
+990	選擇	25		missing				
+991	頭髮	25		missing				
+992	類似	25		missing				
+993	鐘頭	25		missing				
+994	千	24		covered_main	referents-and-boundaries.js;places-and-times.js	cin1	how:quantity numeric_unit thousand_unit;how:quantity count_value numeral_thousand	
+995	口	24		covered_main	study-suite.js	hau2	what:noun opening_or_mouth head_noun	
+996	手指	24		missing				
+997	四個	24		missing				
+998	交	24		covered_main	verbs.js	gaau1	doing:verb hand_over_verb	
+999	同人	24		missing				
+1000	在乎	24		missing				
+1001	如	24		covered_main	referents-and-boundaries.js	jyu4	func:verb_conjunction comparison_or_condition_marker	
+1002	有條	24		missing				
+1003	改	24		covered_main	study-suite.js	goi2	doing:verb change_verb transitive_verb	
+1004	其	24		missing				
+1005	拖	24		missing				
+1006	後來	24		missing				
+1007	研究	24		missing				
+1008	衫	24		covered_main	things.js	saam1	what:object_np clothing_np	
+1009	限制	24		missing				
+1010	值	24		missing				
+1011	婆	24		missing				
+1012	得意	24		missing				
+1013	條路	24		missing				
+1014	添	24		missing				
+1015	曾經	24		missing				
+1016	答	24		covered_main	verbs.js	daap3	doing:verb	
+1017	搬	24		covered_main	study-suite.js	bun1	doing:verb relocation_verb	
+1018	會考	24		missing				
+1019	經驗	24		missing				
+1020	態度	24		missing				
+1021	慘	24		missing				
+1022	盡量	24		missing				
+1023	網絡	24		missing				
+1024	緊張	24		covered_main	referents-and-boundaries.js	gan2 zoeng1	like:stative_predicate emotion_state_stative	
+1025	價值	24		missing				
+1026	噉樣樣	24		missing				
+1027	影	24		covered_main	referents-and-boundaries.js	jing2	doing:verb photographing_verb transitive_affordance	
+1028	橋	24		missing				
+1029	餐	24		missing				
+1030	講呀	24		missing				
+1031	點呢	24		missing				
+1032	一段	23		missing				
+1033	一般	23		missing				
+1034	一張	23		missing				
+1035	八月	23		missing				
+1036	下個	23		missing				
+1037	大部份	23		missing				
+1038	女性	23		missing				
+1039	尤其	23		missing				
+1040	外圍	23		missing				
+1041	皮池	23		missing				
+1042	刑事	23		missing				
+1043	而且	23		missing				
+1044	抑或	23		missing				
+1045	到時	23		covered_main	places-and-times.js	dou3 si4	when:temporal_adjunct	
+1046	拉	23		missing				
+1047	欣	23		missing				
+1048	南行	23		missing				
+1049	咯	23		missing				
+1050	重係	23		missing				
+1051	凍	23		covered_main	statives.js	dung3	like:stative_predicate ambient_property_predicate temperature_property	
+1052	馬	23		missing				
+1053	帳	23		missing				
+1054	常	23		missing				
+1055	陶	23		missing				
+1056	麻煩	23		missing				
+1057	暑假	23		missing				
+1058	發現	23		missing				
+1059	睇法	23		missing				
+1060	程度	23		missing				
+1061	塊	23		covered_main	verbs.js	faai3	measure_word:classifier_flat_piece	
+1062	試	23		covered_main	verbs.js	si3	doing:verb	
+1063	嘥	23		missing				
+1064	澳洲	23		missing				
+1065	講啦	23		missing				
+1066	點算	23		missing				
+1067	聽日	23		covered_main	places-and-times.js	ting1 jat6	when:temporal_adjunct	
+1068	聽講	23		handled_structurally				src/parser/features/token-features.js
+1069	入邊	22		covered_main	verbs.js	jap6 bin1	where:place_np interior_location	
+1070	力	22		missing				
+1071	冇事	22		missing				
+1072	功課	22		covered_main	things.js	gung1 fo3	what:object_np	
+1073	左下角	22		missing				
+1074	左畫	22		missing				
+1075	本來	22		missing				
+1076	生日	22		missing				
+1077	白紙	22		missing				
+1078	尖	22		missing				
+1079	年紀	22		missing				
+1080	百	22		covered_main	places-and-times.js	baak3	how:quantity count_value numeral_hundred	
+1081	男	22		missing				
+1082	事實	22		missing				
+1083	兩間	22		missing				
+1084	尚	22		missing				
+1085	於是	22		missing				
+1086	版	22		missing				
+1087	直到	22		missing				
+1088	空白	22		missing				
+1089	指	22		missing				
+1090	要點	22		missing				
+1091	負責	22		missing				
+1092	冤墓	22		missing				
+1093	畫條	22		missing				
+1094	電子	22		missing				
+1095	標	22		missing				
+1096	談	22		missing				
+1097	聯	22		covered_main	referents-and-boundaries.js	lyun4	doing:verb connection_verb	
+1098	講返	22		missing				
+1099	舊年	22		missing				
+1100	覆	22		missing				
+1101	醫生	22		covered_main	people-and-address.js	ji1 saang1	who:person_np	
+1102	九點	21		missing				
+1103	大約	21		missing				
+1104	分開	21		missing				
+1105	升	21		missing				
+1106	廿	21		missing				
+1107	打個	21		missing				
+1108	白色	21		missing				
+1109	行去	21		missing				
+1110	形狀	21		missing				
+1111	我想問	21		missing				
+1112	改變	21		missing				
+1113	私人	21		missing				
+1114	兩個韻	21		missing				
+1115	受山	21		missing				
+1116	底下	21		missing				
+1117	東行	21		missing				
+1118	長方形	21		missing				
+1119	航	21		missing				
+1120	兜返	21		missing				
+1121	捱	21		missing				
+1122	終於	21		missing				
+1123	處理	21		missing				
+1124	單	21		covered_main	study-suite.js	daan1	measure_word:classifier_case_order_or_news_item	
+1125	幾耐	21		missing				
+1126	新聞	21		covered_main	study-suite.js	san1 man4	what:information_noun news_noun	
+1127	準備	21		missing				
+1128	解	21		missing				
+1129	資產	21		missing				
+1130	預算案	21		missing				
+1131	墓	21		missing				
+1132	維持	21		missing				
+1133	舖	21		missing				
+1134	機構	21		missing				
+1135	離開	21		missing				
+1136	聽眾	21		missing				
+1137	一方面	20		missing				
+1138	七月	20		missing				
+1139	三年	20		missing				
+1140	仍然	20		missing				
+1141	手面	20		missing				
+1142	乎	20		missing				
+1143	以後	20		missing				
+1144	北面	20		missing				
+1145	仲要	20		missing				
+1146	兆	20		missing				
+1147	同個	20		missing				
+1148	地下	20		missing				
+1149	地產	20		missing				
+1150	年代	20		missing				
+1151	即話	20		missing				
+1152	我同	20		missing				
+1153	身邊	20		missing				
+1154	例子	20		missing				
+1155	咖啡	20		covered_main	things.js	gaa3 fe1	what:object_np liquid drink_object beverage_noun	
+1156	怕	20		covered_main	study-suite.js	paa3	doing:verb emotion_predicate fear_verb	
+1157	抵	20		covered_main	statives.js	dai2	like:stative_predicate	
+1158	爭	20		missing				
+1159	盈利	20		missing				
+1160	值得	20		missing				
+1161	哩度	20		missing				
+1162	唔肯	20		missing				
+1163	做咩	20		missing				
+1164	健	20		missing				
+1165	夠	20		missing				
+1166	控制	20		missing				
+1167	被	20		missing				
+1168	報	20		missing				
+1169	結婚	20		missing				
+1170	順	20		missing				
+1171	煙海	20		missing				
+1172	聖經	20		missing				
+1173	補習	20		missing				
+1174	解釋	20		covered_main	study-suite.js	gaai2 sik1	doing:verb explanation_verb transitive_verb	
+1175	圖形	20		missing				
+1176	實在	20		missing				
+1177	對唔住	20		covered_main	degree-and-formulas.js	deoi3 m4 zyu6	func:apology_formula	
+1178	精神	20		missing				
+1179	暫時	20		missing				
+1180	賠	20		missing				
+1181	擔心	20		covered_main	referents-and-boundaries.js	daam1 sam1	doing:mental_state_verb cognition_predicate	
+1182	整個	20		missing				
+1183	講乜	20		missing				
+1184	闆	20		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+1185	叢	20		missing				
+1186	競爭	20		missing				
+1187	公	19		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+1188	只要	19		missing				
+1189	右下角	19		missing				
+1190	失業	19		missing				
+1191	正下方	19		missing				
+1192	民	19		missing				
+1193	先算	19		missing				
+1194	地鐵	19		covered_main	study-suite.js	dei6 tit3	what:transport_noun object_np head_noun	
+1195	好話	19		missing				
+1196	你點	19		missing				
+1197	形式	19		missing				
+1198	例	19		missing				
+1199	到底	19		missing				
+1200	抹	19		missing				
+1201	的	19		missing				
+1202	保障	19		missing				
+1203	張紙	19		missing				
+1204	畫畫	19		covered_main	verbs.js	waak6 waa2	doing:verb action_verb	
+1205	媽媽	19		covered_main	people-and-address.js	maa4 maa1	who:person_np	
+1206	想講	19		missing				
+1207	溝通	19		missing				
+1208	道	19		missing				
+1209	零	19		missing				
+1210	電視機	19		missing				
+1211	預備	19		missing				
+1212	歌	19		covered_main	things.js	go1	what:object_np	
+1213	銀行	19		covered_main	study-suite.js	ngan4 hong4	where:place_or_institution_noun bank	
+1214	價錢	19		covered_main	things.js	gaa3 cin2	what:price_np	
+1215	噏	19		missing				
+1216	頹	19		missing				
+1217	變成	19		covered_main	verbs.js	bin3 sing4	doing:verb change_into_verb	
+1218	一個韻	18		missing				
+1219	三角形	18		missing				
+1220	分手	18		missing				
+1221	反應	18		missing				
+1222	支	18		covered_main	verbs.js	zi1	measure_word:classifier_long_rigid pen_classifier	
+1223	右下	18		missing				
+1224	右手邊	18		missing				
+1225	市民	18		missing				
+1226	回歸	18		missing				
+1227	成功	18		missing				
+1228	有人	18		missing				
+1229	自然	18		covered_main	study-suite.js	zi6 jin4	like:stative_predicate naturalness_property	
+1230	估	18		covered_main	study-suite.js	gu2	doing:verb cognition_guess_verb	
+1231	男性	18		missing				
+1232	性格	18		missing				
+1233	放假	18		missing				
+1234	直頭	18		missing				
+1235	返上	18		missing				
+1236	南方	18		missing				
+1237	是但	18		missing				
+1238	相當	18		missing				
+1239	英國	18		missing				
+1240	要好	18		missing				
+1241	俾人	18		missing				
+1242	原則	18		missing				
+1243	埋個	18		missing				
+1244	拿	18		missing				
+1245	旁邊	18		missing				
+1246	留	18		missing				
+1247	記住	18		covered_main	study-suite.js	gei3 zyu6	doing:verb cognition_memory_imperative	
+1248	追	18		missing				
+1249	做過	18		missing				
+1250	得罪	18		missing				
+1251	畢業	18		missing				
+1252	剩	18		missing				
+1253	幾大	18		missing				
+1254	提供	18		missing				
+1255	象徵	18		missing				
+1256	感情	18		missing				
+1257	號	18		covered_main	study-suite.js	hou6	func:number_or_date_suffix	
+1258	解決	18		covered_main	verbs.js	gaai2 kyut3	doing:verb	
+1259	試下	18		missing				
+1260	熄	18		missing				
+1261	廠	18		missing				
+1262	熟	18		covered_main	statives.js	suk6	like:stative_predicate result_state_property	
+1263	適合	18		covered_main	statives.js	sik1 hap6	like:stative_predicate	
+1264	靚女	18		missing				
+1265	儲	18		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+1266	應	18		missing				
+1267	戲	18		covered_main	things.js	hei3	what:object_np media_np	
+1268	擦膠	18		missing				
+1269	禮物	18		missing				
+1270	雞	18		missing				
+1271	懷疑	18		covered_main	verbs.js	waai4 ji4	doing:cognition_opinion_predicate belief_predicate	
+1272	鐘意	18		missing				
+1273	權	18		missing				
+1274	鑑林	18		missing				
+1275	三點	17		missing				
+1276	下邊	17		missing				
+1277	公眾	17		missing				
+1278	太過	17		missing				
+1279	毋	17		missing				
+1280	四十五度	17		missing				
+1281	左下	17		missing				
+1282	平排	17		missing				
+1283	必須	17		missing				
+1284	打直	17		missing				
+1285	打斜	17		missing				
+1286	民主黨	17		missing				
+1287	任	17		missing				
+1288	再落	17		missing				
+1289	多數	17		missing				
+1290	好大	17		missing				
+1291	好慘	17		missing				
+1292	收到	17		missing				
+1293	有機	17		missing				
+1294	告	17		missing				
+1295	我估	17		missing				
+1296	我畫	17		missing				
+1297	言論	17		missing				
+1298	受到	17		missing				
+1299	咁上下	17		missing				
+1300	波浪	17		missing				
+1301	知有	17		missing				
+1302	阿哥	17		missing				
+1303	後生	17		missing				
+1304	後面	17		covered_main	study-suite.js	hau6 min6	where:place_np relative_location	
+1305	計劃	17		missing				
+1306	個害	17		missing				
+1307	唔好意思	17		covered_main	degree-and-formulas.js	m4 hou2 ji3 si1	func:formula_discourse_unit	
+1308	租	17		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+1309	純粹	17		missing				
+1310	高度	17		missing				
+1311	基本法	17		missing				
+1312	將個	17		missing				
+1313	理論	17		missing				
+1314	處	17		missing				
+1315	喊	17		missing				
+1316	圍住	17		missing				
+1317	尊嚴	17		missing				
+1318	發	17		covered_main	verbs.js	faat3	doing:verb	
+1319	照	17		missing				
+1320	落落	17		missing				
+1321	資料	17		missing				
+1322	審	17		missing				
+1323	撳	17		missing				
+1324	複雜	17		missing				
+1325	論	17		covered_main	referents-and-boundaries.js	leon6	what:noun_verb discussion_or_theory	
+1326	輪	17		missing				
+1327	遮	17		covered_main	study-suite.js	ze1	what:object_np umbrella_noun	
+1328	靚仔	17		missing				
+1329	鬧	17		covered_main	verbs.js	naau6	doing:verb transitive_social_action_verb	
+1330	瞭解	17		missing				
+1331	邊行	17		missing				
+1332	權利	17		missing				
+1333	一晚	16		missing				
+1334	一點	16		missing				
+1335	人士	16		missing				
+1336	上角	16		missing				
+1337	上邊	16		missing				
+1338	下下	16		missing				
+1339	已	16		missing				
+1340	不嬲	16		missing				
+1341	公平	16		missing				
+1342	冇所謂	16		missing				
+1343	失敗	16		missing				
+1344	申請	16		covered_main	study-suite.js	san1 cing2	doing:verb application_verb	
+1345	合格	16		missing				
+1346	安排	16		missing				
+1347	成張	16		missing				
+1348	肉	16		covered_main	things.js	juk6	what:object_np	
+1349	自	16		missing				
+1350	似乎	16		missing				
+1351	即個	16		missing				
+1352	吸引	16		missing				
+1353	更	16		missing				
+1354	垂直	16		missing				
+1355	奇怪	16		missing				
+1356	空間	16		missing				
+1357	阿婆	16		missing				
+1358	信佳	16		missing				
+1359	咬	16		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+1360	城堡	16		missing				
+1361	政黨	16		missing				
+1362	冤	16		missing				
+1363	效	16		missing				
+1364	酒店	16		covered_main	study-suite.js	zau2 dim3	where:place_np hotel	
+1365	區	16		covered_main	study-suite.js	keoi1	where:area_noun place_head	
+1366	問我	16		missing				
+1367	基本	16		missing				
+1368	教育	16		missing				
+1369	殺	16		missing				
+1370	毫子	16		missing				
+1371	深	16		missing				
+1372	雀仔	16		missing				
+1373	創作	16		missing				
+1374	幾喇	16		missing				
+1375	朝頭早	16		missing				
+1376	無端端	16		missing				
+1377	越來	16		missing				
+1378	黃	16		missing				
+1379	搞錯	16		missing				
+1380	資訊	16		missing				
+1381	對方	16		missing				
+1382	語言	16		missing				
+1383	整體	16		missing				
+1384	醒	16		missing				
+1385	環保	16		missing				
+1386	總	16		missing				
+1387	講個	16		missing				
+1388	轉個	16		missing				
+1389	證明	16		missing				
+1390	黨	16		missing				
+1391	攪	16		missing				
+1392	一次過	15		missing				
+1393	一百蚊	15		missing				
+1394	乜鬼	15		missing				
+1395	上年	15		missing				
+1396	不斷	15		missing				
+1397	之類	15		missing				
+1398	冇用	15		missing				
+1399	片	15		missing				
+1400	右下方	15		missing				
+1401	左手邊	15		missing				
+1402	印椰樹	15		missing				
+1403	地點	15		missing				
+1404	多少	15		missing				
+1405	多次	15		missing				
+1406	多個	15		missing				
+1407	好處	15		missing				
+1408	存在	15		missing				
+1409	有趣	15		missing				
+1410	老實	15		missing				
+1411	艾爾頓	15		missing				
+1412	何	15		missing				
+1413	冷氣	15		missing				
+1414	沖	15		covered_main	verbs.js	cung1	doing:verb	
+1415	角色	15		missing				
+1416	車主	15		missing				
+1417	亞視	15		missing				
+1418	依家	15		missing				
+1419	坦白	15		missing				
+1420	姓	15		covered_main	study-suite.js	sing3	doing:verb surname_relation_verb	
+1421	明顯	15		missing				
+1422	法例	15		missing				
+1423	波	15		covered_main	referents-and-boundaries.js	bo1	what:ball_or_sport_noun object_np	
+1424	花	15		covered_main	verbs.js	faa1	what:flower_noun object_np	
+1425	金	15		missing				
+1426	約	15		covered_main	verbs.js	joek3	doing:verb	
+1427	訂	15		covered_main	study-suite.js	ding6	doing:verb booking_ordering_verb transitive_verb	
+1428	迫	15		missing				
+1429	重新	15		missing				
+1430	音樂	15		covered_main	places-and-times.js	jam1 ngok6	what:noun_np_modifier_topic	
+1431	音響	15		missing				
+1432	個意	15		missing				
+1433	家姐	15		covered_main	people-and-address.js	gaa1 ze2	who:kinship_term	
+1434	恐怖	15		missing				
+1435	捉	15		missing				
+1436	時話	15		missing				
+1437	除非	15		missing				
+1438	情	15		missing				
+1439	排隊	15		missing				
+1440	票	15		missing				
+1441	終審	15		missing				
+1442	竟然	15		missing				
+1443	就畫	15		missing				
+1444	提出	15		missing				
+1445	答案	15		missing				
+1446	著	15		missing				
+1447	賀	15		missing				
+1448	黑	15		missing				
+1449	椰	15		missing				
+1450	落返	15		missing				
+1451	過個	15		missing				
+1452	隔	15		missing				
+1453	電影	15		missing				
+1454	寧願	15		missing				
+1455	摺	15		missing				
+1456	盡	15		missing				
+1457	福利	15		missing				
+1458	與	15		missing				
+1459	劍	15		missing				
+1460	層	15		missing				
+1461	數	15		missing				
+1462	樓	15		missing				
+1463	膠袋	15		missing				
+1464	諗法	15		missing				
+1465	質素	15		covered_main	study-suite.js	zat1 sou3	what:quality_noun abstract_noun	
+1466	選	15		missing				
+1467	錄	15		missing				
+1468	講番	15		missing				
+1469	點會	15		missing				
+1470	醫療	15		missing				
+1471	贊成	15		missing				
+1472	曬	15		covered_main	verbs.js	saai3	doing:verb	
+1473	一本	14		missing				
+1474	一座	14		missing				
+1475	下角	14		missing				
+1476	大隻	14		missing				
+1477	女皇	14		missing				
+1478	五點	14		missing				
+1479	引起	14		missing				
+1480	心理	14		missing				
+1481	文化	14		missing				
+1482	毛	14		missing				
+1483	右畫	14		missing				
+1484	再畫	14		missing				
+1485	各	14		missing				
+1486	回應	14		missing				
+1487	好貴	14		covered_main	statives.js	hou2 gwai3	like:degree_stative_predicate	
+1488	有關	14		missing				
+1489	行業	14		missing				
+1490	初初	14		covered_main	study-suite.js	co1 co1	when:temporal_adverb initial_period	
+1491	困難	14		covered_main	study-suite.js	kwan3 naan4	like:stative_or_nominal difficulty_state	
+1492	每個	14		missing				
+1493	沙	14		missing				
+1494	角度	14		missing				
+1495	事實上	14		missing				
+1496	佬	14		missing				
+1497	或	14		missing				
+1498	拍拖	14		missing				
+1499	果	14		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+1500	沾污	14		missing				
+1501	削	14		missing				
+1502	屋企人	14		missing				
+1503	架構	14		missing				
+1504	查	14		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+1505	要講	14		missing				
+1506	重複	14		missing				
+1507	倒	14		missing				
+1508	剛才	14		missing				
+1509	容許	14		missing				
+1510	效率	14		missing				
+1511	根據	14		missing				
+1512	特登	14		missing				
+1513	假	14		covered_main	study-suite.js	gaa2	like:stative_predicate authenticity_property	
+1514	唪	14		missing				
+1515	從來	14		missing				
+1516	教授	14		missing				
+1517	焗	14		covered_main	study-suite.js	guk6	like:stative_predicate weather_property	
+1518	貨	14		missing				
+1519	郭富城	14		missing				
+1520	幾咁	14		missing				
+1521	牌	14		missing				
+1522	牌子	14		missing				
+1523	等於	14		missing				
+1524	費事	14		missing				
+1525	貼	14		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+1526	媽咪	14		missing				
+1527	搞掂	14		missing				
+1528	經常	14		missing				
+1529	聖誕	14		missing				
+1530	預	14		missing				
+1531	認識	14		covered_main	study-suite.js	jing6 sik1	doing:verb cognition_social_acquaintance transitive_verb	
+1532	罷	14		missing				
+1533	舖頭	14		missing				
+1534	養魚	14		missing				
+1535	錄音	14		missing				
+1536	講講	14		missing				
+1537	醫院	14		covered_main	verbs.js	ji1 jyun2	where:place_np hospital_noun	
+1538	離婚	14		missing				
+1539	壞	14		missing				
+1540	羅	14		missing				
+1541	辭典	14		missing				
+1542	邊緣	14		missing				
+1543	類	14		missing				
+1544	讓	14		missing				
+1545	一件	13		missing				
+1546	一部份	13		missing				
+1547	一棵	13		missing				
+1548	十年	13		missing				
+1549	叉	13		covered_main	study-suite.js	caa1	what:utensil_or_fork_noun pronunciation_drill_item	
+1550	中心	13		missing				
+1551	中醫	13		missing				
+1552	之中	13		missing				
+1553	互相	13		missing				
+1554	今個	13		missing				
+1555	太太	13		missing				
+1556	日後	13		missing				
+1557	主角	13		missing				
+1558	主題	13		missing				
+1559	出聲	13		missing				
+1560	台灣	13		missing				
+1561	司	13		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+1562	犯	13		missing				
+1563	白	13		missing				
+1564	目的	13		missing				
+1565	先得	13		missing				
+1566	好少	13		missing				
+1567	好笑	13		covered_main	statives.js	hou2 siu3	like:lexicalized_stative_predicate evaluation amusing_evaluation degreeable	
+1568	好煩	13		missing				
+1569	扣	13		missing				
+1570	收埋	13		missing				
+1571	自信	13		missing				
+1572	作	13		missing				
+1573	你畫	13		missing				
+1574	即要	13		missing				
+1575	夾	13		missing				
+1576	我識	13		missing				
+1577	身體	13		missing				
+1578	兩條	13		missing				
+1579	咁滯	13		missing				
+1580	拗	13		missing				
+1581	返轉頭	13		missing				
+1582	金融	13		missing				
+1583	封	13		missing				
+1584	政治	13		missing				
+1585	柱	13		missing				
+1586	為止	13		missing				
+1587	界	13		missing				
+1588	閂	13		missing				
+1589	面前	13		missing				
+1590	食到	13		missing				
+1591	個萍	13		missing				
+1592	唔錯	13		missing				
+1593	庭	13		missing				
+1594	秘書	13		missing				
+1595	站	13		covered_main	study-suite.js	zaam6	where:place_noun station_head	
+1596	能	13		missing				
+1597	茶	13		covered_main	things.js	caa4	what:object_np liquid drink_object beverage_noun	
+1598	骨折	13		missing				
+1599	參考	13		missing				
+1600	接	13		missing				
+1601	痕	13		missing				
+1602	細路仔	13		missing				
+1603	速度	13		missing				
+1604	部門	13		missing				
+1605	雀	13		missing				
+1606	單仲佳	13		missing				
+1607	就會	13		missing				
+1608	幾靚	13		missing				
+1609	幾點	13		missing				
+1610	掣	13		covered_main	verbs.js	zai3	what:object_np button_switch_noun	
+1611	期	13		missing				
+1612	琴日	13		covered_main	places-and-times.js	kam4 jat6	when:temporal_adjunct	
+1613	畫一個	13		missing				
+1614	稅	13		missing				
+1615	黑色	13		missing				
+1616	傷害	13		missing				
+1617	傾偈	13		missing				
+1618	感	13		missing				
+1619	損失	13		missing				
+1620	會會	13		missing				
+1621	照顧	13		missing				
+1622	運	13		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+1623	嘗試	13		missing				
+1624	監管	13		missing				
+1625	碧	13		missing				
+1626	網	13		missing				
+1627	認真	13		missing				
+1628	增加	13		missing				
+1629	數字	13		missing				
+1630	熱	13		covered_main	statives.js	jit6	like:stative_predicate ambient_property_predicate temperature_property	
+1631	鋪	13		missing				
+1632	燈	13		missing				
+1633	牆	13		covered_main	things.js	coeng4	what:object_np location_base surface_location_noun	
+1634	講多次	13		missing				
+1635	嚮	13		missing				
+1636	關	13		missing				
+1637	一刻	12		missing				
+1638	一套	12		missing				
+1639	一部	12		missing				
+1640	十二點	12		missing				
+1641	十分	12		missing				
+1642	中學	12		missing				
+1643	之內	12		missing				
+1644	今	12		missing				
+1645	內容	12		missing				
+1646	水草	12		missing				
+1647	牙	12		covered_main	study-suite.js	ngaa4	what:body_part_noun pronunciation_drill_item	
+1648	去過	12		handled_structurally				src/runtime-resources/lexicon/compositional-lexical-phrases.js
+1649	正面	12		missing				
+1650	生產	12		missing				
+1651	合理	12		missing				
+1652	多過	12		missing				
+1653	好食	12		covered_main	statives.js	hou2 sik6	like:lexicalized_stative_predicate sensory_evaluation food_evaluation degreeable	
+1654	好悶	12		missing				
+1655	好聽	12		covered_main	statives.js	hou2 teng1	like:lexicalized_stative_predicate sensory_evaluation sound_evaluation degreeable	
+1656	成熟	12		missing				
+1657	早餐	12		covered_main	study-suite.js	zou2 caan1	what:meal_noun breakfast	
+1658	曲線	12		missing				
+1659	西行	12		missing				
+1660	西面	12		missing				
+1661	佔	12		missing				
+1662	判	12		missing				
+1663	即將	12		missing				
+1664	形象	12		missing				
+1665	投訴	12		missing				
+1666	私家	12		missing				
+1667	兩日	12		missing				
+1668	兩樣	12		missing				
+1669	制	12		missing				
+1670	呢種	12		missing				
+1671	居民	12		missing				
+1672	直角	12		missing				
+1673	空	12		missing				
+1674	股份	12		missing				
+1675	門口	12		covered_main	places-and-times.js	mun4 hau2	where:place_or_goal entrance_location	
+1676	既然	12		missing				
+1677	珍惜	12		missing				
+1678	相處	12		missing				
+1679	相對	12		missing				
+1680	音	12		missing				
+1681	個頭	12		missing				
+1682	員	12		missing				
+1683	唔多	12		missing				
+1684	時效	12		missing				
+1685	校長	12		missing				
+1686	核突	12		missing				
+1687	案件	12		missing				
+1688	破壞	12		missing				
+1689	財務	12		missing				
+1690	高過	12		missing				
+1691	乾淨	12		covered_main	study-suite.js	gon1 zeng6	like:stative_predicate cleanliness_property	
+1692	唱	12		covered_main	referents-and-boundaries.js	coeng3	doing:verb singing_verb transitive_affordance	
+1693	商業	12		missing				
+1694	問吓	12		missing				
+1695	國內	12		missing				
+1696	最右	12		missing				
+1697	最底	12		missing				
+1698	報告	12		covered_main	things.js	bou3 gou3	what:object_np document_np	
+1699	提到	12		missing				
+1700	插	12		missing				
+1701	琴晚	12		missing				
+1702	痛	12		covered_main	study-suite.js	tung3	like:stative_predicate pain_state	
+1703	睇住	12		missing				
+1704	窗	12		missing				
+1705	結	12		missing				
+1706	貼住	12		missing				
+1707	開燈	12		missing				
+1708	溜	12		missing				
+1709	溫暖	12		missing				
+1710	罪	12		missing				
+1711	補充	12		missing				
+1712	詳細	12		missing				
+1713	誇張	12		missing				
+1714	遇到	12		missing				
+1715	電芯	12		missing				
+1716	嘉賓	12		missing				
+1717	對面	12		missing				
+1718	製造	12		missing				
+1719	增長	12		missing				
+1720	黎明	12		missing				
+1721	橫線	12		missing				
+1722	澳門	12		missing				
+1723	燒	12		missing				
+1724	興	12		missing				
+1725	龜	12		missing				
+1726	尷尬	12		missing				
+1727	闊	12		covered_main	referents-and-boundaries.js	fut3	like:stative_predicate width_property	
+1728	邊有	12		missing				
+1729	響	12		missing				
+1730	爛	12		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+1731	聽過	12		handled_structurally				src/runtime-resources/lexicon/compositional-lexical-phrases.js
+1732	廳	12		handled_structurally				src/runtime-resources/normalization/simplified-to-traditional.js
+1733	一句	11		missing				
+1734	一號	11		missing				
+1735	九月	11		missing				
+1736	人話	11		missing				
+1737	千祈	11		missing				
+1738	工人	11		missing				
+1739	工業	11		missing				
+1740	五個	11		missing				
+1741	及	11		missing				
+1742	反對	11		missing				
+1743	巴士	11		covered_main	study-suite.js	baa1 si2	what:transport_noun object_np	
+1744	心胸	11		missing				
+1745	比例	11		missing				
+1746	牛肉	11		missing				
+1747	冬天	11		missing				
+1748	出版	11		missing				
+1749	半年	11		missing				
+1750	卡	11		covered_main	study-suite.js	kaa1	what:card_noun pronunciation_drill_item	
+1751	司長	11		missing				
+1752	必要	11		missing				
+1753	本地	11		missing				
+1754	正上方	11		missing				
+1755	正版	11		missing				
+1756	甩	11		missing				
+1757	光	11		missing				
+1758	再行	11		missing				
+1759	在	11		missing				
+1760	好多人	11		covered_main	degree-and-formulas.js	hou2 do1 jan4	who:quantity_person_np	
+1761	好快	11		missing				
+1762	好近	11		missing				
+1763	好遠	11		missing				
+1764	妄想	11		missing				
+1765	忙	11		covered_main	statives.js	mong4	like:stative_predicate	
+1766	成年	11		missing				
+1767	老細	11		missing				
+1768	自從	11		missing				
+1769	初頭	11		missing				
+1770	局	11		missing				
+1771	我問	11		missing				
+1772	足夠	11		missing				
+1773	邪	11		missing				
+1774	事業	11		missing				
+1775	兩點	11		missing				
+1776	咀	11		missing				
+1777	定義	11		missing				
+1778	忽然	11		missing				
+1779	拃	11		missing				
+1780	杯	11		covered_main	referents-and-boundaries.js	bui1	measure_word:classifier_container_cup	
+1781	東面	11		missing				
+1782	欣賞	11		missing				
+1783	股價	11		missing				
+1784	表現	11		missing				
+1785	長遠	11		missing				
+1786	保險	11		missing				
+1787	活動	11		missing				
+1788	重心	11		missing				
+1789	哲學	11		missing				
+1790	家人	11		missing				
+1791	晏晝	11		covered_main	study-suite.js	aan3 zau3	when:time_np daypart	
+1792	校	11		missing				
+1793	窄	11		missing				
+1794	粉	11		missing				
+1795	做法	11		missing				
+1796	健康	11		missing				
+1797	唯一	11		missing				
+1798	唱片	11		missing				
+1799	婚姻	11		missing				
+1800	接觸	11		missing				
+1801	梗	11		missing				
+1802	清	11		missing				
+1803	率	11		missing				
+1804	現象	11		missing				
+1805	笪	11		missing				
+1806	第二個韻	11		missing				
+1807	第時	11		missing				
+1808	粗口	11		missing				
+1809	細妹	11		missing				
+1810	終	11		missing				
+1811	規則	11		missing				
+1812	通	11		missing				
+1813	通知	11		missing				
+1814	創意	11		missing				
+1815	創新	11		missing				
+1816	就講	11		missing				
+1817	幾日	11		missing				
+1818	換	11		covered_main	study-suite.js	wun6	doing:verb exchange_change_verb transitive_verb	
+1819	普通話	11		covered_main	study-suite.js	pou2 tung1 waa2	what:language_noun object_np	
+1820	普遍	11		missing				
+1821	評價	11		missing				
+1822	意義	11		missing				
+1823	愛情	11		missing				
+1824	業	11		missing				
+1825	業主	11		missing				
+1826	當你	11		missing				
+1827	當我	11		missing				
+1828	罪行	11		missing				
+1829	較	11		missing				
+1830	遊戲	11		missing				
+1831	電訊	11		missing				
+1832	鼓勵	11		missing				
+1833	嘔	11		missing				
+1834	實際上	11		missing				
+1835	慳	11		covered_main	study-suite.js	haan1	doing:verb economize_save_verb	
+1836	樓下	11		covered_main	places-and-times.js	lau4 haa6	where:place_or_goal spatial_localizer	
+1837	瘦	11		missing				
+1838	賭	11		missing				
+1839	踩	11		missing				
+1840	燕梳	11		missing				
+1841	遲	11		covered_main	study-suite.js	ci4	like:stative_predicate lateness_property	
+1842	幫到	11		missing				
+1843	戲院	11		missing				
+1844	擦紙膠	11		missing				
+1845	營	11		missing				
+1846	聯絡	11		missing				
+1847	講法	11		covered_main	study-suite.js	gong2 faat3	what:nominalized_expression wording_noun	
+1848	講開	11		missing				
+1849	黏	11		missing				
+1850	禮拜三	11		missing				
+1851	禮拜六	11		missing				
+1852	翻譯	11		missing				
+1853	轉右	11		missing				
+1854	轉頭	11		missing				
+1855	額	11		missing				
+1856	鯉	11		missing				
+1857	穩定	11		missing				
+1858	邊間	11		covered_main	referents-and-boundaries.js	bin1 gaan1	what:wh_classifier_np	
+1859	嚴重	11		missing				
+1860	屬於	11		missing				
+1861	聽到	11		missing				
+1862	黐	11		missing				
+1863	顯示	11		missing				
+1864	一模一樣	10		missing				
+1865	一邊	10		missing				
+1866	九十度	10		missing				
+1867	人生	10		missing				
+1868	十一點	10		missing				
+1869	上堂	10		missing				
+1870	下畫	10		missing				
+1871	山個	10		missing				
+1872	中國人	10		missing				
+1873	五月	10		missing				
+1874	內心	10		missing				
+1875	反映	10		missing				
+1876	天堂	10		missing				
+1877	太陽	10		covered_main	things.js	taai3 joeng4	what:object_np	
+1878	心態	10		missing				
+1879	文	10		missing				
+1880	止	10		missing				
+1881	火星	10		missing				
+1882	仙人掌	10		missing				
+1883	以往	10		missing				
+1884	凹	10		missing				
+1885	出席	10		missing				
+1886	出邊	10		covered_main	verbs.js	ceot1 bin1	where:place_np outside_location	
+1887	加返	10		missing				
+1888	可憐	10		missing				
+1889	失	10		missing				
+1890	民主	10		missing				
+1891	民建聯	10		missing				
+1892	生物	10		missing				
+1893	由個	10		missing				
+1894	全名	10		missing				
+1895	合	10		missing				
+1896	合法	10		missing				
+1897	吋	10		missing				
+1898	同時	10		missing				
+1899	同樣	10		missing				
+1900	地球	10		missing				
+1901	好人	10		missing				
+1902	好味	10		covered_main	statives.js	hou2 mei6	like:lexicalized_stative_predicate sensory_evaluation taste_evaluation degreeable	
+1903	好靚	10		covered_main	statives.js	hou2 leng3	like:degree_stative_predicate	
+1904	安全	10		missing				
+1905	年青	10		missing				
+1906	年齡	10		missing				
+1907	式	10		missing				
+1908	攰	10		covered_main	referents-and-boundaries.js	gui6	like:stative_predicate emotion_state_stative	
+1909	曲	10		missing				
+1910	有份	10		missing				
+1911	有位	10		missing				
+1912	老公	10		missing				
+1913	考到	10		missing				
+1914	行返	10		missing				
+1915	行路	10		missing				
+1916	你明	10		missing				
+1917	你識	10		missing				
+1918	判斷	10		missing				
+1919	別人	10		missing				
+1920	完整	10		missing				
+1921	我明	10		missing				
+1922	使錢	10		missing				
+1923	依然	10		missing				
+1924	兔仔	10		missing				
+1925	兩位	10		missing				
+1926	呢邊	10		missing				
+1927	味	10		handled_structurally				src/parser/tokenization/contextual-overrides.js
+1928	和	10		missing				
+1929	姊妹	10		missing				
+1930	定下	10		missing				
+1931	板	10		missing				
+1932	返番	10		missing				
+1933	侮辱	10		missing				
+1934	保護	10		missing				
+1935	哈哈	10		covered_main	degree-and-formulas.js	haa1 haa1	particle:interjection	
+1936	指示	10		missing				
+1937	故	10		missing				
+1938	星	10		covered_main	study-suite.js	sing1	what:celestial_noun pronunciation_drill_item	
+1939	洲	10		missing				
+1940	界定	10		missing				
+1941	紅籌	10		missing				
+1942	耶穌	10		missing				
+1943	背後	10		missing				
+1944	要畫	10		missing				
+1945	飛碟	10		missing				
+1946	個案	10		missing				
+1947	原	10		missing				
+1948	哩件	10		missing				
+1949	唔知幾	10		missing				
+1950	孭	10		missing				
+1951	旅遊	10		missing				
+1952	特色	10		missing				
+1953	特殊	10		missing				
+1954	狹窄	10		missing				
+1955	退	10		missing				
+1956	針對	10		missing				
+1957	偈	10		missing				
+1958	兜個	10		missing				
+1959	副	10		missing				
+1960	唯有	10		missing				
+1961	專業	10		missing				
+1962	得滯	10		missing				
+1963	梳打	10		missing				
+1964	淨	10		handled_structurally				src/runtime-resources/pronunciation/unknown-cjk-jyutping-fallback.js
+1965	清晰	10		missing				
+1966	現實	10		missing				
+1967	船	10		missing				
+1968	規定	10		missing				
+1969	貨櫃	10		missing				
+1970	責任	10		missing				
+1971	連埋	10		missing				
+1972	陰	10		missing				
+1973	單位	10		missing				
+1974	悶	10		covered_main	referents-and-boundaries.js	mun6	like:stative_predicate emotion_state_stative	
+1975	期間	10		missing				
+1976	無謂	10		missing				
+1977	發達	10		missing				
+1978	硬係	10		missing				
+1979	量	10		missing				
+1980	開會	10		missing				
+1981	傳	10		missing				
+1982	傳媒	10		missing				
+1983	傾計	10		missing				
+1984	會有	10		missing				
+1985	煩	10		missing				
+1986	猷	10		missing				
+1987	運動	10		covered_main	study-suite.js	wan6 dung6	doing:activity_noun_or_verb exercise_activity	
+1988	圖標	10		missing				
+1989	實際	10		missing				
+1990	監察	10		missing				
+1991	端	10		missing				
+1992	網球	10		missing				
+1993	齊	10		missing				
+1994	價	10		covered_main	things.js	gaa3	what:price_np	
+1995	嘴	10		missing				
+1996	撈	10		missing				
+1997	數學	10		missing				
+1998	擁有	10		missing				
+1999	輸	10		missing				
+2000	隨時	10		missing				
