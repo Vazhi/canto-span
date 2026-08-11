@@ -3,6 +3,7 @@
 const tokenEntries = require("./token-lexicon");
 const intentionalTokenOverrides = require("./token-lexicon/intentional-overrides");
 const productiveVoEntries = require("./productive-vo");
+const verbObjectCompoundEntries = require("./verb-object-compounds");
 const formulas = require("./formulas");
 const compositionalLexicalPhrases = require("./compositional-lexical-phrases");
 const {
@@ -77,6 +78,10 @@ function validateRuntimeLexicalResources() {
     if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error(`productive VO ${surface} must map to an object`);
     for (const key of ["verb", "object", "label", "type"]) assertNonEmptyString(value[key], `productive VO ${surface} ${key}`);
   });
+  const verbObjectCompoundCount = validateEntryTable("verb object compounds", verbObjectCompoundEntries, (surface, value) => {
+    if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error(`verb object compound ${surface} must map to an object`);
+    for (const key of ["verb", "object", "label", "type", "source_specification"]) assertNonEmptyString(value[key], `verb object compound ${surface} ${key}`);
+  });
   const jyutpingReviewCount = validateEntryTable("Jyutping review expectations", jyutpingReviewEntries, (surface, value) => {
     if (!Array.isArray(value) || !value.length) throw new Error(`Jyutping review ${surface} must contain at least one reading`);
     value.forEach((reading) => assertNonEmptyString(reading, `Jyutping review ${surface} reading`));
@@ -89,6 +94,7 @@ function validateRuntimeLexicalResources() {
     token_unique_surfaces: tokenSummary.unique_surfaces,
     token_intentional_overrides: tokenSummary.intentional_overrides,
     productive_vo_entries: productiveVoCount.entries,
+    verb_object_compound_entries: verbObjectCompoundCount.entries,
     jyutping_review_entries: jyutpingReviewCount.entries,
     unknown_cjk_jyutping_entries: unknownCjkJyutpingCount.entries,
     formulas: validateUniqueList("formulas", formulas),

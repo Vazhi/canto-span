@@ -6,7 +6,7 @@ This file is the sole present-tense project snapshot. Live GitHub intake and wor
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.223 |
+| Runtime | v0.5.224 |
 | Runtime labels | 134 |
 | Current construction notes | 134 |
 | Available construction notes | 134 |
@@ -52,7 +52,8 @@ Twenty-one accepted batches have adjudicated 94 records; 88 remain pending. Cano
 
 Current consequences include:
 
-- `AB35 VerbObjectCompound` is canonical for the legacy runtime note `ProductiveVO`; the same UUID/code is retained as a source-bounded lexical V–O-compound narrowing, while the broader 43-entry runtime compatibility whitelist remains unreconciled pending a separate migration;
+- `AB35 VerbObjectCompound` source-linked runtime migration has begun at v0.5.224 for the independently supported current-whitelist seed `飲茶` / `游水` / `沖涼`; those exact nodes expose component provenance without an automatic ordinary object binding, while the other 40 legacy `ProductiveVO` compatibility entries remain unchanged pending later review;
+- `AB35 VerbObjectCompound` is canonical for the legacy runtime note `ProductiveVO`; the same UUID/code is retained as a source-bounded lexical V–O-compound narrowing, while the remaining 40-entry compatibility route is still unresolved and must be audited item-by-item before retirement;
 - `AB30 ZoMarkedPerfectiveObjectVP` remains the nearest direct language-construction candidate and is distinct from broad internal perfective wrappers;
 - `AB53 ResourceInitialJungLaiFunctionClause` is canonical for the legacy runtime note `ResourceUseLaiFunctionRelation`;
 - `AA56 JauMarkedIndefiniteNPPredication` is canonical for the legacy runtime note `ExistentialPresentationalClause`; PR #593 / `833c7e15cb7b6b9f4efa2caae95461f09f9484f5` implements the accepted positive-only runtime profile under that legacy compatibility label, with no status promotion, runtime-label migration, survey, corpus, release, or deployment change;
@@ -122,7 +123,7 @@ All eligible respondents form one anonymized role-neutral panel. No named person
 
 - aggregate regression cases: **551**;
 - NP-subsystem cases: **43**;
-- per-construction assertions: **1,631** across **134** files;
+- per-construction assertions: **1,634** across **134** files;
 - current test coverage: 133 positive-and-boundary and 1 compatibility-alias-only construction file;
 
 Canonical documentation-verifier values:
@@ -131,7 +132,7 @@ Canonical documentation-verifier values:
 |---|---:|
 | Aggregate regression cases | 551 |
 | NP-subsystem cases | 43 |
-| Per-construction assertions | 1,631 |
+| Per-construction assertions | 1,634 |
 | Construction test files | 134 |
 
 Stable task-scoped core verification is `npm run verify`. Runtime verification is `npm run verify:runtime`. The explicit full diagnostic sweep is `npm run verify:all`; it includes core, research, runtime, generated-bundle, promotion, and release checks and is not a routine requirement for unrelated work. Passing tests and implementation reachability have zero independent linguistic evidence weight.

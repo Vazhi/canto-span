@@ -1633,14 +1633,12 @@ var require_productive_vo = __commonJS({
       ["買嘢", { verb: "買", object: "嘢", label: "VP", type: "ProductiveVO" }],
       ["食嘢", { verb: "食", object: "嘢", label: "VP", type: "ProductiveVO" }],
       ["飲水", { verb: "飲", object: "水", label: "VP", type: "ProductiveVO" }],
-      ["飲茶", { verb: "飲", object: "茶", label: "VP", type: "ProductiveVO" }],
       ["寫字", { verb: "寫", object: "字", label: "VP", type: "ProductiveVO" }],
       ["寫名", { verb: "寫", object: "名", label: "VP", type: "ProductiveVO" }],
       ["睇書", { verb: "睇", object: "書", label: "VP", type: "ProductiveVO" }],
       ["聽歌", { verb: "聽", object: "歌", label: "VP", type: "ProductiveVO" }],
       // Authorized Glossika Week 16 activity phrases. PRODUCTIVE_VO preserves visible verb/object children.
       ["睇戲", { verb: "睇", object: "戲", label: "VP", type: "ProductiveVO" }],
-      ["游水", { verb: "游", object: "水", label: "VP", type: "ProductiveVO" }],
       ["跑步", { verb: "跑", object: "步", label: "VP", type: "ProductiveVO" }],
       ["影相", { verb: "影", object: "相", label: "VP", type: "ProductiveVO" }],
       ["打機", { verb: "打", object: "機", label: "VP", type: "ProductiveVO" }],
@@ -1663,7 +1661,6 @@ var require_productive_vo = __commonJS({
       ["放學", { verb: "放", object: "學", label: "VP", type: "ProductiveVO" }],
       ["瞓覺", { verb: "瞓", object: "覺", label: "VP", type: "ProductiveVO" }],
       ["洗手", { verb: "洗", object: "手", label: "VP", type: "ProductiveVO" }],
-      ["沖涼", { verb: "沖", object: "涼", label: "VP", type: "ProductiveVO" }],
       ["曬太陽", { verb: "曬", object: "太陽", label: "VP", type: "ProductiveVO" }],
       ["打麻雀", { verb: "打", object: "麻雀", label: "VP", type: "ProductiveVO" }],
       ["默書", { verb: "默", object: "書", label: "VP", type: "ProductiveVO" }],
@@ -1671,6 +1668,18 @@ var require_productive_vo = __commonJS({
       ["發脾氣", { verb: "發", object: "脾氣", label: "VP", type: "ProductiveVO" }],
       ["食意粉", { verb: "食", object: "意粉", label: "VP", type: "ProductiveVO" }],
       ["Book枱", { verb: "Book", object: "枱", label: "VP", type: "ProductiveVO" }]
+    ];
+  }
+});
+
+// src/runtime-resources/lexicon/verb-object-compounds.js
+var require_verb_object_compounds = __commonJS({
+  "src/runtime-resources/lexicon/verb-object-compounds.js"(exports2, module2) {
+    "use strict";
+    module2.exports = [
+      ["飲茶", { verb: "飲", object: "茶", label: "VP", type: "ProductiveVO", source_specification: "docs/research/ISSUE-753-AB35-LEXICAL-VO-RUNTIME-CONTRACT-R1.md" }],
+      ["游水", { verb: "游", object: "水", label: "VP", type: "ProductiveVO", source_specification: "docs/research/ISSUE-753-AB35-LEXICAL-VO-RUNTIME-CONTRACT-R1.md" }],
+      ["沖涼", { verb: "沖", object: "涼", label: "VP", type: "ProductiveVO", source_specification: "docs/research/ISSUE-753-AB35-LEXICAL-VO-RUNTIME-CONTRACT-R1.md" }]
     ];
   }
 });
@@ -3130,7 +3139,10 @@ var require_trace_metadata = __commonJS({
       "hidden_object_insertion",
       "selectional_compatibility_bypass",
       "subject_insertion_capability",
-      "template_subtype"
+      "template_subtype",
+      "structural_scope",
+      "source_specification",
+      "lexical_compound_profile"
     ];
     var parserDecisionTraceKindRegistry2 = [
       ["generative_template", "Pattern-based slot-template match over generated affordances. A generative_template trace may carry template_family=construction_template while the family is still bounded or not yet fully POS-general."],
@@ -3437,6 +3449,25 @@ var require_trace_metadata = __commonJS({
       template_family: "generative_template",
       template: transitiveTemplate,
       constraints: {},
+      rule: ""
+    });
+    var productiveVoVariantTemplate = ["action_verb!", "object!"];
+    var productiveVoLegacySurfaces = require_productive_vo().map(([surface]) => surface);
+    var verbObjectCompoundSeedSurfaces = require_verb_object_compounds().map(([surface]) => surface);
+    registerReviewedMatcherVariant("ProductiveVO.legacy_whitelist_object_relation", {
+      trace_kind: "generative_template",
+      construction_type: "ProductiveVO",
+      template_family: "generative_template",
+      template: productiveVoVariantTemplate,
+      constraints: { surface_sequence_in: productiveVoLegacySurfaces },
+      rule: ""
+    });
+    registerReviewedMatcherVariant("ProductiveVO.source_linked_verb_object_compound_seed", {
+      trace_kind: "source_linked_runtime_matcher",
+      construction_type: "ProductiveVO",
+      template_family: "",
+      template: productiveVoVariantTemplate,
+      constraints: { surface_sequence_in: verbObjectCompoundSeedSurfaces },
       rule: ""
     });
     var reviewedMissingTemplateFamilyDefaults = /* @__PURE__ */ new Map();
@@ -4557,6 +4588,7 @@ var require_category_span_templates = __commonJS({
   "src/runtime-resources/grammar/templates/category-span-templates.js"(exports2, module2) {
     "use strict";
     var PRODUCTIVE_VO2 = Object.fromEntries(require_productive_vo());
+    var VERB_OBJECT_COMPOUNDS2 = Object.fromEntries(require_verb_object_compounds());
     var UNIT_WORD_EVIDENCE = require_unit_word_evidence();
     var AB45_CLASSIFIER_TYPES = /* @__PURE__ */ new Set(["general_classifier", "sortal_classifier", "honorific_classifier"]);
     var AB45_CLASSIFIER_SURFACES = UNIT_WORD_EVIDENCE.noun_choice_rule_records.filter((rule) => {
@@ -4777,6 +4809,26 @@ var require_category_span_templates = __commonJS({
         hidden_subject_inserted: false,
         not_claims: ["not_productive_vo_object_relation", "not_null_referential_subject", "not_hidden_expletive_subject"],
         note: "Conventional environmental event predicate such as 落雨 or 打風. The visible components remain transparent, but the clause has no referential subject or ordinary patient object."
+      },
+      {
+        type: "ProductiveVO",
+        label: "VP",
+        template: ["action_verb!", "object!"],
+        trace_kind: "source_linked_runtime_matcher",
+        trace_assigned_slots: [],
+        constraints: {
+          surface_sequence_in: Object.keys(VERB_OBJECT_COMPOUNDS2)
+        },
+        output_slots: ["productive_vo", "verb_object_compound", "vp", "action_vp", "predicate"],
+        structural_scope: "vp",
+        lexical_compound_profile: "contiguous_source_linked_seed",
+        source_specification: "docs/research/ISSUE-753-AB35-LEXICAL-VO-RUNTIME-CONTRACT-R1.md",
+        not_claims: [
+          "not_generic_verb_plus_noun_productivity",
+          "not_ordinary_object_relation_from_component_order",
+          "not_generic_separability_licensing"
+        ],
+        note: "Source-linked AB35 VerbObjectCompound seed: exact reviewed contiguous lexical compounds with visible components but no compound-internal ordinary semantic object binding."
       },
       {
         type: "ProductiveVO",
@@ -22461,7 +22513,7 @@ var {
 } = require_learner_glosses();
 var createLearnerDisplay = require_learner_display();
 var createCantoSpanPlugin = require_canto_span_plugin();
-var CANTO_SPAN_RUNTIME_VERSION = "0.5.223";
+var CANTO_SPAN_RUNTIME_VERSION = "0.5.224";
 var {
   runtimeConstructionRegistryVersion: RUNTIME_CONSTRUCTION_REGISTRY_VERSION,
   constructionLabelRegistry,
@@ -22485,6 +22537,8 @@ var JYUTPING_REVIEW_EXPECTATIONS = Object.fromEntries(
   require_jyutping_review_expectations()
 );
 var PRODUCTIVE_VO = Object.fromEntries(require_productive_vo());
+var VERB_OBJECT_COMPOUNDS = Object.fromEntries(require_verb_object_compounds());
+var PRODUCTIVE_VO_COMPONENT_RULES = Object.freeze({ ...PRODUCTIVE_VO, ...VERB_OBJECT_COMPOUNDS });
 var TOKEN_LEXICON = Object.fromEntries(require_token_lexicon());
 var FORMULAS = require_formulas();
 var {
@@ -22511,7 +22565,7 @@ var {
   environmentalEventPredicates: ENVIRONMENTAL_EVENT_PREDICATES,
   predicateOmissionProfiles: PREDICATE_OMISSION_PROFILES
 } = require_predicate_profiles();
-var PRODUCTIVE_TERMS = Object.keys(PRODUCTIVE_VO).sort((a, b) => b.length - a.length || a.localeCompare(b));
+var PRODUCTIVE_TERMS = Object.keys(PRODUCTIVE_VO_COMPONENT_RULES).sort((a, b) => b.length - a.length || a.localeCompare(b));
 var PRODUCTIVE_VO_GENERATIVE_SURFACES = new Set(Object.keys(PRODUCTIVE_VO));
 function predicateOmissionProfileForHead(surface) {
   const value = String(surface || "");
@@ -23074,10 +23128,11 @@ function categorySubspanFor(nodes, allowedTypes = null) {
     if (assignments && templateConstraintsPass(assignments, template)) {
       let children = applyRoleOverrides(assignments, template);
       children = attachSharedSubjectProvenanceToPurposePredicate(template.type, assignments, children);
-      const assignedSlots = assignments.map((item) => item.slot);
+      const matchingSlots = assignments.map((item) => item.slot);
+      const traceKind2 = template.trace_kind || "generative_template";
+      const assignedSlots = Object.prototype.hasOwnProperty.call(template, "trace_assigned_slots") ? cleanSlots(template.trace_assigned_slots || []) : matchingSlots;
       const traceDetail = {
         construction_type: template.type,
-        template_family: templateFamilyForDefinition(template),
         template: template.template,
         constraints: template.constraints || {},
         assigned_slots: assignedSlots,
@@ -23085,15 +23140,18 @@ function categorySubspanFor(nodes, allowedTypes = null) {
         role_overrides: template.role_overrides || {},
         subspan: true
       };
+      if (traceKind2 === "generative_template" || traceKind2 === "construction_template") {
+        traceDetail.template_family = templateFamilyForDefinition(template);
+      }
       for (const key of TEMPLATE_TRACE_PASSTHROUGH_KEYS) {
         if (Object.prototype.hasOwnProperty.call(template, key)) traceDetail[key] = template[key];
       }
       const wrapperCoverage = assignedSlotWrapperCoverage(template.type, children, assignedSlots);
       if (wrapperCoverage) traceDetail.wrapper_coverage = wrapperCoverage;
       return construction(template.type, template.label, children, {
-        note: `${template.note} Matched by generated category slots: ${assignedSlots.join(" → ")}.`,
+        note: `${template.note} Matched by generated category slots: ${matchingSlots.join(" → ")}.`,
         slots: template.output_slots ? cleanSlots(template.output_slots) : templateDerivedSlots(template.type, children),
-        trace: traceInfo("generative_template", traceDetail)
+        trace: traceInfo(traceKind2, traceDetail)
       });
     }
   }
@@ -23659,7 +23717,7 @@ function phase4PermissionActiveTokenClone(node, overrides = {}) {
   };
 }
 function productiveVoComponentTokens(surface) {
-  const rule = PRODUCTIVE_VO[surface];
+  const rule = PRODUCTIVE_VO_COMPONENT_RULES[surface];
   if (!rule) return null;
   if (surface === "煮嘢食") {
     return [

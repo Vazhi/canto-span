@@ -217,6 +217,30 @@
         "SRC-YIP-MATTHEWS-2000-BASIC",
         "SRC-ZHENG-ZHANG-GAO-2021-HK-CANTONESE-COURSE"
       ]
+    },
+    {
+      "case_id": "AB35-LVC-P01",
+      "source": "飲茶。",
+      "class": "source_linked_verb_object_compound_seed",
+      "expected_profile": "ProductiveVO compatibility label backed by canonical AB35 VerbObjectCompound exact lexical seed",
+      "assertion": "construction_present",
+      "provenance": "docs/research/ISSUE-753-AB35-LEXICAL-VO-IMPLEMENTATION-MATRIX-R1.md#A.-Initial-source-backed-migration-core"
+    },
+    {
+      "case_id": "AB35-LVC-P02",
+      "source": "游水。",
+      "class": "source_linked_verb_object_compound_seed",
+      "expected_profile": "ProductiveVO compatibility label backed by canonical AB35 VerbObjectCompound exact lexical seed",
+      "assertion": "construction_present",
+      "provenance": "docs/research/ISSUE-753-AB35-LEXICAL-VO-IMPLEMENTATION-MATRIX-R1.md#A.-Initial-source-backed-migration-core"
+    },
+    {
+      "case_id": "AB35-LVC-P03",
+      "source": "沖涼。",
+      "class": "source_linked_verb_object_compound_seed",
+      "expected_profile": "ProductiveVO compatibility label backed by canonical AB35 VerbObjectCompound exact lexical seed",
+      "assertion": "construction_present",
+      "provenance": "docs/research/ISSUE-753-AB35-LEXICAL-VO-IMPLEMENTATION-MATRIX-R1.md#A.-Initial-source-backed-migration-core"
     }
   ],
   "np_cases": [],
@@ -224,14 +248,14 @@
   "coverage": {
     "state": "positive_and_boundary",
     "exact_snapshot_positive_count": 22,
-    "focused_positive_count": 0,
+    "focused_positive_count": 3,
     "focused_boundary_count": 2,
     "focused_review_only_count": 0,
     "np_case_count": 0,
     "implementation_probe_count": 0,
     "compatibility_alias_probe_count": 0,
-    "positive_case_count": 22,
+    "positive_case_count": 25,
     "boundary_case_count": 2,
-    "executable_case_count": 24
+    "executable_case_count": 27
   }
 }

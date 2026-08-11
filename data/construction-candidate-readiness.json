@@ -4613,7 +4613,7 @@
       ],
       "preserved_source_ids": [],
       "future_research_preserved_as": "",
-      "standard_positive_test_count": 22,
+      "standard_positive_test_count": 25,
       "standard_boundary_test_count": 2,
       "gates": {
         "language_claim_defined": {
@@ -4636,7 +4636,7 @@
         "executable_positive_cases_present": {
           "status": "pass",
           "evidence": "executable_positive_cases_present_implementation_only",
-          "detail": "22"
+          "detail": "25"
         },
         "negative_boundaries_complete": {
           "status": "partial",

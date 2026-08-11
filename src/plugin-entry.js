@@ -15,7 +15,8 @@ const createCantoSpanPlugin = require("./plugin/canto-span-plugin");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.223";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.224";
+// v0.5.224: narrows canonical AB35 runtime ownership for 飲茶/游水/沖涼 to a source-linked lexical VerbObjectCompound seed with component provenance and no automatic object binding, while retaining the other 40 legacy ProductiveVO compatibility entries.
 // v0.5.223: removes AB78 TransitiveVP ownership from approximate measured-quantity material while preserving typed-object and explicit relative-gap transitive relations.
 // v0.5.222: narrows AB45 to source-bounded Num-CL-N structure and explicit context-linked Num-CL noun ellipsis, excluding measure/wh/dimension overreach.
 // v0.5.221: narrows AA49 to independently predicative single motion/path items and removes AA49 ownership from compound, manner-directional, and postverbal directional-complement material.
@@ -90,6 +91,8 @@ const JYUTPING_REVIEW_EXPECTATIONS = Object.fromEntries(
   require("./runtime-resources/pronunciation/jyutping-review-expectations"),
 );
 const PRODUCTIVE_VO = Object.fromEntries(require("./runtime-resources/lexicon/productive-vo"));
+const VERB_OBJECT_COMPOUNDS = Object.fromEntries(require("./runtime-resources/lexicon/verb-object-compounds"));
+const PRODUCTIVE_VO_COMPONENT_RULES = Object.freeze({ ...PRODUCTIVE_VO, ...VERB_OBJECT_COMPOUNDS });
 const TOKEN_LEXICON = Object.fromEntries(require("./runtime-resources/lexicon/token-lexicon"));
 const FORMULAS = require("./runtime-resources/lexicon/formulas");
 const {
@@ -121,7 +124,7 @@ const {
   environmentalEventPredicates: ENVIRONMENTAL_EVENT_PREDICATES,
   predicateOmissionProfiles: PREDICATE_OMISSION_PROFILES,
 } = require("./runtime-resources/grammar/predicate-profiles");
-const PRODUCTIVE_TERMS = Object.keys(PRODUCTIVE_VO).sort((a, b) => b.length - a.length || a.localeCompare(b));
+const PRODUCTIVE_TERMS = Object.keys(PRODUCTIVE_VO_COMPONENT_RULES).sort((a, b) => b.length - a.length || a.localeCompare(b));
 const PRODUCTIVE_VO_GENERATIVE_SURFACES = new Set(Object.keys(PRODUCTIVE_VO));
 
 
@@ -778,10 +781,13 @@ function categorySubspanFor(nodes, allowedTypes = null) {
     if (assignments && templateConstraintsPass(assignments, template)) {
       let children = applyRoleOverrides(assignments, template);
       children = attachSharedSubjectProvenanceToPurposePredicate(template.type, assignments, children);
-      const assignedSlots = assignments.map((item) => item.slot);
+      const matchingSlots = assignments.map((item) => item.slot);
+      const traceKind = template.trace_kind || "generative_template";
+      const assignedSlots = Object.prototype.hasOwnProperty.call(template, "trace_assigned_slots")
+        ? cleanSlots(template.trace_assigned_slots || [])
+        : matchingSlots;
       const traceDetail = {
         construction_type: template.type,
-        template_family: templateFamilyForDefinition(template),
         template: template.template,
         constraints: template.constraints || {},
         assigned_slots: assignedSlots,
@@ -789,15 +795,18 @@ function categorySubspanFor(nodes, allowedTypes = null) {
         role_overrides: template.role_overrides || {},
         subspan: true,
       };
+      if (traceKind === "generative_template" || traceKind === "construction_template") {
+        traceDetail.template_family = templateFamilyForDefinition(template);
+      }
       for (const key of TEMPLATE_TRACE_PASSTHROUGH_KEYS) {
         if (Object.prototype.hasOwnProperty.call(template, key)) traceDetail[key] = template[key];
       }
       const wrapperCoverage = assignedSlotWrapperCoverage(template.type, children, assignedSlots);
       if (wrapperCoverage) traceDetail.wrapper_coverage = wrapperCoverage;
       return construction(template.type, template.label, children, {
-        note: `${template.note} Matched by generated category slots: ${assignedSlots.join(" → ")}.`,
+        note: `${template.note} Matched by generated category slots: ${matchingSlots.join(" → ")}.`,
         slots: template.output_slots ? cleanSlots(template.output_slots) : templateDerivedSlots(template.type, children),
-        trace: traceInfo("generative_template", traceDetail),
+        trace: traceInfo(traceKind, traceDetail),
       });
     }
   }
@@ -1436,7 +1445,7 @@ function phase4PermissionActiveTokenClone(node, overrides = {}) {
 }
 
 function productiveVoComponentTokens(surface) {
-  const rule = PRODUCTIVE_VO[surface];
+  const rule = PRODUCTIVE_VO_COMPONENT_RULES[surface];
   if (!rule) return null;
   if (surface === "煮嘢食") {
     return [

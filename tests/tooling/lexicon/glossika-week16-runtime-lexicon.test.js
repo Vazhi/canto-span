@@ -6,6 +6,7 @@ const fs = require("fs");
 const path = require("path");
 const test = require("node:test");
 const { loadRuntimeApi } = require("../../lib/runtime-api");
+const VERB_OBJECT_COMPOUNDS = Object.fromEntries(require("../../../src/runtime-resources/lexicon/verb-object-compounds"));
 
 const root = path.resolve(__dirname, "../../..");
 const api = loadRuntimeApi({
@@ -111,7 +112,7 @@ test("hobby phrases use reviewed project-native lexical structures", () => {
     "唱K", "做運動", "踢波", "打波", "彈琴", "釣魚", "唱歌", "睇波", "下棋",
   ];
   for (const surface of productive) {
-    assert.ok(api.PRODUCTIVE_VO[surface], `${surface}: PRODUCTIVE_VO entry`);
+    assert.ok(api.PRODUCTIVE_VO[surface] || VERB_OBJECT_COMPOUNDS[surface], `${surface}: reviewed productive/compound lexical entry`);
     assert.ok(constructions(surface).includes("ProductiveVO"), `${surface}: ProductiveVO output`);
   }
   for (const surface of ["行山", "行街", "畫畫", "旅行", "露營", "行公園", "瑜伽"]) {

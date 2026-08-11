@@ -53,6 +53,9 @@ const templateTracePassthroughKeys = [
   "selectional_compatibility_bypass",
   "subject_insertion_capability",
   "template_subtype",
+  "structural_scope",
+  "source_specification",
+  "lexical_compound_profile",
 ];
 
 const parserDecisionTraceKindRegistry = [
@@ -316,6 +319,18 @@ registerReviewedMatcherVariant("TransitiveVP.object_shape_guarded", {
 registerReviewedMatcherVariant("TransitiveVP.object_shape_unconstrained", {
   trace_kind: "generative_template", construction_type: "TransitiveVP", template_family: "generative_template",
   template: transitiveTemplate, constraints: {}, rule: "",
+});
+
+const productiveVoVariantTemplate = ["action_verb!", "object!"];
+const productiveVoLegacySurfaces = require("../lexicon/productive-vo").map(([surface]) => surface);
+const verbObjectCompoundSeedSurfaces = require("../lexicon/verb-object-compounds").map(([surface]) => surface);
+registerReviewedMatcherVariant("ProductiveVO.legacy_whitelist_object_relation", {
+  trace_kind: "generative_template", construction_type: "ProductiveVO", template_family: "generative_template",
+  template: productiveVoVariantTemplate, constraints: { surface_sequence_in: productiveVoLegacySurfaces }, rule: "",
+});
+registerReviewedMatcherVariant("ProductiveVO.source_linked_verb_object_compound_seed", {
+  trace_kind: "source_linked_runtime_matcher", construction_type: "ProductiveVO", template_family: "",
+  template: productiveVoVariantTemplate, constraints: { surface_sequence_in: verbObjectCompoundSeedSurfaces }, rule: "",
 });
 
 const reviewedMissingTemplateFamilyDefaults = new Map();
