@@ -22,21 +22,23 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
-      - name: Patch temporary regression updater transport
+      - name: Patch temporary updater transport and canonical derived count
         shell: bash
         run: |
           python3 - <<'PY'
           from pathlib import Path
           p = Path('tools/ab35-zo-gungfo-finalize-temp.py')
           text = p.read_text()
-          old_path = 'update_js = Path("/tmp/ab35-zo-gungfo-update-regression.js")'
-          new_path = 'update_js = Path("tests/ab35-zo-gungfo-update-regression-temp.js")'
-          assert text.count(old_path) == 1
-          text = text.replace(old_path, new_path, 1)
-          old_write = 'fs.writeFileSync(fixturePath, JSON.stringify(fixture, null, 2) + "\\\\n");'
-          new_write = 'fs.writeFileSync(fixturePath, JSON.stringify(fixture, null, 2) + String.fromCharCode(10));'
-          assert text.count(old_write) == 1
-          text = text.replace(old_write, new_write, 1)
+          fixes = [
+            ('update_js = Path("/tmp/ab35-zo-gungfo-update-regression.js")', 'update_js = Path("tests/ab35-zo-gungfo-update-regression-temp.js")'),
+            ('fs.writeFileSync(fixturePath, JSON.stringify(fixture, null, 2) + "\\\\n");', 'fs.writeFileSync(fixturePath, JSON.stringify(fixture, null, 2) + String.fromCharCode(10));'),
+            ('== 1635', '== 1639'),
+            ('per-construction assertions: **1,635** across **134** files;', 'per-construction assertions: **1,639** across **134** files;'),
+            ('| Per-construction assertions | 1,635 |', '| Per-construction assertions | 1,639 |'),
+          ]
+          for old, new in fixes:
+              assert text.count(old) == 1, (old, text.count(old))
+              text = text.replace(old, new, 1)
           p.write_text(text)
           PY
       - name: Apply, verify, clean, and commit single-entry ownership transition
