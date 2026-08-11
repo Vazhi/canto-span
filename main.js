@@ -2465,7 +2465,27 @@ var require_statives = __commonJS({
       ["唔算", { label: "func", jyutping: "m4 syun3", syntax: "negative_evaluation_marker", note: "doesn't count as / not considered; tokenizer keeps 唔 + 算 visible in transparent price evaluations." }],
       // v0.5.227: source-audited high-frequency lexical coverage.
       ["香", { "label": "like", "jyutping": "hoeng1", "syntax": "stative_predicate sensory_property", "note": "fragrant / aromatic; Cifu spoken top-2000 R1 lexical audit." }],
-      ["善", { "label": "like", "jyutping": "sin6", "syntax": "stative_predicate evaluative_property", "note": "good / benevolent; Cifu spoken top-2000 R1 lexical audit." }]
+      ["善", { "label": "like", "jyutping": "sin6", "syntax": "stative_predicate evaluative_property", "note": "good / benevolent; Cifu spoken top-2000 R1 lexical audit." }],
+      // v0.5.227: Cifu spoken top-2000 R6 stative lexical coverage.
+      ["傻", { "label": "like", "jyutping": "so4", "syntax": "stative_predicate evaluative_property", "note": "foolish / silly; Cifu spoken top-2000 R6 lexical audit." }],
+      ["勁", { "label": "like", "jyutping": "ging6", "syntax": "stative_predicate scalar_property", "note": "strong / powerful / excellent; Cifu spoken top-2000 R6 lexical audit." }],
+      ["暖", { "label": "like", "jyutping": "nyun5", "syntax": "stative_predicate temperature_property", "note": "warm; Cifu spoken top-2000 R6 lexical audit." }],
+      ["濫", { "label": "like", "jyutping": "laam6", "syntax": "stative_predicate evaluative_property", "note": "excessive / indiscriminate; Cifu spoken top-2000 R6 lexical audit." }],
+      ["小", { "label": "like", "jyutping": "siu2", "syntax": "stative_predicate size_stative scalar_dimension_predicate", "note": "small / tiny; Cifu spoken top-2000 R6 lexical audit." }],
+      ["斜", { "label": "like", "jyutping": "ce4", "syntax": "stative_predicate orientation_property", "note": "slanting / oblique; Cifu spoken top-2000 R6 lexical audit." }],
+      ["瑞", { "label": "like", "jyutping": "seoi6", "syntax": "stative_predicate evaluative_property", "note": "auspicious / lucky; Cifu spoken top-2000 R6 lexical audit." }],
+      ["重要", { "label": "like", "jyutping": "zung6 jiu3", "syntax": "stative_predicate importance_property", "note": "important / significant; Cifu spoken top-2000 R6 lexical audit." }],
+      ["貧", { "label": "like", "jyutping": "pan4", "syntax": "stative_predicate resource_property", "note": "poor / deficient; Cifu spoken top-2000 R6 lexical audit." }],
+      ["彎", { "label": "like", "jyutping": "waan1", "syntax": "stative_predicate shape_property", "note": "bent / curved; Cifu spoken top-2000 R6 lexical audit." }],
+      ["錯", { "label": "like", "jyutping": "co3", "syntax": "stative_predicate evaluative_property", "note": "wrong / mistaken; Cifu spoken top-2000 R6 lexical audit." }],
+      ["舊", { "label": "like", "jyutping": "gau6", "syntax": "stative_predicate age_state_stative", "note": "old / former / worn; Cifu spoken top-2000 R6 lexical audit." }],
+      ["似", { "label": "like", "jyutping": "ci5", "syntax": "stative_predicate similarity_predicate", "note": "similar / resemble / seem; Cifu spoken top-2000 R6 lexical audit." }],
+      ["簡單", { "label": "like", "jyutping": "gaan2 daan1", "syntax": "stative_predicate complexity_property", "note": "simple / uncomplicated; Cifu spoken top-2000 R6 lexical audit." }],
+      ["主要", { "label": "like", "jyutping": "zyu2 jiu3", "syntax": "stative_predicate importance_property modifier", "note": "main / principal / primary; Cifu spoken top-2000 R6 lexical audit." }],
+      ["怪", { "label": "like", "jyutping": "gwaai3", "syntax": "stative_predicate evaluative_property", "note": "strange / odd / uncanny; Cifu spoken top-2000 R6 lexical audit." }],
+      ["幼", { "label": "like", "jyutping": "jau3", "syntax": "stative_predicate age_state_stative", "note": "young; Cifu spoken top-2000 R6 lexical audit." }],
+      ["普通", { "label": "like", "jyutping": "pou2 tung1", "syntax": "stative_predicate evaluative_property", "note": "common / ordinary / average; Cifu spoken top-2000 R6 lexical audit." }],
+      ["直", { "label": "like", "jyutping": "zik6", "syntax": "stative_predicate orientation_property", "note": "straight / upright; Cifu spoken top-2000 R6 lexical audit." }]
     ];
   }
 });

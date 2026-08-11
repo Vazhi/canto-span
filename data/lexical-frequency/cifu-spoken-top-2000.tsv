@@ -322,7 +322,7 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 321	工廠	102	gung1cong2	factory	工:⿸广敞	covered_main		places-and-times.js	gung1 cong2	where:place_or_goal place_np
 322	同學	102	tung4hok6	(fellow) classmate	⿵𠔼口:⿱𦥯子	handled_structurally	lexically_segmentable_as=同+學;not_proof_of_construction_analysis			-
 323	快	102	faai3	rapid/quick/speed/rate/soon/almost/to make haste/clever/sharp (of knives or wits)/forthright/plain-spoken/gratified/pleased/pleasant	⿰忄夬	covered_main		statives.js	faai3	like:stative_predicate
-324	傻	102	so4	foolish	⿰亻𡕩	missing				-
+324	傻	102	so4	foolish	⿰亻𡕩	covered_main		statives.js	so4	like:stative_predicate evaluative_property
 325	算	102	syun3	to regard as/to figure/to calculate/to compute	⿱竹𥃲	covered_main		statives.js	syun3	func:evaluation_verb_or_marker
 326	請	101	ceng2|cing2	to ask/to invite/please (do sth)/to treat (to a meal etc)/to request	⿰言青[GTJV],⿰言靑[K]	covered_main		verbs.js	cing2	func:politeness_imperative_marker
 327	之前	100	zi1cin4	before/prior to/ago	⿱丶&CDP-8661;:⿱䒑刖	covered_main		places-and-times.js	zi1 cin4	when:temporal_adjunct
@@ -365,7 +365,7 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 364	貧大宅	88	*pan4daai6zaak2	NO DEF	⿱分貝:⿻一人:⿱宀乇	manual_review	cifu_generated_or_undefined			-
 365	名	87	ming4|meng4	name/noun (part of speech)/place (e.g. among winners)/famous/classifier for people	⿱夕口	surface_covered_sense_uncertain		things.js	meng2	what:object_np
 366	即刻	87	zik1hak1	immediately/instant/instantly	⿰&CDP-8B7C;卩:⿰亥刂	covered_main		places-and-times.js	zik1 hak1	when:temporal_adjunct immediate_time_adverb
-367	勁	87	ging6|ging3	strong/powerful/excellent/great|strength/energy/enthusiasm/CL:把[bá]	⿰巠力	missing				-
+367	勁	87	ging6|ging3	strong/powerful/excellent/great|strength/energy/enthusiasm/CL:把[bá]	⿰巠力	covered_main		statives.js	ging6	like:stative_predicate scalar_property
 368	將	87	zoeng1|zoeng3	will/shall/to use/to take/to checkmate/just a short while ago|general/commander-in-chief (military)/king (chess piece)/to command/to lead	⿰爿&CDP-8BC3;	covered_main		verbs.js	zoeng1	func:disposal_coverb
 369	像	87	zoeng6	(look) like/similar (to)/appearance/to appear/to seem/image/portrait/resemble/seem	⿰亻象	missing				-
 370	二	86	ji6	two/2	⿱一一	covered_main		places-and-times.js	ji6	how:quantity count_value numeral_two_formal
@@ -390,7 +390,7 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 389	前	82	cin4	front/forward/ahead/ago/before/first/former/formerly/future/BC (e.g. 前293年)	⿱䒑刖	missing				-
 390	頭	82	tau4	head/hair style/the top/end/beginning or end/an area/a location/a stub/remnant/chief/boss/side/aspect/first/leading/classifier for pigs or livestock (Mandarin)	⿰豆頁	covered_main		things.js	tau4	what:object_np body_part_np
 391	飲	81	jam2	drink	⿰飠欠	covered_main		verbs.js	jam2	doing:verb transitive_affordance chain_select_drinkable
-392	暖	81	nyun5	warm	⿰日爰	missing				-
+392	暖	81	nyun5	warm	⿰日爰	covered_main		statives.js	nyun5	like:stative_predicate temperature_property
 393	總之	81	zung2zi1	in a word/in short/in brief	⿰糹悤[GTV],⿰糸悤[JK]:⿱丶&CDP-8661;	covered_main		function-words-and-particles.js	zung2 zi1	func:discourse_summary_marker
 394	完全	80	jyun4cyun4	complete/whole/totally/entirely	⿱宀元:⿱人王[GJ],⿱入王[TKV]	handled_structurally	lexically_segmentable_as=完+全;not_proof_of_construction_analysis			-
 395	情況	80	cing4fong3	circumstances/state of affairs/situation	⿰忄青[GTJV],⿰忄靑[K]:⿰氵兄	covered_main		things.js	cing4 fong3	what:abstract_np situation_np
@@ -459,7 +459,7 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 458	尚健	66	*soeng6gin6	NO DEF	⿱⺌冋:⿰亻建	manual_review	cifu_generated_or_undefined			-
 459	蚊	66	man1	mosquito/a dollar	⿰虫文	covered_main		things.js	man1	what:currency_unit
 460	印	65	jan3	stamp/seal/mark/print/abbr. for India/surname Yan	⿰&CDP-8CAC;卩	covered_main		things.js	jan3	what:object_np mark_or_artifact_np
-461	直	65	zik6	straight/not gay, heterosexual, "straight"/to straighten/fair and reasonable/frank/straightforward/(indicates continuing motion or action)/vertical/vertical downward stroke in Chinese characters	⿱十&CDP-8BA5;[GT],⿱十⿺𠃊目[JK]	missing				-
+461	直	65	zik6	straight/not gay, heterosexual, "straight"/to straighten/fair and reasonable/frank/straightforward/(indicates continuing motion or action)/vertical/vertical downward stroke in Chinese characters	⿱十&CDP-8BA5;[GT],⿱十⿺𠃊目[JK]	covered_main		statives.js	zik6	like:stative_predicate orientation_property
 462	嶺	65	leng5|ling5	mountain range	⿱山領	missing				-
 463	入去	64	jap6heoi3	NO DEF	入:⿱土厶	manual_review	cifu_generated_or_undefined			-
 464	之	64	zi1	(possessive particle, literary equivalent of 的)/him/her/it	⿱丶&CDP-8661;	missing				-
@@ -474,8 +474,8 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 473	頂	63	ding2|deng2	apex/top/roof/to carry on the head/to push to the top/to go against/most/to replace/to substitute/to "bump" a forum thread to raise its profile (internet slang)/to bear, to endure, to put up with/an exclamation expressing disappointment, anger, amazement, etc. ("shit!", "damn!", etc.)|apex/top/roof/classifier for hats	⿰丁頁	missing				-
 474	裏邊	63	*leoi5bin1	NO DEF	⿳亠里𧘇:⿺辶臱	manual_review	cifu_generated_or_undefined			-
 475	銅	63	tung4	copper Cu, transition metal, atomic number 29/see 紅銅|红铜 copper, and the alloys brass 黃銅|黄铜 and bronze 青銅|青铜	⿰金同	covered_main		things.js	tung4	what:object_np material_np
-476	濫	63	laam6	excessive/indiscriminate	⿰氵監	missing				-
-477	小	62	siu2	small/tiny/few/young/a euphemism for 屌 díu, "fuck"	小	missing				-
+476	濫	63	laam6	excessive/indiscriminate	⿰氵監	covered_main		statives.js	laam6	like:stative_predicate evaluative_property
+477	小	62	siu2	small/tiny/few/young/a euphemism for 屌 díu, "fuck"	小	covered_main		statives.js	siu2	like:stative_predicate size_stative scalar_dimension_predicate
 478	冇問題	62	mou5man6tai4	no problem	⿸𠂇冂:⿵門口:⿺是頁	covered_main		degree-and-formulas.js	mou5 man6 tai4	func:formula_discourse_unit
 479	右行	62	*jau6hang4|haang4|hang6|hong4|hong2	NO DEF	⿸𠂇口:⿰彳亍	manual_review	cifu_generated_or_undefined			-
 480	讀書	62	duk6syu1	study/read	⿰言賣[GTV],⿰言𧶠[JK]:⿱&CDP-8BC6;日	handled_structurally	lexically_segmentable_as=讀+書;not_proof_of_construction_analysis			-
@@ -493,7 +493,7 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 492	忍	60	jan2	to endure/to tolerate	⿱刃心	missing				-
 493	重	60	zung6|cung4|cung5	to attach importance to/important/weighty/furthermore/further/more/still/to lay stress on/discreet|repeat/again/double|heavy (in weight)/deep/heavy/serious/weight	重	missing				-
 494	將來	60	zoeng1loi4	the future/future	⿰爿&CDP-8BC3;:⿻木从	covered_main		places-and-times.js	zoeng1 loi4	when:temporal_adjunct future_time_np
-495	斜	60	ce4|ce3	slanting	⿰余斗	missing				-
+495	斜	60	ce4|ce3	slanting	⿰余斗	covered_main		statives.js	ce4	like:stative_predicate orientation_property
 496	望	60	mong6	to look at/to view/to hope/to expect/to visit/to gaze (into the distance)/to look towards/towards/full moon	⿱⿰亡月王[GJK],⿱&CDP-8C47;𡈼[TV]	missing				-
 497	提碑	60	*tai4bei1	NO DEF	⿰扌是:⿰石卑	manual_review	cifu_generated_or_undefined			-
 498	工作	59	gung1zok3	job/work/construction/task	工:⿰亻乍	covered_main		study-suite.js	gung1 zok3	what:work_noun activity_noun
@@ -509,13 +509,13 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 508	受	58	sau6	to receive/to accept/to suffer/subjected to/to bear/to stand/pleasant/(passive marker)	⿱&CDP-8BB8;又	missing				-
 509	肯定	58	hang2ding6	to be sure/to be certain/sure/certain/definite/to confirm/to affirm/affirmative	⿱止月[GJKV],⿱止⺼[HT]:⿱宀𤴓	covered_main		study-suite.js	hang2 ding6	like:stance_predicate certainty
 510	能夠	58	nang4gau3	be capable of/can/is able	⿰䏍𫧇:⿰多句	missing				-
-511	瑞	58	seoi6	lucky/auspicious/propitious/rayl (acoustical unit)	⿰王耑	missing				-
+511	瑞	58	seoi6	lucky/auspicious/propitious/rayl (acoustical unit)	⿰王耑	covered_main		statives.js	seoi6	like:stative_predicate evaluative_property
 512	電腦	58	din6nou5	computer	⿱雨&CDP-8BE8;:⿰月𡿺[GJK],⿰⺼𡿺[TV]	covered_main		things.js	din6 nou5	what:object_np device_np
 513	領	58	ling5|leng5	neck/collar/to lead/to receive	⿰令頁	missing				-
 514	長	57	coeng4|zoeng2	length/long/forever/always/constantly|chief/head/elder/to grow/to develop/to increase/to enhance	⿳&CDP-884A;一&CDP-8CC6;	covered_main		places-and-times.js	coeng4	like:stative_predicate scalar_dimension_predicate length_dimension_predicate
 515	信心	57	seon3sam1	confidence/faith (in sb or sth)	⿰亻言:心	handled_structurally	lexically_segmentable_as=信+心;not_proof_of_construction_analysis			-
 516	後尾	57	*hau6mei5	NO DEF	⿰彳⿱幺夂[GJKV],⿰彳&CDP-8B7B;[HT]:⿸尸毛	manual_review	cifu_generated_or_undefined			-
-517	重要	57	zung6jiu3	important/significant/major	重:⿱覀女	missing				-
+517	重要	57	zung6jiu3	important/significant/major	重:⿱覀女	covered_main		statives.js	zung6 jiu3	like:stative_predicate importance_property
 518	意	57	ji3	idea/meaning/thought/to think/wish/desire/intention/to expect/to anticipate/abbr. for Italy 意大利	⿱音心	covered_main		things.js	ji3	what:abstract_np idea_or_intention_np
 519	當	57	dong1|dong3	when/during/just at (a time or place)/on the spot/ought/should/equal/same/manage|to regard as/suitable/adequate/fitting/proper/to pawn/obstruct	⿱𫩠田	missing				-
 520	繞	57	jiu5	to wind/to coil (thread)/to rotate around/to spiral/to move around/to go round (an obstacle)/to by-pass/to make a detour/to confuse/to perplex	⿰糹堯[GTV],⿰糸堯[JK]	missing				-
@@ -526,9 +526,9 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 525	是	56	si6	is/are/am/yes/to be	⿱日𤴓	missing				-
 526	英文	56	jing1man4	English (language)	⿱艹央:⿱亠乂	covered_main		things.js	jing1 man4	what:object_np language_np
 527	真	56	zan1	really/truly/indeed/real/true/genuine	⿱十具	covered_main		verbs.js	zan1	like:stative_predicate truth_stative
-528	貧	56	pan4	poor/inadequate/deficient/garrulous	⿱分貝	missing				-
+528	貧	56	pan4	poor/inadequate/deficient/garrulous	⿱分貝	covered_main		statives.js	pan4	like:stative_predicate resource_property
 529	擺	56	baai2	to arrange/to exhibit/to move to and fro/a pendulum	⿰扌罷	covered_main		verbs.js	baai2	doing:verb action_verb positioning_verb
-530	彎	56	waan1	bend/bent	⿱䜌弓	missing				-
+530	彎	56	waan1	bend/bent	⿱䜌弓	covered_main		statives.js	waan1	like:stative_predicate shape_property
 531	今年	55	gam1nin4	this year	⿱亽㇇[G],⿱亼㇇[TJKV]:年	covered_main		places-and-times.js	gam1 nin4	when:temporal_adjunct time_np
 532	完成	55	jyun4sing4	complete/accomplish/perfect tense (grammar)	⿱宀元:⿵戊𠃌	missing				-
 533	男仔	55	*naam4zai2|zi2	NO DEF	⿱田力:⿰亻子	manual_review	cifu_generated_or_undefined			-
@@ -563,7 +563,7 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 562	海	52	hoi2	ocean/sea/CL:個[go]/CL:片[pin](Mandarin)	⿰氵每[GTKV],⿰氵毎[J]	covered_main		places-and-times.js	hoi2	where:place_or_goal natural_place_np
 563	提	52	tai4	carry (suspended)/to carry (hanging down from the hand)/to lift/to put forward/to mention/to raise (an issue)/upwards character stroke/lifting brush stroke (in painting)/scoop for measuring liquid	⿰扌是	missing				-
 564	養	52	joeng5	to raise (animals)/to bring up (children)/to keep (pets)/to support/to give birth	⿱𦍌食	missing				-
-565	錯	52	co3	wrong; mistaken; erroneous/fault; demerit; blunder/intricate; complex/CL:個[go]	⿰金昔	missing				-
+565	錯	52	co3	wrong; mistaken; erroneous/fault; demerit; blunder/intricate; complex/CL:個[go]	⿰金昔	covered_main		statives.js	co3	like:stative_predicate evaluative_property
 566	叢林	52	cung4lam4	jungle/thicket/forest/Buddhist monastery	⿱丵取:⿰木木	covered_main		places-and-times.js	cung4 lam4	where:place_or_goal natural_place_np
 567	七	51	cat1	seven/euphemistic form of 柒 [chaht] "prick"	⿻㇀乚	covered_main		places-and-times.js	cat1	how:quantity count_value numeral_seven
 568	大陸	51	daai6luk6	mainland China (reference to the PRC)/continent/mainland/CL:個[go]	⿻一人:⿰阝坴	covered_main		places-and-times.js	daai6 luk6	where:place_or_goal geopolitical_place_np
@@ -583,7 +583,7 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 582	哩樣	50	*lei5|le1|lei1|li1joeng6	NO DEF	⿰口里:⿰木羕	manual_review	cifu_generated_or_undefined			-
 583	差	50	caa1|caai1|cī	difference/discrepancy/to differ/error/to err/to make a mistake/to differ from/to fall short of/lacking/wrong/inferior|the police/to send/to commission/messenger/mission|uneven	⿸羊工[G],⿸&CDP-8CCC;工[TJKV]	covered_main		study-suite.js	caa1	doing:verb subtraction_or_shortfall_marker
 584	從	50	cung4	from/via/passing through/through (a gap)/past/ever (followed by negative, meaning never)/(formerly pr. zong4 and related to 縱|纵) to follow/to comply with/to obey/to join/to engage in/adopting some mode of action or attitude/follower/retainer/accessory/accomplice/related by common paternal grandfather or earlier ancestor/surname Cong/lax/yielding/unhurried/second cousin	⿰彳&CDP-8BB0;	missing				-
-585	舊	50	gau6	old/opposite: new 新/former/worn (with age)	⿱萑臼[GJK],⿱雈臼[T]	missing				-
+585	舊	50	gau6	old/opposite: new 新/former/worn (with age)	⿱萑臼[GJK],⿱雈臼[T]	covered_main		statives.js	gau6	like:stative_predicate age_state_stative
 586	呵	49	ho1	expel breath/my goodness/variantof 啊/phonetic "a"	⿰口可	missing				-
 587	性	49	sing3	nature/character/property/quality/attribute/sexuality/sex/gender/surname/suffix forming adjective from verb/suffix forming noun from adjective, corresponding to -ness or -ity/essence	⿰忄生	covered_main		things.js	sing3	what:abstract_np property_np
 588	林	49	lam4	woods/forest/surname Lin	⿰木木	covered_main		places-and-times.js	lam4	where:place_or_goal natural_place_np
@@ -591,7 +591,7 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 590	機	49	gei1	machine/engine/CL:臺|台[tòih](Mandarin)/CL:部[bouh]/opportunity/intention/aircraft/pivot/crucial point/flexible(quick-witted)/organic/a surname	⿰木幾	covered_main		verbs.js	gei1	what:machine_noun object_np head_noun
 591	世界	48	sai3gaai3	world/a situation, a position, a state of affairs/CL:個[go]	世:⿱田介	covered_main		places-and-times.js	sai3 gaai3	where:place_or_goal world_np
 592	右上	48	jau6soeng6	upper right	⿸𠂇口:⿱⺊一	handled_structurally	lexically_segmentable_as=右+上;not_proof_of_construction_analysis			-
-593	似	48	ci5	to seem/to appear/to resemble/similar/-like/pseudo-	⿰亻以	missing				-
+593	似	48	ci5	to seem/to appear/to resemble/similar/-like/pseudo-	⿰亻以	covered_main		statives.js	ci5	like:stative_predicate similarity_predicate
 594	東方	48	dung1fong1	the East/Eastern countries	東:⿱亠&CDP-8B6C;	covered_main		places-and-times.js	dung1 fong1	where:direction_np cardinal_region
 595	返工	48	faan1gung1	go to work	⿺辶反:工	handled_structurally	lexically_segmentable_as=返+工;not_proof_of_construction_analysis			-
 596	理由	48	lei5jau4	reason/grounds/justification	⿰王里:由	covered_main		things.js	lei5 jau4	what:abstract_np reason_np
@@ -623,7 +623,7 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 622	會話	46	wui6waa6	conversation	⿱亼𭥴:⿰言舌	handled_structurally	lexically_segmentable_as=會+話;not_proof_of_construction_analysis			-
 623	電視	46	din6si6	television/TV	⿱雨&CDP-8BE8;:⿰礻見[GTJV],⿰示見[K]	covered_main		study-suite.js	din6 si6	what:media_noun object_np head_noun
 624	學校	46	hok6haau6	school/CL:所[suo3]	⿱𦥯子:⿰木交	covered_main		places-and-times.js	hok6 haau6	where:place_or_goal
-625	轉彎	46	zyun3waan1	turn (around)	⿰車專:⿱䜌弓	missing				-
+625	轉彎	46	zyun3waan1	turn (around)	⿰車專:⿱䜌弓	handled_structurally	lexically_segmentable_as=轉+彎;not_proof_of_construction_analysis			-
 626	攬	46	laam5	to embrace/to monopolize/to seize	⿰扌覽	missing				-
 627	九	45	gau2	nine/9	九	covered_main		places-and-times.js	gau2	how:quantity count_value numeral_nine
 628	水平	45	seoi2ping4	level (of achievement etc)/standard/horizontal	⿲㇇亅&CDP-85BF;:⿻干丷[GTJV],⿻干八[K],⿱一&CDP-8A64;	handled_structurally	lexically_segmentable_as=水+平;not_proof_of_construction_analysis			-
@@ -652,7 +652,7 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 651	圖案	43	tou4on3	design/pattern	⿴囗啚:⿱安木[GJK],⿱安朩[TV]	covered_main		things.js	tou4 on3	what:object_np visual_object_np
 652	學	43	hok6	learn/study/science/-ology	⿱𦥯子	covered_main		things.js	hok6	what:object_in_vo
 653	賺	43	zaan6	to earn/to make a profit	⿰貝兼	missing				-
-654	簡單	43	gaan2daan1	simple/not complicated	⿱竹間:⿱吅&CDP-8BD9;	missing				-
+654	簡單	43	gaan2daan1	simple/not complicated	⿱竹間:⿱吅&CDP-8BD9;	covered_main		statives.js	gaan2 daan1	like:stative_predicate complexity_property
 655	同一	42	tung4jat1	identical/the same	⿵𠔼口:一	handled_structurally	lexically_segmentable_as=同+一;not_proof_of_construction_analysis			-
 656	尾	42	mei5	tail/a reprisal/bad consequences/loose ends	⿸尸毛	covered_main		things.js	mei5	what:object_np body_part_np
 657	我見	42	*ngo5gin3	NO DEF	我:⿱目儿	manual_review	cifu_generated_or_undefined			-
@@ -685,9 +685,9 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 684	人工	40	jan4gung1	artificial/manpower/manual work	人:工	handled_structurally	lexically_segmentable_as=人+工;not_proof_of_construction_analysis			-
 685	分	40	fan1|fan6	to divide/to separate/to allocate/to distinguish (good and bad)/one tenth (of certain units)/unit of length equivalent to 0.33 cm/minute/a point (in sports or games)/0.01 yuan (unit of money)|part or subdivision/fraction/share/ingredient/component	⿱八刀	covered_main		verbs.js	fan1	doing:verb
 686	反而	40	faan2ji4	instead/on the contrary/contrary (to expectations)	⿸𠂆又[G],⿸厂又[TJKV]:⿱一𦓐	missing				-
-687	主要	40	zyu2jiu3	main/principal/major/primary	⿱亠土,⿱丶王:⿱覀女	missing				-
+687	主要	40	zyu2jiu3	main/principal/major/primary	⿱亠土,⿱丶王:⿱覀女	covered_main		statives.js	zyu2 jiu3	like:stative_predicate importance_property modifier
 688	有陣	40	*jau5zan6	NO DEF	⿸𠂇月:⿰阝車	manual_review	cifu_generated_or_undefined			-
-689	怪	40	gwaai3	bewildering/odd/strange/uncanny/devil/monster/to wonder at/to blame	⿰忄圣	missing				-
+689	怪	40	gwaai3	bewildering/odd/strange/uncanny/devil/monster/to wonder at/to blame	⿰忄圣	covered_main		statives.js	gwaai3	like:stative_predicate evaluative_property
 690	除	40	ceoi4	to get rid of/to remove/to exclude/to eliminate/to wipe out/to divide/except/not including	⿰阝余	missing				-
 691	剪	40	zin2	scissors/shears/clippers/CL:把[bá]/to cut with scissors/to trim	⿱前刀	missing				-
 692	細	40	sai3	small/fine/delicate/trifling/junior, subordinate members of an organisation	⿰糹田[GTV],⿰糸田[JK]	covered_main		statives.js	sai3	like:stative_predicate
@@ -698,7 +698,7 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 697	鐘	40	zung1	clock/o'clock/time as measured in hours and minutes/bell/surname Zhong	⿰金童	covered_main		study-suite.js	zung1	when:time_unit hour_unit
 698	三個	39	*saam1|saam3go3	NO DEF	⿱一二:⿰亻固	manual_review	cifu_generated_or_undefined			-
 699	女人	39	neoi5jan2	woman	女:人	handled_structurally	lexically_segmentable_as=女+人;not_proof_of_construction_analysis			-
-700	幼	39	jau3	young	⿰幺力	missing				-
+700	幼	39	jau3	young	⿰幺力	covered_main		statives.js	jau3	like:stative_predicate age_state_stative
 701	同意	39	tung4ji3	to agree/to consent/to approve	⿵𠔼口:⿱音心	covered_main		function-words-and-particles.js	tung4 ji3	doing:verb action_verb stance_agreement_predicate intransitive_use
 702	行過	39	*hang4|haang4|hang6|hong4|hong2gwo3	NO DEF	⿰彳亍:⿺辶咼	manual_review	cifu_generated_or_undefined			-
 703	所有	39	so2jau5	all/to have/to possess/to own	⿰戶斤[GTKV],⿰戸斤[J]:⿸𠂇月	missing				-
@@ -717,7 +717,7 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 716	直程	38	*zik6cing4	NO DEF	⿱十&CDP-8BA5;[GT],⿱十⿺𠃊目[JK]:⿰禾呈	manual_review	cifu_generated_or_undefined			-
 717	個個	38	go3go3	each one individually/each and every/same as 各個|各个	⿰亻固:⿰亻固	handled_structurally	lexically_segmentable_as=個+個;not_proof_of_construction_analysis			-
 718	幅	38	fuk1	width/roll/classifier for textiles or pictures	⿰巾畐	covered_main		referents-and-boundaries.js	fuk1	measure_word:classifier_picture_flat_work
-719	普通	38	pou2tung1	common/ordinary/general/average	⿱並日:⿺辶甬	missing				-
+719	普通	38	pou2tung1	common/ordinary/general/average	⿱並日:⿺辶甬	covered_main		statives.js	pou2 tung1	like:stative_predicate evaluative_property
 720	畫個	38	*waak6|waa2go3	NO DEF	⿳&CDP-8BC6;田一:⿰亻固	manual_review	cifu_generated_or_undefined			-
 721	碑	38	bei1	a monument/an upright stone tablet/stele	⿰石卑	covered_main		things.js	bei1	what:object_np monument_np
 722	一半	37	jat1bun3	half	一:⿱丷&CDP-8BF1;[GTJV],⿱八&CDP-8BF1;[K]	handled_structurally	lexically_segmentable_as=一+半;not_proof_of_construction_analysis			-
@@ -841,7 +841,7 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 840	一間	30	*jat1gaan1|gaan3	NO DEF	一:⿵門日	manual_review	cifu_generated_or_undefined			-
 841	大佬	30	daai6lou2	big shot (leading some field or group)/godfather/an exclamation used to express impatience with someone (male or female)	⿻一人:⿰亻老	missing				-
 842	女朋友	30	neoi5pang4jau5	female friend/girlfriend	女:⿰月月:⿸𠂇又	handled_structurally	lexically_segmentable_as=女+朋友;not_proof_of_construction_analysis			-
-843	小學	30	siu2hok6	primary school	小:⿱𦥯子	missing				-
+843	小學	30	siu2hok6	primary school	小:⿱𦥯子	handled_structurally	lexically_segmentable_as=小+學;not_proof_of_construction_analysis			-
 844	中文	30	zung1man4	Chinese/Chinese written language/Chinese writing	⿻口丨:⿱亠乂	missing				-
 845	井	30	zeng2|zing2	warn/well/surname Jing	井	missing				-
 846	令到	30	*ling6dou3	NO DEF	⿱亽龴[G],⿱亼龴[TV],⿱亼&CDP-8A60;[JK]:⿰至刂	manual_review	cifu_generated_or_undefined			-
@@ -1085,7 +1085,7 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 1084	尚	22	soeng6	still/yet/to value/to esteem/surname Shang	⿱⺌冋	missing				-
 1085	於是	22	jyu1si6	thereupon/as a result/consequently/thus/hence	⿰方仒:⿱日𤴓	missing				-
 1086	版	22	baan2	a register/a block of printing/an edition/version/page	⿰片反	missing				-
-1087	直到	22	zik6dou3	until	⿱十&CDP-8BA5;[GT],⿱十⿺𠃊目[JK]:⿰至刂	missing				-
+1087	直到	22	zik6dou3	until	⿱十&CDP-8BA5;[GT],⿱十⿺𠃊目[JK]:⿰至刂	handled_structurally	lexically_segmentable_as=直+到;not_proof_of_construction_analysis			-
 1088	空白	22	hung1baak6	blank space	⿱穴工:白	missing				-
 1089	指	22	zi2	finger/to point/to direct/to indicate/to refer to/to rely on/to count on/(hair) stands stiffly on end	⿰扌旨	missing				-
 1090	要點	22	jiu3dim2	main point/essential	⿱覀女:⿰黑占	handled_structurally	lexically_segmentable_as=要+點;not_proof_of_construction_analysis			-
@@ -1097,7 +1097,7 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 1096	談	22	taam4	to speak/to talk/to converse/to chat/to discuss/surname Tan	⿰言炎	missing				-
 1097	聯	22	lyun4	to ally/to unite/to join	⿰耳𢇇	covered_main		referents-and-boundaries.js	lyun4	doing:verb connection_verb
 1098	講返	22	*gong2faan1|faan2	NO DEF	⿰言冓:⿺辶反	manual_review	cifu_generated_or_undefined			-
-1099	舊年	22	gau6nin2	last year/the Chinese New Year (i.e. the new year in the old calendar)	⿱萑臼[GJK],⿱雈臼[T]:年	missing				-
+1099	舊年	22	gau6nin2	last year/the Chinese New Year (i.e. the new year in the old calendar)	⿱萑臼[GJK],⿱雈臼[T]:年	handled_structurally	lexically_segmentable_as=舊+年;not_proof_of_construction_analysis			-
 1100	覆	22	fuk1|fau6	to cover/to overflow/to reply to a letter/to overturn/to capsize	⿱覀復	missing				-
 1101	醫生	22	ji1sang1	doctor	⿱殹酉:生	surface_covered_sense_uncertain		people-and-address.js	ji1 saang1	who:person_np
 1102	九點	21	*gau2dim2	NO DEF	九:⿰黑占	manual_review	cifu_generated_or_undefined			-
@@ -1377,7 +1377,7 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 1376	無端端	16	mou4dyun1dyun1	for no reason	⿱&CDP-8BBE;灬:⿰立耑:⿰立耑	missing				-
 1377	越來	16	*jyut6loi4	NO DEF	⿺走戉:⿻木从	manual_review	cifu_generated_or_undefined			-
 1378	黃	16	wong4	yellow/sulfur/surname Wong	⿱廿&CDP-8CE6;[GJK],⿳廿&CDP-8D5E;八[T]	missing				-
-1379	搞錯	16	gaau2co3	mistake/to make a mistake/to blunder/mistaken	⿰扌高:⿰金昔	missing				-
+1379	搞錯	16	gaau2co3	mistake/to make a mistake/to blunder/mistaken	⿰扌高:⿰金昔	handled_structurally	lexically_segmentable_as=搞+錯;not_proof_of_construction_analysis			-
 1380	資訊	16	zi1seon3	information	⿱次貝:⿰言卂[GT],⿰言⿹⺄𠂇[JK]	missing				-
 1381	對方	16	deoi3fong1	counterpart/other person involved/opposite side/other side/receiving party	⿰&CDP-8BBD;寸:⿱亠&CDP-8B6C;	missing				-
 1382	語言	16	jyu5jin4	(spoken) language	⿰言吾:言	missing				-
@@ -1670,7 +1670,7 @@ rank	word	cifu_spoken_adult	cifu_jyutping	cifu_definition	cifu_structure	runtime
 1669	制	12	zai3	system/to control/to regulate/to agree (to a deal)	⿰&CDP-89EC;刂	missing				-
 1670	呢種	12	*ne1|ni1|nei1zung2|zung3	NO DEF	⿰口尼:⿰禾重	manual_review	cifu_generated_or_undefined			-
 1671	居民	12	geoi1man4	resident/inhabitant	⿸尸古:民	missing				-
-1672	直角	12	zik6gok3	a right angle	⿱十&CDP-8BA5;[GT],⿱十⿺𠃊目[JK]:角	missing				-
+1672	直角	12	zik6gok3	a right angle	⿱十&CDP-8BA5;[GT],⿱十⿺𠃊目[JK]:角	handled_structurally	lexically_segmentable_as=直+角;not_proof_of_construction_analysis			-
 1673	空	12	hung1	empty/air/sky/in vain/to empty/vacant/unoccupied/space/leisure/free time	⿱穴工	missing				-
 1674	股份	12	gu2fan2	a share (in a company)/stock	⿰月殳[GJK],⿰⺼殳[TV]:⿰亻分	missing				-
 1675	門口	12	mun4hau2	doorway/gate	⿰𠁣𠃛:口	covered_main		places-and-times.js	mun4 hau2	where:place_or_goal entrance_location
