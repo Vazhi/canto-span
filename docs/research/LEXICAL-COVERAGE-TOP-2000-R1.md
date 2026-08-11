@@ -10,12 +10,12 @@ Coverage is surface-sensitive. `covered_main` means an exact token-lexicon surfa
 
 ## Coverage before same-task R1 additions
 
-- `covered_main`: **439**
+- `covered_main`: **474**
 - `covered_variant`: **0**
-- `handled_structurally`: **154**
+- `handled_structurally`: **152**
 - `surface_covered_sense_uncertain`: **24**
-- `missing`: **1041**
-- `manual_review`: **342**
+- `missing`: **1009**
+- `manual_review`: **341**
 
 ## Coverage after same-task R1 additions
 
