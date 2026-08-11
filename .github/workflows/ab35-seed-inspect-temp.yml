@@ -34,7 +34,7 @@ jobs:
             echo '=== LIKELY TEMPLATE ENGINE FILES ==='
             for f in $(grep -R -l -E 'surface_sequence_in|category-span-templates' src/parser src/plugin-entry.js 2>/dev/null | sort -u); do
               echo "--- $f ---"
-              nl -ba "$f" | sed -n '1,760p'
+              nl -ba "$f" | sed -n '1,940p'
             done
             echo '=== TRACE METADATA SOURCE-LINKED REFERENCES ==='
             grep -R -n -E 'source_linked_runtime_matcher' src 2>/dev/null || true
@@ -75,20 +75,3 @@ jobs:
             ab35-baseline-traces.json
             ab35-architecture-baseline.json
           retention-days: 1
-      - name: Execute the existing claimed apply plan
-        shell: bash
-        run: |
-          set -euo pipefail
-          ruby <<'RUBY'
-          require 'yaml'
-          path = '.github/workflows/ab35-seed-apply-temp.yml'
-          doc = YAML.load_file(path)
-          steps = doc.fetch('jobs').fetch('apply').fetch('steps')
-          blocks = steps.filter_map { |step| step.is_a?(Hash) ? step['run'] : nil }
-          abort("expected at least 6 multiline apply blocks, found #{blocks.length}") if blocks.length < 6
-          blocks.each_with_index do |block, index|
-            puts "=== EXECUTING APPLY BLOCK #{index + 1}/#{blocks.length} ==="
-            ok = system('bash', '-lc', block)
-            exit($?.exitstatus || 1) unless ok
-          end
-          RUBY
