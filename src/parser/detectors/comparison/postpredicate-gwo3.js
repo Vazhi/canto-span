@@ -15,8 +15,8 @@ module.exports = function createPostPredicateGwo3ComparativeDetectors(dependenci
   } = dependencies;
 
   // GREEN scope is intentionally narrower than the full Cantonese comparative system.
-  // These are already lexicalized in the runtime as gradable/statative predicates and
-  // are sufficient to establish reusable adjective/property + 過 + overt-standard behavior.
+  // These predicates are already represented as gradable/statative lexical items and
+  // establish reusable property + 過 + overt nominal-standard behavior.
   const REVIEWED_SCALAR_PREDICATES = new Set([
     "大", "細", "貴", "平", "快", "慢", "忙", "遠", "近", "高", "矮", "耐",
     "熱", "凍", "難", "易", "正", "抵", "靚", "甜", "熟", "開心",
@@ -27,11 +27,11 @@ module.exports = function createPostPredicateGwo3ComparativeDetectors(dependenci
     return firstToken(node) || node;
   }
 
-  function overtComparisonArgument(node) {
+  function overtNominalComparisonArgument(node) {
     const tokenNode = simpleToken(node);
     if (!tokenNode) return false;
-    if (nodeCanFillSlot(node, "subject") || nodeCanFillSlot(node, "np") || nodeCanFillSlot(node, "topic")) return true;
-    return ["who", "what", "where", "when"].includes(tokenNode.label);
+    if (nodeCanFillSlot(node, "subject") || nodeCanFillSlot(node, "np") || nodeCanFillSlot(node, "head_noun") || nodeCanFillSlot(node, "object")) return true;
+    return ["who", "what"].includes(tokenNode.label);
   }
 
   function comparativePartClone(node, overrides) {
@@ -46,7 +46,7 @@ module.exports = function createPostPredicateGwo3ComparativeDetectors(dependenci
 
     const [target, predicate, marker, standard] = compact;
     if (!simpleToken(target) || !simpleToken(predicate) || !simpleToken(marker) || !simpleToken(standard)) return null;
-    if (!overtComparisonArgument(target) || !overtComparisonArgument(standard)) return null;
+    if (!overtNominalComparisonArgument(target) || !overtNominalComparisonArgument(standard)) return null;
     if (!isToken(marker, "過")) return null;
 
     const predicateSurface = flattenSurface(predicate);
@@ -58,7 +58,7 @@ module.exports = function createPostPredicateGwo3ComparativeDetectors(dependenci
       pos: simpleToken(target).pos || "np",
       syntax: `${simpleToken(target).syntax || "np"} comparison_target`,
       slots: cleanSlots([...(simpleToken(target).slots || []), "subject", "comparison_target"]),
-      reason: "The overt first comparison argument is the entity or reference point whose scalar property is being compared.",
+      reason: "The overt first nominal argument is the comparison target whose scalar property is being compared.",
     });
     const predicateChild = comparativePartClone(predicate, {
       label: simpleToken(predicate).label || "like",
@@ -79,7 +79,7 @@ module.exports = function createPostPredicateGwo3ComparativeDetectors(dependenci
       pos: simpleToken(standard).pos || "np",
       syntax: `${simpleToken(standard).syntax || "np"} comparison_standard`,
       slots: cleanSlots([...(simpleToken(standard).slots || []), "comparison_standard"]),
-      reason: "The overt final comparison argument supplies the comparison standard introduced by post-predicate 過.",
+      reason: "The overt final nominal argument supplies the comparison standard introduced by post-predicate 過.",
     });
 
     const children = [targetChild, predicateChild, markerChild, standardChild, ...particles];
@@ -88,25 +88,33 @@ module.exports = function createPostPredicateGwo3ComparativeDetectors(dependenci
         "subject_predicate_clause", "subject", "predicate", "clause", "stative_predicate",
         "comparison_target", "comparison_predicate", "comparison_marker", "comparison_standard",
       ]),
-      note: "Behavior-first bounded overt-standard post-predicate 過 comparison. The generic SubjectPredicateClause identity is retained while the comparative function is carried by explicit bindings.",
+      note: "Behavior-first bounded overt-standard post-predicate 過 comparison. The generic SubjectPredicateClause identity is retained while comparative function is represented by explicit behavior bindings.",
       trace: traceInfo("generative_template", {
         construction_type: "SubjectPredicateClause",
         template_family: "generative_template",
         predicate_subtype: "postpredicate_gwo3_surpass_comparison",
         template: ["comparison_target!", "comparison_predicate!", "comparison_marker!", "comparison_standard!", "particle?"],
         assigned_slots: ["subject", "comparison_predicate", "comparison_marker", "comparison_standard", ...particles.map(() => "particle")],
+        bindings: [
+          { slot: "comparison_target", source_surface: flattenSurface(target) },
+          { slot: "comparison_predicate", source_surface: predicateSurface },
+          { slot: "comparison_marker", source_surface: "過" },
+          { slot: "comparison_standard", source_surface: flattenSurface(standard) },
+        ],
         surfaces: children.map((node) => flattenSurface(node)),
         structural_scope: "clause",
         source_specification: "docs/research/BEHAVIOR-GWO3-COMPARATIVE-TDD-R1.md",
         not_claims: [
           "not_experiential_gwo3",
           "not_directional_gwo3",
+          "not_temporal_comparison_generalization_yet",
+          "not_quantity_comparison_generalization_yet",
           "not_bei2_comparative",
           "not_bare_di1_comparative",
           "not_equative_or_superlative",
           "not_open_class_productivity_claim",
         ],
-        reason: "Cycle 1 GREEN implementation: require an overt simple target, reviewed gradable predicate, literal 過 marker, and overt simple comparison standard. Homographic experiential and directional uses fail the predicate/argument contract.",
+        reason: "Cycle 1 GREEN implementation: require an overt simple nominal target, reviewed gradable predicate, literal 過 marker, and overt simple nominal comparison standard. Experiential and directional uses fail the predicate/argument contract.",
       }),
     });
   }
