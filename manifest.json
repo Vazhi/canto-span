@@ -3,7 +3,7 @@
   "name": "Canto Span",
   "version": "0.5.224",
   "minAppVersion": "1.5.0",
-  "description": "v0.5.223 aligns AB78 with typed predicate-object behavior and leaves approximate measured quantity outside TransitiveVP.",
+  "description": "v0.5.224 starts the source-linked AB35 VerbObjectCompound migration for 飲茶, 游水, and 沖涼 without automatic object binding.",
   "author": "Chris Crawford / OpenAI ChatGPT",
   "authorUrl": "",
   "isDesktopOnly": false
