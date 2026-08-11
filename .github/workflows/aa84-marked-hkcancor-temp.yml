@@ -9,8 +9,8 @@ permissions:
   contents: write
 
 jobs:
-  generate:
-    if: github.ref == 'refs/heads/agent/aa84-marked-hkcancor-review' && !contains(github.event.head_commit.message, '[aa84-generated]')
+  finalize:
+    if: github.ref == 'refs/heads/agent/aa84-marked-hkcancor-review' && !contains(github.event.head_commit.message, '[aa84-final]')
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
@@ -20,32 +20,48 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
-      - name: Install frozen corpus dependency
-        run: python -m pip install --disable-pip-version-check pycantonese==5.0.0
-      - name: Run profile unit tests
-        run: python -m unittest tests/tooling/corpus-review/test_aa84_marked_hkcancor_profile.py -v
-      - name: Generate deterministic marked inventory
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Install frozen dependencies
         run: |
-          python external-evidence/aa84-marked-hkcancor/query-hkcancor-aa84-marked.py \
-            --profile aa84-marked-redup \
-            --output-dir external-evidence/aa84-marked-hkcancor \
-            --source-manifest external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256
-      - name: Recheck deterministic outputs
+          python -m pip install --disable-pip-version-check pycantonese==5.0.0
+          npm ci
+      - name: Verify deterministic corpus profile and complete expert decisions
         run: |
+          set -euo pipefail
+          python -m unittest tests/tooling/corpus-review/test_aa84_marked_hkcancor_profile.py -v
           python external-evidence/aa84-marked-hkcancor/query-hkcancor-aa84-marked.py \
             --profile aa84-marked-redup \
             --output-dir external-evidence/aa84-marked-hkcancor \
             --source-manifest external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256 \
             --check
-      - name: Commit exact generated outputs
+          python review-packets/corpus-review/AA84/marked-r1/verify-marked-r1.py
+      - name: Regenerate readiness and run repository gates
         run: |
           set -euo pipefail
+          npm run discovery:generate
+          npm run verify:discovery
+          npm run verify:research
+          npm run verify
+          git diff --check
+      - name: Commit only canonical readiness and remove temporary runner
+        run: |
+          set -euo pipefail
+          git checkout -- validation/current 2>/dev/null || true
+          git clean -fd validation/current 2>/dev/null || true
+          git rm .github/workflows/aa84-marked-hkcancor-temp.yml
+          allowed='data/construction-candidate-readiness.json|.github/workflows/aa84-marked-hkcancor-temp.yml'
+          unexpected="$(git status --porcelain | sed 's/^...//' | grep -Ev "^(${allowed})$" || true)"
+          if [ -n "$unexpected" ]; then
+            echo 'Unexpected post-verification working-tree changes:'
+            printf '%s\n' "$unexpected"
+            exit 1
+          fi
           git config user.name "Canto Span scoped automation"
           git config user.email "actions@users.noreply.github.com"
-          git add \
-            external-evidence/aa84-marked-hkcancor/hkcancor-aa84-marked-candidate-inventory.json \
-            external-evidence/aa84-marked-hkcancor/hkcancor-aa84-marked-candidate-inventory.tsv \
-            external-evidence/aa84-marked-hkcancor/hkcancor-aa84-marked-query-summary.json
+          git add data/construction-candidate-readiness.json
           git diff --cached --check
-          git commit -m "[aa84-generated] Add frozen marked HKCanCor inventory"
+          git commit -m "[aa84-final] Finalize reviewed marked corpus evidence"
           git push origin HEAD:agent/aa84-marked-hkcancor-review
