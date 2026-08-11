@@ -67,14 +67,8 @@ function postPredicateGwo3Comparison(nodes) {
       construction_type: "SubjectPredicateClause",
       template_family: "generative_template",
       predicate_subtype: "postpredicate_gwo3_surpass_comparison",
-      template: ["subject!", "stative_predicate!", "comparison_marker!", "comparison_standard!"],
-      assigned_slots: ["subject", "stative_predicate", "comparison_marker", "comparison_standard"],
-      bindings: [
-        { slot: "comparison_target", source_surface: target.surface },
-        { slot: "comparison_predicate", source_surface: predicate.surface },
-        { slot: "comparison_marker", source_surface: marker.surface },
-        { slot: "comparison_standard", source_surface: standard.surface },
-      ],
+      template: ["comparison_target!", "comparison_predicate!", "comparison_marker!", "comparison_standard!"],
+      assigned_slots: ["comparison_target", "comparison_predicate", "comparison_marker", "comparison_standard"],
       surfaces: children.map((node) => node.surface || ""),
       structural_scope: "clause",
       not_claims: [
