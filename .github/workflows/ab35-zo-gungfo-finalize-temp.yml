@@ -40,6 +40,13 @@ jobs:
           for old, new in fixes:
               assert text.count(old) == 1, (old, text.count(old))
               text = text.replace(old, new, 1)
+          marker = 'run("node", "tests/tooling/runtime/ab35-zo-gungfo-rehome.test.js")'
+          sync = '''replace_once("tests/tooling/runtime/ab35-verb-object-compound-boundary.test.js", "  assert.equal(legacy.length, 40);", "  assert.equal(legacy.length, 39);")
+replace_once("tests/tooling/runtime/ab35-verb-object-compound-boundary.test.js", '  assert.equal(productiveRows("做功課。").some((row) => row.trace_detail.kind === "generative_template"), true);', '  assert.equal(productiveRows("做功課。").length, 0);')
+
+'''
+          assert text.count(marker) == 1
+          text = text.replace(marker, sync + marker, 1)
           p.write_text(text)
           PY
       - name: Apply, verify, clean, and commit single-entry ownership transition
