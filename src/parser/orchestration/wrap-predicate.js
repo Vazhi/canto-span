@@ -1,5 +1,9 @@
 "use strict";
 
+const POSTPREDICATE_GWO3_COMPARISON_PREDICATES = new Set(
+  require("../../runtime-resources/grammar/postpredicate-gwo3-comparison"),
+);
+
 module.exports = function createWrapPredicate(dependencies = {}) {
   const {
     categorySubspanFor,
@@ -10,8 +14,86 @@ module.exports = function createWrapPredicate(dependencies = {}) {
     traceInfo,
   } = dependencies;
 
+function simpleNominalComparisonArgument(node) {
+  if (!node || node.kind !== "token") return false;
+  if (nodeCanFillSlot(node, "subject") || nodeCanFillSlot(node, "np") || nodeCanFillSlot(node, "object")) return true;
+  return ["who", "what"].includes(node.label);
+}
+
+function comparisonMarkerClone(node) {
+  return {
+    ...node,
+    label: "func",
+    role: "func",
+    pos: "function",
+    syntax: "comparison_marker surpass_comparative_marker",
+    slots: ["comparison_marker"],
+    note: "post-predicate comparison marker: surpass / more ... than",
+    features: undefined,
+    feature_bundle: undefined,
+    trace: traceInfo("generative_or_heuristic_slot_rule", {
+      surface: node.surface,
+      contextual_role_override: "postpredicate_gwo3_comparison_marker",
+      original_trace: node.trace && node.trace.kind || "",
+      generated_slots: ["comparison_marker"],
+      reason: "Inside the bounded stative + 過 + overt-standard behavior, 過 is interpreted as the visible comparison marker rather than experiential aspect.",
+    }),
+  };
+}
+
+function postPredicateGwo3Comparison(nodes) {
+  if (nodes.length !== 4) return null;
+  const [target, predicate, marker, standard] = nodes;
+  if (!simpleNominalComparisonArgument(target) || !simpleNominalComparisonArgument(standard)) return null;
+  if (!isStativeToken(predicate) || !POSTPREDICATE_GWO3_COMPARISON_PREDICATES.has(predicate.surface)) return null;
+  if (!isToken(marker, "過")) return null;
+
+  const markerChild = comparisonMarkerClone(marker);
+  const children = [target, predicate, markerChild, standard];
+  return construction("SubjectPredicateClause", "SubjPred", children, {
+    slots: [
+      "subject_predicate_clause",
+      "subject",
+      "predicate",
+      "clause",
+      "stative_predicate",
+      "comparison_target",
+      "comparison_predicate",
+      "comparison_marker",
+      "comparison_standard",
+    ],
+    note: "Behavior-first overt-standard post-predicate 過 comparison. SubjectPredicateClause remains the structural label; the comparison function is exposed through explicit trace bindings.",
+    trace: traceInfo("generative_template", {
+      construction_type: "SubjectPredicateClause",
+      template_family: "generative_template",
+      predicate_subtype: "postpredicate_gwo3_surpass_comparison",
+      template: ["comparison_target!", "comparison_predicate!", "comparison_marker!", "comparison_standard!"],
+      assigned_slots: ["comparison_target", "comparison_predicate", "comparison_marker", "comparison_standard"],
+      surfaces: children.map((node) => node.surface || ""),
+      structural_scope: "clause",
+      not_claims: [
+        "not_experiential_gwo3",
+        "not_directional_gwo3",
+        "not_quantity_comparison_generalization_yet",
+        "not_temporal_comparison_generalization_yet",
+        "not_bei2_comparative",
+        "not_bare_di1_comparative",
+        "not_equative_or_superlative",
+        "not_open_class_productivity_claim",
+      ],
+      reason: "Cycle 1 GREEN behavior: overt simple nominal target + bounded gradable stative predicate + 過 + overt simple nominal comparison standard.",
+    }),
+  });
+}
+
 function wrapPredicate(nodes) {
   if (!nodes.length) return nodes;
+
+  // Behavior-first cycle 1: detect the comparative relation before generic
+  // stative fragment wrapping. This is intentionally narrower than the full
+  // Cantonese comparative system and does not create a new public label.
+  const comparative = postPredicateGwo3Comparison(nodes);
+  if (comparative) return [comparative];
 
   // Productive degree/manner + 啲 phrase, e.g. 快啲 / 慢啲 / 貴啲 / 大聲啲 / 小心啲.
   // Keep this as one unified generative-template path before comparative/stative

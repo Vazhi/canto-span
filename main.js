@@ -2290,6 +2290,7 @@ var require_statives = __commonJS({
       ["遠", { label: "like", jyutping: "jyun5", syntax: "stative_predicate distance_stative scalar_dimension_predicate", note: "far" }],
       ["近", { label: "like", jyutping: "kan5", syntax: "stative_predicate distance_stative scalar_dimension_predicate", note: "near / close" }],
       ["高", { label: "like", jyutping: "gou1", syntax: "stative_predicate height_stative scalar_dimension_predicate", note: "high / tall" }],
+      ["矮", { label: "like", jyutping: "ai2", syntax: "stative_predicate height_stative scalar_dimension_predicate", note: "short / low in height; gradable property predicate and antonym of 高." }],
       ["低", { label: "like", jyutping: "dai1", syntax: "stative_predicate directional_result_complement", note: "low / lower; result complement in 放低" }],
       ["耐", { label: "like", jyutping: "noi6", syntax: "stative_predicate duration_stative scalar_dimension_predicate", note: "long in time / duration" }],
       ["熱", { label: "like", jyutping: "jit6", syntax: "stative_predicate ambient_property_predicate temperature_property", note: "hot; may describe a participant or an ambient environment depending on overt framing and context" }],
@@ -7851,10 +7852,36 @@ var require_basic = __commonJS({
   }
 });
 
+// src/runtime-resources/grammar/postpredicate-gwo3-comparison.js
+var require_postpredicate_gwo3_comparison = __commonJS({
+  "src/runtime-resources/grammar/postpredicate-gwo3-comparison.js"(exports2, module2) {
+    "use strict";
+    module2.exports = Object.freeze([
+      "大",
+      "細",
+      "貴",
+      "平",
+      "快",
+      "慢",
+      "遠",
+      "近",
+      "高",
+      "矮",
+      "熱",
+      "凍",
+      "靚",
+      "甜"
+    ]);
+  }
+});
+
 // src/parser/orchestration/wrap-predicate.js
 var require_wrap_predicate = __commonJS({
   "src/parser/orchestration/wrap-predicate.js"(exports2, module2) {
     "use strict";
+    var POSTPREDICATE_GWO3_COMPARISON_PREDICATES = new Set(
+      require_postpredicate_gwo3_comparison()
+    );
     module2.exports = function createWrapPredicate(dependencies = {}) {
       const {
         categorySubspanFor: categorySubspanFor2,
@@ -7864,8 +7891,78 @@ var require_wrap_predicate = __commonJS({
         nodeCanFillSlot: nodeCanFillSlot2,
         traceInfo: traceInfo2
       } = dependencies;
+      function simpleNominalComparisonArgument(node) {
+        if (!node || node.kind !== "token") return false;
+        if (nodeCanFillSlot2(node, "subject") || nodeCanFillSlot2(node, "np") || nodeCanFillSlot2(node, "object")) return true;
+        return ["who", "what"].includes(node.label);
+      }
+      function comparisonMarkerClone(node) {
+        return {
+          ...node,
+          label: "func",
+          role: "func",
+          pos: "function",
+          syntax: "comparison_marker surpass_comparative_marker",
+          slots: ["comparison_marker"],
+          note: "post-predicate comparison marker: surpass / more ... than",
+          features: void 0,
+          feature_bundle: void 0,
+          trace: traceInfo2("generative_or_heuristic_slot_rule", {
+            surface: node.surface,
+            contextual_role_override: "postpredicate_gwo3_comparison_marker",
+            original_trace: node.trace && node.trace.kind || "",
+            generated_slots: ["comparison_marker"],
+            reason: "Inside the bounded stative + 過 + overt-standard behavior, 過 is interpreted as the visible comparison marker rather than experiential aspect."
+          })
+        };
+      }
+      function postPredicateGwo3Comparison(nodes) {
+        if (nodes.length !== 4) return null;
+        const [target, predicate, marker, standard] = nodes;
+        if (!simpleNominalComparisonArgument(target) || !simpleNominalComparisonArgument(standard)) return null;
+        if (!isStativeToken2(predicate) || !POSTPREDICATE_GWO3_COMPARISON_PREDICATES.has(predicate.surface)) return null;
+        if (!isToken2(marker, "過")) return null;
+        const markerChild = comparisonMarkerClone(marker);
+        const children = [target, predicate, markerChild, standard];
+        return construction2("SubjectPredicateClause", "SubjPred", children, {
+          slots: [
+            "subject_predicate_clause",
+            "subject",
+            "predicate",
+            "clause",
+            "stative_predicate",
+            "comparison_target",
+            "comparison_predicate",
+            "comparison_marker",
+            "comparison_standard"
+          ],
+          note: "Behavior-first overt-standard post-predicate 過 comparison. SubjectPredicateClause remains the structural label; the comparison function is exposed through explicit trace bindings.",
+          trace: traceInfo2("generative_template", {
+            construction_type: "SubjectPredicateClause",
+            template_family: "generative_template",
+            predicate_subtype: "postpredicate_gwo3_surpass_comparison",
+            template: ["comparison_target!", "comparison_predicate!", "comparison_marker!", "comparison_standard!"],
+            assigned_slots: ["comparison_target", "comparison_predicate", "comparison_marker", "comparison_standard"],
+            surfaces: children.map((node) => node.surface || ""),
+            structural_scope: "clause",
+            not_claims: [
+              "not_experiential_gwo3",
+              "not_directional_gwo3",
+              "not_quantity_comparison_generalization_yet",
+              "not_temporal_comparison_generalization_yet",
+              "not_bei2_comparative",
+              "not_bare_di1_comparative",
+              "not_equative_or_superlative",
+              "not_open_class_productivity_claim"
+            ],
+            reason: "Cycle 1 GREEN behavior: overt simple nominal target + bounded gradable stative predicate + 過 + overt simple nominal comparison standard."
+          })
+        });
+      }
       function wrapPredicate2(nodes) {
         if (!nodes.length) return nodes;
+        const comparative = postPredicateGwo3Comparison(nodes);
+        if (comparative) return [comparative];
         const degreeMannerIndex = nodes.findIndex((node, index) => nodeCanFillSlot2(node, "degree_manner_head") && nodeCanFillSlot2(nodes[index + 1], "degree_particle"));
         if (degreeMannerIndex >= 0) {
           const degreeManner = categorySubspanFor2(nodes.slice(degreeMannerIndex, degreeMannerIndex + 2), ["DegreeMannerAdverbial"]);
@@ -22512,7 +22609,7 @@ var {
 } = require_learner_glosses();
 var createLearnerDisplay = require_learner_display();
 var createCantoSpanPlugin = require_canto_span_plugin();
-var CANTO_SPAN_RUNTIME_VERSION = "0.5.225";
+var CANTO_SPAN_RUNTIME_VERSION = "0.5.226";
 var {
   runtimeConstructionRegistryVersion: RUNTIME_CONSTRUCTION_REGISTRY_VERSION,
   constructionLabelRegistry,
