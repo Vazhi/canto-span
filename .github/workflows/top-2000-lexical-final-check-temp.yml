@@ -1,0 +1,50 @@
+name: Temporary final top-2000 lexical check
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - .github/workflows/top-2000-lexical-final-check-temp.yml
+      - tools/lexical-coverage/top-2000-audit.mjs
+      - data/lexical-frequency/cifu-spoken-top-2000.tsv
+      - docs/research/LEXICAL-COVERAGE-TOP-2000.md
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    if: github.event.pull_request.head.ref == 'agent/top-2000-lexical-coverage-audit'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/top-2000-lexical-coverage-audit
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: Download pinned Cifu source
+        run: curl -fL --retry 3 https://raw.githubusercontent.com/gwinterstein/Cifu/8d5e4903e419193f903823880a7815712072cc80/Lexicon/Cifu-v1.txt -o /tmp/Cifu-v1.txt
+      - name: Regenerate and check canonical lexical audit
+        run: |
+          node tools/lexical-coverage/top-2000-audit.mjs --source=/tmp/Cifu-v1.txt
+          node tools/lexical-coverage/top-2000-audit.mjs --source=/tmp/Cifu-v1.txt --check
+      - name: Verify final repository state
+        run: |
+          npm run build:runtime
+          npm test
+          npm run verify:runtime-build
+          npm run verify
+          npm run verify:runtime
+          npm run verify:research
+          git diff --check
+      - name: Commit canonical TSV normalization if needed
+        run: |
+          git config user.name 'Canto Span scoped automation'
+          git config user.email 'actions@users.noreply.github.com'
+          git add data/lexical-frequency/cifu-spoken-top-2000.tsv main.js
+          git diff --cached --quiet && { echo 'Canonical audit and runtime bundle already current'; exit 0; }
+          git commit -m 'Normalize final top-2000 lexical audit output'
+          git push origin HEAD:agent/top-2000-lexical-coverage-audit
