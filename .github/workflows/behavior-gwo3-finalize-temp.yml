@@ -1,0 +1,115 @@
+name: Behavior gwo3 finalization temp
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    if: github.event.pull_request.head.ref == 'agent/behavior-gwo3-comparative-tdd'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/behavior-gwo3-comparative-tdd
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Configure scoped writer and reconcile latest main
+        run: |
+          git config user.name "Canto Span scoped automation"
+          git config user.email "actions@users.noreply.github.com"
+          git fetch origin main
+          echo "MAIN_BASE=$(git rev-parse origin/main)" >> "$GITHUB_ENV"
+          git merge --no-edit origin/main
+      - name: Install dependencies
+        run: npm ci
+      - name: Apply v0.5.226 metadata and current-state update
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+
+          VERSION = "0.5.226"
+
+          def load_json(path):
+              return json.loads(Path(path).read_text())
+
+          def write_json(path, value):
+              Path(path).write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n")
+
+          package = load_json("package.json")
+          assert package["version"] == "0.5.225", package["version"]
+          package["version"] = VERSION
+          write_json("package.json", package)
+
+          lock = load_json("package-lock.json")
+          assert lock["version"] == "0.5.225", lock["version"]
+          assert lock["packages"][""]["version"] == "0.5.225", lock["packages"][""]["version"]
+          lock["version"] = VERSION
+          lock["packages"][""]["version"] = VERSION
+          write_json("package-lock.json", lock)
+
+          manifest = load_json("manifest.json")
+          assert manifest["version"] == "0.5.225", manifest["version"]
+          manifest["version"] = VERSION
+          manifest["description"] = "v0.5.226 adds behavior-first overt nominal-standard post-predicate 過 comparison while preserving experiential and directional 過 boundaries."
+          write_json("manifest.json", manifest)
+
+          plugin_path = Path("src/plugin-entry.js")
+          plugin = plugin_path.read_text()
+          old = 'const CANTO_SPAN_RUNTIME_VERSION = "0.5.225";\n// v0.5.225:'
+          new = 'const CANTO_SPAN_RUNTIME_VERSION = "0.5.226";\n// v0.5.226: adds bounded behavior-first overt nominal-standard post-predicate 過 comparison through existing SubjectPredicateClause composition, plus missing 矮 lexical coverage, without changing construction identity or experiential/directional 過 behavior.\n// v0.5.225:'
+          assert plugin.count(old) == 1
+          plugin_path.write_text(plugin.replace(old, new, 1))
+
+          state_path = Path("docs/current/PROJECT-STATE.md")
+          state = state_path.read_text()
+          assert state.count("| Runtime | v0.5.225 |") == 1
+          state = state.replace("| Runtime | v0.5.225 |", "| Runtime | v0.5.226 |", 1)
+          anchor = "Current consequences include:\n\n"
+          assert state.count(anchor) == 1
+          consequence = "- v0.5.226 adds bounded behavior-first post-predicate `過` comparison for overt simple nominal target + gradable property + `過` + overt simple nominal standard, represented structurally as `SubjectPredicateClause` with explicit comparison bindings; `矮 ai2` receives the lexical coverage required by the published `細佬矮過我` example, while no new public construction identity, quantity/temporal comparison generalization, `比`/`啲` comparative generalization, status change, or evidence promotion is inferred;\n"
+          state = state.replace(anchor, anchor + consequence, 1)
+          state_path.write_text(state)
+          PY
+      - name: Build canonical runtime bundle
+        run: node tools/build-runtime.js
+      - name: Run focused behavior contract
+        run: node tests/tooling/runtime/behavior-gwo3-comparative.test.js
+      - name: Run complete standard runtime suite
+        run: node tests/run-all.js
+      - name: Run core verification
+        run: npm run verify
+      - name: Run runtime verification
+        run: npm run verify:runtime
+      - name: Run research verification
+        run: npm run verify:research
+      - name: Run identity verification
+        run: npm run verify:identities
+      - name: Run discovery verification
+        run: npm run verify:discovery
+      - name: Run coordination tests
+        run: npm run test:coordination
+      - name: Confirm deterministic bundle and diff hygiene
+        run: |
+          node tools/build-runtime.js --check
+          git diff --check
+      - name: Confirm main did not move during finalization
+        run: |
+          git fetch origin main
+          test "$(git rev-parse origin/main)" = "$MAIN_BASE"
+      - name: Commit permanent checkpoint and remove temporary workflow
+        run: |
+          rm .github/workflows/behavior-gwo3-finalize-temp.yml
+          git add -A
+          test ! -e .github/workflows/behavior-gwo3-finalize-temp.yml
+          git diff --cached --check
+          git commit -m "Complete behavior-first gwo3 comparison cycle"
+          git push origin HEAD:agent/behavior-gwo3-comparative-tdd
