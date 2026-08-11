@@ -4,23 +4,19 @@ on:
   push:
     branches:
       - agent/aa84-marked-hkcancor-review
-  pull_request:
-    paths:
-      - "external-evidence/aa84-marked-hkcancor/**"
-      - "tests/tooling/corpus-review/test_aa84_marked_hkcancor_profile.py"
-      - ".github/workflows/aa84-marked-hkcancor-temp.yml"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   generate:
-    if: github.ref == 'refs/heads/agent/aa84-marked-hkcancor-review' || (github.event.pull_request.number == 773 && github.event.pull_request.head.ref == 'agent/aa84-marked-hkcancor-review' && github.event.pull_request.base.ref == 'main')
+    if: github.ref == 'refs/heads/agent/aa84-marked-hkcancor-review' && !contains(github.event.head_commit.message, '[aa84-generated]')
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
         with:
           ref: agent/aa84-marked-hkcancor-review
+          fetch-depth: 0
       - uses: actions/setup-python@v6
         with:
           python-version: '3.12'
@@ -32,17 +28,24 @@ jobs:
         run: |
           python external-evidence/aa84-marked-hkcancor/query-hkcancor-aa84-marked.py \
             --profile aa84-marked-redup \
-            --output-dir /tmp/aa84-marked-hkcancor \
+            --output-dir external-evidence/aa84-marked-hkcancor \
             --source-manifest external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256
       - name: Recheck deterministic outputs
         run: |
           python external-evidence/aa84-marked-hkcancor/query-hkcancor-aa84-marked.py \
             --profile aa84-marked-redup \
-            --output-dir /tmp/aa84-marked-hkcancor \
+            --output-dir external-evidence/aa84-marked-hkcancor \
             --source-manifest external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256 \
             --check
-      - uses: actions/upload-artifact@v4
-        with:
-          name: aa84-marked-hkcancor-r1
-          path: /tmp/aa84-marked-hkcancor
-          retention-days: 1
+      - name: Commit exact generated outputs
+        run: |
+          set -euo pipefail
+          git config user.name "Canto Span scoped automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add \
+            external-evidence/aa84-marked-hkcancor/hkcancor-aa84-marked-candidate-inventory.json \
+            external-evidence/aa84-marked-hkcancor/hkcancor-aa84-marked-candidate-inventory.tsv \
+            external-evidence/aa84-marked-hkcancor/hkcancor-aa84-marked-query-summary.json
+          git diff --cached --check
+          git commit -m "[aa84-generated] Add frozen marked HKCanCor inventory"
+          git push origin HEAD:agent/aa84-marked-hkcancor-review
