@@ -11,7 +11,7 @@ This is a prioritization report, not a promotion decision. A score cannot overri
 |---|---|---|---|---|---|
 | `AB15` | `DemonstrativeClassifierNounNP` | `boundary_ready` | 90 | `role_neutral_panel_threshold` | run or complete a locked role-neutral panel instrument with critical contrasts |
 | `AB30` | `ZoMarkedPerfectiveObjectVP` | `boundary_ready` | 90 | `role_neutral_panel_threshold` | run or complete a locked role-neutral panel instrument with critical contrasts |
-| `AA84` | `GamMarkedReduplicatedMannerVP` | `boundary_ready` | 73 | `reviewed_corpus_evidence` | review and classify diverse corpus candidates, including false positives and ambiguous hits |
+| `AA84` | `GamMarkedReduplicatedMannerVP` | `boundary_ready` | 83 | `role_neutral_panel_threshold` | run or complete a locked role-neutral panel instrument with critical contrasts |
 | `AB78` | `TransitiveVP` | `behavior_aligned` | 68 | `negative_boundaries_complete` | complete and execute the negative-boundary inventory |
 | `AB83` | `JauDakMouDakAvailabilityPredicate` | `source_supported` | 68 | `source_scope_matches_claim` | complete source-scope reaudit and split any unsupported extensions |
 | `AB28` | `BeiMarkedPostThemeParticipantConstruction` | `source_supported` | 65 | `runtime_research_alignment` | compare exact runtime paths with the source-supported construction and reconcile code plus documentation |

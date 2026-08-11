@@ -1,0 +1,4954 @@
+{
+  "summary": {
+    "checkpoint": "HKCANCOR-AA84-MARKED-REDUP-R1",
+    "status": "COMPLETE_MECHANICAL_INVENTORY_REVIEW_REQUIRED",
+    "construction": {
+      "permanentCode": "AA84",
+      "canonicalIdentity": "GamMarkedReduplicatedMannerVP",
+      "legacyRuntimeLabel": "MannerAdverbialVP"
+    },
+    "endpoint": "Written 咁/噉 markers with mechanically detectable repeated material within the preceding three contiguous lexical tokens and an ADJ/AUX/VERB cue within the following three contiguous lexical tokens.",
+    "generatedWithPycantonese": "5.0.0",
+    "corpusName": "HKCanCor",
+    "corpusFilesInDistribution": 58,
+    "corpusUtterancesInDistribution": 16162,
+    "corpusWordsInDistribution": 153656,
+    "hashes": {
+      "verifiedCorpusDistributionSha256": "d93b064614b38227889b2db20162eb0c2fee3fb75aa94e90dd9abfc64289c731",
+      "sourceManifestPath": "external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256",
+      "sourceManifestSha256": "d93b064614b38227889b2db20162eb0c2fee3fb75aa94e90dd9abfc64289c731",
+      "sourceFileSha256ByName": {
+        "FC-001_v2.cha": "ed8e418f69346a704b065f4866a9a05b162c55172d99f83388a6948ccea41885",
+        "FC-005a_v2.cha": "9da5c89fae262850960f6d5ad98151c3a780957b3581d357bce9c9a53ffce487",
+        "FC-005b_v2.cha": "91e91321966b1ff126280a045553c91ec40d0f45daf3beba4fe5e84a7181f868",
+        "FC-009b_v.cha": "c9bfd5c37661f770dd4d42712f8484fdeb720eafc25e363ec3779da6aa48cdf5",
+        "FC-011_v.cha": "8aee56f612436ff9ddb299b1d3e7f7b0c468ddc79ad7e25f6b2da7277d8d1866",
+        "FC-012_v.cha": "f20df16972d89c85f64e6be62b97a17f09b1a4e67639833ff27f1610b3bd277a",
+        "FC-013_v.cha": "2cf5054351ef94e796f07577f24d4a0b66f4ca79b26047ae046600d3988d223b",
+        "FC-018_v.cha": "ce62da97ef3381682529717fc362546c42a4f3a268990ca0afafe1a9f696d010",
+        "FC-019_v.cha": "81f02ee58db18cfc44dc76b96c0955b23acdfdc8be83e05a01b28d1667d4d264",
+        "FC-020_v.cha": "6ec07be8de5bf5784dc1c6dba433bfb4eda92663c929a3e67c02103e0c8f0bf7",
+        "FC-022a_v.cha": "f1ac38cc97b07a9757a7a7e9274732b52679d76fd9980defa2fe57d5c562a43d",
+        "FC-022b_v.cha": "3dec7b1713b09b5693df6af23cff8bf0de760909f321c6f56002b43baced849d",
+        "FC-025_v.cha": "de4c852f32310e64c446e91363e0db7332531bc8026287ddd750d7a6388f7131",
+        "FC-026_v2.cha": "95fb9865802b2cfa9e0b5a593cff800e4a5559f62a4e713ce352f518c0c93e3c",
+        "FC-027_v2.cha": "9021e0359557933ce4bd11e41871d555174f7fccc84bc0c4fb5ad7542f1a2dd1",
+        "FC-028_v2.cha": "1c64c3e02fa481dcad61f4e9c85b8efe724799e910fc96fc24504bf15be32d2a",
+        "FC-029_v.cha": "f2a94065a152941f5cea9ec552fd343fb65c0c8532dda4c7b5b914b449d06f86",
+        "FC-033_v2.cha": "4a54d83cb2e8b32b1979c53bdf11706516fb3e1b8c6caa4bc72662a1e5fbf4e5",
+        "FC-035_v2.cha": "ddb29bab01e3e932a9a80ffb3342df28e08dfc77d7f4527f5fc39d5a25ea4f5b",
+        "FC-038a_v2.cha": "cd4ad166269f1a897199628fbebf608cca6cf01ecdb49fe51e80ed7340d7fc37",
+        "FC-038b_v2.cha": "4c6527d34ac3e5109b2cea1099627e8bc3a58f7f6ceadfe76f91ccdae2944eb4",
+        "FC-042_v.cha": "4e8f9e2f767cf276afec05255706706cb3505cd646b2f5c1db21014db4405d20",
+        "FC-044_v2.cha": "72dc24a95d5582e7e52a6748c1ac01d08fe1918399ebfb107c551c6656435430",
+        "FC-045_v2.cha": "3b1b5ada7cebf940e99af50b4056be09f644177155a8627e1e9b28c4239e9c0d",
+        "FC-046_v2.cha": "27d9b748a81260c501362591915da1946c27f25638d6769eef22991158693f0a",
+        "FC-048_v2.cha": "4f33e6b5f6b073270b0c7c81d2a3a9c9d840632ba44b2c1513dfc253dd3ba6e4",
+        "FC-049_v2.cha": "5c9c6be3f062387a0f7ac4bff22603b2386c10e071a1a7e256731abc2b39f53f",
+        "FC-052_v2.cha": "f2678d2a43de8262a35444c40be0f5102f47032037d8a75763e98b4eae11e8a0",
+        "FC-053_v2.cha": "61eeb21a6a84b7e227ebc0f14b3bd6221ea93939fed296e55cb78cd4c268b7bb",
+        "FC-055_v2.cha": "9240a3126c82dce64b5d2ddb7b81d4240c371bc4a991e440297dfedc78a7a3f6",
+        "FC-056_v2.cha": "b18efc20cede350d53f2adca793f6102ee87bdb5295b9b462a790b22d037eb8c",
+        "FC-101_v2.cha": "6ea8fb15323f1b5b3017f243d968ae2b36d0ea1097e4fec84723242a2e023041",
+        "FC-103_v2.cha": "7925d9e37ec562965f598ebe225c43503865e03be344815bf1c5e6f40cb67f05",
+        "FC-104_v2.cha": "f544c88469cf6947b3781401a683cc89afbe60b9a7ddfac523735a78cc30ba93",
+        "FC-105_v2.cha": "be40fc4738cbeb0e2a3e44ed4ef60c4b8e3bca467cc5d6b441b2896dc3110fcb",
+        "FC-106a_v2.cha": "44eff3fa5ca6b53344bd5d64ad3c7a36c51c2707c411d06a307fbd0d93eacdbb",
+        "FC-106b_v2.cha": "7d29a8affa8870dbd0a22592241753942dedbcba4f42fa8fd70348fb31ec4d9a",
+        "FC-107_v2.cha": "6a9ccf096315b60363014accae5aaedca6689638bc5f09fb6f2344c44883a1d6",
+        "FC-108a_v2.cha": "9c80f4488c8c32be66bc3f01baadf77bb99f9e3f6b73138a4b1e18e027f5a964",
+        "FC-108c_v2.cha": "fbcb6cc27819deede6136fc8c59e4dd93b76655d15892095972f387d4ad2bc36",
+        "FC-108d_v2.cha": "13970f9d8cd7a1a59e819cee5f8b0bdca4f5ff11c44e2a6d1545fd587bf87a88",
+        "FC-109a_v2.cha": "037818836278ea3a03f21b3859a1bddd8c57b91cedbae0cabc4a1643f2e1a630",
+        "FC-R002a_v2.cha": "58666f8bc0c52a152a30699272f4b2849aecbdf16078a6701c0458ad859e1046",
+        "FC-R002b_v2.cha": "b28d73a3ee59df00086c327503f3fb5153b39c62120bf7ce3bf6e4074ea3665a",
+        "FC-R003_v2.cha": "5e2e62a809cebd9897a2d78810084e0bd94efed4883ed86e2801682895ae96ab",
+        "FC-R004_v2.cha": "ee5e7161ddae4e08eea8b881c2d220d21c258af2c30ce6a6c5c728535e9c9376",
+        "FC-R005_v2.cha": "df8f8770d195db050ee8b1e25bea31af22a17ecd779cff97e99594b68f5d75ab",
+        "FC-R006_v2.cha": "0e64a85bb57c65bf4e9e0d621f4cc104d8a27a30be98847eccc3c958c517154c",
+        "FC-R007_v2.cha": "7d758ceef2818fb182169c06d3f785caccabb7ce16533740909bd41868524f0f",
+        "FC-R009_v.cha": "e29696c62b1aef35746e05780060128c7a5b91b2cdd852467d3cb733e3108d5c",
+        "FC-R010a_v.cha": "cee13ea77df43313af86d811fe8a2936fc56dd0283e738debe4caf62b6fc803c",
+        "FC-R010b_v.cha": "2fdee719218aec6d3b20582673dd0bd24b5631cc890383b48bdf26d858843e8e",
+        "FC-R011_v.cha": "1cc1fdfa08e4ba661d847f768f064d32ac5d5d0fc78a0a0284d2460fe35092fc",
+        "FC-R013a_v.cha": "e95e436cf3f1eaf52a0fe1eb185c54f1813068a922fb1b22734b9237a6681a9d",
+        "FC-R013b_v.cha": "abf39e27ba60d99ecd91dc2fb863d64db94546ad7a99399d3f5e8bdcb1fbc950",
+        "FC-R016_v.cha": "fdebcf1789ba82dc2341bfaf36fa574f44bef0ea4c5b49048567731b86ee05c6",
+        "FC-R017_v.cha": "5998c6065497a3f29ca4e65eb3cb527a07c4b25f8484c8a3ac0bb60b195ea409",
+        "FC-R018_v.cha": "9d9d1b588b7c20c93f227668b91132e305fcf5f2bc14bec621b82917d2118606"
+      }
+    },
+    "query": {
+      "markerWrittenForms": [
+        "咁",
+        "噉"
+      ],
+      "leftWindowLexicalTokens": 3,
+      "rightWindowLexicalTokens": 3,
+      "predicateCueUdPos": [
+        "ADJ",
+        "AUX",
+        "VERB"
+      ],
+      "repetitionShapes": [
+        "exact_halves_token",
+        "aabb_token",
+        "repeated_prefix_token",
+        "adjacent_identical_tokens"
+      ],
+      "markerFunctionInferred": false,
+      "markerPronunciationInferredFromGlyph": false,
+      "reduplicationAnalysisPerformed": false,
+      "mannerAnalysisPerformed": false,
+      "vpConstituencyInferred": false,
+      "productivityInferred": false
+    },
+    "counts": {
+      "candidateRows": 14,
+      "candidateUtterances": 14,
+      "sourceFilesWithCandidates": 10,
+      "repetitionShapes": {
+        "aabb_token": 2,
+        "adjacent_identical_tokens": 1,
+        "exact_halves_token": 9,
+        "repeated_prefix_token": 2
+      },
+      "markerSurfaces": {
+        "咁": 6,
+        "噉": 8
+      },
+      "markerJyutping": {
+        "gam2": 8,
+        "gam3": 6
+      },
+      "markerHkcancorPos": {
+        "c": 2,
+        "d": 6,
+        "r": 6
+      },
+      "predicateForms": {
+        "俾": 1,
+        "做": 1,
+        "勁": 2,
+        "可以": 1,
+        "多": 1,
+        "大": 2,
+        "打電話": 1,
+        "攞": 1,
+        "早": 1,
+        "覺得": 1,
+        "講": 1,
+        "返": 1
+      },
+      "leftDistances": {
+        "1": 7,
+        "2": 4,
+        "3": 3
+      },
+      "rightDistances": {
+        "1": 11,
+        "2": 2,
+        "3": 1
+      },
+      "sourceFileCandidateCounts": {
+        "FC-020_v.cha": 1,
+        "FC-025_v.cha": 2,
+        "FC-028_v2.cha": 2,
+        "FC-029_v.cha": 2,
+        "FC-035_v2.cha": 1,
+        "FC-038a_v2.cha": 1,
+        "FC-044_v2.cha": 1,
+        "FC-046_v2.cha": 1,
+        "FC-105_v2.cha": 2,
+        "FC-R013a_v.cha": 1
+      }
+    },
+    "stableIdPolicy": {
+      "namespace": "HKCANCOR-AA84-MARKED-REDUP-R1:<repetition-shape>:<marker-glyph>",
+      "prefix": "aa84gm-",
+      "anchorToken": "the written 咁/噉 marker at the frozen source location"
+    },
+    "interpretationWarning": "Candidates may include temporal/distributive repetition, degree uses of 咁, demonstrative or discourse 噉, event repetition, lexicalized repeated forms, repairs, and orthographic/pronunciation collisions. Extraction does not establish AA84 membership, manner, reduplication, productivity, or status."
+  },
+  "candidates": [
+    {
+      "candidateId": "aa84gm-43092fe3b3929e17a03c",
+      "queryId": "HKCANCOR-AA84-MARKED-REDUP-R1",
+      "candidateIdNamespace": "HKCANCOR-AA84-MARKED-REDUP-R1:exact_halves_token:噉",
+      "sourceFile": "FC-020_v.cha",
+      "sourceFileSha256": "6ec07be8de5bf5784dc1c6dba433bfb4eda92663c929a3e67c02103e0c8f0bf7",
+      "fileIndexZeroBased": 9,
+      "turnIndexZeroBased": 511,
+      "tokenIndexZeroBased": 4,
+      "recordingDate": "1997-07-13",
+      "participant": "XXA",
+      "participantMetadata": {
+        "code": "XXA",
+        "name": "A",
+        "role": "Adult",
+        "language": "yue , eng",
+        "l1": null,
+        "sex": "female",
+        "age": "22;"
+      },
+      "text": "因為個個都係噉講嘅.",
+      "tokens": [
+        {
+          "word": "因為",
+          "pos": "c",
+          "jyutping": "jan1wai6"
+        },
+        {
+          "word": "個個",
+          "pos": "q",
+          "jyutping": "go3go3"
+        },
+        {
+          "word": "都",
+          "pos": "d",
+          "jyutping": "dou1"
+        },
+        {
+          "word": "係",
+          "pos": "v",
+          "jyutping": "hai6"
+        },
+        {
+          "word": "噉",
+          "pos": "r",
+          "jyutping": "gam2"
+        },
+        {
+          "word": "講",
+          "pos": "v",
+          "jyutping": "gong2"
+        },
+        {
+          "word": "嘅",
+          "pos": "u",
+          "jyutping": "ge3"
+        },
+        {
+          "word": ".",
+          "pos": "",
+          "jyutping": null
+        }
+      ],
+      "matchedSurfaceSpan": "個個都係噉講",
+      "matchedTokens": [
+        {
+          "word": "個個",
+          "pos": "q",
+          "jyutping": "go3go3"
+        },
+        {
+          "word": "都",
+          "pos": "d",
+          "jyutping": "dou1"
+        },
+        {
+          "word": "係",
+          "pos": "v",
+          "jyutping": "hai6"
+        },
+        {
+          "word": "噉",
+          "pos": "r",
+          "jyutping": "gam2"
+        },
+        {
+          "word": "講",
+          "pos": "v",
+          "jyutping": "gong2"
+        }
+      ],
+      "localContext": {
+        "previous": {
+          "turnIndexZeroBased": 510,
+          "participant": "XXB",
+          "text": "唔係啊,因為我覺得佢係禮貌上話好高興啊.",
+          "tokens": [
+            {
+              "word": "唔係",
+              "pos": "v",
+              "jyutping": "m4hai6"
+            },
+            {
+              "word": "啊",
+              "pos": "y",
+              "jyutping": "aa3"
+            },
+            {
+              "word": ",",
+              "pos": "",
+              "jyutping": null
+            },
+            {
+              "word": "因為",
+              "pos": "c",
+              "jyutping": "jan1wai6"
+            },
+            {
+              "word": "我",
+              "pos": "r",
+              "jyutping": "ngo5"
+            },
+            {
+              "word": "覺得",
+              "pos": "v",
+              "jyutping": "gok3dak1"
+            },
+            {
+              "word": "佢",
+              "pos": "r",
+              "jyutping": "keoi5"
+            },
+            {
+              "word": "係",
+              "pos": "v",
+              "jyutping": "hai6"
+            },
+            {
+              "word": "禮貌",
+              "pos": "n",
+              "jyutping": "lai5maau6"
+            },
+            {
+              "word": "上",
+              "pos": "f",
+              "jyutping": "soeng6"
+            },
+            {
+              "word": "話",
+              "pos": "v",
+              "jyutping": "waa6"
+            },
+            {
+              "word": "好",
+              "pos": "d",
+              "jyutping": "hou2"
+            },
+            {
+              "word": "高興",
+              "pos": "a",
+              "jyutping": "gou1hing3"
+            },
+            {
+              "word": "啊",
+              "pos": "y",
+              "jyutping": "aa3"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        },
+        "next": {
+          "turnIndexZeroBased": 512,
+          "participant": "XXB",
+          "text": "係啊,係啊,即係總之係打返去promote,佢都係話好高興囖.",
+          "tokens": [
+            {
+              "word": "係",
+              "pos": "v",
+              "jyutping": "hai6"
+            },
+            {
+              "word": "啊",
+              "pos": "y",
+              "jyutping": "aa3"
+            },
+            {
+              "word": ",",
+              "pos": "",
+              "jyutping": null
+            },
+            {
+              "word": "係",
+              "pos": "v",
+              "jyutping": "hai6"
+            },
+            {
+              "word": "啊",
+              "pos": "y",
+              "jyutping": "aa3"
+            },
+            {
+              "word": ",",
+              "pos": "",
+              "jyutping": null
+            },
+            {
+              "word": "即係",
+              "pos": "c",
+              "jyutping": "zik1hai6"
+            },
+            {
+              "word": "總之",
+              "pos": "d",
+              "jyutping": "zung2zi1"
+            },
+            {
+              "word": "係",
+              "pos": "v",
+              "jyutping": "hai6"
+            },
+            {
+              "word": "打",
+              "pos": "v",
+              "jyutping": "daa2"
+            },
+            {
+              "word": "返",
+              "pos": "u",
+              "jyutping": "faan1"
+            },
+            {
+              "word": "去",
+              "pos": "v",
+              "jyutping": "heoi3"
+            },
+            {
+              "word": "promote",
+              "pos": "xv",
+              "jyutping": null
+            },
+            {
+              "word": ",",
+              "pos": "",
+              "jyutping": null
+            },
+            {
+              "word": "佢",
+              "pos": "r",
+              "jyutping": "keoi5"
+            },
+            {
+              "word": "都",
+              "pos": "d",
+              "jyutping": "dou1"
+            },
+            {
+              "word": "係",
+              "pos": "v",
+              "jyutping": "hai6"
+            },
+            {
+              "word": "話",
+              "pos": "v",
+              "jyutping": "waa6"
+            },
+            {
+              "word": "好",
+              "pos": "d",
+              "jyutping": "hou2"
+            },
+            {
+              "word": "高興",
+              "pos": "a",
+              "jyutping": "gou1hing3"
+            },
+            {
+              "word": "囖",
+              "pos": "y",
+              "jyutping": "lo1"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        }
+      },
+      "annotationStatus": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+      "tokenContext": {
+        "startTokenIndexZeroBased": 0,
+        "endTokenIndexExclusive": 8,
+        "tokens": [
+          {
+            "word": "因為",
+            "pos": "c",
+            "jyutping": "jan1wai6"
+          },
+          {
+            "word": "個個",
+            "pos": "q",
+            "jyutping": "go3go3"
+          },
+          {
+            "word": "都",
+            "pos": "d",
+            "jyutping": "dou1"
+          },
+          {
+            "word": "係",
+            "pos": "v",
+            "jyutping": "hai6"
+          },
+          {
+            "word": "噉",
+            "pos": "r",
+            "jyutping": "gam2"
+          },
+          {
+            "word": "講",
+            "pos": "v",
+            "jyutping": "gong2"
+          },
+          {
+            "word": "嘅",
+            "pos": "u",
+            "jyutping": "ge3"
+          },
+          {
+            "word": ".",
+            "pos": "",
+            "jyutping": null
+          }
+        ]
+      },
+      "duplicateGroupInputs": {
+        "repetitionShape": "exact_halves_token",
+        "repeatedSurface": "個個",
+        "markerSurface": "噉",
+        "predicateSurface": "講"
+      },
+      "repetitionShape": "exact_halves_token",
+      "repeatedSurface": "個個",
+      "baseSurface": "個",
+      "suffixSurface": null,
+      "aabbBases": null,
+      "repetitionStartIndexZeroBased": 1,
+      "repetitionEndIndexExclusive": 2,
+      "leftLexicalDistanceToMarker": 3,
+      "markerToken": {
+        "word": "噉",
+        "pos": "r",
+        "jyutping": "gam2",
+        "udPos": "PRON"
+      },
+      "markerSurface": "噉",
+      "markerJyutping": "gam2",
+      "markerHkcancorPos": "r",
+      "markerUdPos": "PRON",
+      "predicateCandidate": {
+        "tokenIndexZeroBased": 5,
+        "rightLexicalDistanceFromMarker": 1,
+        "word": "講",
+        "pos": "v",
+        "jyutping": "gong2",
+        "udPos": "VERB"
+      },
+      "rightLexicalDistanceFromMarker": 1,
+      "interveningLeftTokens": [
+        {
+          "word": "都",
+          "pos": "d",
+          "jyutping": "dou1",
+          "udPos": "ADV"
+        },
+        {
+          "word": "係",
+          "pos": "v",
+          "jyutping": "hai6",
+          "udPos": "VERB"
+        }
+      ],
+      "interveningRightTokens": [],
+      "mechanicallyAdjacentModifierMarker": false,
+      "mechanicallyAdjacentMarkerPredicate": true,
+      "leftWindowLexicalTokens": 3,
+      "rightWindowLexicalTokens": 3
+    },
+    {
+      "candidateId": "aa84gm-aa621193685b4148d549",
+      "queryId": "HKCANCOR-AA84-MARKED-REDUP-R1",
+      "candidateIdNamespace": "HKCANCOR-AA84-MARKED-REDUP-R1:aabb_token:噉",
+      "sourceFile": "FC-025_v.cha",
+      "sourceFileSha256": "de4c852f32310e64c446e91363e0db7332531bc8026287ddd750d7a6388f7131",
+      "fileIndexZeroBased": 12,
+      "turnIndexZeroBased": 303,
+      "tokenIndexZeroBased": 1,
+      "recordingDate": null,
+      "participant": "XXY",
+      "participantMetadata": {
+        "code": "XXY",
+        "name": "Y",
+        "role": "Adult",
+        "language": "yue , eng",
+        "l1": null,
+        "sex": "male",
+        "age": "23;"
+      },
+      "text": "符符碌碌噉俾你哋贏咗吖嗎.",
+      "tokens": [
+        {
+          "word": "符符碌碌",
+          "pos": "z",
+          "jyutping": "fu6fu6luk1luk1"
+        },
+        {
+          "word": "噉",
+          "pos": "r",
+          "jyutping": "gam2"
+        },
+        {
+          "word": "俾",
+          "pos": "v",
+          "jyutping": "bei2"
+        },
+        {
+          "word": "你哋",
+          "pos": "r",
+          "jyutping": "nei5dei6"
+        },
+        {
+          "word": "贏",
+          "pos": "v",
+          "jyutping": "jeng4"
+        },
+        {
+          "word": "咗",
+          "pos": "u",
+          "jyutping": "zo2"
+        },
+        {
+          "word": "吖",
+          "pos": "y",
+          "jyutping": "aa1"
+        },
+        {
+          "word": "嗎",
+          "pos": "y",
+          "jyutping": "maa3"
+        },
+        {
+          "word": ".",
+          "pos": "",
+          "jyutping": null
+        }
+      ],
+      "matchedSurfaceSpan": "符符碌碌噉俾",
+      "matchedTokens": [
+        {
+          "word": "符符碌碌",
+          "pos": "z",
+          "jyutping": "fu6fu6luk1luk1"
+        },
+        {
+          "word": "噉",
+          "pos": "r",
+          "jyutping": "gam2"
+        },
+        {
+          "word": "俾",
+          "pos": "v",
+          "jyutping": "bei2"
+        }
+      ],
+      "localContext": {
+        "previous": {
+          "turnIndexZeroBased": 302,
+          "participant": "XXX",
+          "text": "分分鐘代表公司出賽,第時攞埋冠軍.",
+          "tokens": [
+            {
+              "word": "分分鐘",
+              "pos": "l",
+              "jyutping": "fan1fan1zung1"
+            },
+            {
+              "word": "代表",
+              "pos": "v",
+              "jyutping": "doi6biu2"
+            },
+            {
+              "word": "公司",
+              "pos": "n",
+              "jyutping": "gung1si1"
+            },
+            {
+              "word": "出賽",
+              "pos": "v",
+              "jyutping": "ceot1coi3"
+            },
+            {
+              "word": ",",
+              "pos": "",
+              "jyutping": null
+            },
+            {
+              "word": "第時",
+              "pos": "t",
+              "jyutping": "dai6si4"
+            },
+            {
+              "word": "攞",
+              "pos": "v",
+              "jyutping": "lo2"
+            },
+            {
+              "word": "埋",
+              "pos": "u",
+              "jyutping": "maai4"
+            },
+            {
+              "word": "冠軍",
+              "pos": "n",
+              "jyutping": "gun3gwan1"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        },
+        "next": {
+          "turnIndexZeroBased": 304,
+          "participant": "XXX",
+          "text": "乜嘢符符碌碌啊?",
+          "tokens": [
+            {
+              "word": "乜嘢",
+              "pos": "r",
+              "jyutping": "mat1je5"
+            },
+            {
+              "word": "符符碌碌",
+              "pos": "z",
+              "jyutping": "fu6fu6luk1luk1"
+            },
+            {
+              "word": "啊",
+              "pos": "y",
+              "jyutping": "aa3"
+            },
+            {
+              "word": "?",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        }
+      },
+      "annotationStatus": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+      "tokenContext": {
+        "startTokenIndexZeroBased": 0,
+        "endTokenIndexExclusive": 9,
+        "tokens": [
+          {
+            "word": "符符碌碌",
+            "pos": "z",
+            "jyutping": "fu6fu6luk1luk1"
+          },
+          {
+            "word": "噉",
+            "pos": "r",
+            "jyutping": "gam2"
+          },
+          {
+            "word": "俾",
+            "pos": "v",
+            "jyutping": "bei2"
+          },
+          {
+            "word": "你哋",
+            "pos": "r",
+            "jyutping": "nei5dei6"
+          },
+          {
+            "word": "贏",
+            "pos": "v",
+            "jyutping": "jeng4"
+          },
+          {
+            "word": "咗",
+            "pos": "u",
+            "jyutping": "zo2"
+          },
+          {
+            "word": "吖",
+            "pos": "y",
+            "jyutping": "aa1"
+          },
+          {
+            "word": "嗎",
+            "pos": "y",
+            "jyutping": "maa3"
+          },
+          {
+            "word": ".",
+            "pos": "",
+            "jyutping": null
+          }
+        ]
+      },
+      "duplicateGroupInputs": {
+        "repetitionShape": "aabb_token",
+        "repeatedSurface": "符符碌碌",
+        "markerSurface": "噉",
+        "predicateSurface": "俾"
+      },
+      "repetitionShape": "aabb_token",
+      "repeatedSurface": "符符碌碌",
+      "baseSurface": null,
+      "suffixSurface": null,
+      "aabbBases": [
+        "符",
+        "碌"
+      ],
+      "repetitionStartIndexZeroBased": 0,
+      "repetitionEndIndexExclusive": 1,
+      "leftLexicalDistanceToMarker": 1,
+      "markerToken": {
+        "word": "噉",
+        "pos": "r",
+        "jyutping": "gam2",
+        "udPos": "PRON"
+      },
+      "markerSurface": "噉",
+      "markerJyutping": "gam2",
+      "markerHkcancorPos": "r",
+      "markerUdPos": "PRON",
+      "predicateCandidate": {
+        "tokenIndexZeroBased": 2,
+        "rightLexicalDistanceFromMarker": 1,
+        "word": "俾",
+        "pos": "v",
+        "jyutping": "bei2",
+        "udPos": "VERB"
+      },
+      "rightLexicalDistanceFromMarker": 1,
+      "interveningLeftTokens": [],
+      "interveningRightTokens": [],
+      "mechanicallyAdjacentModifierMarker": true,
+      "mechanicallyAdjacentMarkerPredicate": true,
+      "leftWindowLexicalTokens": 3,
+      "rightWindowLexicalTokens": 3
+    },
+    {
+      "candidateId": "aa84gm-1ce97ee109507f3e58ba",
+      "queryId": "HKCANCOR-AA84-MARKED-REDUP-R1",
+      "candidateIdNamespace": "HKCANCOR-AA84-MARKED-REDUP-R1:aabb_token:噉",
+      "sourceFile": "FC-025_v.cha",
+      "sourceFileSha256": "de4c852f32310e64c446e91363e0db7332531bc8026287ddd750d7a6388f7131",
+      "fileIndexZeroBased": 12,
+      "turnIndexZeroBased": 603,
+      "tokenIndexZeroBased": 8,
+      "recordingDate": null,
+      "participant": "XXY",
+      "participantMetadata": {
+        "code": "XXY",
+        "name": "Y",
+        "role": "Adult",
+        "language": "yue , eng",
+        "l1": null,
+        "sex": "male",
+        "age": "23;"
+      },
+      "text": "但係始終都係望落去就大大隻隻噉喇就覺得佢.",
+      "tokens": [
+        {
+          "word": "但係",
+          "pos": "c",
+          "jyutping": "daan6hai6"
+        },
+        {
+          "word": "始終",
+          "pos": "d",
+          "jyutping": "ci2zung1"
+        },
+        {
+          "word": "都",
+          "pos": "d",
+          "jyutping": "dou1"
+        },
+        {
+          "word": "係",
+          "pos": "v",
+          "jyutping": "hai6"
+        },
+        {
+          "word": "望",
+          "pos": "v",
+          "jyutping": "mong6"
+        },
+        {
+          "word": "落去",
+          "pos": "v",
+          "jyutping": "lok6heoi3"
+        },
+        {
+          "word": "就",
+          "pos": "d",
+          "jyutping": "zau6"
+        },
+        {
+          "word": "大大隻隻",
+          "pos": "z",
+          "jyutping": "daai6daai6zek3zek3"
+        },
+        {
+          "word": "噉",
+          "pos": "c",
+          "jyutping": "gam2"
+        },
+        {
+          "word": "喇",
+          "pos": "y",
+          "jyutping": "laa1"
+        },
+        {
+          "word": "就",
+          "pos": "d",
+          "jyutping": "zau6"
+        },
+        {
+          "word": "覺得",
+          "pos": "v",
+          "jyutping": "gok3dak1"
+        },
+        {
+          "word": "佢",
+          "pos": "r",
+          "jyutping": "keoi5"
+        },
+        {
+          "word": ".",
+          "pos": "",
+          "jyutping": null
+        }
+      ],
+      "matchedSurfaceSpan": "大大隻隻噉喇就覺得",
+      "matchedTokens": [
+        {
+          "word": "大大隻隻",
+          "pos": "z",
+          "jyutping": "daai6daai6zek3zek3"
+        },
+        {
+          "word": "噉",
+          "pos": "c",
+          "jyutping": "gam2"
+        },
+        {
+          "word": "喇",
+          "pos": "y",
+          "jyutping": "laa1"
+        },
+        {
+          "word": "就",
+          "pos": "d",
+          "jyutping": "zau6"
+        },
+        {
+          "word": "覺得",
+          "pos": "v",
+          "jyutping": "gok3dak1"
+        }
+      ],
+      "localContext": {
+        "previous": {
+          "turnIndexZeroBased": 602,
+          "participant": "XXY",
+          "text": "但係就唔係肥嗰隻囖.",
+          "tokens": [
+            {
+              "word": "但係",
+              "pos": "c",
+              "jyutping": "daan6hai6"
+            },
+            {
+              "word": "就",
+              "pos": "d",
+              "jyutping": "zau6"
+            },
+            {
+              "word": "唔係",
+              "pos": "v",
+              "jyutping": "m4hai6"
+            },
+            {
+              "word": "肥",
+              "pos": "a",
+              "jyutping": "fei4"
+            },
+            {
+              "word": "嗰",
+              "pos": "r",
+              "jyutping": "go2"
+            },
+            {
+              "word": "隻",
+              "pos": "q",
+              "jyutping": "zek3"
+            },
+            {
+              "word": "囖",
+              "pos": "y",
+              "jyutping": "lo1"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        },
+        "next": {
+          "turnIndexZeroBased": 604,
+          "participant": "XXX",
+          "text": "好核突.",
+          "tokens": [
+            {
+              "word": "好",
+              "pos": "d",
+              "jyutping": "hou2"
+            },
+            {
+              "word": "核突",
+              "pos": "a",
+              "jyutping": "wat6dat6"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        }
+      },
+      "annotationStatus": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+      "tokenContext": {
+        "startTokenIndexZeroBased": 0,
+        "endTokenIndexExclusive": 14,
+        "tokens": [
+          {
+            "word": "但係",
+            "pos": "c",
+            "jyutping": "daan6hai6"
+          },
+          {
+            "word": "始終",
+            "pos": "d",
+            "jyutping": "ci2zung1"
+          },
+          {
+            "word": "都",
+            "pos": "d",
+            "jyutping": "dou1"
+          },
+          {
+            "word": "係",
+            "pos": "v",
+            "jyutping": "hai6"
+          },
+          {
+            "word": "望",
+            "pos": "v",
+            "jyutping": "mong6"
+          },
+          {
+            "word": "落去",
+            "pos": "v",
+            "jyutping": "lok6heoi3"
+          },
+          {
+            "word": "就",
+            "pos": "d",
+            "jyutping": "zau6"
+          },
+          {
+            "word": "大大隻隻",
+            "pos": "z",
+            "jyutping": "daai6daai6zek3zek3"
+          },
+          {
+            "word": "噉",
+            "pos": "c",
+            "jyutping": "gam2"
+          },
+          {
+            "word": "喇",
+            "pos": "y",
+            "jyutping": "laa1"
+          },
+          {
+            "word": "就",
+            "pos": "d",
+            "jyutping": "zau6"
+          },
+          {
+            "word": "覺得",
+            "pos": "v",
+            "jyutping": "gok3dak1"
+          },
+          {
+            "word": "佢",
+            "pos": "r",
+            "jyutping": "keoi5"
+          },
+          {
+            "word": ".",
+            "pos": "",
+            "jyutping": null
+          }
+        ]
+      },
+      "duplicateGroupInputs": {
+        "repetitionShape": "aabb_token",
+        "repeatedSurface": "大大隻隻",
+        "markerSurface": "噉",
+        "predicateSurface": "覺得"
+      },
+      "repetitionShape": "aabb_token",
+      "repeatedSurface": "大大隻隻",
+      "baseSurface": null,
+      "suffixSurface": null,
+      "aabbBases": [
+        "大",
+        "隻"
+      ],
+      "repetitionStartIndexZeroBased": 7,
+      "repetitionEndIndexExclusive": 8,
+      "leftLexicalDistanceToMarker": 1,
+      "markerToken": {
+        "word": "噉",
+        "pos": "c",
+        "jyutping": "gam2",
+        "udPos": "CCONJ"
+      },
+      "markerSurface": "噉",
+      "markerJyutping": "gam2",
+      "markerHkcancorPos": "c",
+      "markerUdPos": "CCONJ",
+      "predicateCandidate": {
+        "tokenIndexZeroBased": 11,
+        "rightLexicalDistanceFromMarker": 3,
+        "word": "覺得",
+        "pos": "v",
+        "jyutping": "gok3dak1",
+        "udPos": "VERB"
+      },
+      "rightLexicalDistanceFromMarker": 3,
+      "interveningLeftTokens": [],
+      "interveningRightTokens": [
+        {
+          "word": "喇",
+          "pos": "y",
+          "jyutping": "laa1",
+          "udPos": "PART"
+        },
+        {
+          "word": "就",
+          "pos": "d",
+          "jyutping": "zau6",
+          "udPos": "ADV"
+        }
+      ],
+      "mechanicallyAdjacentModifierMarker": true,
+      "mechanicallyAdjacentMarkerPredicate": false,
+      "leftWindowLexicalTokens": 3,
+      "rightWindowLexicalTokens": 3
+    },
+    {
+      "candidateId": "aa84gm-aa080495ff27d693d52e",
+      "queryId": "HKCANCOR-AA84-MARKED-REDUP-R1",
+      "candidateIdNamespace": "HKCANCOR-AA84-MARKED-REDUP-R1:exact_halves_token:咁",
+      "sourceFile": "FC-028_v2.cha",
+      "sourceFileSha256": "1c64c3e02fa481dcad61f4e9c85b8efe724799e910fc96fc24504bf15be32d2a",
+      "fileIndexZeroBased": 15,
+      "turnIndexZeroBased": 449,
+      "tokenIndexZeroBased": 2,
+      "recordingDate": "1997-07-26",
+      "participant": "XXA",
+      "participantMetadata": {
+        "code": "XXA",
+        "name": "A",
+        "role": "Adult",
+        "language": "yue , eng",
+        "l1": null,
+        "sex": "female",
+        "age": "21;"
+      },
+      "text": "個個都咁勁啊.",
+      "tokens": [
+        {
+          "word": "個個",
+          "pos": "q",
+          "jyutping": "go3go3"
+        },
+        {
+          "word": "都",
+          "pos": "d",
+          "jyutping": "dou1"
+        },
+        {
+          "word": "咁",
+          "pos": "d",
+          "jyutping": "gam3"
+        },
+        {
+          "word": "勁",
+          "pos": "a",
+          "jyutping": "ging6"
+        },
+        {
+          "word": "啊",
+          "pos": "y",
+          "jyutping": "aa3"
+        },
+        {
+          "word": ".",
+          "pos": "",
+          "jyutping": null
+        }
+      ],
+      "matchedSurfaceSpan": "個個都咁勁",
+      "matchedTokens": [
+        {
+          "word": "個個",
+          "pos": "q",
+          "jyutping": "go3go3"
+        },
+        {
+          "word": "都",
+          "pos": "d",
+          "jyutping": "dou1"
+        },
+        {
+          "word": "咁",
+          "pos": "d",
+          "jyutping": "gam3"
+        },
+        {
+          "word": "勁",
+          "pos": "a",
+          "jyutping": "ging6"
+        }
+      ],
+      "localContext": {
+        "previous": {
+          "turnIndexZeroBased": 448,
+          "participant": "XXB",
+          "text": "邊個正啊?",
+          "tokens": [
+            {
+              "word": "邊個",
+              "pos": "r",
+              "jyutping": "bin1go3"
+            },
+            {
+              "word": "正",
+              "pos": "a",
+              "jyutping": "zeng3"
+            },
+            {
+              "word": "啊",
+              "pos": "y",
+              "jyutping": "aa3"
+            },
+            {
+              "word": "?",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        },
+        "next": {
+          "turnIndexZeroBased": 450,
+          "participant": "XXB",
+          "text": "你鍾意邊個唧?",
+          "tokens": [
+            {
+              "word": "你",
+              "pos": "r",
+              "jyutping": "nei5"
+            },
+            {
+              "word": "鍾意",
+              "pos": "v",
+              "jyutping": "zung1ji3"
+            },
+            {
+              "word": "邊個",
+              "pos": "r",
+              "jyutping": "bin1go3"
+            },
+            {
+              "word": "唧",
+              "pos": "y",
+              "jyutping": "zek1"
+            },
+            {
+              "word": "?",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        }
+      },
+      "annotationStatus": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+      "tokenContext": {
+        "startTokenIndexZeroBased": 0,
+        "endTokenIndexExclusive": 6,
+        "tokens": [
+          {
+            "word": "個個",
+            "pos": "q",
+            "jyutping": "go3go3"
+          },
+          {
+            "word": "都",
+            "pos": "d",
+            "jyutping": "dou1"
+          },
+          {
+            "word": "咁",
+            "pos": "d",
+            "jyutping": "gam3"
+          },
+          {
+            "word": "勁",
+            "pos": "a",
+            "jyutping": "ging6"
+          },
+          {
+            "word": "啊",
+            "pos": "y",
+            "jyutping": "aa3"
+          },
+          {
+            "word": ".",
+            "pos": "",
+            "jyutping": null
+          }
+        ]
+      },
+      "duplicateGroupInputs": {
+        "repetitionShape": "exact_halves_token",
+        "repeatedSurface": "個個",
+        "markerSurface": "咁",
+        "predicateSurface": "勁"
+      },
+      "repetitionShape": "exact_halves_token",
+      "repeatedSurface": "個個",
+      "baseSurface": "個",
+      "suffixSurface": null,
+      "aabbBases": null,
+      "repetitionStartIndexZeroBased": 0,
+      "repetitionEndIndexExclusive": 1,
+      "leftLexicalDistanceToMarker": 2,
+      "markerToken": {
+        "word": "咁",
+        "pos": "d",
+        "jyutping": "gam3",
+        "udPos": "ADV"
+      },
+      "markerSurface": "咁",
+      "markerJyutping": "gam3",
+      "markerHkcancorPos": "d",
+      "markerUdPos": "ADV",
+      "predicateCandidate": {
+        "tokenIndexZeroBased": 3,
+        "rightLexicalDistanceFromMarker": 1,
+        "word": "勁",
+        "pos": "a",
+        "jyutping": "ging6",
+        "udPos": "ADJ"
+      },
+      "rightLexicalDistanceFromMarker": 1,
+      "interveningLeftTokens": [
+        {
+          "word": "都",
+          "pos": "d",
+          "jyutping": "dou1",
+          "udPos": "ADV"
+        }
+      ],
+      "interveningRightTokens": [],
+      "mechanicallyAdjacentModifierMarker": false,
+      "mechanicallyAdjacentMarkerPredicate": true,
+      "leftWindowLexicalTokens": 3,
+      "rightWindowLexicalTokens": 3
+    },
+    {
+      "candidateId": "aa84gm-0a7f768513f1e7785164",
+      "queryId": "HKCANCOR-AA84-MARKED-REDUP-R1",
+      "candidateIdNamespace": "HKCANCOR-AA84-MARKED-REDUP-R1:exact_halves_token:咁",
+      "sourceFile": "FC-028_v2.cha",
+      "sourceFileSha256": "1c64c3e02fa481dcad61f4e9c85b8efe724799e910fc96fc24504bf15be32d2a",
+      "fileIndexZeroBased": 15,
+      "turnIndexZeroBased": 451,
+      "tokenIndexZeroBased": 2,
+      "recordingDate": "1997-07-26",
+      "participant": "XXA",
+      "participantMetadata": {
+        "code": "XXA",
+        "name": "A",
+        "role": "Adult",
+        "language": "yue , eng",
+        "l1": null,
+        "sex": "female",
+        "age": "21;"
+      },
+      "text": "個個都咁勁.",
+      "tokens": [
+        {
+          "word": "個個",
+          "pos": "q",
+          "jyutping": "go3go3"
+        },
+        {
+          "word": "都",
+          "pos": "d",
+          "jyutping": "dou1"
+        },
+        {
+          "word": "咁",
+          "pos": "d",
+          "jyutping": "gam3"
+        },
+        {
+          "word": "勁",
+          "pos": "a",
+          "jyutping": "ging6"
+        },
+        {
+          "word": ".",
+          "pos": "",
+          "jyutping": null
+        }
+      ],
+      "matchedSurfaceSpan": "個個都咁勁",
+      "matchedTokens": [
+        {
+          "word": "個個",
+          "pos": "q",
+          "jyutping": "go3go3"
+        },
+        {
+          "word": "都",
+          "pos": "d",
+          "jyutping": "dou1"
+        },
+        {
+          "word": "咁",
+          "pos": "d",
+          "jyutping": "gam3"
+        },
+        {
+          "word": "勁",
+          "pos": "a",
+          "jyutping": "ging6"
+        }
+      ],
+      "localContext": {
+        "previous": {
+          "turnIndexZeroBased": 450,
+          "participant": "XXB",
+          "text": "你鍾意邊個唧?",
+          "tokens": [
+            {
+              "word": "你",
+              "pos": "r",
+              "jyutping": "nei5"
+            },
+            {
+              "word": "鍾意",
+              "pos": "v",
+              "jyutping": "zung1ji3"
+            },
+            {
+              "word": "邊個",
+              "pos": "r",
+              "jyutping": "bin1go3"
+            },
+            {
+              "word": "唧",
+              "pos": "y",
+              "jyutping": "zek1"
+            },
+            {
+              "word": "?",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        },
+        "next": {
+          "turnIndexZeroBased": 452,
+          "participant": "XXB",
+          "text": "你鍾意邊個唧?",
+          "tokens": [
+            {
+              "word": "你",
+              "pos": "r",
+              "jyutping": "nei5"
+            },
+            {
+              "word": "鍾意",
+              "pos": "v",
+              "jyutping": "zung1ji3"
+            },
+            {
+              "word": "邊個",
+              "pos": "r",
+              "jyutping": "bin1go3"
+            },
+            {
+              "word": "唧",
+              "pos": "y",
+              "jyutping": "zek1"
+            },
+            {
+              "word": "?",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        }
+      },
+      "annotationStatus": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+      "tokenContext": {
+        "startTokenIndexZeroBased": 0,
+        "endTokenIndexExclusive": 5,
+        "tokens": [
+          {
+            "word": "個個",
+            "pos": "q",
+            "jyutping": "go3go3"
+          },
+          {
+            "word": "都",
+            "pos": "d",
+            "jyutping": "dou1"
+          },
+          {
+            "word": "咁",
+            "pos": "d",
+            "jyutping": "gam3"
+          },
+          {
+            "word": "勁",
+            "pos": "a",
+            "jyutping": "ging6"
+          },
+          {
+            "word": ".",
+            "pos": "",
+            "jyutping": null
+          }
+        ]
+      },
+      "duplicateGroupInputs": {
+        "repetitionShape": "exact_halves_token",
+        "repeatedSurface": "個個",
+        "markerSurface": "咁",
+        "predicateSurface": "勁"
+      },
+      "repetitionShape": "exact_halves_token",
+      "repeatedSurface": "個個",
+      "baseSurface": "個",
+      "suffixSurface": null,
+      "aabbBases": null,
+      "repetitionStartIndexZeroBased": 0,
+      "repetitionEndIndexExclusive": 1,
+      "leftLexicalDistanceToMarker": 2,
+      "markerToken": {
+        "word": "咁",
+        "pos": "d",
+        "jyutping": "gam3",
+        "udPos": "ADV"
+      },
+      "markerSurface": "咁",
+      "markerJyutping": "gam3",
+      "markerHkcancorPos": "d",
+      "markerUdPos": "ADV",
+      "predicateCandidate": {
+        "tokenIndexZeroBased": 3,
+        "rightLexicalDistanceFromMarker": 1,
+        "word": "勁",
+        "pos": "a",
+        "jyutping": "ging6",
+        "udPos": "ADJ"
+      },
+      "rightLexicalDistanceFromMarker": 1,
+      "interveningLeftTokens": [
+        {
+          "word": "都",
+          "pos": "d",
+          "jyutping": "dou1",
+          "udPos": "ADV"
+        }
+      ],
+      "interveningRightTokens": [],
+      "mechanicallyAdjacentModifierMarker": false,
+      "mechanicallyAdjacentMarkerPredicate": true,
+      "leftWindowLexicalTokens": 3,
+      "rightWindowLexicalTokens": 3
+    },
+    {
+      "candidateId": "aa84gm-687865c3c482cc5530b3",
+      "queryId": "HKCANCOR-AA84-MARKED-REDUP-R1",
+      "candidateIdNamespace": "HKCANCOR-AA84-MARKED-REDUP-R1:exact_halves_token:咁",
+      "sourceFile": "FC-029_v.cha",
+      "sourceFileSha256": "f2a94065a152941f5cea9ec552fd343fb65c0c8532dda4c7b5b914b449d06f86",
+      "fileIndexZeroBased": 16,
+      "turnIndexZeroBased": 267,
+      "tokenIndexZeroBased": 12,
+      "recordingDate": "1997-07-28",
+      "participant": "XXA",
+      "participantMetadata": {
+        "code": "XXA",
+        "name": "A",
+        "role": "Adult",
+        "language": "yue , eng",
+        "l1": null,
+        "sex": "female",
+        "age": "21;"
+      },
+      "text": "噉𠻺係,你啱啱新牌又揸架c.c.咁大嘅.",
+      "tokens": [
+        {
+          "word": "噉",
+          "pos": "c",
+          "jyutping": "gam2"
+        },
+        {
+          "word": "𠻺",
+          "pos": "d",
+          "jyutping": "aa6"
+        },
+        {
+          "word": "係",
+          "pos": "v",
+          "jyutping": "hai6"
+        },
+        {
+          "word": ",",
+          "pos": "",
+          "jyutping": null
+        },
+        {
+          "word": "你",
+          "pos": "r",
+          "jyutping": "nei5"
+        },
+        {
+          "word": "啱啱",
+          "pos": "d",
+          "jyutping": "ngaam1ngaam1"
+        },
+        {
+          "word": "新",
+          "pos": "a",
+          "jyutping": "san1"
+        },
+        {
+          "word": "牌",
+          "pos": "n",
+          "jyutping": "paai4"
+        },
+        {
+          "word": "又",
+          "pos": "d",
+          "jyutping": "jau6"
+        },
+        {
+          "word": "揸",
+          "pos": "v",
+          "jyutping": "zaa1"
+        },
+        {
+          "word": "架",
+          "pos": "q",
+          "jyutping": "gaa3"
+        },
+        {
+          "word": "c.c.",
+          "pos": "xq",
+          "jyutping": null
+        },
+        {
+          "word": "咁",
+          "pos": "d",
+          "jyutping": "gam3"
+        },
+        {
+          "word": "大",
+          "pos": "a",
+          "jyutping": "daai6"
+        },
+        {
+          "word": "嘅",
+          "pos": "u",
+          "jyutping": "ge3"
+        },
+        {
+          "word": ".",
+          "pos": "",
+          "jyutping": null
+        }
+      ],
+      "matchedSurfaceSpan": "c.c.咁大",
+      "matchedTokens": [
+        {
+          "word": "c.c.",
+          "pos": "xq",
+          "jyutping": null
+        },
+        {
+          "word": "咁",
+          "pos": "d",
+          "jyutping": "gam3"
+        },
+        {
+          "word": "大",
+          "pos": "a",
+          "jyutping": "daai6"
+        }
+      ],
+      "localContext": {
+        "previous": {
+          "turnIndexZeroBased": 266,
+          "participant": "XXS",
+          "text": "唔知啊,唔想買架千六囖,佢話.",
+          "tokens": [
+            {
+              "word": "唔",
+              "pos": "d",
+              "jyutping": "m4"
+            },
+            {
+              "word": "知",
+              "pos": "v",
+              "jyutping": "zi1"
+            },
+            {
+              "word": "啊",
+              "pos": "y",
+              "jyutping": "aa3"
+            },
+            {
+              "word": ",",
+              "pos": "",
+              "jyutping": null
+            },
+            {
+              "word": "唔",
+              "pos": "d",
+              "jyutping": "m4"
+            },
+            {
+              "word": "想",
+              "pos": "vu",
+              "jyutping": "soeng2"
+            },
+            {
+              "word": "買",
+              "pos": "v",
+              "jyutping": "maai5"
+            },
+            {
+              "word": "架",
+              "pos": "q",
+              "jyutping": "gaa3"
+            },
+            {
+              "word": "千六",
+              "pos": "m",
+              "jyutping": "cin1luk6"
+            },
+            {
+              "word": "囖",
+              "pos": "y",
+              "jyutping": "lo1"
+            },
+            {
+              "word": ",",
+              "pos": "",
+              "jyutping": null
+            },
+            {
+              "word": "佢",
+              "pos": "r",
+              "jyutping": "keoi5"
+            },
+            {
+              "word": "話",
+              "pos": "v",
+              "jyutping": "waa6"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        },
+        "next": {
+          "turnIndexZeroBased": 268,
+          "participant": "XXS",
+          "text": "係喇.",
+          "tokens": [
+            {
+              "word": "係",
+              "pos": "v",
+              "jyutping": "hai6"
+            },
+            {
+              "word": "喇",
+              "pos": "y",
+              "jyutping": "laa1"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        }
+      },
+      "annotationStatus": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+      "tokenContext": {
+        "startTokenIndexZeroBased": 3,
+        "endTokenIndexExclusive": 16,
+        "tokens": [
+          {
+            "word": ",",
+            "pos": "",
+            "jyutping": null
+          },
+          {
+            "word": "你",
+            "pos": "r",
+            "jyutping": "nei5"
+          },
+          {
+            "word": "啱啱",
+            "pos": "d",
+            "jyutping": "ngaam1ngaam1"
+          },
+          {
+            "word": "新",
+            "pos": "a",
+            "jyutping": "san1"
+          },
+          {
+            "word": "牌",
+            "pos": "n",
+            "jyutping": "paai4"
+          },
+          {
+            "word": "又",
+            "pos": "d",
+            "jyutping": "jau6"
+          },
+          {
+            "word": "揸",
+            "pos": "v",
+            "jyutping": "zaa1"
+          },
+          {
+            "word": "架",
+            "pos": "q",
+            "jyutping": "gaa3"
+          },
+          {
+            "word": "c.c.",
+            "pos": "xq",
+            "jyutping": null
+          },
+          {
+            "word": "咁",
+            "pos": "d",
+            "jyutping": "gam3"
+          },
+          {
+            "word": "大",
+            "pos": "a",
+            "jyutping": "daai6"
+          },
+          {
+            "word": "嘅",
+            "pos": "u",
+            "jyutping": "ge3"
+          },
+          {
+            "word": ".",
+            "pos": "",
+            "jyutping": null
+          }
+        ]
+      },
+      "duplicateGroupInputs": {
+        "repetitionShape": "exact_halves_token",
+        "repeatedSurface": "c.c.",
+        "markerSurface": "咁",
+        "predicateSurface": "大"
+      },
+      "repetitionShape": "exact_halves_token",
+      "repeatedSurface": "c.c.",
+      "baseSurface": "c.",
+      "suffixSurface": null,
+      "aabbBases": null,
+      "repetitionStartIndexZeroBased": 11,
+      "repetitionEndIndexExclusive": 12,
+      "leftLexicalDistanceToMarker": 1,
+      "markerToken": {
+        "word": "咁",
+        "pos": "d",
+        "jyutping": "gam3",
+        "udPos": "ADV"
+      },
+      "markerSurface": "咁",
+      "markerJyutping": "gam3",
+      "markerHkcancorPos": "d",
+      "markerUdPos": "ADV",
+      "predicateCandidate": {
+        "tokenIndexZeroBased": 13,
+        "rightLexicalDistanceFromMarker": 1,
+        "word": "大",
+        "pos": "a",
+        "jyutping": "daai6",
+        "udPos": "ADJ"
+      },
+      "rightLexicalDistanceFromMarker": 1,
+      "interveningLeftTokens": [],
+      "interveningRightTokens": [],
+      "mechanicallyAdjacentModifierMarker": true,
+      "mechanicallyAdjacentMarkerPredicate": true,
+      "leftWindowLexicalTokens": 3,
+      "rightWindowLexicalTokens": 3
+    },
+    {
+      "candidateId": "aa84gm-32446175225ab6a72c7d",
+      "queryId": "HKCANCOR-AA84-MARKED-REDUP-R1",
+      "candidateIdNamespace": "HKCANCOR-AA84-MARKED-REDUP-R1:exact_halves_token:咁",
+      "sourceFile": "FC-029_v.cha",
+      "sourceFileSha256": "f2a94065a152941f5cea9ec552fd343fb65c0c8532dda4c7b5b914b449d06f86",
+      "fileIndexZeroBased": 16,
+      "turnIndexZeroBased": 376,
+      "tokenIndexZeroBased": 19,
+      "recordingDate": "1997-07-28",
+      "participant": "XXA",
+      "participantMetadata": {
+        "code": "XXA",
+        "name": "A",
+        "role": "Adult",
+        "language": "yue , eng",
+        "l1": null,
+        "sex": "female",
+        "age": "21;"
+      },
+      "text": "但係而家唔知係唔係呢因為朝頭早起身呢太早啊,又要日日都咁早起身呢.",
+      "tokens": [
+        {
+          "word": "但係",
+          "pos": "c",
+          "jyutping": "daan6hai6"
+        },
+        {
+          "word": "而家",
+          "pos": "t",
+          "jyutping": "ji4gaa1"
+        },
+        {
+          "word": "唔",
+          "pos": "d",
+          "jyutping": "m4"
+        },
+        {
+          "word": "知",
+          "pos": "v",
+          "jyutping": "zi1"
+        },
+        {
+          "word": "係",
+          "pos": "v",
+          "jyutping": "hai6"
+        },
+        {
+          "word": "唔係",
+          "pos": "v",
+          "jyutping": "m4hai6"
+        },
+        {
+          "word": "呢",
+          "pos": "y1",
+          "jyutping": "ne1"
+        },
+        {
+          "word": "因為",
+          "pos": "c",
+          "jyutping": "jan1wai6"
+        },
+        {
+          "word": "朝頭早",
+          "pos": "t",
+          "jyutping": "ziu1tau4zou2"
+        },
+        {
+          "word": "起身",
+          "pos": "v",
+          "jyutping": "hei2san1"
+        },
+        {
+          "word": "呢",
+          "pos": "y1",
+          "jyutping": "ne1"
+        },
+        {
+          "word": "太",
+          "pos": "d",
+          "jyutping": "taai3"
+        },
+        {
+          "word": "早",
+          "pos": "a",
+          "jyutping": "zou2"
+        },
+        {
+          "word": "啊",
+          "pos": "y",
+          "jyutping": "aa3"
+        },
+        {
+          "word": ",",
+          "pos": "",
+          "jyutping": null
+        },
+        {
+          "word": "又",
+          "pos": "d",
+          "jyutping": "jau6"
+        },
+        {
+          "word": "要",
+          "pos": "vu",
+          "jyutping": "jiu3"
+        },
+        {
+          "word": "日日",
+          "pos": "q",
+          "jyutping": "jat6jat6"
+        },
+        {
+          "word": "都",
+          "pos": "d",
+          "jyutping": "dou1"
+        },
+        {
+          "word": "咁",
+          "pos": "d",
+          "jyutping": "gam3"
+        },
+        {
+          "word": "早",
+          "pos": "a",
+          "jyutping": "zou2"
+        },
+        {
+          "word": "起身",
+          "pos": "v",
+          "jyutping": "hei2san1"
+        },
+        {
+          "word": "呢",
+          "pos": "y",
+          "jyutping": "ne1"
+        },
+        {
+          "word": ".",
+          "pos": "",
+          "jyutping": null
+        }
+      ],
+      "matchedSurfaceSpan": "日日都咁早",
+      "matchedTokens": [
+        {
+          "word": "日日",
+          "pos": "q",
+          "jyutping": "jat6jat6"
+        },
+        {
+          "word": "都",
+          "pos": "d",
+          "jyutping": "dou1"
+        },
+        {
+          "word": "咁",
+          "pos": "d",
+          "jyutping": "gam3"
+        },
+        {
+          "word": "早",
+          "pos": "a",
+          "jyutping": "zou2"
+        }
+      ],
+      "localContext": {
+        "previous": {
+          "turnIndexZeroBased": 375,
+          "participant": "XXS",
+          "text": "咪係囖,真係吖.",
+          "tokens": [
+            {
+              "word": "咪",
+              "pos": "d",
+              "jyutping": "mai6"
+            },
+            {
+              "word": "係",
+              "pos": "v",
+              "jyutping": "hai6"
+            },
+            {
+              "word": "囖",
+              "pos": "y",
+              "jyutping": "lo1"
+            },
+            {
+              "word": ",",
+              "pos": "",
+              "jyutping": null
+            },
+            {
+              "word": "真係",
+              "pos": "d",
+              "jyutping": "zan1hai6"
+            },
+            {
+              "word": "吖",
+              "pos": "y",
+              "jyutping": "aa1"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        },
+        "next": {
+          "turnIndexZeroBased": 377,
+          "participant": "XXS",
+          "text": "幾點起身啊?",
+          "tokens": [
+            {
+              "word": "幾點",
+              "pos": "r",
+              "jyutping": "gei2dim2"
+            },
+            {
+              "word": "起身",
+              "pos": "v",
+              "jyutping": "hei2san1"
+            },
+            {
+              "word": "啊",
+              "pos": "y",
+              "jyutping": "aa3"
+            },
+            {
+              "word": "?",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        }
+      },
+      "annotationStatus": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+      "tokenContext": {
+        "startTokenIndexZeroBased": 9,
+        "endTokenIndexExclusive": 24,
+        "tokens": [
+          {
+            "word": "起身",
+            "pos": "v",
+            "jyutping": "hei2san1"
+          },
+          {
+            "word": "呢",
+            "pos": "y1",
+            "jyutping": "ne1"
+          },
+          {
+            "word": "太",
+            "pos": "d",
+            "jyutping": "taai3"
+          },
+          {
+            "word": "早",
+            "pos": "a",
+            "jyutping": "zou2"
+          },
+          {
+            "word": "啊",
+            "pos": "y",
+            "jyutping": "aa3"
+          },
+          {
+            "word": ",",
+            "pos": "",
+            "jyutping": null
+          },
+          {
+            "word": "又",
+            "pos": "d",
+            "jyutping": "jau6"
+          },
+          {
+            "word": "要",
+            "pos": "vu",
+            "jyutping": "jiu3"
+          },
+          {
+            "word": "日日",
+            "pos": "q",
+            "jyutping": "jat6jat6"
+          },
+          {
+            "word": "都",
+            "pos": "d",
+            "jyutping": "dou1"
+          },
+          {
+            "word": "咁",
+            "pos": "d",
+            "jyutping": "gam3"
+          },
+          {
+            "word": "早",
+            "pos": "a",
+            "jyutping": "zou2"
+          },
+          {
+            "word": "起身",
+            "pos": "v",
+            "jyutping": "hei2san1"
+          },
+          {
+            "word": "呢",
+            "pos": "y",
+            "jyutping": "ne1"
+          },
+          {
+            "word": ".",
+            "pos": "",
+            "jyutping": null
+          }
+        ]
+      },
+      "duplicateGroupInputs": {
+        "repetitionShape": "exact_halves_token",
+        "repeatedSurface": "日日",
+        "markerSurface": "咁",
+        "predicateSurface": "早"
+      },
+      "repetitionShape": "exact_halves_token",
+      "repeatedSurface": "日日",
+      "baseSurface": "日",
+      "suffixSurface": null,
+      "aabbBases": null,
+      "repetitionStartIndexZeroBased": 17,
+      "repetitionEndIndexExclusive": 18,
+      "leftLexicalDistanceToMarker": 2,
+      "markerToken": {
+        "word": "咁",
+        "pos": "d",
+        "jyutping": "gam3",
+        "udPos": "ADV"
+      },
+      "markerSurface": "咁",
+      "markerJyutping": "gam3",
+      "markerHkcancorPos": "d",
+      "markerUdPos": "ADV",
+      "predicateCandidate": {
+        "tokenIndexZeroBased": 20,
+        "rightLexicalDistanceFromMarker": 1,
+        "word": "早",
+        "pos": "a",
+        "jyutping": "zou2",
+        "udPos": "ADJ"
+      },
+      "rightLexicalDistanceFromMarker": 1,
+      "interveningLeftTokens": [
+        {
+          "word": "都",
+          "pos": "d",
+          "jyutping": "dou1",
+          "udPos": "ADV"
+        }
+      ],
+      "interveningRightTokens": [],
+      "mechanicallyAdjacentModifierMarker": false,
+      "mechanicallyAdjacentMarkerPredicate": true,
+      "leftWindowLexicalTokens": 3,
+      "rightWindowLexicalTokens": 3
+    },
+    {
+      "candidateId": "aa84gm-22cd8114636903a47087",
+      "queryId": "HKCANCOR-AA84-MARKED-REDUP-R1",
+      "candidateIdNamespace": "HKCANCOR-AA84-MARKED-REDUP-R1:repeated_prefix_token:噉",
+      "sourceFile": "FC-035_v2.cha",
+      "sourceFileSha256": "ddb29bab01e3e932a9a80ffb3342df28e08dfc77d7f4527f5fc39d5a25ea4f5b",
+      "fileIndexZeroBased": 18,
+      "turnIndexZeroBased": 26,
+      "tokenIndexZeroBased": 6,
+      "recordingDate": "1997-08-05",
+      "participant": "XXX",
+      "participantMetadata": {
+        "code": "XXX"
+      },
+      "text": "噉又唔知點解嗱嗱臨噉呢攞啲錢出來喎.",
+      "tokens": [
+        {
+          "word": "噉",
+          "pos": "c",
+          "jyutping": "gam2"
+        },
+        {
+          "word": "又",
+          "pos": "d",
+          "jyutping": "jau6"
+        },
+        {
+          "word": "唔",
+          "pos": "d",
+          "jyutping": "m4"
+        },
+        {
+          "word": "知",
+          "pos": "v",
+          "jyutping": "zi1"
+        },
+        {
+          "word": "點解",
+          "pos": "r",
+          "jyutping": "dim2gaai2"
+        },
+        {
+          "word": "嗱嗱臨",
+          "pos": "z",
+          "jyutping": "naa4naa4lam4"
+        },
+        {
+          "word": "噉",
+          "pos": "r",
+          "jyutping": "gam2"
+        },
+        {
+          "word": "呢",
+          "pos": "y1",
+          "jyutping": "ne1"
+        },
+        {
+          "word": "攞",
+          "pos": "v",
+          "jyutping": "lo2"
+        },
+        {
+          "word": "啲",
+          "pos": "q",
+          "jyutping": "di1"
+        },
+        {
+          "word": "錢",
+          "pos": "n",
+          "jyutping": "cin2"
+        },
+        {
+          "word": "出來",
+          "pos": "v",
+          "jyutping": "ceot1lai4"
+        },
+        {
+          "word": "喎",
+          "pos": "y",
+          "jyutping": "wo3"
+        },
+        {
+          "word": ".",
+          "pos": "",
+          "jyutping": null
+        }
+      ],
+      "matchedSurfaceSpan": "嗱嗱臨噉呢攞",
+      "matchedTokens": [
+        {
+          "word": "嗱嗱臨",
+          "pos": "z",
+          "jyutping": "naa4naa4lam4"
+        },
+        {
+          "word": "噉",
+          "pos": "r",
+          "jyutping": "gam2"
+        },
+        {
+          "word": "呢",
+          "pos": "y1",
+          "jyutping": "ne1"
+        },
+        {
+          "word": "攞",
+          "pos": "v",
+          "jyutping": "lo2"
+        }
+      ],
+      "localContext": {
+        "previous": {
+          "turnIndexZeroBased": 25,
+          "participant": "XXX",
+          "text": "跟住我哋都依然不以為意,噉佢於-於是乎,但係我又唔係好明點解佢問我哋邊度有錢暢囖.",
+          "tokens": [
+            {
+              "word": "跟住",
+              "pos": "c",
+              "jyutping": "gan1zyu6"
+            },
+            {
+              "word": "我哋",
+              "pos": "r",
+              "jyutping": "ngo5dei6"
+            },
+            {
+              "word": "都",
+              "pos": "d",
+              "jyutping": "dou1"
+            },
+            {
+              "word": "依然",
+              "pos": "d",
+              "jyutping": "ji1jin4"
+            },
+            {
+              "word": "不以為意",
+              "pos": "i",
+              "jyutping": "bat1ji5wai4ji3"
+            },
+            {
+              "word": ",",
+              "pos": "",
+              "jyutping": null
+            },
+            {
+              "word": "噉",
+              "pos": "c",
+              "jyutping": "gam2"
+            },
+            {
+              "word": "佢",
+              "pos": "r",
+              "jyutping": "keoi5"
+            },
+            {
+              "word": "於",
+              "pos": "Cg",
+              "jyutping": "jyu1"
+            },
+            {
+              "word": "-",
+              "pos": "",
+              "jyutping": null
+            },
+            {
+              "word": "於是乎",
+              "pos": "c",
+              "jyutping": "jyu1si6fu4"
+            },
+            {
+              "word": ",",
+              "pos": "",
+              "jyutping": null
+            },
+            {
+              "word": "但係",
+              "pos": "c",
+              "jyutping": "daan6hai6"
+            },
+            {
+              "word": "我",
+              "pos": "r",
+              "jyutping": "ngo5"
+            },
+            {
+              "word": "又",
+              "pos": "d",
+              "jyutping": "jau6"
+            },
+            {
+              "word": "唔係",
+              "pos": "v",
+              "jyutping": "m4hai6"
+            },
+            {
+              "word": "好",
+              "pos": "d",
+              "jyutping": "hou2"
+            },
+            {
+              "word": "明",
+              "pos": "v",
+              "jyutping": "ming4"
+            },
+            {
+              "word": "點解",
+              "pos": "r",
+              "jyutping": "dim2gaai2"
+            },
+            {
+              "word": "佢",
+              "pos": "r",
+              "jyutping": "keoi5"
+            },
+            {
+              "word": "問",
+              "pos": "v",
+              "jyutping": "man6"
+            },
+            {
+              "word": "我哋",
+              "pos": "r",
+              "jyutping": "ngo5dei6"
+            },
+            {
+              "word": "邊度",
+              "pos": "r",
+              "jyutping": "bin1dou6"
+            },
+            {
+              "word": "有",
+              "pos": "v1",
+              "jyutping": "jau5"
+            },
+            {
+              "word": "錢",
+              "pos": "n",
+              "jyutping": "cin2"
+            },
+            {
+              "word": "暢",
+              "pos": "v",
+              "jyutping": "coeng3"
+            },
+            {
+              "word": "囖",
+              "pos": "y",
+              "jyutping": "lo1"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        },
+        "next": {
+          "turnIndexZeroBased": 27,
+          "participant": "XXX",
+          "text": "跟住呢,就有兩個話係佢哋係警察嘅人呢就走埋來囖,噉,於是乎話我哋非法喺度暢錢喎.",
+          "tokens": [
+            {
+              "word": "跟住",
+              "pos": "c",
+              "jyutping": "gan1zyu6"
+            },
+            {
+              "word": "呢",
+              "pos": "y1",
+              "jyutping": "ne1"
+            },
+            {
+              "word": ",",
+              "pos": "",
+              "jyutping": null
+            },
+            {
+              "word": "就",
+              "pos": "d",
+              "jyutping": "zau6"
+            },
+            {
+              "word": "有",
+              "pos": "v1",
+              "jyutping": "jau5"
+            },
+            {
+              "word": "兩",
+              "pos": "m",
+              "jyutping": "loeng5"
+            },
+            {
+              "word": "個",
+              "pos": "q",
+              "jyutping": "go3"
+            },
+            {
+              "word": "話",
+              "pos": "v",
+              "jyutping": "waa6"
+            },
+            {
+              "word": "係",
+              "pos": "v",
+              "jyutping": "hai6"
+            },
+            {
+              "word": "佢哋",
+              "pos": "r",
+              "jyutping": "keoi5dei6"
+            },
+            {
+              "word": "係",
+              "pos": "v",
+              "jyutping": "hai6"
+            },
+            {
+              "word": "警察",
+              "pos": "n",
+              "jyutping": "ging2caat3"
+            },
+            {
+              "word": "嘅",
+              "pos": "u",
+              "jyutping": "ge3"
+            },
+            {
+              "word": "人",
+              "pos": "n",
+              "jyutping": "jan4"
+            },
+            {
+              "word": "呢",
+              "pos": "y1",
+              "jyutping": "ne1"
+            },
+            {
+              "word": "就",
+              "pos": "d",
+              "jyutping": "zau6"
+            },
+            {
+              "word": "走",
+              "pos": "v",
+              "jyutping": "zau2"
+            },
+            {
+              "word": "埋來",
+              "pos": "v",
+              "jyutping": "maai4lai4"
+            },
+            {
+              "word": "囖",
+              "pos": "y",
+              "jyutping": "lo1"
+            },
+            {
+              "word": ",",
+              "pos": "",
+              "jyutping": null
+            },
+            {
+              "word": "噉",
+              "pos": "c",
+              "jyutping": "gam2"
+            },
+            {
+              "word": ",",
+              "pos": "",
+              "jyutping": null
+            },
+            {
+              "word": "於是乎",
+              "pos": "c",
+              "jyutping": "jyu1si6fu4"
+            },
+            {
+              "word": "話",
+              "pos": "v",
+              "jyutping": "waa6"
+            },
+            {
+              "word": "我哋",
+              "pos": "r",
+              "jyutping": "ngo5dei6"
+            },
+            {
+              "word": "非法",
+              "pos": "a",
+              "jyutping": "fei1faat3"
+            },
+            {
+              "word": "喺度",
+              "pos": "d",
+              "jyutping": "hai2dou6"
+            },
+            {
+              "word": "暢",
+              "pos": "v",
+              "jyutping": "coeng3"
+            },
+            {
+              "word": "錢",
+              "pos": "n",
+              "jyutping": "cin2"
+            },
+            {
+              "word": "喎",
+              "pos": "y",
+              "jyutping": "wo3"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        }
+      },
+      "annotationStatus": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+      "tokenContext": {
+        "startTokenIndexZeroBased": 0,
+        "endTokenIndexExclusive": 14,
+        "tokens": [
+          {
+            "word": "噉",
+            "pos": "c",
+            "jyutping": "gam2"
+          },
+          {
+            "word": "又",
+            "pos": "d",
+            "jyutping": "jau6"
+          },
+          {
+            "word": "唔",
+            "pos": "d",
+            "jyutping": "m4"
+          },
+          {
+            "word": "知",
+            "pos": "v",
+            "jyutping": "zi1"
+          },
+          {
+            "word": "點解",
+            "pos": "r",
+            "jyutping": "dim2gaai2"
+          },
+          {
+            "word": "嗱嗱臨",
+            "pos": "z",
+            "jyutping": "naa4naa4lam4"
+          },
+          {
+            "word": "噉",
+            "pos": "r",
+            "jyutping": "gam2"
+          },
+          {
+            "word": "呢",
+            "pos": "y1",
+            "jyutping": "ne1"
+          },
+          {
+            "word": "攞",
+            "pos": "v",
+            "jyutping": "lo2"
+          },
+          {
+            "word": "啲",
+            "pos": "q",
+            "jyutping": "di1"
+          },
+          {
+            "word": "錢",
+            "pos": "n",
+            "jyutping": "cin2"
+          },
+          {
+            "word": "出來",
+            "pos": "v",
+            "jyutping": "ceot1lai4"
+          },
+          {
+            "word": "喎",
+            "pos": "y",
+            "jyutping": "wo3"
+          },
+          {
+            "word": ".",
+            "pos": "",
+            "jyutping": null
+          }
+        ]
+      },
+      "duplicateGroupInputs": {
+        "repetitionShape": "repeated_prefix_token",
+        "repeatedSurface": "嗱嗱臨",
+        "markerSurface": "噉",
+        "predicateSurface": "攞"
+      },
+      "repetitionShape": "repeated_prefix_token",
+      "repeatedSurface": "嗱嗱臨",
+      "baseSurface": "嗱",
+      "suffixSurface": "臨",
+      "aabbBases": null,
+      "repetitionStartIndexZeroBased": 5,
+      "repetitionEndIndexExclusive": 6,
+      "leftLexicalDistanceToMarker": 1,
+      "markerToken": {
+        "word": "噉",
+        "pos": "r",
+        "jyutping": "gam2",
+        "udPos": "PRON"
+      },
+      "markerSurface": "噉",
+      "markerJyutping": "gam2",
+      "markerHkcancorPos": "r",
+      "markerUdPos": "PRON",
+      "predicateCandidate": {
+        "tokenIndexZeroBased": 8,
+        "rightLexicalDistanceFromMarker": 2,
+        "word": "攞",
+        "pos": "v",
+        "jyutping": "lo2",
+        "udPos": "VERB"
+      },
+      "rightLexicalDistanceFromMarker": 2,
+      "interveningLeftTokens": [],
+      "interveningRightTokens": [
+        {
+          "word": "呢",
+          "pos": "y1",
+          "jyutping": "ne1",
+          "udPos": "PART"
+        }
+      ],
+      "mechanicallyAdjacentModifierMarker": true,
+      "mechanicallyAdjacentMarkerPredicate": false,
+      "leftWindowLexicalTokens": 3,
+      "rightWindowLexicalTokens": 3
+    },
+    {
+      "candidateId": "aa84gm-2f55a84815b33942a9d4",
+      "queryId": "HKCANCOR-AA84-MARKED-REDUP-R1",
+      "candidateIdNamespace": "HKCANCOR-AA84-MARKED-REDUP-R1:repeated_prefix_token:噉",
+      "sourceFile": "FC-038a_v2.cha",
+      "sourceFileSha256": "cd4ad166269f1a897199628fbebf608cca6cf01ecdb49fe51e80ed7340d7fc37",
+      "fileIndexZeroBased": 19,
+      "turnIndexZeroBased": 14,
+      "tokenIndexZeroBased": 5,
+      "recordingDate": "1997-08-14",
+      "participant": "XXY",
+      "participantMetadata": {
+        "code": "XXY",
+        "name": "Y",
+        "role": "Adult",
+        "language": "yue , eng",
+        "l1": null,
+        "sex": "male",
+        "age": "24;"
+      },
+      "text": "諗住呢,死死氣噉返屋企喇噉樣喇,冇行喇.",
+      "tokens": [
+        {
+          "word": "諗",
+          "pos": "v",
+          "jyutping": "nam2"
+        },
+        {
+          "word": "住",
+          "pos": "u",
+          "jyutping": "zyu6"
+        },
+        {
+          "word": "呢",
+          "pos": "y1",
+          "jyutping": "ne1"
+        },
+        {
+          "word": ",",
+          "pos": "",
+          "jyutping": null
+        },
+        {
+          "word": "死死氣",
+          "pos": "d",
+          "jyutping": "sei2sei2hei3"
+        },
+        {
+          "word": "噉",
+          "pos": "r",
+          "jyutping": "gam2"
+        },
+        {
+          "word": "返",
+          "pos": "v",
+          "jyutping": "faan1"
+        },
+        {
+          "word": "屋企",
+          "pos": "n",
+          "jyutping": "uk1kei2"
+        },
+        {
+          "word": "喇",
+          "pos": "y",
+          "jyutping": "laa1"
+        },
+        {
+          "word": "噉樣",
+          "pos": "c",
+          "jyutping": "gam2joeng2"
+        },
+        {
+          "word": "喇",
+          "pos": "y",
+          "jyutping": "laa1"
+        },
+        {
+          "word": ",",
+          "pos": "",
+          "jyutping": null
+        },
+        {
+          "word": "冇行",
+          "pos": "v",
+          "jyutping": "mou5hong4"
+        },
+        {
+          "word": "喇",
+          "pos": "y",
+          "jyutping": "laa1"
+        },
+        {
+          "word": ".",
+          "pos": "",
+          "jyutping": null
+        }
+      ],
+      "matchedSurfaceSpan": "死死氣噉返",
+      "matchedTokens": [
+        {
+          "word": "死死氣",
+          "pos": "d",
+          "jyutping": "sei2sei2hei3"
+        },
+        {
+          "word": "噉",
+          "pos": "r",
+          "jyutping": "gam2"
+        },
+        {
+          "word": "返",
+          "pos": "v",
+          "jyutping": "faan1"
+        }
+      ],
+      "localContext": {
+        "previous": {
+          "turnIndexZeroBased": 13,
+          "participant": "XXX",
+          "text": "係咩?",
+          "tokens": [
+            {
+              "word": "係",
+              "pos": "v",
+              "jyutping": "hai6"
+            },
+            {
+              "word": "咩",
+              "pos": "y",
+              "jyutping": "me1"
+            },
+            {
+              "word": "?",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        },
+        "next": {
+          "turnIndexZeroBased": 15,
+          "participant": "XXX",
+          "text": "有三個人報串.",
+          "tokens": [
+            {
+              "word": "有",
+              "pos": "v1",
+              "jyutping": "jau5"
+            },
+            {
+              "word": "三",
+              "pos": "m",
+              "jyutping": "saam1"
+            },
+            {
+              "word": "個",
+              "pos": "q",
+              "jyutping": "go3"
+            },
+            {
+              "word": "人",
+              "pos": "n",
+              "jyutping": "jan4"
+            },
+            {
+              "word": "報串",
+              "pos": "v",
+              "jyutping": "bou3cyun3"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        }
+      },
+      "annotationStatus": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+      "tokenContext": {
+        "startTokenIndexZeroBased": 0,
+        "endTokenIndexExclusive": 15,
+        "tokens": [
+          {
+            "word": "諗",
+            "pos": "v",
+            "jyutping": "nam2"
+          },
+          {
+            "word": "住",
+            "pos": "u",
+            "jyutping": "zyu6"
+          },
+          {
+            "word": "呢",
+            "pos": "y1",
+            "jyutping": "ne1"
+          },
+          {
+            "word": ",",
+            "pos": "",
+            "jyutping": null
+          },
+          {
+            "word": "死死氣",
+            "pos": "d",
+            "jyutping": "sei2sei2hei3"
+          },
+          {
+            "word": "噉",
+            "pos": "r",
+            "jyutping": "gam2"
+          },
+          {
+            "word": "返",
+            "pos": "v",
+            "jyutping": "faan1"
+          },
+          {
+            "word": "屋企",
+            "pos": "n",
+            "jyutping": "uk1kei2"
+          },
+          {
+            "word": "喇",
+            "pos": "y",
+            "jyutping": "laa1"
+          },
+          {
+            "word": "噉樣",
+            "pos": "c",
+            "jyutping": "gam2joeng2"
+          },
+          {
+            "word": "喇",
+            "pos": "y",
+            "jyutping": "laa1"
+          },
+          {
+            "word": ",",
+            "pos": "",
+            "jyutping": null
+          },
+          {
+            "word": "冇行",
+            "pos": "v",
+            "jyutping": "mou5hong4"
+          },
+          {
+            "word": "喇",
+            "pos": "y",
+            "jyutping": "laa1"
+          },
+          {
+            "word": ".",
+            "pos": "",
+            "jyutping": null
+          }
+        ]
+      },
+      "duplicateGroupInputs": {
+        "repetitionShape": "repeated_prefix_token",
+        "repeatedSurface": "死死氣",
+        "markerSurface": "噉",
+        "predicateSurface": "返"
+      },
+      "repetitionShape": "repeated_prefix_token",
+      "repeatedSurface": "死死氣",
+      "baseSurface": "死",
+      "suffixSurface": "氣",
+      "aabbBases": null,
+      "repetitionStartIndexZeroBased": 4,
+      "repetitionEndIndexExclusive": 5,
+      "leftLexicalDistanceToMarker": 1,
+      "markerToken": {
+        "word": "噉",
+        "pos": "r",
+        "jyutping": "gam2",
+        "udPos": "PRON"
+      },
+      "markerSurface": "噉",
+      "markerJyutping": "gam2",
+      "markerHkcancorPos": "r",
+      "markerUdPos": "PRON",
+      "predicateCandidate": {
+        "tokenIndexZeroBased": 6,
+        "rightLexicalDistanceFromMarker": 1,
+        "word": "返",
+        "pos": "v",
+        "jyutping": "faan1",
+        "udPos": "VERB"
+      },
+      "rightLexicalDistanceFromMarker": 1,
+      "interveningLeftTokens": [],
+      "interveningRightTokens": [],
+      "mechanicallyAdjacentModifierMarker": true,
+      "mechanicallyAdjacentMarkerPredicate": true,
+      "leftWindowLexicalTokens": 3,
+      "rightWindowLexicalTokens": 3
+    },
+    {
+      "candidateId": "aa84gm-f15479eb17897a5a89ac",
+      "queryId": "HKCANCOR-AA84-MARKED-REDUP-R1",
+      "candidateIdNamespace": "HKCANCOR-AA84-MARKED-REDUP-R1:exact_halves_token:咁",
+      "sourceFile": "FC-044_v2.cha",
+      "sourceFileSha256": "72dc24a95d5582e7e52a6748c1ac01d08fe1918399ebfb107c551c6656435430",
+      "fileIndexZeroBased": 22,
+      "turnIndexZeroBased": 143,
+      "tokenIndexZeroBased": 15,
+      "recordingDate": null,
+      "participant": "XXE",
+      "participantMetadata": {
+        "code": "XXE",
+        "name": "E",
+        "role": "Adult",
+        "language": "yue , eng",
+        "l1": null,
+        "sex": "male",
+        "age": "23;"
+      },
+      "text": "嗱,第一次搬𠻺搬咗之後就-就遠咗少少咁多.",
+      "tokens": [
+        {
+          "word": "嗱",
+          "pos": "y",
+          "jyutping": "laa4"
+        },
+        {
+          "word": ",",
+          "pos": "",
+          "jyutping": null
+        },
+        {
+          "word": "第一",
+          "pos": "m",
+          "jyutping": "dai6jat1"
+        },
+        {
+          "word": "次",
+          "pos": "q",
+          "jyutping": "ci3"
+        },
+        {
+          "word": "搬",
+          "pos": "v",
+          "jyutping": "bun1"
+        },
+        {
+          "word": "𠻺",
+          "pos": "d",
+          "jyutping": "aa6"
+        },
+        {
+          "word": "搬",
+          "pos": "v",
+          "jyutping": "bun1"
+        },
+        {
+          "word": "咗",
+          "pos": "u",
+          "jyutping": "zo2"
+        },
+        {
+          "word": "之後",
+          "pos": "f",
+          "jyutping": "zi1hau6"
+        },
+        {
+          "word": "就",
+          "pos": "d",
+          "jyutping": "zau6"
+        },
+        {
+          "word": "-",
+          "pos": "",
+          "jyutping": null
+        },
+        {
+          "word": "就",
+          "pos": "d",
+          "jyutping": "zau6"
+        },
+        {
+          "word": "遠",
+          "pos": "a",
+          "jyutping": "jyun5"
+        },
+        {
+          "word": "咗",
+          "pos": "u",
+          "jyutping": "zo2"
+        },
+        {
+          "word": "少少",
+          "pos": "d",
+          "jyutping": "siu2siu2"
+        },
+        {
+          "word": "咁",
+          "pos": "d",
+          "jyutping": "gam3"
+        },
+        {
+          "word": "多",
+          "pos": "a",
+          "jyutping": "do1"
+        },
+        {
+          "word": ".",
+          "pos": "",
+          "jyutping": null
+        }
+      ],
+      "matchedSurfaceSpan": "少少咁多",
+      "matchedTokens": [
+        {
+          "word": "少少",
+          "pos": "d",
+          "jyutping": "siu2siu2"
+        },
+        {
+          "word": "咁",
+          "pos": "d",
+          "jyutping": "gam3"
+        },
+        {
+          "word": "多",
+          "pos": "a",
+          "jyutping": "do1"
+        }
+      ],
+      "localContext": {
+        "previous": {
+          "turnIndexZeroBased": 142,
+          "participant": "XXE",
+          "text": "你應該一次過搬去屯門吖嗎應該.",
+          "tokens": [
+            {
+              "word": "你",
+              "pos": "r",
+              "jyutping": "nei5"
+            },
+            {
+              "word": "應該",
+              "pos": "vu",
+              "jyutping": "jing1goi1"
+            },
+            {
+              "word": "一次過",
+              "pos": "d",
+              "jyutping": "jat1ci3gwo3"
+            },
+            {
+              "word": "搬去",
+              "pos": "v",
+              "jyutping": "bun1heoi3"
+            },
+            {
+              "word": "屯門",
+              "pos": "ns",
+              "jyutping": "tyun4mun4"
+            },
+            {
+              "word": "吖",
+              "pos": "y",
+              "jyutping": "aa1"
+            },
+            {
+              "word": "嗎",
+              "pos": "y",
+              "jyutping": "maa3"
+            },
+            {
+              "word": "應該",
+              "pos": "vu",
+              "jyutping": "jing1goi1"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        },
+        "next": {
+          "turnIndexZeroBased": 144,
+          "participant": "XXE",
+          "text": "跟住而家搬咗荃灣都唔係真係遠得幾多咋喎,話時話.",
+          "tokens": [
+            {
+              "word": "跟住",
+              "pos": "c",
+              "jyutping": "gan1zyu6"
+            },
+            {
+              "word": "而家",
+              "pos": "t",
+              "jyutping": "ji4gaa1"
+            },
+            {
+              "word": "搬",
+              "pos": "v",
+              "jyutping": "bun1"
+            },
+            {
+              "word": "咗",
+              "pos": "u",
+              "jyutping": "zo2"
+            },
+            {
+              "word": "荃灣",
+              "pos": "ns",
+              "jyutping": "cyun4waan1"
+            },
+            {
+              "word": "都",
+              "pos": "d",
+              "jyutping": "dou1"
+            },
+            {
+              "word": "唔係",
+              "pos": "v",
+              "jyutping": "m4hai6"
+            },
+            {
+              "word": "真係",
+              "pos": "d",
+              "jyutping": "zan1hai6"
+            },
+            {
+              "word": "遠",
+              "pos": "a",
+              "jyutping": "jyun5"
+            },
+            {
+              "word": "得",
+              "pos": "u",
+              "jyutping": "dak1"
+            },
+            {
+              "word": "幾",
+              "pos": "d",
+              "jyutping": "gei2"
+            },
+            {
+              "word": "多",
+              "pos": "a",
+              "jyutping": "do1"
+            },
+            {
+              "word": "咋",
+              "pos": "y",
+              "jyutping": "zaa3"
+            },
+            {
+              "word": "喎",
+              "pos": "y",
+              "jyutping": "wo3"
+            },
+            {
+              "word": ",",
+              "pos": "",
+              "jyutping": null
+            },
+            {
+              "word": "話時話",
+              "pos": "l",
+              "jyutping": "waa6si4waa6"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        }
+      },
+      "annotationStatus": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+      "tokenContext": {
+        "startTokenIndexZeroBased": 6,
+        "endTokenIndexExclusive": 18,
+        "tokens": [
+          {
+            "word": "搬",
+            "pos": "v",
+            "jyutping": "bun1"
+          },
+          {
+            "word": "咗",
+            "pos": "u",
+            "jyutping": "zo2"
+          },
+          {
+            "word": "之後",
+            "pos": "f",
+            "jyutping": "zi1hau6"
+          },
+          {
+            "word": "就",
+            "pos": "d",
+            "jyutping": "zau6"
+          },
+          {
+            "word": "-",
+            "pos": "",
+            "jyutping": null
+          },
+          {
+            "word": "就",
+            "pos": "d",
+            "jyutping": "zau6"
+          },
+          {
+            "word": "遠",
+            "pos": "a",
+            "jyutping": "jyun5"
+          },
+          {
+            "word": "咗",
+            "pos": "u",
+            "jyutping": "zo2"
+          },
+          {
+            "word": "少少",
+            "pos": "d",
+            "jyutping": "siu2siu2"
+          },
+          {
+            "word": "咁",
+            "pos": "d",
+            "jyutping": "gam3"
+          },
+          {
+            "word": "多",
+            "pos": "a",
+            "jyutping": "do1"
+          },
+          {
+            "word": ".",
+            "pos": "",
+            "jyutping": null
+          }
+        ]
+      },
+      "duplicateGroupInputs": {
+        "repetitionShape": "exact_halves_token",
+        "repeatedSurface": "少少",
+        "markerSurface": "咁",
+        "predicateSurface": "多"
+      },
+      "repetitionShape": "exact_halves_token",
+      "repeatedSurface": "少少",
+      "baseSurface": "少",
+      "suffixSurface": null,
+      "aabbBases": null,
+      "repetitionStartIndexZeroBased": 14,
+      "repetitionEndIndexExclusive": 15,
+      "leftLexicalDistanceToMarker": 1,
+      "markerToken": {
+        "word": "咁",
+        "pos": "d",
+        "jyutping": "gam3",
+        "udPos": "ADV"
+      },
+      "markerSurface": "咁",
+      "markerJyutping": "gam3",
+      "markerHkcancorPos": "d",
+      "markerUdPos": "ADV",
+      "predicateCandidate": {
+        "tokenIndexZeroBased": 16,
+        "rightLexicalDistanceFromMarker": 1,
+        "word": "多",
+        "pos": "a",
+        "jyutping": "do1",
+        "udPos": "ADJ"
+      },
+      "rightLexicalDistanceFromMarker": 1,
+      "interveningLeftTokens": [],
+      "interveningRightTokens": [],
+      "mechanicallyAdjacentModifierMarker": true,
+      "mechanicallyAdjacentMarkerPredicate": true,
+      "leftWindowLexicalTokens": 3,
+      "rightWindowLexicalTokens": 3
+    },
+    {
+      "candidateId": "aa84gm-51a8260668753973b5f9",
+      "queryId": "HKCANCOR-AA84-MARKED-REDUP-R1",
+      "candidateIdNamespace": "HKCANCOR-AA84-MARKED-REDUP-R1:exact_halves_token:噉",
+      "sourceFile": "FC-046_v2.cha",
+      "sourceFileSha256": "27d9b748a81260c501362591915da1946c27f25638d6769eef22991158693f0a",
+      "fileIndexZeroBased": 24,
+      "turnIndexZeroBased": 81,
+      "tokenIndexZeroBased": 4,
+      "recordingDate": null,
+      "participant": "XXB",
+      "participantMetadata": {
+        "code": "XXB",
+        "name": "B",
+        "role": "Adult",
+        "language": "yue , eng",
+        "l1": null,
+        "sex": "male",
+        "age": "35;"
+      },
+      "text": "即係唔係間間會噉做,不過,不過,因為你相機可能傳統上好多人都唔識用喇,因為啲傻瓜機好難用𡃉好多都.",
+      "tokens": [
+        {
+          "word": "即係",
+          "pos": "c",
+          "jyutping": "zik1hai6"
+        },
+        {
+          "word": "唔係",
+          "pos": "v",
+          "jyutping": "m4hai6"
+        },
+        {
+          "word": "間間",
+          "pos": "q",
+          "jyutping": "gaan1gaan1"
+        },
+        {
+          "word": "會",
+          "pos": "vu",
+          "jyutping": "wui5"
+        },
+        {
+          "word": "噉",
+          "pos": "r",
+          "jyutping": "gam2"
+        },
+        {
+          "word": "做",
+          "pos": "v",
+          "jyutping": "zou6"
+        },
+        {
+          "word": ",",
+          "pos": "",
+          "jyutping": null
+        },
+        {
+          "word": "不過",
+          "pos": "c",
+          "jyutping": "bat1gwo3"
+        },
+        {
+          "word": ",",
+          "pos": "",
+          "jyutping": null
+        },
+        {
+          "word": "不過",
+          "pos": "c",
+          "jyutping": "bat1gwo3"
+        },
+        {
+          "word": ",",
+          "pos": "",
+          "jyutping": null
+        },
+        {
+          "word": "因為",
+          "pos": "c",
+          "jyutping": "jan1wai6"
+        },
+        {
+          "word": "你",
+          "pos": "r",
+          "jyutping": "nei5"
+        },
+        {
+          "word": "相機",
+          "pos": "n",
+          "jyutping": "soeng2gei1"
+        },
+        {
+          "word": "可能",
+          "pos": "vu",
+          "jyutping": "ho2nang4"
+        },
+        {
+          "word": "傳統上",
+          "pos": "d",
+          "jyutping": "cyun4tung2soeng6"
+        },
+        {
+          "word": "好多",
+          "pos": "m",
+          "jyutping": "hou2do1"
+        },
+        {
+          "word": "人",
+          "pos": "n",
+          "jyutping": "jan4"
+        },
+        {
+          "word": "都",
+          "pos": "d",
+          "jyutping": "dou1"
+        },
+        {
+          "word": "唔",
+          "pos": "d",
+          "jyutping": "m4"
+        },
+        {
+          "word": "識",
+          "pos": "v",
+          "jyutping": "sik1"
+        },
+        {
+          "word": "用",
+          "pos": "v",
+          "jyutping": "jung6"
+        },
+        {
+          "word": "喇",
+          "pos": "y",
+          "jyutping": "laa1"
+        },
+        {
+          "word": ",",
+          "pos": "",
+          "jyutping": null
+        },
+        {
+          "word": "因為",
+          "pos": "c",
+          "jyutping": "jan1wai6"
+        },
+        {
+          "word": "啲",
+          "pos": "q",
+          "jyutping": "di1"
+        },
+        {
+          "word": "傻瓜機",
+          "pos": "n",
+          "jyutping": "so4gwaa1gei1"
+        },
+        {
+          "word": "好",
+          "pos": "d",
+          "jyutping": "hou2"
+        },
+        {
+          "word": "難",
+          "pos": "a",
+          "jyutping": "naan4"
+        },
+        {
+          "word": "用",
+          "pos": "v",
+          "jyutping": "jung6"
+        },
+        {
+          "word": "𡃉",
+          "pos": "y",
+          "jyutping": "gaa3"
+        },
+        {
+          "word": "好多",
+          "pos": "m",
+          "jyutping": "hou2do1"
+        },
+        {
+          "word": "都",
+          "pos": "d",
+          "jyutping": "dou1"
+        },
+        {
+          "word": ".",
+          "pos": "",
+          "jyutping": null
+        }
+      ],
+      "matchedSurfaceSpan": "間間會噉做",
+      "matchedTokens": [
+        {
+          "word": "間間",
+          "pos": "q",
+          "jyutping": "gaan1gaan1"
+        },
+        {
+          "word": "會",
+          "pos": "vu",
+          "jyutping": "wui5"
+        },
+        {
+          "word": "噉",
+          "pos": "r",
+          "jyutping": "gam2"
+        },
+        {
+          "word": "做",
+          "pos": "v",
+          "jyutping": "zou6"
+        }
+      ],
+      "localContext": {
+        "previous": {
+          "turnIndexZeroBased": 80,
+          "participant": "XXC",
+          "text": "我覺得佢好professional喎.",
+          "tokens": [
+            {
+              "word": "我",
+              "pos": "r",
+              "jyutping": "ngo5"
+            },
+            {
+              "word": "覺得",
+              "pos": "v",
+              "jyutping": "gok3dak1"
+            },
+            {
+              "word": "佢",
+              "pos": "r",
+              "jyutping": "keoi5"
+            },
+            {
+              "word": "好",
+              "pos": "d",
+              "jyutping": "hou2"
+            },
+            {
+              "word": "professional",
+              "pos": "xa",
+              "jyutping": null
+            },
+            {
+              "word": "喎",
+              "pos": "y",
+              "jyutping": "wo3"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        },
+        "next": {
+          "turnIndexZeroBased": 82,
+          "participant": "XXC",
+          "text": "唔係.",
+          "tokens": [
+            {
+              "word": "唔係",
+              "pos": "v",
+              "jyutping": "m4hai6"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        }
+      },
+      "annotationStatus": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+      "tokenContext": {
+        "startTokenIndexZeroBased": 0,
+        "endTokenIndexExclusive": 16,
+        "tokens": [
+          {
+            "word": "即係",
+            "pos": "c",
+            "jyutping": "zik1hai6"
+          },
+          {
+            "word": "唔係",
+            "pos": "v",
+            "jyutping": "m4hai6"
+          },
+          {
+            "word": "間間",
+            "pos": "q",
+            "jyutping": "gaan1gaan1"
+          },
+          {
+            "word": "會",
+            "pos": "vu",
+            "jyutping": "wui5"
+          },
+          {
+            "word": "噉",
+            "pos": "r",
+            "jyutping": "gam2"
+          },
+          {
+            "word": "做",
+            "pos": "v",
+            "jyutping": "zou6"
+          },
+          {
+            "word": ",",
+            "pos": "",
+            "jyutping": null
+          },
+          {
+            "word": "不過",
+            "pos": "c",
+            "jyutping": "bat1gwo3"
+          },
+          {
+            "word": ",",
+            "pos": "",
+            "jyutping": null
+          },
+          {
+            "word": "不過",
+            "pos": "c",
+            "jyutping": "bat1gwo3"
+          },
+          {
+            "word": ",",
+            "pos": "",
+            "jyutping": null
+          },
+          {
+            "word": "因為",
+            "pos": "c",
+            "jyutping": "jan1wai6"
+          },
+          {
+            "word": "你",
+            "pos": "r",
+            "jyutping": "nei5"
+          },
+          {
+            "word": "相機",
+            "pos": "n",
+            "jyutping": "soeng2gei1"
+          },
+          {
+            "word": "可能",
+            "pos": "vu",
+            "jyutping": "ho2nang4"
+          },
+          {
+            "word": "傳統上",
+            "pos": "d",
+            "jyutping": "cyun4tung2soeng6"
+          }
+        ]
+      },
+      "duplicateGroupInputs": {
+        "repetitionShape": "exact_halves_token",
+        "repeatedSurface": "間間",
+        "markerSurface": "噉",
+        "predicateSurface": "做"
+      },
+      "repetitionShape": "exact_halves_token",
+      "repeatedSurface": "間間",
+      "baseSurface": "間",
+      "suffixSurface": null,
+      "aabbBases": null,
+      "repetitionStartIndexZeroBased": 2,
+      "repetitionEndIndexExclusive": 3,
+      "leftLexicalDistanceToMarker": 2,
+      "markerToken": {
+        "word": "噉",
+        "pos": "r",
+        "jyutping": "gam2",
+        "udPos": "PRON"
+      },
+      "markerSurface": "噉",
+      "markerJyutping": "gam2",
+      "markerHkcancorPos": "r",
+      "markerUdPos": "PRON",
+      "predicateCandidate": {
+        "tokenIndexZeroBased": 5,
+        "rightLexicalDistanceFromMarker": 1,
+        "word": "做",
+        "pos": "v",
+        "jyutping": "zou6",
+        "udPos": "VERB"
+      },
+      "rightLexicalDistanceFromMarker": 1,
+      "interveningLeftTokens": [
+        {
+          "word": "會",
+          "pos": "vu",
+          "jyutping": "wui5",
+          "udPos": "AUX"
+        }
+      ],
+      "interveningRightTokens": [],
+      "mechanicallyAdjacentModifierMarker": false,
+      "mechanicallyAdjacentMarkerPredicate": true,
+      "leftWindowLexicalTokens": 3,
+      "rightWindowLexicalTokens": 3
+    },
+    {
+      "candidateId": "aa84gm-6aa1ee1388b9f059f74c",
+      "queryId": "HKCANCOR-AA84-MARKED-REDUP-R1",
+      "candidateIdNamespace": "HKCANCOR-AA84-MARKED-REDUP-R1:exact_halves_token:噉",
+      "sourceFile": "FC-105_v2.cha",
+      "sourceFileSha256": "be40fc4738cbeb0e2a3e44ed4ef60c4b8e3bca467cc5d6b441b2896dc3110fcb",
+      "fileIndexZeroBased": 34,
+      "turnIndexZeroBased": 12,
+      "tokenIndexZeroBased": 3,
+      "recordingDate": "1996-01-02",
+      "participant": "XXB",
+      "participantMetadata": {
+        "code": "XXB",
+        "name": "B",
+        "role": "Adult",
+        "language": "yue , eng",
+        "l1": null,
+        "sex": "male",
+        "age": "21;"
+      },
+      "text": "年年都係噉打電話俾佢𡃉喇.",
+      "tokens": [
+        {
+          "word": "年年",
+          "pos": "q",
+          "jyutping": "nin4nin4"
+        },
+        {
+          "word": "都",
+          "pos": "d",
+          "jyutping": "dou1"
+        },
+        {
+          "word": "係",
+          "pos": "v",
+          "jyutping": "hai6"
+        },
+        {
+          "word": "噉",
+          "pos": "r",
+          "jyutping": "gam2"
+        },
+        {
+          "word": "打電話",
+          "pos": "v",
+          "jyutping": "daa2din6waa2"
+        },
+        {
+          "word": "俾",
+          "pos": "p",
+          "jyutping": "bei2"
+        },
+        {
+          "word": "佢",
+          "pos": "r",
+          "jyutping": "keoi5"
+        },
+        {
+          "word": "𡃉",
+          "pos": "y",
+          "jyutping": "gaa3"
+        },
+        {
+          "word": "喇",
+          "pos": "y",
+          "jyutping": "laa1"
+        },
+        {
+          "word": ".",
+          "pos": "",
+          "jyutping": null
+        }
+      ],
+      "matchedSurfaceSpan": "年年都係噉打電話",
+      "matchedTokens": [
+        {
+          "word": "年年",
+          "pos": "q",
+          "jyutping": "nin4nin4"
+        },
+        {
+          "word": "都",
+          "pos": "d",
+          "jyutping": "dou1"
+        },
+        {
+          "word": "係",
+          "pos": "v",
+          "jyutping": "hai6"
+        },
+        {
+          "word": "噉",
+          "pos": "r",
+          "jyutping": "gam2"
+        },
+        {
+          "word": "打電話",
+          "pos": "v",
+          "jyutping": "daa2din6waa2"
+        }
+      ],
+      "localContext": {
+        "previous": {
+          "turnIndexZeroBased": 11,
+          "participant": "XXB",
+          "text": "長途電話梗係得喇.",
+          "tokens": [
+            {
+              "word": "長途",
+              "pos": "a",
+              "jyutping": "coeng4tou4"
+            },
+            {
+              "word": "電話",
+              "pos": "n",
+              "jyutping": "din6waa2"
+            },
+            {
+              "word": "梗係",
+              "pos": "d",
+              "jyutping": "gang2hai6"
+            },
+            {
+              "word": "得",
+              "pos": "vu",
+              "jyutping": "dak1"
+            },
+            {
+              "word": "喇",
+              "pos": "y",
+              "jyutping": "laa1"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        },
+        "next": {
+          "turnIndexZeroBased": 13,
+          "participant": "XXA",
+          "text": "哦.",
+          "tokens": [
+            {
+              "word": "哦",
+              "pos": "e",
+              "jyutping": "o5"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        }
+      },
+      "annotationStatus": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+      "tokenContext": {
+        "startTokenIndexZeroBased": 0,
+        "endTokenIndexExclusive": 10,
+        "tokens": [
+          {
+            "word": "年年",
+            "pos": "q",
+            "jyutping": "nin4nin4"
+          },
+          {
+            "word": "都",
+            "pos": "d",
+            "jyutping": "dou1"
+          },
+          {
+            "word": "係",
+            "pos": "v",
+            "jyutping": "hai6"
+          },
+          {
+            "word": "噉",
+            "pos": "r",
+            "jyutping": "gam2"
+          },
+          {
+            "word": "打電話",
+            "pos": "v",
+            "jyutping": "daa2din6waa2"
+          },
+          {
+            "word": "俾",
+            "pos": "p",
+            "jyutping": "bei2"
+          },
+          {
+            "word": "佢",
+            "pos": "r",
+            "jyutping": "keoi5"
+          },
+          {
+            "word": "𡃉",
+            "pos": "y",
+            "jyutping": "gaa3"
+          },
+          {
+            "word": "喇",
+            "pos": "y",
+            "jyutping": "laa1"
+          },
+          {
+            "word": ".",
+            "pos": "",
+            "jyutping": null
+          }
+        ]
+      },
+      "duplicateGroupInputs": {
+        "repetitionShape": "exact_halves_token",
+        "repeatedSurface": "年年",
+        "markerSurface": "噉",
+        "predicateSurface": "打電話"
+      },
+      "repetitionShape": "exact_halves_token",
+      "repeatedSurface": "年年",
+      "baseSurface": "年",
+      "suffixSurface": null,
+      "aabbBases": null,
+      "repetitionStartIndexZeroBased": 0,
+      "repetitionEndIndexExclusive": 1,
+      "leftLexicalDistanceToMarker": 3,
+      "markerToken": {
+        "word": "噉",
+        "pos": "r",
+        "jyutping": "gam2",
+        "udPos": "PRON"
+      },
+      "markerSurface": "噉",
+      "markerJyutping": "gam2",
+      "markerHkcancorPos": "r",
+      "markerUdPos": "PRON",
+      "predicateCandidate": {
+        "tokenIndexZeroBased": 4,
+        "rightLexicalDistanceFromMarker": 1,
+        "word": "打電話",
+        "pos": "v",
+        "jyutping": "daa2din6waa2",
+        "udPos": "VERB"
+      },
+      "rightLexicalDistanceFromMarker": 1,
+      "interveningLeftTokens": [
+        {
+          "word": "都",
+          "pos": "d",
+          "jyutping": "dou1",
+          "udPos": "ADV"
+        },
+        {
+          "word": "係",
+          "pos": "v",
+          "jyutping": "hai6",
+          "udPos": "VERB"
+        }
+      ],
+      "interveningRightTokens": [],
+      "mechanicallyAdjacentModifierMarker": false,
+      "mechanicallyAdjacentMarkerPredicate": true,
+      "leftWindowLexicalTokens": 3,
+      "rightWindowLexicalTokens": 3
+    },
+    {
+      "candidateId": "aa84gm-38cf0e185688c08a5f19",
+      "queryId": "HKCANCOR-AA84-MARKED-REDUP-R1",
+      "candidateIdNamespace": "HKCANCOR-AA84-MARKED-REDUP-R1:adjacent_identical_tokens:咁",
+      "sourceFile": "FC-105_v2.cha",
+      "sourceFileSha256": "be40fc4738cbeb0e2a3e44ed4ef60c4b8e3bca467cc5d6b441b2896dc3110fcb",
+      "fileIndexZeroBased": 34,
+      "turnIndexZeroBased": 308,
+      "tokenIndexZeroBased": 8,
+      "recordingDate": "1996-01-02",
+      "participant": "XXB",
+      "participantMetadata": {
+        "code": "XXB",
+        "name": "B",
+        "role": "Adult",
+        "language": "yue , eng",
+        "l1": null,
+        "sex": "male",
+        "age": "21;"
+      },
+      "text": "佢製造出來嘅產品咁咁競爭咁大.",
+      "tokens": [
+        {
+          "word": "佢",
+          "pos": "r",
+          "jyutping": "keoi5"
+        },
+        {
+          "word": "製造",
+          "pos": "v",
+          "jyutping": "zai3zou6"
+        },
+        {
+          "word": "出來",
+          "pos": "v",
+          "jyutping": "ceot1lai4"
+        },
+        {
+          "word": "嘅",
+          "pos": "u",
+          "jyutping": "ge3"
+        },
+        {
+          "word": "產品",
+          "pos": "n",
+          "jyutping": "caan2ban2"
+        },
+        {
+          "word": "咁",
+          "pos": "d",
+          "jyutping": "gam3"
+        },
+        {
+          "word": "咁",
+          "pos": "d",
+          "jyutping": "gam3"
+        },
+        {
+          "word": "競爭",
+          "pos": "v",
+          "jyutping": "ging3zang1"
+        },
+        {
+          "word": "咁",
+          "pos": "d",
+          "jyutping": "gam3"
+        },
+        {
+          "word": "大",
+          "pos": "a",
+          "jyutping": "daai6"
+        },
+        {
+          "word": ".",
+          "pos": "",
+          "jyutping": null
+        }
+      ],
+      "matchedSurfaceSpan": "咁咁競爭咁大",
+      "matchedTokens": [
+        {
+          "word": "咁",
+          "pos": "d",
+          "jyutping": "gam3"
+        },
+        {
+          "word": "咁",
+          "pos": "d",
+          "jyutping": "gam3"
+        },
+        {
+          "word": "競爭",
+          "pos": "v",
+          "jyutping": "ging3zang1"
+        },
+        {
+          "word": "咁",
+          "pos": "d",
+          "jyutping": "gam3"
+        },
+        {
+          "word": "大",
+          "pos": "a",
+          "jyutping": "daai6"
+        }
+      ],
+      "localContext": {
+        "previous": {
+          "turnIndexZeroBased": 307,
+          "participant": "XXB",
+          "text": "而且呢香港嗰啲人呢,根本嗰啲僱主,而家競爭咁大.",
+          "tokens": [
+            {
+              "word": "而且",
+              "pos": "c",
+              "jyutping": "ji4ce2"
+            },
+            {
+              "word": "呢",
+              "pos": "y1",
+              "jyutping": "ne1"
+            },
+            {
+              "word": "香港",
+              "pos": "ns",
+              "jyutping": "hoeng1gong2"
+            },
+            {
+              "word": "嗰啲",
+              "pos": "r",
+              "jyutping": "go2di1"
+            },
+            {
+              "word": "人",
+              "pos": "n",
+              "jyutping": "jan4"
+            },
+            {
+              "word": "呢",
+              "pos": "y1",
+              "jyutping": "ne1"
+            },
+            {
+              "word": ",",
+              "pos": "",
+              "jyutping": null
+            },
+            {
+              "word": "根本",
+              "pos": "d",
+              "jyutping": "gan1bun2"
+            },
+            {
+              "word": "嗰啲",
+              "pos": "r",
+              "jyutping": "go2di1"
+            },
+            {
+              "word": "僱主",
+              "pos": "n",
+              "jyutping": "gu3zyu2"
+            },
+            {
+              "word": ",",
+              "pos": "",
+              "jyutping": null
+            },
+            {
+              "word": "而家",
+              "pos": "t",
+              "jyutping": "ji4gaa1"
+            },
+            {
+              "word": "競爭",
+              "pos": "v",
+              "jyutping": "ging3zang1"
+            },
+            {
+              "word": "咁",
+              "pos": "d",
+              "jyutping": "gam3"
+            },
+            {
+              "word": "大",
+              "pos": "a",
+              "jyutping": "daai6"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        },
+        "next": {
+          "turnIndexZeroBased": 309,
+          "participant": "XXB",
+          "text": "噉佢哋係唔係即係afford唔起噉嘅人工去請一個香港嘅工人囖.",
+          "tokens": [
+            {
+              "word": "噉",
+              "pos": "c",
+              "jyutping": "gam2"
+            },
+            {
+              "word": "佢哋",
+              "pos": "r",
+              "jyutping": "keoi5dei6"
+            },
+            {
+              "word": "係",
+              "pos": "v",
+              "jyutping": "hai6"
+            },
+            {
+              "word": "唔係",
+              "pos": "v",
+              "jyutping": "m4hai6"
+            },
+            {
+              "word": "即係",
+              "pos": "c",
+              "jyutping": "zik1hai6"
+            },
+            {
+              "word": "afford",
+              "pos": "xv",
+              "jyutping": null
+            },
+            {
+              "word": "唔",
+              "pos": "d",
+              "jyutping": "m4"
+            },
+            {
+              "word": "起",
+              "pos": "v",
+              "jyutping": "hei2"
+            },
+            {
+              "word": "噉",
+              "pos": "c",
+              "jyutping": "gam2"
+            },
+            {
+              "word": "嘅",
+              "pos": "u",
+              "jyutping": "ge3"
+            },
+            {
+              "word": "人工",
+              "pos": "n",
+              "jyutping": "jan4gung1"
+            },
+            {
+              "word": "去",
+              "pos": "v",
+              "jyutping": "heoi3"
+            },
+            {
+              "word": "請",
+              "pos": "v",
+              "jyutping": "ceng2"
+            },
+            {
+              "word": "一",
+              "pos": "m",
+              "jyutping": "jat1"
+            },
+            {
+              "word": "個",
+              "pos": "q",
+              "jyutping": "go3"
+            },
+            {
+              "word": "香港",
+              "pos": "ns",
+              "jyutping": "hoeng1gong2"
+            },
+            {
+              "word": "嘅",
+              "pos": "u",
+              "jyutping": "ge3"
+            },
+            {
+              "word": "工人",
+              "pos": "n",
+              "jyutping": "gung1jan4"
+            },
+            {
+              "word": "囖",
+              "pos": "y",
+              "jyutping": "lo1"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        }
+      },
+      "annotationStatus": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+      "tokenContext": {
+        "startTokenIndexZeroBased": 0,
+        "endTokenIndexExclusive": 11,
+        "tokens": [
+          {
+            "word": "佢",
+            "pos": "r",
+            "jyutping": "keoi5"
+          },
+          {
+            "word": "製造",
+            "pos": "v",
+            "jyutping": "zai3zou6"
+          },
+          {
+            "word": "出來",
+            "pos": "v",
+            "jyutping": "ceot1lai4"
+          },
+          {
+            "word": "嘅",
+            "pos": "u",
+            "jyutping": "ge3"
+          },
+          {
+            "word": "產品",
+            "pos": "n",
+            "jyutping": "caan2ban2"
+          },
+          {
+            "word": "咁",
+            "pos": "d",
+            "jyutping": "gam3"
+          },
+          {
+            "word": "咁",
+            "pos": "d",
+            "jyutping": "gam3"
+          },
+          {
+            "word": "競爭",
+            "pos": "v",
+            "jyutping": "ging3zang1"
+          },
+          {
+            "word": "咁",
+            "pos": "d",
+            "jyutping": "gam3"
+          },
+          {
+            "word": "大",
+            "pos": "a",
+            "jyutping": "daai6"
+          },
+          {
+            "word": ".",
+            "pos": "",
+            "jyutping": null
+          }
+        ]
+      },
+      "duplicateGroupInputs": {
+        "repetitionShape": "adjacent_identical_tokens",
+        "repeatedSurface": "咁咁",
+        "markerSurface": "咁",
+        "predicateSurface": "大"
+      },
+      "repetitionShape": "adjacent_identical_tokens",
+      "repeatedSurface": "咁咁",
+      "baseSurface": "咁",
+      "suffixSurface": null,
+      "aabbBases": null,
+      "repetitionStartIndexZeroBased": 5,
+      "repetitionEndIndexExclusive": 7,
+      "leftLexicalDistanceToMarker": 3,
+      "markerToken": {
+        "word": "咁",
+        "pos": "d",
+        "jyutping": "gam3",
+        "udPos": "ADV"
+      },
+      "markerSurface": "咁",
+      "markerJyutping": "gam3",
+      "markerHkcancorPos": "d",
+      "markerUdPos": "ADV",
+      "predicateCandidate": {
+        "tokenIndexZeroBased": 9,
+        "rightLexicalDistanceFromMarker": 1,
+        "word": "大",
+        "pos": "a",
+        "jyutping": "daai6",
+        "udPos": "ADJ"
+      },
+      "rightLexicalDistanceFromMarker": 1,
+      "interveningLeftTokens": [
+        {
+          "word": "競爭",
+          "pos": "v",
+          "jyutping": "ging3zang1",
+          "udPos": "VERB"
+        }
+      ],
+      "interveningRightTokens": [],
+      "mechanicallyAdjacentModifierMarker": false,
+      "mechanicallyAdjacentMarkerPredicate": true,
+      "leftWindowLexicalTokens": 3,
+      "rightWindowLexicalTokens": 3
+    },
+    {
+      "candidateId": "aa84gm-fbef8cd0d2b2a6bc4e00",
+      "queryId": "HKCANCOR-AA84-MARKED-REDUP-R1",
+      "candidateIdNamespace": "HKCANCOR-AA84-MARKED-REDUP-R1:exact_halves_token:噉",
+      "sourceFile": "FC-R013a_v.cha",
+      "sourceFileSha256": "e95e436cf3f1eaf52a0fe1eb185c54f1813068a922fb1b22734b9237a6681a9d",
+      "fileIndexZeroBased": 53,
+      "turnIndexZeroBased": 103,
+      "tokenIndexZeroBased": 6,
+      "recordingDate": "1998-03-02",
+      "participant": "XXB",
+      "participantMetadata": {
+        "code": "XXB",
+        "name": "B",
+        "role": "Adult",
+        "language": "yue , eng",
+        "l1": null,
+        "sex": null,
+        "age": null
+      },
+      "text": "噉如果好-好少少噉就可以定啲囖.",
+      "tokens": [
+        {
+          "word": "噉",
+          "pos": "c",
+          "jyutping": "gam2"
+        },
+        {
+          "word": "如果",
+          "pos": "c",
+          "jyutping": "jyu4gwo2"
+        },
+        {
+          "word": "好",
+          "pos": "a",
+          "jyutping": "hou2"
+        },
+        {
+          "word": "-",
+          "pos": "",
+          "jyutping": null
+        },
+        {
+          "word": "好",
+          "pos": "a",
+          "jyutping": "hou2"
+        },
+        {
+          "word": "少少",
+          "pos": "m",
+          "jyutping": "siu2siu2"
+        },
+        {
+          "word": "噉",
+          "pos": "c",
+          "jyutping": "gam2"
+        },
+        {
+          "word": "就",
+          "pos": "d",
+          "jyutping": "zau6"
+        },
+        {
+          "word": "可以",
+          "pos": "v",
+          "jyutping": "ho2ji5"
+        },
+        {
+          "word": "定",
+          "pos": "v",
+          "jyutping": "ding6"
+        },
+        {
+          "word": "啲",
+          "pos": "u",
+          "jyutping": "di1"
+        },
+        {
+          "word": "囖",
+          "pos": "y",
+          "jyutping": "lo1"
+        },
+        {
+          "word": ".",
+          "pos": "",
+          "jyutping": null
+        }
+      ],
+      "matchedSurfaceSpan": "少少噉就可以",
+      "matchedTokens": [
+        {
+          "word": "少少",
+          "pos": "m",
+          "jyutping": "siu2siu2"
+        },
+        {
+          "word": "噉",
+          "pos": "c",
+          "jyutping": "gam2"
+        },
+        {
+          "word": "就",
+          "pos": "d",
+          "jyutping": "zau6"
+        },
+        {
+          "word": "可以",
+          "pos": "v",
+          "jyutping": "ho2ji5"
+        }
+      ],
+      "localContext": {
+        "previous": {
+          "turnIndexZeroBased": 102,
+          "participant": "XXB",
+          "text": "即係甩下今個禮拜幾多waiting啊.",
+          "tokens": [
+            {
+              "word": "即係",
+              "pos": "c",
+              "jyutping": "zik1hai6"
+            },
+            {
+              "word": "甩",
+              "pos": "v",
+              "jyutping": "lat1"
+            },
+            {
+              "word": "下",
+              "pos": "u",
+              "jyutping": "haa5"
+            },
+            {
+              "word": "今",
+              "pos": "t",
+              "jyutping": "gam1"
+            },
+            {
+              "word": "個",
+              "pos": "q",
+              "jyutping": "go3"
+            },
+            {
+              "word": "禮拜",
+              "pos": "n",
+              "jyutping": "lai5baai3"
+            },
+            {
+              "word": "幾多",
+              "pos": "r",
+              "jyutping": "gei2do1"
+            },
+            {
+              "word": "waiting",
+              "pos": "xn",
+              "jyutping": null
+            },
+            {
+              "word": "啊",
+              "pos": "y",
+              "jyutping": "aa3"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        },
+        "next": {
+          "turnIndexZeroBased": 104,
+          "participant": "XXB",
+          "text": "如果衰起上來就會好衰.",
+          "tokens": [
+            {
+              "word": "如果",
+              "pos": "c",
+              "jyutping": "jyu4gwo2"
+            },
+            {
+              "word": "衰",
+              "pos": "a",
+              "jyutping": "seoi1"
+            },
+            {
+              "word": "起",
+              "pos": "u",
+              "jyutping": "hei2"
+            },
+            {
+              "word": "上來",
+              "pos": "v",
+              "jyutping": "soeng5lai4"
+            },
+            {
+              "word": "就",
+              "pos": "d",
+              "jyutping": "zau6"
+            },
+            {
+              "word": "會",
+              "pos": "vu",
+              "jyutping": "wui5"
+            },
+            {
+              "word": "好",
+              "pos": "d",
+              "jyutping": "hou2"
+            },
+            {
+              "word": "衰",
+              "pos": "a",
+              "jyutping": "seoi1"
+            },
+            {
+              "word": ".",
+              "pos": "",
+              "jyutping": null
+            }
+          ]
+        }
+      },
+      "annotationStatus": "REQUIRES_EXPERT_CONTEXT_REVIEW",
+      "tokenContext": {
+        "startTokenIndexZeroBased": 0,
+        "endTokenIndexExclusive": 13,
+        "tokens": [
+          {
+            "word": "噉",
+            "pos": "c",
+            "jyutping": "gam2"
+          },
+          {
+            "word": "如果",
+            "pos": "c",
+            "jyutping": "jyu4gwo2"
+          },
+          {
+            "word": "好",
+            "pos": "a",
+            "jyutping": "hou2"
+          },
+          {
+            "word": "-",
+            "pos": "",
+            "jyutping": null
+          },
+          {
+            "word": "好",
+            "pos": "a",
+            "jyutping": "hou2"
+          },
+          {
+            "word": "少少",
+            "pos": "m",
+            "jyutping": "siu2siu2"
+          },
+          {
+            "word": "噉",
+            "pos": "c",
+            "jyutping": "gam2"
+          },
+          {
+            "word": "就",
+            "pos": "d",
+            "jyutping": "zau6"
+          },
+          {
+            "word": "可以",
+            "pos": "v",
+            "jyutping": "ho2ji5"
+          },
+          {
+            "word": "定",
+            "pos": "v",
+            "jyutping": "ding6"
+          },
+          {
+            "word": "啲",
+            "pos": "u",
+            "jyutping": "di1"
+          },
+          {
+            "word": "囖",
+            "pos": "y",
+            "jyutping": "lo1"
+          },
+          {
+            "word": ".",
+            "pos": "",
+            "jyutping": null
+          }
+        ]
+      },
+      "duplicateGroupInputs": {
+        "repetitionShape": "exact_halves_token",
+        "repeatedSurface": "少少",
+        "markerSurface": "噉",
+        "predicateSurface": "可以"
+      },
+      "repetitionShape": "exact_halves_token",
+      "repeatedSurface": "少少",
+      "baseSurface": "少",
+      "suffixSurface": null,
+      "aabbBases": null,
+      "repetitionStartIndexZeroBased": 5,
+      "repetitionEndIndexExclusive": 6,
+      "leftLexicalDistanceToMarker": 1,
+      "markerToken": {
+        "word": "噉",
+        "pos": "c",
+        "jyutping": "gam2",
+        "udPos": "CCONJ"
+      },
+      "markerSurface": "噉",
+      "markerJyutping": "gam2",
+      "markerHkcancorPos": "c",
+      "markerUdPos": "CCONJ",
+      "predicateCandidate": {
+        "tokenIndexZeroBased": 8,
+        "rightLexicalDistanceFromMarker": 2,
+        "word": "可以",
+        "pos": "v",
+        "jyutping": "ho2ji5",
+        "udPos": "VERB"
+      },
+      "rightLexicalDistanceFromMarker": 2,
+      "interveningLeftTokens": [],
+      "interveningRightTokens": [
+        {
+          "word": "就",
+          "pos": "d",
+          "jyutping": "zau6",
+          "udPos": "ADV"
+        }
+      ],
+      "mechanicallyAdjacentModifierMarker": true,
+      "mechanicallyAdjacentMarkerPredicate": false,
+      "leftWindowLexicalTokens": 3,
+      "rightWindowLexicalTokens": 3
+    }
+  ]
+}
