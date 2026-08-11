@@ -1,0 +1,44 @@
+name: Behavior gwo3 GREEN temp
+
+on:
+  push:
+    branches:
+      - agent/behavior-gwo3-comparative-tdd
+
+permissions:
+  contents: write
+
+jobs:
+  green:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/behavior-gwo3-comparative-tdd
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Install dependencies
+        run: npm ci
+      - name: Apply narrow GREEN wiring
+        run: python3 tools/behavior-gwo3-green-temp.py
+      - name: Build runtime bundle
+        run: node tools/build-runtime.js
+      - name: Run focused comparative behavior test
+        run: node tests/tooling/runtime/behavior-gwo3-comparative.test.js
+      - name: Protect existing experiential boundary
+        run: node tests/tooling/runtime/aa61-experiential-question-boundary.test.js
+      - name: Check diff hygiene
+        run: git diff --check
+      - name: Commit permanent GREEN result and remove transport
+        run: |
+          rm tools/behavior-gwo3-green-temp.py
+          rm .github/workflows/behavior-gwo3-green-temp.yml
+          git config user.name "Canto Span scoped automation"
+          git config user.email "actions@users.noreply.github.com"
+          git add src/plugin-entry.js src/parser/orchestration/wrap-core.js src/parser/detectors/comparison/postpredicate-gwo3.js src/runtime-resources/lexicon/token-lexicon/people-and-address.js src/runtime-resources/lexicon/token-lexicon/statives.js tests/tooling/runtime/behavior-gwo3-comparative.test.js tests/run-all.js main.js
+          git add -u tools/behavior-gwo3-green-temp.py .github/workflows/behavior-gwo3-green-temp.yml
+          git commit -m "Implement GREEN post-predicate gwo3 comparison behavior"
+          git push origin HEAD:agent/behavior-gwo3-comparative-tdd
