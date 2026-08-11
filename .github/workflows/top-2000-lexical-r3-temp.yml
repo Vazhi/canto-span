@@ -1,0 +1,189 @@
+name: Temporary top-2000 lexical R3
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - .github/workflows/top-2000-lexical-r3-temp.yml
+
+permissions:
+  contents: write
+
+jobs:
+  r3:
+    if: github.event.pull_request.head.ref == 'agent/top-2000-lexical-coverage-audit'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/top-2000-lexical-coverage-audit
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+
+      - name: Download pinned Cifu source
+        run: curl -fL --retry 3 https://raw.githubusercontent.com/gwinterstein/Cifu/8d5e4903e419193f903823880a7815712072cc80/Lexicon/Cifu-v1.txt -o /tmp/Cifu-v1.txt
+
+      - name: Apply noun and place R3 lexical additions
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+
+          additions = {
+            'src/runtime-resources/lexicon/token-lexicon/places-and-times.js': [
+              ('北方', 'where', 'bak1 fong1', 'direction_np cardinal_region', 'north / northern region'),
+              ('東', 'where', 'dung1', 'direction_np cardinal_direction', 'east'),
+              ('碼頭', 'where', 'maa5 tau4', 'place_or_goal place_np', 'dock / pier / wharf'),
+              ('礦場', 'where', 'kwong3 coeng4', 'place_or_goal place_np', 'mine / pit'),
+              ('農莊', 'where', 'nung4 zong1', 'place_or_goal place_np', 'farm / ranch'),
+              ('瀑布', 'where', 'buk6 bou3', 'place_or_goal natural_place_np', 'waterfall'),
+              ('墳場', 'where', 'fan4 coeng4', 'place_or_goal place_np', 'cemetery / graveyard'),
+              ('樹林', 'where', 'syu6 lam4', 'place_or_goal natural_place_np', 'woods / grove / forest'),
+              ('禮堂', 'where', 'lai5 tong4', 'place_or_goal place_np', 'assembly hall / auditorium'),
+              ('地盤', 'where', 'dei6 pun4', 'place_or_goal place_np', 'construction site / territory'),
+              ('市場', 'where', 'si5 coeng4', 'place_or_goal place_np', 'market / marketplace'),
+              ('國', 'where', 'gwok3', 'place_or_goal geopolitical_place_np', 'country / nation / state'),
+              ('西', 'where', 'sai1', 'direction_np cardinal_direction', 'west'),
+              ('水塘', 'where', 'seoi2 tong4', 'place_or_goal natural_place_np', 'reservoir / pool'),
+              ('國家', 'where', 'gwok3 gaa1', 'place_or_goal geopolitical_place_np', 'country / nation / state'),
+              ('世界', 'where', 'sai3 gaai3', 'place_or_goal world_np', 'world'),
+            ],
+            'src/runtime-resources/lexicon/token-lexicon/things.js': [
+              ('萍', 'what', 'ping4', 'object_np plant_np', 'duckweed'),
+              ('金字塔', 'what', 'gam1 zi6 taap3', 'object_np landmark_np', 'pyramid'),
+              ('農', 'what', 'nung4', 'abstract_np domain_np', 'agriculture'),
+              ('情況', 'what', 'cing4 fong3', 'abstract_np situation_np', 'circumstances / situation'),
+              ('國旗', 'what', 'gwok3 kei4', 'object_np artifact_np', 'national flag'),
+              ('燈塔', 'what', 'dang1 taap3', 'object_np landmark_np', 'lighthouse'),
+              ('纜車', 'what', 'laam6 ce1', 'object_np vehicle_np', 'cable car'),
+              ('效果', 'what', 'haau6 gwo2', 'abstract_np result_np', 'result / effect'),
+              ('文字', 'what', 'man4 zi6', 'object_np linguistic_term_np', 'writing / script / characters'),
+              ('圖', 'what', 'tou4', 'object_np visual_object_np', 'diagram / picture / drawing'),
+              ('銅', 'what', 'tung4', 'object_np material_np', 'copper'),
+              ('地標', 'what', 'dei6 biu1', 'object_np landmark_np', 'landmark'),
+              ('皮', 'what', 'pei4', 'object_np material_or_body_np', 'skin / leather'),
+              ('鬼', 'what', 'gwai2', 'object_np animate_np', 'ghost'),
+              ('電腦', 'what', 'din6 nou5', 'object_np device_np', 'computer'),
+              ('英文', 'what', 'jing1 man4', 'object_np language_np', 'English language'),
+              ('經濟', 'what', 'ging1 zai3', 'abstract_np domain_np', 'economy / economics'),
+              ('理由', 'what', 'lei5 jau4', 'abstract_np reason_np', 'reason / grounds / justification'),
+              ('法律', 'what', 'faat3 leot6', 'abstract_np domain_np', 'law'),
+            ],
+          }
+
+          added = 0
+          for rel, entries in additions.items():
+              p = Path(rel)
+              text = p.read_text()
+              lines = []
+              for form, label, jyutping, syntax, gloss in entries:
+                  if f'["{form}",' in text:
+                      continue
+                  meta = {
+                      'label': label,
+                      'jyutping': jyutping,
+                      'syntax': syntax,
+                      'note': f'{gloss}; Cifu spoken top-2000 R3 lexical audit.'
+                  }
+                  lines.append('  [' + json.dumps(form, ensure_ascii=False) + ', ' + json.dumps(meta, ensure_ascii=False, separators=(',', ':')) + '],')
+                  added += 1
+              if lines:
+                  text = text.rsplit('\n];', 1)[0] + '\n\n  // v0.5.227: Cifu spoken top-2000 R3 noun/place lexical coverage.\n' + '\n'.join(lines) + '\n];\n'
+                  p.write_text(text)
+
+          if added != 35:
+              raise SystemExit(f'expected 35 R3 additions, added {added}')
+
+          p = Path('manifest.json')
+          obj = json.loads(p.read_text())
+          obj['description'] = 'v0.5.227 adds 105 source-audited high-frequency Cantonese lexical entries from the Cifu spoken top-2000 audit without broadening grammar.'
+          p.write_text(json.dumps(obj, ensure_ascii=False, indent=2) + '\n')
+
+          p = Path('src/plugin-entry.js')
+          p.write_text(p.read_text().replace('adds 70 source-audited high-frequency lexical entries', 'adds 105 source-audited high-frequency lexical entries'))
+
+          p = Path('docs/current/PROJECT-STATE.md')
+          p.write_text(p.read_text().replace('adds 70 independently supported high-frequency lexical entries', 'adds 105 independently supported high-frequency lexical entries'))
+          PY
+
+      - name: Regenerate audit and R3 report
+        run: |
+          cp docs/research/LEXICAL-COVERAGE-TOP-2000-R1.md /tmp/R1.md
+          cp docs/research/LEXICAL-COVERAGE-TOP-2000-R2.md /tmp/R2.md
+          node tools/lexical-coverage/top-2000-audit.mjs --source=/tmp/Cifu-v1.txt
+          cp /tmp/R1.md docs/research/LEXICAL-COVERAGE-TOP-2000-R1.md
+          cp /tmp/R2.md docs/research/LEXICAL-COVERAGE-TOP-2000-R2.md
+          python - <<'PY'
+          from pathlib import Path
+          from collections import Counter
+          import csv
+
+          rows = list(csv.DictReader(Path('data/lexical-frequency/cifu-spoken-top-2000.tsv').open(), delimiter='\t'))
+          if len(rows) != 2000:
+              raise SystemExit(f'expected 2000 audit rows, got {len(rows)}')
+          counts = Counter(row['runtime_status'] for row in rows)
+          r3 = ['北方','東','碼頭','礦場','農莊','瀑布','墳場','樹林','禮堂','地盤','市場','國','西','水塘','國家','世界','萍','金字塔','農','情況','國旗','燈塔','纜車','效果','文字','圖','銅','地標','皮','鬼','電腦','英文','經濟','理由','法律']
+          missing = [row for row in rows if row['runtime_status'] == 'missing'][:180]
+
+          out = [
+              '# Top-2000 spoken Cantonese lexical coverage audit — R3',
+              '',
+              '## Scope',
+              '',
+              'R3 deliberately restricts the next lexical expansion to nouns, concrete objects, domains, and place/direction nouns. This reduces the risk of predicate-template changes while continuing to fill clear lexical gaps discovered by the top-2,000 audit.',
+              '',
+              '## Current coverage after cumulative R1 + R2 + R3 additions',
+              '',
+          ]
+          for key in ['covered_main','covered_variant','handled_structurally','surface_covered_sense_uncertain','missing','manual_review']:
+              out.append(f'- `{key}`: **{counts.get(key, 0)}**')
+          out += ['', '## R3 same-task lexical additions (35)', '']
+          out += [f'- `{form}`' for form in r3]
+          out += [
+              '',
+              'All 35 entries are drawn from the pinned Cifu spoken-adult top-2,000 list and use existing broad lexical roles. This batch does not promote or redefine a grammar construction.',
+              '',
+              '## Highest-frequency remaining lexical-gap candidates',
+              '',
+              '| Rank | Form | Count | Jyutping | Cifu definition |',
+              '|---:|---|---:|---|---|',
+          ]
+          for row in missing:
+              definition = row['cifu_definition'].replace('|', '\\|')
+              out.append(f"| {row['rank']} | {row['word']} | {row['cifu_spoken_adult']} | {row['cifu_jyutping']} | {definition} |")
+          out += [
+              '',
+              '## Interpretation',
+              '',
+              'Remaining gaps continue to require lexical-versus-grammar review. In particular, particles, polyfunctional predicates, direction/result material, spelling variants, and Cifu-generated strings are not bulk-added merely to increase the coverage percentage.',
+              '',
+          ]
+          Path('docs/research/LEXICAL-COVERAGE-TOP-2000-R3.md').write_text('\n'.join(out))
+          print(dict(counts))
+          PY
+
+      - name: Build and verify R3 runtime state
+        run: |
+          npm run build:runtime
+          npm test
+          npm run verify:runtime-build
+          npm run verify
+          npm run verify:runtime
+          npm run verify:research
+          git diff --check
+
+      - name: Commit verified R3 changes
+        run: |
+          git config user.name 'Canto Span scoped automation'
+          git config user.email 'actions@users.noreply.github.com'
+          git add data/lexical-frequency/cifu-spoken-top-2000.tsv \
+            docs/research/LEXICAL-COVERAGE-TOP-2000-R3.md \
+            src/runtime-resources/lexicon/token-lexicon/places-and-times.js \
+            src/runtime-resources/lexicon/token-lexicon/things.js \
+            src/plugin-entry.js manifest.json docs/current/PROJECT-STATE.md main.js
+          git diff --cached --quiet && { echo 'No verified R3 changes to commit'; exit 0; }
+          git commit -m 'Fill noun and place lexical gaps from top-2000 audit'
+          git push origin HEAD:agent/top-2000-lexical-coverage-audit
