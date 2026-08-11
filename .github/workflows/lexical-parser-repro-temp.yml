@@ -1,0 +1,61 @@
+name: Temporary lexical parser reproduction
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - .github/workflows/lexical-parser-repro-temp.yml
+
+permissions:
+  contents: read
+
+jobs:
+  reproduce:
+    if: github.event.pull_request.head.ref == 'agent/fix-lexical-parser-affordance'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/fix-lexical-parser-affordance
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - name: Add supported lexical entry in working tree
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('src/runtime-resources/lexicon/token-lexicon/verbs.js')
+          text = p.read_text()
+          entry = '  ["死", { label: "doing", jyutping: "sei2", syntax: "intransitive_verb change_of_state_verb", note: "die; core intransitive lexical reading; Cifu spoken top-2000 lexical audit with Wiktionary corroboration." }],\n'
+          if '["死",' not in text:
+              text = text.rsplit('\n];', 1)[0] + '\n\n  // lexical/parser coupling reproduction\n' + entry + '];\n'
+              p.write_text(text)
+          PY
+      - name: Probe lexical and construction behavior
+        run: |
+          node - <<'NODE'
+          const { loadRuntimeApi, internalConstruction, rowSurface } = require('./tools/lib/runtime-api');
+          const api = loadRuntimeApi();
+          for (const source of ['死', '佢死咗。', '簽死幾耐啊？', '我寫三個字。', '我要等幾耐？', '你等幾耐啊？', '我食咗飯。']) {
+            const all = api.diagnosticFinalRows(api.analyzeLine(source));
+            console.log('\n===', source, '===');
+            console.log(JSON.stringify(all.map(row => ({
+              kind: row.kind,
+              surface: rowSurface(row),
+              internal: internalConstruction(row),
+              role: row.role,
+              syntax: row.syntax,
+              slots: row.slots,
+              trace: row.trace_detail
+            })), null, 2));
+          }
+          NODE
+      - name: Run standard suite and preserve failure output
+        run: |
+          set +e
+          npm test 2>&1 | tee /tmp/npm-test.log
+          status=${PIPESTATUS[0]}
+          echo "npm_test_exit=$status"
+          grep -n -C 4 -E '簽死|ActionStativeVP|FAIL|snapshot' /tmp/npm-test.log || true
+          exit 0
