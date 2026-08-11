@@ -149,7 +149,7 @@ Do not create a bulk placeholder backlog merely to mirror every dormant signal. 
 4. Treat topic diversity as a balancing factor: do not let the same few construction families repeatedly dominate when similarly valuable alternatives exist elsewhere.
 5. Continuing within the same family is allowed when its follow-up is genuinely the strongest next task; recent work gives a topic neither automatic priority nor automatic exclusion.
 6. Keep accepted implementation, runtime/design audits, human actions, corpus ingestion, claims, and pull requests separate from the substantive research portfolio.
-7. Continue identity adjudication from the 89 pending UUIDs when it outranks other work; batches are opportunities, not a mandatory queue.
+7. Continue identity adjudication from the 88 pending UUIDs when it outranks other work; batches are opportunities, not a mandatory queue.
 8. Complete useful HKCanCor inventories through deterministic extraction and separate expert review when they expose a bounded empirical question that outranks other available work, using human local execution only when access requires it.
 9. Keep `YUE-JUDGMENT-PILOT-01` in collection until its stopping rule is met, then audit item wording, eligibility, exclusions, quality, comments, interpretations, controls, and regional limitations before drawing conclusions or revising a follow-up.
 10. Implement status-path or runtime-label migrations only in explicitly scoped reviewed changes.
