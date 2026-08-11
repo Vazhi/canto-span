@@ -49,6 +49,7 @@ module.exports = [  // Statives / property predicates
   ["遠", { label: "like", jyutping: "jyun5", syntax: "stative_predicate distance_stative scalar_dimension_predicate", note: "far" }],
   ["近", { label: "like", jyutping: "kan5", syntax: "stative_predicate distance_stative scalar_dimension_predicate", note: "near / close" }],
   ["高", { label: "like", jyutping: "gou1", syntax: "stative_predicate height_stative scalar_dimension_predicate", note: "high / tall" }],
+  ["矮", { label: "like", jyutping: "ai2", syntax: "stative_predicate height_stative scalar_dimension_predicate", note: "short / low in height; gradable property predicate and antonym of 高." }],
   ["低", { label: "like", jyutping: "dai1", syntax: "stative_predicate directional_result_complement", note: "low / lower; result complement in 放低" }],
   ["耐", { label: "like", jyutping: "noi6", syntax: "stative_predicate duration_stative scalar_dimension_predicate", note: "long in time / duration" }],
   ["熱", { label: "like", jyutping: "jit6", syntax: "stative_predicate ambient_property_predicate temperature_property", note: "hot; may describe a participant or an ambient environment depending on overt framing and context" }],
