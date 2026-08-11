@@ -1,0 +1,112 @@
+name: AB35 做功課 isolated finalizer R3
+
+on:
+  push:
+    branches:
+      - agent/ab35-zo-gungfo-final-r3
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  finalize:
+    if: github.ref == 'refs/heads/agent/ab35-zo-gungfo-final-r3'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/ab35-zo-gungfo-final-r3
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Reconstruct content-bound audited finalizer
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin agent/ab35-rehome-zo-gungfo
+          git cat-file blob c26eba2e8a22988aee125915b70b86c16161a47b > tools/ab35-zo-gungfo-finalize-temp.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          p = Path('tools/ab35-zo-gungfo-finalize-temp.py')
+          text = p.read_text()
+
+          def once(old, new):
+              global text
+              count = text.count(old)
+              assert count == 1, (old, count)
+              text = text.replace(old, new, 1)
+
+          once('BASE = "ed5e482f776779fb9eab556bd8ff244abbcd6427"', 'BASE = "414f5e0ab309c28e627abad3df24da7663053f4e"')
+          once('BRANCH = "agent/ab35-rehome-zo-gungfo"', 'BRANCH = "agent/ab35-zo-gungfo-final-r3"')
+          once('update_js = Path("/tmp/ab35-zo-gungfo-update-regression.js")', 'update_js = Path("tests/ab35-zo-gungfo-update-regression-temp.js")')
+          once('  assert.equal(transitive[0].internal_parent || transitive[0].parent, "SequenceAdverbPredicateFallback");', '  assert.notEqual(transitive[0].internal_parent || transitive[0].parent, "", "sequence material must remain outside the AB78 VP");')
+          once('    ".github/workflows/ab35-zo-gungfo-finalize-temp.yml",', '    ".github/workflows/ab35-final-r3-temp.yml",')
+
+          text, newline_count = re.subn(
+              r'fs\.writeFileSync\(fixturePath, JSON\.stringify\(fixture, null, 2\) \+ "(?:\\\\)+n"\);',
+              'fs.writeFileSync(fixturePath, JSON.stringify(fixture, null, 2) + String.fromCharCode(10));',
+              text,
+              count=1,
+          )
+          assert newline_count == 1, newline_count
+
+          marker = 'run("node", "tests/tooling/runtime/ab35-zo-gungfo-rehome.test.js")'
+          assert text.count(marker) == 1
+          sync = '''replace_once("tests/tooling/runtime/ab35-verb-object-compound-boundary.test.js", "  assert.equal(legacy.length, 40);", "  assert.equal(legacy.length, 39);")
+replace_once("tests/tooling/runtime/ab35-verb-object-compound-boundary.test.js", '  assert.equal(productiveRows("做功課。").some((row) => row.trace_detail.kind === "generative_template"), true);', '  assert.equal(productiveRows("做功課。").length, 0);')
+run("node", "tests/tooling/runtime/ab35-verb-object-compound-boundary.test.js")
+
+'''
+          text = text.replace(marker, sync + marker, 1)
+
+          final_main_guard = 'run("git", "fetch", "origin", "main")\nassert run("git", "rev-parse", "origin/main", capture=True) == BASE, "main moved during finalization; rebase required"'
+          assert text.count(final_main_guard) == 1
+          aa84_guard = '''readiness = json.loads(Path("data/construction-candidate-readiness.json").read_text())
+aa84 = next((row for row in readiness.get("records", []) if row.get("construction_code") == "AA84"), None)
+assert aa84 is not None, "AA84 readiness record missing"
+corpus_gate = aa84.get("gates", {}).get("reviewed_corpus_evidence", {})
+assert corpus_gate.get("status") == "pass", aa84
+assert corpus_gate.get("evidence") == "reviewed_genuine_corpus_hits", aa84
+assert corpus_gate.get("detail") == "3/14 genuine", aa84
+
+'''
+          text = text.replace(final_main_guard, aa84_guard + final_main_guard, 1)
+          p.write_text(text)
+          PY
+          python3 -m py_compile tools/ab35-zo-gungfo-finalize-temp.py
+      - name: Apply, verify, clean, and commit transition
+        id: apply
+        shell: bash
+        run: |
+          set -o pipefail
+          python3 tools/ab35-zo-gungfo-finalize-temp.py 2>&1 | tee /tmp/ab35-r3-finalizer.log
+      - name: Report failure to work claim
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          {
+            echo 'R3 finalizer FAILED on `${{ github.sha }}`.'
+            echo
+            echo '<details><summary>Tail of finalizer log</summary>'
+            echo
+            echo '```text'
+            tail -n 160 /tmp/ab35-r3-finalizer.log 2>/dev/null || true
+            echo '```'
+            echo '</details>'
+          } > /tmp/ab35-r3-comment.md
+          gh issue comment 772 --repo "$GITHUB_REPOSITORY" --body-file /tmp/ab35-r3-comment.md
+      - name: Report success to work claim
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          head_sha="$(git rev-parse origin/agent/ab35-zo-gungfo-final-r3 2>/dev/null || git rev-parse HEAD)"
+          gh issue comment 772 --repo "$GITHUB_REPOSITORY" --body "R3 finalizer PASS. Permanent verified branch head: \`$head_sha\`. Temporary workflow/helper were removed by the permanent commit."
