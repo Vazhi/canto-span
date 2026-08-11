@@ -36,7 +36,7 @@ replace_once(
 '  assert.equal(Array.from(row.trace_detail.bindings || []).length, 0);\n  assert.equal(row.trace_detail.matcher_variant_id, "ProductiveVO.source_linked_verb_object_compound_seed");',
 )
 
-variant_registration = r'''
+variant_registration = """
 # 5b. Register the two intentionally distinct ProductiveVO matcher definitions.
 replace_once(
     "src/runtime-resources/diagnostics/trace-metadata.js",
@@ -56,7 +56,7 @@ registerReviewedMatcherVariant("ProductiveVO.source_linked_verb_object_compound_
 const reviewedMissingTemplateFamilyDefaults = new Map();''',
 )
 
-'''
+"""
 replace_once('# 6. Focused runtime boundary tests.\n', variant_registration + '# 6. Focused runtime boundary tests.\n')
 
 week16_adaptation = r'''
@@ -99,7 +99,6 @@ replace_once(
 ]:""",
 )
 
-# The permanent diff must explicitly include the Week-16 storage-agnostic regression guard.
 replace_once(
 '    "tests/tooling/runtime/ab35-verb-object-compound-boundary.test.js",\n',
 '    "tests/tooling/runtime/ab35-verb-object-compound-boundary.test.js",\n    "tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js",\n',
