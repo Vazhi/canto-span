@@ -12,9 +12,7 @@ const CHECK_ONLY = process.argv.includes("--check");
 const OUTPUT = path.join(ROOT, "data/lexical-frequency/cifu-spoken-top-2000.tsv");
 const CIFU_COMMIT = "8d5e4903e419193f903823880a7815712072cc80";
 
-if (!SOURCE) {
-  throw new Error("Usage: node tools/lexical-coverage/top-2000-audit.mjs --source=/path/to/Cifu-v1.txt [--check]");
-}
+if (!SOURCE) throw new Error("Usage: node tools/lexical-coverage/top-2000-audit.mjs --source=/path/to/Cifu-v1.txt [--check]");
 
 const TOKEN_MODULES = Object.freeze([
   "people-and-address",
@@ -49,7 +47,10 @@ function readCifu(file) {
     const prior = bestBySurface.get(word);
     if (!prior || record.spoken > prior.spoken) bestBySurface.set(word, record);
   }
-  const ranked = [...bestBySurface.values()].sort((a, b) => b.spoken - a.spoken || a.word.localeCompare(b.word, "zh-Hant")).slice(0, 2000).map((record, index) => ({ ...record, rank: index + 1 }));
+  const ranked = [...bestBySurface.values()]
+    .sort((a, b) => b.spoken - a.spoken || a.word.localeCompare(b.word, "zh-Hant"))
+    .slice(0, 2000)
+    .map((record, index) => ({ ...record, rank: index + 1 }));
   if (ranked.length !== 2000) throw new Error(`Expected 2000 ranked forms, got ${ranked.length}`);
   return ranked;
 }
@@ -95,7 +96,9 @@ function classify(record, runtime) {
     const runtimeMeta = [...new Set(direct.map((item) => [item.label, item.syntax].filter(Boolean).join(":")))].join(";") || "-";
     const cifuReading = normalizeReading(record.jyutping);
     const runtimeReading = normalizeReading(runtimeJyutping);
-    const status = cifuReading && runtimeReading && !(cifuReading.includes(runtimeReading) || runtimeReading.includes(cifuReading)) ? "surface_covered_sense_uncertain" : "covered_main";
+    const status = cifuReading && runtimeReading && !(cifuReading.includes(runtimeReading) || runtimeReading.includes(cifuReading))
+      ? "surface_covered_sense_uncertain"
+      : "covered_main";
     return { ...record, status, note: "", runtimeModule, runtimeJyutping, runtimeMeta };
   }
   const variant = VERIFIED_VARIANTS[record.word];
@@ -125,6 +128,22 @@ if (CHECK_ONLY) {
   fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
   fs.writeFileSync(OUTPUT, output);
 }
+
 const counts = {};
 for (const row of rows) counts[row.status] = (counts[row.status] || 0) + 1;
-console.log(JSON.stringify({ source: "Cifu-v1 SpokenAdult", sourceCommit: CIFU_COMMIT, rankedForms: rows.length, mode: CHECK_ONLY ? "check" : "write", counts, topRemainingMissing: rows.filter((row) => row.status === "missing").slice(0, 30).map((row) => [row.rank, row.word]) }, null, 2));
+const topSet = new Set(rows.map((row) => row.word));
+const exactSurfaceCoverage = rows.filter((row) => row.status === "covered_main" || row.status === "surface_covered_sense_uncertain").length;
+const runtimeSurfacesOutsideTop2000 = [...runtime.direct.keys()].filter((surface) => !topSet.has(surface)).length;
+
+console.log(JSON.stringify({
+  source: "Cifu-v1 SpokenAdult",
+  sourceCommit: CIFU_COMMIT,
+  rankedForms: rows.length,
+  mode: CHECK_ONLY ? "check" : "write",
+  counts,
+  exactSurfaceCoverage,
+  top2000TargetMet: exactSurfaceCoverage === 2000,
+  totalRuntimeUniqueSurfaces: runtime.direct.size,
+  runtimeSurfacesOutsideTop2000,
+  topRemainingMissing: rows.filter((row) => row.status === "missing").slice(0, 30).map((row) => [row.rank, row.word]),
+}, null, 2));
