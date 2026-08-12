@@ -1,0 +1,65 @@
+name: multi-analysis baseline compare
+
+on:
+  push:
+    branches:
+      - agent/multi-analysis-lexicon
+
+permissions:
+  contents: write
+
+jobs:
+  compare:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Compare base and head regression suites
+        shell: bash
+        run: |
+          mkdir -p .diagnostics/multi-analysis
+          BASE_SHA=228ae2aecd057ceefb6d69cfefc9dcc31de8a11d
+          git worktree add /tmp/canto-base "$BASE_SHA"
+          (
+            cd /tmp/canto-base
+            npm ci >/dev/null 2>&1
+            set +e
+            node tests/run-all.js > /tmp/base-run-all.log 2>&1
+            echo $? > /tmp/base-run-all.exit
+          )
+          cp /tmp/base-run-all.log .diagnostics/multi-analysis/base-run-all.log
+          cp /tmp/base-run-all.exit .diagnostics/multi-analysis/base-run-all.exit
+          npm ci >/dev/null 2>&1
+          set +e
+          node tests/run-all.js > /tmp/head-run-all.log 2>&1
+          HEAD_EXIT=$?
+          set -e
+          cp /tmp/head-run-all.log .diagnostics/multi-analysis/head-run-all.log
+          printf '%s\n' "$HEAD_EXIT" > .diagnostics/multi-analysis/head-run-all.exit
+          python3 <<'PY'
+          import re
+          from pathlib import Path
+          def counts(path):
+              text=Path(path).read_text()
+              m_total=re.search(r'"total":\s*(\d+)', text)
+              m_pass=re.search(r'"passed":\s*(\d+)', text)
+              m_fail=re.search(r'"failed":\s*(\d+)', text)
+              return tuple(int(m.group(1)) if m else None for m in (m_total,m_pass,m_fail))
+          b=counts('/tmp/base-run-all.log')
+          h=counts('/tmp/head-run-all.log')
+          Path('.diagnostics/multi-analysis/baseline-compare.txt').write_text(f'base total/passed/failed={b}\nhead total/passed/failed={h}\nidentical_counts={b==h}\n')
+          PY
+      - name: Commit comparison
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .diagnostics/multi-analysis
+          git commit -m "Capture base versus multi-analysis regression counts"
+          git push origin HEAD:${GITHUB_REF_NAME}
