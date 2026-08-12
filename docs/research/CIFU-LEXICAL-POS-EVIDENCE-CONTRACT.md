@@ -70,21 +70,23 @@ The artifact must contain at least:
 The actual `map` contains the complete mapping returned by the frozen upstream API;
 the one-entry object above illustrates shape only.
 
-The canonical maintenance tool is:
+The separately scoped map-materialization issue #808 owns the canonical maintenance
+tool and generated artifact:
 
 ```text
-tools/corpus-review/generate_hkcancor_ud_map.py
+tools/corpus-review/export_hkcancor_ud_map.py
+data/lexical-pos/hkcancor-to-ud-pycantonese-5.0.0.json
 ```
 
-With a maintenance environment containing exactly PyCantonese 5.0.0, regenerate or
-verify the artifact from the repository root:
+With a maintenance environment containing exactly PyCantonese 5.0.0, its generator
+must support regeneration and deterministic check mode from the repository root:
 
 ```bash
-python tools/corpus-review/generate_hkcancor_ud_map.py
-python tools/corpus-review/generate_hkcancor_ud_map.py --check
+python tools/corpus-review/export_hkcancor_ud_map.py
+python tools/corpus-review/export_hkcancor_ud_map.py --check
 ```
 
-The tool rejects any other PyCantonese version and verifies the upstream unknown-tag
+The tool must reject any other PyCantonese version and verify the upstream unknown-tag
 fallback. These commands are maintenance/corpus tooling; neither is bundled into or
 required by the offline plugin.
 
@@ -233,8 +235,8 @@ ambiguous during generation.
 
 ## Map generation and verification
 
-The map is generated once per deliberately adopted upstream version. The maintenance
-tool imports the frozen API and calls:
+The map is generated once per deliberately adopted upstream version. Issue #808's
+maintenance tool imports the frozen API and calls:
 
 ```python
 from pycantonese.pos_tagging import hkcancor_to_ud
