@@ -123,11 +123,22 @@ construction.
 
 See
 [`docs/research/CIFU-LEXICAL-POS-EVIDENCE-CONTRACT.md`](../../docs/research/CIFU-LEXICAL-POS-EVIDENCE-CONTRACT.md).
-The contract requires every rank-band packet to preserve raw HKCanCor POS/Jyutping
-evidence, derive a parallel Universal Dependencies POS projection mechanically with
-PyCantonese 5.0.0 `hkcancor_to_ud()`, retain current runtime analyses, and provide
-deterministic context for every observed surface × raw-POS × Jyutping bucket plus
-explicit zero-hit rows.
+
+The project keeps a versioned **offline** HKCanCor→Universal-Dependencies mapping at:
+
+```text
+data/lexical-pos/hkcancor-to-ud-pycantonese-5.0.0.json
+```
+
+That artifact is generated and verifiable against frozen PyCantonese 5.0.0, but
+normal plugin/runtime and adjudication code read the checked-in JSON only. They must
+not require Python, PyCantonese, package installation, or network access to interpret
+an HKCanCor tag.
+
+Every rank-band packet preserves raw HKCanCor POS/Jyutping evidence, derives a
+parallel UD projection from the checked-in local map, retains current runtime
+analyses, records the local map hash, and provides deterministic context for every
+observed surface × raw-POS × Jyutping bucket plus explicit zero-hit rows.
 
 The UD projection is a lossy navigation layer only. It may not replace raw HKCanCor
 tags or determine Canto Span lexical labels, POS, syntax, senses, analysis splits,
