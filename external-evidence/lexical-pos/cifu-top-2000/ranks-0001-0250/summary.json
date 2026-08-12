@@ -11,15 +11,30 @@
     "hkcancor_manifest": "external-evidence/cp021b/hkcancor-cp021b-source-manifest.sha256",
     "hkcancor_manifest_sha256": "d93b064614b38227889b2db20162eb0c2fee3fb75aa94e90dd9abfc64289c731",
     "pycantonese_version": "5.0.0",
+    "hkcancor_ud_map": "data/lexical-pos/hkcancor-to-ud-pycantonese-5.0.0.json",
+    "hkcancor_ud_map_sha256": "d71e1c38ba8fd99a9fd1248b477ea01b066d168c8bc7cfd69e19d84c9554df39",
+    "hkcancor_ud_map_schema": "canto-span-hkcancor-ud-map-v1",
+    "hkcancor_ud_map_source": {
+      "project": "PyCantonese",
+      "version": "5.0.0",
+      "api": "pycantonese.pos_tagging.hkcancor_to_ud",
+      "repository_tag": "v5.0.0",
+      "mapping_source": "src/pycantonese/pos_tagging/hkcancor_to_ud.py",
+      "punctuation_source": "src/pycantonese/_punctuation_marks.py"
+    },
+    "hkcancor_ud_unknown_tag_fallback": "X",
+    "hkcancor_ud_map_entry_count": 134,
     "runtime_lexical_resource": "src/runtime-resources/lexicon/token-lexicon",
     "runtime_analysis_index": "src/runtime-resources/lexicon/lexical-analyses.js",
-    "git_head": "4f4b796011fccd5532656623674c10e599593e8e"
+    "git_head": "e82663e7ede7ebdbf082a63b6f9ecd8c82c0a14c"
   },
   "counts": {
     "cifu_rank_rows": 250,
     "hkcancor_attested_surfaces": 215,
     "hkcancor_unattested_surfaces": 35,
     "hkcancor_matching_tokens": 82819,
+    "hkcancor_raw_pos_tokens": 82819,
+    "hkcancor_derived_ud_tokens": 82819,
     "observed_surface_pos_jyutping_buckets": 482,
     "concordance_bucket_rows": 517,
     "runtime_rows": 250,
@@ -72,6 +87,22 @@
     "s": 1,
     "jns": 1,
     "Cg": 1
+  },
+  "ud_distribution": {
+    "VERB": 18004,
+    "PART": 17726,
+    "ADV": 12679,
+    "PRON": 11182,
+    "CCONJ": 7191,
+    "NOUN": 5520,
+    "INTJ": 2961,
+    "AUX": 2502,
+    "NUM": 2021,
+    "ADJ": 1492,
+    "ADP": 1200,
+    "PROPN": 328,
+    "X": 12,
+    "DET": 1
   },
   "jyutping_distribution": {
     "hai6": 5019,
