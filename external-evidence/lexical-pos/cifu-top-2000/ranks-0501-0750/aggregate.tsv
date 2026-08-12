@@ -1,0 +1,251 @@
+rank	word	cifu_jyutping	cifu_definition	hkcancor_hits	hkcancor_observed_bucket_count	hkcancor_pos_counts	hkcancor_ud_counts	hkcancor_jyutping_counts
+501	地	dei6	earth/ground/field/place/land/CL:片[pin](Mandarin)/CL:塊[faai]/CL:笪[daat]/-ly/structural particle: used before a verb or adjective, linking it to preceding modifying adverbial adjunct	17	5	"{""Ng"": 1, ""k"": 9, ""n"": 3, ""u"": 4}"	"{""X"": 9, ""NOUN"": 4, ""PART"": 4}"	"{""dei2"": 1, ""dei6"": 16}"
+502	明	ming4	bright/clear/to understand/next/public or open/wise/Ming Dynasty (1368-1644)/surname Ming	43	3	"{""a"": 1, ""nr"": 15, ""v"": 27}"	"{""VERB"": 27, ""PROPN"": 15, ""ADJ"": 1}"	"{""ming4"": 43}"
+503	鬼	gwai2	"ghost/CL:隻[jek]/a westerner/a traitor; an informer within an organisation, a ""mole""."	72	2	"{""d1"": 64, ""n"": 8}"	"{""ADV"": 64, ""NOUN"": 8}"	"{""gwai2"": 72}"
+504	最後	zeoi3hau6	final/last/finally/ultimate	25	2	"{""f"": 11, ""t"": 14}"	"{""ADV"": 25}"	"{""zeoi3hau6"": 25}"
+505	憂	jau1	to worry/to concern oneself with/worried/anxiety/sorrow/a parent's funeral/inconvenienced by being orphaned	0	0	{}	{}	{}
+506	一次	jat1ci3	first/first time/once/(math.) linear (of degree one)	0	0	{}	{}	{}
+507	加	gaa1	to add/plus/abbr. for Canada 加拿大	27	2	"{""d"": 1, ""v"": 26}"	"{""VERB"": 26, ""ADV"": 1}"	"{""gaa1"": 27}"
+508	受	sau6	to receive/to accept/to suffer/subjected to/to bear/to stand/pleasant/(passive marker)	5	2	"{""v"": 4, ""x"": 1}"	"{""VERB"": 4, ""X"": 1}"	"{""sau6"": 5}"
+509	肯定	hang2ding6	to be sure/to be certain/sure/certain/definite/to confirm/to affirm/affirmative	24	3	"{""a"": 12, ""d"": 8, ""v"": 4}"	"{""ADJ"": 12, ""ADV"": 8, ""VERB"": 4}"	"{""hang2ding6"": 24}"
+510	能夠	nang4gau3	be capable of/can/is able	12	2	"{""v"": 2, ""vu"": 10}"	"{""AUX"": 10, ""VERB"": 2}"	"{""nang4gau3"": 12}"
+511	瑞	seoi6	lucky/auspicious/propitious/rayl (acoustical unit)	0	0	{}	{}	{}
+512	電腦	din6nou5	computer	30	1	"{""n"": 30}"	"{""NOUN"": 30}"	"{""din6nou5"": 30}"
+513	領	ling5|leng5	neck/collar/to lead/to receive	0	0	{}	{}	{}
+514	長	coeng4|zoeng2	length/long/forever/always/constantly|chief/head/elder/to grow/to develop/to increase/to enhance	27	1	"{""a"": 27}"	"{""ADJ"": 27}"	"{""coeng4"": 27}"
+515	信心	seon3sam1	confidence/faith (in sb or sth)	42	1	"{""n"": 42}"	"{""NOUN"": 42}"	"{""seon3sam1"": 42}"
+516	後尾	*hau6mei5	NO DEF	29	3	"{""f"": 15, ""t"": 14}"	"{""ADV"": 29}"	"{""hau1mei1"": 5, ""hau6mei1"": 24}"
+517	重要	zung6jiu3	important/significant/major	9	1	"{""a"": 9}"	"{""ADJ"": 9}"	"{""zung6jiu3"": 9}"
+518	意	ji3	idea/meaning/thought/to think/wish/desire/intention/to expect/to anticipate/abbr. for Italy 意大利	0	0	{}	{}	{}
+519	當	dong1|dong3	when/during/just at (a time or place)/on the spot/ought/should/equal/same/manage|to regard as/suitable/adequate/fitting/proper/to pawn/obstruct	37	4	"{""d"": 23, ""v"": 14}"	"{""ADV"": 23, ""VERB"": 14}"	"{""dong1"": 20, ""dong3"": 17}"
+520	繞	jiu5	to wind/to coil (thread)/to rotate around/to spiral/to move around/to go round (an obstacle)/to by-pass/to make a detour/to confuse/to perplex	0	0	{}	{}	{}
+521	水	seoi2	1. water/2. money/3. low quality, poor (e.g. of performace)	25	1	"{""n"": 25}"	"{""NOUN"": 25}"	"{""seoi2"": 25}"
+522	成病	*sing4beng6	NO DEF	0	0	{}	{}	{}
+523	坐	co5|zo6	to sit/to take a seat/to take (a bus, airplane etc)	39	2	"{""Ng"": 1, ""v"": 38}"	"{""VERB"": 38, ""NOUN"": 1}"	"{""co5"": 38, ""zo6"": 1}"
+524	我話	*ngo5waa6|waa2	NO DEF	0	0	{}	{}	{}
+525	是	si6	is/are/am/yes/to be	6	2	"{""Dg"": 1, ""v"": 5}"	"{""VERB"": 5, ""ADV"": 1}"	"{""si6"": 6}"
+526	英文	jing1man4	English (language)	44	4	"{""n"": 5, ""nz"": 39}"	"{""PROPN"": 39, ""NOUN"": 5}"	"{""jing1man2"": 40, ""jing1man4"": 4}"
+527	真	zan1	really/truly/indeed/real/true/genuine	21	1	"{""a"": 21}"	"{""ADJ"": 21}"	"{""zan1"": 21}"
+528	貧	pan4	poor/inadequate/deficient/garrulous	0	0	{}	{}	{}
+529	擺	baai2	to arrange/to exhibit/to move to and fro/a pendulum	23	1	"{""v"": 23}"	"{""VERB"": 23}"	"{""baai2"": 23}"
+530	彎	waan1	bend/bent	1	1	"{""v"": 1}"	"{""VERB"": 1}"	"{""waan1"": 1}"
+531	今年	gam1nin4	this year	30	1	"{""t"": 30}"	"{""ADV"": 30}"	"{""gam1nin2"": 30}"
+532	完成	jyun4sing4	complete/accomplish/perfect tense (grammar)	3	1	"{""v"": 3}"	"{""VERB"": 3}"	"{""jyun4sing4"": 3}"
+533	男仔	*naam4zai2|zi2	NO DEF	15	1	"{""n"": 15}"	"{""NOUN"": 15}"	"{""naam4zai2"": 15}"
+534	排	paai4	a row/a line/to set in order/to arrange/to line up/to eliminate/to drain/to push open/platoon/raft/classifier for lines, rows etc	19	4	"{""Vg"": 6, ""n"": 1, ""q"": 3, ""v"": 9}"	"{""VERB"": 15, ""NOUN"": 4}"	"{""paai4"": 19}"
+535	跟	gan1	to follow closely/to go with/to marry sb (of woman)/with/towards/as (compared to)/from (different from)/and (in addition to)/heel(Mandarin)	33	1	"{""v"": 33}"	"{""VERB"": 33}"	"{""gan1"": 33}"
+536	灣	waan1	bay/gulf	0	0	{}	{}	{}
+537	任何	jam6ho4	any/whatever/whichever/whatsoever	10	1	"{""r"": 10}"	"{""PRON"": 10}"	"{""jam6ho4"": 10}"
+538	返來	*faan1|faan2loi4	NO DEF	80	4	"{""f"": 1, ""n"": 1, ""v"": 78}"	"{""VERB"": 78, ""ADV"": 1, ""NOUN"": 1}"	"{""faan1lai4"": 37, ""faan1lei4"": 43}"
+539	室	sat1	room	0	0	{}	{}	{}
+540	記得	gei3dak1	to remember	30	1	"{""v"": 30}"	"{""VERB"": 30}"	"{""gei3dak1"": 30}"
+541	犀利	sai1lei6	terrific, great, amazing/sharp	48	1	"{""a"": 48}"	"{""ADJ"": 48}"	"{""sai1lei6"": 48}"
+542	緊要	gan2jiu3	important	36	1	"{""a"": 36}"	"{""ADJ"": 36}"	"{""gan2jiu3"": 36}"
+543	憂店	*jau1dim3	NO DEF	0	0	{}	{}	{}
+544	樂	lok6|ngok6	happy/laugh/cheerful/surname Le/surname Yue/music	0	0	{}	{}	{}
+545	樂園	lok6jyun4	paradise	0	0	{}	{}	{}
+546	左上	zo2soeng6	upper left	0	0	{}	{}	{}
+547	先生	sin1saang1	sir/mister/teacher/(title of respect)	22	1	"{""n"": 22}"	"{""NOUN"": 22}"	"{""sin1saang1"": 22}"
+548	形	jing4	to appear/to look/form/shape	7	3	"{""Ng"": 1, ""n"": 5, ""v"": 1}"	"{""NOUN"": 6, ""VERB"": 1}"	"{""jing4"": 7}"
+549	直接	zik6zip3	direct/opposite: indirect 間接|间接/immediate/directly/straightforward	5	2	"{""a"": 2, ""d"": 3}"	"{""ADV"": 3, ""ADJ"": 2}"	"{""zik6zip3"": 5}"
+550	班	baan1	"team/class/squad/work shift/classifier for groups/ranking/to gather together/to gather support (""back-up"")/to deploy one's gang member/a surname"	62	4	"{""k"": 1, ""n"": 14, ""q"": 46, ""v"": 1}"	"{""NOUN"": 60, ""VERB"": 1, ""X"": 1}"	"{""baan1"": 62}"
+551	國家	gwok3gaa1	country/nation/state	18	1	"{""n"": 18}"	"{""NOUN"": 18}"	"{""gwok3gaa1"": 18}"
+552	第二個	*dai6ji6go3	NO DEF	1	1	"{""r"": 1}"	"{""PRON"": 1}"	"{""dai6ji6go3"": 1}"
+553	細個	*sai3go3	NO DEF	32	1	"{""a"": 32}"	"{""ADJ"": 32}"	"{""sai3go3"": 32}"
+554	幾時	gei2si4	what time?/when?	48	2	"{""d"": 1, ""r"": 47}"	"{""PRON"": 47, ""ADV"": 1}"	"{""gei2si4"": 48}"
+555	傾	king1	to chat/to overturn/to collapse/to lean/to tend/to incline/to pour out	35	2	"{""Vg"": 1, ""v"": 34}"	"{""VERB"": 35}"	"{""king1"": 35}"
+556	經濟	ging1zai3	economy/economic	12	2	"{""a"": 9, ""n"": 3}"	"{""ADJ"": 9, ""NOUN"": 3}"	"{""ging1zai3"": 12}"
+557	點啊	*dim2aa3|aa1|aa2	NO DEF	0	0	{}	{}	{}
+558	一係	jat1hai6	NO DEF	46	2	"{""c"": 15, ""d"": 31}"	"{""ADV"": 31, ""CCONJ"": 15}"	"{""jat1hai6"": 46}"
+559	我會	*ngo5wui5|wui6|wui2	NO DEF	0	0	{}	{}	{}
+560	使	sai2|si2|si3	to spend (money)/to make/to cause/to enable/to use/to employ/to send/to instruct sb to do sth/envoy/messenger	44	3	"{""v"": 29, ""vn"": 1, ""vu"": 14}"	"{""VERB"": 29, ""AUX"": 14, ""NOUN"": 1}"	"{""sai2"": 44}"
+561	突然	dat6jin4	sudden/abrupt/unexpected	5	2	"{""a"": 4, ""d"": 1}"	"{""ADJ"": 4, ""ADV"": 1}"	"{""dat6jin4"": 5}"
+562	海	hoi2	ocean/sea/CL:個[go]/CL:片[pin](Mandarin)	6	1	"{""n"": 6}"	"{""NOUN"": 6}"	"{""hoi2"": 6}"
+563	提	tai4	carry (suspended)/to carry (hanging down from the hand)/to lift/to put forward/to mention/to raise (an issue)/upwards character stroke/lifting brush stroke (in painting)/scoop for measuring liquid	5	1	"{""v"": 5}"	"{""VERB"": 5}"	"{""tai4"": 5}"
+564	養	joeng5	to raise (animals)/to bring up (children)/to keep (pets)/to support/to give birth	118	1	"{""v"": 118}"	"{""VERB"": 118}"	"{""joeng5"": 118}"
+565	錯	co3	wrong; mistaken; erroneous/fault; demerit; blunder/intricate; complex/CL:個[go]	43	3	"{""a"": 34, ""d"": 2, ""vd"": 7}"	"{""ADJ"": 34, ""ADV"": 9}"	"{""co3"": 43}"
+566	叢林	cung4lam4	jungle/thicket/forest/Buddhist monastery	0	0	{}	{}	{}
+567	七	cat1	"seven/euphemistic form of 柒 [chaht] ""prick"""	32	2	"{""m"": 31, ""t"": 1}"	"{""NUM"": 31, ""ADV"": 1}"	"{""cat1"": 32}"
+568	大陸	daai6luk6	mainland China (reference to the PRC)/continent/mainland/CL:個[go]	42	3	"{""n"": 1, ""ns"": 40, ""s"": 1}"	"{""PROPN"": 40, ""NOUN"": 2}"	"{""daai6luk6"": 42}"
+569	平	ping4	flat/level/equal/to tie (make the same score)/to draw (score)/calm/peaceful/level or even tone (i.e. first and second tones in classical Chinese)/surname Ping	63	2	"{""a"": 63}"	"{""ADJ"": 63}"	"{""peng4"": 62, ""ping4"": 1}"
+570	打電話	daa2din6waa2	to make a telephone call	16	1	"{""v"": 16}"	"{""VERB"": 16}"	"{""daa2din6waa2"": 16}"
+571	成個	*sing4go3	NO DEF	3	1	"{""b"": 3}"	"{""ADJ"": 3}"	"{""seng4go3"": 3}"
+572	基本上	gei1bun2soeng6	basically/on the whole	29	2	"{""d"": 28, ""i"": 1}"	"{""ADV"": 28, ""X"": 1}"	"{""gei1bun2soeng6"": 29}"
+573	碟	dip6	dish/plate	38	2	"{""n"": 37, ""q"": 1}"	"{""NOUN"": 38}"	"{""dip2"": 37, ""dip6"": 1}"
+574	說話	syut3waa6	to speak/to say/to talk/to gossip/to tell stories/talk/word	5	3	"{""n"": 1, ""v"": 2, ""vn"": 2}"	"{""NOUN"": 3, ""VERB"": 2}"	"{""syut3waa6"": 5}"
+575	雖然	seoi1jin4	although/even though/even if	20	1	"{""c"": 20}"	"{""CCONJ"": 20}"	"{""seoi1jin4"": 20}"
+576	上行	soeng6hang4	up train (i.e. towards the capital)	0	0	{}	{}	{}
+577	心	sam1	heart/mind/intention/centre/core/CL:個[go]	9	1	"{""n"": 9}"	"{""NOUN"": 9}"	"{""sam1"": 9}"
+578	自由	zi6jau4	freedom/free/liberty	1	1	"{""a"": 1}"	"{""ADJ"": 1}"	"{""zi6jau4"": 1}"
+579	每	mui5	each/every	41	3	"{""d"": 6, ""m"": 1, ""r"": 34}"	"{""PRON"": 34, ""ADV"": 6, ""NUM"": 1}"	"{""mui5"": 41}"
+580	直線	zik6sin3	straight line	0	0	{}	{}	{}
+581	穿	cyun1	to bore through/to pierce/to perforate/to penetrate/to pass through/to dress/to wear/to put on/to thread/damaged with a hole or holes (e.g. pots, socks)	2	1	"{""v"": 2}"	"{""VERB"": 2}"	"{""cyun1"": 2}"
+582	哩樣	*lei5|le1|lei1|li1joeng6	NO DEF	62	1	"{""r"": 62}"	"{""PRON"": 62}"	"{""ni1joeng6"": 62}"
+583	差	caa1|caai1|cī	difference/discrepancy/to differ/error/to err/to make a mistake/to differ from/to fall short of/lacking/wrong/inferior|the police/to send/to commission/messenger/mission|uneven	30	4	"{""Ng"": 1, ""a"": 27, ""d1"": 1, ""v"": 1}"	"{""ADJ"": 27, ""ADV"": 1, ""NOUN"": 1, ""VERB"": 1}"	"{""caa1"": 29, ""caai1"": 1}"
+584	從	cung4	from/via/passing through/through (a gap)/past/ever (followed by negative, meaning never)/(formerly pr. zong4 and related to 縱|纵) to follow/to comply with/to obey/to join/to engage in/adopting some mode of action or attitude/follower/retainer/accessory/accomplice/related by common paternal grandfather or earlier ancestor/surname Cong/lax/yielding/unhurried/second cousin	1	1	"{""p"": 1}"	"{""ADP"": 1}"	"{""cung4"": 1}"
+585	舊	gau6	old/opposite: new 新/former/worn (with age)	21	2	"{""a"": 16, ""q"": 5}"	"{""ADJ"": 16, ""NOUN"": 5}"	"{""gau6"": 21}"
+586	呵	ho1	"expel breath/my goodness/variantof 啊/phonetic ""a"""	29	3	"{""e"": 10, ""y"": 19}"	"{""PART"": 19, ""INTJ"": 10}"	"{""ho1"": 1, ""ho2"": 28}"
+587	性	sing3	nature/character/property/quality/attribute/sexuality/sex/gender/surname/suffix forming adjective from verb/suffix forming noun from adjective, corresponding to -ness or -ity/essence	5	1	"{""k"": 5}"	"{""X"": 5}"	"{""sing3"": 5}"
+588	林	lam4	woods/forest/surname Lin	5	2	"{""nr"": 5}"	"{""PROPN"": 5}"	"{""lam2"": 1, ""lam4"": 4}"
+589	揸	zaa1	to hold/to drive/to pilot/to make a decision	24	1	"{""v"": 24}"	"{""VERB"": 24}"	"{""zaa1"": 24}"
+590	機	gei1	machine/engine/CL:臺|台[tòih](Mandarin)/CL:部[bouh]/opportunity/intention/aircraft/pivot/crucial point/flexible(quick-witted)/organic/a surname	65	2	"{""Ng"": 5, ""n"": 60}"	"{""NOUN"": 65}"	"{""gei1"": 65}"
+591	世界	sai3gaai3	world/a situation, a position, a state of affairs/CL:個[go]	6	1	"{""n"": 6}"	"{""NOUN"": 6}"	"{""sai3gaai3"": 6}"
+592	右上	jau6soeng6	upper right	0	0	{}	{}	{}
+593	似	ci5	to seem/to appear/to resemble/similar/-like/pseudo-	18	2	"{""a"": 1, ""v"": 17}"	"{""VERB"": 17, ""ADJ"": 1}"	"{""ci5"": 18}"
+594	東方	dung1fong1	the East/Eastern countries	0	0	{}	{}	{}
+595	返工	faan1gung1	go to work	37	1	"{""v"": 37}"	"{""VERB"": 37}"	"{""faan1gung1"": 37}"
+596	理由	lei5jau4	reason/grounds/justification	33	2	"{""n"": 32, ""v"": 1}"	"{""NOUN"": 32, ""VERB"": 1}"	"{""lei5jau4"": 33}"
+597	着	*?	NO DEF	53	4	"{""u"": 12, ""v"": 41}"	"{""VERB"": 41, ""PART"": 12}"	"{""zoek3"": 38, ""zoek6"": 15}"
+598	貨倉	fo3cong1	a warehouse	2	1	"{""n"": 2}"	"{""NOUN"": 2}"	"{""fo3cong1"": 2}"
+599	發覺	faat3gok3	to find/to detect/to discover	21	1	"{""v"": 21}"	"{""VERB"": 21}"	"{""faat3gok3"": 21}"
+600	落到	lok6dou2	befallen	0	0	{}	{}	{}
+601	繞過	*jiu5gwo3	NO DEF	0	0	{}	{}	{}
+602	翻版	faan1baan2	to reprint/a duplicate/a clone	43	1	"{""n"": 43}"	"{""NOUN"": 43}"	"{""faan1baan2"": 43}"
+603	一種	jat1zung2	one kind of/one type of	0	0	{}	{}	{}
+604	以	ji5	abbr. for Israel 以色列[yíh sīk liht]/to use/according to/so as to/in order to/by/with/because	15	1	"{""p"": 15}"	"{""ADP"": 15}"	"{""ji5"": 15}"
+605	包	baau1	to cover/to wrap/to promise/to guarantee/to include/to keep a mistress or second wife/package/wrapper/container/bag/bundle/packet	17	2	"{""q"": 2, ""v"": 15}"	"{""VERB"": 15, ""NOUN"": 2}"	"{""baau1"": 17}"
+606	未必	mei6bit1	not necessarily/maybe not	27	1	"{""d"": 27}"	"{""ADV"": 27}"	"{""mei6bit1"": 27}"
+607	拍	paak3	to pat/to clap/to slap/to swat/to take (a photo)/to shoot (a film)/racket (sports)/beat (music)	21	1	"{""v"": 21}"	"{""VERB"": 21}"	"{""paak3"": 21}"
+608	法律	faat3leot6	law	3	1	"{""n"": 3}"	"{""NOUN"": 3}"	"{""faat3leot6"": 3}"
+609	要求	jiu1kau4	to request/to require/to stake a claim/to ask/to demand	22	2	"{""v"": 17, ""vn"": 5}"	"{""VERB"": 17, ""NOUN"": 5}"	"{""jiu1kau4"": 22}"
+610	旅行	leoi5hang4	travel	46	3	"{""n"": 2, ""v"": 40, ""vn"": 4}"	"{""VERB"": 40, ""NOUN"": 6}"	"{""leoi5hang4"": 46}"
+611	影響	jing2hoeng2	an influence/an effect/to influence/to affect (usually adversely)/to disturb	13	1	"{""v"": 13}"	"{""VERB"": 13}"	"{""jing2hoeng2"": 13}"
+612	學生	hok6saang1	student/school child	32	1	"{""n"": 32}"	"{""NOUN"": 32}"	"{""hok6saang1"": 32}"
+613	講到	gong2dou3	to talk about sth	0	0	{}	{}	{}
+614	關係	gwaan1hai6	relation/relationship/to concern/to affect/to have to do with/guanxi	12	1	"{""n"": 12}"	"{""NOUN"": 12}"	"{""gwaan1hai6"": 12}"
+615	灘	taan1|taan5	beach/shoal	0	0	{}	{}	{}
+616	女	neoi5	female/woman/daughter	24	6	"{""Ng"": 1, ""a"": 1, ""b"": 11, ""n"": 11}"	"{""ADJ"": 12, ""NOUN"": 12}"	"{""neoi2"": 12, ""neoi5"": 12}"
+617	考慮	haau2leoi6	to think over/to consider/consideration	23	2	"{""v"": 22, ""vn"": 1}"	"{""VERB"": 22, ""NOUN"": 1}"	"{""haau2leoi6"": 23}"
+618	男人	naam4jan2	a man/a male/men/CL:個[go]	13	2	"{""n"": 13}"	"{""NOUN"": 13}"	"{""naam4jan2"": 9, ""naam4jan4"": 4}"
+619	某	mau5	some/a certain/sb or sth indefinite/such-and-such	11	1	"{""r"": 11}"	"{""PRON"": 11}"	"{""mau5"": 11}"
+620	唔夠	m4gau3	not enough	0	0	{}	{}	{}
+621	射	se6	"to shoot/to look after, to protect, to watch over/to ejaculate, to ""come""/radio- (chemistry)"	4	1	"{""v"": 4}"	"{""VERB"": 4}"	"{""se6"": 4}"
+622	會話	wui6waa6	conversation	0	0	{}	{}	{}
+623	電視	din6si6	television/TV	23	1	"{""n"": 23}"	"{""NOUN"": 23}"	"{""din6si6"": 23}"
+624	學校	hok6haau6	school/CL:所[suo3]	48	1	"{""n"": 48}"	"{""NOUN"": 48}"	"{""hok6haau6"": 48}"
+625	轉彎	zyun3waan1	turn (around)	0	0	{}	{}	{}
+626	攬	laam5	to embrace/to monopolize/to seize	2	2	"{""v"": 2}"	"{""VERB"": 2}"	"{""laam2"": 1, ""laam6"": 1}"
+627	九	gau2	nine/9	17	2	"{""m"": 16, ""t"": 1}"	"{""NUM"": 16, ""ADV"": 1}"	"{""gau2"": 17}"
+628	水平	seoi2ping4	level (of achievement etc)/standard/horizontal	3	1	"{""n"": 3}"	"{""NOUN"": 3}"	"{""seoi2ping4"": 3}"
+629	生活	sang1wut6	life/activity/to live/livelihood	15	2	"{""v"": 13, ""vn"": 2}"	"{""VERB"": 13, ""NOUN"": 2}"	"{""sang1wut6"": 15}"
+630	早晨	zou2san4	early morning	2	1	"{""l1"": 2}"	"{""X"": 2}"	"{""zou2san4"": 2}"
+631	其中	kei4zung1	among/in/included among these	17	1	"{""r"": 17}"	"{""PRON"": 17}"	"{""kei4zung1"": 17}"
+632	放	fong3	to release/to free/to let go/to put/to place/to let out/to set off (fireworks)/free, uninhibited	47	2	"{""Vg"": 3, ""v"": 44}"	"{""VERB"": 47}"	"{""fong3"": 47}"
+633	法	faat3	law/method/way/Buddhist teaching/Legalist/abbr. for France	12	3	"{""Ng"": 1, ""n"": 9, ""u"": 2}"	"{""NOUN"": 10, ""PART"": 2}"	"{""faat3"": 12}"
+634	教	gaau3	religion/teaching/to teach/to make (Mandarin)/to cause (Mandarin)/to tell (Mandarin)	49	1	"{""v"": 49}"	"{""VERB"": 49}"	"{""gaau3"": 49}"
+635	最好	zeoi3hou2	best/(you) had better (do what we suggest)	7	1	"{""d"": 7}"	"{""ADV"": 7}"	"{""zeoi3hou2"": 7}"
+636	磅	bong6|bong2	to weigh/to give/to accompany/to escort/to protect/pound (unit of weight, about 454 grams)|scale/platform balance	0	0	{}	{}	{}
+637	山路	saan1lou6	mountain road	0	0	{}	{}	{}
+638	公共	gung1gung6	public/common (use)	1	1	"{""b"": 1}"	"{""ADJ"": 1}"	"{""gung1gung6"": 1}"
+639	方法	fong1faat3	method/way/means	22	1	"{""n"": 22}"	"{""NOUN"": 22}"	"{""fong1faat3"": 22}"
+640	代表	doi6biu2	representative/delegate/to represent/to stand for	5	1	"{""v"": 5}"	"{""VERB"": 5}"	"{""doi6biu2"": 5}"
+641	好過	*hou2|hou3gwo3	NO DEF	2	2	"{""a"": 1, ""d"": 1}"	"{""ADJ"": 1, ""ADV"": 1}"	"{""hou2gwo3"": 2}"
+642	西方	sai1fong1	the West/the Occident/Western countries	0	0	{}	{}	{}
+643	者	ze2	-ist, -er (person)/person (who does sth)	2	1	"{""n"": 2}"	"{""NOUN"": 2}"	"{""ze2"": 2}"
+644	段	dyun6	surname Duan/paragraph/section/segment/stage (of a process)/classifier for stories	20	1	"{""q"": 20}"	"{""NOUN"": 20}"	"{""dyun6"": 20}"
+645	難	naan6|naan4	difficult (to...)/problem/difficulty/difficult/not good|disaster/distress/to scold	65	3	"{""Ag"": 1, ""a"": 63, ""d"": 1}"	"{""ADJ"": 64, ""ADV"": 1}"	"{""naan4"": 65}"
+646	好睇	*hou2|hou3tai2	NO DEF	37	1	"{""a"": 37}"	"{""ADJ"": 37}"	"{""hou2tai2"": 37}"
+647	早	zou2	early/morning	34	3	"{""a"": 32, ""jn"": 1, ""t"": 1}"	"{""ADJ"": 32, ""ADV"": 1, ""NOUN"": 1}"	"{""zou2"": 34}"
+648	店	dim3	inn/shop/store	1	1	"{""n"": 1}"	"{""NOUN"": 1}"	"{""dim3"": 1}"
+649	第	dai6	(prefix indicating ordinal number, e.g. first, number two etc)	3	1	"{""m"": 3}"	"{""NUM"": 3}"	"{""dai6"": 3}"
+650	發展	faat3zin2	development/growth/to develop/to grow/to expand	12	2	"{""v"": 8, ""vn"": 4}"	"{""VERB"": 8, ""NOUN"": 4}"	"{""faat3zin2"": 12}"
+651	圖案	tou4on3	design/pattern	0	0	{}	{}	{}
+652	學	hok6	learn/study/science/-ology	51	2	"{""Ng"": 5, ""v"": 46}"	"{""VERB"": 46, ""NOUN"": 5}"	"{""hok6"": 51}"
+653	賺	zaan6	to earn/to make a profit	39	1	"{""v"": 39}"	"{""VERB"": 39}"	"{""zaan6"": 39}"
+654	簡單	gaan2daan1	simple/not complicated	11	2	"{""a"": 10, ""d"": 1}"	"{""ADJ"": 10, ""ADV"": 1}"	"{""gaan2daan1"": 11}"
+655	同一	tung4jat1	identical/the same	2	1	"{""b"": 2}"	"{""ADJ"": 2}"	"{""tung4jat1"": 2}"
+656	尾	mei5	tail/a reprisal/bad consequences/loose ends	13	4	"{""a"": 1, ""f"": 9, ""n"": 3}"	"{""ADV"": 9, ""NOUN"": 3, ""ADJ"": 1}"	"{""mei1"": 4, ""mei5"": 9}"
+657	我見	*ngo5gin3	NO DEF	0	0	{}	{}	{}
+658	近	gan6|kan5	near/close to/approximately	20	2	"{""a"": 20}"	"{""ADJ"": 20}"	"{""gan6"": 10, ""kan5"": 10}"
+659	拜拜	baai1baai3	bye-bye	9	2	"{""l1"": 8, ""v"": 1}"	"{""X"": 8, ""VERB"": 1}"	"{""baai1baai3"": 9}"
+660	接受	zip3sau6	to accept/to receive	10	1	"{""v"": 10}"	"{""VERB"": 10}"	"{""zip3sau6"": 10}"
+661	第二	dai6ji6	second/number two/next	49	2	"{""m"": 39, ""r"": 10}"	"{""NUM"": 39, ""PRON"": 10}"	"{""dai6ji6"": 49}"
+662	貧大	*pan4daai6	NO DEF	0	0	{}	{}	{}
+663	最近	zeoi3gan6	recent/recently/these days/latest/soon/nearest (of locations)/shortest (of routes)	25	1	"{""t"": 25}"	"{""ADV"": 25}"	"{""zeoi3gan6"": 25}"
+664	意見	ji3gin3	idea/opinion/suggestion/objection/complaint	7	1	"{""n"": 7}"	"{""NOUN"": 7}"	"{""ji3gin3"": 7}"
+665	圖片	tou4pin3	image/picture/photograph	2	1	"{""n"": 2}"	"{""NOUN"": 2}"	"{""tou4pin2"": 2}"
+666	辦法	baan6faat3	means/method/way (of doing sth)	24	1	"{""n"": 24}"	"{""NOUN"": 24}"	"{""baan6faat3"": 24}"
+667	入面	jap6min6	NO DEF	1	1	"{""f"": 1}"	"{""ADV"": 1}"	"{""jap6min6"": 1}"
+668	分鐘	fan1zung1	minute	30	1	"{""q"": 30}"	"{""NOUN"": 30}"	"{""fan1zung1"": 30}"
+669	北	bak1	north/to be defeated (classical)	1	1	"{""x"": 1}"	"{""X"": 1}"	"{""bak1"": 1}"
+670	外國	ngoi6gwok3	foreign (country)	20	1	"{""n"": 20}"	"{""NOUN"": 20}"	"{""ngoi6gwok3"": 20}"
+671	平時	ping4si4	in normal times/in peacetime	24	2	"{""d"": 1, ""t"": 23}"	"{""ADV"": 24}"	"{""ping4si4"": 24}"
+672	打開	daa2hoi1	to open/to show (a ticket)/to turn on/to switch on	3	1	"{""v"": 3}"	"{""VERB"": 3}"	"{""daa2hoi1"": 3}"
+673	把	baa2	to hold/to grasp/to take hold of/handle/classifier for objects with handle/used before a direct object and a verb often carrying the sense of disposal (Mandarin)	8	2	"{""p"": 5, ""q"": 3}"	"{""ADP"": 5, ""NOUN"": 3}"	"{""baa2"": 8}"
+674	步	bou6	a step/a pace/walk/march/stages in a process	8	3	"{""Ng"": 3, ""q"": 4, ""v"": 1}"	"{""NOUN"": 7, ""VERB"": 1}"	"{""bou6"": 8}"
+675	炒	caau2	to sauté/to stir-fry/to speculate/to hype/to fire (sb)/to clash with	28	1	"{""v"": 28}"	"{""VERB"": 28}"	"{""caau2"": 28}"
+676	狗	gau2	dog/CL:隻[jek]/CL:條[tìuh]	30	1	"{""n"": 30}"	"{""NOUN"": 30}"	"{""gau2"": 30}"
+677	直行	zik6hong4	to go straight/straight forward/fig. to do right	0	0	{}	{}	{}
+678	借	ze3	to lend/to borrow/excuse/pretext/by means of/to seize (an opportunity)/to take (an opportunity)	25	1	"{""v"": 25}"	"{""VERB"": 25}"	"{""ze3"": 25}"
+679	容易	jung4ji6	easy/likely/liable (to)	16	1	"{""a"": 16}"	"{""ADJ"": 16}"	"{""jung4ji6"": 16}"
+680	座	zo6	seat/base/stand/(classifier for buildings, mountains, large solid things etc)	1	1	"{""q"": 1}"	"{""NOUN"": 1}"	"{""zo6"": 1}"
+681	起碼	hei2maa5	at the minimum/at the very least	26	1	"{""d"": 26}"	"{""ADV"": 26}"	"{""hei2maa5"": 26}"
+682	偏	pin1	to lean/to slant/oblique/prejudiced/to deviate from average/to stray from the intended line/stubbornly/contrary to expectations/left-hand side of a split Chinese character, often the key or radical	1	1	"{""v"": 1}"	"{""VERB"": 1}"	"{""pin1"": 1}"
+683	報紙	bou3zi2	newspaper/newsprint	14	1	"{""n"": 14}"	"{""NOUN"": 14}"	"{""bou3zi2"": 14}"
+684	人工	jan4gung1	artificial/manpower/manual work	31	2	"{""a"": 4, ""n"": 27}"	"{""NOUN"": 27, ""ADJ"": 4}"	"{""jan4gung1"": 31}"
+685	分	fan1|fan6	to divide/to separate/to allocate/to distinguish (good and bad)/one tenth (of certain units)/unit of length equivalent to 0.33 cm/minute/a point (in sports or games)/0.01 yuan (unit of money)|part or subdivision/fraction/share/ingredient/component	46	5	"{""b"": 1, ""n"": 4, ""q"": 28, ""v"": 13}"	"{""NOUN"": 32, ""VERB"": 13, ""ADJ"": 1}"	"{""fan1"": 43, ""fan6"": 3}"
+686	反而	faan2ji4	instead/on the contrary/contrary (to expectations)	23	2	"{""c"": 1, ""d"": 22}"	"{""ADV"": 22, ""CCONJ"": 1}"	"{""faan2ji4"": 23}"
+687	主要	zyu2jiu3	main/principal/major/primary	15	2	"{""a"": 14, ""d"": 1}"	"{""ADJ"": 14, ""ADV"": 1}"	"{""zyu2jiu3"": 15}"
+688	有陣	*jau5zan6	NO DEF	0	0	{}	{}	{}
+689	怪	gwaai3	bewildering/odd/strange/uncanny/devil/monster/to wonder at/to blame	8	2	"{""a"": 8}"	"{""ADJ"": 8}"	"{""gwaai2"": 1, ""gwaai3"": 7}"
+690	除	ceoi4	to get rid of/to remove/to exclude/to eliminate/to wipe out/to divide/except/not including	3	1	"{""v"": 3}"	"{""VERB"": 3}"	"{""ceoi4"": 3}"
+691	剪	zin2	scissors/shears/clippers/CL:把[bá]/to cut with scissors/to trim	58	1	"{""v"": 58}"	"{""VERB"": 58}"	"{""zin2"": 58}"
+692	細	sai3	small/fine/delicate/trifling/junior, subordinate members of an organisation	49	3	"{""Ng"": 1, ""a"": 47, ""u"": 1}"	"{""ADJ"": 47, ""NOUN"": 1, ""PART"": 1}"	"{""sai3"": 49}"
+693	袋	doi6|doi2	to bag|a pouch/bag/sack/pocket/a condom/scrotum	28	3	"{""n"": 24, ""q"": 1, ""v"": 3}"	"{""NOUN"": 25, ""VERB"": 3}"	"{""doi2"": 24, ""doi6"": 4}"
+694	等陣	dang2zan6	NO DEF	2	2	"{""d"": 1, ""t"": 1}"	"{""ADV"": 2}"	"{""dang2zan6"": 2}"
+695	閒	haan4	variant of 閑, idle/unoccupied/leisure/free time	3	1	"{""a"": 3}"	"{""ADJ"": 3}"	"{""haan4"": 3}"
+696	慢慢	maan6maan6	slowly	8	3	"{""a"": 7, ""d"": 1}"	"{""ADJ"": 7, ""ADV"": 1}"	"{""maan6maan1"": 1, ""maan6maan2"": 7}"
+697	鐘	zung1	clock/o'clock/time as measured in hours and minutes/bell/surname Zhong	39	2	"{""n"": 38, ""q"": 1}"	"{""NOUN"": 39}"	"{""zung1"": 39}"
+698	三個	*saam1|saam3go3	NO DEF	0	0	{}	{}	{}
+699	女人	neoi5jan2	woman	10	2	"{""b"": 1, ""n"": 9}"	"{""NOUN"": 9, ""ADJ"": 1}"	"{""neoi5jan2"": 10}"
+700	幼	jau3	young	1	1	"{""a"": 1}"	"{""ADJ"": 1}"	"{""jau3"": 1}"
+701	同意	tung4ji3	to agree/to consent/to approve	1	1	"{""v"": 1}"	"{""VERB"": 1}"	"{""tung4ji3"": 1}"
+702	行過	*hang4|haang4|hang6|hong4|hong2gwo3	NO DEF	0	0	{}	{}	{}
+703	所有	so2jau5	all/to have/to possess/to own	19	3	"{""a"": 1, ""b"": 16, ""r"": 2}"	"{""ADJ"": 17, ""PRON"": 2}"	"{""so2jau5"": 19}"
+704	直落	zik6lok6	NO DEF	0	0	{}	{}	{}
+705	後	hau6	back/behind/rear/afterwards/after/later	16	2	"{""f"": 15, ""g2"": 1}"	"{""ADV"": 15, ""ADJ"": 1}"	"{""hau6"": 16}"
+706	家	gaa1	home/family/classifier for families or businesses/refers to the philosophical schools of pre-Han China/noun suffix for specialists in some activity such as musician or revolutionary, corresponds to English -ist, -er, -ary or -ian/CL:個[go]	4	3	"{""Ng"": 1, ""n"": 1, ""q"": 2}"	"{""NOUN"": 4}"	"{""gaa1"": 4}"
+707	財政	coi4zing3	finances (public)/financial	2	1	"{""n"": 2}"	"{""NOUN"": 2}"	"{""coi4zing3"": 2}"
+708	敢	gam2	dare	18	3	"{""a"": 2, ""v"": 11, ""vu"": 5}"	"{""VERB"": 11, ""AUX"": 5, ""ADJ"": 2}"	"{""gam2"": 18}"
+709	節目	zit3muk6	program/item (on a program)	8	1	"{""n"": 8}"	"{""NOUN"": 8}"	"{""zit3muk6"": 8}"
+710	點呀	*dim2aa3|aa1|aa6	NO DEF	0	0	{}	{}	{}
+711	點知	*dim2zi1|zi3	NO DEF	15	1	"{""r"": 15}"	"{""PRON"": 15}"	"{""dim2zi1"": 15}"
+712	水平線	seoi2ping4sin3	NO DEF	0	0	{}	{}	{}
+713	例如	lai6jyu4	for example/for instance/such as	15	2	"{""c"": 2, ""v"": 13}"	"{""VERB"": 13, ""CCONJ"": 2}"	"{""lai6jyu4"": 15}"
+714	爸爸	baa4baa1	(informal) father	4	1	"{""n"": 4}"	"{""NOUN"": 4}"	"{""baa4baa1"": 4}"
+715	直上	zik6soeng5	NO DEF	0	0	{}	{}	{}
+716	直程	*zik6cing4	NO DEF	39	1	"{""d"": 39}"	"{""ADV"": 39}"	"{""zik6cing4"": 39}"
+717	個個	go3go3	each one individually/each and every/same as 各個|各个	33	3	"{""n"": 1, ""q"": 29, ""r"": 3}"	"{""NOUN"": 30, ""PRON"": 3}"	"{""go3go3"": 33}"
+718	幅	fuk1	width/roll/classifier for textiles or pictures	3	1	"{""q"": 3}"	"{""NOUN"": 3}"	"{""fuk1"": 3}"
+719	普通	pou2tung1	common/ordinary/general/average	16	1	"{""a"": 16}"	"{""ADJ"": 16}"	"{""pou2tung1"": 16}"
+720	畫個	*waak6|waa2go3	NO DEF	0	0	{}	{}	{}
+721	碑	bei1	a monument/an upright stone tablet/stele	0	0	{}	{}	{}
+722	一半	jat1bun3	half	13	1	"{""m"": 13}"	"{""NUM"": 13}"	"{""jat1bun3"": 13}"
+723	左右	zo2jau2|zo2jau6	about/approximately/around|left and right/to control/to influence	2	1	"{""f"": 2}"	"{""ADV"": 2}"	"{""zo2jau2"": 2}"
+724	左行	*zo2hang4|haang4|hang6|hong4|hong2	NO DEF	0	0	{}	{}	{}
+725	食飯	*sik6faan6	NO DEF	31	1	"{""v"": 31}"	"{""VERB"": 31}"	"{""sik6faan6"": 31}"
+726	距離	keoi5lei4	distance/to be apart	0	0	{}	{}	{}
+727	概念	koi3nim6	concept/idea	0	0	{}	{}	{}
+728	環境	waan4ging2	environment/circumstances/surroundings	16	1	"{""n"": 16}"	"{""NOUN"": 16}"	"{""waan4ging2"": 16}"
+729	人權	jan4kyun4	human rights	1	1	"{""n"": 1}"	"{""NOUN"": 1}"	"{""jan4kyun4"": 1}"
+730	下行	haa6hang4	down train (i.e. away from the capital)	0	0	{}	{}	{}
+731	小姐	siu2ze2	young lady/miss/a nightclub hostess/a call girl/a prostitute	2	1	"{""n"": 2}"	"{""NOUN"": 2}"	"{""siu2ze2"": 2}"
+732	包括	baau1kut3	to comprise/to include/to involve/to incorporate/to consist of	5	1	"{""v"": 5}"	"{""VERB"": 5}"	"{""baau1kut3"": 5}"
+733	生	saang1|sang1	to be born/to give birth/life/to grow/raw, uncooked	39	2	"{""a"": 3, ""v"": 36}"	"{""VERB"": 36, ""ADJ"": 3}"	"{""saang1"": 39}"
+734	因	jan1	cause/reason/because	1	1	"{""c"": 1}"	"{""CCONJ"": 1}"	"{""jan1"": 1}"
+735	考試	haau2si3	exam	31	3	"{""n"": 8, ""v"": 14, ""vn"": 9}"	"{""NOUN"": 17, ""VERB"": 14}"	"{""haau2si5"": 31}"
+736	杏	hang6	apricot	2	2	"{""a"": 2}"	"{""ADJ"": 2}"	"{""hang2"": 1, ""hang6"": 1}"
+737	始終	ci2zung1	from beginning to end/all along	17	1	"{""d"": 17}"	"{""ADV"": 17}"	"{""ci2zung1"": 17}"
+738	阿媽	aa3maa1	mother/nurse/amah/serving woman	22	1	"{""n"": 22}"	"{""NOUN"": 22}"	"{""aa3maa1"": 22}"
+739	計	gai3	to calculate/to compute/to count/to regard as important/to plan/ruse/meter/gauge	61	2	"{""n"": 4, ""v"": 57}"	"{""VERB"": 57, ""NOUN"": 4}"	"{""gai2"": 4, ""gai3"": 57}"
+740	個韻	*go3wan6	NO DEF	0	0	{}	{}	{}
+741	原本	jyun4bun2	originally/original/abbr. for Euclid's elements 幾何原本|几何原本	19	1	"{""d"": 19}"	"{""ADV"": 19}"	"{""jyun4bun2"": 19}"
+742	連	lin4	surname Lian/even/as/join/to link/successively	25	5	"{""c"": 2, ""d"": 10, ""p"": 1, ""q"": 3, ""v"": 9}"	"{""ADV"": 10, ""VERB"": 9, ""NOUN"": 3, ""CCONJ"": 2, ""ADP"": 1}"	"{""lin4"": 25}"
+743	港人	gong2jan4	Hong Kong person or people	0	0	{}	{}	{}
+744	試過	*si3gwo3	NO DEF	5	1	"{""v"": 5}"	"{""VERB"": 5}"	"{""si3gwo3"": 5}"
+745	對於	deoi3jyu1	regarding/as far as sth is concerned/with regards to	22	1	"{""p"": 22}"	"{""ADP"": 22}"	"{""deoi3jyu1"": 22}"
+746	轉	zyun2|zyun3	to convey/to forward (mail)/to transfer/to turn/to shift|to revolve/to turn/to circle about/to walk about/classifier for turns: revs/classifier for repeated actions	35	2	"{""v"": 35}"	"{""VERB"": 35}"	"{""zyun2"": 4, ""zyun3"": 31}"
+747	大個	*daai6go3	NO DEF	6	1	"{""a"": 6}"	"{""ADJ"": 6}"	"{""daai6go3"": 6}"
+748	公務員	gung1mou6jyun4	functionary/office-bearer	1	1	"{""n"": 1}"	"{""NOUN"": 1}"	"{""gung1mou6jyun4"": 1}"
+749	分別	fan1bit6	difference/distinction/apart/separate/separately/respectively	21	2	"{""d"": 5, ""n"": 16}"	"{""NOUN"": 16, ""ADV"": 5}"	"{""fan1bit6"": 21}"
+750	化	faa3	to make into/to change into/-ization/to ... -ize/to transform/to be liberal, tolerant/abbr. for chemistry 化學	5	2	"{""Vg"": 2, ""k"": 3}"	"{""X"": 3, ""VERB"": 2}"	"{""faa3"": 5}"
