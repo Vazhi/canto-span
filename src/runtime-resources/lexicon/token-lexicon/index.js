@@ -10,4 +10,5 @@ module.exports = [
   ...require("./function-words-and-particles"),
   ...require("./degree-and-formulas"),
   ...require("./study-suite"),
+  ...require("./frequency-gap-fill-r7"),
 ];
