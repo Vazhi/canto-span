@@ -1,4 +1,4 @@
-name: multi-analysis baseline compare
+name: multi-analysis finalizer
 
 on:
   push:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  compare:
+  finalize:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
@@ -20,46 +20,43 @@ jobs:
         with:
           node-version: 24
           package-manager-cache: false
-      - name: Compare base and head regression suites
+      - name: Restore complete project-state document and apply v0.5.228 delta
         shell: bash
         run: |
-          mkdir -p .diagnostics/multi-analysis
-          BASE_SHA=228ae2aecd057ceefb6d69cfefc9dcc31de8a11d
-          git worktree add /tmp/canto-base "$BASE_SHA"
-          (
-            cd /tmp/canto-base
-            npm ci >/dev/null 2>&1
-            set +e
-            node tests/run-all.js > /tmp/base-run-all.log 2>&1
-            echo $? > /tmp/base-run-all.exit
-          )
-          cp /tmp/base-run-all.log .diagnostics/multi-analysis/base-run-all.log
-          cp /tmp/base-run-all.exit .diagnostics/multi-analysis/base-run-all.exit
-          npm ci >/dev/null 2>&1
-          set +e
-          node tests/run-all.js > /tmp/head-run-all.log 2>&1
-          HEAD_EXIT=$?
-          set -e
-          cp /tmp/head-run-all.log .diagnostics/multi-analysis/head-run-all.log
-          printf '%s\n' "$HEAD_EXIT" > .diagnostics/multi-analysis/head-run-all.exit
+          git show origin/main:docs/current/PROJECT-STATE.md > docs/current/PROJECT-STATE.md
           python3 <<'PY'
-          import re
           from pathlib import Path
-          def counts(path):
-              text=Path(path).read_text()
-              m_total=re.search(r'"total":\s*(\d+)', text)
-              m_pass=re.search(r'"passed":\s*(\d+)', text)
-              m_fail=re.search(r'"failed":\s*(\d+)', text)
-              return tuple(int(m.group(1)) if m else None for m in (m_total,m_pass,m_fail))
-          b=counts('/tmp/base-run-all.log')
-          h=counts('/tmp/head-run-all.log')
-          Path('.diagnostics/multi-analysis/baseline-compare.txt').write_text(f'base total/passed/failed={b}\nhead total/passed/failed={h}\nidentical_counts={b==h}\n')
+          p = Path('docs/current/PROJECT-STATE.md')
+          s = p.read_text()
+          s = s.replace('| Runtime | v0.5.227 |', '| Runtime | v0.5.228 |', 1)
+          needle = '- v0.5.227 adds 184 independently supported high-frequency lexical entries identified by the Cifu spoken top-2000 audit;'
+          insert = '- v0.5.228 introduces a first-class surface-to-analyses lexical compatibility layer with stable lexical-analysis IDs while retaining all 2,384 runtime lexical surfaces and complete 2,000/2,000 Cifu top-frequency surface coverage; legacy single-analysis entries normalize automatically, and existing context-sensitive `住`, `定`, and `咪` paths preserve explicit alternative analyses rather than forcing one global lexical category;\n\n'
+          if insert.strip() not in s:
+              s = s.replace(needle, insert + needle, 1)
+          p.write_text(s)
           PY
-      - name: Commit comparison
+      - name: Verify architecture-specific invariants
+        shell: bash
+        run: |
+          npm ci
+          node tools/lexical-coverage/verify-multi-analysis-runtime.mjs
+          node -e "console.log(require('./src/runtime-resources/lexicon/validate').validateRuntimeLexicalResources())"
+          node tools/build-runtime.js --check
+          node tools/verify-current-state.js --profile core
+          git diff --check
+      - name: Remove temporary diagnostics and workflows
+        shell: bash
+        run: |
+          rm -rf .diagnostics/multi-analysis
+          rm -f .github/workflows/multi-analysis-diagnostics.yml
+          rm -f .github/workflows/multi-analysis-lexicon-salvage.yml
+          rm -f .github/workflows/multi-analysis-lexicon-temp.yml
+          rm -f .github/workflows/multi-analysis-baseline-compare.yml
+      - name: Commit final branch state
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add .diagnostics/multi-analysis
-          git commit -m "Capture base versus multi-analysis regression counts"
+          git add -A
+          git commit -m "Finalize multi-analysis lexical architecture"
           git push origin HEAD:${GITHUB_REF_NAME}
