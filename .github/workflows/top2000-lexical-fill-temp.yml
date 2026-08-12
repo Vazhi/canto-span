@@ -1,4 +1,4 @@
-name: top2000 lexical coverage temp
+name: top2000 lexical validation temp
 
 on:
   push:
@@ -6,96 +6,40 @@ on:
       - agent/fill-top2000-lexical-gaps-r7
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
-  audit:
+  validate:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Reclassify top-2000 against full runtime lexicon
+      - name: Validate lexical resources and top-2000 inclusion
         shell: bash
         run: |
           node <<'NODE'
           const fs = require('fs');
-          const tsvPath = 'data/lexical-frequency/cifu-spoken-top-2000.tsv';
+          const { validateRuntimeLexicalResources } = require('./src/runtime-resources/lexicon/validate');
           const tokenEntries = require('./src/runtime-resources/lexicon/token-lexicon');
-          const text = fs.readFileSync(tsvPath, 'utf8').replace(/^\uFEFF/, '');
+          const validation = validateRuntimeLexicalResources();
+          const text = fs.readFileSync('data/lexical-frequency/cifu-spoken-top-2000.tsv', 'utf8').replace(/^\uFEFF/, '');
           const lines = text.trimEnd().split(/\r?\n/);
           const header = lines.shift().split('\t');
-          const ix = Object.fromEntries(header.map((h, i) => [h, i]));
+          const wordIx = header.indexOf('word');
           const rows = lines.map((line) => line.split('\t'));
-          if (rows.length !== 2000) throw new Error(`Expected 2000 ranked rows, got ${rows.length}`);
-
-          const direct = new Map();
-          for (const [surface, meta = {}] of tokenEntries) {
-            if (!direct.has(surface)) direct.set(surface, []);
-            direct.get(surface).push(meta);
-          }
-          const norm = (value) => String(value || '').toLowerCase().replace(/[^a-z0-9]/g, '');
-          const clean = (value) => String(value ?? '-').replace(/\t/g, ' ').replace(/\r?\n/g, ' ').trimEnd() || '-';
-
-          let exact = 0;
-          let uncertain = 0;
-          const missing = [];
-          for (const row of rows) {
-            const word = row[ix.word];
-            const entries = direct.get(word);
-            if (!entries) {
-              missing.push(word);
-              continue;
-            }
-            exact += 1;
-            const runtimeJyutping = [...new Set(entries.map((item) => item.jyutping).filter(Boolean))].join(';');
-            const runtimeMeta = [...new Set(entries.map((item) => [item.label, item.syntax].filter(Boolean).join(':')).filter(Boolean))].join(';') || '-';
-            const cifuReading = norm(row[ix.cifu_jyutping]);
-            const runtimeReading = norm(runtimeJyutping);
-            const status = cifuReading && runtimeReading && !(cifuReading.includes(runtimeReading) || runtimeReading.includes(cifuReading))
-              ? 'surface_covered_sense_uncertain'
-              : 'covered_main';
-            if (status === 'surface_covered_sense_uncertain') uncertain += 1;
-            row[ix.runtime_status] = status;
-            row[ix.audit_note] = '-';
-            row[ix.runtime_module] = entries.some((item) => item.label === 'lex' && item.syntax === 'lexical_item')
-              ? 'frequency-gap-fill-r7.js'
-              : row[ix.runtime_module] === '-' ? 'preexisting-token-lexicon' : row[ix.runtime_module];
-            row[ix.runtime_jyutping] = runtimeJyutping || '-';
-            row[ix.runtime_meta] = runtimeMeta;
-          }
-
-          if (missing.length) throw new Error(`Top-2000 exact lexical coverage incomplete: ${missing.length} missing; first=${missing.slice(0, 20).join(',')}`);
-          if (exact !== 2000) throw new Error(`Expected 2000 exact-covered surfaces, got ${exact}`);
-
-          const output = [header.join('\t'), ...rows.map((row) => row.map(clean).join('\t'))].join('\n') + '\n';
-          fs.writeFileSync(tsvPath, output);
-
-          const topSet = new Set(rows.map((row) => row[ix.word]));
-          const uniqueRuntime = new Set(tokenEntries.map(([surface]) => surface));
-          const outsideTop2000 = [...uniqueRuntime].filter((surface) => !topSet.has(surface)).length;
+          const runtime = new Set(tokenEntries.map(([surface]) => surface));
+          const missing = rows.filter((row) => !runtime.has(row[wordIx])).map((row) => row[wordIx]);
+          if (rows.length !== 2000) throw new Error(`Expected 2000 audit rows, got ${rows.length}`);
+          if (missing.length) throw new Error(`Missing top-2000 surfaces: ${missing.slice(0, 20).join(', ')}`);
+          const topSet = new Set(rows.map((row) => row[wordIx]));
+          const outside = [...runtime].filter((surface) => !topSet.has(surface));
           console.log(JSON.stringify({
-            top2000ExactCoverage: exact,
-            top2000Target: 2000,
-            senseUncertainButExactSurface: uncertain,
-            totalRuntimeUniqueSurfaces: uniqueRuntime.size,
-            runtimeSurfacesOutsideTop2000: outsideTop2000,
-            totalRuntimeEntries: tokenEntries.length
+            lexicalValidation: validation,
+            top2000ExactCoverage: 2000,
+            totalRuntimeUniqueSurfaces: runtime.size,
+            runtimeSurfacesOutsideTop2000: outside.length
           }, null, 2));
           NODE
-      - name: Commit refreshed frequency audit
-        shell: bash
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/lexical-frequency/cifu-spoken-top-2000.tsv
-          if git diff --cached --quiet; then
-            echo "No audit change"
-            exit 0
-          fi
-          git commit -m "Record 2000-of-2000 exact lexical coverage"
-          git push origin HEAD:${GITHUB_REF_NAME}
