@@ -9,8 +9,9 @@
     "punctuation_source": "src/pycantonese/_punctuation_marks.py"
   },
   "unknown_tag_fallback": "X",
-  "entry_count": 133,
+  "entry_count": 134,
   "map": {
+    "\n": "PUNCT",
     "!": "PUNCT",
     "\"": "PUNCT",
     "#": "X",
