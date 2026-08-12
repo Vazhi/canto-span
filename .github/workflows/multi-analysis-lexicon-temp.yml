@@ -1,0 +1,313 @@
+name: multi-analysis lexicon temp
+
+on:
+  push:
+    branches:
+      - agent/multi-analysis-lexicon
+
+permissions:
+  contents: write
+
+jobs:
+  implement:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Implement lexical analysis compatibility layer
+        shell: bash
+        run: |
+          cat > src/runtime-resources/lexicon/token-lexicon/explicit-analyses.js <<'EOF'
+          "use strict";
+
+          // Explicitly polyfunctional lexical analyses already represented by
+          // bounded contextual behavior in the runtime. This registry preserves
+          // all supported analyses without forcing one global POS/reading.
+          module.exports = Object.freeze({
+            "住": Object.freeze([
+              Object.freeze({
+                id: "lex:住:residence_verb",
+                label: "doing",
+                pos: "verb",
+                jyutping: "zyu6",
+                syntax: "verb residence_verb",
+                senses: Object.freeze([{ gloss: "live / reside / stay" }]),
+                provenance: Object.freeze({ kind: "existing_runtime_contextual_override", source: "src/parser/tokenization/contextual-overrides.js" }),
+              }),
+              Object.freeze({
+                id: "lex:住:durative_marker",
+                label: "func",
+                pos: "particle",
+                jyutping: "zyu6",
+                syntax: "durative_or_continuing_state_marker",
+                senses: Object.freeze([{ gloss: "durative / continuing-state marker" }]),
+                provenance: Object.freeze({ kind: "existing_runtime_contextual_override", source: "src/parser/tokenization/contextual-overrides.js" }),
+              }),
+            ]),
+            "定": Object.freeze([
+              Object.freeze({
+                id: "lex:定:decide_fix_verb",
+                label: "doing",
+                pos: "verb",
+                jyutping: "ding6",
+                syntax: "verb decide_fix_schedule_verb",
+                senses: Object.freeze([{ gloss: "decide / settle / fix / schedule" }]),
+                provenance: Object.freeze({ kind: "existing_runtime_contextual_override", source: "src/parser/tokenization/contextual-overrides.js" }),
+              }),
+              Object.freeze({
+                id: "lex:定:alternative_connector",
+                label: "func",
+                pos: "function",
+                jyutping: "ding6",
+                syntax: "alternative_question_connector",
+                senses: Object.freeze([{ gloss: "or; alternative-question connector" }]),
+                provenance: Object.freeze({ kind: "existing_runtime_contextual_override", source: "src/parser/tokenization/contextual-overrides.js" }),
+              }),
+            ]),
+            "咪": Object.freeze([
+              Object.freeze({
+                id: "lex:咪:prohibitive_marker",
+                label: "func",
+                pos: "function",
+                jyutping: "mai5",
+                syntax: "prohibitive_marker",
+                senses: Object.freeze([{ gloss: "don't; prohibitive marker" }]),
+                provenance: Object.freeze({ kind: "existing_runtime_contextual_override", source: "src/parser/tokenization/contextual-overrides.js" }),
+              }),
+              Object.freeze({
+                id: "lex:咪:discourse_focus_marker",
+                label: "func",
+                pos: "function",
+                jyutping: "mai6",
+                syntax: "discourse_focus_marker",
+                senses: Object.freeze([{ gloss: "discourse / focus marker" }]),
+                provenance: Object.freeze({ kind: "existing_runtime_contextual_override", source: "src/parser/tokenization/contextual-overrides.js" }),
+              }),
+            ]),
+          });
+          EOF
+
+          cat > src/runtime-resources/lexicon/lexical-analyses.js <<'EOF'
+          "use strict";
+
+          const EXPLICIT_ANALYSES = require("./token-lexicon/explicit-analyses");
+
+          function stableLegacyAnalysisId(surface) {
+            return `lex:${String(surface || "")}:default`;
+          }
+
+          function normalizeSenseRows(value, fallbackGloss = "") {
+            if (Array.isArray(value) && value.length) {
+              return value.map((row) => {
+                if (typeof row === "string") return Object.freeze({ gloss: row });
+                return Object.freeze({ ...(row || {}) });
+              });
+            }
+            return fallbackGloss ? [Object.freeze({ gloss: fallbackGloss })] : [];
+          }
+
+          function normalizeAnalysis(surface, baseEntry = {}, analysis = {}, index = 0) {
+            const merged = { ...baseEntry, ...analysis };
+            delete merged.analyses;
+            const id = analysis.id || (index === 0 ? stableLegacyAnalysisId(surface) : `lex:${surface}:${index + 1}`);
+            return Object.freeze({
+              id,
+              surface,
+              label: merged.label || "neutral",
+              pos: merged.pos || "",
+              jyutping: merged.jyutping || "",
+              syntax: merged.syntax || "lexical_candidate",
+              senses: Object.freeze(normalizeSenseRows(analysis.senses, merged.note || "")),
+              semantic: Object.freeze(Array.isArray(merged.semantic) ? [...merged.semantic] : []),
+              verb_class: Object.freeze(Array.isArray(merged.verb_class) ? [...merged.verb_class] : []),
+              particle_class: merged.particle_class || "",
+              classifier_classes: Object.freeze(Array.isArray(merged.classifier_classes) ? [...merged.classifier_classes] : []),
+              note: merged.note || "",
+              review: merged.review || "",
+              provenance: analysis.provenance || baseEntry.provenance || null,
+            });
+          }
+
+          function lexicalAnalysesForEntry(surface, entry = {}, explicitAnalyses = EXPLICIT_ANALYSES) {
+            const inline = Array.isArray(entry.analyses) && entry.analyses.length ? entry.analyses : null;
+            const explicit = explicitAnalyses && Array.isArray(explicitAnalyses[surface]) && explicitAnalyses[surface].length
+              ? explicitAnalyses[surface]
+              : null;
+            const source = inline || explicit;
+            if (!source) return Object.freeze([normalizeAnalysis(surface, entry, entry, 0)]);
+            return Object.freeze(source.map((analysis, index) => normalizeAnalysis(surface, entry, analysis, index)));
+          }
+
+          function buildLexicalAnalysisIndex(entries, explicitAnalyses = EXPLICIT_ANALYSES) {
+            const defaultEntries = Object.fromEntries(entries || []);
+            const out = Object.create(null);
+            for (const [surface, entry] of Object.entries(defaultEntries)) {
+              out[surface] = lexicalAnalysesForEntry(surface, entry, explicitAnalyses);
+            }
+            return Object.freeze(out);
+          }
+
+          function lexicalAnalysisById(index, surface, analysisId) {
+            const rows = index && index[surface] || [];
+            return rows.find((row) => row.id === analysisId) || null;
+          }
+
+          module.exports = {
+            EXPLICIT_ANALYSES,
+            stableLegacyAnalysisId,
+            normalizeAnalysis,
+            lexicalAnalysesForEntry,
+            buildLexicalAnalysisIndex,
+            lexicalAnalysisById,
+          };
+          EOF
+
+          cat > tools/lexical-coverage/verify-multi-analysis-runtime.mjs <<'EOF'
+          #!/usr/bin/env node
+          import { createRequire } from "node:module";
+          const require = createRequire(import.meta.url);
+          const entries = require("../../src/runtime-resources/lexicon/token-lexicon");
+          const { EXPLICIT_ANALYSES, buildLexicalAnalysisIndex } = require("../../src/runtime-resources/lexicon/lexical-analyses");
+          const index = buildLexicalAnalysisIndex(entries);
+          const uniqueSurfaces = new Set(entries.map(([surface]) => surface));
+          if (Object.keys(index).length !== uniqueSurfaces.size) throw new Error(`analysis index surface mismatch: ${Object.keys(index).length} vs ${uniqueSurfaces.size}`);
+          const ids = new Set();
+          let analyses = 0;
+          for (const [surface, rows] of Object.entries(index)) {
+            if (!Array.isArray(rows) || !rows.length) throw new Error(`no lexical analyses for ${surface}`);
+            for (const row of rows) {
+              analyses += 1;
+              if (!row.id) throw new Error(`analysis without id for ${surface}`);
+              if (ids.has(row.id)) throw new Error(`duplicate analysis id ${row.id}`);
+              ids.add(row.id);
+            }
+          }
+          for (const surface of ["住", "定", "咪"]) {
+            if (!EXPLICIT_ANALYSES[surface] || index[surface].length < 2) throw new Error(`expected explicit ambiguity for ${surface}`);
+          }
+          console.log(JSON.stringify({ uniqueSurfaces: uniqueSurfaces.size, lexicalAnalyses: analyses, explicitMultiAnalysisSurfaces: Object.keys(EXPLICIT_ANALYSES).length }, null, 2));
+          EOF
+
+          node <<'NODE'
+          const fs = require('fs');
+          function replaceOnce(path, before, after) {
+            const text = fs.readFileSync(path, 'utf8');
+            if (!text.includes(before)) throw new Error(`anchor not found in ${path}: ${before.slice(0, 120)}`);
+            if (text.indexOf(before) !== text.lastIndexOf(before)) throw new Error(`anchor not unique in ${path}`);
+            fs.writeFileSync(path, text.replace(before, after));
+          }
+
+          replaceOnce(
+            'src/plugin-entry.js',
+            'const TOKEN_LEXICON = Object.fromEntries(require("./runtime-resources/lexicon/token-lexicon"));',
+            'const TOKEN_LEXICON_ENTRIES = require("./runtime-resources/lexicon/token-lexicon");\nconst TOKEN_LEXICON = Object.fromEntries(TOKEN_LEXICON_ENTRIES);\nconst { buildLexicalAnalysisIndex } = require("./runtime-resources/lexicon/lexical-analyses");\nconst TOKEN_LEXICAL_ANALYSES = buildLexicalAnalysisIndex(TOKEN_LEXICON_ENTRIES);'
+          );
+          replaceOnce(
+            'src/plugin-entry.js',
+            '  TOKEN_LEXICON,\n  UNKNOWN_CJK_JYUTPING_FALLBACK,',
+            '  TOKEN_LEXICON,\n  TOKEN_LEXICAL_ANALYSES,\n  UNKNOWN_CJK_JYUTPING_FALLBACK,'
+          );
+          replaceOnce(
+            'src/plugin-entry.js',
+            'const CANTO_SPAN_RUNTIME_VERSION = "0.5.227";\n// v0.5.227:',
+            'const CANTO_SPAN_RUNTIME_VERSION = "0.5.228";\n// v0.5.228: adds first-class surface-to-analyses lexical representation with stable analysis IDs and preserves existing context-selected 住/定/咪 analyses without broadening grammar.\n// v0.5.227:'
+          );
+
+          replaceOnce(
+            'src/parser/nodes/node-factories.js',
+            '    TOKEN_LEXICON,\n    UNKNOWN_CJK_JYUTPING_FALLBACK,',
+            '    TOKEN_LEXICON,\n    TOKEN_LEXICAL_ANALYSES,\n    UNKNOWN_CJK_JYUTPING_FALLBACK,'
+          );
+          replaceOnce(
+            'src/parser/nodes/node-factories.js',
+            '  function token(surface, overrides = {}) {\n    const entry = TOKEN_LEXICON[surface] || {};\n    const rawLabel = overrides.label || entry.label || "neutral";',
+            '  function token(surface, overrides = {}) {\n    const baseEntry = TOKEN_LEXICON[surface] || {};\n    const lexicalAnalyses = TOKEN_LEXICAL_ANALYSES && TOKEN_LEXICAL_ANALYSES[surface] ? TOKEN_LEXICAL_ANALYSES[surface] : [];\n    const requestedAnalysisId = overrides.analysis_id || "";\n    const selectedAnalysis = requestedAnalysisId\n      ? lexicalAnalyses.find((analysis) => analysis.id === requestedAnalysisId) || null\n      : (lexicalAnalyses.length === 1 ? lexicalAnalyses[0] : null);\n    const entry = selectedAnalysis ? { ...baseEntry, ...selectedAnalysis } : baseEntry;\n    const rawLabel = overrides.label || entry.label || "neutral";'
+          );
+          replaceOnce(
+            'src/parser/nodes/node-factories.js',
+            '    const traceDetail = {\n      surface,\n      generated_slots: slots,',
+            '    const lexicalAnalysisResolution = {\n      status: selectedAnalysis ? "selected" : (lexicalAnalyses.length > 1 ? "unresolved" : (lexicalAnalyses.length === 1 ? "single" : "none")),\n      requested_analysis_id: requestedAnalysisId || undefined,\n      active_analysis_id: selectedAnalysis ? selectedAnalysis.id : "",\n      candidate_analysis_ids: lexicalAnalyses.map((analysis) => analysis.id),\n    };\n    const traceDetail = {\n      surface,\n      lexical_analyses: lexicalAnalyses,\n      lexical_analysis_resolution: lexicalAnalysisResolution,\n      generated_slots: slots,'
+          );
+          replaceOnce(
+            'src/parser/nodes/node-factories.js',
+            '      note: overrides.note || entry.note || (pronunciationOnlyJyutpingForUnknown(surface)',
+            '      lexical_analyses: lexicalAnalyses,\n      active_lexical_analysis_id: selectedAnalysis ? selectedAnalysis.id : "",\n      lexical_analysis_resolution: lexicalAnalysisResolution,\n      note: overrides.note || entry.note || (pronunciationOnlyJyutpingForUnknown(surface)'
+          );
+
+          replaceOnce(
+            'src/parser/features/token-features.js',
+            '      pos: entry.pos || overrides.pos || "",',
+            '      pos: overrides.pos || entry.pos || "",'
+          );
+
+          const contextual = 'src/parser/tokenization/contextual-overrides.js';
+          replaceOnce(contextual,
+            '          label: "doing",\n          jyutping: "zyu6",\n          syntax: "verb residence_verb",',
+            '          analysis_id: "lex:住:residence_verb",\n          label: "doing",\n          jyutping: "zyu6",\n          syntax: "verb residence_verb",');
+          replaceOnce(contextual,
+            '          label: "func",\n          jyutping: "zyu6",\n          syntax: "durative_or_continuing_state_marker",',
+            '          analysis_id: "lex:住:durative_marker",\n          label: "func",\n          jyutping: "zyu6",\n          syntax: "durative_or_continuing_state_marker",');
+          replaceOnce(contextual,
+            '          label: "doing",\n          jyutping: "ding6",\n          syntax: "verb decide_fix_schedule_verb",',
+            '          analysis_id: "lex:定:decide_fix_verb",\n          label: "doing",\n          jyutping: "ding6",\n          syntax: "verb decide_fix_schedule_verb",');
+          replaceOnce(contextual,
+            '        label: "func",\n        jyutping: "ding6",\n        syntax: "alternative_question_connector",',
+            '        analysis_id: "lex:定:alternative_connector",\n        label: "func",\n        jyutping: "ding6",\n        syntax: "alternative_question_connector",');
+          replaceOnce(contextual,
+            '        label: "func",\n        jyutping: "mai6",\n        syntax: "discourse_focus_marker",',
+            '        analysis_id: "lex:咪:discourse_focus_marker",\n        label: "func",\n        jyutping: "mai6",\n        syntax: "discourse_focus_marker",');
+          replaceOnce(contextual,
+            '          label: "func",\n          jyutping: "mai5",\n          syntax: "prohibitive_marker",',
+            '          analysis_id: "lex:咪:prohibitive_marker",\n          label: "func",\n          jyutping: "mai5",\n          syntax: "prohibitive_marker",');
+          replaceOnce(contextual,
+            '      label: "func",\n      jyutping: "mai6",\n      syntax: "discourse_marker_review",',
+            '      analysis_id: "lex:咪:discourse_focus_marker",\n      label: "func",\n      jyutping: "mai6",\n      syntax: "discourse_marker_review",');
+
+          const validatePath = 'src/runtime-resources/lexicon/validate.js';
+          replaceOnce(validatePath,
+            'const tokenEntries = require("./token-lexicon");\nconst intentionalTokenOverrides = require("./token-lexicon/intentional-overrides");',
+            'const tokenEntries = require("./token-lexicon");\nconst intentionalTokenOverrides = require("./token-lexicon/intentional-overrides");\nconst explicitLexicalAnalyses = require("./token-lexicon/explicit-analyses");\nconst { buildLexicalAnalysisIndex } = require("./lexical-analyses");');
+          replaceOnce(validatePath,
+            'function validateRuntimeLexicalResources() {\n  const tokenSummary = validateEntryTable',
+            `function validateLexicalAnalyses() {\n  const defaultEntries = Object.fromEntries(tokenEntries);\n  const ids = new Set();\n  let analysisCount = 0;\n  let multiAnalysisSurfaceCount = 0;\n  for (const [surface, rows] of Object.entries(explicitLexicalAnalyses)) {\n    if (!defaultEntries[surface]) throw new Error(\`explicit lexical analyses reference unknown surface \${JSON.stringify(surface)}\`);\n    if (!Array.isArray(rows) || rows.length < 2) throw new Error(\`explicit lexical analyses for \${surface} must contain at least two analyses\`);\n    multiAnalysisSurfaceCount += 1;\n    for (const analysis of rows) {\n      if (!analysis || typeof analysis !== "object" || Array.isArray(analysis)) throw new Error(\`lexical analysis for \${surface} must be an object\`);\n      for (const key of ["id", "label", "pos", "jyutping", "syntax"]) assertNonEmptyString(analysis[key], \`lexical analysis \${surface} \${key}\`);\n      if (ids.has(analysis.id)) throw new Error(\`duplicate lexical analysis id \${analysis.id}\`);\n      ids.add(analysis.id);\n      if (analysis.senses !== undefined && (!Array.isArray(analysis.senses) || analysis.senses.some((sense) => !sense || typeof sense !== "object" || typeof sense.gloss !== "string" || !sense.gloss.trim()))) {\n        throw new Error(\`lexical analysis \${analysis.id} senses must contain objects with non-empty gloss\`);\n      }\n      if (analysis.provenance !== undefined && analysis.provenance !== null && (typeof analysis.provenance !== "object" || Array.isArray(analysis.provenance))) {\n        throw new Error(\`lexical analysis \${analysis.id} provenance must be an object\`);\n      }\n      analysisCount += 1;\n    }\n  }\n  const index = buildLexicalAnalysisIndex(tokenEntries);\n  if (Object.keys(index).length !== Object.keys(defaultEntries).length) throw new Error("lexical analysis index must preserve every unique token surface");\n  const totalAnalyses = Object.values(index).reduce((sum, rows) => sum + rows.length, 0);\n  return {\n    indexed_surfaces: Object.keys(index).length,\n    lexical_analyses: totalAnalyses,\n    explicit_multi_analysis_surfaces: multiAnalysisSurfaceCount,\n    explicit_analysis_records: analysisCount,\n  };\n}\n\nfunction validateRuntimeLexicalResources() {\n  const analysisSummary = validateLexicalAnalyses();\n  const tokenSummary = validateEntryTable`);
+          replaceOnce(validatePath,
+            '    token_intentional_overrides: tokenSummary.intentional_overrides,',
+            '    token_intentional_overrides: tokenSummary.intentional_overrides,\n    token_analysis_surfaces: analysisSummary.indexed_surfaces,\n    token_lexical_analyses: analysisSummary.lexical_analyses,\n    token_explicit_multi_analysis_surfaces: analysisSummary.explicit_multi_analysis_surfaces,\n    token_explicit_analysis_records: analysisSummary.explicit_analysis_records,');
+
+          for (const path of ['package.json', 'package-lock.json']) {
+            const text = fs.readFileSync(path, 'utf8').replaceAll('"version": "0.5.227"', '"version": "0.5.228"');
+            fs.writeFileSync(path, text);
+          }
+          const manifest = JSON.parse(fs.readFileSync('manifest.json', 'utf8'));
+          manifest.version = '0.5.228';
+          manifest.description = 'v0.5.228 adds first-class multi-analysis lexical representation while preserving complete top-2000 coverage and existing grammar scope.';
+          fs.writeFileSync('manifest.json', JSON.stringify(manifest, null, 2) + '\n');
+          NODE
+      - name: Validate lexical analysis representation
+        shell: bash
+        run: |
+          node tools/lexical-coverage/verify-multi-analysis-runtime.mjs
+          node -e "console.log(require('./src/runtime-resources/lexicon/validate').validateRuntimeLexicalResources())"
+          npm ci
+          npm run build:runtime
+          npm run verify:runtime-build
+          npm test
+          npm run verify:runtime
+          git diff --check
+      - name: Commit implementation
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/runtime-resources/lexicon src/parser/nodes/node-factories.js src/parser/features/token-features.js src/parser/tokenization/contextual-overrides.js src/plugin-entry.js tools/lexical-coverage/verify-multi-analysis-runtime.mjs package.json package-lock.json manifest.json main.js
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git commit -m "Add first-class lexical analysis representation"
+          git push origin HEAD:${GITHUB_REF_NAME}
