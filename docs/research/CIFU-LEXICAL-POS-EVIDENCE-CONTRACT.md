@@ -70,8 +70,22 @@ The artifact must contain at least:
 The actual `map` contains the complete mapping returned by the frozen upstream API;
 the one-entry object above illustrates shape only.
 
-A small generator/verifier may import PyCantonese 5.0.0 to create or compare this
-artifact. That command is maintenance/corpus tooling. It is not bundled into or
+The canonical maintenance tool is:
+
+```text
+tools/corpus-review/generate_hkcancor_ud_map.py
+```
+
+With a maintenance environment containing exactly PyCantonese 5.0.0, regenerate or
+verify the artifact from the repository root:
+
+```bash
+python tools/corpus-review/generate_hkcancor_ud_map.py
+python tools/corpus-review/generate_hkcancor_ud_map.py --check
+```
+
+The tool rejects any other PyCantonese version and verifies the upstream unknown-tag
+fallback. These commands are maintenance/corpus tooling; neither is bundled into or
 required by the offline plugin.
 
 ### Offline invariant
@@ -219,8 +233,8 @@ ambiguous during generation.
 
 ## Map generation and verification
 
-The map is generated once per deliberately adopted upstream version. A generator may
-use the frozen API approximately as follows:
+The map is generated once per deliberately adopted upstream version. The maintenance
+tool imports the frozen API and calls:
 
 ```python
 from pycantonese.pos_tagging import hkcancor_to_ud
@@ -228,9 +242,9 @@ from pycantonese.pos_tagging import hkcancor_to_ud
 mapping = hkcancor_to_ud()
 ```
 
-The generator then writes the complete mapping plus source metadata to the canonical
-checked-in JSON path. A verifier may repeat the same call in a development environment
-with PyCantonese 5.0.0 installed and fail if the checked-in artifact differs.
+It then writes the complete mapping plus source metadata to the canonical checked-in
+JSON path. In `--check` mode it regenerates in memory and fails if the committed
+artifact differs.
 
 Neither generator nor verifier belongs on the plugin's normal execution path.
 
