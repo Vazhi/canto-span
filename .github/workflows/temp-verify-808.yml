@@ -1,0 +1,47 @@
+name: temp verify issue 808
+
+on:
+  push:
+    branches:
+      - agent/offline-hkcancor-ud-map
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+      - run: pip install 'pycantonese==5.0.0'
+      - name: Regenerate and verify exact upstream map
+        run: |
+          python tools/corpus-review/export_hkcancor_ud_map.py
+          python tools/corpus-review/export_hkcancor_ud_map.py --check
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('data/lexical-pos/hkcancor-to-ud-pycantonese-5.0.0.json')
+          d=json.loads(p.read_text())
+          assert d['unknown_tag_fallback']=='X'
+          assert d['entry_count']==len(d['map'])
+          assert d['map']['v']=='VERB'
+          assert d['map']['vu']=='AUX'
+          assert d['map']['q']=='NOUN'
+          assert d['map']['u']=='PART'
+          assert d['map']['y']=='PART'
+          print('entry_count', d['entry_count'])
+          PY
+          sha256sum data/lexical-pos/hkcancor-to-ud-pycantonese-5.0.0.json | tee /tmp/map.sha256
+      - name: Commit corrected artifact and remove temporary verifier
+        run: |
+          rm .github/workflows/temp-verify-808.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/lexical-pos/hkcancor-to-ud-pycantonese-5.0.0.json .github/workflows/temp-verify-808.yml
+          git commit -m 'Regenerate HKCanCor UD map from PyCantonese 5.0.0'
+          git push origin HEAD:agent/offline-hkcancor-ud-map
