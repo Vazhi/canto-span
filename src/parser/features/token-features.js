@@ -89,7 +89,7 @@ module.exports = function createTokenFeaturePrimitives(dependencies = {}) {
       surface,
       label,
       syntax,
-      pos: entry.pos || overrides.pos || "",
+      pos: overrides.pos || entry.pos || "",
       semantic: Array.isArray(entry.semantic) ? entry.semantic : [],
       verb_class: Array.isArray(entry.verb_class) ? entry.verb_class : [],
       particle_class: entry.particle_class || "",

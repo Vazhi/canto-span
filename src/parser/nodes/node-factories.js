@@ -3,6 +3,7 @@
 module.exports = function createNodeFactories(dependencies = {}) {
   const {
     TOKEN_LEXICON,
+    TOKEN_LEXICAL_ANALYSES,
     UNKNOWN_CJK_JYUTPING_FALLBACK,
     normalizeLearnerLabel,
     cleanSlots,
@@ -27,15 +28,29 @@ module.exports = function createNodeFactories(dependencies = {}) {
     return UNKNOWN_CJK_JYUTPING_FALLBACK[String(surface || "")] || "";
   }
   function token(surface, overrides = {}) {
-    const entry = TOKEN_LEXICON[surface] || {};
+    const baseEntry = TOKEN_LEXICON[surface] || {};
+    const lexicalAnalyses = TOKEN_LEXICAL_ANALYSES && TOKEN_LEXICAL_ANALYSES[surface] ? TOKEN_LEXICAL_ANALYSES[surface] : [];
+    const requestedAnalysisId = overrides.analysis_id || "";
+    const selectedAnalysis = requestedAnalysisId
+      ? lexicalAnalyses.find((analysis) => analysis.id === requestedAnalysisId) || null
+      : (lexicalAnalyses.length === 1 ? lexicalAnalyses[0] : null);
+    const entry = selectedAnalysis ? { ...baseEntry, ...selectedAnalysis } : baseEntry;
     const rawLabel = overrides.label || entry.label || "neutral";
     const syntax = overrides.syntax || entry.syntax || "lexical_candidate";
     const label = normalizeLearnerLabel(rawLabel, surface, syntax);
     const features = inferTokenFeatures(surface, { ...entry, label, syntax }, overrides);
     const slots = overrides.slots ? cleanSlots(overrides.slots) : generateTokenSlots(features);
     const featureBundle = featureBundleFor(surface, { ...entry, label, syntax }, features, slots);
+    const lexicalAnalysisResolution = {
+      status: selectedAnalysis ? "selected" : (lexicalAnalyses.length > 1 ? "unresolved" : (lexicalAnalyses.length === 1 ? "single" : "none")),
+      requested_analysis_id: requestedAnalysisId || undefined,
+      active_analysis_id: selectedAnalysis ? selectedAnalysis.id : "",
+      candidate_analysis_ids: lexicalAnalyses.map((analysis) => analysis.id),
+    };
     const traceDetail = {
       surface,
+      lexical_analyses: lexicalAnalyses,
+      lexical_analysis_resolution: lexicalAnalysisResolution,
       generated_slots: slots,
       feature_summary: compactFeatureSummary(features),
       feature_bundle: featureBundle,
@@ -57,6 +72,9 @@ module.exports = function createNodeFactories(dependencies = {}) {
       label,
       jyutping: overrides.jyutping || entry.jyutping || pronunciationOnlyJyutpingForUnknown(surface) || "",
       syntax,
+      lexical_analyses: lexicalAnalyses,
+      active_lexical_analysis_id: selectedAnalysis ? selectedAnalysis.id : "",
+      lexical_analysis_resolution: lexicalAnalysisResolution,
       note: overrides.note || entry.note || (pronunciationOnlyJyutpingForUnknown(surface)
         ? "meaning not yet confirmed"
         : "Neutral lexical item; no reviewed learner role yet."),

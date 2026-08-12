@@ -2,6 +2,8 @@
 
 const tokenEntries = require("./token-lexicon");
 const intentionalTokenOverrides = require("./token-lexicon/intentional-overrides");
+const explicitLexicalAnalyses = require("./token-lexicon/explicit-analyses");
+const { buildLexicalAnalysisIndex } = require("./lexical-analyses");
 const productiveVoEntries = require("./productive-vo");
 const verbObjectCompoundEntries = require("./verb-object-compounds");
 const formulas = require("./formulas");
@@ -63,7 +65,42 @@ function validateEntryTable(name, entries, validateValue, intentionalOverrides =
   return { entries: entries.length, unique_surfaces: counts.size, intentional_overrides: duplicateSurfaces.length };
 }
 
+function validateLexicalAnalyses() {
+  const defaultEntries = Object.fromEntries(tokenEntries);
+  const ids = new Set();
+  let analysisCount = 0;
+  let multiAnalysisSurfaceCount = 0;
+  for (const [surface, rows] of Object.entries(explicitLexicalAnalyses)) {
+    if (!defaultEntries[surface]) throw new Error(`explicit lexical analyses reference unknown surface ${JSON.stringify(surface)}`);
+    if (!Array.isArray(rows) || rows.length < 2) throw new Error(`explicit lexical analyses for ${surface} must contain at least two analyses`);
+    multiAnalysisSurfaceCount += 1;
+    for (const analysis of rows) {
+      if (!analysis || typeof analysis !== "object" || Array.isArray(analysis)) throw new Error(`lexical analysis for ${surface} must be an object`);
+      for (const key of ["id", "label", "pos", "jyutping", "syntax"]) assertNonEmptyString(analysis[key], `lexical analysis ${surface} ${key}`);
+      if (ids.has(analysis.id)) throw new Error(`duplicate lexical analysis id ${analysis.id}`);
+      ids.add(analysis.id);
+      if (analysis.senses !== undefined && (!Array.isArray(analysis.senses) || analysis.senses.some((sense) => !sense || typeof sense !== "object" || typeof sense.gloss !== "string" || !sense.gloss.trim()))) {
+        throw new Error(`lexical analysis ${analysis.id} senses must contain objects with non-empty gloss`);
+      }
+      if (analysis.provenance !== undefined && analysis.provenance !== null && (typeof analysis.provenance !== "object" || Array.isArray(analysis.provenance))) {
+        throw new Error(`lexical analysis ${analysis.id} provenance must be an object`);
+      }
+      analysisCount += 1;
+    }
+  }
+  const index = buildLexicalAnalysisIndex(tokenEntries);
+  if (Object.keys(index).length !== Object.keys(defaultEntries).length) throw new Error("lexical analysis index must preserve every unique token surface");
+  const totalAnalyses = Object.values(index).reduce((sum, rows) => sum + rows.length, 0);
+  return {
+    indexed_surfaces: Object.keys(index).length,
+    lexical_analyses: totalAnalyses,
+    explicit_multi_analysis_surfaces: multiAnalysisSurfaceCount,
+    explicit_analysis_records: analysisCount,
+  };
+}
+
 function validateRuntimeLexicalResources() {
+  const analysisSummary = validateLexicalAnalyses();
   const tokenSummary = validateEntryTable("token lexicon", tokenEntries, (surface, value) => {
     if (!value || typeof value !== "object" || Array.isArray(value)) throw new Error(`token ${surface} must map to an object`);
     assertNonEmptyString(value.label, `token ${surface} label`);
@@ -93,6 +130,10 @@ function validateRuntimeLexicalResources() {
     token_entries: tokenSummary.entries,
     token_unique_surfaces: tokenSummary.unique_surfaces,
     token_intentional_overrides: tokenSummary.intentional_overrides,
+    token_analysis_surfaces: analysisSummary.indexed_surfaces,
+    token_lexical_analyses: analysisSummary.lexical_analyses,
+    token_explicit_multi_analysis_surfaces: analysisSummary.explicit_multi_analysis_surfaces,
+    token_explicit_analysis_records: analysisSummary.explicit_analysis_records,
     productive_vo_entries: productiveVoCount.entries,
     verb_object_compound_entries: verbObjectCompoundCount.entries,
     jyutping_review_entries: jyutpingReviewCount.entries,

@@ -15,7 +15,8 @@ const createCantoSpanPlugin = require("./plugin/canto-span-plugin");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.227";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.228";
+// v0.5.228: adds first-class surface-to-analyses lexical representation with stable analysis IDs and preserves existing context-selected 住/定/咪 analyses without broadening grammar.
 // v0.5.227: adds 184 source-audited high-frequency lexical entries from the Cifu spoken top-2000 audit without changing construction identity, status, or grammar scope.
 // v0.5.226: adds bounded behavior-first overt nominal-standard post-predicate 過 comparison through existing SubjectPredicateClause composition, plus missing 矮 lexical coverage, without changing construction identity or experiential/directional 過 behavior.
 // v0.5.225: removes 做功課 from legacy AB35/ProductiveVO compatibility ownership and preserves it through the accepted AB78 typed predicate-object path; the three source-linked AB35 seeds and other 39 legacy entries remain unchanged.
@@ -96,7 +97,10 @@ const JYUTPING_REVIEW_EXPECTATIONS = Object.fromEntries(
 const PRODUCTIVE_VO = Object.fromEntries(require("./runtime-resources/lexicon/productive-vo"));
 const VERB_OBJECT_COMPOUNDS = Object.fromEntries(require("./runtime-resources/lexicon/verb-object-compounds"));
 const PRODUCTIVE_VO_COMPONENT_RULES = Object.freeze({ ...PRODUCTIVE_VO, ...VERB_OBJECT_COMPOUNDS });
-const TOKEN_LEXICON = Object.fromEntries(require("./runtime-resources/lexicon/token-lexicon"));
+const TOKEN_LEXICON_ENTRIES = require("./runtime-resources/lexicon/token-lexicon");
+const TOKEN_LEXICON = Object.fromEntries(TOKEN_LEXICON_ENTRIES);
+const { buildLexicalAnalysisIndex } = require("./runtime-resources/lexicon/lexical-analyses");
+const TOKEN_LEXICAL_ANALYSES = buildLexicalAnalysisIndex(TOKEN_LEXICON_ENTRIES);
 const FORMULAS = require("./runtime-resources/lexicon/formulas");
 const {
   protectedAddressTerms,
@@ -931,6 +935,7 @@ const {
   contextualLearnerRoleOnlyTokenClone,
 } = require("./parser/nodes/node-factories")({
   TOKEN_LEXICON,
+  TOKEN_LEXICAL_ANALYSES,
   UNKNOWN_CJK_JYUTPING_FALLBACK,
   normalizeLearnerLabel,
   cleanSlots,
