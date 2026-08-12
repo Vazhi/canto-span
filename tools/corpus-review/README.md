@@ -114,6 +114,25 @@ Construction-specific scripts and exact profile names live under
 `external-evidence/<construction>-hkcancor/`. Use the command recorded by that
 profile or its intake issue; do not substitute another construction's surface query.
 
+## Lexical POS evidence packets
+
+Cifu top-frequency lexical POS review uses the same frozen HKCanCor source boundary
+but has a separate evidence contract because it compares corpus annotations with the
+runtime surface-to-analyses index rather than classifying membership in one
+construction.
+
+See
+[`docs/research/CIFU-LEXICAL-POS-EVIDENCE-CONTRACT.md`](../../docs/research/CIFU-LEXICAL-POS-EVIDENCE-CONTRACT.md).
+The contract requires every rank-band packet to preserve raw HKCanCor POS/Jyutping
+evidence, derive a parallel Universal Dependencies POS projection mechanically with
+PyCantonese 5.0.0 `hkcancor_to_ud()`, retain current runtime analyses, and provide
+deterministic context for every observed surface × raw-POS × Jyutping bucket plus
+explicit zero-hit rows.
+
+The UD projection is a lossy navigation layer only. It may not replace raw HKCanCor
+tags or determine Canto Span lexical labels, POS, syntax, senses, analysis splits,
+parser behavior, or evidence sufficiency.
+
 ## Local corpus-dependent execution
 
 When ChatGPT can prepare and review a profile but cannot execute the frozen local
