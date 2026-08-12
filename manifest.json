@@ -1,9 +1,9 @@
 {
   "id": "canto-span",
   "name": "Canto Span",
-  "version": "0.5.227",
+  "version": "0.5.228",
   "minAppVersion": "1.5.0",
-  "description": "v0.5.227 adds 184 source-audited high-frequency Cantonese lexical entries from the Cifu spoken top-2000 audit without broadening grammar.",
+  "description": "v0.5.228 adds first-class multi-analysis lexical representation while preserving complete top-2000 coverage and existing grammar scope.",
   "author": "Chris Crawford / OpenAI ChatGPT",
   "authorUrl": "",
   "isDesktopOnly": false

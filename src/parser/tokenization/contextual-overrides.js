@@ -93,6 +93,7 @@ module.exports = function createContextualLexiconOverrides(dependencies = {}) {
     if (surface === "住") {
       if (/^喺/u.test(after)) {
         return {
+          analysis_id: "lex:住:residence_verb",
           label: "doing",
           jyutping: "zyu6",
           syntax: "verb residence_verb",
@@ -101,6 +102,7 @@ module.exports = function createContextualLexiconOverrides(dependencies = {}) {
       }
       if (/^[。！？!?…]*$/u.test(after)) {
         return {
+          analysis_id: "lex:住:durative_marker",
           label: "func",
           jyutping: "zyu6",
           syntax: "durative_or_continuing_state_marker",
@@ -114,6 +116,7 @@ module.exports = function createContextualLexiconOverrides(dependencies = {}) {
     if (surface === "定") {
       if (/^(?:咗|緊|過|住)/u.test(after)) {
         return {
+          analysis_id: "lex:定:decide_fix_verb",
           label: "doing",
           jyutping: "ding6",
           syntax: "verb decide_fix_schedule_verb",
@@ -121,6 +124,7 @@ module.exports = function createContextualLexiconOverrides(dependencies = {}) {
         };
       }
       return {
+        analysis_id: "lex:定:alternative_connector",
         label: "func",
         jyutping: "ding6",
         syntax: "alternative_question_connector",
@@ -136,6 +140,7 @@ module.exports = function createContextualLexiconOverrides(dependencies = {}) {
     // focus/copular/aspect material in the audited data it is discourse mai6.
     if (/^(?:又|就|係|過)/u.test(after)) {
       return {
+        analysis_id: "lex:咪:discourse_focus_marker",
         label: "func",
         jyutping: "mai6",
         syntax: "discourse_focus_marker",
@@ -151,6 +156,7 @@ module.exports = function createContextualLexiconOverrides(dependencies = {}) {
       const nextSlots = generateTokenSlots(nextFeatures);
       if (nextFeatures.label === "doing" || nextFeatures.label === "like" || nextSlots.includes("predicate") || nextSlots.includes("action_verb")) {
         return {
+          analysis_id: "lex:咪:prohibitive_marker",
           label: "func",
           jyutping: "mai5",
           syntax: "prohibitive_marker",
@@ -160,6 +166,7 @@ module.exports = function createContextualLexiconOverrides(dependencies = {}) {
     }
 
     return {
+      analysis_id: "lex:咪:discourse_focus_marker",
       label: "func",
       jyutping: "mai6",
       syntax: "discourse_marker_review",
