@@ -1,2 +1,5 @@
-?? .diagnostics/
+ M .diagnostics/multi-analysis/core-profile.log
+ M .diagnostics/multi-analysis/git-status.log
+ M .diagnostics/multi-analysis/run-all.log
+ M .diagnostics/multi-analysis/runtime-profile.log
 ?? validation/current/glossika-week16-runtime-lexicon.json
