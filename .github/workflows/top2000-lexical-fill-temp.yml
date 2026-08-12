@@ -19,7 +19,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Materialize every missing Cifu lexical row
+      - name: Materialize every non-direct Cifu top-2000 surface
         shell: bash
         run: |
           node <<'NODE'
@@ -31,29 +31,31 @@ jobs:
           const header = lines.shift().split('\t');
           const idx = Object.fromEntries(header.map((h, i) => [h, i]));
           const rows = lines.map((line) => line.split('\t'));
-          const missing = rows.filter((r) => r[idx.runtime_status] === 'missing');
+          const promoteStatuses = new Set(['missing', 'manual_review', 'handled_structurally']);
+          const promote = rows.filter((r) => promoteStatuses.has(r[idx.runtime_status]));
           const firstReading = (raw) => {
             const primary = String(raw || '').replace(/^\*/, '').split('|')[0].trim();
             if (!primary || primary === '?') return '';
             return primary.replace(/([1-6])(?=[A-Za-z])/g, '$1 ').replace(/\s+/g, ' ').trim();
           };
-          const compactGloss = (raw) => String(raw || '')
-            .replace(/\s+/g, ' ')
-            .replace(/NO DEF/g, 'lexical item')
-            .slice(0, 220);
+          const compactGloss = (raw) => {
+            const value = String(raw || '').replace(/\s+/g, ' ').trim();
+            return value && value !== 'NO DEF' ? value.slice(0, 220) : 'frequency-list surface; lexical definition requires later human review';
+          };
           const q = JSON.stringify;
-          const body = missing.map((r) => {
+          const body = promote.map((r) => {
             const word = r[idx.word];
             const reading = firstReading(r[idx.cifu_jyutping]);
             const sourceReadings = r[idx.cifu_jyutping] || '';
             const gloss = compactGloss(r[idx.cifu_definition]);
             const rank = r[idx.rank];
             const freq = r[idx.cifu_spoken_adult];
-            return `  [${q(word)}, { label: "lex", pos: "lexical_item", jyutping: ${q(reading)}, syntax: "lexical_item", note: ${q(`Cifu SpokenAdult rank ${rank}, frequency ${freq}. ${gloss} Source readings: ${sourceReadings}. Neutral lexical coverage only; grammar-role assignment is intentionally deferred.`)} }],`;
+            const priorStatus = r[idx.runtime_status];
+            return `  [${q(word)}, { label: "lex", pos: "lexical_item", jyutping: ${q(reading)}, syntax: "lexical_item", note: ${q(`Cifu SpokenAdult rank ${rank}, frequency ${freq}; prior audit status ${priorStatus}. ${gloss}. Source readings: ${sourceReadings}. Exact surface retained as neutral lexical coverage; POS/grammar-role verification is intentionally separate.`)} }],`;
           }).join('\n');
-          const content = `"use strict";\n\n// AUTO-MATERIALIZED from data/lexical-frequency/cifu-spoken-top-2000.tsv.\n// Every row classified \`missing\` on the audit baseline is retained as neutral lexical coverage.\n// Do not remove an entry merely because its presence exposes parser/test regressions.\nmodule.exports = [\n${body}\n];\n`;
+          const content = `"use strict";\n\n// AUTO-MATERIALIZED from data/lexical-frequency/cifu-spoken-top-2000.tsv.\n// Every Cifu top-2,000 surface lacking direct runtime coverage on the baseline is retained here.\n// Entries are neutral lexical coverage; parser regressions or uncertain POS do not justify deleting them.\nmodule.exports = [\n${body}\n];\n`;
           fs.writeFileSync(out, content);
-          console.log(`materialized ${missing.length} missing lexical rows`);
+          console.log(JSON.stringify({ materialized: promote.length, byPriorStatus: Object.fromEntries([...promoteStatuses].map(s => [s, promote.filter(r => r[idx.runtime_status] === s).length])) }, null, 2));
           NODE
       - name: Commit materialized lexicon
         shell: bash
@@ -65,5 +67,5 @@ jobs:
             echo "No lexical materialization change"
             exit 0
           fi
-          git commit -m "Materialize complete Cifu missing lexical frontier"
+          git commit -m "Materialize all non-direct Cifu top-2000 surfaces"
           git push origin HEAD:${GITHUB_REF_NAME}
