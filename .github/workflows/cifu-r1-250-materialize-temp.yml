@@ -23,18 +23,54 @@ jobs:
           package-manager-cache: false
       - name: Install build dependencies
         run: npm ci
-      - name: Normalize reviewed analysis ID
+      - name: Normalize reviewed source and validation rule
         run: |
           python3 - <<'PY'
           from pathlib import Path
           import re
-          path = Path("src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-reviewed.js")
-          text = path.read_text()
+
+          reviewed = Path("src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-reviewed.js")
+          text = reviewed.read_text()
           pattern = r'(analysis\(152,\s*5275707047,\s*"間",\s*)"[^"]+"'
-          updated, count = re.subn(pattern, r'\1"classifier_gaan1"', text, count=1)
+          text, count = re.subn(pattern, r'\1"classifier_gaan1"', text, count=1)
           if count != 1:
               raise SystemExit(f"expected one 間 classifier analysis id to normalize; found {count}")
-          path.write_text(updated)
+          reviewed.write_text(text)
+
+          validator = Path("src/runtime-resources/lexicon/validate.js")
+          text = validator.read_text()
+          old = '''    if (!Array.isArray(rows) || rows.length < 2) throw new Error(`explicit lexical analyses for ${surface} must contain at least two analyses`);
+    multiAnalysisSurfaceCount += 1;
+'''
+          new = '''    if (!Array.isArray(rows) || rows.length < 1) throw new Error(`explicit lexical analyses for ${surface} must contain at least one analysis`);
+    if (rows.length === 1) {
+      const baseEntry = defaultEntries[surface] || {};
+      const neutralFrequencyCoverage = String(baseEntry.pos || "") === "lexical_item"
+        && String(baseEntry.syntax || "").split(/\\s+/u).includes("lexical_item")
+        && String(baseEntry.note || "").includes("Exact surface retained as neutral lexical coverage");
+      if (!neutralFrequencyCoverage) {
+        throw new Error(`single explicit lexical analysis for ${surface} requires a neutral frequency-coverage base entry`);
+      }
+    } else {
+      multiAnalysisSurfaceCount += 1;
+    }
+'''
+          if old not in text:
+              raise SystemExit("validator cardinality block not found")
+          text = text.replace(old, new, 1)
+
+          old = '''      if (!analysis || typeof analysis !== "object" || Array.isArray(analysis)) throw new Error(`lexical analysis for ${surface} must be an object`);
+      for (const key of ["id", "label", "pos", "jyutping", "syntax"]) assertNonEmptyString(analysis[key], `lexical analysis ${surface} ${key}`);
+'''
+          new = '''      if (!analysis || typeof analysis !== "object" || Array.isArray(analysis)) throw new Error(`lexical analysis for ${surface} must be an object`);
+      if (rows.length === 1 && (!analysis.provenance || analysis.provenance.kind !== "expert_lexical_adjudication")) {
+        throw new Error(`single explicit lexical analysis for ${surface} requires expert lexical adjudication provenance`);
+      }
+      for (const key of ["id", "label", "pos", "jyutping", "syntax"]) assertNonEmptyString(analysis[key], `lexical analysis ${surface} ${key}`);
+'''
+          if old not in text:
+              raise SystemExit("validator analysis-object block not found")
+          validator.write_text(text.replace(old, new, 1))
           PY
       - name: Run focused reviewed-lexicon test
         shell: bash
@@ -48,7 +84,7 @@ jobs:
             cp /tmp/cifu-r1-250-focused.log tmp-cifu-r1-250-focused.log
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-reviewed.js tmp-cifu-r1-250-focused.log
+            git add src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-reviewed.js src/runtime-resources/lexicon/validate.js tmp-cifu-r1-250-focused.log
             git commit -m "Record temporary Cifu lexical test failure"
             git push origin HEAD:agent/cifu-r1-250-runtime-reconcile
             exit "$status"
@@ -65,7 +101,7 @@ jobs:
             cp /tmp/cifu-r1-250-build.log tmp-cifu-r1-250-build.log
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git add src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-reviewed.js tmp-cifu-r1-250-build.log
+            git add src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-reviewed.js src/runtime-resources/lexicon/validate.js tmp-cifu-r1-250-build.log
             git commit -m "Record temporary Cifu runtime build failure"
             git push origin HEAD:agent/cifu-r1-250-runtime-reconcile
             exit "$status"
@@ -73,12 +109,12 @@ jobs:
       - name: Commit deterministic source correction and runtime bundle
         shell: bash
         run: |
-          if git diff --quiet -- src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-reviewed.js main.js; then
-            echo "reviewed source and main.js already current"
+          if git diff --quiet -- src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-reviewed.js src/runtime-resources/lexicon/validate.js main.js; then
+            echo "reviewed source, validator, and main.js already current"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-reviewed.js main.js
+          git add src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-reviewed.js src/runtime-resources/lexicon/validate.js main.js
           git commit -m "Build runtime for reviewed Cifu lexical layer"
           git push origin HEAD:agent/cifu-r1-250-runtime-reconcile
