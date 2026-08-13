@@ -32,8 +32,10 @@ branch history merely to keep an old PR open.
 - Keep unrelated changes outside the branch and claim.
 - Commit coherent states, not every mechanical edit.
 - Regenerate deterministic outputs and run applicable checks before ready state.
-- Never intentionally publish an incomplete failing state that a later repair must
-  fix.
+- Do not publish a state that introduces a new unique regression, turns a previously
+  passing case red, weakens protected behavior, or hides a failure by weakening the
+  test system. When the base commit already contains known regression debt, the
+  branch may retain that debt only under the set-based ratchet in `TESTING.md`.
 - Use pull requests for changes to `main`.
 - Use draft state only while work, pending changesets, dependencies, or integration
   remain unresolved. A complete coherent PR may open ready.
@@ -57,6 +59,11 @@ Every PR identifies:
 - decisions and evidence basis;
 - validation commands and results;
 - dependencies, blockers, and next action.
+
+For any test scope with inherited failures, the validation record also identifies the
+base failing-case set, post-change failing-case set, new unique failures, repaired
+failures, and remaining explicit debt. Raw failure counts alone are insufficient when
+failure identities change.
 
 Workers may publish branches and PRs but do not finalize unresolved
 integration-owned files. The authorized integrator may:
@@ -114,7 +121,9 @@ Automation follows least privilege, not a blanket read-only or no-writer rule.
 - Automation may not write directly to `main`, expand its own scope, adjudicate
   linguistic evidence, promote status, deploy surveys, publish releases, merge, or
   enable auto-merge without the separately required scope, gates, and user approval.
-- Branch automation must leave an auditable result and a coherent passing branch.
+- Branch automation must leave an auditable coherent state. If the relevant suite has
+  inherited regression debt, acceptance means the ratchet in `TESTING.md` is
+  satisfied; automation must not redefine or suppress the debt to manufacture green.
 - Generic repair bots, unscoped commit-and-push jobs, and unreviewed direct-to-main
   merges remain prohibited.
 
@@ -156,6 +165,11 @@ npm run build:runtime
 npm run verify:runtime-build
 npm run test:generated-runtime
 ```
+
+When `npm test` contains recorded baseline failures, capture the exact base failing
+identities before editing and compare the post-change set under `TESTING.md`; a
+nonzero inherited global result is not by itself a rejection, but any new unique
+failure is.
 
 Commit the canonical source change and regenerated `main.js` together. Do not edit `main.js` manually or regenerate it for unrelated research, corpus, survey, governance, or documentation work.
 
