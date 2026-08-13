@@ -1,0 +1,36 @@
+rank	surface	disposition	evidence	reason
+38	一個	retire_invalid_atomic	#792 comment 5276016704	transparent numeral + classifier phrase; common surface remains structurally licensed
+70	係咪	retire_invalid_atomic	#792 comment 5276016704	interrogative copular construction 係 + 咪; whole-surface pronunciation evidence does not establish atomic lexicality
+121	落去	retire_invalid_atomic	#792 comment 5276016704	productive directional composition 落 + 去
+139	兩個	retire_invalid_atomic	#792 authoritative blocked_atomic record	transparent numeral + classifier phrase
+144	上去	retire_invalid_atomic	#792 comment 5276016704	productive directional composition 上 + 去
+151	哩個	retire_invalid_atomic	#792 authoritative blocked_atomic record	transparent demonstrative + classifier sequence
+156	有個	retire_invalid_atomic	#792 authoritative blocked_atomic record	productive predicate + classifier phrase; no whole-string lexical analysis justified
+157	唔到	retire_invalid_atomic	#792 authoritative blocked_atomic record	productive negation + 到 construction; no whole-string lexical analysis justified
+200	第一	retire_invalid_atomic	#792 comment 5276016704	productive ordinal 第 + 一
+219	兜過	retire_invalid_atomic	#792 authoritative blocked_atomic record	productive verb + 過 sequence; no independent whole-string lexical analysis
+223	冇乜	retire_invalid_atomic	#792 comment 5276016704	productive negative/existential + quantificational sequence
+233	出嚟	retire_invalid_atomic	#792 comment 5276016704	productive directional composition 出 + 嚟
+234	返去	retire_invalid_atomic	#792 comment 5276016704	productive return-directional composition 返 + 去
+285	係噉	retire_invalid_atomic	#793 comment 5275326520	copular + manner/demonstrative discourse phrase; no single atomic POS
+297	條線	retire_invalid_atomic	#793 comment 5275326520	transparent classifier + noun phrase
+336	大樹	retire_invalid_atomic	#793 comment 5275326520	transparent property + noun phrase; no evidence requiring atomic lexicalization
+350	扮汗	retire_invalid_atomic	#793 comment 5275326520	malformed/unsupported Cifu surface; do not fabricate a lexical whole
+360	幾好	retire_invalid_atomic	#793 comment 5275326520	compositional degree phrase
+364	貧大宅	retire_invalid_atomic	#793 comment 5275326520	malformed/unsupported segmentation artifact
+404	出來	retire_invalid_atomic	#793 comment 5275326520	productive directional composition 出 + 來
+406	你講	retire_invalid_atomic	#793 comment 5275326520	transparent pronoun + verb sequence
+415	畫到	retire_invalid_atomic	#793 comment 5275326520	productive verb + 到 result/potential sequence
+417	講呢	retire_invalid_atomic	#793 comment 5275326520	transparent verb + discourse/particle sequence
+439	出去	retire_invalid_atomic	#793 comment 5275326520	productive directional composition 出 + 去
+450	行到	retire_invalid_atomic	#793 comment 5275326520	productive motion verb + 到 sequence
+451	杏堂	retire_invalid_atomic	#793 comment 5275326520	malformed/unsupported Cifu surface; no atomic lexical evidence
+457	我講	retire_invalid_atomic	#793 comment 5275326520	transparent pronoun + verb sequence
+458	尚健	retire_invalid_atomic	#793 comment 5275326520	malformed/unsupported Cifu surface; no atomic lexical evidence
+463	入去	retire_invalid_atomic	#793 comment 5275326520	productive directional composition 入 + 去
+472	條路線	retire_invalid_atomic	#793 comment 5275326520	transparent classifier + noun phrase
+479	右行	retire_invalid_atomic	#793 comment 5275326520	productive direction + motion sequence; no independent atomic lexical evidence
+490	一條	retire_invalid_atomic	#793 comment 5275326520	transparent numeral + classifier phrase
+497	提碑	retire_invalid_atomic	#793 comment 5275326520	malformed/unsupported Cifu surface; do not fabricate a lexical whole
+977	兩年	retire_invalid_atomic	#841/#842 structural cleanup	transparent quantified-time sequence 兩 + 年; already structurally licensed
+1749	半年	retire_invalid_atomic	#841/#842 structural cleanup	transparent quantified-time sequence 半 + 年; already structurally licensed
