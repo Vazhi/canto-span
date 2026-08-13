@@ -24,7 +24,7 @@ Before the first repository edit:
 6. create or update one work claim covering the smallest adequate semantic scope;
 7. create the exact `agent/<description>` branch named in the claim;
 8. declare canonical inputs, generated outputs, protected state, dependencies, reserved decisions, and required checks;
-9. implement one coherent passing state within the claim;
+9. implement one coherent acceptable state within the claim; when the base commit contains known regression debt, apply the regression-debt ratchet in `docs/current/TESTING.md` rather than requiring an unrelated globally green suite;
 10. open or update one pull request linked to the claim;
 11. bind the assigned pull-request number in the live intake metadata;
 12. when ready, record the pull-request number, exact head, scope, validation, risks, and limitations;
@@ -114,6 +114,14 @@ not independent linguistic evidence. Corpus extraction is mechanical; expert
 classification is separate. All eligible native respondents belong to one
 role-neutral panel with the same instrument, inclusion criteria, quality rules, and
 evidentiary weight.
+
+Known regression failures are implementation debt, not accepted behavior. Permanent
+changes must obey the failing-case-set ratchet defined in `docs/current/TESTING.md`:
+no new unique failing case, no passing-to-failing transition, no protected behavior
+loss, and no hidden failure through weakened tests, expectations, or diagnostics.
+Regression-directed work must strictly reduce the failing set; independently justified
+cleanup may leave it unchanged but may not expand it. Remaining failures stay recorded
+as debt until separately repaired.
 
 Do not silently change or infer construction identity, linguistic status, runtime
 behavior, survey deployment, evidence sufficiency, release state, or merge
