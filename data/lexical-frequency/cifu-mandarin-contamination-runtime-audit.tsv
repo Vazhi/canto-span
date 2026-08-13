@@ -1,0 +1,26 @@
+rank	surface	contamination_source	runtime_module	runtime_jyutping	runtime_meta	runtime_disposition	action
+106	面	explicit_mandarin_marker	study-suite.js	min6	where:location_surface_or_side_noun head_noun	cantonese_specific_analysis	no_runtime_change
+158	走	explicit_mandarin_marker	verbs.js	zau2	func:verb_complement directional_result_complement	cantonese_specific_analysis	no_runtime_change
+178	公司	explicit_mandarin_marker	people-and-address.js	gung1 si1	what:organization_np head_noun object_np	cantonese_specific_analysis	no_runtime_change
+293	仲	expert_mandarin_oriented	study-suite.js	zung6	how:additive_continuative_adverb	cantonese_specific_analysis	no_runtime_change
+390	頭	explicit_mandarin_marker	things.js	tau4	what:object_np body_part_np head_noun	cantonese_specific_analysis	no_runtime_change
+425	覺	explicit_mandarin_marker	things.js	gaau3	what:object_in_vo	cantonese_specific_analysis	no_runtime_change
+501	地	explicit_mandarin_marker	frequency-gap-fill-r7.js	dei6	lex:lexical_item	neutral_surface_coverage	no_runtime_change
+535	跟	explicit_mandarin_marker	frequency-gap-fill-r7.js	gan1	lex:lexical_item	neutral_surface_coverage	no_runtime_change
+562	海	explicit_mandarin_marker	places-and-times.js	hoi2	where:place_or_goal natural_place_np	cantonese_specific_analysis	no_runtime_change
+590	機	explicit_mandarin_marker	verbs.js	gei1	what:machine_noun object_np head_noun	cantonese_specific_analysis	no_runtime_change
+634	教	explicit_mandarin_marker	frequency-gap-fill-r7.js	gaau3	lex:lexical_item	neutral_surface_coverage	no_runtime_change
+673	把	explicit_mandarin_marker	study-suite.js	baa2	measure_word:classifier_handled_object	cantonese_specific_analysis	no_runtime_change
+754	車	explicit_mandarin_marker	study-suite.js	ce1	what:vehicle_noun object_np head_noun	cantonese_specific_analysis	no_runtime_change
+799	靠	explicit_mandarin_marker	frequency-gap-fill-r7.js	kaau3	lex:lexical_item	neutral_surface_coverage	no_runtime_change
+874	法官	expert_mandarin_oriented	frequency-gap-fill-r7.js	faat3 gun1	lex:lexical_item	neutral_surface_coverage	no_runtime_change
+959	腳	explicit_mandarin_marker	frequency-gap-fill-r7.js	goek3	lex:lexical_item	neutral_surface_coverage	no_runtime_change
+960	旗	explicit_mandarin_marker	frequency-gap-fill-r7.js	kei4	lex:lexical_item	neutral_surface_coverage	no_runtime_change
+981	門	explicit_mandarin_marker	study-suite.js	mun4	what:door_noun head_noun	cantonese_specific_analysis	no_runtime_change
+995	口	explicit_mandarin_marker	study-suite.js	hau2	what:noun opening_or_mouth head_noun	cantonese_specific_analysis	no_runtime_change
+1200	抹	explicit_mandarin_marker	frequency-gap-fill-r7.js	maat3	lex:lexical_item	neutral_surface_coverage	no_runtime_change
+1399	片	explicit_mandarin_marker	frequency-gap-fill-r7.js	pin3	lex:lexical_item	neutral_surface_coverage	no_runtime_change
+1532	罷	explicit_mandarin_marker	frequency-gap-fill-r7.js	baa6	lex:lexical_item	neutral_surface_coverage	no_runtime_change
+1729	響	explicit_mandarin_marker	frequency-gap-fill-r7.js	hoeng2	lex:lexical_item	neutral_surface_coverage	no_runtime_change
+1792	校	explicit_mandarin_marker	frequency-gap-fill-r7.js	haau6	lex:lexical_item	neutral_surface_coverage	no_runtime_change
+1995	嘴	explicit_mandarin_marker	frequency-gap-fill-r7.js	zeoi2	lex:lexical_item	neutral_surface_coverage	no_runtime_change
