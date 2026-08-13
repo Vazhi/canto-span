@@ -21,6 +21,8 @@ jobs:
         with:
           node-version: 24
           package-manager-cache: false
+      - name: Install build dependencies
+        run: npm ci
       - name: Print exact acceptability trace
         run: |
           node - <<'NODE'
