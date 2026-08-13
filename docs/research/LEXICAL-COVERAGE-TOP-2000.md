@@ -1,133 +1,159 @@
-# Common spoken Cantonese lexical priority core
+# Common spoken Cantonese priority inventory
 
 ## Governing outcome
 
-Canto Span's lexical development priority is **2,000 contemporary, commonly used spoken Cantonese lexical items**. This replaces the historical rule that every Cifu SpokenAdult top-2,000 surface must remain as an atomic token-lexicon entry.
+Canto Span's immediate lexical-development priority is **2,000 commonly used Cantonese items grounded in actual spoken Cantonese evidence**.
 
-The priority change does **not** mean uncommon Cantonese should be deleted.
+Frequency determines **priority**, not whether valid Cantonese is allowed to remain in the runtime.
 
-- Common contemporary Cantonese lexemes are highest priority for parser support and regression reconciliation.
-- Rare, archaic, formal-only, specialist, or domain-specific **valid Cantonese remains valid vocabulary**. It may be deferred rather than forcing immediate parser work.
-- Runtime deletion is limited to entries that are **not genuine Cantonese atomic lexical items**: non-Cantonese noise, malformed or contaminated forms, segmentation artifacts, and productive/compositional strings incorrectly materialized as atomic lexemes.
-- Regression is useful diagnostic evidence but is not, by itself, a deletion criterion.
+The current removal rule is deliberately narrow:
 
-## Why the Cifu-only target was retired
+> **Only Mandarin contamination is a lexical-removal/correction target in this work. Genuine Cantonese stays.**
 
-Cifu remains useful frequency and discovery evidence, but it is not a safe lexical authority by itself.
+Do not remove or exclude a Cantonese item because it is:
+
+- compositional or constructional;
+- a formula, numeral/time expression, directional sequence, or productive phrase;
+- a proper name, place name, organization name, domain term, or task-specific expression;
+- rare, archaic, literary, formal, specialist, or low frequency;
+- shared with Mandarin or Standard Written Chinese;
+- inconvenient for parser regression.
+
+Foreign-origin Cantonese loanwords also remain Cantonese vocabulary when they are genuinely used in Cantonese.
+
+Lexical atomicity can be tracked as a separate linguistic property, but **it is not a deletion criterion in this task**.
+
+## What counts as Mandarin contamination
+
+A correction requires positive evidence that a represented **surface, reading, sense, POS/category, classifier use, grammatical function, or gloss is Mandarin-only contamination and lacks independent Cantonese support for that same analysis**.
+
+Use the narrowest correction supported by the evidence:
+
+1. contaminated gloss/sense -> reject only that sense;
+2. contaminated reading -> reject/correct only that reading;
+3. contaminated POS/classifier/function -> reject only that analysis;
+4. whole surface -> remove only if the lexical item itself is shown to be Mandarin-only/non-Cantonese in the relevant usage and no independent Cantonese evidence rescues it.
+
+A form is **not** Mandarin contamination merely because Mandarin also uses the same Chinese characters or cognate vocabulary.
+
+## Cifu provenance firewall
+
+Cifu remains useful frequency/discovery evidence, especially its SpokenAdult ranking. But its metadata is not an independent Cantonese lexical authority.
 
 The project evidence contract records that:
 
-- Cifu SpokenAdult rank/surface is derived from Hong Kong Cantonese spoken corpora and is useful frequency evidence;
-- Cifu English definitions and much of its Jyutping derive from yeDict/CEDICT-derived material and therefore carry no independent Cantonese lexical-semantic or POS authority;
-- Cifu tokenization was re-segmented for the frequency lexicon, so an exact Cifu surface boundary does not prove atomic lexicality;
-- reconstructed `*` Jyutping is especially low-confidence candidate metadata.
+- Cifu SpokenAdult frequency is based on Hong Kong Cantonese spoken corpora and is useful frequency evidence;
+- Cifu English definitions and much of its Jyutping were imported from yeDict, an adaptation of CEDICT Mandarin-English for Cantonese;
+- many missing readings were reconstructed automatically;
+- Cifu segmentation is a candidate tokenization and does not determine Cantonese lexical identity.
 
-The historical exact-surface benchmark therefore mixed genuine lexemes with productive sequences, malformed entries, and other material that should not automatically become atomic runtime lexicon entries.
+Therefore:
+
+- **Cifu SpokenAdult rank/surface** -> frequency/discovery evidence;
+- **Cifu definition** -> low-trust search hint only;
+- **Cifu Jyutping** -> candidate reading only, especially weak when reconstructed with `*`;
+- **explicit `(Mandarin)` material** -> contamination warning requiring exclusion of that analysis unless independent Cantonese evidence specifically rescues it.
 
 ## Primary commonness evidence
 
-The reproducible direct-spoken candidate generator is:
+Direct spoken evidence is generated from frozen **PyCantonese 5.0.0** HKCanCor and CantoMap data. Preserve the two corpora separately and use their counts/rates to rank development priority.
 
-`tools/lexical-coverage/export-common-spoken-core.py`
-
-It uses frozen **PyCantonese 5.0.0** HKCanCor and CantoMap word-token counts. For each Han-containing token it records raw counts and per-million frequency independently in both corpora, then combines the two rates with equal corpus weight.
-
-Generated evidence:
+Current candidate evidence includes:
 
 - `data/lexical-frequency/common-spoken-cantonese-core-2000.tsv`
 - `data/lexical-frequency/common-spoken-cantonese-core-2000.manifest.json`
+- `data/lexical-frequency/common-spoken-cantonese-candidates-5000.tsv`
+- `data/lexical-frequency/common-spoken-cantonese-candidates-5000.manifest.json`
 
-The first direct-corpus candidate pass contains exactly 2,000 ranked **surfaces**, not 2,000 adjudicated lexical items:
+These are **spoken-frequency candidate inventories**. They do not authorize deleting Cantonese items for lexicality, domain, proper-name status, register, or parser behavior.
 
-- 836 attested in both HKCanCor and CantoMap;
-- 1,314 also present in the historical Cifu top 2,000;
-- 686 outside the historical Cifu top 2,000.
+Cifu SpokenAdult adds a third spoken-frequency perspective through HKCAC and remains useful as secondary frequency corroboration.
 
-This is a **frequency candidate pool, not the final lexical core**. Its lower tail contains proper names, MapTask/navigation-domain vocabulary, productive number/time strings, and segmentation artifacts. Curation must exclude nonlexical/non-general candidates and backfill from lower-ranked spoken candidates until exactly 2,000 genuine common lexical items remain.
+## Rescue/adjudication evidence
 
-A frequent compositional sequence may still be important grammar evidence, but it does **not** occupy one of the 2,000 lexical-core slots merely because a corpus tokenizer emitted it as one token.
+Frozen Rime-Cantonese is a pronunciation/orthography rescue layer. It is not POS, semantic, lexicality, or frequency authority.
 
-## Secondary evidence
+For disputed Cifu metadata, use independent Cantonese evidence such as:
 
-Cifu SpokenAdult frequency remains useful because it also incorporates HKCAC and adds spoken-domain breadth missing from the two directly queryable frozen corpora. Use Cifu rank/frequency as secondary corroboration and backfill evidence, never as mandatory inclusion or lexical identity.
+- HKCanCor/CantoMap context and readings;
+- Words.hk;
+- Jyut.net / Jyut Dictionary;
+- Cantonese dictionaries and reference grammars;
+- direct Cantonese linguistic research;
+- completed expert adjudications #792-#799.
 
-Frozen Rime-Cantonese may corroborate contemporary surfaces/readings. Rime weights are not frequency evidence and Rime is not an independent POS/semantic authority.
+Absence from one resource is not negative evidence.
 
-Words.hk, Jyut.net, corpus context, and Cantonese linguistic research remain appropriate expert adjudication sources where lexicality, reading, or contemporary usage is unclear.
+## Mandarin-contamination ledgers
 
-## Curation outcomes
+Two narrow ledgers own the current contamination findings:
 
-Every candidate should resolve to one of these outcomes:
+- `data/lexical-frequency/cifu-explicit-mandarin-contamination.tsv` — Cifu definitions explicitly marked `(Mandarin)`;
+- `data/lexical-frequency/cifu-mandarin-oriented-adjudication.tsv` — additional Mandarin-oriented senses/categories identified by expert Cantonese adjudication.
 
-- `core_atomic` — a genuine common contemporary Cantonese lexical item; these count toward the final 2,000;
-- `common_structural_surface` — common Cantonese sequence handled productively/compositionally; retain as grammar/commonness evidence but **do not count it as a lexical-core item**;
-- `defer_valid_low_frequency` — genuine Cantonese lexeme but uncommon, formal-only, archaic, specialist, or otherwise lower priority; retain in the broader lexicon but not necessarily the common 2,000;
-- `remove_nonlexical_or_non_cantonese` — not a genuine Cantonese atomic lexical item and therefore eligible for removal from the token lexicon;
-- `research_required` — lexicality/commonness evidence conflict still requiring expert review.
+At the current checkpoint:
 
-The final common lexical core is complete only when exactly **2,000 `core_atomic` lexical items** have been established after exclusions and backfill. Structural sequences are tracked separately.
+- **23** explicit `(Mandarin)` Cifu cases have been isolated;
+- **2** additional Mandarin-oriented Cifu analyses (`仲`, `法官`) have been isolated through expert adjudication;
+- all **25 surfaces remain valid Cantonese items** in another independently supported Cantonese analysis;
+- therefore these findings currently require **analysis-level rejection/correction, not whole-surface deletion**.
+
+Examples:
+
+- `走 zau2`: retain Cantonese `走`; reject Cifu's `to walk (Mandarin)` sense.
+- `面 min6`: retain Cantonese noun/locality uses; reject the Mandarin flat-object classifier imported by Cifu.
+- `公司 gung1 si1`: retain Cantonese organization noun; reject the Mandarin `家` classifier metadata.
+- `把 baa2`: retain independently supported Cantonese classifier/lexical behavior; reject the Mandarin disposal-construction analysis.
+- `仲 zung6`: retain Cantonese `still/yet/also`; reject Cifu's Mandarin-oriented `middle/second in seniority` sense family for this spoken item.
+- `法官 faat3 gun1`: retain Cantonese person/title noun `judge`; do not import Cifu's free verbal `to judge` analysis.
+
+## Correction of historical PR #843 cleanup
+
+PR #843 used a broader policy that removed entries for being non-atomic/compositional or otherwise outside a proposed atomic lexical core. That policy is superseded by the user's clarified rule.
+
+Under active claim #844:
+
+- the seven runtime/bundle files changed by #843 have been restored to their pre-#843 lexical state;
+- the earlier 213 Cantonese removals are therefore not retained as runtime deletions;
+- broad invalid-atom retirement ledgers/reports and their deletion tools are removed from the active branch;
+- direct spoken-frequency evidence produced during that work is retained because it remains useful.
+
+Historical #843 remains provenance for how the mistaken broader cleanup occurred; it is not current lexical policy.
+
+## Runtime implementation rule
+
+Before changing runtime lexical data, compare each contamination finding with the actual runtime analysis.
+
+- If the runtime already represents only the valid Cantonese analysis, **make no runtime change**.
+- If the runtime entry is neutral `lexical_item` coverage and does not encode the contaminated sense/category, **do not delete it merely because Cifu's gloss is contaminated**.
+- If the runtime explicitly encodes the Mandarin-only sense/reading/category, remove or correct that specific analysis.
+- Delete an entire runtime surface only if positive evidence establishes that the represented lexical item itself is Mandarin-only in the relevant usage and Cantonese rescue fails.
+
+This makes **zero whole-surface deletions a valid and expected audit result** if the contamination is confined to source metadata.
 
 ## Regression policy
 
-Regression establishes **priority**, not lexical validity.
+Parser regression is not lexical evidence.
 
-- Common/core Cantonese regression: keep the lexical item and treat parser behavior as a high-priority repair obligation.
-- Rare/formal/archaic/specialist but valid Cantonese regression: parser accommodation may be deferred; keep the valid lexeme.
-- Invalid/nonlexical/non-Cantonese atomic entry: remove the bad lexical entry because it is not a legitimate atomic Cantonese lexeme. Regression improvement may support the diagnosis but is not required to justify removal.
+- A genuine Cantonese item stays even when it causes parser regression.
+- Common Cantonese regressions receive higher development priority.
+- Rare/formal/specialist Cantonese regressions may be deferred.
+- Regression reduction is never sufficient reason to call a Cantonese item Mandarin contamination.
 
-The project is **not expected to solve every inherited regression** while rebuilding lexical priorities.
+## Metrics
 
-`死 sei2` is the reference case: it is strongly represented in direct spoken evidence, so parser trouble involving it is a parser obligation rather than a lexical deletion opportunity.
+Track separately:
 
-## Invalid atomic cleanup checkpoint
+1. the 2,000-item common spoken Cantonese development-priority inventory;
+2. direct HKCanCor/CantoMap counts and cross-corpus support;
+3. Cifu secondary frequency rank;
+4. Mandarin-contaminated Cifu analyses identified;
+5. contaminated analyses actually present in runtime;
+6. whole surfaces proven Mandarin-only and removed, if any;
+7. valid Cantonese items still exposing parser regressions.
 
-Historical PR #791 added 1,353 neutral `lexical_item` entries to force exact Cifu top-2,000 surface coverage. Those records are now review candidates rather than protected lexical truth.
-
-The current expert retirement ledgers are:
-
-- `data/lexical-frequency/r7-invalid-atomic-retirements.tsv`
-- `data/lexical-frequency/r7-invalid-atomic-retirements-1251-2000.tsv`
-
-They contain **213 unique surfaces** already adjudicated as non-atomic, malformed/noisy, or otherwise invalid as whole lexical entries. Frequency and regression counts are not used to select these targets.
-
-Cleanup results:
-
-- **204** invalid neutral R7 atoms were removed from `frequency-gap-fill-r7.js` across the staged cleanup, including the earlier `兩年` and `半年` structural removals;
-- a whole-runtime audit then found **9** of the same invalid surfaces in older curated token modules: `好多人`, `我知`, `邊間`, `好貴`, `好靚`, `一次`, `第二個`, `沿住`, and `係咪`;
-- those nine whole-surface records were removed while their component words and productive constructions remain available;
-- `data/lexical-frequency/invalid-atomic-runtime-audit.json` now reports **0 runtime hits across all 213 adjudicated invalid targets**.
-
-This cleanup covers the completed expert bands #792, #793, #794, #795, #797, #798, and #799. The separately active/protected **#796 ranks 1001–1250 were not changed**.
-
-Ambiguous items were deliberately not deleted merely because an adjudication had once marked them unresolved. Plausible proper names, domain lexemes, conventional locatives, and directional terms require positive evidence of invalidity before retirement.
-
-## Historical R7 status
-
-`src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js` remains provenance for the Cifu expansion, but its original blanket-retention comments/policy are historical rather than governing.
-
-Outcomes for surviving entries may include:
-
-- retain/upgrade a genuine common Cantonese lexeme;
-- keep a genuine but low-priority Cantonese lexeme without prioritizing parser accommodation;
-- remove a fake atomic entry while preserving structural handling;
-- remove malformed, contaminated, non-Cantonese, or otherwise nonlexical material.
-
-Historical PR #791 and stale work claim #790 remain provenance for why the entries were introduced, not current retention policy.
-
-## Audit metrics going forward
-
-Lexical reports should separately track:
-
-1. final common spoken lexical core: exactly 2,000 genuine `core_atomic` items;
-2. common structural surfaces excluded/backfilled from the lexical core;
-3. atomic runtime coverage of the 2,000 common lexemes;
-4. total valid Cantonese lexical inventory size;
-5. valid low-frequency/deferred inventory;
-6. invalid/nonlexical entries removed;
-7. common-core items still exposing parser regressions.
-
-The historical “Cifu 2,000 / 2,000 exact surfaces in the token lexicon” metric is provenance only and must not drive runtime decisions.
+Do not use an atomicity-purity metric as a deletion target.
 
 ## Scope
 
-This work does not by itself promote construction productivity/status, survey/native-panel evidence, release state, or deployment state. Parser changes may be made when necessary for genuinely common Cantonese, but this task does not require all regression failures to be reconciled.
+This lexical audit does not by itself change construction identity/status, evidence sufficiency, survey/native-panel state, release state, or deployment state.

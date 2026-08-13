@@ -143,7 +143,7 @@ console.log(JSON.stringify({
   counts,
   historicalExactSurfaceCoverage,
   mandatoryExactSurfaceTarget: false,
-  currentPriorityTarget: "2,000 expert-curated common spoken Cantonese lexical items; compositional surfaces do not consume lexical-core slots",
+  currentPriorityTarget: "2,000 common spoken Cantonese priority items; retain genuine Cantonese and reject only positively identified Mandarin contamination",
   totalRuntimeUniqueSurfaces: runtime.direct.size,
   runtimeSurfacesOutsideHistoricalCifu2000,
   topHistoricalCifuMissing: rows.filter((row) => row.status === "missing").slice(0, 30).map((row) => [row.rank, row.word]),
