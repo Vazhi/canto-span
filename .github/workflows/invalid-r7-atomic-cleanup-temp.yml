@@ -1,4 +1,4 @@
-name: Apply invalid R7 atomic cleanup
+name: Apply invalid lexical-atom cleanup
 
 on:
   push:
@@ -7,6 +7,7 @@ on:
     paths:
       - .github/workflows/invalid-r7-atomic-cleanup-temp.yml
       - tools/lexical-coverage/retire-invalid-r7-atoms.py
+      - tools/lexical-coverage/retire-invalid-curated-atoms.py
       - tools/lexical-coverage/audit-invalid-runtime-atoms.py
       - data/lexical-frequency/r7-invalid-atomic-retirements.tsv
       - data/lexical-frequency/r7-invalid-atomic-retirements-1251-2000.tsv
@@ -33,18 +34,30 @@ jobs:
 
       - run: npm ci
 
-      - name: Apply expert-adjudicated invalid atomic retirements
+      - name: Apply expert-adjudicated invalid R7 retirements
         run: |
           set -euo pipefail
           python tools/lexical-coverage/retire-invalid-r7-atoms.py --write
+
+      - name: Apply invalid retirements in older curated token modules
+        run: |
+          set -euo pipefail
+          python tools/lexical-coverage/retire-invalid-curated-atoms.py
           git diff --check
-          node --check src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js
-          node -e "require('./src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js')"
+          for f in src/runtime-resources/lexicon/token-lexicon/*.js; do node --check "$f"; done
+          node -e "require('./src/runtime-resources/lexicon/token-lexicon')"
 
       - name: Audit full token lexicon for remaining invalid atoms
         run: |
           set -euo pipefail
           python tools/lexical-coverage/audit-invalid-runtime-atoms.py
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = json.loads(Path('data/lexical-frequency/invalid-atomic-runtime-audit.json').read_text())
+          if p['runtime_hit_count'] != 0:
+              raise SystemExit(f"remaining invalid atomic runtime hits: {p['runtime_hit_count']}")
+          PY
 
       - name: Regression diagnostic only
         run: |
@@ -60,12 +73,13 @@ jobs:
           set -euo pipefail
           git config user.name "canto-span-invalid-lexeme-cleanup"
           git config user.email "actions@users.noreply.github.com"
-          git add src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js \
+          git add src/runtime-resources/lexicon/token-lexicon \
                   data/lexical-frequency/r7-invalid-atomic-retirement-report.json \
+                  data/lexical-frequency/invalid-curated-atomic-retirement-report.json \
                   data/lexical-frequency/invalid-atomic-runtime-audit.json
           if git diff --cached --quiet; then
             echo "No lexical cleanup/audit change"
           else
-            git commit -m "Audit invalid atoms across full runtime"
+            git commit -m "Retire invalid atomic entries across runtime lexicon"
             git push origin HEAD:agent/common-spoken-core-2000
           fi
