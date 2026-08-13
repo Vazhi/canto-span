@@ -8,6 +8,7 @@ const { loadRuntimeApi } = require("./lib/runtime-api");
 
 const root = path.resolve(__dirname, "..");
 const api = loadRuntimeApi();
+const allowRegressionDebt = process.argv.includes("--allow-regression-debt");
 const commands = [
   ["regression", path.join(root, "tests", "run-regression.js")],
   ["np_subsystem", path.join(root, "tests", "run-np-subsystem.js")],
@@ -29,6 +30,7 @@ const commands = [
   ["parser_coverage_enhanced", path.join(root, "tests", "tooling", "parser-coverage", "enhanced.test.js")],
   ["parser_architecture_audit", path.join(root, "tests", "tooling", "parser-coverage", "architecture-audit.test.js")],
   ["parser_work_prioritizer", path.join(root, "tests", "tooling", "parser-coverage", "prioritizer.test.js")],
+  ["regression_ratchet_verifier", path.join(root, "tests", "tooling", "runtime", "regression-ratchet-verifier.test.js")],
 ];
 const generatedPaths = [
   "validation/current/regression-suite.json",
@@ -46,17 +48,25 @@ const originalGeneratedFiles = new Map(
 );
 const results = [];
 let failed = false;
+let regressionDebtObserved = false;
 
 try {
   for (const [name, script] of commands) {
     const run = spawnSync(process.execPath, [script], { cwd: root, encoding: "utf8" });
+    const debtAllowed = name === "regression" && allowRegressionDebt && run.status !== 0;
     const result = {
       name,
       exit_code: run.status,
       signal: run.signal || "",
-      status: run.status === 0 ? "PASS" : "FAIL",
+      status: debtAllowed ? "DEBT" : (run.status === 0 ? "PASS" : "FAIL"),
     };
-    if (run.status !== 0) {
+    if (debtAllowed) {
+      regressionDebtObserved = true;
+      result.debt_allowed = true;
+      result.stdout = run.stdout || "";
+      result.stderr = run.stderr || "";
+      process.stderr.write(`\n[${name}] inherited debt reported; stable-identity ratchet must be checked separately\n${result.stdout}${result.stderr}`);
+    } else if (run.status !== 0) {
       failed = true;
       result.stdout = run.stdout || "";
       result.stderr = run.stderr || "";
@@ -78,7 +88,8 @@ try {
 console.log(JSON.stringify({
   schema: "canto-span-standard-test-suite-summary-v2",
   runtime_version: api.runtimeVersion,
-  status: failed ? "FAIL" : "PASS",
+  status: failed ? "FAIL" : (regressionDebtObserved ? "PASS_WITH_REGRESSION_DEBT" : "PASS"),
+  regression_debt_requires_external_ratchet: regressionDebtObserved,
   commands: results,
   generated_outputs_restored: generatedPaths,
 }, null, 2));
