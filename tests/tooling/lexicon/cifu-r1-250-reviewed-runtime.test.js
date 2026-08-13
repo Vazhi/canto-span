@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 "use strict";
 
+// This suite also enforces the fill-only same-surface ownership invariant.
 const assert = require("assert/strict");
 const test = require("node:test");
 const { loadRuntimeApi } = require("../../lib/runtime-api");
