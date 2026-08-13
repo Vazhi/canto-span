@@ -23,5 +23,7 @@ jobs:
           package-manager-cache: false
       - name: Install build dependencies
         run: npm ci
-      - name: Run detailed parser architecture audit
-        run: node tools/parser-architecture-audit.js --json
+      - name: Locate acceptability trace owner
+        run: |
+          set -euo pipefail
+          grep -R -n -E 'AcceptabilityClause|IndefiniteWhUniversalClause|secondary_predicate|restricted_predicate|template_family' src tools tests | head -n 400
