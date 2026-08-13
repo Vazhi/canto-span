@@ -1,5 +1,6 @@
 name: Temporary Cifu ranks 1-250 materializer
 # Branch-only helper; removed before review/merge.
+# Current run validates reviewed replacements after filtering stale same-surface bases.
 
 on:
   push:
