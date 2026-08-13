@@ -2,11 +2,11 @@
 
 ## Governing outcome
 
-Canto Span's lexical development priority is **2,000 contemporary, commonly used spoken Cantonese items/surfaces**. This replaces the historical rule that every Cifu SpokenAdult top-2,000 surface must remain as an atomic token-lexicon entry.
+Canto Span's lexical development priority is **2,000 contemporary, commonly used spoken Cantonese lexical items**. This replaces the historical rule that every Cifu SpokenAdult top-2,000 surface must remain as an atomic token-lexicon entry.
 
 The priority change does **not** mean uncommon Cantonese should be deleted.
 
-- Common contemporary Cantonese is highest priority for parser support and regression reconciliation.
+- Common contemporary Cantonese lexemes are highest priority for parser support and regression reconciliation.
 - Rare, archaic, formal-only, specialist, or domain-specific **valid Cantonese remains valid vocabulary**. It may be deferred rather than forcing immediate parser work.
 - Runtime deletion is limited to entries that are **not genuine Cantonese atomic lexical items**: non-Cantonese noise, malformed or contaminated forms, segmentation artifacts, and productive/compositional strings incorrectly materialized as atomic lexemes.
 - Regression is useful diagnostic evidence but is not, by itself, a deletion criterion.
@@ -37,13 +37,15 @@ Generated evidence:
 - `data/lexical-frequency/common-spoken-cantonese-core-2000.tsv`
 - `data/lexical-frequency/common-spoken-cantonese-core-2000.manifest.json`
 
-The first direct-corpus candidate pass contains exactly 2,000 ranked surfaces:
+The first direct-corpus candidate pass contains exactly 2,000 ranked **surfaces**, not 2,000 adjudicated lexical items:
 
 - 836 attested in both HKCanCor and CantoMap;
 - 1,314 also present in the historical Cifu top 2,000;
 - 686 outside the historical Cifu top 2,000.
 
-This is a **frequency candidate pool, not the final curated lexical core**. Its lower tail contains proper names, MapTask/navigation-domain vocabulary, productive number/time strings, and segmentation artifacts. Those require curation and backfill so domain concentration does not displace more generally useful spoken vocabulary.
+This is a **frequency candidate pool, not the final lexical core**. Its lower tail contains proper names, MapTask/navigation-domain vocabulary, productive number/time strings, and segmentation artifacts. Curation must exclude nonlexical/non-general candidates and backfill from lower-ranked spoken candidates until exactly 2,000 genuine common lexical items remain.
+
+A frequent compositional sequence may still be important grammar evidence, but it does **not** occupy one of the 2,000 lexical-core slots merely because a corpus tokenizer emitted it as one token.
 
 ## Secondary evidence
 
@@ -53,66 +55,61 @@ Frozen Rime-Cantonese may corroborate contemporary surfaces/readings. Rime weigh
 
 Words.hk, Jyut.net, corpus context, and Cantonese linguistic research remain appropriate expert adjudication sources where lexicality, reading, or contemporary usage is unclear.
 
-## Final classifications
+## Curation outcomes
 
-Every reviewed item should resolve to one of these outcomes:
+Every candidate should resolve to one of these outcomes:
 
-- `core_atomic` — common contemporary Cantonese item requiring an atomic lexical runtime analysis;
-- `core_structural` — common Cantonese surface/sequence whose productive grammar/construction analysis is preferred over a fake atomic lexeme;
-- `defer_valid_low_frequency` — valid Cantonese but uncommon, formal-only, archaic, specialist, or otherwise lower priority for parser accommodation;
+- `core_atomic` — a genuine common contemporary Cantonese lexical item; these count toward the final 2,000;
+- `common_structural_surface` — common Cantonese sequence handled productively/compositionally; retain as grammar/commonness evidence but **do not count it as a lexical-core item**;
+- `defer_valid_low_frequency` — genuine Cantonese lexeme but uncommon, formal-only, archaic, specialist, or otherwise lower priority; retain in the broader lexicon but not necessarily the common 2,000;
 - `remove_nonlexical_or_non_cantonese` — not a genuine Cantonese atomic lexical item and therefore eligible for removal from the token lexicon;
-- `research_required` — evidence conflict still requiring expert review.
+- `research_required` — lexicality/commonness evidence conflict still requiring expert review.
 
-The final priority core should contain exactly 2,000 common spoken items/surfaces after curation and backfill. A `core_structural` surface may count toward common-language coverage without requiring an atomic token-lexicon entry.
+The final common lexical core is complete only when exactly **2,000 `core_atomic` lexical items** have been established after exclusions and backfill. Structural sequences are tracked separately.
 
 ## Regression policy
 
 Regression establishes **priority**, not lexical validity.
 
-- Common/core Cantonese regression: keep the lexical item and treat the parser behavior as a high-priority repair obligation.
-- Rare/formal/archaic/specialist but valid Cantonese regression: the parser accommodation may be deferred; keep the valid lexeme.
+- Common/core Cantonese regression: keep the lexical item and treat parser behavior as a high-priority repair obligation.
+- Rare/formal/archaic/specialist but valid Cantonese regression: parser accommodation may be deferred; keep the valid lexeme.
 - Invalid/nonlexical/non-Cantonese atomic entry: remove the bad lexical entry because it is not a legitimate atomic Cantonese lexeme. Regression improvement may support the diagnosis but is not required to justify removal.
 
 The project is **not expected to solve every inherited regression** while rebuilding lexical priorities.
 
-`死 sei2` is a useful reference case: direct spoken evidence marks it as common Cantonese. Any parser issue involving it is therefore a parser obligation, not a lexical deletion opportunity.
+`死 sei2` is the reference case: it is strongly represented in direct spoken evidence, so parser trouble involving it is a parser obligation rather than a lexical deletion opportunity.
 
-## R7 cleanup
+## Invalid atomic cleanup checkpoint
 
-Historical PR #791 added 1,353 neutral `lexical_item` entries to force exact Cifu top-2,000 surface coverage. Those entries are now review candidates rather than protected lexical truth.
+Historical PR #791 added 1,353 neutral `lexical_item` entries to force exact Cifu top-2,000 surface coverage. Those records are now review candidates rather than protected lexical truth.
 
-The common-priority audit is:
+The current expert retirement ledgers are:
 
-`data/lexical-frequency/common-spoken-cantonese-r7-priority-audit.tsv`
+- `data/lexical-frequency/r7-invalid-atomic-retirements.tsv`
+- `data/lexical-frequency/r7-invalid-atomic-retirements-1251-2000.tsv`
 
-Initial counts:
+They contain **213 unique surfaces** already adjudicated as non-atomic, malformed/noisy, or otherwise invalid as whole lexical entries. Frequency and regression counts are not used to select these targets.
 
-- 731 / 1,353 R7 entries occur in the provisional direct spoken-core candidate set;
-- 622 are outside it;
-- 67 outside-core entries had already been classified `handled_structurally` before R7;
-- 239 outside-core manual-review entries have reconstructed Cifu Jyutping.
+Cleanup results:
 
-These counts identify review priority only. Being outside the provisional core does **not** make a valid Cantonese word removable.
+- **204** invalid neutral R7 atoms were removed from `frequency-gap-fill-r7.js` across the staged cleanup, including the earlier `兩年` and `半年` structural removals;
+- a whole-runtime audit then found **9** of the same invalid surfaces in older curated token modules: `好多人`, `我知`, `邊間`, `好貴`, `好靚`, `一次`, `第二個`, `沿住`, and `係咪`;
+- those nine whole-surface records were removed while their component words and productive constructions remain available;
+- `data/lexical-frequency/invalid-atomic-runtime-audit.json` now reports **0 runtime hits across all 213 adjudicated invalid targets**.
 
-### Confirmed invalid atomic entries
+This cleanup covers the completed expert bands #792, #793, #794, #795, #797, #798, and #799. The separately active/protected **#796 ranks 1001–1250 were not changed**.
 
-`兩年` and `半年` were removed from the R7 atomic token lexicon. The reason is lexicality, not rarity: both are transparent quantified-time expressions (`兩/半 + 年`) already handled compositionally, so their R7 `lexical_item` records falsely treated productive Cantonese phrases as atomic lexemes.
-
-A diagnostic comparison also showed that removing those fake atomic entries eliminated two inherited regression failures without creating new ones. That is supporting evidence that the atomic entries interfered with the intended structural analysis, but the governing reason for deletion is that they are not atomic lexical items.
-
-`三年` showed the same structural problem in the broad experiment, but it lies inside the separately protected #796 rank band and remains untouched under the user's standing restriction.
-
-No further deletion should be selected merely by searching for regression-count improvement.
+Ambiguous items were deliberately not deleted merely because an adjudication had once marked them unresolved. Plausible proper names, domain lexemes, conventional locatives, and directional terms require positive evidence of invalidity before retirement.
 
 ## Historical R7 status
 
-`src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js` remains provenance for the Cifu expansion. Its neutral records must be adjudicated rather than assumed to be genuine lexical items.
+`src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js` remains provenance for the Cifu expansion, but its original blanket-retention comments/policy are historical rather than governing.
 
-Outcomes may include:
+Outcomes for surviving entries may include:
 
-- retain/upgrade a genuine Cantonese lexeme;
+- retain/upgrade a genuine common Cantonese lexeme;
 - keep a genuine but low-priority Cantonese lexeme without prioritizing parser accommodation;
-- replace a fake atomic entry with structural handling;
+- remove a fake atomic entry while preserving structural handling;
 - remove malformed, contaminated, non-Cantonese, or otherwise nonlexical material.
 
 Historical PR #791 and stale work claim #790 remain provenance for why the entries were introduced, not current retention policy.
@@ -121,14 +118,15 @@ Historical PR #791 and stale work claim #790 remain provenance for why the entri
 
 Lexical reports should separately track:
 
-1. final common spoken priority core coverage (`core_atomic` + `core_structural`) out of exactly 2,000;
-2. atomic runtime coverage of `core_atomic` items;
-3. total valid Cantonese lexical inventory size;
-4. valid low-frequency/deferred inventory;
-5. invalid/nonlexical entries removed;
-6. common-core items still exposing parser regressions.
+1. final common spoken lexical core: exactly 2,000 genuine `core_atomic` items;
+2. common structural surfaces excluded/backfilled from the lexical core;
+3. atomic runtime coverage of the 2,000 common lexemes;
+4. total valid Cantonese lexical inventory size;
+5. valid low-frequency/deferred inventory;
+6. invalid/nonlexical entries removed;
+7. common-core items still exposing parser regressions.
 
-The historical “Cifu 2,000 / 2,000 exact surfaces in the token lexicon” metric must not drive runtime decisions.
+The historical “Cifu 2,000 / 2,000 exact surfaces in the token lexicon” metric is provenance only and must not drive runtime decisions.
 
 ## Scope
 
