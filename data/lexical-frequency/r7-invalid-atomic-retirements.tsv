@@ -32,5 +32,26 @@ rank	surface	disposition	evidence	reason
 479	右行	retire_invalid_atomic	#793 comment 5275326520	productive direction + motion sequence; no independent atomic lexical evidence
 490	一條	retire_invalid_atomic	#793 comment 5275326520	transparent numeral + classifier phrase
 497	提碑	retire_invalid_atomic	#793 comment 5275326520	malformed/unsupported Cifu surface; do not fabricate a lexical whole
+506	一次	retire_invalid_atomic	#794 comment 5269186956	compositional numeral + frequency/classifier phrase
+522	成病	retire_invalid_atomic	#794 comment 5269186956	likely segmentation/compositional artifact; no supported atomic lexical identity
+524	我話	retire_invalid_atomic	#794 comment 5269186956	transparent pronoun + verb phrase
+543	憂店	retire_invalid_atomic	#794 comment 5269186956	unsupported Cifu surface with no independently supported lexical analysis
+552	第二個	retire_invalid_atomic	#794 comment 5269186956	compositional ordinal + classifier/headless expression
+557	點啊	retire_invalid_atomic	#794 comment 5269186956	compositional wh + particle expression
+559	我會	retire_invalid_atomic	#794 comment 5269186956	transparent pronoun + modal phrase
+592	右上	retire_invalid_atomic	#794 comment 5269186956	compositional directional phrase
+600	落到	retire_invalid_atomic	#794 comment 5269186956	productive motion + 到 result/directional sequence
+601	繞過	retire_invalid_atomic	#794 comment 5269186956	productive verb + path/result 過 sequence; no atomic POS justified
+603	一種	retire_invalid_atomic	#794 comment 5269186956	transparent numeral + classifier phrase
+613	講到	retire_invalid_atomic	#794 comment 5269186956	productive verb + 到 sequence
+620	唔夠	retire_invalid_atomic	#794 comment 5269186956	productive negation + predicate sequence; no whole-string atomic analysis required
+657	我見	retire_invalid_atomic	#794 comment 5269186956	transparent pronoun + verb phrase
+662	貧大	retire_invalid_atomic	#794 comment 5269186956	unsupported/malformed Cifu surface with no independent lexical analysis
+698	三個	retire_invalid_atomic	#794 comment 5269186956	transparent numeral + classifier phrase
+702	行過	retire_invalid_atomic	#794 comment 5269186956	productive verb + 過 aspect/path sequence
+710	點呀	retire_invalid_atomic	#794 comment 5269186956	compositional wh + particle expression
+720	畫個	retire_invalid_atomic	#794 comment 5269186956	transparent verb + classifier phrase
+740	個韻	retire_invalid_atomic	#794 comment 5269186956	unsupported classifier + noun fragment; no atomic lexical evidence
+744	試過	retire_invalid_atomic	#794 comment 5269186956	productive verb + experiential 過 sequence
 977	兩年	retire_invalid_atomic	#841/#842 structural cleanup	transparent quantified-time sequence 兩 + 年; already structurally licensed
 1749	半年	retire_invalid_atomic	#841/#842 structural cleanup	transparent quantified-time sequence 半 + 年; already structurally licensed
