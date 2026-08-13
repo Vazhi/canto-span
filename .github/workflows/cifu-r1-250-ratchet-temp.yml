@@ -61,11 +61,16 @@ jobs:
           const baseline = JSON.parse(fs.readFileSync('/tmp/cifu-main-regression.json', 'utf8'));
           const branch = JSON.parse(fs.readFileSync('/tmp/cifu-branch-regression.json', 'utf8'));
           const key = (row) => `${row.source || ''}\u0000${row.context_source || ''}`;
-          const describe = (row) => ({ source: row.source || '', context_source: row.context_source || '' });
+          const describe = (row) => ({
+            source: row.source || '',
+            context_source: row.context_source || '',
+            origins: row.origins || [],
+            error: row.error || '',
+          });
           const baselineByKey = new Map((baseline.failures || []).map((row) => [key(row), row]));
           const branchByKey = new Map((branch.failures || []).map((row) => [key(row), row]));
           const newFailures = [...branchByKey].filter(([k]) => !baselineByKey.has(k)).map(([, row]) => describe(row));
-          const resolvedFailures = [...baselineByKey].filter(([k]) => !branchByKey.has(k)).map(([, row]) => describe(row));
+          const resolvedFailures = [...baselineByKey].filter(([k]) => !branchByKey.has(k)).map(([, row]) => ({ source: row.source || '', context_source: row.context_source || '' }));
           const result = {
             schema: 'canto-span-regression-ratchet-comparison-v1',
             baseline_commit: '2b0dfc8564d2d7329331f454c9aa3c460986d04d',
