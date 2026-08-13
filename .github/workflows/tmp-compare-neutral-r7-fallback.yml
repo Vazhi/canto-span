@@ -1,0 +1,64 @@
+name: Temporary compare neutral R7 fallback
+
+on:
+  push:
+    branches:
+      - agent/common-spoken-core-final-2000
+    paths:
+      - .github/workflows/tmp-compare-neutral-r7-fallback.yml
+
+permissions:
+  contents: read
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/common-spoken-core-final-2000
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Compare regression failure identities
+        shell: bash
+        run: |
+          set +e
+          CURRENT_SHA=$(git rev-parse HEAD)
+          BASELINE_SHA=c632738a2462fff5d926c82be5e74e1bd78b27aa
+          git checkout --detach "$BASELINE_SHA"
+          node tests/run-all.js > /tmp/baseline.json
+          BASE_EXIT=$?
+          git checkout --detach "$CURRENT_SHA"
+          node tests/run-all.js > /tmp/current.json
+          CUR_EXIT=$?
+          set -e
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          baseline = json.loads(Path('/tmp/baseline.json').read_text())
+          current = json.loads(Path('/tmp/current.json').read_text())
+
+          def identities(doc):
+              return {(f.get('source',''), f.get('context_source','')) for f in doc.get('failures', [])}
+
+          b = identities(baseline)
+          c = identities(current)
+          new_only = sorted(c - b)
+          resolved = sorted(b - c)
+          print(json.dumps({
+              'baseline_failed': baseline.get('failed'),
+              'current_failed': current.get('failed'),
+              'baseline_unique_failure_identities': len(b),
+              'current_unique_failure_identities': len(c),
+              'new_only_count': len(new_only),
+              'resolved_count': len(resolved),
+              'new_only': [{'source': s, 'context_source': ctx} for s, ctx in new_only],
+              'resolved': [{'source': s, 'context_source': ctx} for s, ctx in resolved],
+          }, ensure_ascii=False, indent=2))
+          PY
+          echo "baseline_exit=$BASE_EXIT current_exit=$CUR_EXIT"
