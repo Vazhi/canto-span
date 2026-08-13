@@ -51,7 +51,7 @@ function readCifu(file) {
     .sort((a, b) => b.spoken - a.spoken || a.word.localeCompare(b.word, "zh-Hant"))
     .slice(0, 2000)
     .map((record, index) => ({ ...record, rank: index + 1 }));
-  if (ranked.length !== 2000) throw new Error(`Expected 2000 ranked forms, got ${ranked.length}`);
+  if (ranked.length !== 2000) throw new Error(`Expected 2000 historical Cifu ranked forms, got ${ranked.length}`);
   return ranked;
 }
 
@@ -123,7 +123,7 @@ const rows = ranked.map((record) => classify(record, runtime));
 const output = renderTsv(rows);
 if (CHECK_ONLY) {
   const existing = fs.readFileSync(OUTPUT, "utf8");
-  if (existing !== output) throw new Error("Top-2000 lexical audit drift: regenerate data/lexical-frequency/cifu-spoken-top-2000.tsv");
+  if (existing !== output) throw new Error("Historical Cifu lexical audit drift: regenerate data/lexical-frequency/cifu-spoken-top-2000.tsv");
 } else {
   fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
   fs.writeFileSync(OUTPUT, output);
@@ -132,18 +132,19 @@ if (CHECK_ONLY) {
 const counts = {};
 for (const row of rows) counts[row.status] = (counts[row.status] || 0) + 1;
 const topSet = new Set(rows.map((row) => row.word));
-const exactSurfaceCoverage = rows.filter((row) => row.status === "covered_main" || row.status === "surface_covered_sense_uncertain").length;
-const runtimeSurfacesOutsideTop2000 = [...runtime.direct.keys()].filter((surface) => !topSet.has(surface)).length;
+const historicalExactSurfaceCoverage = rows.filter((row) => row.status === "covered_main" || row.status === "surface_covered_sense_uncertain").length;
+const runtimeSurfacesOutsideHistoricalCifu2000 = [...runtime.direct.keys()].filter((surface) => !topSet.has(surface)).length;
 
 console.log(JSON.stringify({
-  source: "Cifu-v1 SpokenAdult",
+  source: "Cifu-v1 SpokenAdult (historical benchmark only)",
   sourceCommit: CIFU_COMMIT,
   rankedForms: rows.length,
   mode: CHECK_ONLY ? "check" : "write",
   counts,
-  exactSurfaceCoverage,
-  top2000TargetMet: exactSurfaceCoverage === 2000,
+  historicalExactSurfaceCoverage,
+  mandatoryExactSurfaceTarget: false,
+  currentPriorityTarget: "2,000 expert-curated common spoken Cantonese lexical items; compositional surfaces do not consume lexical-core slots",
   totalRuntimeUniqueSurfaces: runtime.direct.size,
-  runtimeSurfacesOutsideTop2000,
-  topRemainingMissing: rows.filter((row) => row.status === "missing").slice(0, 30).map((row) => [row.rank, row.word]),
+  runtimeSurfacesOutsideHistoricalCifu2000,
+  topHistoricalCifuMissing: rows.filter((row) => row.status === "missing").slice(0, 30).map((row) => [row.rank, row.word]),
 }, null, 2));

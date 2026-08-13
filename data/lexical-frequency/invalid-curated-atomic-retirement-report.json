@@ -1,0 +1,69 @@
+{
+  "changed_path_count": 5,
+  "changed_paths": [
+    "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js",
+    "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js",
+    "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+    "src/runtime-resources/lexicon/token-lexicon/statives.js",
+    "src/runtime-resources/lexicon/token-lexicon/verbs.js"
+  ],
+  "policy": "remove only exact expert-adjudicated invalid atomic entries; frequency/regression are not deletion criteria",
+  "removed": [
+    {
+      "line": 10,
+      "path": "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js",
+      "rank": 1760,
+      "surface": "好多人"
+    },
+    {
+      "line": 70,
+      "path": "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js",
+      "rank": 790,
+      "surface": "我知"
+    },
+    {
+      "line": 17,
+      "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "rank": 1858,
+      "surface": "邊間"
+    },
+    {
+      "line": 27,
+      "path": "src/runtime-resources/lexicon/token-lexicon/statives.js",
+      "rank": 1487,
+      "surface": "好貴"
+    },
+    {
+      "line": 29,
+      "path": "src/runtime-resources/lexicon/token-lexicon/statives.js",
+      "rank": 1903,
+      "surface": "好靚"
+    },
+    {
+      "line": 64,
+      "path": "src/runtime-resources/lexicon/token-lexicon/verbs.js",
+      "rank": 506,
+      "surface": "一次"
+    },
+    {
+      "line": 79,
+      "path": "src/runtime-resources/lexicon/token-lexicon/verbs.js",
+      "rank": 552,
+      "surface": "第二個"
+    },
+    {
+      "line": 128,
+      "path": "src/runtime-resources/lexicon/token-lexicon/verbs.js",
+      "rank": 980,
+      "surface": "沿住"
+    },
+    {
+      "line": 131,
+      "path": "src/runtime-resources/lexicon/token-lexicon/verbs.js",
+      "rank": 70,
+      "surface": "係咪"
+    }
+  ],
+  "removed_count": 9,
+  "schema": "canto-span-invalid-curated-atomic-retirement-report-v1"
+}

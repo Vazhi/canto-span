@@ -1,0 +1,1354 @@
+r7_order	word	common_core	common_rank	common_combined_ppm	common_attested_both	cifu_rank	cifu_spoken_adult	cifu_reconstructed_jyutping	prior_audit_status	priority_action
+1	哋	true	840	80.856025	true	25	2116	false	missing	protect_common_frequency_candidate
+2	即	true	224	569.646264	true	27	1930	false	missing	protect_common_frequency_candidate
+3	一個	false				38	1246	true	manual_review	low_priority_review
+4	喀	true	71	2829.314298	false	39	1219	false	missing	protect_common_frequency_candidate
+5	真係	true	82	2526.060340	true	56	872	false	handled_structurally	protect_common_frequency_candidate
+6	誒	true	18	10678.473890	true	58	817	false	missing	protect_common_frequency_candidate
+7	哦	true	48	3991.308226	true	69	710	false	missing	protect_common_frequency_candidate
+8	咁樣	true	127	1244.243438	false	72	703	false	manual_review	protect_common_frequency_candidate
+9	噉樣	true	67	2865.900259	false	73	681	false	handled_structurally	protect_common_frequency_candidate
+10	兜	true	43	4301.414176	true	78	647	false	missing	protect_common_frequency_candidate
+11	來	true	94	1984.869823	true	90	491	false	missing	protect_common_frequency_candidate
+12	然	true	1930	20.651343	false	91	483	false	missing	protect_common_frequency_candidate
+13	嘛	true	491	193.992304	true	109	402	false	missing	protect_common_frequency_candidate
+14	嗯	true	102	1759.710022	true	116	370	false	missing	protect_common_frequency_candidate
+15	哩	true	133	1117.904356	false	120	342	false	missing	protect_common_frequency_candidate
+16	落去	true	128	1230.333861	true	121	329	false	manual_review	protect_common_frequency_candidate
+17	方	true	182	752.676304	true	125	322	false	missing	protect_common_frequency_candidate
+18	嘩	true	140	1064.491558	true	136	298	false	missing	protect_common_frequency_candidate
+19	穿過	true	769	92.931045	false	137	297	false	missing	protect_common_frequency_candidate
+20	兩個	false				139	291	true	manual_review	low_priority_review
+21	個人	false				140	284	false	handled_structurally	atomic_retirement_candidate
+22	上去	true	132	1141.878941	true	144	270	false	handled_structurally	protect_common_frequency_candidate
+23	揾	true	151	922.779232	false	149	255	true	manual_review	protect_common_frequency_candidate
+24	哩個	true	114	1524.415031	false	151	254	true	manual_review	protect_common_frequency_candidate
+25	有個	false				156	245	true	manual_review	low_priority_review
+26	唔到	false				157	244	true	manual_review	low_priority_review
+27	埋	true	131	1165.277125	true	162	234	false	missing	protect_common_frequency_candidate
+28	裏	false				174	201	false	missing	low_priority_review
+29	過去	true	149	932.398130	true	185	185	false	handled_structurally	protect_common_frequency_candidate
+30	而	true	356	306.837864	true	190	179	false	missing	protect_common_frequency_candidate
+31	一樣	true	359	304.196296	true	192	177	false	handled_structurally	protect_common_frequency_candidate
+32	第一	true	268	442.615435	true	200	170	false	handled_structurally	protect_common_frequency_candidate
+33	場	true	783	90.083968	true	211	162	false	missing	protect_common_frequency_candidate
+34	台	true	996	61.628220	true	212	161	false	missing	protect_common_frequency_candidate
+35	番	true	1703	26.586099	true	214	159	false	missing	protect_common_frequency_candidate
+36	唔見	true	1286	40.651067	false	217	157	true	manual_review	protect_common_frequency_candidate
+37	兜過	false				219	157	true	manual_review	low_priority_review
+38	個位	false				221	156	false	handled_structurally	atomic_retirement_candidate
+39	比較	true	305	369.032495	true	222	155	false	missing	protect_common_frequency_candidate
+40	冇乜	false				223	154	true	manual_review	low_priority_review
+41	死	true	234	549.115221	true	229	153	false	missing	protect_common_frequency_candidate
+42	出嚟	true	640	118.745224	false	233	151	false	handled_structurally	protect_common_frequency_candidate
+43	返去	true	202	679.093364	true	234	150	false	manual_review	protect_common_frequency_candidate
+44	戀	true	570	144.559404	false	239	149	false	missing	protect_common_frequency_candidate
+45	都會	false				241	147	false	handled_structurally	atomic_retirement_candidate
+46	右面	true	201	681.494331	false	242	146	false	manual_review	protect_common_frequency_candidate
+47	左面	true	186	727.959854	false	245	145	false	handled_structurally	protect_common_frequency_candidate
+48	成	true	130	1184.384630	true	247	144	false	missing	protect_common_frequency_candidate
+49	幾多	true	308	361.794501	false	249	144	true	manual_review	protect_common_frequency_candidate
+50	啱啱	true	261	467.211585	true	256	141	false	handled_structurally	protect_common_frequency_candidate
+51	唉	true	278	425.292370	true	257	140	false	missing	protect_common_frequency_candidate
+52	哎	true	425	239.274888	true	259	138	false	missing	protect_common_frequency_candidate
+53	擰	true	900	72.279702	false	263	133	false	missing	protect_common_frequency_candidate
+54	丸	true	732	98.093881	false	265	131	false	missing	protect_common_frequency_candidate
+55	隔離	true	231	555.511113	true	268	129	false	missing	protect_common_frequency_candidate
+56	往	true	504	184.764361	true	274	126	false	missing	protect_common_frequency_candidate
+57	淨係	true	287	395.498293	true	275	125	false	manual_review	protect_common_frequency_candidate
+58	底	true	194	700.842436	true	278	123	false	missing	protect_common_frequency_candidate
+59	為	true	974	64.269789	true	281	121	false	missing	protect_common_frequency_candidate
+60	車站	true	905	72.279702	false	283	120	false	handled_structurally	protect_common_frequency_candidate
+61	係噉	true	759	93.497455	false	285	119	true	manual_review	protect_common_frequency_candidate
+62	差唔多	true	256	480.950744	true	286	119	false	handled_structurally	protect_common_frequency_candidate
+63	魚排	true	541	160.047911	false	288	118	false	handled_structurally	protect_common_frequency_candidate
+64	唔同	true	404	258.622993	true	296	114	false	handled_structurally	protect_common_frequency_candidate
+65	條線	false				297	114	true	manual_review	low_priority_review
+66	會見	false				298	114	false	handled_structurally	atomic_retirement_candidate
+67	吔	true	1991	20.325534	false	307	108	false	missing	protect_common_frequency_candidate
+68	等等	true	282	405.342764	true	311	106	false	handled_structurally	protect_common_frequency_candidate
+69	盛	true	1245	43.172335	true	318	104	false	missing	protect_common_frequency_candidate
+70	燕	false				319	104	false	missing	low_priority_review
+71	同學	true	288	394.641164	true	322	102	false	handled_structurally	protect_common_frequency_candidate
+72	只	true	751	97.116452	true	328	100	false	missing	protect_common_frequency_candidate
+73	可	true	739	97.888372	true	329	100	false	missing	protect_common_frequency_candidate
+74	有時	true	451	220.613494	true	330	100	false	handled_structurally	protect_common_frequency_candidate
+75	仲有	true	378	288.021078	true	332	99	false	handled_structurally	protect_common_frequency_candidate
+76	唧	true	246	528.428786	true	333	99	false	missing	protect_common_frequency_candidate
+77	大樹	true	1122	51.628358	false	336	98	false	handled_structurally	protect_common_frequency_candidate
+78	老	true	700	105.692775	false	337	98	false	missing	protect_common_frequency_candidate
+79	依	true	683	108.419553	false	338	98	false	missing	protect_common_frequency_candidate
+80	咦	true	254	501.962988	true	339	98	false	missing	protect_common_frequency_candidate
+81	扮	true	803	87.116590	true	343	95	false	missing	protect_common_frequency_candidate
+82	擁	true	856	77.442538	false	346	95	false	missing	protect_common_frequency_candidate
+83	本身	true	574	144.028085	true	347	93	false	missing	protect_common_frequency_candidate
+84	另	true	484	199.601250	true	349	92	false	missing	protect_common_frequency_candidate
+85	扮汗	false				350	92	true	manual_review	low_priority_review
+86	今次	true	881	73.171921	false	353	91	true	manual_review	protect_common_frequency_candidate
+87	幾好	false				360	89	true	manual_review	low_priority_review
+88	彭	true	372	292.086185	true	361	89	false	missing	protect_common_frequency_candidate
+89	貧大宅	false				364	88	true	manual_review	low_priority_review
+90	像	true	706	103.256717	false	369	87	false	missing	protect_common_frequency_candidate
+91	仔	true	348	316.186107	true	372	85	false	missing	protect_common_frequency_candidate
+92	風車	false				376	84	false	handled_structurally	atomic_retirement_candidate
+93	越	true	837	81.302135	false	377	84	false	missing	protect_common_frequency_candidate
+94	考	true	281	414.640888	false	379	83	false	missing	protect_common_frequency_candidate
+95	引	true	561	148.624510	true	386	82	false	missing	protect_common_frequency_candidate
+96	前	true	562	148.093191	true	389	82	false	missing	protect_common_frequency_candidate
+97	完全	true	515	175.777019	true	394	80	false	handled_structurally	protect_common_frequency_candidate
+98	股	true	1516	32.520854	false	402	78	false	missing	protect_common_frequency_candidate
+99	出來	true	230	556.919625	false	404	77	false	missing	protect_common_frequency_candidate
+100	你講	false				406	76	true	manual_review	low_priority_review
+101	所	true	772	92.279426	true	410	75	false	missing	protect_common_frequency_candidate
+102	所謂	true	581	141.506817	true	411	75	false	missing	protect_common_frequency_candidate
+103	首先	true	341	321.639661	true	412	75	false	handled_structurally	protect_common_frequency_candidate
+104	畫到	false				415	75	true	manual_review	low_priority_review
+105	講呢	false				417	75	true	manual_review	low_priority_review
+106	全部	true	470	207.200144	true	419	74	false	handled_structurally	protect_common_frequency_candidate
+107	服務	true	962	65.041708	false	423	73	false	missing	protect_common_frequency_candidate
+108	得到	true	1046	56.911494	false	428	72	false	handled_structurally	protect_common_frequency_candidate
+109	理	true	391	270.903522	true	430	72	false	missing	protect_common_frequency_candidate
+110	種	true	363	298.948251	true	431	72	false	missing	protect_common_frequency_candidate
+111	堂	true	1031	58.335033	true	432	71	false	missing	protect_common_frequency_candidate
+112	后	false				433	70	false	missing	low_priority_review
+113	呃	true	319	348.260851	true	434	70	false	missing	protect_common_frequency_candidate
+114	就算	true	847	78.334757	true	435	70	false	handled_structurally	protect_common_frequency_candidate
+115	出去	true	468	209.395602	true	439	69	false	handled_structurally	protect_common_frequency_candidate
+116	怨	true	1722	25.814179	false	440	69	false	missing	protect_common_frequency_candidate
+117	唔記得	true	465	211.385551	false	441	69	false	handled_structurally	protect_common_frequency_candidate
+118	起	true	400	261.916180	true	443	69	false	missing	protect_common_frequency_candidate
+119	打橫	true	327	335.584330	false	446	68	false	manual_review	protect_common_frequency_candidate
+120	行到	false				450	67	true	manual_review	low_priority_review
+121	杏堂	false				451	67	true	manual_review	low_priority_review
+122	揀	true	505	182.929804	false	453	67	false	missing	protect_common_frequency_candidate
+123	項	false				454	67	false	missing	low_priority_review
+124	我講	false				457	66	true	manual_review	low_priority_review
+125	尚健	false				458	66	true	manual_review	low_priority_review
+126	嶺	false				462	65	false	missing	low_priority_review
+127	入去	true	436	227.731187	true	463	64	false	manual_review	protect_common_frequency_candidate
+128	之	true	1029	58.335033	true	464	64	false	missing	protect_common_frequency_candidate
+129	出現	true	954	65.041708	false	466	64	false	missing	protect_common_frequency_candidate
+130	直情	true	997	61.628220	true	467	64	false	manual_review	protect_common_frequency_candidate
+131	掂	true	431	233.460433	true	471	63	false	missing	protect_common_frequency_candidate
+132	條路線	false				472	63	true	manual_review	low_priority_review
+133	頂	true	367	296.597401	true	473	63	false	missing	protect_common_frequency_candidate
+134	裏邊	true	408	256.101725	false	474	63	true	manual_review	protect_common_frequency_candidate
+135	右行	false				479	62	true	manual_review	low_priority_review
+136	讀書	true	566	146.343843	false	480	62	false	handled_structurally	protect_common_frequency_candidate
+137	不	true	1326	39.879148	true	481	61	false	missing	protect_common_frequency_candidate
+138	收	true	398	264.557748	true	485	61	false	missing	protect_common_frequency_candidate
+139	愁	false				489	61	false	missing	low_priority_review
+140	一條	false				490	60	true	manual_review	low_priority_review
+141	忍	true	843	80.409915	true	492	60	false	missing	protect_common_frequency_candidate
+142	重	true	153	919.811855	true	493	60	false	missing	protect_common_frequency_candidate
+143	望	true	469	208.623683	true	496	60	false	missing	protect_common_frequency_candidate
+144	提碑	false				497	60	true	manual_review	low_priority_review
+145	共	true	530	170.373583	false	500	59	false	missing	protect_common_frequency_candidate
+146	地	true	657	115.572337	true	501	59	false	missing	protect_common_frequency_candidate
+147	憂	false				505	59	false	missing	low_priority_review
+148	加	true	302	373.062510	true	507	58	false	missing	protect_common_frequency_candidate
+149	受	true	615	128.745086	true	508	58	false	missing	protect_common_frequency_candidate
+150	能夠	true	1025	59.106953	true	510	58	false	missing	protect_common_frequency_candidate
+151	領	true	1272	41.302687	false	513	58	false	missing	protect_common_frequency_candidate
+152	信心	true	527	170.734483	false	515	57	false	handled_structurally	protect_common_frequency_candidate
+153	後尾	true	648	117.888096	false	516	57	true	manual_review	protect_common_frequency_candidate
+154	當	true	471	207.200144	true	519	57	false	missing	protect_common_frequency_candidate
+155	繞	true	208	645.354480	false	520	57	false	missing	protect_common_frequency_candidate
+156	成病	false				522	56	true	manual_review	low_priority_review
+157	我話	false				524	56	true	manual_review	low_priority_review
+158	是	true	1451	34.716312	true	525	56	false	missing	protect_common_frequency_candidate
+159	完成	true	409	254.848605	true	532	55	false	missing	protect_common_frequency_candidate
+160	男仔	true	1009	60.976601	false	533	55	true	manual_review	protect_common_frequency_candidate
+161	跟	true	439	227.079568	true	535	55	false	missing	protect_common_frequency_candidate
+162	任何	true	689	107.767933	true	537	54	false	missing	protect_common_frequency_candidate
+163	返來	true	339	325.208540	false	538	54	true	manual_review	protect_common_frequency_candidate
+164	緊要	true	500	187.646530	true	542	54	false	handled_structurally	protect_common_frequency_candidate
+165	憂店	false				543	54	true	manual_review	low_priority_review
+166	樂	false				544	54	false	missing	low_priority_review
+167	左上	false				546	53	false	handled_structurally	atomic_retirement_candidate
+168	班	true	414	252.036618	false	550	53	false	missing	protect_common_frequency_candidate
+169	細個	true	610	130.083416	false	553	53	true	manual_review	protect_common_frequency_candidate
+170	點啊	false				557	53	true	manual_review	low_priority_review
+171	一係	true	487	197.320582	true	558	52	false	manual_review	protect_common_frequency_candidate
+172	我會	false				559	52	true	manual_review	low_priority_review
+173	提	true	1136	51.302549	true	563	52	false	missing	protect_common_frequency_candidate
+174	養	true	257	479.682596	false	564	52	false	missing	protect_common_frequency_candidate
+175	打電話	true	959	65.041708	false	570	51	false	handled_structurally	protect_common_frequency_candidate
+176	成個	false				571	51	true	manual_review	low_priority_review
+177	說話	false				574	51	false	missing	low_priority_review
+178	上行	false				576	50	false	handled_structurally	atomic_retirement_candidate
+179	穿	true	107	1634.423504	true	581	50	false	missing	protect_common_frequency_candidate
+180	哩樣	true	413	252.036618	false	582	50	true	manual_review	protect_common_frequency_candidate
+181	從	true	752	96.996152	true	584	50	false	missing	protect_common_frequency_candidate
+182	呵	true	475	205.656305	true	586	49	false	missing	protect_common_frequency_candidate
+183	揸	true	744	97.562562	false	589	49	false	missing	protect_common_frequency_candidate
+184	右上	true	1710	25.814179	false	592	48	false	handled_structurally	protect_common_frequency_candidate
+185	返工	true	557	150.408950	false	595	48	false	handled_structurally	protect_common_frequency_candidate
+186	着	true	457	215.450658	false	597	48	true	manual_review	protect_common_frequency_candidate
+187	發覺	true	812	85.367242	false	599	48	false	handled_structurally	protect_common_frequency_candidate
+188	落到	false				600	48	false	handled_structurally	atomic_retirement_candidate
+189	繞過	false				601	48	true	manual_review	low_priority_review
+190	一種	false				603	47	false	missing	low_priority_review
+191	以	true	867	76.465109	true	604	47	false	missing	protect_common_frequency_candidate
+192	包	true	255	482.133682	true	605	47	false	missing	protect_common_frequency_candidate
+193	未必	true	679	109.757882	false	606	47	false	missing	protect_common_frequency_candidate
+194	拍	true	782	90.530078	true	607	47	false	missing	protect_common_frequency_candidate
+195	要求	true	790	89.432348	false	609	47	false	missing	protect_common_frequency_candidate
+196	影響	true	979	63.172059	true	611	47	false	missing	protect_common_frequency_candidate
+197	講到	false				613	47	false	handled_structurally	atomic_retirement_candidate
+198	考慮	true	765	93.497455	false	617	46	false	missing	protect_common_frequency_candidate
+199	某	true	1076	55.041846	true	619	46	false	missing	protect_common_frequency_candidate
+200	唔夠	false				620	46	false	missing	low_priority_review
+201	射	true	1701	26.586099	true	621	46	false	missing	protect_common_frequency_candidate
+202	會話	false				622	46	false	handled_structurally	atomic_retirement_candidate
+203	轉彎	true	464	211.676270	false	625	46	false	handled_structurally	protect_common_frequency_candidate
+204	攬	true	1594	28.781557	true	626	46	false	missing	protect_common_frequency_candidate
+205	水平	true	486	198.057411	true	628	45	false	handled_structurally	protect_common_frequency_candidate
+206	其中	true	656	115.572337	true	631	45	false	missing	protect_common_frequency_candidate
+207	教	true	442	225.004410	true	634	45	false	missing	protect_common_frequency_candidate
+208	最好	true	1333	38.781419	true	635	45	false	handled_structurally	protect_common_frequency_candidate
+209	磅	false				636	45	false	missing	low_priority_review
+210	山路	true	1549	30.977015	false	637	44	false	handled_structurally	protect_common_frequency_candidate
+211	公共	true	1572	29.879286	true	638	44	false	missing	protect_common_frequency_candidate
+212	代表	true	1966	20.325534	false	640	44	false	missing	protect_common_frequency_candidate
+213	好過	false				641	44	true	manual_review	low_priority_review
+214	者	true	1876	23.618721	true	643	44	false	missing	protect_common_frequency_candidate
+215	段	true	651	117.441986	true	644	44	false	missing	protect_common_frequency_candidate
+216	發展	true	1165	48.781281	false	650	43	false	missing	protect_common_frequency_candidate
+217	賺	true	548	158.539163	false	653	43	false	missing	protect_common_frequency_candidate
+218	同一	false				655	42	false	handled_structurally	atomic_retirement_candidate
+219	我見	false				657	42	true	manual_review	low_priority_review
+220	接受	true	998	61.302411	true	660	42	false	missing	protect_common_frequency_candidate
+221	貧大	false				662	42	true	manual_review	low_priority_review
+222	分鐘	true	632	121.953202	false	668	41	false	handled_structurally	protect_common_frequency_candidate
+223	平時	true	560	149.190920	true	671	41	false	handled_structurally	protect_common_frequency_candidate
+224	打開	true	506	182.568903	true	672	41	false	handled_structurally	protect_common_frequency_candidate
+225	起碼	true	701	105.692775	false	681	41	false	missing	protect_common_frequency_candidate
+226	偏	true	311	360.300780	true	682	41	false	missing	protect_common_frequency_candidate
+227	人工	true	620	126.018309	false	684	40	false	handled_structurally	protect_common_frequency_candidate
+228	反而	true	761	93.497455	false	686	40	false	missing	protect_common_frequency_candidate
+229	有陣	false				688	40	true	manual_review	low_priority_review
+230	除	true	1887	22.520992	true	690	40	false	missing	protect_common_frequency_candidate
+231	剪	true	430	235.776191	false	691	40	false	missing	protect_common_frequency_candidate
+232	袋	true	626	124.148661	true	693	40	false	missing	protect_common_frequency_candidate
+233	慢慢	true	703	104.800556	true	696	40	false	handled_structurally	protect_common_frequency_candidate
+234	三個	false				698	39	true	manual_review	low_priority_review
+235	女人	true	1288	40.651067	false	699	39	false	handled_structurally	protect_common_frequency_candidate
+236	行過	false				702	39	true	manual_review	low_priority_review
+237	所有	true	687	108.214043	true	703	39	false	missing	protect_common_frequency_candidate
+238	直落	true	450	222.001941	false	704	39	false	manual_review	protect_common_frequency_candidate
+239	後	true	593	137.321410	true	705	39	false	missing	protect_common_frequency_candidate
+240	敢	true	887	73.171921	false	708	39	false	missing	protect_common_frequency_candidate
+241	點呀	false				710	39	true	manual_review	low_priority_review
+242	水平線	true	509	180.699254	false	712	38	false	manual_review	protect_common_frequency_candidate
+243	例如	true	946	66.139437	true	713	38	false	missing	protect_common_frequency_candidate
+244	直上	true	429	237.490449	false	715	38	false	manual_review	protect_common_frequency_candidate
+245	直程	true	547	158.539163	false	716	38	true	manual_review	protect_common_frequency_candidate
+246	個個	true	598	134.148523	false	717	38	false	handled_structurally	protect_common_frequency_candidate
+247	畫個	false				720	38	true	manual_review	low_priority_review
+248	一半	true	595	135.451761	true	722	37	false	handled_structurally	protect_common_frequency_candidate
+249	左行	false				724	37	true	manual_review	low_priority_review
+250	食飯	true	623	126.018309	false	725	37	true	manual_review	protect_common_frequency_candidate
+251	下行	false				730	36	false	handled_structurally	atomic_retirement_candidate
+252	包括	true	1987	20.325534	false	732	36	false	missing	protect_common_frequency_candidate
+253	因	false				734	36	false	missing	low_priority_review
+254	始終	true	915	69.106815	false	737	36	false	missing	protect_common_frequency_candidate
+255	計	true	399	263.460019	true	739	36	false	missing	protect_common_frequency_candidate
+256	個韻	false				740	36	true	manual_review	low_priority_review
+257	原本	true	549	154.679566	true	741	36	false	missing	protect_common_frequency_candidate
+258	連	true	345	318.466774	true	742	36	false	missing	protect_common_frequency_candidate
+259	港人	false				743	36	false	handled_structurally	atomic_retirement_candidate
+260	試過	false				744	36	true	manual_review	low_priority_review
+261	大個	true	1789	24.390640	false	747	35	true	manual_review	protect_common_frequency_candidate
+262	公務員	false				748	35	false	missing	low_priority_review
+263	化	true	1988	20.325534	false	750	35	false	missing	protect_common_frequency_candidate
+264	我個	false				752	35	true	manual_review	low_priority_review
+265	我想	false				753	35	true	manual_review	low_priority_review
+266	放棄	true	1638	28.455747	false	755	35	false	missing	protect_common_frequency_candidate
+267	勇	true	1544	30.977015	false	756	35	false	missing	protect_common_frequency_candidate
+268	神	true	764	93.497455	false	757	35	false	missing	protect_common_frequency_candidate
+269	笨	true	645	118.745224	false	759	35	false	missing	protect_common_frequency_candidate
+270	尊重	false				760	35	false	missing	low_priority_review
+271	幾個	false				761	35	false	handled_structurally	atomic_retirement_candidate
+272	棚	true	902	72.279702	false	762	35	false	missing	protect_common_frequency_candidate
+273	會堂	false				763	35	false	missing	low_priority_review
+274	講話	false				764	35	false	handled_structurally	atomic_retirement_candidate
+275	礦	true	1730	25.814179	false	765	35	false	missing	protect_common_frequency_candidate
+276	一份	false				766	34	true	manual_review	low_priority_review
+277	大學	true	958	65.041708	false	767	34	false	handled_structurally	protect_common_frequency_candidate
+278	之外	true	928	68.334895	true	768	34	false	missing	protect_common_frequency_candidate
+279	介紹	true	647	117.888096	false	769	34	false	missing	protect_common_frequency_candidate
+280	行為	true	1752	25.488370	true	770	34	false	missing	protect_common_frequency_candidate
+281	忍依	false				771	34	true	manual_review	low_priority_review
+282	投資	false				772	34	false	missing	low_priority_review
+283	害	true	642	118.745224	false	774	34	false	missing	protect_common_frequency_candidate
+284	堡	true	733	98.093881	false	777	34	false	missing	protect_common_frequency_candidate
+285	當時	true	1395	36.585961	false	778	34	false	missing	protect_common_frequency_candidate
+286	路線	true	163	855.933021	true	779	34	false	handled_structurally	protect_common_frequency_candidate
+287	餐室	true	738	98.093881	false	781	34	false	missing	protect_common_frequency_candidate
+288	黐線	true	864	77.237028	false	782	34	true	manual_review	protect_common_frequency_candidate
+289	一年	false				783	33	true	manual_review	low_priority_review
+290	令	true	1446	34.716312	true	785	33	false	missing	protect_common_frequency_candidate
+291	右手	true	818	82.605373	false	786	33	false	handled_structurally	protect_common_frequency_candidate
+292	外	false				787	33	false	missing	low_priority_review
+293	有錢	true	961	65.041708	false	788	33	false	handled_structurally	protect_common_frequency_candidate
+294	至	true	494	192.689065	true	789	33	false	missing	protect_common_frequency_candidate
+295	表達	false				791	33	false	missing	low_priority_review
+296	甚至	false				792	33	false	missing	low_priority_review
+297	美	false				793	33	false	missing	low_priority_review
+298	秩序	false				795	33	false	missing	low_priority_review
+299	能力	true	891	73.171921	false	796	33	false	missing	protect_common_frequency_candidate
+300	棵	true	352	312.737528	true	797	33	false	missing	protect_common_frequency_candidate
+301	廣告	true	1488	32.520854	false	798	33	false	missing	protect_common_frequency_candidate
+302	靠	true	794	89.312048	true	799	33	false	missing	protect_common_frequency_candidate
+303	講下	false				800	33	true	manual_review	low_priority_review
+304	○	false				801	32	true	manual_review	low_priority_review
+305	上方	true	247	526.609256	false	802	32	false	missing	protect_common_frequency_candidate
+306	只不過	true	1614	28.455747	false	803	32	true	manual_review	protect_common_frequency_candidate
+307	永遠	true	1050	56.911494	false	804	32	false	missing	protect_common_frequency_candidate
+308	生意	true	829	81.302135	false	805	32	false	handled_structurally	protect_common_frequency_candidate
+309	好玩	true	675	110.855611	true	806	32	false	handled_structurally	protect_common_frequency_candidate
+310	字典	true	580	142.278736	false	807	32	false	missing	protect_common_frequency_candidate
+311	於	false				809	32	false	missing	low_priority_review
+312	型	true	1118	52.400278	true	810	32	false	missing	protect_common_frequency_candidate
+313	盆	true	1885	22.520992	true	811	32	false	missing	protect_common_frequency_candidate
+314	飛機	true	558	149.842540	true	812	32	false	handled_structurally	protect_common_frequency_candidate
+315	陣時	false				813	32	true	manual_review	low_priority_review
+316	接近	true	594	137.201110	true	814	32	false	missing	protect_common_frequency_candidate
+317	短	true	585	140.734897	true	815	32	false	missing	protect_common_frequency_candidate
+318	機會	true	754	96.790643	true	816	32	false	handled_structurally	protect_common_frequency_candidate
+319	講得	false				818	32	true	manual_review	low_priority_review
+320	講過	false				819	32	true	manual_review	low_priority_review
+321	我要	false				822	31	true	manual_review	low_priority_review
+322	來講	false				823	31	true	manual_review	low_priority_review
+323	制度	true	1357	36.585961	false	824	31	false	missing	protect_common_frequency_candidate
+324	面對	true	1860	24.390640	false	826	31	false	handled_structurally	protect_common_frequency_candidate
+325	案	false				828	31	false	missing	low_priority_review
+326	晚	true	861	77.237028	false	829	31	false	missing	protect_common_frequency_candidate
+327	無論	false				830	31	false	missing	low_priority_review
+328	圓形	true	628	123.908060	false	831	31	false	missing	protect_common_frequency_candidate
+329	感受	false				832	31	false	missing	low_priority_review
+330	嘍	true	536	166.223267	true	833	31	false	missing	protect_common_frequency_candidate
+331	鼻	true	635	121.712602	true	834	31	false	missing	protect_common_frequency_candidate
+332	嘿	true	621	126.018309	false	835	31	false	missing	protect_common_frequency_candidate
+333	嬋	false				836	31	false	missing	low_priority_review
+334	數碼	false				837	31	false	missing	low_priority_review
+335	誰	false				838	31	false	missing	low_priority_review
+336	一陣	true	1073	55.367656	true	839	30	false	handled_structurally	protect_common_frequency_candidate
+337	一間	false				840	30	true	manual_review	low_priority_review
+338	大佬	true	625	124.148661	true	841	30	false	missing	protect_common_frequency_candidate
+339	女朋友	false				842	30	false	handled_structurally	atomic_retirement_candidate
+340	小學	true	662	114.920718	true	843	30	false	handled_structurally	protect_common_frequency_candidate
+341	中文	true	715	102.279288	true	844	30	false	missing	protect_common_frequency_candidate
+342	井	false				845	30	false	missing	low_priority_review
+343	令到	true	1352	36.585961	false	846	30	true	manual_review	protect_common_frequency_candidate
+344	去邊	false				847	30	true	manual_review	low_priority_review
+345	立法	false				849	30	false	missing	low_priority_review
+346	判決	false				850	30	false	missing	low_priority_review
+347	拎	true	773	91.953616	true	851	30	false	missing	protect_common_frequency_candidate
+348	法院	false				852	30	false	missing	low_priority_review
+349	知點	false				853	30	true	manual_review	low_priority_review
+350	城市	true	1096	52.846388	false	854	30	false	handled_structurally	protect_common_frequency_candidate
+351	原因	true	1095	52.846388	false	857	30	false	missing	protect_common_frequency_candidate
+352	病	true	1223	44.716174	false	858	30	false	missing	protect_common_frequency_candidate
+353	純	true	780	90.735587	true	859	30	false	missing	protect_common_frequency_candidate
+354	眼	true	872	75.693189	true	860	30	false	missing	protect_common_frequency_candidate
+355	最多	true	1501	32.520854	false	861	30	false	handled_structurally	protect_common_frequency_candidate
+356	喥	false				862	30	false	missing	low_priority_review
+357	發生	true	1397	36.585961	false	863	30	false	handled_structurally	protect_common_frequency_candidate
+358	開頭	true	802	87.562700	true	864	30	false	handled_structurally	protect_common_frequency_candidate
+359	塘	true	1426	36.139851	false	865	30	false	missing	protect_common_frequency_candidate
+360	經	true	502	185.862090	false	867	30	false	missing	protect_common_frequency_candidate
+361	講真	true	725	101.627669	false	868	30	true	manual_review	protect_common_frequency_candidate
+362	下方	true	233	552.423435	false	869	29	false	missing	protect_common_frequency_candidate
+363	包住	false				870	29	false	missing	low_priority_review
+364	行行	false				871	29	true	manual_review	low_priority_review
+365	形容	true	664	114.354308	true	872	29	false	missing	protect_common_frequency_candidate
+366	身	true	877	74.595460	true	873	29	false	missing	protect_common_frequency_candidate
+367	法官	false				874	29	false	missing	low_priority_review
+368	返學	true	791	89.432348	false	875	29	false	handled_structurally	protect_common_frequency_candidate
+369	厘米	true	569	144.559404	false	876	29	false	missing	protect_common_frequency_candidate
+370	問下	false				877	29	true	manual_review	low_priority_review
+371	跌	true	805	86.464971	true	878	29	false	missing	protect_common_frequency_candidate
+372	搞笑	true	638	118.985825	true	879	29	false	handled_structurally	protect_common_frequency_candidate
+373	實	true	575	143.376465	true	881	29	false	missing	protect_common_frequency_candidate
+374	撞	true	935	67.237166	true	882	29	false	missing	protect_common_frequency_candidate
+375	一日	false				883	28	true	manual_review	low_priority_review
+376	今晚	true	1198	44.716174	false	886	28	false	missing	protect_common_frequency_candidate
+377	右手面	true	236	547.260599	false	887	28	false	manual_review	protect_common_frequency_candidate
+378	左手	true	854	77.442538	false	888	28	false	manual_review	protect_common_frequency_candidate
+379	平衡	true	778	90.735587	true	889	28	false	missing	protect_common_frequency_candidate
+380	好難	false				890	28	true	manual_review	low_priority_review
+381	成為	true	1135	51.302549	true	891	28	false	missing	protect_common_frequency_candidate
+382	成績	true	1047	56.911494	false	892	28	false	missing	protect_common_frequency_candidate
+383	周圍	true	809	85.367242	false	893	28	false	missing	protect_common_frequency_candidate
+384	明明	false				894	28	false	handled_structurally	atomic_retirement_candidate
+385	肥	true	525	171.386103	true	895	28	false	missing	protect_common_frequency_candidate
+386	返到	false				896	28	true	manual_review	low_priority_review
+387	非常	false				897	28	false	missing	low_priority_review
+388	科	true	466	211.385551	false	899	28	false	missing	protect_common_frequency_candidate
+389	送	true	894	73.171921	false	901	28	false	missing	protect_common_frequency_candidate
+390	圈	true	447	222.001941	false	902	28	false	missing	protect_common_frequency_candidate
+391	國際	false				903	28	false	missing	low_priority_review
+392	彭銅	false				905	28	true	manual_review	low_priority_review
+393	無	true	1240	44.270064	true	906	28	false	missing	protect_common_frequency_candidate
+394	絕對	true	1835	24.390640	false	907	28	false	missing	protect_common_frequency_candidate
+395	郵票	true	667	113.822989	false	909	28	false	missing	protect_common_frequency_candidate
+396	經歷	false				910	28	false	missing	low_priority_review
+397	點講	false				912	28	true	manual_review	low_priority_review
+398	一下	false				914	27	false	handled_structurally	atomic_retirement_candidate
+399	之下	true	1959	20.325534	false	915	27	false	missing	protect_common_frequency_candidate
+400	未來	false				916	27	false	missing	low_priority_review
+401	見過	false				918	27	false	handled_structurally	atomic_retirement_candidate
+402	個樣	false				919	27	true	manual_review	low_priority_review
+403	衰	true	540	162.604270	false	920	27	false	missing	protect_common_frequency_candidate
+404	教書	true	763	93.497455	false	921	27	false	missing	protect_common_frequency_candidate
+405	透過	true	1673	28.455747	false	922	27	false	missing	protect_common_frequency_candidate
+406	景點	true	587	139.396568	false	923	27	false	missing	protect_common_frequency_candidate
+407	結果	true	1402	36.585961	false	924	27	false	missing	protect_common_frequency_candidate
+408	圓	true	1263	41.302687	false	925	27	false	missing	protect_common_frequency_candidate
+409	過程	true	985	62.400140	true	928	27	false	missing	protect_common_frequency_candidate
+410	幣	false				929	27	false	missing	low_priority_review
+411	橢圓	false				930	27	false	missing	low_priority_review
+412	薯	false				932	27	false	missing	low_priority_review
+413	體	true	1948	20.651343	false	933	27	false	missing	protect_common_frequency_candidate
+414	互聯網	false				935	26	false	missing	low_priority_review
+415	公仔	true	654	116.549766	true	936	26	false	missing	protect_common_frequency_candidate
+416	手邊	false				937	26	true	manual_review	low_priority_review
+417	北行	false				938	26	true	manual_review	low_priority_review
+418	正常	true	930	68.334895	true	939	26	false	missing	protect_common_frequency_candidate
+419	作為	true	1090	52.846388	false	943	26	false	missing	protect_common_frequency_candidate
+420	利益	false				944	26	false	missing	low_priority_review
+421	努力	true	1285	40.651067	false	945	26	false	missing	protect_common_frequency_candidate
+422	改革	false				946	26	false	missing	low_priority_review
+423	私營化	false				947	26	true	manual_review	low_priority_review
+424	法庭	false				948	26	false	missing	low_priority_review
+425	留意	true	1023	59.432762	true	949	26	false	missing	protect_common_frequency_candidate
+426	起身	true	748	97.562562	false	950	26	false	missing	protect_common_frequency_candidate
+427	掛住	true	1807	24.390640	false	951	26	true	manual_review	protect_common_frequency_candidate
+428	第日	true	1400	36.585961	false	952	26	true	manual_review	protect_common_frequency_candidate
+429	等如	false				953	26	true	manual_review	low_priority_review
+430	開支	false				956	26	false	handled_structurally	atomic_retirement_candidate
+431	愛	true	1212	44.716174	false	958	26	false	missing	protect_common_frequency_candidate
+432	腳	true	834	81.302135	false	959	26	false	missing	protect_common_frequency_candidate
+433	旗	true	716	102.158988	true	960	26	false	missing	protect_common_frequency_candidate
+434	遲啲	true	1059	56.911494	false	962	26	false	handled_structurally	protect_common_frequency_candidate
+435	頹餐	false				963	26	true	manual_review	low_priority_review
+436	上市	true	1956	20.325534	false	964	25	false	handled_structurally	protect_common_frequency_candidate
+437	公約	false				965	25	false	missing	low_priority_review
+438	支持	false				966	25	false	missing	low_priority_review
+439	方式	true	1747	25.488370	true	967	25	false	missing	protect_common_frequency_candidate
+440	方便	true	960	65.041708	false	968	25	false	missing	protect_common_frequency_candidate
+441	日子	true	1383	36.585961	false	969	25	false	missing	protect_common_frequency_candidate
+442	奶茶	true	699	105.692775	false	970	25	false	handled_structurally	protect_common_frequency_candidate
+443	左手面	true	276	428.515375	false	971	25	false	manual_review	protect_common_frequency_candidate
+444	正話	true	1540	31.748935	true	973	25	false	manual_review	protect_common_frequency_candidate
+445	好彩	true	755	95.692913	true	974	25	false	manual_review	protect_common_frequency_candidate
+446	決定	true	1216	44.716174	false	976	25	false	missing	protect_common_frequency_candidate
+447	兩年	false				977	25	false	handled_structurally	atomic_retirement_candidate
+448	受害	true	1261	41.302687	false	978	25	false	missing	protect_common_frequency_candidate
+449	咸	true	992	61.954030	false	983	25	false	missing	protect_common_frequency_candidate
+450	英	true	967	65.041708	false	984	25	false	missing	protect_common_frequency_candidate
+451	唔通	true	988	62.074330	true	985	25	false	missing	protect_common_frequency_candidate
+452	真正	false				986	25	false	handled_structurally	atomic_retirement_candidate
+453	停低	true	462	211.676270	false	987	25	false	manual_review	protect_common_frequency_candidate
+454	幾年	false				988	25	false	handled_structurally	atomic_retirement_candidate
+455	無聊	true	723	101.627669	false	989	25	false	missing	protect_common_frequency_candidate
+456	選擇	true	927	68.660705	true	990	25	false	missing	protect_common_frequency_candidate
+457	頭髮	true	714	102.725398	true	991	25	false	missing	protect_common_frequency_candidate
+458	類似	true	618	127.321548	true	992	25	false	missing	protect_common_frequency_candidate
+459	鐘頭	true	968	65.041708	false	993	25	false	handled_structurally	protect_common_frequency_candidate
+460	手指	true	685	108.419553	false	996	24	false	missing	protect_common_frequency_candidate
+461	四個	false				997	24	true	manual_review	low_priority_review
+462	同人	false				999	24	true	manual_review	low_priority_review
+463	在乎	false				1000	24	false	missing	low_priority_review
+464	有條	false				1002	24	false	handled_structurally	atomic_retirement_candidate
+465	其	true	1869	23.618721	true	1004	24	false	missing	protect_common_frequency_candidate
+466	拖	true	1635	28.455747	false	1005	24	false	missing	protect_common_frequency_candidate
+467	後來	true	1045	56.911494	false	1006	24	false	missing	protect_common_frequency_candidate
+468	研究	true	1140	50.976739	true	1007	24	false	missing	protect_common_frequency_candidate
+469	限制	false				1009	24	false	missing	low_priority_review
+470	值	true	1353	36.585961	false	1010	24	false	missing	protect_common_frequency_candidate
+471	婆	false				1011	24	false	missing	low_priority_review
+472	得意	true	705	103.823127	true	1012	24	false	handled_structurally	protect_common_frequency_candidate
+473	條路	false				1013	24	true	manual_review	low_priority_review
+474	添	false				1014	24	false	missing	low_priority_review
+475	曾經	false				1015	24	false	missing	low_priority_review
+476	會考	true	1386	36.585961	false	1018	24	true	manual_review	protect_common_frequency_candidate
+477	經驗	true	1226	44.716174	false	1019	24	false	missing	protect_common_frequency_candidate
+478	態度	true	1293	40.651067	false	1020	24	false	missing	protect_common_frequency_candidate
+479	慘	true	495	191.060017	false	1021	24	false	missing	protect_common_frequency_candidate
+480	盡量	true	1033	58.335033	true	1022	24	false	missing	protect_common_frequency_candidate
+481	網絡	false				1023	24	false	missing	low_priority_review
+482	價值	true	1354	36.585961	false	1025	24	false	missing	protect_common_frequency_candidate
+483	噉樣樣	true	1154	48.781281	false	1026	24	true	manual_review	protect_common_frequency_candidate
+484	橋	true	513	177.080258	true	1028	24	false	missing	protect_common_frequency_candidate
+485	餐	true	1192	45.813903	true	1029	24	false	missing	protect_common_frequency_candidate
+486	講呀	false				1030	24	true	manual_review	low_priority_review
+487	點呢	false				1031	24	true	manual_review	low_priority_review
+488	一段	false				1032	23	true	manual_review	low_priority_review
+489	一般	true	952	65.041708	false	1033	23	false	missing	protect_common_frequency_candidate
+490	一張	false				1034	23	false	handled_structurally	atomic_retirement_candidate
+491	八月	true	785	89.432348	false	1035	23	false	handled_structurally	protect_common_frequency_candidate
+492	下個	false				1036	23	true	manual_review	low_priority_review
+493	大部份	true	1620	28.455747	false	1037	23	false	handled_structurally	protect_common_frequency_candidate
+494	女性	true	1156	48.781281	false	1038	23	false	handled_structurally	protect_common_frequency_candidate
+495	尤其	false				1039	23	false	missing	low_priority_review
+496	外圍	true	655	116.549766	true	1040	23	false	missing	protect_common_frequency_candidate
+497	皮池	false				1041	23	true	manual_review	low_priority_review
+498	刑事	false				1042	23	false	missing	low_priority_review
+499	而且	true	849	78.334757	true	1043	23	false	missing	protect_common_frequency_candidate
+500	抑或	true	1496	32.520854	false	1044	23	true	manual_review	protect_common_frequency_candidate
+501	拉	true	1138	50.976739	true	1046	23	false	missing	protect_common_frequency_candidate
+502	欣	false				1047	23	false	missing	low_priority_review
+503	南行	false				1048	23	true	manual_review	low_priority_review
+504	咯	true	762	93.497455	false	1049	23	false	missing	protect_common_frequency_candidate
+505	重係	false				1050	23	true	manual_review	low_priority_review
+506	馬	true	850	77.888647	true	1052	23	false	missing	protect_common_frequency_candidate
+507	帳	true	1265	41.302687	false	1053	23	false	missing	protect_common_frequency_candidate
+508	常	false				1054	23	false	missing	low_priority_review
+509	陶	true	995	61.954030	false	1055	23	false	missing	protect_common_frequency_candidate
+510	麻煩	true	839	81.302135	false	1056	23	false	missing	protect_common_frequency_candidate
+511	暑假	true	919	69.106815	false	1057	23	false	missing	protect_common_frequency_candidate
+512	發現	true	875	75.367380	true	1058	23	false	missing	protect_common_frequency_candidate
+513	睇法	false				1059	23	true	manual_review	low_priority_review
+514	程度	false				1060	23	false	missing	low_priority_review
+515	嘥	true	1040	56.911494	false	1063	23	false	missing	protect_common_frequency_candidate
+516	澳洲	true	963	65.041708	false	1064	23	false	missing	protect_common_frequency_candidate
+517	講啦	false				1065	23	true	manual_review	low_priority_review
+518	點算	true	1117	52.846388	false	1066	23	true	manual_review	protect_common_frequency_candidate
+519	聽講	true	833	81.302135	false	1068	23	false	handled_structurally	protect_common_frequency_candidate
+520	力	true	1772	24.390640	false	1070	22	false	missing	protect_common_frequency_candidate
+521	冇事	true	1607	28.455747	false	1071	22	true	manual_review	protect_common_frequency_candidate
+522	左下角	false				1073	22	true	manual_review	low_priority_review
+523	左畫	false				1074	22	true	manual_review	low_priority_review
+524	本來	true	1161	48.781281	false	1075	22	false	missing	protect_common_frequency_candidate
+525	生日	true	811	85.367242	false	1076	22	false	handled_structurally	protect_common_frequency_candidate
+526	白紙	false				1077	22	true	manual_review	low_priority_review
+527	尖	false				1078	22	false	missing	low_priority_review
+528	年紀	true	1486	32.520854	false	1079	22	false	missing	protect_common_frequency_candidate
+529	男	true	1508	32.520854	false	1081	22	false	missing	protect_common_frequency_candidate
+530	事實	true	1738	25.488370	true	1082	22	false	missing	protect_common_frequency_candidate
+531	兩間	false				1083	22	true	manual_review	low_priority_review
+532	尚	true	1717	25.814179	false	1084	22	false	missing	protect_common_frequency_candidate
+533	於是	true	1641	28.455747	false	1085	22	false	missing	protect_common_frequency_candidate
+534	版	true	567	145.571924	true	1086	22	false	missing	protect_common_frequency_candidate
+535	直到	true	903	72.279702	false	1087	22	false	handled_structurally	protect_common_frequency_candidate
+536	空白	true	711	103.256717	false	1088	22	false	missing	protect_common_frequency_candidate
+537	指	true	584	140.940407	true	1089	22	false	missing	protect_common_frequency_candidate
+538	要點	false				1090	22	false	handled_structurally	atomic_retirement_candidate
+539	負責	false				1091	22	false	missing	low_priority_review
+540	冤墓	false				1092	22	true	manual_review	low_priority_review
+541	畫條	false				1093	22	true	manual_review	low_priority_review
+542	電子	true	838	81.302135	false	1094	22	false	missing	protect_common_frequency_candidate
+543	標	false				1095	22	false	missing	low_priority_review
+544	談	true	1563	30.977015	false	1096	22	false	missing	protect_common_frequency_candidate
+545	講返	false				1098	22	true	manual_review	low_priority_review
+546	舊年	true	1170	48.781281	false	1099	22	false	handled_structurally	protect_common_frequency_candidate
+547	覆	true	813	85.367242	false	1100	22	false	missing	protect_common_frequency_candidate
+548	九點	false				1102	21	true	manual_review	low_priority_review
+549	大約	true	896	73.051621	true	1103	21	false	handled_structurally	protect_common_frequency_candidate
+550	分開	true	1017	60.530491	true	1104	21	false	handled_structurally	protect_common_frequency_candidate
+551	升	true	688	107.888234	true	1105	21	false	missing	protect_common_frequency_candidate
+552	廿	true	676	110.855611	true	1106	21	false	missing	protect_common_frequency_candidate
+553	打個	false				1107	21	true	manual_review	low_priority_review
+554	白色	true	757	95.572613	true	1108	21	false	missing	protect_common_frequency_candidate
+555	行去	false				1109	21	true	manual_review	low_priority_review
+556	形狀	true	696	106.224095	true	1110	21	false	missing	protect_common_frequency_candidate
+557	我想問	false				1111	21	true	manual_review	low_priority_review
+558	改變	false				1112	21	false	handled_structurally	atomic_retirement_candidate
+559	私人	false				1113	21	false	missing	low_priority_review
+560	兩個韻	false				1114	21	true	manual_review	low_priority_review
+561	受山	false				1115	21	true	manual_review	low_priority_review
+562	底下	true	1239	44.270064	true	1116	21	false	missing	protect_common_frequency_candidate
+563	東行	false				1117	21	true	manual_review	low_priority_review
+564	長方形	true	686	108.419553	false	1118	21	false	missing	protect_common_frequency_candidate
+565	航	true	1731	25.814179	false	1119	21	false	missing	protect_common_frequency_candidate
+566	兜返	false				1120	21	true	manual_review	low_priority_review
+567	捱	true	1213	44.716174	false	1121	21	false	missing	protect_common_frequency_candidate
+568	終於	true	1585	29.553476	true	1122	21	false	missing	protect_common_frequency_candidate
+569	處理	true	1894	21.423263	true	1123	21	false	missing	protect_common_frequency_candidate
+570	幾耐	true	1210	44.716174	false	1125	21	true	manual_review	protect_common_frequency_candidate
+571	準備	true	1018	60.204682	true	1127	21	false	missing	protect_common_frequency_candidate
+572	解	true	1256	41.748797	true	1128	21	false	missing	protect_common_frequency_candidate
+573	資產	false				1129	21	false	missing	low_priority_review
+574	預算案	false				1130	21	true	manual_review	low_priority_review
+575	墓	true	1912	20.651343	false	1131	21	false	missing	protect_common_frequency_candidate
+576	維持	false				1132	21	false	missing	low_priority_review
+577	舖	true	1056	56.911494	false	1133	21	false	missing	protect_common_frequency_candidate
+578	機構	false				1134	21	false	missing	low_priority_review
+579	離開	false				1135	21	false	missing	low_priority_review
+580	聽眾	false				1136	21	false	missing	low_priority_review
+581	一方面	false				1137	20	false	handled_structurally	atomic_retirement_candidate
+582	七月	true	1197	44.716174	false	1138	20	false	handled_structurally	protect_common_frequency_candidate
+583	三年	false				1139	20	false	handled_structurally	atomic_retirement_candidate
+584	仍然	false				1140	20	false	missing	low_priority_review
+585	手面	false				1141	20	true	manual_review	low_priority_review
+586	乎	false				1142	20	false	missing	low_priority_review
+587	以後	true	1467	32.520854	false	1143	20	false	missing	protect_common_frequency_candidate
+588	北面	true	1546	30.977015	false	1144	20	false	handled_structurally	protect_common_frequency_candidate
+589	仲要	false				1145	20	true	manual_review	low_priority_review
+590	兆	false				1146	20	false	missing	low_priority_review
+591	同個	false				1147	20	true	manual_review	low_priority_review
+592	地下	true	1030	58.335033	true	1148	20	false	missing	protect_common_frequency_candidate
+593	地產	false				1149	20	false	missing	low_priority_review
+594	年代	false				1150	20	false	missing	low_priority_review
+595	即話	false				1151	20	true	manual_review	low_priority_review
+596	我同	false				1152	20	true	manual_review	low_priority_review
+597	身邊	false				1153	20	false	missing	low_priority_review
+598	例子	true	1971	20.325534	false	1154	20	false	missing	protect_common_frequency_candidate
+599	爭	true	572	144.474194	true	1158	20	false	missing	protect_common_frequency_candidate
+600	盈利	false				1159	20	false	missing	low_priority_review
+601	值得	true	1974	20.325534	false	1160	20	false	missing	protect_common_frequency_candidate
+602	哩度	true	592	138.213629	false	1161	20	true	manual_review	protect_common_frequency_candidate
+603	唔肯	false				1162	20	true	manual_review	low_priority_review
+604	做咩	false				1163	20	true	manual_review	low_priority_review
+605	健	false				1164	20	false	missing	low_priority_review
+606	夠	true	351	314.110949	true	1165	20	false	missing	protect_common_frequency_candidate
+607	控制	true	1381	36.585961	false	1166	20	false	missing	protect_common_frequency_candidate
+608	被	false				1167	20	false	missing	low_priority_review
+609	報	true	753	96.790643	true	1168	20	false	missing	protect_common_frequency_candidate
+610	結婚	true	1010	60.976601	false	1169	20	false	missing	protect_common_frequency_candidate
+611	順	true	1016	60.856301	true	1170	20	false	missing	protect_common_frequency_candidate
+612	煙海	false				1171	20	false	handled_structurally	atomic_retirement_candidate
+613	聖經	true	832	81.302135	false	1172	20	false	missing	protect_common_frequency_candidate
+614	補習	true	1232	44.716174	false	1173	20	false	missing	protect_common_frequency_candidate
+615	圖形	true	707	103.256717	false	1175	20	false	handled_structurally	protect_common_frequency_candidate
+616	實在	true	1253	41.748797	true	1176	20	false	missing	protect_common_frequency_candidate
+617	精神	false				1178	20	false	missing	low_priority_review
+618	暫時	true	1101	52.846388	false	1179	20	false	missing	protect_common_frequency_candidate
+619	賠	true	1849	24.390640	false	1180	20	false	missing	protect_common_frequency_candidate
+620	整個	false				1182	20	false	handled_structurally	atomic_retirement_candidate
+621	講乜	false				1183	20	true	manual_review	low_priority_review
+622	闆	false				1184	20	false	missing	low_priority_review
+623	叢	false				1185	20	false	missing	low_priority_review
+624	競爭	false				1186	20	false	missing	low_priority_review
+625	公	false				1187	19	false	missing	low_priority_review
+626	只要	true	1205	44.716174	false	1188	19	false	missing	protect_common_frequency_candidate
+627	右下角	false				1189	19	true	manual_review	low_priority_review
+628	失業	true	1155	48.781281	false	1190	19	false	missing	protect_common_frequency_candidate
+629	正下方	true	710	103.256717	false	1191	19	false	manual_review	protect_common_frequency_candidate
+630	民	false				1192	19	false	missing	low_priority_review
+631	先算	false				1193	19	true	manual_review	low_priority_review
+632	好話	false				1195	19	false	handled_structurally	atomic_retirement_candidate
+633	你點	false				1196	19	true	manual_review	low_priority_review
+634	形式	true	1582	29.553476	true	1197	19	false	missing	protect_common_frequency_candidate
+635	例	false				1198	19	false	missing	low_priority_review
+636	到底	true	931	67.562976	true	1199	19	false	missing	protect_common_frequency_candidate
+637	抹	false				1200	19	false	missing	low_priority_review
+638	的	true	1509	32.520854	false	1201	19	false	missing	protect_common_frequency_candidate
+639	保障	false				1202	19	false	missing	low_priority_review
+640	張紙	false				1203	19	true	manual_review	low_priority_review
+641	想講	false				1206	19	true	manual_review	low_priority_review
+642	溝通	true	1275	40.976877	true	1207	19	false	missing	protect_common_frequency_candidate
+643	道	true	1674	28.455747	false	1208	19	false	missing	protect_common_frequency_candidate
+644	零	true	568	145.571924	true	1209	19	false	missing	protect_common_frequency_candidate
+645	電視機	false				1210	19	false	handled_structurally	atomic_retirement_candidate
+646	預備	true	912	70.084244	true	1211	19	false	missing	protect_common_frequency_candidate
+647	噏	true	1074	55.041846	true	1215	19	false	manual_review	protect_common_frequency_candidate
+648	頹	false				1216	19	false	missing	low_priority_review
+649	一個韻	false				1218	18	true	manual_review	low_priority_review
+650	三角形	true	898	72.279702	false	1219	18	false	handled_structurally	protect_common_frequency_candidate
+651	分手	false				1220	18	false	handled_structurally	atomic_retirement_candidate
+652	反應	true	1359	36.585961	false	1221	18	false	missing	protect_common_frequency_candidate
+653	右下	false				1223	18	false	handled_structurally	atomic_retirement_candidate
+654	右手邊	true	235	547.260599	false	1224	18	false	manual_review	protect_common_frequency_candidate
+655	市民	false				1225	18	false	missing	low_priority_review
+656	回歸	true	1363	36.585961	false	1226	18	false	missing	protect_common_frequency_candidate
+657	成功	true	1494	32.520854	false	1227	18	false	missing	protect_common_frequency_candidate
+658	有人	false				1228	18	false	handled_structurally	atomic_retirement_candidate
+659	男性	false				1231	18	false	missing	low_priority_review
+660	性格	true	1211	44.716174	false	1232	18	false	handled_structurally	protect_common_frequency_candidate
+661	放假	true	917	69.106815	false	1233	18	false	handled_structurally	protect_common_frequency_candidate
+662	直頭	true	975	64.269789	true	1234	18	false	manual_review	protect_common_frequency_candidate
+663	返上	false				1235	18	true	manual_review	low_priority_review
+664	南方	true	358	304.607315	false	1236	18	false	missing	protect_common_frequency_candidate
+665	是但	true	1032	58.335033	true	1237	18	false	manual_review	protect_common_frequency_candidate
+666	相當	false				1238	18	false	missing	low_priority_review
+667	英國	true	746	97.562562	false	1239	18	false	missing	protect_common_frequency_candidate
+668	要好	false				1240	18	false	handled_structurally	atomic_retirement_candidate
+669	俾人	false				1241	18	true	manual_review	low_priority_review
+670	原則	false				1242	18	false	missing	low_priority_review
+671	埋個	false				1243	18	true	manual_review	low_priority_review
+672	拿	false				1244	18	false	missing	low_priority_review
+673	旁邊	true	1015	60.856301	true	1245	18	false	missing	protect_common_frequency_candidate
+674	留	true	848	78.334757	true	1246	18	false	missing	protect_common_frequency_candidate
+675	追	true	1412	36.585961	false	1248	18	false	missing	protect_common_frequency_candidate
+676	做過	false				1249	18	true	manual_review	low_priority_review
+677	得罪	true	1005	60.976601	false	1250	18	false	missing	protect_common_frequency_candidate
+678	畢業	true	1164	48.781281	false	1251	18	false	missing	protect_common_frequency_candidate
+679	剩	true	1358	36.585961	false	1252	18	false	missing	protect_common_frequency_candidate
+680	幾大	false				1253	18	true	manual_review	low_priority_review
+681	提供	false				1254	18	false	missing	low_priority_review
+682	象徵	false				1255	18	false	missing	low_priority_review
+683	感情	false				1256	18	false	missing	low_priority_review
+684	試下	false				1259	18	true	manual_review	low_priority_review
+685	熄	true	1301	40.651067	false	1260	18	false	missing	protect_common_frequency_candidate
+686	廠	true	728	98.986101	true	1261	18	false	missing	protect_common_frequency_candidate
+687	靚女	true	923	69.106815	false	1264	18	false	handled_structurally	protect_common_frequency_candidate
+688	儲	true	555	150.408950	false	1265	18	false	missing	protect_common_frequency_candidate
+689	應	true	1274	40.976877	true	1266	18	false	missing	protect_common_frequency_candidate
+690	擦膠	true	768	92.931045	false	1268	18	false	manual_review	protect_common_frequency_candidate
+691	禮物	true	1398	36.585961	false	1269	18	false	missing	protect_common_frequency_candidate
+692	雞	true	1678	28.455747	false	1270	18	false	missing	protect_common_frequency_candidate
+693	鐘意	true	1677	28.455747	false	1272	18	false	handled_structurally	protect_common_frequency_candidate
+694	權	true	1162	48.781281	false	1273	18	false	missing	protect_common_frequency_candidate
+695	鑑林	false				1274	18	true	manual_review	low_priority_review
+696	三點	true	1247	42.074606	true	1275	17	false	manual_review	protect_common_frequency_candidate
+697	下邊	true	397	265.174277	true	1276	17	false	handled_structurally	protect_common_frequency_candidate
+698	公眾	false				1277	17	false	missing	low_priority_review
+699	太過	true	1364	36.585961	false	1278	17	true	manual_review	protect_common_frequency_candidate
+700	毋	false				1279	17	false	missing	low_priority_review
+701	四十五度	false				1280	17	true	manual_review	low_priority_review
+702	左下	true	1917	20.651343	false	1281	17	false	handled_structurally	protect_common_frequency_candidate
+703	平排	true	670	113.582389	false	1282	17	false	manual_review	protect_common_frequency_candidate
+704	必須	false				1283	17	false	missing	low_priority_review
+705	打直	true	708	103.256717	false	1284	17	false	manual_review	protect_common_frequency_candidate
+706	打斜	true	820	82.605373	false	1285	17	false	manual_review	protect_common_frequency_candidate
+707	民主黨	false				1286	17	false	missing	low_priority_review
+708	任	true	1763	24.390640	false	1287	17	false	missing	protect_common_frequency_candidate
+709	再落	false				1288	17	true	manual_review	low_priority_review
+710	多數	true	957	65.041708	false	1289	17	false	missing	protect_common_frequency_candidate
+711	好大	false				1290	17	true	manual_review	low_priority_review
+712	好慘	false				1291	17	true	manual_review	low_priority_review
+713	收到	false				1292	17	false	missing	low_priority_review
+714	有機	false				1293	17	false	handled_structurally	atomic_retirement_candidate
+715	告	false				1294	17	false	missing	low_priority_review
+716	我估	false				1295	17	true	manual_review	low_priority_review
+717	我畫	false				1296	17	true	manual_review	low_priority_review
+718	言論	false				1297	17	false	missing	low_priority_review
+719	受到	true	1989	20.325534	false	1298	17	false	missing	protect_common_frequency_candidate
+720	咁上下	true	908	70.530353	true	1299	17	false	manual_review	protect_common_frequency_candidate
+721	波浪	true	822	82.605373	false	1300	17	false	missing	protect_common_frequency_candidate
+722	知有	false				1301	17	true	manual_review	low_priority_review
+723	阿哥	true	1060	56.911494	false	1302	17	false	handled_structurally	protect_common_frequency_candidate
+724	後生	false				1303	17	true	manual_review	low_priority_review
+725	計劃	false				1305	17	false	missing	low_priority_review
+726	個害	false				1306	17	true	manual_review	low_priority_review
+727	租	true	890	73.171921	false	1308	17	false	missing	protect_common_frequency_candidate
+728	純粹	true	1088	53.172197	true	1309	17	false	missing	protect_common_frequency_candidate
+729	高度	true	827	81.507644	true	1310	17	false	handled_structurally	protect_common_frequency_candidate
+730	基本法	false				1311	17	false	missing	low_priority_review
+731	將個	false				1312	17	true	manual_review	low_priority_review
+732	理論	false				1313	17	false	missing	low_priority_review
+733	處	false				1314	17	false	missing	low_priority_review
+734	喊	true	1144	49.879010	true	1315	17	false	missing	protect_common_frequency_candidate
+735	圍住	false				1316	17	false	missing	low_priority_review
+736	尊嚴	false				1317	17	false	missing	low_priority_review
+737	照	true	897	72.400002	true	1319	17	false	missing	protect_common_frequency_candidate
+738	落落	false				1320	17	true	manual_review	low_priority_review
+739	資料	true	1407	36.585961	false	1321	17	false	missing	protect_common_frequency_candidate
+740	審	false				1322	17	false	missing	low_priority_review
+741	撳	true	916	69.106815	false	1323	17	false	missing	protect_common_frequency_candidate
+742	複雜	true	1242	43.944255	true	1324	17	false	missing	protect_common_frequency_candidate
+743	輪	true	982	62.725950	true	1326	17	false	missing	protect_common_frequency_candidate
+744	靚仔	true	970	65.041708	false	1328	17	true	manual_review	protect_common_frequency_candidate
+745	瞭解	false				1330	17	false	missing	low_priority_review
+746	邊行	false				1331	17	true	manual_review	low_priority_review
+747	權利	false				1332	17	false	missing	low_priority_review
+748	一晚	false				1333	16	true	manual_review	low_priority_review
+749	一點	true	1590	28.781557	true	1334	16	false	handled_structurally	protect_common_frequency_candidate
+750	人士	true	1466	32.520854	false	1335	16	false	missing	protect_common_frequency_candidate
+751	上角	false				1336	16	true	manual_review	low_priority_review
+752	上邊	true	478	202.688927	true	1337	16	false	handled_structurally	protect_common_frequency_candidate
+753	下下	true	1346	36.585961	false	1338	16	true	manual_review	protect_common_frequency_candidate
+754	已	false				1339	16	false	missing	low_priority_review
+755	不嬲	true	1038	56.911494	false	1340	16	true	manual_review	protect_common_frequency_candidate
+756	公平	true	1981	20.325534	false	1341	16	false	missing	protect_common_frequency_candidate
+757	冇所謂	true	1743	25.488370	true	1342	16	false	missing	protect_common_frequency_candidate
+758	失敗	false				1343	16	false	missing	low_priority_review
+759	合格	true	1362	36.585961	false	1345	16	false	missing	protect_common_frequency_candidate
+760	安排	false				1346	16	false	missing	low_priority_review
+761	成張	false				1347	16	true	manual_review	low_priority_review
+762	自	false				1349	16	false	missing	low_priority_review
+763	似乎	true	1602	28.455747	false	1350	16	false	missing	protect_common_frequency_candidate
+764	即個	false				1351	16	true	manual_review	low_priority_review
+765	吸引	true	1087	53.172197	true	1352	16	false	missing	protect_common_frequency_candidate
+766	更	true	1328	39.879148	true	1353	16	false	missing	protect_common_frequency_candidate
+767	垂直	true	939	67.116866	false	1354	16	false	missing	protect_common_frequency_candidate
+768	奇怪	true	878	74.269651	true	1355	16	false	missing	protect_common_frequency_candidate
+769	空間	false				1356	16	false	missing	low_priority_review
+770	阿婆	true	1061	56.911494	false	1357	16	false	missing	protect_common_frequency_candidate
+771	信佳	false				1358	16	true	manual_review	low_priority_review
+772	咬	true	909	70.204544	true	1359	16	false	missing	protect_common_frequency_candidate
+773	城堡	true	798	87.768209	false	1360	16	false	missing	protect_common_frequency_candidate
+774	政黨	false				1361	16	false	missing	low_priority_review
+775	冤	false				1362	16	false	missing	low_priority_review
+776	效	true	942	67.116866	false	1363	16	false	missing	protect_common_frequency_candidate
+777	問我	false				1366	16	true	manual_review	low_priority_review
+778	基本	false				1367	16	false	missing	low_priority_review
+779	教育	false				1368	16	false	missing	low_priority_review
+780	殺	true	1650	28.455747	false	1369	16	false	missing	protect_common_frequency_candidate
+781	毫子	true	1104	52.846388	false	1370	16	true	manual_review	protect_common_frequency_candidate
+782	深	true	1106	52.846388	false	1371	16	false	missing	protect_common_frequency_candidate
+783	雀仔	true	1855	24.390640	false	1372	16	true	manual_review	protect_common_frequency_candidate
+784	創作	true	1284	40.651067	false	1373	16	false	missing	protect_common_frequency_candidate
+785	幾喇	false				1374	16	true	manual_review	low_priority_review
+786	朝頭早	true	1160	48.781281	false	1375	16	true	manual_review	protect_common_frequency_candidate
+787	無端端	true	1219	44.716174	false	1376	16	false	missing	protect_common_frequency_candidate
+788	越來	false				1377	16	true	manual_review	low_priority_review
+789	黃	true	925	69.106815	false	1378	16	false	missing	protect_common_frequency_candidate
+790	搞錯	true	1006	60.976601	false	1379	16	false	handled_structurally	protect_common_frequency_candidate
+791	資訊	true	1878	23.618721	true	1380	16	false	missing	protect_common_frequency_candidate
+792	對方	false				1381	16	false	missing	low_priority_review
+793	語言	true	984	62.400140	true	1382	16	false	missing	protect_common_frequency_candidate
+794	整體	false				1383	16	false	missing	low_priority_review
+795	醒	true	936	67.237166	true	1384	16	false	missing	protect_common_frequency_candidate
+796	環保	false				1385	16	false	missing	low_priority_review
+797	總	true	1570	30.651205	true	1386	16	false	missing	protect_common_frequency_candidate
+798	講個	false				1387	16	true	manual_review	low_priority_review
+799	轉個	false				1388	16	true	manual_review	low_priority_review
+800	證明	true	1330	39.879148	true	1389	16	false	missing	protect_common_frequency_candidate
+801	黨	false				1390	16	false	missing	low_priority_review
+802	攪	false				1391	16	false	missing	low_priority_review
+803	一次過	true	1345	36.585961	false	1392	15	true	manual_review	protect_common_frequency_candidate
+804	一百蚊	false				1393	15	true	manual_review	low_priority_review
+805	乜鬼	true	1348	36.585961	false	1394	15	true	manual_review	protect_common_frequency_candidate
+806	上年	true	1150	48.781281	false	1395	15	true	manual_review	protect_common_frequency_candidate
+807	不斷	true	1697	26.586099	true	1396	15	false	missing	protect_common_frequency_candidate
+808	之類	true	1578	29.553476	true	1397	15	false	missing	protect_common_frequency_candidate
+809	冇用	true	1768	24.390640	false	1398	15	false	handled_structurally	protect_common_frequency_candidate
+810	片	true	1568	30.651205	true	1399	15	false	missing	protect_common_frequency_candidate
+811	右下方	true	1180	46.465523	false	1400	15	false	manual_review	protect_common_frequency_candidate
+812	左手邊	true	337	325.258658	false	1401	15	false	manual_review	protect_common_frequency_candidate
+813	印椰樹	false				1402	15	true	manual_review	low_priority_review
+814	地點	true	870	76.344809	true	1403	15	false	missing	protect_common_frequency_candidate
+815	多少	false				1404	15	false	handled_structurally	atomic_retirement_candidate
+816	多次	false				1405	15	false	handled_structurally	atomic_retirement_candidate
+817	多個	false				1406	15	false	handled_structurally	atomic_retirement_candidate
+818	好處	true	1208	44.716174	false	1407	15	false	missing	protect_common_frequency_candidate
+819	存在	false				1408	15	false	missing	low_priority_review
+820	有趣	true	1148	49.107091	true	1409	15	false	missing	protect_common_frequency_candidate
+821	老實	false				1410	15	false	missing	low_priority_review
+822	艾爾頓	true	745	97.562562	false	1411	15	true	manual_review	protect_common_frequency_candidate
+823	何	true	1739	25.488370	true	1412	15	false	missing	protect_common_frequency_candidate
+824	冷氣	true	1143	49.879010	true	1413	15	false	missing	protect_common_frequency_candidate
+825	角色	false				1415	15	false	handled_structurally	atomic_retirement_candidate
+826	車主	false				1416	15	false	missing	low_priority_review
+827	亞視	true	1001	60.976601	false	1417	15	true	manual_review	protect_common_frequency_candidate
+828	依家	true	876	75.247079	true	1418	15	false	manual_review	protect_common_frequency_candidate
+829	坦白	false				1419	15	false	missing	low_priority_review
+830	明顯	true	1340	37.683690	true	1421	15	false	missing	protect_common_frequency_candidate
+831	法例	false				1422	15	true	manual_review	low_priority_review
+832	金	true	976	63.823679	true	1425	15	false	missing	protect_common_frequency_candidate
+833	迫	true	947	66.139437	true	1428	15	false	missing	protect_common_frequency_candidate
+834	重新	true	1754	24.716450	true	1429	15	false	missing	protect_common_frequency_candidate
+835	音響	true	1175	48.781281	false	1431	15	false	missing	protect_common_frequency_candidate
+836	個意	false				1432	15	true	manual_review	low_priority_review
+837	恐怖	true	1583	29.553476	true	1434	15	false	missing	protect_common_frequency_candidate
+838	捉	true	1497	32.520854	false	1435	15	false	missing	protect_common_frequency_candidate
+839	時話	false				1436	15	true	manual_review	low_priority_review
+840	除非	true	1587	29.553476	true	1437	15	false	missing	protect_common_frequency_candidate
+841	情	false				1438	15	false	missing	low_priority_review
+842	排隊	true	1080	54.269926	true	1439	15	false	missing	protect_common_frequency_candidate
+843	票	false				1440	15	false	missing	low_priority_review
+844	終審	false				1441	15	true	manual_review	low_priority_review
+845	竟然	true	1458	33.618583	true	1442	15	false	missing	protect_common_frequency_candidate
+846	就畫	false				1443	15	true	manual_review	low_priority_review
+847	提出	false				1444	15	false	missing	low_priority_review
+848	答案	true	1749	25.488370	true	1445	15	false	missing	protect_common_frequency_candidate
+849	著	false				1446	15	false	missing	low_priority_review
+850	賀	false				1447	15	false	missing	low_priority_review
+851	黑	true	1589	29.553476	true	1448	15	false	missing	protect_common_frequency_candidate
+852	椰	true	1554	30.977015	false	1449	15	false	missing	protect_common_frequency_candidate
+853	落返	false				1450	15	true	manual_review	low_priority_review
+854	過個	false				1451	15	true	manual_review	low_priority_review
+855	隔	true	825	82.279564	true	1452	15	false	missing	protect_common_frequency_candidate
+856	電影	true	1237	44.716174	false	1453	15	false	missing	protect_common_frequency_candidate
+857	寧願	true	1043	56.911494	false	1454	15	false	missing	protect_common_frequency_candidate
+858	摺	false				1455	15	false	missing	low_priority_review
+859	盡	true	1453	34.716312	true	1456	15	false	missing	protect_common_frequency_candidate
+860	福利	true	1510	32.520854	false	1457	15	false	missing	protect_common_frequency_candidate
+861	與	false				1458	15	false	missing	low_priority_review
+862	劍	true	817	82.605373	false	1459	15	false	missing	protect_common_frequency_candidate
+863	層	false				1460	15	false	missing	low_priority_review
+864	數	true	658	115.572337	true	1461	15	false	missing	protect_common_frequency_candidate
+865	樓	false				1462	15	false	missing	low_priority_review
+866	膠袋	false				1463	15	true	manual_review	low_priority_review
+867	諗法	true	1315	40.651067	false	1464	15	true	manual_review	protect_common_frequency_candidate
+868	選	false				1466	15	false	missing	low_priority_review
+869	錄	true	895	73.171921	false	1467	15	false	missing	protect_common_frequency_candidate
+870	講番	false				1468	15	true	manual_review	low_priority_review
+871	點會	false				1469	15	true	manual_review	low_priority_review
+872	醫療	false				1470	15	false	missing	low_priority_review
+873	贊成	true	1851	24.390640	false	1471	15	false	missing	protect_common_frequency_candidate
+874	一本	false				1473	14	true	manual_review	low_priority_review
+875	一座	false				1474	14	true	manual_review	low_priority_review
+876	下角	false				1475	14	true	manual_review	low_priority_review
+877	大隻	true	1621	28.455747	false	1476	14	true	manual_review	protect_common_frequency_candidate
+878	女皇	true	1289	40.651067	false	1477	14	false	missing	protect_common_frequency_candidate
+879	五點	true	1600	28.455747	false	1478	14	true	manual_review	protect_common_frequency_candidate
+880	引起	false				1479	14	false	missing	low_priority_review
+881	心理	true	1632	28.455747	false	1480	14	false	missing	protect_common_frequency_candidate
+882	文化	true	1296	40.651067	false	1481	14	false	missing	protect_common_frequency_candidate
+883	毛	true	1103	52.846388	false	1482	14	false	missing	protect_common_frequency_candidate
+884	右畫	false				1483	14	true	manual_review	low_priority_review
+885	再畫	false				1484	14	true	manual_review	low_priority_review
+886	各	true	1081	53.944117	true	1485	14	false	missing	protect_common_frequency_candidate
+887	回應	false				1486	14	false	missing	low_priority_review
+888	有關	true	1648	28.455747	false	1488	14	false	missing	protect_common_frequency_candidate
+889	行業	true	1842	24.390640	false	1489	14	false	missing	protect_common_frequency_candidate
+890	每個	false				1492	14	false	handled_structurally	atomic_retirement_candidate
+891	沙	false				1493	14	false	missing	low_priority_review
+892	角度	true	1895	21.423263	true	1494	14	false	handled_structurally	protect_common_frequency_candidate
+893	事實上	false				1495	14	false	missing	low_priority_review
+894	佬	false				1496	14	false	missing	low_priority_review
+895	或	false				1497	14	false	missing	low_priority_review
+896	拍拖	false				1498	14	false	missing	low_priority_review
+897	果	false				1499	14	false	missing	low_priority_review
+898	沾污	false				1500	14	true	manual_review	low_priority_review
+899	削	true	882	73.171921	false	1501	14	false	missing	protect_common_frequency_candidate
+900	屋企人	true	1290	40.651067	false	1502	14	false	handled_structurally	protect_common_frequency_candidate
+901	架構	false				1503	14	false	missing	low_priority_review
+902	查	true	810	85.367242	false	1504	14	false	missing	protect_common_frequency_candidate
+903	要講	false				1505	14	true	manual_review	low_priority_review
+904	重複	true	1271	41.302687	false	1506	14	false	missing	protect_common_frequency_candidate
+905	倒	true	1085	53.498007	true	1507	14	false	missing	protect_common_frequency_candidate
+906	剛才	false				1508	14	false	missing	low_priority_review
+907	容許	false				1509	14	false	missing	low_priority_review
+908	效率	false				1510	14	false	missing	low_priority_review
+909	根據	false				1511	14	false	missing	low_priority_review
+910	特登	true	1302	40.651067	false	1512	14	true	manual_review	protect_common_frequency_candidate
+911	唪	false				1514	14	false	missing	low_priority_review
+912	從來	true	1491	32.520854	false	1515	14	false	missing	protect_common_frequency_candidate
+913	教授	false				1516	14	false	missing	low_priority_review
+914	貨	true	1084	53.944117	true	1518	14	false	missing	protect_common_frequency_candidate
+915	郭富城	false				1519	14	true	manual_review	low_priority_review
+916	幾咁	false				1520	14	true	manual_review	low_priority_review
+917	牌	true	1108	52.846388	false	1521	14	false	missing	protect_common_frequency_candidate
+918	牌子	true	1053	56.911494	false	1522	14	false	missing	protect_common_frequency_candidate
+919	等於	true	1342	37.683690	true	1523	14	false	missing	protect_common_frequency_candidate
+920	費事	true	1234	44.716174	false	1524	14	true	manual_review	protect_common_frequency_candidate
+921	貼	true	680	109.191472	true	1525	14	false	missing	protect_common_frequency_candidate
+922	媽咪	true	1792	24.390640	false	1526	14	false	missing	protect_common_frequency_candidate
+923	搞掂	true	973	64.595598	true	1527	14	false	manual_review	protect_common_frequency_candidate
+924	經常	false				1528	14	false	missing	low_priority_review
+925	聖誕	true	1055	56.911494	false	1529	14	false	missing	protect_common_frequency_candidate
+926	預	true	1421	36.585961	false	1530	14	false	missing	protect_common_frequency_candidate
+927	罷	false				1532	14	false	missing	low_priority_review
+928	舖頭	true	1231	44.716174	false	1533	14	true	manual_review	protect_common_frequency_candidate
+929	養魚	false				1534	14	true	manual_review	low_priority_review
+930	錄音	true	844	80.084106	true	1535	14	false	missing	protect_common_frequency_candidate
+931	講講	false				1536	14	true	manual_review	low_priority_review
+932	離婚	false				1538	14	false	missing	low_priority_review
+933	壞	true	1097	52.846388	false	1539	14	false	missing	protect_common_frequency_candidate
+934	羅	false				1540	14	false	missing	low_priority_review
+935	辭典	true	862	77.237028	false	1541	14	false	missing	protect_common_frequency_candidate
+936	邊緣	true	907	72.279702	false	1542	14	false	missing	protect_common_frequency_candidate
+937	類	true	1461	33.618583	true	1543	14	false	missing	protect_common_frequency_candidate
+938	讓	true	1317	40.651067	false	1544	14	false	missing	protect_common_frequency_candidate
+939	一件	false				1545	13	false	handled_structurally	atomic_retirement_candidate
+940	一部份	false				1546	13	true	manual_review	low_priority_review
+941	一棵	false				1547	13	true	manual_review	low_priority_review
+942	十年	false				1548	13	false	handled_structurally	atomic_retirement_candidate
+943	中心	true	1193	45.041984	true	1550	13	false	handled_structurally	protect_common_frequency_candidate
+944	中醫	true	1958	20.325534	false	1551	13	false	missing	protect_common_frequency_candidate
+945	之中	true	1960	20.325534	false	1552	13	false	missing	protect_common_frequency_candidate
+946	互相	false				1553	13	false	missing	low_priority_review
+947	今個	false				1554	13	true	manual_review	low_priority_review
+948	太太	false				1555	13	false	handled_structurally	atomic_retirement_candidate
+949	日後	false				1556	13	false	missing	low_priority_review
+950	主角	true	1464	32.520854	false	1557	13	false	missing	protect_common_frequency_candidate
+951	主題	false				1558	13	false	missing	low_priority_review
+952	出聲	true	1356	36.585961	false	1559	13	false	handled_structurally	protect_common_frequency_candidate
+953	台灣	true	1361	36.585961	false	1560	13	false	missing	protect_common_frequency_candidate
+954	司	false				1561	13	false	missing	low_priority_review
+955	犯	false				1562	13	false	missing	low_priority_review
+956	白	true	573	144.233594	true	1563	13	false	missing	protect_common_frequency_candidate
+957	目的	true	1893	21.423263	true	1564	13	false	missing	protect_common_frequency_candidate
+958	先得	false				1565	13	true	manual_review	low_priority_review
+959	好少	false				1566	13	true	manual_review	low_priority_review
+960	好煩	false				1568	13	true	manual_review	low_priority_review
+961	扣	true	1495	32.520854	false	1569	13	false	missing	protect_common_frequency_candidate
+962	收埋	true	1382	36.585961	false	1570	13	true	manual_review	protect_common_frequency_candidate
+963	自信	false				1571	13	false	missing	low_priority_review
+964	作	true	1447	34.716312	true	1572	13	false	missing	protect_common_frequency_candidate
+965	你畫	false				1573	13	true	manual_review	low_priority_review
+966	即要	false				1574	13	true	manual_review	low_priority_review
+967	夾	true	694	106.670204	true	1575	13	false	missing	protect_common_frequency_candidate
+968	我識	false				1576	13	true	manual_review	low_priority_review
+969	身體	true	1141	50.976739	true	1577	13	false	missing	protect_common_frequency_candidate
+970	兩條	false				1578	13	true	manual_review	low_priority_review
+971	咁滯	true	1137	50.976739	true	1579	13	false	manual_review	protect_common_frequency_candidate
+972	拗	false				1580	13	false	missing	low_priority_review
+973	返轉頭	false				1581	13	true	manual_review	low_priority_review
+974	金融	false				1582	13	false	missing	low_priority_review
+975	封	true	1003	60.976601	false	1583	13	false	missing	protect_common_frequency_candidate
+976	政治	false				1584	13	false	missing	low_priority_review
+977	柱	false				1585	13	false	missing	low_priority_review
+978	為止	false				1586	13	false	missing	low_priority_review
+979	界	false				1587	13	false	missing	low_priority_review
+980	閂	false				1588	13	false	missing	low_priority_review
+981	面前	true	1859	24.390640	false	1589	13	false	missing	protect_common_frequency_candidate
+982	食到	false				1590	13	true	manual_review	low_priority_review
+983	個萍	false				1591	13	true	manual_review	low_priority_review
+984	唔錯	true	1780	24.390640	false	1592	13	true	manual_review	protect_common_frequency_candidate
+985	庭	false				1593	13	false	missing	low_priority_review
+986	秘書	true	1661	28.455747	false	1594	13	false	missing	protect_common_frequency_candidate
+987	能	false				1596	13	false	missing	low_priority_review
+988	骨折	true	1116	52.846388	false	1598	13	false	missing	protect_common_frequency_candidate
+989	參考	false				1599	13	false	missing	low_priority_review
+990	接	true	1145	49.879010	true	1600	13	false	missing	protect_common_frequency_candidate
+991	痕	false				1601	13	false	missing	low_priority_review
+992	細路仔	false				1602	13	true	manual_review	low_priority_review
+993	速度	false				1603	13	false	missing	low_priority_review
+994	部門	false				1604	13	false	handled_structurally	atomic_retirement_candidate
+995	雀	true	793	89.432348	false	1605	13	false	missing	protect_common_frequency_candidate
+996	單仲佳	false				1606	13	true	manual_review	low_priority_review
+997	就會	false				1607	13	true	manual_review	low_priority_review
+998	幾靚	false				1608	13	true	manual_review	low_priority_review
+999	幾點	false				1609	13	false	handled_structurally	atomic_retirement_candidate
+1000	期	false				1611	13	false	missing	low_priority_review
+1001	畫一個	false				1613	13	true	manual_review	low_priority_review
+1002	稅	false				1614	13	false	missing	low_priority_review
+1003	黑色	true	1119	52.400278	true	1615	13	false	missing	protect_common_frequency_candidate
+1004	傷害	true	1335	38.009499	true	1616	13	false	missing	protect_common_frequency_candidate
+1005	傾偈	true	1093	52.846388	false	1617	13	false	missing	protect_common_frequency_candidate
+1006	感	false				1618	13	false	missing	low_priority_review
+1007	損失	false				1619	13	false	missing	low_priority_review
+1008	會會	false				1620	13	false	handled_structurally	atomic_retirement_candidate
+1009	照顧	true	1824	24.390640	false	1621	13	false	missing	protect_common_frequency_candidate
+1010	運	false				1622	13	false	missing	low_priority_review
+1011	嘗試	true	1783	24.390640	false	1623	13	false	missing	protect_common_frequency_candidate
+1012	監管	false				1624	13	false	missing	low_priority_review
+1013	碧	false				1625	13	false	missing	low_priority_review
+1014	網	false				1626	13	false	missing	low_priority_review
+1015	認真	false				1627	13	false	missing	low_priority_review
+1016	增加	true	1889	21.423263	true	1628	13	false	missing	protect_common_frequency_candidate
+1017	數字	true	1639	28.455747	false	1629	13	false	missing	protect_common_frequency_candidate
+1018	鋪	false				1631	13	false	missing	low_priority_review
+1019	燈	false				1632	13	false	missing	low_priority_review
+1020	講多次	false				1634	13	true	manual_review	low_priority_review
+1021	嚮	true	938	67.116866	false	1635	13	false	missing	protect_common_frequency_candidate
+1022	關	true	863	77.237028	false	1636	13	false	missing	protect_common_frequency_candidate
+1023	一刻	false				1637	12	true	manual_review	low_priority_review
+1024	一套	false				1638	12	false	handled_structurally	atomic_retirement_candidate
+1025	一部	false				1639	12	true	manual_review	low_priority_review
+1026	十二點	true	1538	31.748935	true	1640	12	false	manual_review	protect_common_frequency_candidate
+1027	十分	false				1641	12	false	handled_structurally	atomic_retirement_candidate
+1028	中學	true	1347	36.585961	false	1642	12	false	handled_structurally	protect_common_frequency_candidate
+1029	之內	false				1643	12	false	missing	low_priority_review
+1030	今	true	474	205.982115	true	1644	12	false	missing	protect_common_frequency_candidate
+1031	內容	true	1977	20.325534	false	1645	12	false	missing	protect_common_frequency_candidate
+1032	水草	true	1105	52.846388	false	1646	12	false	missing	protect_common_frequency_candidate
+1033	去過	false				1648	12	true	manual_review	low_priority_review
+1034	正面	false				1649	12	false	handled_structurally	atomic_retirement_candidate
+1035	生產	false				1650	12	false	missing	low_priority_review
+1036	合理	false				1651	12	false	missing	low_priority_review
+1037	多過	false				1652	12	true	manual_review	low_priority_review
+1038	好悶	false				1654	12	true	manual_review	low_priority_review
+1039	成熟	false				1656	12	false	missing	low_priority_review
+1040	曲線	true	734	98.093881	false	1658	12	false	missing	protect_common_frequency_candidate
+1041	西行	false				1659	12	true	manual_review	low_priority_review
+1042	西面	true	588	139.396568	false	1660	12	false	handled_structurally	protect_common_frequency_candidate
+1043	佔	true	1579	29.553476	true	1661	12	false	missing	protect_common_frequency_candidate
+1044	判	false				1662	12	false	missing	low_priority_review
+1045	即將	false				1663	12	false	missing	low_priority_review
+1046	形象	false				1664	12	false	missing	low_priority_review
+1047	投訴	false				1665	12	false	missing	low_priority_review
+1048	私家	false				1666	12	false	missing	low_priority_review
+1049	兩日	false				1667	12	true	manual_review	low_priority_review
+1050	兩樣	false				1668	12	false	handled_structurally	atomic_retirement_candidate
+1051	制	false				1669	12	false	missing	low_priority_review
+1052	呢種	false				1670	12	true	manual_review	low_priority_review
+1053	居民	false				1671	12	false	missing	low_priority_review
+1054	直角	true	1129	51.628358	false	1672	12	false	handled_structurally	protect_common_frequency_candidate
+1055	空	true	1131	51.628358	false	1673	12	false	missing	protect_common_frequency_candidate
+1056	股份	false				1674	12	false	missing	low_priority_review
+1057	既然	false				1676	12	false	missing	low_priority_review
+1058	珍惜	false				1677	12	false	missing	low_priority_review
+1059	相處	false				1678	12	false	missing	low_priority_review
+1060	相對	false				1679	12	false	handled_structurally	atomic_retirement_candidate
+1061	音	true	1238	44.716174	false	1680	12	false	missing	protect_common_frequency_candidate
+1062	個頭	false				1681	12	true	manual_review	low_priority_review
+1063	員	false				1682	12	false	missing	low_priority_review
+1064	唔多	false				1683	12	true	manual_review	low_priority_review
+1065	時效	false				1684	12	false	missing	low_priority_review
+1066	校長	true	1387	36.585961	false	1685	12	false	missing	protect_common_frequency_candidate
+1067	核突	true	1139	50.976739	true	1686	12	false	manual_review	protect_common_frequency_candidate
+1068	案件	false				1687	12	false	missing	low_priority_review
+1069	破壞	false				1688	12	false	missing	low_priority_review
+1070	財務	false				1689	12	false	missing	low_priority_review
+1071	高過	false				1690	12	true	manual_review	low_priority_review
+1072	商業	true	1616	28.455747	false	1693	12	false	missing	protect_common_frequency_candidate
+1073	問吓	false				1694	12	true	manual_review	low_priority_review
+1074	國內	false				1695	12	false	missing	low_priority_review
+1075	最右	false				1696	12	true	manual_review	low_priority_review
+1076	最底	false				1697	12	true	manual_review	low_priority_review
+1077	提到	false				1699	12	false	missing	low_priority_review
+1078	插	true	1028	58.660843	true	1700	12	false	missing	protect_common_frequency_candidate
+1079	琴晚	true	1163	48.781281	false	1701	12	false	missing	protect_common_frequency_candidate
+1080	睇住	false				1703	12	true	manual_review	low_priority_review
+1081	窗	true	1241	44.270064	true	1704	12	false	missing	protect_common_frequency_candidate
+1082	結	false				1705	12	false	missing	low_priority_review
+1083	貼住	false				1706	12	true	manual_review	low_priority_review
+1084	開燈	false				1707	12	false	missing	low_priority_review
+1085	溜	false				1708	12	false	missing	low_priority_review
+1086	溫暖	true	1072	55.693465	true	1709	12	false	missing	protect_common_frequency_candidate
+1087	罪	false				1710	12	false	missing	low_priority_review
+1088	補充	false				1711	12	false	missing	low_priority_review
+1089	詳細	false				1712	12	false	missing	low_priority_review
+1090	誇張	false				1713	12	false	missing	low_priority_review
+1091	遇到	false				1714	12	false	missing	low_priority_review
+1092	電芯	true	1174	48.781281	false	1715	12	true	manual_review	protect_common_frequency_candidate
+1093	嘉賓	false				1716	12	false	missing	low_priority_review
+1094	對面	true	1462	32.846664	true	1717	12	false	handled_structurally	protect_common_frequency_candidate
+1095	製造	false				1718	12	false	missing	low_priority_review
+1096	增長	false				1719	12	false	missing	low_priority_review
+1097	黎明	false				1720	12	false	missing	low_priority_review
+1098	橫線	true	821	82.605373	false	1721	12	false	missing	protect_common_frequency_candidate
+1099	澳門	true	1652	28.455747	false	1722	12	false	missing	protect_common_frequency_candidate
+1100	燒	false				1723	12	false	missing	low_priority_review
+1101	興	true	835	81.302135	false	1724	12	false	missing	protect_common_frequency_candidate
+1102	龜	true	1422	36.585961	false	1725	12	false	missing	protect_common_frequency_candidate
+1103	尷尬	false				1726	12	false	missing	low_priority_review
+1104	邊有	false				1728	12	true	manual_review	low_priority_review
+1105	響	true	665	114.354308	true	1729	12	false	missing	protect_common_frequency_candidate
+1106	爛	true	1107	52.846388	false	1730	12	false	missing	protect_common_frequency_candidate
+1107	聽過	false				1731	12	true	manual_review	low_priority_review
+1108	廳	false				1732	12	false	missing	low_priority_review
+1109	一句	false				1733	11	false	handled_structurally	atomic_retirement_candidate
+1110	一號	true	1277	40.651067	false	1734	11	false	handled_structurally	protect_common_frequency_candidate
+1111	九月	true	1281	40.651067	false	1735	11	false	handled_structurally	protect_common_frequency_candidate
+1112	人話	false				1736	11	true	manual_review	low_priority_review
+1113	千祈	true	1774	24.390640	false	1737	11	true	manual_review	protect_common_frequency_candidate
+1114	工人	false				1738	11	false	handled_structurally	atomic_retirement_candidate
+1115	工業	false				1739	11	false	missing	low_priority_review
+1116	五個	false				1740	11	true	manual_review	low_priority_review
+1117	及	false				1741	11	false	missing	low_priority_review
+1118	反對	false				1742	11	false	missing	low_priority_review
+1119	心胸	false				1744	11	false	missing	low_priority_review
+1120	比例	false				1745	11	false	missing	low_priority_review
+1121	牛肉	true	1220	44.716174	false	1746	11	false	missing	protect_common_frequency_candidate
+1122	冬天	true	1202	44.716174	false	1747	11	false	missing	protect_common_frequency_candidate
+1123	出版	true	1470	32.520854	false	1748	11	false	missing	protect_common_frequency_candidate
+1124	半年	false				1749	11	false	handled_structurally	atomic_retirement_candidate
+1125	司長	false				1751	11	false	missing	low_priority_review
+1126	必要	false				1752	11	false	missing	low_priority_review
+1127	本地	false				1753	11	false	missing	low_priority_review
+1128	正上方	true	1126	51.628358	false	1754	11	false	manual_review	protect_common_frequency_candidate
+1129	正版	true	920	69.106815	false	1755	11	true	manual_review	protect_common_frequency_candidate
+1130	甩	true	1221	44.716174	false	1756	11	false	missing	protect_common_frequency_candidate
+1131	光	false				1757	11	false	missing	low_priority_review
+1132	再行	false				1758	11	true	manual_review	low_priority_review
+1133	在	true	2000	20.325534	false	1759	11	false	missing	protect_common_frequency_candidate
+1134	好快	false				1761	11	true	manual_review	low_priority_review
+1135	好近	false				1762	11	true	manual_review	low_priority_review
+1136	好遠	false				1763	11	true	manual_review	low_priority_review
+1137	妄想	false				1764	11	false	missing	low_priority_review
+1138	成年	false				1766	11	false	missing	low_priority_review
+1139	老細	true	724	101.627669	false	1767	11	true	manual_review	protect_common_frequency_candidate
+1140	自從	true	1839	24.390640	false	1768	11	false	missing	protect_common_frequency_candidate
+1141	初頭	true	1283	40.651067	false	1769	11	true	manual_review	protect_common_frequency_candidate
+1142	局	false				1770	11	false	missing	low_priority_review
+1143	我問	false				1771	11	true	manual_review	low_priority_review
+1144	足夠	false				1772	11	false	missing	low_priority_review
+1145	邪	true	1675	28.455747	false	1773	11	false	missing	protect_common_frequency_candidate
+1146	事業	false				1774	11	false	missing	low_priority_review
+1147	兩點	true	1742	25.488370	true	1775	11	false	manual_review	protect_common_frequency_candidate
+1148	咀	false				1776	11	false	missing	low_priority_review
+1149	定義	false				1777	11	false	missing	low_priority_review
+1150	忽然	false				1778	11	false	missing	low_priority_review
+1151	拃	true	1378	36.585961	false	1779	11	true	manual_review	protect_common_frequency_candidate
+1152	東面	true	531	170.373583	false	1781	11	false	handled_structurally	protect_common_frequency_candidate
+1153	欣賞	false				1782	11	false	missing	low_priority_review
+1154	股價	false				1783	11	false	missing	low_priority_review
+1155	表現	true	1670	28.455747	false	1784	11	false	missing	protect_common_frequency_candidate
+1156	長遠	false				1785	11	false	handled_structurally	atomic_retirement_candidate
+1157	保險	false				1786	11	false	missing	low_priority_review
+1158	活動	false				1787	11	false	missing	low_priority_review
+1159	重心	false				1788	11	false	missing	low_priority_review
+1160	哲學	false				1789	11	false	missing	low_priority_review
+1161	家人	false				1790	11	false	handled_structurally	atomic_retirement_candidate
+1162	校	true	1502	32.520854	false	1792	11	false	missing	protect_common_frequency_candidate
+1163	窄	true	1079	54.595736	true	1793	11	false	missing	protect_common_frequency_candidate
+1164	粉	false				1794	11	false	missing	low_priority_review
+1165	做法	false				1795	11	false	handled_structurally	atomic_retirement_candidate
+1166	健康	true	1976	20.325534	false	1796	11	false	missing	protect_common_frequency_candidate
+1167	唯一	true	1994	20.325534	false	1797	11	false	missing	protect_common_frequency_candidate
+1168	唱片	true	1995	20.325534	false	1798	11	false	missing	protect_common_frequency_candidate
+1169	婚姻	false				1799	11	false	missing	low_priority_review
+1170	接觸	true	1809	24.390640	false	1800	11	false	missing	protect_common_frequency_candidate
+1171	梗	true	1215	44.716174	false	1801	11	false	missing	protect_common_frequency_candidate
+1172	清	true	1883	22.520992	true	1802	11	false	missing	protect_common_frequency_candidate
+1173	率	false				1803	11	false	missing	low_priority_review
+1174	現象	false				1804	11	false	missing	low_priority_review
+1175	笪	true	1190	45.813903	true	1805	11	false	missing	protect_common_frequency_candidate
+1176	第二個韻	false				1806	11	true	manual_review	low_priority_review
+1177	第時	true	1309	40.651067	false	1807	11	true	manual_review	protect_common_frequency_candidate
+1178	粗口	true	1513	32.520854	false	1808	11	false	missing	protect_common_frequency_candidate
+1179	細妹	false				1809	11	true	manual_review	low_priority_review
+1180	終	true	1132	51.628358	false	1810	11	false	missing	protect_common_frequency_candidate
+1181	規則	false				1811	11	false	missing	low_priority_review
+1182	通	true	1413	36.585961	false	1812	11	false	missing	protect_common_frequency_candidate
+1183	通知	false				1813	11	false	missing	low_priority_review
+1184	創意	true	1471	32.520854	false	1814	11	false	missing	protect_common_frequency_candidate
+1185	創新	false				1815	11	false	missing	low_priority_review
+1186	就講	false				1816	11	true	manual_review	low_priority_review
+1187	幾日	false				1817	11	false	handled_structurally	atomic_retirement_candidate
+1188	普遍	true	1500	32.520854	false	1820	11	false	missing	protect_common_frequency_candidate
+1189	評價	false				1821	11	false	missing	low_priority_review
+1190	意義	false				1822	11	false	missing	low_priority_review
+1191	愛情	false				1823	11	false	missing	low_priority_review
+1192	業	false				1824	11	false	missing	low_priority_review
+1193	業主	true	1389	36.585961	false	1825	11	false	missing	protect_common_frequency_candidate
+1194	當你	false				1826	11	true	manual_review	low_priority_review
+1195	當我	false				1827	11	true	manual_review	low_priority_review
+1196	罪行	false				1828	11	false	missing	low_priority_review
+1197	較	false				1829	11	false	missing	low_priority_review
+1198	遊戲	true	1257	41.748797	true	1830	11	false	missing	protect_common_frequency_candidate
+1199	電訊	false				1831	11	false	missing	low_priority_review
+1200	鼓勵	false				1832	11	false	missing	low_priority_review
+1201	嘔	true	1153	48.781281	false	1833	11	false	missing	protect_common_frequency_candidate
+1202	實際上	false				1834	11	false	missing	low_priority_review
+1203	瘦	true	1142	50.204820	true	1837	11	false	missing	protect_common_frequency_candidate
+1204	賭	false				1838	11	false	missing	low_priority_review
+1205	踩	true	1753	25.488370	true	1839	11	false	missing	protect_common_frequency_candidate
+1206	燕梳	false				1840	11	true	manual_review	low_priority_review
+1207	幫到	false				1842	11	true	manual_review	low_priority_review
+1208	戲院	true	1295	40.651067	false	1843	11	false	missing	protect_common_frequency_candidate
+1209	擦紙膠	true	1065	56.791194	false	1844	11	false	manual_review	protect_common_frequency_candidate
+1210	營	false				1845	11	false	missing	low_priority_review
+1211	聯絡	true	1515	32.520854	false	1846	11	false	missing	protect_common_frequency_candidate
+1212	講開	false				1848	11	true	manual_review	low_priority_review
+1213	黏	true	1322	40.651067	false	1849	11	false	missing	protect_common_frequency_candidate
+1214	禮拜三	true	1307	40.651067	false	1850	11	true	manual_review	protect_common_frequency_candidate
+1215	禮拜六	true	1308	40.651067	false	1851	11	true	manual_review	protect_common_frequency_candidate
+1216	翻譯	true	1227	44.716174	false	1852	11	false	missing	protect_common_frequency_candidate
+1217	轉右	false				1853	11	true	manual_review	low_priority_review
+1218	轉頭	true	1187	46.139713	true	1854	11	false	handled_structurally	protect_common_frequency_candidate
+1219	額	false				1855	11	false	missing	low_priority_review
+1220	鯉	false				1856	11	false	missing	low_priority_review
+1221	穩定	true	1833	24.390640	false	1857	11	false	missing	protect_common_frequency_candidate
+1222	嚴重	true	1784	24.390640	false	1859	11	false	missing	protect_common_frequency_candidate
+1223	屬於	false				1860	11	false	missing	low_priority_review
+1224	聽到	false				1861	11	false	handled_structurally	atomic_retirement_candidate
+1225	黐	true	1325	40.204958	true	1862	11	false	missing	protect_common_frequency_candidate
+1226	顯示	true	1454	34.716312	true	1863	11	false	missing	protect_common_frequency_candidate
+1227	一模一樣	true	1273	40.976877	true	1864	10	false	missing	protect_common_frequency_candidate
+1228	一邊	true	1880	22.520992	true	1865	10	false	handled_structurally	protect_common_frequency_candidate
+1229	九十度	false				1866	10	true	manual_review	low_priority_review
+1230	人生	false				1867	10	false	handled_structurally	atomic_retirement_candidate
+1231	十一點	true	1574	29.879286	true	1868	10	false	manual_review	protect_common_frequency_candidate
+1232	上堂	true	1278	40.651067	false	1869	10	true	manual_review	protect_common_frequency_candidate
+1233	下畫	false				1870	10	true	manual_review	low_priority_review
+1234	山個	false				1871	10	true	manual_review	low_priority_review
+1235	中國人	false				1872	10	false	handled_structurally	atomic_retirement_candidate
+1236	五月	true	1599	28.455747	false	1873	10	false	handled_structurally	protect_common_frequency_candidate
+1237	內心	false				1874	10	false	missing	low_priority_review
+1238	反映	false				1875	10	false	missing	low_priority_review
+1239	天堂	false				1876	10	false	missing	low_priority_review
+1240	心態	false				1878	10	false	missing	low_priority_review
+1241	文	false				1879	10	false	missing	low_priority_review
+1242	止	true	1504	32.520854	false	1880	10	false	missing	protect_common_frequency_candidate
+1243	火星	true	1394	36.585961	false	1881	10	false	missing	protect_common_frequency_candidate
+1244	仙人掌	true	1259	41.302687	false	1882	10	false	missing	protect_common_frequency_candidate
+1245	以往	false				1883	10	false	missing	low_priority_review
+1246	凹	true	1020	59.758572	true	1884	10	false	missing	protect_common_frequency_candidate
+1247	出席	false				1885	10	false	missing	low_priority_review
+1248	加返	false				1887	10	true	manual_review	low_priority_review
+1249	可憐	true	1779	24.390640	false	1888	10	false	missing	protect_common_frequency_candidate
+1250	失	false				1889	10	false	missing	low_priority_review
+1251	民主	false				1890	10	false	missing	low_priority_review
+1252	民建聯	false				1891	10	false	missing	low_priority_review
+1253	生物	false				1892	10	false	missing	low_priority_review
+1254	由個	false				1893	10	true	manual_review	low_priority_review
+1255	全名	false				1894	10	true	manual_review	low_priority_review
+1256	合	false				1895	10	false	missing	low_priority_review
+1257	合法	false				1896	10	false	missing	low_priority_review
+1258	吋	false				1897	10	false	missing	low_priority_review
+1259	同時	true	1870	23.618721	true	1898	10	false	handled_structurally	protect_common_frequency_candidate
+1260	同樣	true	1566	30.651205	true	1899	10	false	handled_structurally	protect_common_frequency_candidate
+1261	地球	true	1287	40.651067	false	1900	10	false	missing	protect_common_frequency_candidate
+1262	好人	true	1365	36.585961	false	1901	10	false	handled_structurally	protect_common_frequency_candidate
+1263	安全	true	1370	36.585961	false	1904	10	false	missing	protect_common_frequency_candidate
+1264	年青	false				1905	10	false	missing	low_priority_review
+1265	年齡	true	1487	32.520854	false	1906	10	false	missing	protect_common_frequency_candidate
+1266	式	true	1800	24.390640	false	1907	10	false	missing	protect_common_frequency_candidate
+1267	曲	false				1909	10	false	missing	low_priority_review
+1268	有份	false				1910	10	true	manual_review	low_priority_review
+1269	有位	false				1911	10	true	manual_review	low_priority_review
+1270	老公	true	965	65.041708	false	1912	10	false	missing	protect_common_frequency_candidate
+1271	考到	false				1913	10	false	missing	low_priority_review
+1272	行返	false				1914	10	true	manual_review	low_priority_review
+1273	行路	false				1915	10	false	handled_structurally	atomic_retirement_candidate
+1274	你明	false				1916	10	true	manual_review	low_priority_review
+1275	你識	false				1917	10	true	manual_review	low_priority_review
+1276	判斷	false				1918	10	false	missing	low_priority_review
+1277	別人	false				1919	10	false	missing	low_priority_review
+1278	完整	true	1427	36.139851	false	1920	10	false	handled_structurally	protect_common_frequency_candidate
+1279	我明	false				1921	10	true	manual_review	low_priority_review
+1280	使錢	false				1922	10	false	handled_structurally	atomic_retirement_candidate
+1281	依然	false				1923	10	false	missing	low_priority_review
+1282	兔仔	false				1924	10	true	manual_review	low_priority_review
+1283	兩位	false				1925	10	true	manual_review	low_priority_review
+1284	呢邊	false				1926	10	true	manual_review	low_priority_review
+1285	味	true	1152	48.781281	false	1927	10	false	missing	protect_common_frequency_candidate
+1286	和	false				1928	10	false	missing	low_priority_review
+1287	姊妹	true	1624	28.455747	false	1929	10	false	missing	protect_common_frequency_candidate
+1288	定下	false				1930	10	false	handled_structurally	atomic_retirement_candidate
+1289	板	true	1336	38.009499	true	1931	10	false	missing	protect_common_frequency_candidate
+1290	返番	false				1932	10	true	manual_review	low_priority_review
+1291	侮辱	false				1933	10	false	missing	low_priority_review
+1292	保護	false				1934	10	false	missing	low_priority_review
+1293	指示	true	1324	40.204958	true	1936	10	false	missing	protect_common_frequency_candidate
+1294	故	false				1937	10	false	missing	low_priority_review
+1295	洲	false				1939	10	false	missing	low_priority_review
+1296	界定	false				1940	10	false	missing	low_priority_review
+1297	紅籌	true	1310	40.651067	false	1941	10	false	missing	protect_common_frequency_candidate
+1298	耶穌	true	1228	44.716174	false	1942	10	false	missing	protect_common_frequency_candidate
+1299	背後	false				1943	10	false	missing	low_priority_review
+1300	要畫	false				1944	10	true	manual_review	low_priority_review
+1301	飛碟	true	1321	40.651067	false	1945	10	false	handled_structurally	protect_common_frequency_candidate
+1302	個案	false				1946	10	false	missing	low_priority_review
+1303	原	false				1947	10	false	missing	low_priority_review
+1304	哩件	false				1948	10	true	manual_review	low_priority_review
+1305	唔知幾	false				1949	10	true	manual_review	low_priority_review
+1306	孭	true	1794	24.390640	false	1950	10	true	manual_review	protect_common_frequency_candidate
+1307	旅遊	true	1499	32.520854	false	1951	10	false	missing	protect_common_frequency_candidate
+1308	特色	true	1303	40.651067	false	1952	10	false	missing	protect_common_frequency_candidate
+1309	特殊	false				1953	10	false	missing	low_priority_review
+1310	狹窄	false				1954	10	false	missing	low_priority_review
+1311	退	false				1955	10	false	missing	low_priority_review
+1312	針對	false				1956	10	false	missing	low_priority_review
+1313	偈	true	1282	40.651067	false	1957	10	false	missing	protect_common_frequency_candidate
+1314	兜個	false				1958	10	true	manual_review	low_priority_review
+1315	副	true	1771	24.390640	false	1959	10	false	missing	protect_common_frequency_candidate
+1316	唯有	false				1960	10	true	manual_review	low_priority_review
+1317	專業	true	1627	28.455747	false	1961	10	false	missing	protect_common_frequency_candidate
+1318	得滯	true	1490	32.520854	false	1962	10	true	manual_review	protect_common_frequency_candidate
+1319	梳打	false				1963	10	true	manual_review	low_priority_review
+1320	淨	false				1964	10	false	missing	low_priority_review
+1321	清晰	true	1147	49.432900	true	1965	10	false	missing	protect_common_frequency_candidate
+1322	現實	false				1966	10	false	missing	low_priority_review
+1323	船	true	1518	32.520854	false	1967	10	false	missing	protect_common_frequency_candidate
+1324	規定	false				1968	10	false	missing	low_priority_review
+1325	貨櫃	true	1318	40.651067	false	1969	10	false	missing	protect_common_frequency_candidate
+1326	責任	false				1970	10	false	missing	low_priority_review
+1327	連埋	false				1971	10	true	manual_review	low_priority_review
+1328	陰	true	1898	21.423263	true	1972	10	false	missing	protect_common_frequency_candidate
+1329	單位	true	1782	24.390640	false	1973	10	false	handled_structurally	protect_common_frequency_candidate
+1330	期間	false				1975	10	false	missing	low_priority_review
+1331	無謂	true	1507	32.520854	false	1976	10	false	missing	protect_common_frequency_candidate
+1332	發達	true	1658	28.455747	false	1977	10	false	missing	protect_common_frequency_candidate
+1333	硬係	true	1306	40.651067	false	1978	10	true	manual_review	protect_common_frequency_candidate
+1334	量	false				1979	10	false	missing	low_priority_review
+1335	開會	true	1530	32.520854	false	1980	10	false	handled_structurally	protect_common_frequency_candidate
+1336	傳	true	1765	24.390640	false	1981	10	false	missing	protect_common_frequency_candidate
+1337	傳媒	true	1766	24.390640	false	1982	10	false	missing	protect_common_frequency_candidate
+1338	傾計	false				1983	10	true	manual_review	low_priority_review
+1339	會有	false				1984	10	true	manual_review	low_priority_review
+1340	煩	true	851	77.562838	true	1985	10	false	missing	protect_common_frequency_candidate
+1341	猷	false				1986	10	false	missing	low_priority_review
+1342	圖標	true	684	108.419553	false	1988	10	false	missing	protect_common_frequency_candidate
+1343	實際	false				1989	10	false	missing	low_priority_review
+1344	監察	false				1990	10	false	missing	low_priority_review
+1345	端	false				1991	10	false	missing	low_priority_review
+1346	網球	false				1992	10	false	missing	low_priority_review
+1347	齊	true	880	74.269651	true	1993	10	false	missing	protect_common_frequency_candidate
+1348	嘴	true	1698	26.586099	true	1995	10	false	missing	protect_common_frequency_candidate
+1349	撈	true	1449	34.716312	true	1996	10	false	missing	protect_common_frequency_candidate
+1350	數學	true	1195	45.041984	true	1997	10	false	missing	protect_common_frequency_candidate
+1351	擁有	false				1998	10	false	missing	low_priority_review
+1352	輸	true	1410	36.585961	false	1999	10	false	missing	protect_common_frequency_candidate
+1353	隨時	false				2000	10	false	missing	low_priority_review
