@@ -8,6 +8,7 @@ on:
       - .github/workflows/common-spoken-final-candidates-temp.yml
       - tools/lexical-coverage/export-common-spoken-candidate-pool.py
       - tools/lexical-coverage/export-rime-cantonese-candidate-pool.py
+      - tools/lexical-coverage/prepare-common-core-curation.py
 
 permissions:
   contents: write
@@ -30,16 +31,6 @@ jobs:
           python tools/lexical-coverage/export-common-spoken-candidate-pool.py --pool-size 5000
           python tools/lexical-coverage/export-common-spoken-candidate-pool.py --pool-size 5000 --check
           python -m py_compile tools/lexical-coverage/export-common-spoken-candidate-pool.py
-          python - <<'PY'
-          import csv, json
-          from pathlib import Path
-          p = Path('data/lexical-frequency/common-spoken-cantonese-candidates-5000.tsv')
-          rows = list(csv.DictReader(p.open(encoding='utf-8'), delimiter='\t'))
-          assert len(rows) == 5000, len(rows)
-          manifest = json.loads(Path('data/lexical-frequency/common-spoken-cantonese-candidates-5000.manifest.json').read_text())
-          assert manifest['output']['rows'] == 5000
-          print(json.dumps(manifest['output'], ensure_ascii=False, indent=2))
-          PY
       - name: Fetch pinned Rime-Cantonese source
         run: |
           set -euo pipefail
@@ -52,16 +43,23 @@ jobs:
           python tools/lexical-coverage/export-rime-cantonese-candidate-pool.py --rime-dir /tmp/rime-cantonese
           python tools/lexical-coverage/export-rime-cantonese-candidate-pool.py --rime-dir /tmp/rime-cantonese --check
           python -m py_compile tools/lexical-coverage/export-rime-cantonese-candidate-pool.py
+      - name: Generate temporary expert-review queue
+        run: |
+          set -euo pipefail
+          python tools/lexical-coverage/prepare-common-core-curation.py
+          python -m py_compile tools/lexical-coverage/prepare-common-core-curation.py
           python - <<'PY'
-          import json
+          import csv, json
           from pathlib import Path
-          p = Path('external-evidence/lexical-pos/rime-cantonese/c99b16e44d2df77a5cb8fb0867dd2bab7a112cb0/common-spoken-candidates-5000.manifest.json')
-          manifest = json.loads(p.read_text())
-          assert manifest['output']['rows'] == 5000
-          print(json.dumps(manifest['output'], ensure_ascii=False, indent=2))
+          q = Path('data/lexical-frequency/common-spoken-cantonese-curation-review-temp.tsv')
+          rows = list(csv.DictReader(q.open(encoding='utf-8'), delimiter='\t'))
+          s = json.loads(Path('data/lexical-frequency/common-spoken-cantonese-curation-review-temp.json').read_text())
+          assert len(rows) == s['flagged_review_rows']
+          assert s['candidate_rows_scanned'] == 2800
+          print(json.dumps(s, ensure_ascii=False, indent=2))
           PY
           git diff --check
-      - name: Commit permanent candidate evidence
+      - name: Commit candidate evidence and temporary review queue
         run: |
           set -euo pipefail
           git config user.name "canto-span-final-core-candidates"
@@ -69,10 +67,12 @@ jobs:
           git add data/lexical-frequency/common-spoken-cantonese-candidates-5000.tsv \
                   data/lexical-frequency/common-spoken-cantonese-candidates-5000.manifest.json \
                   external-evidence/lexical-pos/rime-cantonese/c99b16e44d2df77a5cb8fb0867dd2bab7a112cb0/common-spoken-candidates-5000-readings.tsv \
-                  external-evidence/lexical-pos/rime-cantonese/c99b16e44d2df77a5cb8fb0867dd2bab7a112cb0/common-spoken-candidates-5000.manifest.json
+                  external-evidence/lexical-pos/rime-cantonese/c99b16e44d2df77a5cb8fb0867dd2bab7a112cb0/common-spoken-candidates-5000.manifest.json \
+                  data/lexical-frequency/common-spoken-cantonese-curation-review-temp.tsv \
+                  data/lexical-frequency/common-spoken-cantonese-curation-review-temp.json
           if git diff --cached --quiet; then
-            echo 'No generated candidate evidence change'
+            echo 'No generated candidate/review evidence change'
           else
-            git commit -m 'Materialize expanded spoken Cantonese candidate evidence'
+            git commit -m 'Materialize common Cantonese curation review queue'
             git push origin HEAD:agent/common-spoken-core-final-2000
           fi
