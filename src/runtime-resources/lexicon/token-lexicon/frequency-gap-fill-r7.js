@@ -1,8 +1,10 @@
 "use strict";
 
-// AUTO-MATERIALIZED from data/lexical-frequency/cifu-spoken-top-2000.tsv.
-// Every Cifu top-2,000 surface lacking direct runtime coverage on the baseline is retained here.
-// Entries are neutral lexical coverage; parser regressions or uncertain POS do not justify deleting them.
+// HISTORICAL R7 materialization from data/lexical-frequency/cifu-spoken-top-2000.tsv.
+// Surviving records are neutral review candidates, not proof that each Cifu surface is an atomic Cantonese lexeme.
+// Cifu definitions/Jyutping are provenance/candidate metadata only; expert lexicality evidence governs retention.
+// Adjudicated nonlexical, malformed, contaminated, or compositional whole-surface atoms are retired via the lexical-cleanup ledgers.
+// Valid rare/formal/archaic Cantonese may remain even when it is not a common-core development priority.
 module.exports = [
   ["哋", { label: "lex", pos: "lexical_item", jyutping: "dei6", syntax: "lexical_item", note: "Cifu SpokenAdult rank 25, frequency 2116; prior audit status missing. plural suffix. Source readings: dei6. Exact surface retained as neutral lexical coverage; POS/grammar-role verification is intentionally separate." }],
   ["即", { label: "lex", pos: "lexical_item", jyutping: "zik1", syntax: "lexical_item", note: "Cifu SpokenAdult rank 27, frequency 1930; prior audit status missing. namely/that is/i.e./prompt/at once/at present/even if/prompted (by the occasion)/to approach/to come into contact/to assume (office)/to draw near. Source readings: zik1. Exact surface retained as neutral lexical coverage; POS/grammar-role verification is intentionally separate." }],
