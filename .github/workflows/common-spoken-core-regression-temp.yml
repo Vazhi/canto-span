@@ -40,6 +40,7 @@ jobs:
           set +e
           npm run test:regression > /tmp/baseline-regression.log 2>&1
           code=$?
+          cp validation/current/regression-suite.json /tmp/baseline-regression.json
           echo "exit_code=$code" >> "$GITHUB_OUTPUT"
           exit 0
 
@@ -57,6 +58,7 @@ jobs:
           set +e
           npm run test:regression > /tmp/pruned-regression.log 2>&1
           code=$?
+          cp validation/current/regression-suite.json /tmp/pruned-regression.json
           echo "exit_code=$code" >> "$GITHUB_OUTPUT"
           exit 0
 
@@ -67,36 +69,44 @@ jobs:
         run: |
           set -euo pipefail
           python - <<'PY'
-          import hashlib
           import json
           import os
           import re
           from pathlib import Path
 
-          baseline = Path('/tmp/baseline-regression.log').read_text(encoding='utf-8', errors='replace')
-          pruned = Path('/tmp/pruned-regression.log').read_text(encoding='utf-8', errors='replace')
+          baseline = json.loads(Path('/tmp/baseline-regression.json').read_text(encoding='utf-8'))
+          pruned = json.loads(Path('/tmp/pruned-regression.json').read_text(encoding='utf-8'))
           prune = Path('/tmp/prune-r7.log').read_text(encoding='utf-8', errors='replace')
 
-          def summary(text):
-              lines = text.splitlines()
-              signal = [line for line in lines if re.search(r'(?i)(not ok|\bfail(?:ed|ure)?\b|assertionerror|error:|expected|actual)', line)]
-              return {
-                  'line_count': len(lines),
-                  'sha256': hashlib.sha256(text.encode()).hexdigest(),
-                  'signal_lines': signal[-120:],
-                  'tail': lines[-80:],
-              }
+          def key(row):
+              return (row.get('source', ''), row.get('context_source', ''))
 
+          baseline_by_key = {key(row): row for row in baseline.get('failures', [])}
+          pruned_by_key = {key(row): row for row in pruned.get('failures', [])}
+          recovered_keys = sorted(set(baseline_by_key) - set(pruned_by_key))
+          new_keys = sorted(set(pruned_by_key) - set(baseline_by_key))
+          still_keys = sorted(set(baseline_by_key) & set(pruned_by_key))
           removed_match = re.search(r'R7 atomic retirement candidates: (\d+)', prune)
+          removed_surfaces_match = re.search(r'removed surfaces: (.+)', prune)
+          removed_surfaces = []
+          if removed_surfaces_match:
+              removed_surfaces = [item.strip() for item in removed_surfaces_match.group(1).split('|') if item.strip()]
+
           payload = {
-              'schema': 'canto-span-r7-retirement-regression-comparison-v1',
+              'schema': 'canto-span-r7-retirement-regression-comparison-v2',
               'experiment': 'remove only R7 entries outside the raw common-spoken top-2000 candidate set whose pre-R7 audit status was handled_structurally',
               'runtime_change_committed': False,
+              'candidate_count': int(removed_match.group(1)) if removed_match else None,
+              'removed_surfaces': removed_surfaces,
               'baseline_exit': int(os.environ['BASELINE_EXIT']),
               'pruned_exit': int(os.environ['PRUNED_EXIT']),
-              'candidate_count': int(removed_match.group(1)) if removed_match else None,
-              'baseline': summary(baseline),
-              'pruned': summary(pruned),
+              'baseline_failed': baseline.get('failed'),
+              'pruned_failed': pruned.get('failed'),
+              'recovered_case_count': len(recovered_keys),
+              'new_failure_count': len(new_keys),
+              'still_failing_case_count': len(still_keys),
+              'recovered_cases': [baseline_by_key[k] for k in recovered_keys],
+              'new_failures': [pruned_by_key[k] for k in new_keys],
               'interpretation_rule': 'Permanent retirement requires low common-use value plus demonstrated regression/ambiguity benefit; common-core entries remain protected.',
           }
           path = Path('data/lexical-frequency/common-spoken-cantonese-r7-regression-result.json')
@@ -110,6 +120,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No diagnostic result change"
           else
-            git commit -m "Record R7 retirement regression comparison"
+            git commit -m "Record exact R7 regression comparison"
             git push origin HEAD:agent/common-spoken-core-2000
           fi
