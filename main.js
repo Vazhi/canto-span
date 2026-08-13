@@ -9140,6 +9140,12 @@ var require_lexical_selection = __commonJS({
         if (lexicalizationType === "lexicalized_stative") return "lexicalized_stative_registry";
         return "";
       }
+      function neutralFrequencyCoverageFallback(surface) {
+        const entry = TOKEN_LEXICON2[surface] || {};
+        if (String(entry.pos || "") !== "lexical_item") return false;
+        if (!String(entry.syntax || "").split(/\s+/u).includes("lexical_item")) return false;
+        return String(entry.note || "").includes("Exact surface retained as neutral lexical coverage");
+      }
       function transparentClassifierObjectParts2(surface) {
         const phrase = String(surface || "");
         const entry = TOKEN_LEXICON2[phrase] || {};
@@ -9160,10 +9166,15 @@ var require_lexical_selection = __commonJS({
       const ALL_LEXICON_TERMS2 = Object.keys(TOKEN_LEXICON2).filter((surface) => !PRODUCTIVE_VO2[surface]).sort((a, b) => b.length - a.length || a.localeCompare(b));
       const LEXICON_TERMS2 = ALL_LEXICON_TERMS2.filter((surface) => !shouldForceCompositional2(surface)).sort((a, b) => b.length - a.length || a.localeCompare(b));
       const LEXICALIZED_STATIVE_SELECTION_WEIGHT2 = 1e4;
+      const NEUTRAL_FREQUENCY_FALLBACK_PENALTY = 1e3;
       function lexicalCandidateScore2(surface) {
         const registryKind = lexicalizedStativeRegistryKind2(surface);
         const registryScore = registryKind ? LEXICALIZED_STATIVE_SELECTION_WEIGHT2 : 0;
         return registryScore + surface.length;
+      }
+      function lexicalCandidatePriorityScore(surface) {
+        const fallbackPenalty = neutralFrequencyCoverageFallback(surface) ? NEUTRAL_FREQUENCY_FALLBACK_PENALTY : 0;
+        return lexicalCandidateScore2(surface) - fallbackPenalty;
       }
       function followingLexicalizedStativeAfterChoice2(choice, rest) {
         const afterChoice = String(rest || "").slice(String(choice || "").length);
@@ -9177,11 +9188,15 @@ var require_lexical_selection = __commonJS({
         const competingRegistry = candidates.filter((surface) => surface !== choice && lexicalizedStativeRegistryKind2(surface)).map((surface) => lexicalizedStativeRegistryKind2(surface));
         const hasLongerExcluded = excluded.some((item) => item.length > choice.length);
         const followingRegistry = followingLexicalizedStativeAfterChoice2(choice, rest);
+        const displacedNeutralFallback = candidates.some((surface) => surface !== choice && neutralFrequencyCoverageFallback(surface) && lexicalCandidatePriorityScore(surface) < lexicalCandidatePriorityScore(choice));
         if (registryKind) {
           return `${registryKind} candidate wins over compositional or shorter candidates by lexicalized-stative selection scoring.`;
         }
         if (hasLongerExcluded) {
           return "Chosen after longer forced-compositional phrase was excluded so learner-visible internal structure can remain available.";
+        }
+        if (displacedNeutralFallback && !neutralFrequencyCoverageFallback(choice)) {
+          return "Chosen over a longer neutral frequency-list coverage fallback because independently typed lexical evidence has higher parser priority.";
         }
         if (followingRegistry && choice === "好") {
           return `Chosen as degree modifier before following ${followingRegistry.registry_kind} candidate ${followingRegistry.surface}; learner-visible composition remains available.`;
@@ -9229,6 +9244,8 @@ var require_lexical_selection = __commonJS({
         if (!candidates.length) return null;
         const excluded = ALL_LEXICON_TERMS2.filter((surface2) => rest.startsWith(surface2) && shouldForceCompositional2(surface2));
         candidates.sort((a, b) => {
+          const priorityDiff = lexicalCandidatePriorityScore(b) - lexicalCandidatePriorityScore(a);
+          if (priorityDiff) return priorityDiff;
           const scoreDiff = lexicalCandidateScore2(b) - lexicalCandidateScore2(a);
           if (scoreDiff) return scoreDiff;
           const lengthDiff = b.length - a.length;
@@ -9246,12 +9263,15 @@ var require_lexical_selection = __commonJS({
       }
       return {
         lexicalizedStativeRegistryKind: lexicalizedStativeRegistryKind2,
+        neutralFrequencyCoverageFallback,
         transparentClassifierObjectParts: transparentClassifierObjectParts2,
         shouldForceCompositional: shouldForceCompositional2,
         ALL_LEXICON_TERMS: ALL_LEXICON_TERMS2,
         LEXICON_TERMS: LEXICON_TERMS2,
         LEXICALIZED_STATIVE_SELECTION_WEIGHT: LEXICALIZED_STATIVE_SELECTION_WEIGHT2,
+        NEUTRAL_FREQUENCY_FALLBACK_PENALTY,
         lexicalCandidateScore: lexicalCandidateScore2,
+        lexicalCandidatePriorityScore,
         followingLexicalizedStativeAfterChoice: followingLexicalizedStativeAfterChoice2,
         lexicalSelectionReason: lexicalSelectionReason2,
         lexicalSelectionDecision: lexicalSelectionDecision2,
