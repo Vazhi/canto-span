@@ -41,16 +41,16 @@ def load_tsv(path: Path) -> list[dict[str, str]]:
 
 
 def looks_numeric_structural(word: str) -> bool:
-    if len(word) < 2:
-        return False
-    if not any(ch in NUMERALS for ch in word):
+    if len(word) < 2 or not any(ch in NUMERALS for ch in word):
         return False
     return any(ch in MEASURE_TIME for ch in word[1:])
 
 
 def risk_flags(row: dict[str, str], rime: dict[str, str]) -> list[str]:
+    rank = int(row["candidate_rank"])
     word = row["word"]
     flags: list[str] = []
+
     if row.get("known_invalid_atomic") == "true":
         flags.append("known_invalid_atomic")
 
@@ -58,14 +58,20 @@ def risk_flags(row: dict[str, str], rime: dict[str, str]) -> list[str]:
     if proper_share >= 0.80 and int(row.get("hkcancor_count") or 0) >= 2:
         flags.append("proper_name_signal")
 
-    balance = float(row.get("cross_corpus_balance") or 0.0)
-    if row.get("attested_both_spoken_corpora") != "true":
-        flags.append("single_corpus_signal")
-    elif balance < 0.10:
-        flags.append("domain_concentration_signal")
-
     if rime.get("rime_present") != "true":
         flags.append("rime_absent")
+
+    # Corpus imbalance is common for ordinary words because HKCanCor and CantoMap have
+    # different domains and tokenization. It becomes a review trigger only near the
+    # eventual cutoff and only when historical Cifu does not independently corroborate
+    # broad spoken frequency.
+    in_cifu = row.get("cifu_top2000") == "true"
+    balance = float(row.get("cross_corpus_balance") or 0.0)
+    both = row.get("attested_both_spoken_corpora") == "true"
+    if rank >= 1000 and not in_cifu and both and balance < 0.05:
+        flags.append("lower_rank_domain_concentration")
+    if rank >= 1500 and not in_cifu and not both:
+        flags.append("lower_rank_single_corpus_non_cifu")
 
     if len(word) > 1:
         if looks_numeric_structural(word):
@@ -81,7 +87,6 @@ def risk_flags(row: dict[str, str], rime: dict[str, str]) -> list[str]:
         elif word.endswith(ASPECT_RESULT_FINALS):
             flags.append("aspect_result_sequence")
 
-    # De-duplicate while preserving order.
     return list(dict.fromkeys(flags))
 
 
@@ -93,35 +98,20 @@ def main() -> int:
         raise SystemExit("expected matching 5000-row candidate and Rime ledgers")
 
     fields = [
-        "candidate_rank",
-        "word",
-        "combined_equal_corpus_ppm",
-        "hkcancor_count",
-        "cantomap_count",
-        "attested_both_spoken_corpora",
-        "cross_corpus_balance",
-        "hkcancor_top_pos",
-        "hkcancor_pos_counts",
-        "hkcancor_proper_like_share",
-        "hkcancor_jyutping_counts",
-        "cantomap_top_pos",
-        "cantomap_pos_counts",
-        "cantomap_jyutping_counts",
-        "cifu_top2000",
-        "cifu_rank",
-        "known_invalid_atomic",
-        "rime_present",
-        "rime_readings_compact",
-        "rime_source_files",
-        "review_flags",
-        "expert_status",
-        "expert_note",
+        "candidate_rank", "word", "combined_equal_corpus_ppm",
+        "hkcancor_count", "cantomap_count", "attested_both_spoken_corpora",
+        "cross_corpus_balance", "hkcancor_top_pos", "hkcancor_pos_counts",
+        "hkcancor_proper_like_share", "hkcancor_jyutping_counts",
+        "cantomap_top_pos", "cantomap_pos_counts", "cantomap_jyutping_counts",
+        "cifu_top2000", "cifu_rank", "known_invalid_atomic", "rime_present",
+        "rime_readings_compact", "rime_source_files", "review_flags",
+        "expert_status", "expert_note",
     ]
 
     review_rows: list[dict[str, str]] = []
     flag_counts: Counter[str] = Counter()
     convergent_unflagged = 0
-    unflagged_rime_absent = 0
+    unflagged_nonrime = 0
 
     for row in candidates:
         rank = int(row["candidate_rank"])
@@ -135,7 +125,7 @@ def main() -> int:
             if rime.get("rime_lexical_source_present") == "true":
                 convergent_unflagged += 1
             else:
-                unflagged_rime_absent += 1
+                unflagged_nonrime += 1
             continue
         flag_counts.update(flags)
         review_rows.append({
@@ -155,12 +145,12 @@ def main() -> int:
         writer.writerows(review_rows)
 
     summary = {
-        "schema": "canto-span-common-spoken-curation-review-temp-v1",
+        "schema": "canto-span-common-spoken-curation-review-temp-v2",
         "review_limit": REVIEW_LIMIT,
         "candidate_rows_scanned": REVIEW_LIMIT,
         "flagged_review_rows": len(review_rows),
         "unflagged_convergent_lexical_candidates": convergent_unflagged,
-        "unflagged_nonlexical_source_candidates": unflagged_rime_absent,
+        "unflagged_nonrime_candidates": unflagged_nonrime,
         "flag_counts": dict(sorted(flag_counts.items())),
         "important_rule": "Flags prioritize expert review only. They do not automatically include or exclude a surface.",
     }
