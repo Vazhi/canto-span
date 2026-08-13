@@ -11,13 +11,15 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   compare:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
@@ -39,14 +41,12 @@ jobs:
           npm run test:regression > /tmp/baseline-regression.log 2>&1
           code=$?
           echo "exit_code=$code" >> "$GITHUB_OUTPUT"
-          echo "===== BASELINE REGRESSION ====="
-          cat /tmp/baseline-regression.log
           exit 0
 
       - name: Apply narrow low-value R7 retirement experiment
         run: |
           set -euo pipefail
-          python tools/lexical-coverage/prune-r7-low-value.py --write
+          python tools/lexical-coverage/prune-r7-low-value.py --write | tee /tmp/prune-r7.log
           git diff --check
           git diff --stat -- src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js
 
@@ -58,13 +58,58 @@ jobs:
           npm run test:regression > /tmp/pruned-regression.log 2>&1
           code=$?
           echo "exit_code=$code" >> "$GITHUB_OUTPUT"
-          echo "===== PRUNED REGRESSION ====="
-          cat /tmp/pruned-regression.log
           exit 0
 
-      - name: Compare outcomes
-        shell: bash
+      - name: Persist diagnostic result only
+        env:
+          BASELINE_EXIT: ${{ steps.baseline.outputs.exit_code }}
+          PRUNED_EXIT: ${{ steps.pruned.outputs.exit_code }}
         run: |
-          echo "baseline_exit=${{ steps.baseline.outputs.exit_code }}"
-          echo "pruned_exit=${{ steps.pruned.outputs.exit_code }}"
-          echo "Retirement experiment is diagnostic only; this workflow never commits runtime changes."
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          import re
+          from pathlib import Path
+
+          baseline = Path('/tmp/baseline-regression.log').read_text(encoding='utf-8', errors='replace')
+          pruned = Path('/tmp/pruned-regression.log').read_text(encoding='utf-8', errors='replace')
+          prune = Path('/tmp/prune-r7.log').read_text(encoding='utf-8', errors='replace')
+
+          def summary(text):
+              lines = text.splitlines()
+              signal = [line for line in lines if re.search(r'(?i)(not ok|\bfail(?:ed|ure)?\b|assertionerror|error:|expected|actual)', line)]
+              return {
+                  'line_count': len(lines),
+                  'sha256': hashlib.sha256(text.encode()).hexdigest(),
+                  'signal_lines': signal[-120:],
+                  'tail': lines[-80:],
+              }
+
+          removed_match = re.search(r'R7 atomic retirement candidates: (\d+)', prune)
+          payload = {
+              'schema': 'canto-span-r7-retirement-regression-comparison-v1',
+              'experiment': 'remove only R7 entries outside the raw common-spoken top-2000 candidate set whose pre-R7 audit status was handled_structurally',
+              'runtime_change_committed': False,
+              'baseline_exit': int(os.environ['BASELINE_EXIT']),
+              'pruned_exit': int(os.environ['PRUNED_EXIT']),
+              'candidate_count': int(removed_match.group(1)) if removed_match else None,
+              'baseline': summary(baseline),
+              'pruned': summary(pruned),
+              'interpretation_rule': 'Permanent retirement requires low common-use value plus demonstrated regression/ambiguity benefit; common-core entries remain protected.',
+          }
+          path = Path('data/lexical-frequency/common-spoken-cantonese-r7-regression-result.json')
+          path.write_text(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+          PY
+
+          # Do not stage the experimental R7 deletion. Persist only the comparison evidence.
+          git config user.name "canto-span-common-core-regression"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/lexical-frequency/common-spoken-cantonese-r7-regression-result.json
+          if git diff --cached --quiet; then
+            echo "No diagnostic result change"
+          else
+            git commit -m "Record R7 retirement regression comparison"
+            git push origin HEAD:agent/common-spoken-core-2000
+          fi
