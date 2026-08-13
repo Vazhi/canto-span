@@ -23,6 +23,19 @@ jobs:
           package-manager-cache: false
       - name: Install build dependencies
         run: npm ci
+      - name: Normalize reviewed analysis ID
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          path = Path("src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-reviewed.js")
+          text = path.read_text()
+          pattern = r'(analysis\(152,\s*5275707047,\s*"間",\s*)"[^"]+"'
+          updated, count = re.subn(pattern, r'\1"classifier_gaan1"', text, count=1)
+          if count != 1:
+              raise SystemExit(f"expected one 間 classifier analysis id to normalize; found {count}")
+          path.write_text(updated)
+          PY
       - name: Run focused reviewed-lexicon test
         shell: bash
         run: |
@@ -42,15 +55,15 @@ jobs:
           fi
       - name: Materialize runtime bundle
         run: npm run build:runtime
-      - name: Commit deterministic runtime bundle
+      - name: Commit deterministic source correction and runtime bundle
         shell: bash
         run: |
-          if git diff --quiet -- main.js; then
-            echo "main.js already current"
+          if git diff --quiet -- src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-reviewed.js main.js; then
+            echo "reviewed source and main.js already current"
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add main.js
+          git add src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-reviewed.js main.js
           git commit -m "Build runtime for reviewed Cifu lexical layer"
           git push origin HEAD:agent/cifu-r1-250-runtime-reconcile
