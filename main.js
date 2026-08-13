@@ -7582,8 +7582,8 @@ var require_token_features = __commonJS({
           label,
           syntax,
           pos: overrides.pos || entry.pos || "",
-          semantic: Array.isArray(entry.semantic) ? entry.semantic : [],
-          verb_class: Array.isArray(entry.verb_class) ? entry.verb_class : [],
+          semantic: Array.isArray(entry.semantic) ? [...entry.semantic] : [],
+          verb_class: Array.isArray(entry.verb_class) ? [...entry.verb_class] : [],
           particle_class: entry.particle_class || ""
         };
         if (!features.pos) {
