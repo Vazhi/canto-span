@@ -1,0 +1,84 @@
+name: Temporary Cifu ranks 1-250 ratchet check
+
+on:
+  push:
+    branches:
+      - agent/cifu-r1-250-runtime-reconcile
+    paths:
+      - ".github/workflows/cifu-r1-250-ratchet-temp.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  ratchet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/cifu-r1-250-runtime-reconcile
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Install branch dependencies
+        run: npm ci
+      - name: Run branch focused lexical test
+        run: node tests/tooling/lexicon/cifu-r1-250-reviewed-runtime.test.js
+      - name: Verify generated runtime
+        run: npm run test:generated-runtime
+      - name: Capture branch regression identities
+        shell: bash
+        run: |
+          set +e
+          node tests/run-regression.js > /tmp/cifu-branch-regression.json
+          status=$?
+          set -e
+          if [ "$status" -ne 0 ] && [ "$status" -ne 1 ]; then
+            echo "branch regression runner exited unexpectedly: $status"
+            exit "$status"
+          fi
+      - name: Capture baseline regression identities
+        shell: bash
+        run: |
+          git worktree add --detach /tmp/canto-main 2b0dfc8564d2d7329331f454c9aa3c460986d04d
+          cd /tmp/canto-main
+          npm ci
+          set +e
+          node tests/run-regression.js > /tmp/cifu-main-regression.json
+          status=$?
+          set -e
+          if [ "$status" -ne 0 ] && [ "$status" -ne 1 ]; then
+            echo "baseline regression runner exited unexpectedly: $status"
+            exit "$status"
+          fi
+      - name: Compare stable failure identities
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const baseline = JSON.parse(fs.readFileSync('/tmp/cifu-main-regression.json', 'utf8'));
+          const branch = JSON.parse(fs.readFileSync('/tmp/cifu-branch-regression.json', 'utf8'));
+          const key = (row) => `${row.source || ''}\u0000${row.context_source || ''}`;
+          const describe = (row) => ({ source: row.source || '', context_source: row.context_source || '' });
+          const baselineByKey = new Map((baseline.failures || []).map((row) => [key(row), row]));
+          const branchByKey = new Map((branch.failures || []).map((row) => [key(row), row]));
+          const newFailures = [...branchByKey].filter(([k]) => !baselineByKey.has(k)).map(([, row]) => describe(row));
+          const resolvedFailures = [...baselineByKey].filter(([k]) => !branchByKey.has(k)).map(([, row]) => describe(row));
+          const result = {
+            schema: 'canto-span-regression-ratchet-comparison-v1',
+            baseline_commit: '2b0dfc8564d2d7329331f454c9aa3c460986d04d',
+            baseline_raw_failed: baseline.failed,
+            branch_raw_failed: branch.failed,
+            baseline_unique_failure_identities: baselineByKey.size,
+            branch_unique_failure_identities: branchByKey.size,
+            new_unique_failure_count: newFailures.length,
+            resolved_unique_failure_count: resolvedFailures.length,
+            subset_invariant: newFailures.length === 0,
+            new_unique_failures: newFailures,
+            resolved_unique_failures: resolvedFailures,
+          };
+          console.log(JSON.stringify(result, null, 2));
+          if (newFailures.length) process.exit(1);
+          NODE
