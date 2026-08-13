@@ -17,13 +17,7 @@ jobs:
       - uses: actions/checkout@v6
         with:
           ref: agent/frozen-token-feature-arrays
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 24
-          package-manager-cache: false
-      - name: Install build dependencies
-        run: npm ci
-      - name: Locate acceptability trace owner
+      - name: Locate broad predicate template and acceptability definitions
         run: |
           set -euo pipefail
-          grep -R -n -E 'AcceptabilityClause|IndefiniteWhUniversalClause|secondary_predicate|restricted_predicate|template_family' src tools tests | head -n 400
+          grep -R -n -E 'bounded_complement|AcceptabilityClause' src/runtime-resources/grammar src/parser | head -n 250 || true
