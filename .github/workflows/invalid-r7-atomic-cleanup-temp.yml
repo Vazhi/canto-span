@@ -7,7 +7,9 @@ on:
     paths:
       - .github/workflows/invalid-r7-atomic-cleanup-temp.yml
       - tools/lexical-coverage/retire-invalid-r7-atoms.py
+      - tools/lexical-coverage/audit-invalid-runtime-atoms.py
       - data/lexical-frequency/r7-invalid-atomic-retirements.tsv
+      - data/lexical-frequency/r7-invalid-atomic-retirements-1251-2000.tsv
 
 permissions:
   contents: write
@@ -39,6 +41,11 @@ jobs:
           node --check src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js
           node -e "require('./src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js')"
 
+      - name: Audit full token lexicon for remaining invalid atoms
+        run: |
+          set -euo pipefail
+          python tools/lexical-coverage/audit-invalid-runtime-atoms.py
+
       - name: Regression diagnostic only
         run: |
           set +e
@@ -54,10 +61,11 @@ jobs:
           git config user.name "canto-span-invalid-lexeme-cleanup"
           git config user.email "actions@users.noreply.github.com"
           git add src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js \
-                  data/lexical-frequency/r7-invalid-atomic-retirement-report.json
+                  data/lexical-frequency/r7-invalid-atomic-retirement-report.json \
+                  data/lexical-frequency/invalid-atomic-runtime-audit.json
           if git diff --cached --quiet; then
-            echo "No R7 cleanup change"
+            echo "No lexical cleanup/audit change"
           else
-            git commit -m "Retire adjudicated invalid R7 atomic entries"
+            git commit -m "Audit invalid atoms across full runtime"
             git push origin HEAD:agent/common-spoken-core-2000
           fi
