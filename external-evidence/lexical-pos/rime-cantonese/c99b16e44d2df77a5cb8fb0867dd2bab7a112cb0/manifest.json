@@ -1,0 +1,52 @@
+{
+  "cifu_input": {
+    "path": "data/lexical-frequency/cifu-spoken-top-2000.tsv",
+    "rows": 2000,
+    "sha256": "c78b377ae2d40314899acf64349b35910d81b01851e63020af1efd90e923687d"
+  },
+  "limitations": [
+    "Rime presence supports a Cantonese surface/reading candidate; it does not establish POS, sense, construction identity, or atomic lexicality.",
+    "Rime absence is not evidence that a surface or reading is absent from Cantonese.",
+    "Rime dictionary weights are intentionally discarded and must not be interpreted as linguistic frequency.",
+    "Cifu Jyutping is retained only as candidate metadata for comparison and has no independent evidentiary weight."
+  ],
+  "output": {
+    "rime_absent": 258,
+    "rime_multi_reading": 391,
+    "rime_present": 1742,
+    "rows": 2000,
+    "source_surface_counts": {
+      "jyut6ping3.chars.dict.yaml": 749,
+      "jyut6ping3.words.dict.yaml": 993
+    }
+  },
+  "purpose": "Offline exact-surface Cantonese pronunciation/orthography corroboration for Cifu SpokenAdult top-2000 adjudication; not POS, semantic, lexicality, or frequency authority.",
+  "schema": "canto-span-rime-cantonese-top2000-v1",
+  "upstream": {
+    "commit": "c99b16e44d2df77a5cb8fb0867dd2bab7a112cb0",
+    "commit_date": "2026-07-02T11:05:50Z",
+    "license": "CC-BY-4.0",
+    "license_file": "LICENSE-CC-BY",
+    "repository": "rime/rime-cantonese",
+    "source_files": [
+      {
+        "bytes": 345273,
+        "git_blob_sha": "f4680c79ac56dd1f88a8d3ff23ec10ca2f2f8976",
+        "path": "jyut6ping3.chars.dict.yaml",
+        "sha256": "a648a3c27d36a3ebd4bea3b35587eaaa702b189fb39a9421c3df132d5bef7a43"
+      },
+      {
+        "bytes": 2630257,
+        "git_blob_sha": "df000c8c0fa3979ece7e17beb13270fb8784ac18",
+        "path": "jyut6ping3.words.dict.yaml",
+        "sha256": "49b069fdc8bc402fa652033d05b6f9188b55c56454c99d74481d81be01c1bf13"
+      },
+      {
+        "bytes": 4958423,
+        "git_blob_sha": "e3888c43b2e2aac2c89a7134f93f4920705c9187",
+        "path": "jyut6ping3.phrase.dict.yaml",
+        "sha256": "3071d1ca43d6861aefcaa14e1b72780b21537b4e58b86ffce27ae0577c94e2ed"
+      }
+    ]
+  }
+}
