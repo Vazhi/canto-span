@@ -117,11 +117,17 @@ evidentiary weight.
 
 Known regression failures are implementation debt, not accepted behavior. Permanent
 changes must obey the failing-case-set ratchet defined in `docs/current/TESTING.md`:
-no new unique failing case, no passing-to-failing transition, no protected behavior
-loss, and no hidden failure through weakened tests, expectations, or diagnostics.
-Regression-directed work must strictly reduce the failing set; independently justified
-cleanup may leave it unchanged but may not expand it. Remaining failures stay recorded
-as debt until separately repaired.
+no new unique failure on the unchanged valid test set, no unexplained passing-to-failing
+transition, no protected behavior loss, and no hidden failure through unjustified test,
+expectation, or diagnostic changes. A passing test is not immutable: when preserving
+it would require discarding independently justified progress or retaining a stale or
+incorrect behavioral expectation, review the test under the explicit test-validity
+procedure in `TESTING.md`. A justified test modification, replacement, split, or
+removal changes the measurement contract and is accounted separately; it does not
+count as regression-debt reduction by itself. Regression-directed work must strictly
+reduce actual behavior debt on the unchanged valid test set; independently justified
+cleanup may leave it unchanged but may not introduce new valid-test failures. Remaining
+failures stay recorded as debt until separately repaired.
 
 Do not silently change or infer construction identity, linguistic status, runtime
 behavior, survey deployment, evidence sufficiency, release state, or merge
