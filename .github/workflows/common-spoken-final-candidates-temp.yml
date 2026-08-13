@@ -1,0 +1,55 @@
+name: Materialize expanded spoken Cantonese candidate pool
+
+on:
+  push:
+    branches:
+      - agent/common-spoken-core-final-2000
+    paths:
+      - .github/workflows/common-spoken-final-candidates-temp.yml
+      - tools/lexical-coverage/export-common-spoken-candidate-pool.py
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install pinned corpus dependency
+        run: pip install 'pycantonese==5.0.0'
+      - name: Generate and deterministically verify candidate pool
+        run: |
+          set -euo pipefail
+          python tools/lexical-coverage/export-common-spoken-candidate-pool.py --pool-size 5000
+          python tools/lexical-coverage/export-common-spoken-candidate-pool.py --pool-size 5000 --check
+          python -m py_compile tools/lexical-coverage/export-common-spoken-candidate-pool.py
+          python - <<'PY'
+          import csv, json
+          from pathlib import Path
+          p = Path('data/lexical-frequency/common-spoken-cantonese-candidates-5000.tsv')
+          rows = list(csv.DictReader(p.open(encoding='utf-8'), delimiter='\t'))
+          assert len(rows) == 5000, len(rows)
+          manifest = json.loads(Path('data/lexical-frequency/common-spoken-cantonese-candidates-5000.manifest.json').read_text())
+          assert manifest['output']['rows'] == 5000
+          print(json.dumps(manifest['output'], ensure_ascii=False, indent=2))
+          PY
+          git diff --check
+      - name: Commit permanent candidate evidence
+        run: |
+          set -euo pipefail
+          git config user.name "canto-span-final-core-candidates"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/lexical-frequency/common-spoken-cantonese-candidates-5000.tsv \
+                  data/lexical-frequency/common-spoken-cantonese-candidates-5000.manifest.json
+          if git diff --cached --quiet; then
+            echo 'No generated candidate change'
+          else
+            git commit -m 'Materialize expanded spoken Cantonese candidate pool'
+            git push origin HEAD:agent/common-spoken-core-final-2000
+          fi
