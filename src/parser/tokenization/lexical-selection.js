@@ -21,6 +21,14 @@ module.exports = function createLexicalSelection(dependencies = {}) {
     if (lexicalizationType === "lexicalized_stative") return "lexicalized_stative_registry";
     return "";
   }
+
+  function neutralFrequencyCoverageFallback(surface) {
+    const entry = TOKEN_LEXICON[surface] || {};
+    if (String(entry.pos || "") !== "lexical_item") return false;
+    if (!String(entry.syntax || "").split(/\s+/u).includes("lexical_item")) return false;
+    return String(entry.note || "").includes("Exact surface retained as neutral lexical coverage");
+  }
+
   function transparentClassifierObjectParts(surface) {
     const phrase = String(surface || "");
     const entry = TOKEN_LEXICON[phrase] || {};
@@ -58,10 +66,17 @@ module.exports = function createLexicalSelection(dependencies = {}) {
     .filter((surface) => !shouldForceCompositional(surface))
     .sort((a, b) => b.length - a.length || a.localeCompare(b));
   const LEXICALIZED_STATIVE_SELECTION_WEIGHT = 10000;
+  const NEUTRAL_FREQUENCY_FALLBACK_PENALTY = 1000;
   function lexicalCandidateScore(surface) {
     const registryKind = lexicalizedStativeRegistryKind(surface);
     const registryScore = registryKind ? LEXICALIZED_STATIVE_SELECTION_WEIGHT : 0;
     return registryScore + surface.length;
+  }
+  function lexicalCandidatePriorityScore(surface) {
+    const fallbackPenalty = neutralFrequencyCoverageFallback(surface)
+      ? NEUTRAL_FREQUENCY_FALLBACK_PENALTY
+      : 0;
+    return lexicalCandidateScore(surface) - fallbackPenalty;
   }
   function followingLexicalizedStativeAfterChoice(choice, rest) {
     const afterChoice = String(rest || "").slice(String(choice || "").length);
@@ -79,12 +94,18 @@ module.exports = function createLexicalSelection(dependencies = {}) {
       .map((surface) => lexicalizedStativeRegistryKind(surface));
     const hasLongerExcluded = excluded.some((item) => item.length > choice.length);
     const followingRegistry = followingLexicalizedStativeAfterChoice(choice, rest);
+    const displacedNeutralFallback = candidates.some((surface) => surface !== choice
+      && neutralFrequencyCoverageFallback(surface)
+      && lexicalCandidatePriorityScore(surface) < lexicalCandidatePriorityScore(choice));
 
     if (registryKind) {
       return `${registryKind} candidate wins over compositional or shorter candidates by lexicalized-stative selection scoring.`;
     }
     if (hasLongerExcluded) {
       return "Chosen after longer forced-compositional phrase was excluded so learner-visible internal structure can remain available.";
+    }
+    if (displacedNeutralFallback && !neutralFrequencyCoverageFallback(choice)) {
+      return "Chosen over a longer neutral frequency-list coverage fallback because independently typed lexical evidence has higher parser priority.";
     }
     if (followingRegistry && choice === "好") {
       return `Chosen as degree modifier before following ${followingRegistry.registry_kind} candidate ${followingRegistry.surface}; learner-visible composition remains available.`;
@@ -143,6 +164,8 @@ module.exports = function createLexicalSelection(dependencies = {}) {
       .filter((surface) => rest.startsWith(surface) && shouldForceCompositional(surface));
 
     candidates.sort((a, b) => {
+      const priorityDiff = lexicalCandidatePriorityScore(b) - lexicalCandidatePriorityScore(a);
+      if (priorityDiff) return priorityDiff;
       const scoreDiff = lexicalCandidateScore(b) - lexicalCandidateScore(a);
       if (scoreDiff) return scoreDiff;
       const lengthDiff = b.length - a.length;
@@ -162,12 +185,15 @@ module.exports = function createLexicalSelection(dependencies = {}) {
 
   return {
     lexicalizedStativeRegistryKind,
+    neutralFrequencyCoverageFallback,
     transparentClassifierObjectParts,
     shouldForceCompositional,
     ALL_LEXICON_TERMS,
     LEXICON_TERMS,
     LEXICALIZED_STATIVE_SELECTION_WEIGHT,
+    NEUTRAL_FREQUENCY_FALLBACK_PENALTY,
     lexicalCandidateScore,
+    lexicalCandidatePriorityScore,
     followingLexicalizedStativeAfterChoice,
     lexicalSelectionReason,
     lexicalSelectionDecision,
