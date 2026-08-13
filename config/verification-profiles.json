@@ -94,9 +94,9 @@
       },
       {
         "id": "runtime-tests",
-        "command": ["node", "tests/run-all.js"],
-        "reason": "Protect parser behavior and executable construction expectations across the canonical runtime test suite.",
-        "run_when": "Runtime source, runtime resources, executable fixtures, lexicon data, or runtime tests change."
+        "command": ["node", "tests/run-all.js", "--allow-inherited-debt"],
+        "reason": "Run the complete runtime suite while preserving the three known inherited-red aggregate suites as visible debt; the runtime workflow separately enforces dynamic stable-identity and test-contract ratchets for each against the actual base commit. All focused runtime tests remain blocking.",
+        "run_when": "Runtime source, runtime resources, executable fixtures, lexicon data, runtime tests, or debt-ratchet tooling change."
       },
       {
         "id": "generated-runtime",

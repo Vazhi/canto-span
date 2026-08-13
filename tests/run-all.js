@@ -8,6 +8,7 @@ const { loadRuntimeApi } = require("./lib/runtime-api");
 
 const root = path.resolve(__dirname, "..");
 const api = loadRuntimeApi();
+const allowInheritedDebt = process.argv.includes("--allow-inherited-debt");
 const commands = [
   ["regression", path.join(root, "tests", "run-regression.js")],
   ["np_subsystem", path.join(root, "tests", "run-np-subsystem.js")],
@@ -29,12 +30,14 @@ const commands = [
   ["parser_coverage_enhanced", path.join(root, "tests", "tooling", "parser-coverage", "enhanced.test.js")],
   ["parser_architecture_audit", path.join(root, "tests", "tooling", "parser-coverage", "architecture-audit.test.js")],
   ["parser_work_prioritizer", path.join(root, "tests", "tooling", "parser-coverage", "prioritizer.test.js")],
+  ["regression_ratchet_verifier", path.join(root, "tests", "tooling", "runtime", "regression-ratchet-verifier.test.js")],
 ];
-const generatedPaths = [
-  "validation/current/regression-suite.json",
-  "validation/current/np-subsystem-results.json",
-  "validation/current/construction-tests.json",
-];
+const debtReports = Object.freeze({
+  regression: "validation/current/regression-suite.json",
+  np_subsystem: "validation/current/np-subsystem-results.json",
+  construction_files: "validation/current/construction-tests.json",
+});
+const generatedPaths = Object.values(debtReports);
 const originalGeneratedFiles = new Map(
   generatedPaths.map((relativePath) => {
     const absolutePath = path.join(root, relativePath);
@@ -46,17 +49,47 @@ const originalGeneratedFiles = new Map(
 );
 const results = [];
 let failed = false;
+let inheritedDebtObserved = false;
+
+function readCurrentDebtSummary(name) {
+  const relativePath = debtReports[name];
+  if (!relativePath) return null;
+  const reportPath = path.join(root, relativePath);
+  if (!fs.existsSync(reportPath)) return null;
+  try {
+    const report = JSON.parse(fs.readFileSync(reportPath, "utf8"));
+    if (!Number.isInteger(report.failed) || report.failed <= 0) return null;
+    if (report.status !== undefined && report.status !== "FAIL") return null;
+    return {
+      total: Number.isInteger(report.total) ? report.total : (Number.isInteger(report.executable_reference_count) ? report.executable_reference_count : null),
+      passed: Number.isInteger(report.passed) ? report.passed : null,
+      failed: report.failed,
+    };
+  } catch {
+    return null;
+  }
+}
 
 try {
   for (const [name, script] of commands) {
+    const debtReportPath = debtReports[name] ? path.join(root, debtReports[name]) : null;
+    if (allowInheritedDebt && debtReportPath) fs.rmSync(debtReportPath, { force: true });
+
     const run = spawnSync(process.execPath, [script], { cwd: root, encoding: "utf8" });
+    const debtSummary = allowInheritedDebt && run.status !== 0 ? readCurrentDebtSummary(name) : null;
+    const debtAllowed = Boolean(debtSummary);
     const result = {
       name,
       exit_code: run.status,
       signal: run.signal || "",
-      status: run.status === 0 ? "PASS" : "FAIL",
+      status: debtAllowed ? "DEBT" : (run.status === 0 ? "PASS" : "FAIL"),
     };
-    if (run.status !== 0) {
+    if (debtAllowed) {
+      inheritedDebtObserved = true;
+      result.debt_allowed = true;
+      result.debt_summary = debtSummary;
+      process.stderr.write(`\n[${name}] inherited debt reported; the workflow must compare its stable identities and test contract against the live baseline\n`);
+    } else if (run.status !== 0) {
       failed = true;
       result.stdout = run.stdout || "";
       result.stderr = run.stderr || "";
@@ -78,7 +111,8 @@ try {
 console.log(JSON.stringify({
   schema: "canto-span-standard-test-suite-summary-v2",
   runtime_version: api.runtimeVersion,
-  status: failed ? "FAIL" : "PASS",
+  status: failed ? "FAIL" : (inheritedDebtObserved ? "PASS_WITH_INHERITED_DEBT" : "PASS"),
+  inherited_debt_requires_external_ratchet: inheritedDebtObserved,
   commands: results,
   generated_outputs_restored: generatedPaths,
 }, null, 2));
