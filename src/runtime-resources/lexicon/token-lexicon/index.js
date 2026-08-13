@@ -15,9 +15,9 @@ const EXISTING_TYPED_ENTRIES = [
 ];
 const REVIEWED_SURFACES = new Set(CIFU_R1_250_REVIEWED.entries.map(([surface]) => surface));
 const TYPED_AND_REVIEWED_ENTRIES = [
-  // A #792 reviewed base entry replaces stale same-surface typed metadata rather
-  // than creating a new duplicate. Unrelated historical typed duplicates retain
-  // their existing intentional-override policy and ordering.
+  // A reviewed base entry is a replacement owner for its exact surface: remove
+  // stale same-surface typed metadata before appending the reviewed record. This is
+  // distinct from the pre-existing intentional duplicates inside ordinary modules.
   ...EXISTING_TYPED_ENTRIES.filter(([surface]) => !REVIEWED_SURFACES.has(surface)),
   ...CIFU_R1_250_REVIEWED.entries,
 ];
@@ -26,8 +26,8 @@ const NEUTRAL_FREQUENCY_COVERAGE = require("./frequency-gap-fill-r7")
   .filter(([surface]) => !TYPED_AND_REVIEWED_SURFACES.has(surface));
 
 module.exports = [
-  // The generated frequency layer is genuinely fill-only: it preserves exact
-  // top-2,000 surface coverage only where no typed/reviewed runtime entry exists.
+  // The generated frequency layer is genuinely fill-only: exact top-2,000 surface
+  // coverage survives only where no typed/reviewed owner exists for that surface.
   ...NEUTRAL_FREQUENCY_COVERAGE,
   ...TYPED_AND_REVIEWED_ENTRIES,
 ];
