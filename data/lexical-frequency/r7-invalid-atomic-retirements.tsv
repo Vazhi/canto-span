@@ -53,5 +53,34 @@ rank	surface	disposition	evidence	reason
 720	畫個	retire_invalid_atomic	#794 comment 5269186956	transparent verb + classifier phrase
 740	個韻	retire_invalid_atomic	#794 comment 5269186956	unsupported classifier + noun fragment; no atomic lexical evidence
 744	試過	retire_invalid_atomic	#794 comment 5269186956	productive verb + experiential 過 sequence
+752	我個	retire_invalid_atomic	#795 accepted expert specification	compositional pronoun + classifier/genitive fragment
+753	我想	retire_invalid_atomic	#795 accepted expert specification	transparent pronoun + cognition/modal verb clause fragment
+761	幾個	retire_invalid_atomic	#795 accepted expert specification	compositional quantifier + classifier phrase
+766	一份	retire_invalid_atomic	#795 accepted expert specification	transparent numeral + classifier/measure phrase
+783	一年	retire_invalid_atomic	#795 accepted expert specification	transparent numeral + temporal measure phrase
+790	我知	retire_invalid_atomic	#795 accepted expert specification	transparent pronoun + verb clause fragment
+800	講下	retire_invalid_atomic	#795 accepted expert specification	productive verb + delimitative 下 sequence
+801	○	retire_invalid_atomic	#795 accepted expert specification	nonlexical transcript/symbol token; not a Cantonese lexical item
+818	講得	retire_invalid_atomic	#795 accepted expert specification	productive verb + 得 complement/potential sequence
+819	講過	retire_invalid_atomic	#795 accepted expert specification	productive verb + experiential/aspectual 過 sequence
+822	我要	retire_invalid_atomic	#795 accepted expert specification	transparent pronoun + modal/verb sequence
+823	來講	retire_invalid_atomic	#795 accepted expert specification	constructional 來 + 講 discourse sequence; no atomic whole required
+840	一間	retire_invalid_atomic	#795 accepted expert specification	transparent numeral + classifier phrase
+847	去邊	retire_invalid_atomic	#795 accepted expert specification	productive motion verb + interrogative locative phrase
+853	知點	retire_invalid_atomic	#795 accepted expert specification	clause fragment verb + interrogative element; no atomic lexical identity
+870	包住	retire_invalid_atomic	#795 accepted expert specification	productive verb + 住 continuation/result sequence; independent evidence supports composition
+871	行行	retire_invalid_atomic	#795 accepted expert specification	productive/reduplicative verb sequence; no distinct atomic analysis selected
+877	問下	retire_invalid_atomic	#795 accepted expert specification	productive verb + delimitative 下 sequence
+883	一日	retire_invalid_atomic	#795 accepted expert specification	transparent numeral + temporal noun/measure phrase
+890	好難	retire_invalid_atomic	#795 accepted expert specification	compositional degree + property phrase
+896	返到	retire_invalid_atomic	#795 accepted expert specification	productive return-motion + 到 result sequence
+905	彭銅	retire_invalid_atomic	#795 accepted expert specification	unsupported/noisy segmentation string; no atomic lexical analysis selected
+912	點講	retire_invalid_atomic	#795 accepted expert specification	compositional interrogative + verb phrase
+914	一下	retire_invalid_atomic	#795 accepted expert specification	productive numeral/classifier or delimitative phrase; no atomic whole required
+918	見過	retire_invalid_atomic	#795 accepted expert specification	productive verb + experiential 過 sequence
+919	個樣	retire_invalid_atomic	#795 accepted expert specification	transparent classifier/determiner + noun phrase
 977	兩年	retire_invalid_atomic	#841/#842 structural cleanup	transparent quantified-time sequence 兩 + 年; already structurally licensed
+980	沿住	retire_invalid_atomic	#795 accepted expert specification	productive path relation + 住 grammatical sequence; attestation does not require an atomic lexeme
+988	幾年	retire_invalid_atomic	#795 accepted expert specification	compositional quantifier + temporal noun phrase
+997	四個	retire_invalid_atomic	#795 accepted expert specification	transparent numeral + classifier phrase
 1749	半年	retire_invalid_atomic	#841/#842 structural cleanup	transparent quantified-time sequence 半 + 年; already structurally licensed
