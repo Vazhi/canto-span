@@ -21,9 +21,8 @@ function isNeutralFrequencyFallback(entry = {}) {
 }
 
 function tokenSurfaces(surface) {
-  return api.diagnosticFinalRows(api.analyzeLine(surface))
-    .filter((row) => row.kind === "token")
-    .map((row) => row.surface);
+  const rows = api.diagnosticFinalRows(api.analyzeLine(surface));
+  return Array.from(rows).filter((row) => row.kind === "token").map((row) => String(row.surface));
 }
 
 function readings(surface) {
