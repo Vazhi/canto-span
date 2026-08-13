@@ -45,7 +45,7 @@ jobs:
         run: npm ci
       - name: Run runtime verification profile
         run: npm run verify:runtime
-      - name: Enforce stable-identity regression debt ratchet
+      - name: Enforce inherited runtime debt ratchets
         env:
           EVENT_NAME: ${{ github.event_name }}
           PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
@@ -63,7 +63,7 @@ jobs:
           fi
 
           if [[ -z "$BASE_SHA" ]]; then
-            echo "No baseline commit is available for this event; runtime profile completed but ratchet comparison was not run."
+            echo "No baseline commit is available for this event; runtime profile completed but debt-ratchet comparison was not run."
             exit 0
           fi
 
@@ -75,14 +75,52 @@ jobs:
           }
           trap cleanup EXIT
 
-          (cd "$BASE_DIR" && node tests/run-regression.js >"$RUNNER_TEMP/baseline-regression.stdout" 2>"$RUNNER_TEMP/baseline-regression.stderr" || true)
-          node tests/run-regression.js >"$RUNNER_TEMP/candidate-regression.stdout" 2>"$RUNNER_TEMP/candidate-regression.stderr" || true
+          rm -f \
+            "$BASE_DIR/validation/current/regression-suite.json" \
+            "$BASE_DIR/validation/current/np-subsystem-results.json" \
+            "$BASE_DIR/validation/current/construction-tests.json" \
+            "validation/current/regression-suite.json" \
+            "validation/current/np-subsystem-results.json" \
+            "validation/current/construction-tests.json"
 
-          test -f "$BASE_DIR/validation/current/regression-suite.json"
-          test -f "validation/current/regression-suite.json"
+          (cd "$BASE_DIR" && node tests/run-regression.js >"$RUNNER_TEMP/baseline-regression.stdout" 2>"$RUNNER_TEMP/baseline-regression.stderr" || true)
+          (cd "$BASE_DIR" && node tests/run-np-subsystem.js >"$RUNNER_TEMP/baseline-np.stdout" 2>"$RUNNER_TEMP/baseline-np.stderr" || true)
+          (cd "$BASE_DIR" && node tests/run-constructions.js >"$RUNNER_TEMP/baseline-constructions.stdout" 2>"$RUNNER_TEMP/baseline-constructions.stderr" || true)
+
+          node tests/run-regression.js >"$RUNNER_TEMP/candidate-regression.stdout" 2>"$RUNNER_TEMP/candidate-regression.stderr" || true
+          node tests/run-np-subsystem.js >"$RUNNER_TEMP/candidate-np.stdout" 2>"$RUNNER_TEMP/candidate-np.stderr" || true
+          node tests/run-constructions.js >"$RUNNER_TEMP/candidate-constructions.stdout" 2>"$RUNNER_TEMP/candidate-constructions.stderr" || true
+
+          for report in \
+            "$BASE_DIR/validation/current/regression-suite.json" \
+            "$BASE_DIR/validation/current/np-subsystem-results.json" \
+            "$BASE_DIR/validation/current/construction-tests.json" \
+            "validation/current/regression-suite.json" \
+            "validation/current/np-subsystem-results.json" \
+            "validation/current/construction-tests.json"; do
+            if [[ ! -f "$report" ]]; then
+              echo "Debt-bearing suite did not produce required report: $report" >&2
+              exit 1
+            fi
+          done
 
           node tools/verify-regression-ratchet.js \
+            --suite regression \
             --baseline-result "$BASE_DIR/validation/current/regression-suite.json" \
             --candidate-result "validation/current/regression-suite.json" \
-            --baseline-fixture "$BASE_DIR/tests/fixtures/regression-snapshots.json" \
-            --candidate-fixture "tests/fixtures/regression-snapshots.json"
+            --baseline-universe "$BASE_DIR/tests/fixtures/regression-snapshots.json" \
+            --candidate-universe "tests/fixtures/regression-snapshots.json"
+
+          node tools/verify-regression-ratchet.js \
+            --suite np_subsystem \
+            --baseline-result "$BASE_DIR/validation/current/np-subsystem-results.json" \
+            --candidate-result "validation/current/np-subsystem-results.json" \
+            --baseline-universe "$BASE_DIR/tests/fixtures/np-subsystem.json" \
+            --candidate-universe "tests/fixtures/np-subsystem.json"
+
+          node tools/verify-regression-ratchet.js \
+            --suite construction_files \
+            --baseline-result "$BASE_DIR/validation/current/construction-tests.json" \
+            --candidate-result "validation/current/construction-tests.json" \
+            --baseline-universe "$BASE_DIR/tests/constructions" \
+            --candidate-universe "tests/constructions"
