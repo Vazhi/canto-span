@@ -1,8 +1,10 @@
 "use strict";
 
-// Explicitly polyfunctional lexical analyses already represented by
-// bounded contextual behavior in the runtime. This registry preserves
-// all supported analyses without forcing one global POS/reading.
+const CIFU_R1_250_REVIEWED = require("./cifu-r1-250-reviewed");
+
+// Explicitly polyfunctional lexical analyses represented by bounded contextual
+// behavior or by the reviewed #792 lexical inventory. Candidate analyses do not by
+// themselves license a new construction or force one global reading in context.
 module.exports = Object.freeze({
   "住": Object.freeze([
     Object.freeze({
@@ -44,24 +46,5 @@ module.exports = Object.freeze({
       provenance: Object.freeze({ kind: "existing_runtime_contextual_override", source: "src/parser/tokenization/contextual-overrides.js" }),
     }),
   ]),
-  "咪": Object.freeze([
-    Object.freeze({
-      id: "lex:咪:prohibitive_marker",
-      label: "func",
-      pos: "function",
-      jyutping: "mai5",
-      syntax: "prohibitive_marker",
-      senses: Object.freeze([{ gloss: "don't; prohibitive marker" }]),
-      provenance: Object.freeze({ kind: "existing_runtime_contextual_override", source: "src/parser/tokenization/contextual-overrides.js" }),
-    }),
-    Object.freeze({
-      id: "lex:咪:discourse_focus_marker",
-      label: "func",
-      pos: "function",
-      jyutping: "mai6",
-      syntax: "discourse_focus_marker",
-      senses: Object.freeze([{ gloss: "discourse / focus marker" }]),
-      provenance: Object.freeze({ kind: "existing_runtime_contextual_override", source: "src/parser/tokenization/contextual-overrides.js" }),
-    }),
-  ]),
+  ...CIFU_R1_250_REVIEWED.analyses,
 });
