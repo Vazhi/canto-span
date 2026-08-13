@@ -67,7 +67,6 @@ module.exports = [  // Function words / particles / stance
   ["好似", { label: "func", jyutping: "hou2 ci5", syntax: "stance_seeming", note: "seems like" }],
   ["可能", { label: "func", jyutping: "ho2 nang4", syntax: "stance_possibility", note: "maybe" }],
   ["我覺得", { label: "doing", jyutping: "ngo5 gok3 dak1", syntax: "stance_cognition_frame", note: "I think/feel; compositional phrase should remain learner-visible when possible." }],
-  ["我知", { label: "doing", jyutping: "ngo5 zi1", syntax: "cognition_frame", note: "I know; compositional phrase should remain learner-visible when possible." }],
   ["我唔知", { label: "doing", jyutping: "ngo5 m4 zi1", syntax: "negative_cognition_frame", note: "I don't know; compositional phrase should remain learner-visible when possible." }],
 
   // v0.5.227: source-audited high-frequency lexical coverage.

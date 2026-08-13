@@ -24,9 +24,7 @@ module.exports = [  // Statives / property predicates
   ["難聽", { label: "like", jyutping: "naan4 teng1", syntax: "negative_lexicalized_stative_predicate lexicalized_stative_predicate stative_predicate sensory_evaluation sound_evaluation degreeable", note: "negative lexicalized stative — unpleasant-sounding / harsh; antonym 好聽" }],
 
   ["好好食", { label: "like", jyutping: "hou2 hou2 sik6", syntax: "degree_stative_predicate", note: "very tasty; kept compositional as 好 + 好食" }],
-  ["好貴", { label: "like", jyutping: "hou2 gwai3", syntax: "degree_stative_predicate", note: "expensive" }],
   ["好甜", { label: "like", jyutping: "hou2 tim4", syntax: "degree_stative_predicate", note: "sweet; lexicon/Jyutping cleanup for UI example diagnostics." }],
-  ["好靚", { label: "like", jyutping: "hou2 leng3", syntax: "degree_stative_predicate", note: "nice / pretty" }],
   ["好正", { label: "like", jyutping: "hou2 zeng3", syntax: "degree_stative_predicate", note: "great / excellent" }],
   ["抵食", { label: "like", jyutping: "dai2 sik6", syntax: "stative_predicate", note: "good value to eat / worth the price" }],
   ["出名", { label: "like", jyutping: "ceot1 meng2", syntax: "stative_predicate", note: "famous" }],
