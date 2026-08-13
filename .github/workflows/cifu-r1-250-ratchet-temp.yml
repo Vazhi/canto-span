@@ -8,7 +8,7 @@ on:
       - ".github/workflows/cifu-r1-250-ratchet-temp.yml"
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   ratchet:
@@ -24,8 +24,12 @@ jobs:
           package-manager-cache: false
       - name: Install branch dependencies
         run: npm ci
-      - name: Run branch focused lexical test
+      - name: Apply bounded ratchet fix
+        run: node tools/cifu-r1-250-ratchet-fix-temp.js
+      - name: Run focused lexical test
         run: node tests/tooling/lexicon/cifu-r1-250-reviewed-runtime.test.js
+      - name: Build runtime bundle
+        run: npm run build:runtime
       - name: Verify generated runtime
         run: npm run test:generated-runtime
       - name: Capture branch regression identities
@@ -61,12 +65,7 @@ jobs:
           const baseline = JSON.parse(fs.readFileSync('/tmp/cifu-main-regression.json', 'utf8'));
           const branch = JSON.parse(fs.readFileSync('/tmp/cifu-branch-regression.json', 'utf8'));
           const key = (row) => `${row.source || ''}\u0000${row.context_source || ''}`;
-          const describe = (row) => ({
-            source: row.source || '',
-            context_source: row.context_source || '',
-            origins: row.origins || [],
-            error: row.error || '',
-          });
+          const describe = (row) => ({ source: row.source || '', context_source: row.context_source || '', origins: row.origins || [], error: row.error || '' });
           const baselineByKey = new Map((baseline.failures || []).map((row) => [key(row), row]));
           const branchByKey = new Map((branch.failures || []).map((row) => [key(row), row]));
           const newFailures = [...branchByKey].filter(([k]) => !baselineByKey.has(k)).map(([, row]) => describe(row));
@@ -87,3 +86,15 @@ jobs:
           console.log(JSON.stringify(result, null, 2));
           if (newFailures.length) process.exit(1);
           NODE
+      - name: Commit permanent fix and bundle
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-reviewed.js tests/tooling/lexicon/cifu-r1-250-reviewed-runtime.test.js main.js
+          if git diff --cached --quiet; then
+            echo "No permanent changes to commit"
+            exit 0
+          fi
+          git commit -m "Preserve classifier structure in reviewed Cifu analyses"
+          git push origin HEAD:agent/cifu-r1-250-runtime-reconcile
