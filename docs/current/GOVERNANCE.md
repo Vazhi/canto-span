@@ -290,6 +290,37 @@ Possible dispositions include ACCEPT, IMPLEMENTED INFRASTRUCTURE, REVISE,
 QUARANTINE, SPLIT, MERGE, SUPERSEDE, and RETIRE. Success in one dimension cannot
 substitute for another.
 
+### Regression debt and independent justification
+
+Existing regression failures are implementation debt, not evidence that the failing
+behavior is correct. A debt-bearing branch does not have to make every inherited case
+green before an otherwise justified permanent improvement can land. The canonical
+comparison, test-validity review, and acceptance procedure are in
+[`TESTING.md`](TESTING.md).
+
+Regression-directed work must strictly reduce actual behavior debt on the unchanged
+valid test set with no new unique failures there. Evidence-driven cleanup may leave
+that failing set unchanged when the cleanup is independently justified. Neither class
+may weaken protected or high-value behavior.
+
+A previously passing test is normally protected, but the test itself may be wrong. If
+preserving it would require reverting independently justified progress or retaining a
+stale, unsupported, incorrect, or superseded expectation, review that test against the
+current evidence-supported behavioral contract rather than treating its current green
+status as authority. A justified test may be modified, replaced, split, or removed,
+with its prior identity, rationale, and replacement coverage recorded. That changes
+the measurement contract; it does not count as regression-debt reduction by itself.
+
+Regression results do not supply linguistic, lexical, identity, or status evidence.
+For lexical cleanup in particular, lexicality and source evidence must independently
+support the addition, removal, or reclassification; regression improvement may
+strengthen the implementation case but cannot manufacture the lexical justification.
+A failure is not considered repaired merely because a test was removed or weakened,
+an expected result was broadened to obtain acceptance, or diagnostics were suppressed.
+When a test change is independently justified by the explicit review above, report it
+as a test-contract correction rather than a runtime repair. Remaining failures must
+stay explicitly identified as debt.
+
 Mechanical gates include:
 
 ```bash
@@ -303,7 +334,10 @@ npm run verify:release
 npm run verify:all
 ```
 
-Verification may reject an incomplete state but never promotes it automatically.
+Verification may reject an incomplete state but never promotes it automatically. When
+a test command contains an explicitly recorded inherited failing set, apply the
+regression-debt ratchet rather than treating the nonzero inherited total alone as a
+new defect.
 
 ## 8. Documentation, coordination, automation, and releases
 

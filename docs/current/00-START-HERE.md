@@ -76,7 +76,7 @@ Before the first edit:
 8. create the exact `agent/<description>` branch named in the claim;
 9. declare canonical inputs, generated outputs, protected state, dependencies,
    reserved decisions, and task-specific checks;
-10. implement one coherent passing result;
+10. implement one coherent acceptable result under the applicable gates; when the base commit contains known regression debt, use the monotonic regression-debt ratchet in `TESTING.md` instead of requiring unrelated pre-existing failures to become green;
 11. open or update one linked PR, then bind `active_pr` to the assigned GitHub PR
     number in the live intake;
 12. keep the PR draft while work, dependencies, pending changesets, or integration
@@ -185,6 +185,35 @@ or infer merge authority outside `USER-MERGE-REVIEW.md`.
 Passing checks, lack of conflict, elapsed time, assignment, or repository ownership
 must be paired with valid merge authority and live safety checks before merge.
 
+### Regression debt ratchet
+
+Known failing tests are explicit implementation debt, not accepted parser behavior.
+When the base commit already contains regression failures, permanent work is judged by
+stable failing-case identities rather than by whether the entire inherited suite is
+green. `TESTING.md` owns the exact gate, test-validity review, and comparison
+procedure.
+
+For unchanged tests whose validity remains accepted, the post-change failing set may
+not contain a unique failure absent from baseline and a previously passing test may
+not become failing. Protected or high-value behavior may not be weakened. A failure
+may not be hidden merely to obtain acceptance by weakening a still-valid test,
+broadening an expectation without independent justification, or suppressing
+diagnostics.
+
+Tests themselves remain reviewable. If preserving a passing test would require
+reverting independently justified progress or retaining a stale, incorrect, overly
+broad, or superseded expectation, review that test against the current behavioral
+contract and evidence. A justified test may be modified, replaced, split, or removed,
+with the decision and replacement coverage recorded. Such a test-contract change is
+accounted separately and does not count as regression-debt reduction by itself.
+
+Regression-directed changes must strictly reduce actual behavior debt on the
+unchanged valid test set. Independently justified evidence-driven cleanup may leave
+that failing set unchanged if it introduces no new valid-test failure. Regression
+improvement never manufactures linguistic or lexical justification; those decisions
+remain governed by their independent evidence owners. Remaining red cases stay
+recorded as debt until separately repaired.
+
 ### Permanent verification admission
 
 A permanent test, audit, verifier, CI gate, snapshot, or profile entry is allowed only
@@ -213,6 +242,14 @@ npm run verify:release  # release or promotion work only
 requirement. Individual adjudication, identity, or discovery commands may be run when
 their own inputs change. Every permanent profile command records its reason and
 `run_when` scope in `config/verification-profiles.json`.
+
+When an applicable runtime suite contains recorded baseline debt, a nonzero global
+exit result does not by itself reject a change. Record the exact base commit and
+baseline failing identities, rerun the same scope after the change, and apply the
+set-based ratchet in `TESTING.md`. Unrelated pre-existing failures remain debt; new
+unique failures on unchanged valid tests remain blockers. If a test is independently
+shown stale or incorrect, reconcile it through the test-validity review rather than
+forcing valid progress to preserve the obsolete expectation.
 
 Coordination is followed directly from `AGENTS.md`, this contract, and the live
 repository records. It is not confirmed by `npm run verify` or by a universal PR

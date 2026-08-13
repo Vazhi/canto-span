@@ -41,6 +41,138 @@ claim from inheriting the case—and record the unresolved linguistic question o
 the test as evidence state. Tests may also protect parser-internal invariants without
 making a language-construction claim.
 
+## Regression debt ratchet
+
+A pre-existing non-green regression suite is explicit implementation debt; it is not a
+blanket block on permanent improvements and it is not silently reclassified as correct
+behavior.
+
+For any change whose applicable test scope contains known failures, compare stable
+failing-case identities rather than only raw failure counts. Let:
+
+```text
+B = failing-case set at the exact base commit
+A = failing-case set after the proposed change
+```
+
+For unchanged tests whose validity remains accepted, the primary invariant is:
+
+```text
+A ⊆ B
+```
+
+Therefore every post-change failure on that unchanged valid test set must already have
+been failing at baseline. In addition:
+
+- a previously passing valid test normally may not become failing;
+- no protected or high-value behavior may be weakened, especially common contemporary
+  Cantonese behavior;
+- a failure may not be hidden merely to obtain acceptance by deleting or weakening a
+  still-valid test, broadening an expected result without independent justification,
+  suppressing diagnostics, renaming a case so the identity comparison misses it, or
+  otherwise changing measurement instead of behavior;
+- the underlying repository change must remain independently justified. Regression
+  improvement is implementation evidence only and cannot manufacture linguistic,
+  lexical, evidentiary, identity, or status justification;
+- every remaining failure stays explicitly recorded as regression debt rather than
+  being treated as an accepted output simply because the ratchet allowed the change.
+
+A test is not immutable merely because it currently passes. If preserving a passing
+test would require reverting independently justified progress, preserving behavior
+that current evidence or an accepted behavioral contract now rejects, or otherwise
+forcing the implementation toward a stale expectation, review the test itself rather
+than treating its current result as authoritative.
+
+### Test-validity review
+
+Removal or modification of a test is legitimate only when the test change has an
+independent reason separate from obtaining a better red/green result. Suitable
+triggers include:
+
+- the accepted evidence-supported behavioral contract has changed and the test still
+  encodes the superseded behavior;
+- the test was discovered to encode an unsupported, incorrect, or overly broad
+  linguistic assumption;
+- the test protects an implementation detail that is no longer a required invariant;
+- preserving the test would unnecessarily discard independently justified parser or
+  lexical progress;
+- the test duplicates coverage whose owning invariant is preserved more accurately
+  elsewhere.
+
+For each reviewed test, record:
+
+1. the stable case identity and prior expectation;
+2. why the current test is being questioned;
+3. the independent evidence, accepted behavioral contract, architecture invariant, or
+   other canonical owner that justifies the decision;
+4. whether the test is retained, modified, replaced, split, or removed;
+5. replacement coverage for every still-valid invariant, or the reason no replacement
+   is appropriate;
+6. how the baseline/post-change regression comparison accounts for that test.
+
+A reviewed test change updates the measurement contract; it does **not** count as
+regression-debt reduction by itself. If the only disappearing red case disappeared
+because its test was removed or its expectation changed, report that as a test-contract
+change, not as a runtime fix. Likewise, if a previously passing test becomes invalid
+because the runtime now implements a better independently justified behavior, the
+final accepted state should review and reconcile that test rather than either reverting
+the progress solely to keep it green or leaving an obsolete test failing indefinitely.
+
+### Change classes
+
+**Regression-directed changes** are intended to repair executable behavior. On the
+unchanged valid test set, they are acceptable only when the post-change failing set is
+a strict subset of baseline:
+
+```text
+A ⊂ B
+```
+
+At least one stable baseline failure identity must disappear through behavior repair,
+not merely through test deletion or expectation change. A subjective claim that a
+failing case “improved” does not satisfy this gate unless that test has a predefined
+deterministic graded metric whose improvement is itself an accepted invariant.
+
+**Evidence-driven cleanup** may be permanent when it is independently justified and
+introduces no unique failure on the unchanged valid test set even if the failing-set
+size does not change:
+
+```text
+A ⊆ B
+```
+
+Examples include removing a demonstrably fake atomic lexical entry, correcting
+repository data whose justification does not depend on the regression result, or
+reconciling a stale test after an independently supported behavioral correction. The
+unchanged remaining failures are still debt.
+
+### Baseline and comparison procedure
+
+For debt-bearing scopes:
+
+1. record the exact base commit and run the same applicable test command before the
+   change;
+2. record the baseline failing identities `B` and, where useful, the count;
+3. run the same scope after the change and record `A`;
+4. report `new_unique = A - B`, `fixed = B - A`, and the remaining failing set for
+   unchanged valid tests;
+5. require `new_unique` to be empty;
+6. for regression-directed work, require `fixed` to be non-empty through actual
+   behavior repair;
+7. if tests or expectations changed, separately account for added, removed, renamed,
+   split, replaced, and expectation-modified cases and attach the test-validity review
+   so test maintenance cannot be mistaken for debt reduction;
+8. compare common unchanged valid case identities directly, and do not force a
+   meaningless one-to-one set comparison across a legitimately changed test contract;
+9. record the remaining failures explicitly as inherited regression debt in the work
+   claim or pull-request validation record and in the current-state owner when a
+   repository-wide baseline is maintained there.
+
+Raw red-count reduction is insufficient when one old failure disappears and one new
+failure appears. Conversely, a nonzero global exit status caused solely by recorded
+baseline debt does not invalidate a change that satisfies the ratchet and every other
+applicable gate.
+
 ```bash
 npm test                # runtime behavior or executable tests
 npm run verify          # canonical core repository state
@@ -121,6 +253,9 @@ independently satisfies the permanent-check admission standard.
 
 The runtime profile is directly runnable with `npm run verify:runtime`. It is included
 in `verify:all` but remains separate from ordinary core or research verification.
+When `runtime-tests` contains recorded baseline debt, interpret that component through
+the regression-debt ratchet above; deterministic build or load failures that were not
+part of the recorded baseline remain ordinary blockers.
 
 ### Release
 
@@ -186,6 +321,12 @@ Where the accepted behavioral contract identifies boundaries or collisions, the
 suite must protect those too. Conversely, a test must not manufacture a linguistic
 boundary that the evidence contract deliberately leaves unresolved.
 
+When the aggregate suite has inherited failures, do not demand that unrelated work
+repair all of them. Capture stable failing identities at the base commit and apply the
+ratchet above. When preserving a currently passing test would require undoing
+independently justified progress, invoke the test-validity review rather than treating
+the old expectation as untouchable.
+
 `npm test` preserves the pre-run contents of its legacy report files and restores them
 before exiting, so a normal passing run does not dirty the working tree.
 
@@ -221,8 +362,11 @@ npm run identity:generate
 npm run discovery:generate
 ```
 
-Apply and regenerate before publishing a coherent PR. Do not commit an intentionally
-failing intermediate state.
+Apply and regenerate before publishing a coherent PR. Do not publish a state that
+introduces an unexplained new failure or violates another applicable gate. Known
+inherited runtime failures may remain when the recorded regression-debt comparison
+satisfies the ratchet. A legitimately superseded test may be modified or removed only
+through the explicit test-validity review above.
 
 ## Coordination tools
 
