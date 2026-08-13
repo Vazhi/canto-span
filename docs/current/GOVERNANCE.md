@@ -295,22 +295,31 @@ substitute for another.
 Existing regression failures are implementation debt, not evidence that the failing
 behavior is correct. A debt-bearing branch does not have to make every inherited case
 green before an otherwise justified permanent improvement can land. The canonical
-comparison and acceptance procedure is the set-based ratchet in [`TESTING.md`](TESTING.md).
+comparison, test-validity review, and acceptance procedure are in
+[`TESTING.md`](TESTING.md).
 
-Regression-directed work must strictly reduce the stable failing-case set with no new
-unique failures. Evidence-driven cleanup may leave the failing set unchanged when the
-cleanup is independently justified, but it may not expand that set or turn a
-previously passing case into a failure. Neither class may weaken protected or
-high-value behavior.
+Regression-directed work must strictly reduce actual behavior debt on the unchanged
+valid test set with no new unique failures there. Evidence-driven cleanup may leave
+that failing set unchanged when the cleanup is independently justified. Neither class
+may weaken protected or high-value behavior.
+
+A previously passing test is normally protected, but the test itself may be wrong. If
+preserving it would require reverting independently justified progress or retaining a
+stale, unsupported, incorrect, or superseded expectation, review that test against the
+current evidence-supported behavioral contract rather than treating its current green
+status as authority. A justified test may be modified, replaced, split, or removed,
+with its prior identity, rationale, and replacement coverage recorded. That changes
+the measurement contract; it does not count as regression-debt reduction by itself.
 
 Regression results do not supply linguistic, lexical, identity, or status evidence.
 For lexical cleanup in particular, lexicality and source evidence must independently
 support the addition, removal, or reclassification; regression improvement may
 strengthen the implementation case but cannot manufacture the lexical justification.
-A failure is not considered repaired if it disappeared only because a test was
-removed or weakened, an expected result was broadened merely to obtain acceptance, or
-diagnostics were suppressed. Remaining failures must stay explicitly identified as
-debt.
+A failure is not considered repaired merely because a test was removed or weakened,
+an expected result was broadened to obtain acceptance, or diagnostics were suppressed.
+When a test change is independently justified by the explicit review above, report it
+as a test-contract correction rather than a runtime repair. Remaining failures must
+stay explicitly identified as debt.
 
 Mechanical gates include:
 
