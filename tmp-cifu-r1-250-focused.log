@@ -1,0 +1,41 @@
+✔ neutral frequency coverage cannot overwrite a typed/reviewed same-surface entry (2.148844ms)
+✔ reviewed #792 corrections replace stale active Cifu-derived metadata (0.254819ms)
+✔ reviewed multiple analyses preserve independently supported category and reading families (0.984723ms)
+✖ mixed lexical/compositional decisions are represented without forcing every occurrence atomic (27.440964ms)
+✔ blocked_atomic and unresolved whole-form surfaces stay neutral exact-surface coverage (0.271264ms)
+✔ reviewed runtime records cite #792 adjudication rather than Cifu gloss authority (0.344833ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 40.841995
+
+✖ failing tests:
+
+test at tests/tooling/lexicon/cifu-r1-250-reviewed-runtime.test.js:86:1
+✖ mixed lexical/compositional decisions are represented without forcing every occurrence atomic (27.440964ms)
+  AssertionError [ERR_ASSERTION]: ordinary bare 唔見 remains compositionally available by default
+  
+  [
+    '唔',
+    '見'
+  ]
+  
+      at TestContext.<anonymous> (/home/runner/work/canto-span/canto-span/tests/tooling/lexicon/cifu-r1-250-reviewed-runtime.test.js:91:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1325:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:911:18)
+      at Test.postRun (node:internal/test_runner/test:1465:19)
+      at Test.run (node:internal/test_runner/test:1390:12)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:911:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [Array],
+    expected: [Array],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
