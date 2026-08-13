@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - agent/rime-cantonese-rescue
+    paths:
+      - .github/workflows/rime-cantonese-rescue-temp.yml
+      - tools/lexical-coverage/export-rime-cantonese-top2000.py
+      - external-evidence/lexical-pos/rime-cantonese/README.md
   workflow_dispatch:
 
 permissions:
@@ -11,9 +15,6 @@ permissions:
 
 jobs:
   materialize:
-    if: >-
-      github.ref == 'refs/heads/agent/rime-cantonese-rescue' &&
-      !contains(github.event.head_commit.message || '', 'Materialize frozen Rime-Cantonese evidence')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
