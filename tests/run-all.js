@@ -50,6 +50,22 @@ const results = [];
 let failed = false;
 let regressionDebtObserved = false;
 
+function readRegressionDebtSummary() {
+  const reportPath = path.join(root, "validation", "current", "regression-suite.json");
+  if (!fs.existsSync(reportPath)) return null;
+  try {
+    const report = JSON.parse(fs.readFileSync(reportPath, "utf8"));
+    return {
+      total: Number.isInteger(report.total) ? report.total : null,
+      passed: Number.isInteger(report.passed) ? report.passed : null,
+      failed: Number.isInteger(report.failed) ? report.failed : null,
+      strict_ready: Boolean(report.strict_ready),
+    };
+  } catch {
+    return null;
+  }
+}
+
 try {
   for (const [name, script] of commands) {
     const run = spawnSync(process.execPath, [script], { cwd: root, encoding: "utf8" });
@@ -63,9 +79,8 @@ try {
     if (debtAllowed) {
       regressionDebtObserved = true;
       result.debt_allowed = true;
-      result.stdout = run.stdout || "";
-      result.stderr = run.stderr || "";
-      process.stderr.write(`\n[${name}] inherited debt reported; stable-identity ratchet must be checked separately\n${result.stdout}${result.stderr}`);
+      result.debt_summary = readRegressionDebtSummary();
+      process.stderr.write(`\n[${name}] inherited debt reported; stable-identity ratchet must be checked separately\n`);
     } else if (run.status !== 0) {
       failed = true;
       result.stdout = run.stdout || "";
