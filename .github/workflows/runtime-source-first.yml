@@ -7,6 +7,8 @@ on:
       - "tests/**"
       - "tools/build-runtime.js"
       - "tools/verify-current-state.js"
+      - "tools/verify-regression-ratchet.js"
+      - "tools/ratchet-unobservable-baseline.js"
       - "config/verification-profiles.json"
       - "package.json"
       - "package-lock.json"
@@ -18,6 +20,8 @@ on:
       - "tests/**"
       - "tools/build-runtime.js"
       - "tools/verify-current-state.js"
+      - "tools/verify-regression-ratchet.js"
+      - "tools/ratchet-unobservable-baseline.js"
       - "config/verification-profiles.json"
       - "package.json"
       - "package-lock.json"
@@ -33,6 +37,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v6
         with:
           node-version: 24
@@ -41,3 +47,130 @@ jobs:
         run: npm ci
       - name: Run runtime verification profile
         run: npm run verify:runtime
+      - name: Enforce inherited runtime debt ratchets
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PUSH_BASE_SHA: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+
+          BASE_SHA=""
+          if [[ "$EVENT_NAME" == "pull_request" ]]; then
+            BASE_SHA="$PR_BASE_SHA"
+          elif [[ "$EVENT_NAME" == "push" && -n "$PUSH_BASE_SHA" && "$PUSH_BASE_SHA" != "0000000000000000000000000000000000000000" ]]; then
+            BASE_SHA="$PUSH_BASE_SHA"
+          else
+            BASE_SHA="$(git rev-parse HEAD^ 2>/dev/null || true)"
+          fi
+
+          if [[ -z "$BASE_SHA" ]]; then
+            echo "No baseline commit is available for this event; runtime profile completed but debt-ratchet comparison was not run."
+            exit 0
+          fi
+
+          BASE_DIR="$RUNNER_TEMP/canto-span-ratchet-base"
+          rm -rf "$BASE_DIR"
+          git worktree add --detach "$BASE_DIR" "$BASE_SHA"
+          cleanup() {
+            git worktree remove --force "$BASE_DIR" >/dev/null 2>&1 || true
+          }
+          trap cleanup EXIT
+
+          rm -f \
+            "$BASE_DIR/validation/current/regression-suite.json" \
+            "$BASE_DIR/validation/current/np-subsystem-results.json" \
+            "$BASE_DIR/validation/current/construction-tests.json" \
+            "validation/current/regression-suite.json" \
+            "validation/current/np-subsystem-results.json" \
+            "validation/current/construction-tests.json"
+
+          run_baseline() {
+            local label="$1"
+            shift
+            set +e
+            (cd "$BASE_DIR" && "$@") >"$RUNNER_TEMP/baseline-$label.stdout" 2>"$RUNNER_TEMP/baseline-$label.stderr"
+            local exit_code=$?
+            set -e
+            printf '%s\n' "$exit_code" >"$RUNNER_TEMP/baseline-$label.exit"
+          }
+
+          run_baseline regression node tests/run-regression.js
+          run_baseline np node tests/run-np-subsystem.js
+          run_baseline constructions node tests/run-constructions.js
+
+          node tests/run-regression.js >"$RUNNER_TEMP/candidate-regression.stdout" 2>"$RUNNER_TEMP/candidate-regression.stderr" || true
+          node tests/run-np-subsystem.js >"$RUNNER_TEMP/candidate-np.stdout" 2>"$RUNNER_TEMP/candidate-np.stderr" || true
+          node tests/run-constructions.js >"$RUNNER_TEMP/candidate-constructions.stdout" 2>"$RUNNER_TEMP/candidate-constructions.stderr" || true
+
+          synthesize_baseline_if_unobservable() {
+            local suite="$1"
+            local label="$2"
+            local report="$3"
+            local universe="$4"
+            if [[ -f "$report" ]]; then
+              return 0
+            fi
+            local exit_code
+            exit_code="$(cat "$RUNNER_TEMP/baseline-$label.exit")"
+            if [[ "$exit_code" == "0" ]]; then
+              echo "Baseline suite exited successfully but did not produce required report: $report" >&2
+              exit 1
+            fi
+            local reason_file="$RUNNER_TEMP/baseline-$label.reason"
+            {
+              echo "baseline_exit_code=$exit_code"
+              cat "$RUNNER_TEMP/baseline-$label.stderr"
+              cat "$RUNNER_TEMP/baseline-$label.stdout"
+            } >"$reason_file"
+            echo "Baseline $suite suite is unobservable at $BASE_SHA; conservatively materializing every unchanged case as failed."
+            node tools/ratchet-unobservable-baseline.js \
+              --suite "$suite" \
+              --universe "$universe" \
+              --output "$report" \
+              --reason-file "$reason_file" >/dev/null
+          }
+
+          synthesize_baseline_if_unobservable \
+            regression regression \
+            "$BASE_DIR/validation/current/regression-suite.json" \
+            "$BASE_DIR/tests/fixtures/regression-snapshots.json"
+          synthesize_baseline_if_unobservable \
+            np_subsystem np \
+            "$BASE_DIR/validation/current/np-subsystem-results.json" \
+            "$BASE_DIR/tests/fixtures/np-subsystem.json"
+          synthesize_baseline_if_unobservable \
+            construction_files constructions \
+            "$BASE_DIR/validation/current/construction-tests.json" \
+            "$BASE_DIR/tests/constructions"
+
+          for report in \
+            "validation/current/regression-suite.json" \
+            "validation/current/np-subsystem-results.json" \
+            "validation/current/construction-tests.json"; do
+            if [[ ! -f "$report" ]]; then
+              echo "Candidate debt-bearing suite did not produce required report: $report" >&2
+              exit 1
+            fi
+          done
+
+          node tools/verify-regression-ratchet.js \
+            --suite regression \
+            --baseline-result "$BASE_DIR/validation/current/regression-suite.json" \
+            --candidate-result "validation/current/regression-suite.json" \
+            --baseline-universe "$BASE_DIR/tests/fixtures/regression-snapshots.json" \
+            --candidate-universe "tests/fixtures/regression-snapshots.json"
+
+          node tools/verify-regression-ratchet.js \
+            --suite np_subsystem \
+            --baseline-result "$BASE_DIR/validation/current/np-subsystem-results.json" \
+            --candidate-result "validation/current/np-subsystem-results.json" \
+            --baseline-universe "$BASE_DIR/tests/fixtures/np-subsystem.json" \
+            --candidate-universe "tests/fixtures/np-subsystem.json"
+
+          node tools/verify-regression-ratchet.js \
+            --suite construction_files \
+            --baseline-result "$BASE_DIR/validation/current/construction-tests.json" \
+            --candidate-result "validation/current/construction-tests.json" \
+            --baseline-universe "$BASE_DIR/tests/constructions" \
+            --candidate-universe "tests/constructions"
