@@ -58,7 +58,8 @@ function readCurrentDebtSummary(name) {
   if (!fs.existsSync(reportPath)) return null;
   try {
     const report = JSON.parse(fs.readFileSync(reportPath, "utf8"));
-    if (report.status !== "FAIL" || !Number.isInteger(report.failed) || report.failed <= 0) return null;
+    if (!Number.isInteger(report.failed) || report.failed <= 0) return null;
+    if (report.status !== undefined && report.status !== "FAIL") return null;
     return {
       total: Number.isInteger(report.total) ? report.total : (Number.isInteger(report.executable_reference_count) ? report.executable_reference_count : null),
       passed: Number.isInteger(report.passed) ? report.passed : null,
