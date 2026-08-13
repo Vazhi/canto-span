@@ -21,8 +21,9 @@ REPORT = ROOT / "data/lexical-frequency/r7-invalid-atomic-retirement-report.json
 ENTRY_RE = re.compile(r'^\s*\["((?:[^"\\]|\\.)*)",\s*\{')
 
 
-def load_targets() -> tuple[dict[str, dict[str, str]], list[str]]:
+def load_targets() -> tuple[dict[str, dict[str, str]], list[str], list[dict[str, str]]]:
     targets: dict[str, dict[str, str]] = {}
+    duplicate_targets: list[dict[str, str]] = []
     ledgers = sorted(LEDGER_DIR.glob(LEDGER_GLOB))
     if not ledgers:
         raise SystemExit("no invalid-atomic retirement ledgers found")
@@ -32,14 +33,27 @@ def load_targets() -> tuple[dict[str, dict[str, str]], list[str]]:
                 if row["disposition"] != "retire_invalid_atomic":
                     continue
                 surface = row["surface"]
+                candidate = {**row, "ledger": ledger.name}
                 if surface in targets:
-                    raise SystemExit(f"duplicate retirement surface across ledgers: {surface}")
-                targets[surface] = {**row, "ledger": ledger.name}
-    return targets, [ledger.name for ledger in ledgers]
+                    existing = targets[surface]
+                    if existing["rank"] != row["rank"] or existing["disposition"] != row["disposition"]:
+                        raise SystemExit(
+                            f"conflicting duplicate retirement target {surface}: "
+                            f"{existing['rank']}/{existing['disposition']} vs {row['rank']}/{row['disposition']}"
+                        )
+                    duplicate_targets.append({
+                        "surface": surface,
+                        "rank": row["rank"],
+                        "first_ledger": existing["ledger"],
+                        "duplicate_ledger": ledger.name,
+                    })
+                    continue
+                targets[surface] = candidate
+    return targets, [ledger.name for ledger in ledgers], duplicate_targets
 
 
 def render(write: bool) -> dict:
-    targets, ledgers = load_targets()
+    targets, ledgers, duplicate_targets = load_targets()
     original = R7.read_text(encoding="utf-8").splitlines(keepends=True)
     kept: list[str] = []
     removed: list[str] = []
@@ -62,6 +76,8 @@ def render(write: bool) -> dict:
         "policy": "remove only expert-adjudicated nonlexical/non-Cantonese atomic entries; frequency/regression are not deletion criteria",
         "ledgers": ledgers,
         "ledger_target_count": len(targets),
+        "duplicate_target_count": len(duplicate_targets),
+        "duplicate_targets": duplicate_targets,
         "removed_from_r7_count": len(removed),
         "removed_from_r7": removed,
         "ledger_targets_absent_from_r7_count": len(absent),
