@@ -72,10 +72,23 @@ function validateLexicalAnalyses() {
   let multiAnalysisSurfaceCount = 0;
   for (const [surface, rows] of Object.entries(explicitLexicalAnalyses)) {
     if (!defaultEntries[surface]) throw new Error(`explicit lexical analyses reference unknown surface ${JSON.stringify(surface)}`);
-    if (!Array.isArray(rows) || rows.length < 2) throw new Error(`explicit lexical analyses for ${surface} must contain at least two analyses`);
-    multiAnalysisSurfaceCount += 1;
+    if (!Array.isArray(rows) || rows.length < 1) throw new Error(`explicit lexical analyses for ${surface} must contain at least one analysis`);
+    if (rows.length === 1) {
+      const baseEntry = defaultEntries[surface] || {};
+      const neutralFrequencyCoverage = String(baseEntry.pos || "") === "lexical_item"
+        && String(baseEntry.syntax || "").split(/\s+/u).includes("lexical_item")
+        && String(baseEntry.note || "").includes("Exact surface retained as neutral lexical coverage");
+      if (!neutralFrequencyCoverage) {
+        throw new Error(`single explicit lexical analysis for ${surface} requires a neutral frequency-coverage base entry`);
+      }
+    } else {
+      multiAnalysisSurfaceCount += 1;
+    }
     for (const analysis of rows) {
       if (!analysis || typeof analysis !== "object" || Array.isArray(analysis)) throw new Error(`lexical analysis for ${surface} must be an object`);
+      if (rows.length === 1 && (!analysis.provenance || analysis.provenance.kind !== "expert_lexical_adjudication")) {
+        throw new Error(`single explicit lexical analysis for ${surface} requires expert lexical adjudication provenance`);
+      }
       for (const key of ["id", "label", "pos", "jyutping", "syntax"]) assertNonEmptyString(analysis[key], `lexical analysis ${surface} ${key}`);
       if (ids.has(analysis.id)) throw new Error(`duplicate lexical analysis id ${analysis.id}`);
       ids.add(analysis.id);
