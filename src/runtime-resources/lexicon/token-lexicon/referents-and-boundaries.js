@@ -14,6 +14,7 @@ module.exports = [  // Demonstratives / referents
   ["隻", { label: "measure_word", jyutping: "zek3", syntax: "classifier_animal_body_part_one_of_pair", note: "measure word / classifier for animals, body parts, and one of a pair" }],
   ["幅", { label: "measure_word", jyutping: "fuk1", syntax: "classifier_picture_flat_work", note: "measure word / classifier for pictures and flat works" }],
   ["呢間", { label: "what", jyutping: "ni1 gaan1", syntax: "demonstrative_classifier_np", note: "this one/building/shop; long restaurant NPs render transparently when possible." }],
+  ["邊間", { label: "what", jyutping: "bin1 gaan1", syntax: "wh_classifier_np", note: "which one/shop/building; 邊間呀 renders transparently when possible." }],
   ["嗰間", { label: "what", jyutping: "go2 gaan1", syntax: "demonstrative_classifier_np", note: "that one/shop/building; long restaurant NPs render transparently when possible." }],
   ["呢間餐廳", { label: "what", jyutping: "ni1 gaan1 caan1 teng1", syntax: "topic_or_object_np", note: "this restaurant" }],
   ["嗰間餐廳", { label: "what", jyutping: "go2 gaan1 caan1 teng1", syntax: "topic_or_object_np", note: "that restaurant" }],

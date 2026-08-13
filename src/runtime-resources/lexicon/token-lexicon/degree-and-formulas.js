@@ -7,6 +7,7 @@ module.exports = [  // Degree words / particles / formulas
   ["有啲", { label: "how", jyutping: "jau5 di1", syntax: "degree_marker", note: "a bit" }],
   ["少少", { label: "how", jyutping: "siu2 siu2", syntax: "quantity_degree", note: "a little" }],
   ["好多", { label: "how", jyutping: "hou2 do1", syntax: "quantity_degree", note: "many / much" }],
+  ["好多人", { label: "who", jyutping: "hou2 do1 jan4", syntax: "quantity_person_np", note: "many people" }],
   ["呀", { label: "particle", jyutping: "aa3", syntax: "sentence_final_particle", note: "softening / question particle" }],
   ["吖", { label: "particle", jyutping: "aa1", syntax: "sentence_final_particle", note: "soft question / response particle" }],
   ["㗎", { label: "particle", jyutping: "gaa3", syntax: "explanatory_sentence_final_particle", note: "explanatory/assertive particle; not only a question particle" }],
