@@ -1,0 +1,25 @@
+name: Temporary architecture audit detail
+
+on:
+  push:
+    branches:
+      - agent/frozen-token-feature-arrays
+    paths:
+      - ".github/workflows/architecture-audit-detail-temp.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/frozen-token-feature-arrays
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Run detailed parser architecture audit
+        run: node tools/parser-architecture-audit.js --json
