@@ -1,0 +1,67 @@
+{
+  "final_lexical_target": 2000,
+  "limitations": [
+    "Corpus tokenization does not prove atomic lexicality.",
+    "POS tags are evidence signals, not final Cantonese lexical categories.",
+    "Proper-name and domain-concentration signals trigger review, not automatic exclusion.",
+    "A valid rare/formal/archaic Cantonese lexeme may remain outside the final common 2,000 without being removed from the broader runtime lexicon.",
+    "Cifu definitions/Jyutping and Rime weights do not determine final inclusion.",
+    "Protected #796 ranks 1001-1250 require separate handling and are not directly adjudicated by this candidate generator."
+  ],
+  "output": {
+    "also_in_old_cifu_top2000": 1551,
+    "attested_both_spoken_corpora": 993,
+    "initial_signal_counts": {
+      "domain_concentration_review": 203,
+      "general_lexicality_review": 770,
+      "known_nonatomic_or_invalid": 29,
+      "proper_name_review": 298,
+      "single_corpus_review": 3700
+    },
+    "known_invalid_atomic_surfaces_in_pool": 29,
+    "outside_old_cifu_top2000": 3449,
+    "rows": 5000
+  },
+  "pool_size": 5000,
+  "purpose": "Expanded direct-spoken surface candidate pool for expert curation/backfill to exactly 2,000 genuine common Cantonese lexical items.",
+  "ranking": {
+    "cross_corpus_balance": "min(corpus ppm) / max(corpus ppm); 1 is balanced and 0 is single-corpus",
+    "filter": "surface contains at least one Han ideograph; punctuation/Latin-only tokens excluded",
+    "score": "arithmetic mean of HKCanCor ppm and CantoMap ppm (equal corpus weight)",
+    "tie_break": "both-corpora attestation, pooled raw count, Unicode surface order"
+  },
+  "schema": "canto-span-common-spoken-cantonese-candidate-pool-v1",
+  "signals": {
+    "domain_concentration_review": "cross-corpus balance below 0.10; not an automatic exclusion",
+    "hkcancor_proper_like_share": "share of HKCanCor raw tags in conservative nr/ns/nt/nz proper-name families; review signal only",
+    "known_invalid_atomic": "surface appears in expert-adjudicated invalid-atom retirement ledgers; does not count as a lexical-core item",
+    "pos": "raw corpus POS distributions; curation signal only"
+  },
+  "sources": {
+    "cifu_secondary": {
+      "path": "data/lexical-frequency/cifu-spoken-top-2000.tsv",
+      "role": "secondary historical rank/frequency and candidate-reading comparison only",
+      "rows": 2000,
+      "sha256": "c78b377ae2d40314899acf64349b35910d81b01851e63020af1efd90e923687d"
+    },
+    "invalid_atomic_ledgers": {
+      "role": "prior expert lexicality exclusions; frequency/regression not used as deletion criteria",
+      "target_count": 213
+    },
+    "pycantonese": {
+      "cantomap": {
+        "all_tokens": 118572,
+        "han_tokens": 96846,
+        "pos_role": "PyCantonese conversion/tagging signal; lower evidentiary weight than direct HKCanCor annotation",
+        "unique_han_surfaces": 2062
+      },
+      "hkcancor": {
+        "all_tokens": 153656,
+        "han_tokens": 122998,
+        "pos_role": "original HKCanCor annotation where present; evidence, not final ontology",
+        "unique_han_surfaces": 6346
+      },
+      "version": "5.0.0"
+    }
+  }
+}
