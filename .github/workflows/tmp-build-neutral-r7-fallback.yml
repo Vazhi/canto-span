@@ -1,0 +1,41 @@
+name: Temporary neutral R7 fallback build
+
+on:
+  push:
+    branches:
+      - agent/common-spoken-core-final-2000
+    paths:
+      - src/parser/tokenization/lexical-selection.js
+      - .github/workflows/tmp-build-neutral-r7-fallback.yml
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/common-spoken-core-final-2000
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Rebuild committed runtime bundle
+        run: |
+          node --check src/parser/tokenization/lexical-selection.js
+          node tools/build-runtime.js
+          node tools/build-runtime.js --check
+      - name: Commit generated main.js
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add main.js
+          if git diff --cached --quiet; then
+            echo "main.js already current"
+          else
+            git commit -m "Rebuild runtime for neutral R7 fallback precedence"
+            git push origin HEAD:agent/common-spoken-core-final-2000
+          fi
