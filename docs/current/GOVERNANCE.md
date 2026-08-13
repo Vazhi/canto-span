@@ -290,6 +290,28 @@ Possible dispositions include ACCEPT, IMPLEMENTED INFRASTRUCTURE, REVISE,
 QUARANTINE, SPLIT, MERGE, SUPERSEDE, and RETIRE. Success in one dimension cannot
 substitute for another.
 
+### Regression debt and independent justification
+
+Existing regression failures are implementation debt, not evidence that the failing
+behavior is correct. A debt-bearing branch does not have to make every inherited case
+green before an otherwise justified permanent improvement can land. The canonical
+comparison and acceptance procedure is the set-based ratchet in [`TESTING.md`](TESTING.md).
+
+Regression-directed work must strictly reduce the stable failing-case set with no new
+unique failures. Evidence-driven cleanup may leave the failing set unchanged when the
+cleanup is independently justified, but it may not expand that set or turn a
+previously passing case into a failure. Neither class may weaken protected or
+high-value behavior.
+
+Regression results do not supply linguistic, lexical, identity, or status evidence.
+For lexical cleanup in particular, lexicality and source evidence must independently
+support the addition, removal, or reclassification; regression improvement may
+strengthen the implementation case but cannot manufacture the lexical justification.
+A failure is not considered repaired if it disappeared only because a test was
+removed or weakened, an expected result was broadened merely to obtain acceptance, or
+diagnostics were suppressed. Remaining failures must stay explicitly identified as
+debt.
+
 Mechanical gates include:
 
 ```bash
@@ -303,7 +325,10 @@ npm run verify:release
 npm run verify:all
 ```
 
-Verification may reject an incomplete state but never promotes it automatically.
+Verification may reject an incomplete state but never promotes it automatically. When
+a test command contains an explicitly recorded inherited failing set, apply the
+regression-debt ratchet rather than treating the nonzero inherited total alone as a
+new defect.
 
 ## 8. Documentation, coordination, automation, and releases
 
