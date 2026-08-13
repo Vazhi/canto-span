@@ -1,6 +1,9 @@
 name: Materialize Rime-Cantonese rescue snapshot
 
 on:
+  push:
+    branches:
+      - agent/rime-cantonese-rescue
   workflow_dispatch:
 
 permissions:
@@ -8,7 +11,9 @@ permissions:
 
 jobs:
   materialize:
-    if: github.ref == 'refs/heads/agent/rime-cantonese-rescue'
+    if: >-
+      github.ref == 'refs/heads/agent/rime-cantonese-rescue' &&
+      !contains(github.event.head_commit.message || '', 'Materialize frozen Rime-Cantonese evidence')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
