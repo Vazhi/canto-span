@@ -1,0 +1,70 @@
+name: Compare low-value R7 retirement regression
+
+on:
+  push:
+    branches:
+      - agent/common-spoken-core-2000
+    paths:
+      - .github/workflows/common-spoken-core-regression-temp.yml
+      - tools/lexical-coverage/prune-r7-low-value.py
+      - data/lexical-frequency/common-spoken-cantonese-r7-priority-audit.tsv
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  compare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Baseline regression suite
+        id: baseline
+        shell: bash
+        run: |
+          set +e
+          npm run test:regression > /tmp/baseline-regression.log 2>&1
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          echo "===== BASELINE REGRESSION ====="
+          cat /tmp/baseline-regression.log
+          exit 0
+
+      - name: Apply narrow low-value R7 retirement experiment
+        run: |
+          set -euo pipefail
+          python tools/lexical-coverage/prune-r7-low-value.py --write
+          git diff --check
+          git diff --stat -- src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js
+
+      - name: Pruned regression suite
+        id: pruned
+        shell: bash
+        run: |
+          set +e
+          npm run test:regression > /tmp/pruned-regression.log 2>&1
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          echo "===== PRUNED REGRESSION ====="
+          cat /tmp/pruned-regression.log
+          exit 0
+
+      - name: Compare outcomes
+        shell: bash
+        run: |
+          echo "baseline_exit=${{ steps.baseline.outputs.exit_code }}"
+          echo "pruned_exit=${{ steps.pruned.outputs.exit_code }}"
+          echo "Retirement experiment is diagnostic only; this workflow never commits runtime changes."
