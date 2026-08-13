@@ -1,0 +1,63 @@
+{
+  "hits": [
+    {
+      "line": 10,
+      "path": "src/runtime-resources/lexicon/token-lexicon/degree-and-formulas.js",
+      "rank": 1760,
+      "surface": "好多人"
+    },
+    {
+      "line": 70,
+      "path": "src/runtime-resources/lexicon/token-lexicon/function-words-and-particles.js",
+      "rank": 790,
+      "surface": "我知"
+    },
+    {
+      "line": 17,
+      "path": "src/runtime-resources/lexicon/token-lexicon/referents-and-boundaries.js",
+      "rank": 1858,
+      "surface": "邊間"
+    },
+    {
+      "line": 27,
+      "path": "src/runtime-resources/lexicon/token-lexicon/statives.js",
+      "rank": 1487,
+      "surface": "好貴"
+    },
+    {
+      "line": 29,
+      "path": "src/runtime-resources/lexicon/token-lexicon/statives.js",
+      "rank": 1903,
+      "surface": "好靚"
+    },
+    {
+      "line": 64,
+      "path": "src/runtime-resources/lexicon/token-lexicon/verbs.js",
+      "rank": 506,
+      "surface": "一次"
+    },
+    {
+      "line": 79,
+      "path": "src/runtime-resources/lexicon/token-lexicon/verbs.js",
+      "rank": 552,
+      "surface": "第二個"
+    },
+    {
+      "line": 128,
+      "path": "src/runtime-resources/lexicon/token-lexicon/verbs.js",
+      "rank": 980,
+      "surface": "沿住"
+    },
+    {
+      "line": 131,
+      "path": "src/runtime-resources/lexicon/token-lexicon/verbs.js",
+      "rank": 70,
+      "surface": "係咪"
+    }
+  ],
+  "policy": "listed targets are expert-adjudicated non-atomic/noisy surfaces; valid rare Cantonese is outside this audit",
+  "runtime_hit_count": 9,
+  "runtime_hit_surface_count": 9,
+  "schema": "canto-span-invalid-atomic-runtime-audit-v1",
+  "target_count": 213
+}
