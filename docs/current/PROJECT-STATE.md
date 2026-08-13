@@ -132,6 +132,8 @@ All eligible respondents form one anonymized role-neutral panel. No named person
 - per-construction assertions: **1,639** across **134** files;
 - current test coverage: 133 positive-and-boundary and 1 compatibility-alias-only construction file;
 
+Current aggregate regression debt is **285 failing cases out of 551** on `main` commit `2b0dfc8564d2d7329331f454c9aa3c460986d04d`, inherited after merged PR #845. That PR reduced the prior 293/551 aggregate failures to 285/551; its dedicated source/context identity comparison reported zero new unique failures and seven inherited unique failures resolved. This count is a volatile implementation-debt snapshot, not sufficient by itself for future ratchet decisions: each debt-bearing change must capture stable failing-case identities from its exact base commit and separately account for any reviewed test-contract change.
+
 Canonical documentation-verifier values:
 
 | Target | Current value |
@@ -142,6 +144,8 @@ Canonical documentation-verifier values:
 | Construction test files | 134 |
 
 Stable task-scoped core verification is `npm run verify`. Runtime verification is `npm run verify:runtime`. The explicit full diagnostic sweep is `npm run verify:all`; it includes core, research, runtime, generated-bundle, promotion, and release checks and is not a routine requirement for unrelated work. Passing tests and implementation reachability have zero independent linguistic evidence weight.
+
+Known regression debt is governed by the monotonic ratchet in [`TESTING.md`](TESTING.md): unchanged valid tests may not gain new unique failures, regression-directed changes must strictly reduce actual behavior debt, independently justified cleanup may leave debt unchanged, and a stale test may be modified or removed only through explicit validity review rather than to manufacture a better red count.
 
 ## Current work order
 
