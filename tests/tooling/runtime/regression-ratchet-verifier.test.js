@@ -2,8 +2,12 @@
 "use strict";
 
 const assert = require("assert/strict");
+const fs = require("fs");
+const os = require("os");
+const path = require("path");
 const test = require("node:test");
 const { compareSuiteRatchet } = require("../../../tools/verify-regression-ratchet");
+const { materializeUnobservableBaseline } = require("../../../tools/ratchet-unobservable-baseline");
 
 function regressionFixture(cases) {
   return { cases, current_focused_exclusions: [] };
@@ -114,6 +118,35 @@ test("strict regression reduction rejects an unchanged inherited failure set", (
   assert.equal(report.comparison.new_failure_count, 0);
   assert.equal(report.comparison.resolved_failure_count, 0);
   assert.ok(report.blockers.includes("strict_debt_reduction_required"));
+});
+
+test("conservative unobservable regression baseline materializes every unchanged case as failed", () => {
+  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), "canto-span-ratchet-"));
+  const fixturePath = path.join(tempDir, "regression.json");
+  try {
+    fs.writeFileSync(fixturePath, JSON.stringify(regressionFixture(regressionCases)));
+    const report = materializeUnobservableBaseline({
+      suite: "regression",
+      universePath: fixturePath,
+      reason: "baseline crashed before report",
+    });
+
+    assert.equal(report.synthetic_unobservable_baseline, true);
+    assert.equal(report.status, "FAIL");
+    assert.equal(report.total, regressionCases.length);
+    assert.equal(report.passed, 0);
+    assert.equal(report.failed, regressionCases.length);
+    assert.deepEqual(
+      report.failures.map(({ source, context_source, error }) => ({ source, context_source, error })),
+      regressionCases.map(({ source, context_source = "" }) => ({
+        source,
+        context_source,
+        error: "baseline_suite_unobservable",
+      })),
+    );
+  } finally {
+    fs.rmSync(tempDir, { recursive: true, force: true });
+  }
 });
 
 test("NP subsystem uses stable fixture ids and accepts a true subset", () => {
