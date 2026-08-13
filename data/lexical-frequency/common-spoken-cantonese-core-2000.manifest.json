@@ -1,11 +1,11 @@
 {
   "core_size": 2000,
   "limitations": [
-    "Corpus segmentation does not prove atomic lexicality.",
-    "A common compositional sequence may be classified core_structural rather than receive an atomic runtime entry.",
-    "A surface outside this 2,000-item priority core is not absent from Cantonese; it is simply lower priority for regression accommodation.",
+    "Corpus segmentation does not prove atomic lexicality, and atomicity is not a removal criterion in this task.",
+    "Common compositional or constructional Cantonese surfaces remain valid priority evidence and are not deleted for being non-atomic.",
+    "A surface outside this 2,000-item priority inventory is not absent from Cantonese; it is simply lower frequency under this ranking.",
     "Cifu definitions/Jyutping carry no independent lexical-semantic authority.",
-    "The core should be expert-triaged for variants, proper names, transcript artifacts, and productive constructions before being treated as a final runtime requirement."
+    "Only positively identified Mandarin contamination is a removal/correction target; proper-name, domain, register, rarity, or regression status are not exclusion criteria."
   ],
   "output": {
     "also_in_old_cifu_top2000": 1314,
