@@ -1,0 +1,58 @@
+name: Materialize common spoken Cantonese core
+
+on:
+  push:
+    branches:
+      - agent/common-spoken-core-2000
+    paths:
+      - .github/workflows/common-spoken-core-temp.yml
+      - tools/lexical-coverage/export-common-spoken-core.py
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify claimed branch
+        run: |
+          set -euo pipefail
+          test "${GITHUB_REF}" = "refs/heads/agent/common-spoken-core-2000"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install frozen spoken-corpus dependency
+        run: |
+          set -euo pipefail
+          python -m pip install 'pycantonese==5.0.0'
+
+      - name: Generate and verify common spoken core
+        run: |
+          set -euo pipefail
+          python tools/lexical-coverage/export-common-spoken-core.py
+          python tools/lexical-coverage/export-common-spoken-core.py --check
+          rows=$(($(wc -l < data/lexical-frequency/common-spoken-cantonese-core-2000.tsv) - 1))
+          test "$rows" -eq 2000
+
+      - name: Commit generated evidence
+        run: |
+          set -euo pipefail
+          git config user.name "canto-span-common-core-materializer"
+          git config user.email "actions@users.noreply.github.com"
+          git add \
+            data/lexical-frequency/common-spoken-cantonese-core-2000.tsv \
+            data/lexical-frequency/common-spoken-cantonese-core-2000.manifest.json
+          if git diff --cached --quiet; then
+            echo "No generated changes to commit"
+          else
+            git commit -m "Materialize common spoken Cantonese core"
+            git push origin HEAD:agent/common-spoken-core-2000
+          fi
