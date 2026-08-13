@@ -7,6 +7,7 @@ on:
     paths:
       - .github/workflows/common-spoken-core-temp.yml
       - tools/lexical-coverage/export-common-spoken-core.py
+      - tools/lexical-coverage/audit-r7-common-priority.py
   workflow_dispatch:
 
 permissions:
@@ -42,6 +43,13 @@ jobs:
           rows=$(($(wc -l < data/lexical-frequency/common-spoken-cantonese-core-2000.tsv) - 1))
           test "$rows" -eq 2000
 
+      - name: Audit R7 neutral entries against common core
+        run: |
+          set -euo pipefail
+          python tools/lexical-coverage/audit-r7-common-priority.py
+          rows=$(($(wc -l < data/lexical-frequency/common-spoken-cantonese-r7-priority-audit.tsv) - 1))
+          test "$rows" -eq 1353
+
       - name: Commit generated evidence
         run: |
           set -euo pipefail
@@ -49,10 +57,11 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add \
             data/lexical-frequency/common-spoken-cantonese-core-2000.tsv \
-            data/lexical-frequency/common-spoken-cantonese-core-2000.manifest.json
+            data/lexical-frequency/common-spoken-cantonese-core-2000.manifest.json \
+            data/lexical-frequency/common-spoken-cantonese-r7-priority-audit.tsv
           if git diff --cached --quiet; then
             echo "No generated changes to commit"
           else
-            git commit -m "Materialize common spoken Cantonese core"
+            git commit -m "Refresh common spoken Cantonese priority evidence"
             git push origin HEAD:agent/common-spoken-core-2000
           fi
