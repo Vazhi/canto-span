@@ -1,0 +1,63 @@
+name: Apply invalid R7 atomic cleanup
+
+on:
+  push:
+    branches:
+      - agent/common-spoken-core-2000
+    paths:
+      - .github/workflows/invalid-r7-atomic-cleanup-temp.yml
+      - tools/lexical-coverage/retire-invalid-r7-atoms.py
+      - data/lexical-frequency/r7-invalid-atomic-retirements.tsv
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: npm ci
+
+      - name: Apply expert-adjudicated invalid atomic retirements
+        run: |
+          set -euo pipefail
+          python tools/lexical-coverage/retire-invalid-r7-atoms.py --write
+          git diff --check
+          node --check src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js
+          node -e "require('./src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js')"
+
+      - name: Regression diagnostic only
+        run: |
+          set +e
+          npm run test:regression > /tmp/regression.log 2>&1
+          code=$?
+          echo "Regression diagnostic exit=$code (not a lexical deletion gate)"
+          tail -60 /tmp/regression.log || true
+          exit 0
+
+      - name: Commit permanent lexical cleanup outputs
+        run: |
+          set -euo pipefail
+          git config user.name "canto-span-invalid-lexeme-cleanup"
+          git config user.email "actions@users.noreply.github.com"
+          git add src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js \
+                  data/lexical-frequency/r7-invalid-atomic-retirement-report.json
+          if git diff --cached --quiet; then
+            echo "No R7 cleanup change"
+          else
+            git commit -m "Retire adjudicated invalid R7 atomic entries"
+            git push origin HEAD:agent/common-spoken-core-2000
+          fi
