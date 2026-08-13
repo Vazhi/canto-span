@@ -1,102 +1,138 @@
-# Top-2000 spoken Cantonese lexical coverage audit
+# Common spoken Cantonese lexical priority core
 
-## Outcome
+## Governing outcome
 
-The runtime lexicon now contains an **exact lexical surface for every one of the 2,000 highest-ranked Cifu SpokenAdult forms**.
+Canto Span's lexical priority target is **2,000 contemporary, commonly used spoken Cantonese items/surfaces**, not mandatory retention of every surface in the historical Cifu SpokenAdult top-2,000 list.
 
-This is an inclusion target, not a lexicon-size cap. Existing lexical items outside the frequency list remain in the runtime. On the completed R7 branch:
+The previous R7 rule — materialize every Cifu surface as an atomic runtime lexical entry and never remove it for regression reasons — is superseded.
 
-- Cifu top-2,000 exact-surface coverage: **2,000 / 2,000 (100%)**
-- Total runtime lexical entries: **2,388**
-- Total runtime unique lexical surfaces: **2,384**
-- Runtime unique surfaces outside the Cifu top 2,000: **384**
-- Exact top-2,000 surfaces whose Cifu/runtime reading correspondence remains sense-uncertain: **24**
+The new rule is behavior- and value-first:
 
-No pre-existing lexical item was removed because it fell outside the top-2,000 list.
+- common/high-value Cantonese is protected;
+- if a protected common item exposes a parser regression, keep the item and repair parser behavior;
+- archaic, rare, formal-only, specialist, contaminated, weakly supported, or domain-specific material is lower priority;
+- a low-value runtime lexical entry may be retired when it demonstrably creates or worsens parser/regression behavior and removing the atomic entry does not reduce common spoken-Cantonese capability;
+- a frequent surface sequence does not automatically deserve an atomic lexical entry when productive grammar already accounts for it.
 
-## Frequency source
+This is a priority model, not a claim that vocabulary outside the core is invalid Cantonese.
 
-The ranking uses Lai & Winterstein's **Cifu v1** lexicon, pinned at commit `8d5e4903e419193f903823880a7815712072cc80`, ranking unique non-empty forms by integer `SpokenAdult` frequency. Exactly the 2,000 highest-frequency forms with positive adult-spoken counts are retained.
+## Why the Cifu-only target was retired
 
-The result is therefore a reproducible **Cifu adult-spoken top 2,000**, not a claim that one universal Cantonese frequency ranking exists.
+Cifu remains valuable frequency/discovery evidence, but it is not a safe lexical authority by itself.
 
-Cifu supplies the ranked surface, adult-spoken frequency, Jyutping field, definition field, and structure metadata. Earlier reviewed batches also used independent lexical checks such as Wiktionary where useful.
+The project evidence contract now records that:
 
-## Coverage history
+- Cifu SpokenAdult rank/surface is derived from Hong Kong Cantonese spoken corpora and remains useful frequency evidence;
+- Cifu's English definitions and much of its Jyutping derive from yeDict, an adaptation of CEDICT, and therefore carry no independent Cantonese lexical-semantic/POS authority;
+- Cifu tokenization was re-segmented for the frequency lexicon, so an exact Cifu surface boundary does not prove atomic lexicality;
+- reconstructed `*` Jyutping is especially low-confidence candidate metadata.
 
-Before the first top-2,000 audit additions, only a minority of the ranked surfaces had direct runtime entries. R1–R6 added 184 independently reviewed entries. After those batches the audit contained:
+The old exact-surface benchmark therefore mixed at least three different things: genuine common lexemes, productive/compositional sequences, and low-value or contaminated dictionary/tokenization material.
 
-- 623 `covered_main`
-- 24 `surface_covered_sense_uncertain`
-- 179 `handled_structurally`
-- 833 `missing`
-- 341 `manual_review`
+## Primary commonness evidence
 
-R7 changes the purpose of those latter classifications. They are no longer used as reasons to withhold an exact lexical surface. R7 materializes **1,353 exact neutral lexical entries** corresponding to the former:
+The current reproducible direct-spoken candidate generator is:
 
-- 833 `missing`
-- 341 `manual_review`
-- 179 `handled_structurally`
+`tools/lexical-coverage/export-common-spoken-core.py`
 
-Together with the 647 exact surfaces already present, this produces **2,000/2,000 exact frequency-list coverage**.
+It uses frozen **PyCantonese 5.0.0**:
 
-## R7 representation
+- HKCanCor;
+- CantoMap.
 
-R7 entries live in:
+For each exact Han-containing word token it records raw count and per-million frequency independently in both corpora. The provisional score is the arithmetic mean of the two per-million rates, giving each corpus equal weight rather than letting corpus size alone control rank.
 
-`src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js`
+The generated evidence is:
 
-They are intentionally represented conservatively as neutral lexical items when POS or grammar-role assignment is not yet independently verified:
+- `data/lexical-frequency/common-spoken-cantonese-core-2000.tsv`
+- `data/lexical-frequency/common-spoken-cantonese-core-2000.manifest.json`
 
-- `label: "lex"`
-- `pos: "lexical_item"`
-- `syntax: "lexical_item"`
-- Cifu-derived surface, rank, frequency, reading field, and definition/notes retained for review
+The first direct-corpus candidate pass contains exactly 2,000 ranked surfaces:
 
-This separates two questions that should not have been conflated:
+- 836 are attested in both HKCanCor and CantoMap;
+- 1,314 are also in the historical Cifu top 2,000;
+- 686 are outside the historical Cifu top 2,000.
 
-1. **Should the runtime know this lexical surface exists?**
-2. **What POS, syntactic affordances, senses, and parser behavior should it receive?**
+This first 2,000 is a **frequency candidate pool, not the final curated lexical core**. Its lower tail contains proper names, MapTask/navigation-domain vocabulary, productive number/time strings, and segmentation artifacts. Those must not displace more useful general-spoken vocabulary merely because of corpus-domain concentration.
 
-The first question is now complete for all 2,000 ranked surfaces. The second is a subsequent verification/adjudication task.
+## Secondary evidence
 
-## Regression policy
+Cifu SpokenAdult frequency remains useful because it also incorporates HKCAC and therefore adds spoken-domain breadth missing from the two directly queryable frozen corpora.
 
-Lexical coverage is not removed merely because it exposes a parser regression, snapshot change, or audit failure. Those failures diagnose runtime behavior that may need repair; they do not make a supported lexical surface cease to exist.
+Use Cifu frequency/rank as secondary corroboration/backfill evidence, never as mandatory inclusion or lexical identity.
 
-The earlier decision to exclude `死 sei2` because it activated an unwanted parse was therefore reversed. `死` is retained in R7 lexical coverage. Parser behavior involving it is a separate repair problem.
+The frozen Rime-Cantonese layer may corroborate contemporary surface/readings. Rime weights are not frequency evidence and Rime has no independent POS/semantic/lexicality authority.
 
-Tests remain useful diagnostics, but maintaining green tests is not itself the lexical-coverage objective.
+Words.hk, Jyut.net, corpus context, and Cantonese linguistic research remain appropriate expert adjudication sources where lexicality, reading, or usage status is unclear.
 
-## Total lexicon versus frequency subset
+## Final core classifications
 
-The top-2,000 list is only a benchmark subset of the runtime lexicon. The completed branch contains **2,384 unique lexical surfaces**, of which **384 are outside the top-2,000 Cifu set**. Those additional entries remain available and should continue to expand whenever justified by research, corpus, survey, teaching, or parser-development needs.
+Every final priority item should resolve to one of these outcomes:
 
-Future lexical audits should therefore report at least two separate metrics:
+- `core_atomic` — common contemporary spoken item requiring a lexical runtime analysis;
+- `core_structural` — common surface/sequence, but productive grammar/construction handling is preferred over a fake atomic lexical entry;
+- `defer_low_value` — attested Cantonese but uncommon, formal-only, archaic, specialist, domain-specific, or otherwise low priority for regression accommodation;
+- `retire_regression` — low-value atomic runtime entry with demonstrated parser/regression cost whose removal preserves common-core capability;
+- `research_required` — evidence conflict still requiring expert review.
 
-1. benchmark coverage, such as `2,000 / 2,000` Cifu surfaces;
-2. total runtime lexical inventory size.
+The final protected core must contain exactly 2,000 priority items/surfaces after curation and backfill; `core_structural` items may count toward common-surface coverage without requiring an atomic token-lexicon entry.
 
-Neither metric should be used as a reason to delete valid vocabulary.
+## Regression retirement rule
 
-## POS verification follow-up
+A runtime lexical entry is eligible for retirement only when **both** conditions hold:
 
-R7 intentionally does not guess POS merely to finish the coverage benchmark. Human-assigned follow-up issues divide the top-2,000 ranking into manageable review bands. Those reviews should verify POS and, where useful, reading/sense distinctions using independent lexical evidence and local Ubuntu tooling.
+1. it is outside the protected common lexical need, or the common surface is already structurally/compositionally licensed without that atomic entry; and
+2. controlled regression comparison demonstrates that the atomic entry causes or materially worsens parser behavior/ambiguity.
 
-POS correction may replace neutral `lexical_item` metadata with better-supported lexical categories. It must not delete a frequency-list surface solely because grammar support is incomplete.
+Low frequency alone is not sufficient reason to delete an entry. A failing snapshot alone is not sufficient reason either.
 
-## Reproducibility
+Conversely, common/high-value vocabulary is not removed merely to make regression tests green. `死 sei2` is the reference example: it is strongly common in direct spoken evidence, so parser behavior around it is a parser obligation rather than a lexical-retirement opportunity.
 
-Canonical audit data:
+## First causal retirement experiment
 
-`data/lexical-frequency/cifu-spoken-top-2000.tsv`
+Historical PR #791 added 1,353 neutral R7 entries to force exact Cifu top-2,000 coverage.
 
-Permanent audit tool:
+The common-priority audit (`data/lexical-frequency/common-spoken-cantonese-r7-priority-audit.tsv`) currently finds:
 
-`tools/lexical-coverage/top-2000-audit.mjs`
+- 731 / 1,353 R7 entries inside the provisional direct spoken-core candidate set;
+- 622 outside it;
+- 67 outside-core entries that were already classified `handled_structurally` before R7;
+- 239 outside-core manual-review entries whose Cifu Jyutping was reconstructed.
 
-The audit compares the ranked Cifu subset against the **full runtime token lexicon**, including `frequency-gap-fill-r7.js`, and separately reports total runtime unique surfaces and surfaces outside the benchmark set.
+A controlled experiment removing all 67 structural/outside-core atomic entries reduced the inherited regression failures from **317 to 314**, with no new failures. The three recovered cases were `三年。`, `兩年喇。`, and `半年。`.
+
+The project restriction on #796 (Cifu ranks 1001–1250) remains in force. `三年` is rank 1139 and therefore was **not** selected for permanent retirement.
+
+A second causal-safe experiment removed only the non-#796 recovered entries:
+
+- `兩年` — historical Cifu rank 977;
+- `半年` — historical Cifu rank 1749.
+
+That controlled comparison reduced regression failures from **317 to 315 with zero new failures**. These are transparent quantified-time expressions already licensed structurally; their atomic R7 entries are therefore justified `retire_regression` candidates.
+
+## Historical R7 status
+
+`src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js` remains provenance for the 2026 Cifu coverage expansion, but its old comments/policy are no longer governing.
+
+Its neutral `lexical_item` records are candidates for review, not protected lexical truth. Common entries may be retained and upgraded; structural or low-value entries may be retired under the causal rule above.
+
+Historical PR #791 and stale work claim #790 remain useful provenance for why those entries were introduced.
+
+## Audit metrics going forward
+
+Future lexical reports should separate at least:
+
+1. final common spoken priority core coverage (`core_atomic` + `core_structural`) out of exactly 2,000;
+2. atomic runtime lexical coverage for `core_atomic` items;
+3. total runtime lexical inventory size;
+4. low-value deferred inventory;
+5. regression retirements with causal evidence;
+6. protected common-core items still exposing parser regressions.
+
+A raw “Cifu 2,000 / 2,000 exact surfaces in the token lexicon” metric is historical only and must not drive runtime decisions.
 
 ## Scope
 
-This work expands lexical coverage only. It does not by itself establish construction productivity, grammar identity, parser correctness, construction status, evidence sufficiency, survey/native-panel state, corpus adjudication, release state, or deployment state. Those consequences remain separate work.
+This priority policy does not by itself promote construction productivity/status, survey/native-panel evidence, corpus classifications, release state, or deployment state.
+
+Parser changes remain allowed when necessary to preserve genuinely common spoken Cantonese behavior. Lexical retirement is preferred only when the entry is demonstrably low-value or structurally unnecessary and causally contributes to regression.
