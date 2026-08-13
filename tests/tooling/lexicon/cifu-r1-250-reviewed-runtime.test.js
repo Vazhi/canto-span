@@ -61,7 +61,6 @@ test("reviewed #792 corrections replace stale active Cifu-derived metadata", () 
     ["戀", ["lyun2", "morpheme"]],
     ["韻", ["wan5", "noun"]],
     ["廟", ["miu2", "noun"]],
-    ["幾多", ["gei2 do1", "pronoun"]],
   ]);
 
   for (const [surface, [jyutping, pos]] of expected) {
@@ -78,6 +77,8 @@ test("reviewed multiple analyses preserve independently supported category and r
   assert.deepEqual(readings("廟"), new Set(["miu2", "miu6"]));
   assert.deepEqual(readings("韻"), new Set(["wan5", "wan6"]));
   assert.ok(ids("咪").has("lex:咪:study_cram_verb"));
+  assert.ok(ids("個人").has("lex:個人:individual_noun"), "個人 lexical noun analysis remains represented without forcing classifier contexts atomic");
+  assert.ok(ids("幾多").has("lex:幾多:interrogative_quantifier"), "幾多 interrogative lexical analysis remains represented without forcing quantity structure atomic");
   assert.equal((analysisIndex["等"] || []).length, 4, "等 must preserve conjunction/verb/noun/list-suffix analyses");
   assert.equal((analysisIndex["成"] || []).length, 6, "成 must preserve the reviewed reading/category families");
   assert.equal((analysisIndex["位"] || []).length, 4, "位 must keep wai2 and wai6 category distinctions");
@@ -91,6 +92,8 @@ test("mixed lexical/compositional decisions are represented without forcing ever
   assert.deepEqual(tokenSurfaces("唔見"), ["唔", "見"], "ordinary bare 唔見 remains compositionally available by default");
   assert.deepEqual(tokenSurfaces("都會"), ["都", "會"], "bare 都會 retains compositional dou1+wui5 default absent noun context");
   assert.deepEqual(tokenSurfaces("一樣"), ["一", "樣"], "literal bare 一樣 remains compositionally visible by default");
+  assert.deepEqual(tokenSurfaces("三個人"), ["三", "個", "人"], "reviewed 個人 analysis must not swallow productive numeral-classifier-person structure");
+  assert.deepEqual(tokenSurfaces("幾多個字"), ["幾", "多", "個", "字"], "reviewed 幾多 analysis must not swallow productive quantity/classifier structure");
 });
 
 test("blocked_atomic and unresolved whole-form surfaces stay neutral exact-surface coverage", () => {

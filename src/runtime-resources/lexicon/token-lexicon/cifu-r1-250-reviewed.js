@@ -114,10 +114,6 @@ const entries = Object.freeze([
     label: "func", pos: "interjection", jyutping: "waa3", syntax: "surprise_interjection",
     note: "wow; waa1 is retained separately as a bound noise/hubbub morpheme.",
   }),
-  reviewed(140, 5275634464, "個人", {
-    label: "who", pos: "noun", jyutping: "go3 jan4", syntax: "person_noun individual_noun",
-    note: "individual/person; personal/individual modifier use is preserved as a separate analysis.",
-  }),
   reviewed(149, 5275634464, "揾", {
     label: "doing", pos: "verb", jyutping: "wan2", syntax: "verb search_find_verb orthographic_variant_wan2",
     note: "find/search; orthographic variant of 搵 sharing the reviewed wan2 family.",
@@ -205,10 +201,6 @@ const entries = Object.freeze([
   reviewed(247, 5275852412, "成", {
     label: "doing", pos: "verb", jyutping: "sing4", syntax: "completion_success_verb",
     note: "Success/completion verb family by default; reviewed quantificational, result-suffix, and one-tenth measure families are preserved separately.",
-  }),
-  reviewed(249, 5275852412, "幾多", {
-    label: "how", pos: "pronoun", jyutping: "gei2 do1", syntax: "interrogative_quantifier",
-    note: "how much / how many",
   }),
 ]);
 
@@ -648,6 +640,9 @@ const analyses = Object.freeze({
     analysis(247, 5275852412, "成", "result_suffix_seng4", { label: "func", pos: "suffix", jyutping: "seng4", syntax: "completion_result_suffix", gloss: "completion/result suffix" }),
     analysis(247, 5275852412, "成", "tenth_measure", { label: "measure_word", pos: "classifier", jyutping: "sing4", syntax: "one_tenth_measure", gloss: "one tenth / 10%" }),
     analysis(247, 5275852412, "成", "surname", { label: "who", pos: "proper_noun", jyutping: "sing4", syntax: "surname", gloss: "surname Shing/Cheng" }),
+  ]),
+  "幾多": Object.freeze([
+    analysis(249, 5275852412, "幾多", "interrogative_quantifier", { label: "how", pos: "pronoun", jyutping: "gei2 do1", syntax: "interrogative_quantifier", gloss: "how much / how many", note: "Reviewed lexical analysis candidate; ordinary productive quantity structure remains available and is not forced atomic." }),
   ]),
   "等": Object.freeze([
     analysis(250, 5276160895, "等", "conjunction", { label: "func", pos: "conjunction", jyutping: "dang2", syntax: "temporal_condition_conjunction", gloss: "when / after a condition is met" }),
