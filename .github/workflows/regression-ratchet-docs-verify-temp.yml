@@ -1,0 +1,25 @@
+name: Temporary regression-ratchet docs verification
+
+on:
+  push:
+    branches:
+      - agent/regression-debt-ratchet-docs
+    paths:
+      - ".github/workflows/regression-ratchet-docs-verify-temp.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  documentation-consistency:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/regression-debt-ratchet-docs
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Run documentation consistency verifier
+        run: node tools/verify-documentation-consistency.js
