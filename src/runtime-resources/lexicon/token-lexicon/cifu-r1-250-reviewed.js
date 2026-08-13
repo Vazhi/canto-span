@@ -474,7 +474,7 @@ const analyses = Object.freeze({
     analysis(148, 5275634464, "條", "noun", { label: "what", pos: "noun", jyutping: "tiu4", syntax: "strip_article_clause_noun", gloss: "strip / article / clause" }),
   ]),
   "間": Object.freeze([
-    analysis(152, 5275707047, "間", "classifier_gaан1", { label: "measure_word", pos: "classifier", jyutping: "gaan1", syntax: "classifier_building_shop", gloss: "classifier for rooms/buildings" }),
+    analysis(152, 5275707047, "間", "classifier_gaan1", { label: "measure_word", pos: "classifier", jyutping: "gaan1", syntax: "classifier_building_shop", gloss: "classifier for rooms/buildings" }),
     analysis(152, 5275707047, "間", "divide_gaan3", { label: "doing", pos: "verb", jyutping: "gaan3", syntax: "divide_partition_verb", gloss: "draw/divide/partition" }),
     analysis(152, 5275707047, "間", "bay_classifier_gaan3", { label: "measure_word", pos: "classifier", jyutping: "gaan3", syntax: "architectural_bay_classifier", gloss: "architectural-bay classifier" }),
     analysis(152, 5275707047, "間", "stripe_noun_gaan3", { label: "what", pos: "noun", jyutping: "gaan3", syntax: "stripe_noun", gloss: "stripe" }),
