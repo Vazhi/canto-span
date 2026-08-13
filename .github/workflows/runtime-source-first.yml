@@ -7,6 +7,7 @@ on:
       - "tests/**"
       - "tools/build-runtime.js"
       - "tools/verify-current-state.js"
+      - "tools/verify-regression-ratchet.js"
       - "config/verification-profiles.json"
       - "package.json"
       - "package-lock.json"
@@ -18,6 +19,7 @@ on:
       - "tests/**"
       - "tools/build-runtime.js"
       - "tools/verify-current-state.js"
+      - "tools/verify-regression-ratchet.js"
       - "config/verification-profiles.json"
       - "package.json"
       - "package-lock.json"
@@ -33,6 +35,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v6
         with:
           node-version: 24
@@ -41,3 +45,44 @@ jobs:
         run: npm ci
       - name: Run runtime verification profile
         run: npm run verify:runtime
+      - name: Enforce stable-identity regression debt ratchet
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          PUSH_BASE_SHA: ${{ github.event.before }}
+        run: |
+          set -euo pipefail
+
+          BASE_SHA=""
+          if [[ "$EVENT_NAME" == "pull_request" ]]; then
+            BASE_SHA="$PR_BASE_SHA"
+          elif [[ "$EVENT_NAME" == "push" && -n "$PUSH_BASE_SHA" && "$PUSH_BASE_SHA" != "0000000000000000000000000000000000000000" ]]; then
+            BASE_SHA="$PUSH_BASE_SHA"
+          else
+            BASE_SHA="$(git rev-parse HEAD^ 2>/dev/null || true)"
+          fi
+
+          if [[ -z "$BASE_SHA" ]]; then
+            echo "No baseline commit is available for this event; runtime profile completed but ratchet comparison was not run."
+            exit 0
+          fi
+
+          BASE_DIR="$RUNNER_TEMP/canto-span-ratchet-base"
+          rm -rf "$BASE_DIR"
+          git worktree add --detach "$BASE_DIR" "$BASE_SHA"
+          cleanup() {
+            git worktree remove --force "$BASE_DIR" >/dev/null 2>&1 || true
+          }
+          trap cleanup EXIT
+
+          (cd "$BASE_DIR" && node tests/run-regression.js >"$RUNNER_TEMP/baseline-regression.stdout" 2>"$RUNNER_TEMP/baseline-regression.stderr" || true)
+          node tests/run-regression.js >"$RUNNER_TEMP/candidate-regression.stdout" 2>"$RUNNER_TEMP/candidate-regression.stderr" || true
+
+          test -f "$BASE_DIR/validation/current/regression-suite.json"
+          test -f "validation/current/regression-suite.json"
+
+          node tools/verify-regression-ratchet.js \
+            --baseline-result "$BASE_DIR/validation/current/regression-suite.json" \
+            --candidate-result "validation/current/regression-suite.json" \
+            --baseline-fixture "$BASE_DIR/tests/fixtures/regression-snapshots.json" \
+            --candidate-fixture "tests/fixtures/regression-snapshots.json"
