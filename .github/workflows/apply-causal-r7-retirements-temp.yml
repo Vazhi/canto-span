@@ -1,0 +1,55 @@
+name: Apply causal-safe R7 retirements
+
+on:
+  push:
+    branches:
+      - agent/common-spoken-core-2000
+    paths:
+      - .github/workflows/apply-causal-r7-retirements-temp.yml
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci
+      - name: Apply only causally proven, non-#796 retirements
+        run: |
+          set -euo pipefail
+          python tools/lexical-coverage/prune-r7-causal-retirements.py --write
+          git diff --check
+      - name: Verify expected regression improvement
+        run: |
+          set +e
+          npm run test:regression >/tmp/regression.log 2>&1
+          code=$?
+          set -e
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          result=json.loads(Path('validation/current/regression-suite.json').read_text())
+          assert result['failed'] == 315, result['failed']
+          print(json.dumps({'failed':result['failed'],'passed':result['passed']},indent=2))
+          PY
+          test "$code" -eq 1
+      - name: Commit only permanent R7 retirements
+        run: |
+          set -euo pipefail
+          git config user.name "canto-span-common-core-retirement"
+          git config user.email "actions@users.noreply.github.com"
+          git add src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js
+          git commit -m "Retire causal low-value R7 time compounds"
+          git push origin HEAD:agent/common-spoken-core-2000
