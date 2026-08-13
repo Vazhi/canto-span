@@ -9885,15 +9885,18 @@ var require_clauses = __commonJS({
         children.push(acceptabilityFocusClone(match.focus));
         children.push(acceptabilityDakClone(match.dak));
         if (match.particle) children.push(acceptabilityParticleClone(match.particle));
+        const traceTemplate = subjectPredicateChild ? ["predicate!", "focus_adverb!", "acceptability_predicate!", "particle?"] : ["subject?", "predicate!", "focus_adverb!", "acceptability_predicate!", "particle?"];
+        const assignedSlots = subjectPredicateChild ? ["predicate", "focus_adverb", "acceptability_predicate", ...match.particle ? ["particle"] : []] : [...match.subject ? ["subject"] : [], "predicate", "focus_adverb", "acceptability_predicate", ...match.particle ? ["particle"] : []];
         return construction2("AcceptabilityClause", "Acceptability", children, {
           slots: ["acceptability_clause", "acceptability", "focus_adverb", "acceptability_predicate", "predicate", "clause"],
           note: "Bounded action-feasibility clause: an overt action predicate followed by 都得 and an optional final particle. Wh/free-choice 都得 remains outside this node. When a subject + transparent predicate is present, preserve it as a child clause for learner visibility.",
           trace: traceInfo2("generative_template", {
             construction_type: "AcceptabilityClause",
+            template_family: "generative_template",
             retired_label_alias: "PermissionAcceptabilityClause",
             acceptability_subtype: "action_feasibility",
-            template: ["subject?", "predicate!", "focus_adverb!", "acceptability_predicate!", "particle?"],
-            assigned_slots: ["subject", "predicate", "focus_adverb", "acceptability_predicate", "particle"],
+            template: traceTemplate,
+            assigned_slots: assignedSlots,
             rule: "subject? + overt action predicate + focus adverb 都 + acceptability predicate 得 + optional final particle",
             pattern: match.particle ? "subject? + predicate + 都 + 得 + final_particle" : "subject? + predicate + 都 + 得",
             reason: "Checked source evidence directly supports action material followed by 都得 as feasible. The matcher requires that overt host and leaves wh/free-choice 都得 for separate analysis.",
