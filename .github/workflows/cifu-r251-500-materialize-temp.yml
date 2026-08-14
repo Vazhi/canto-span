@@ -28,7 +28,7 @@ jobs:
         run: |
           set -euo pipefail
           test "$GITHUB_REF_NAME" = "agent/cifu-r251-500-runtime-reconcile"
-          test "$(git rev-parse HEAD^)" = "417e8b61818cbdf3c1d2d402fd3b5d78a47e2aec"
+          git merge-base --is-ancestor 417e8b61818cbdf3c1d2d402fd3b5d78a47e2aec HEAD
           git fetch origin main
           test "$(git rev-parse origin/main)" = "fcbeba51cb0ac734923cb4df7d54ab9f6f4e790e"
           intake="$(gh api "repos/$GITHUB_REPOSITORY/issues/861" --jq .body)"
@@ -40,11 +40,11 @@ jobs:
           printf '%s\n' "$claim" | grep -F '"status": "active"'
           printf '%s\n' "$claim" | grep -F '"active_worker": "chatgpt"'
           printf '%s\n' "$claim" | grep -F '"ownership_revision": 1'
-          git diff --exit-code HEAD^ -- . ':(exclude).github/workflows/cifu-r251-500-materialize-temp.yml'
+          git diff --exit-code 417e8b61818cbdf3c1d2d402fd3b5d78a47e2aec -- . ':(exclude).github/workflows/cifu-r251-500-materialize-temp.yml'
       - name: Install dependencies
         run: npm ci
       - name: Render canonical project-state counters
-        run: npm run render:core:state -- --write
+        run: node tools/render-core-project-state.js --write
       - name: Record v0.5.229 lexical consequence
         run: |
           node <<'NODE'
