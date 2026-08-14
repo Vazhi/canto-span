@@ -1,0 +1,53 @@
+name: Temporary Cifu ranks 751-1000 ledger verifier
+
+on:
+  push:
+    branches:
+      - agent/cifu-r751-1000-adjudication-consolidation
+    paths:
+      - .github/workflows/temporary-cifu-r751-1000-ledger-verify.yml
+
+permissions:
+  contents: read
+
+jobs:
+  verify-ledger:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/cifu-r751-1000-adjudication-consolidation
+      - name: Verify rank and exact-surface completeness
+        shell: bash
+        run: |
+          python - <<'PY'
+          import csv
+          import re
+          from collections import Counter
+          from pathlib import Path
+
+          ledger_path = Path('docs/research/ISSUE-872-CIFU-R751-1000-LEXICAL-ADJUDICATION-R1.md')
+          text = ledger_path.read_text(encoding='utf-8')
+          pattern = re.compile(r'^- \*\*(\d{3,4}) (.+?) — ([a-z_]+):', re.M)
+          rows = [(int(rank), surface, disposition) for rank, surface, disposition in pattern.findall(text)]
+
+          assert len(rows) == 250, f'expected 250 ledger rows, got {len(rows)}'
+          ranks = [rank for rank, _, _ in rows]
+          assert len(set(ranks)) == 250, 'duplicate rank(s) in ledger'
+          assert sorted(ranks) == list(range(751, 1001)), 'ledger ranks are not exactly 751..1000'
+
+          with Path('data/lexical-frequency/cifu-spoken-top-2000.tsv').open(encoding='utf-8-sig', newline='') as fh:
+            reader = csv.DictReader(fh, delimiter='\t')
+            expected = {int(row['rank']): row['word'] for row in reader if 751 <= int(row['rank']) <= 1000}
+
+          assert len(expected) == 250, f'expected 250 Cifu rows, got {len(expected)}'
+          mismatches = [(rank, expected[rank], surface) for rank, surface, _ in rows if expected[rank] != surface]
+          assert not mismatches, f'rank/surface mismatches: {mismatches}'
+
+          counts = Counter(disposition for _, _, disposition in rows)
+          print('ledger_rows=250')
+          print('unique_ranks=250')
+          print('rank_range=751..1000')
+          print('exact_surface_matches=250')
+          print('disposition_counts=' + ', '.join(f'{k}:{counts[k]}' for k in sorted(counts)))
+          PY
