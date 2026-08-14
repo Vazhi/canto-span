@@ -8,6 +8,7 @@ const test = require("node:test");
 
 const tokenEntries = require("../../../src/runtime-resources/lexicon/token-lexicon");
 const reviewed = require("../../../src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-reviewed");
+const nativeCorrections = require("../../../src/runtime-resources/lexicon/token-lexicon/native-review-corrections");
 const { buildLexicalAnalysisIndex } = require("../../../src/runtime-resources/lexicon/lexical-analyses");
 
 const root = path.resolve(__dirname, "../../..");
@@ -72,7 +73,8 @@ test("candidate-only surfaces preserve neutral defaults plus reviewed alternativ
     assert.ok(reviewed.isNeutralFrequencyFallback(tokenLexicon[surface]), `${surface}: candidate default remains neutral`);
     assert.equal(analyses[surface][0].id, `lex:${surface}:default`, `${surface}: stable neutral default ID`);
     assert.equal(analyses[surface][0].pos, "lexical_item", `${surface}: neutral default analysis`);
-    assert.equal(analyses[surface][0].provenance.kind, "neutral_frequency_fallback_preserved", `${surface}: neutral-default provenance`);
+    const expectedKind = surface === "喀" ? "native_speaker_pronunciation_correction" : "neutral_frequency_fallback_preserved";
+    assert.equal(analyses[surface][0].provenance.kind, expectedKind, `${surface}: neutral-default provenance`);
     assert.ok(analyses[surface].slice(1).some((row) => row.provenance.kind === "reviewed_lexical_analysis"), `${surface}: reviewed candidate exists`);
   }
   assert.ok(ids("唔係").includes("lex:唔係:otherwise_conjunction"));
@@ -102,6 +104,17 @@ test("direct promotions and named corrections carry reviewed provenance", () => 
   }
 });
 
+test("native reviewer correction makes kak1 the default for 喀 without erasing alternatives", () => {
+  assert.equal(tokenLexicon["喀"].jyutping, "kak1");
+  assert.equal(tokenLexicon["喀"].provenance.kind, "native_speaker_pronunciation_correction");
+  assert.equal(tokenLexicon["喀"].provenance.source, nativeCorrections.SOURCE);
+  assert.equal(analyses["喀"][0].id, "lex:喀:default");
+  assert.equal(analyses["喀"][0].jyutping, "kak1");
+  assert.equal(analyses["喀"][0].provenance.kind, "native_speaker_pronunciation_correction");
+  assert.deepEqual(new Set(readings("喀").filter(Boolean)), new Set(["kak1", "haak3", "kaa1", "kaa3"]));
+  assert.ok(!readings("喀").includes("haak6"), "packet haak6 must not be promoted");
+});
+
 test("explicit analysis inventory preserves unique stable IDs and final reading boundaries", () => {
   assert.equal(Object.keys(reviewed.EXPLICIT_ANALYSES).length, 107);
   assert.equal(Object.values(reviewed.EXPLICIT_ANALYSES).reduce((sum, rows) => sum + rows.length, 0), 280);
@@ -115,8 +128,6 @@ test("explicit analysis inventory preserves unique stable IDs and final reading 
     assert.deepEqual(ids(surface), rows.map((row) => row.id), `${surface}: runtime index uses reviewed analyses`);
   }
 
-  assert.deepEqual(new Set(readings("喀").filter(Boolean)), new Set(["haak3", "kaa1", "kaa3", "kak1"]));
-  assert.ok(!readings("喀").includes("haak6"), "packet haak6 must not be promoted");
   assert.deepEqual(readings("囉"), ["lo1", "lo4"]);
   assert.ok(!readings("囉").includes("lo3"), "Cifu lo3 must not be imported");
   assert.equal(analyses["韻"][0].jyutping, "wan5");
