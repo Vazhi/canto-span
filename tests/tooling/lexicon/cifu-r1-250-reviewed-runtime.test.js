@@ -8,6 +8,7 @@ const test = require("node:test");
 
 const tokenEntries = require("../../../src/runtime-resources/lexicon/token-lexicon");
 const reviewed = require("../../../src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-reviewed");
+const candidateDefaults = require("../../../src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-candidate-defaults");
 const nativeCorrections = require("../../../src/runtime-resources/lexicon/token-lexicon/native-review-corrections");
 const { buildLexicalAnalysisIndex } = require("../../../src/runtime-resources/lexicon/lexical-analyses");
 
@@ -46,6 +47,7 @@ test("reviewed overlay exposes the audited operation sets without overlap", () =
   assert.equal(Object.keys(reviewed.PROTECTED_NEUTRAL_SURFACES).length, 14);
   assert.equal(reviewed.CANDIDATE_ONLY_SURFACES.size, 13);
   assert.equal(Object.keys(reviewed.CORRECTIONS).length, 5);
+  assert.equal(Object.keys(candidateDefaults.DEFAULT_READINGS).length, 12);
   const groups = [
     new Set(Object.keys(reviewed.PROMOTIONS)),
     new Set(Object.keys(reviewed.PROTECTED_NEUTRAL_SURFACES)),
@@ -57,6 +59,10 @@ test("reviewed overlay exposes the audited operation sets without overlap", () =
       assert.deepEqual([...groups[left]].filter((surface) => groups[right].has(surface)), []);
     }
   }
+  assert.deepEqual(
+    new Set(Object.keys(candidateDefaults.DEFAULT_READINGS)),
+    new Set([...reviewed.CANDIDATE_ONLY_SURFACES].filter((surface) => surface !== "喀"))
+  );
 });
 
 test("blocked and research-neutral surfaces stay neutral, including demoted typed rows", () => {
@@ -73,7 +79,9 @@ test("candidate-only surfaces preserve neutral defaults plus reviewed alternativ
     assert.ok(reviewed.isNeutralFrequencyFallback(tokenLexicon[surface]), `${surface}: candidate default remains neutral`);
     assert.equal(analyses[surface][0].id, `lex:${surface}:default`, `${surface}: stable neutral default ID`);
     assert.equal(analyses[surface][0].pos, "lexical_item", `${surface}: neutral default analysis`);
-    const expectedKind = surface === "喀" ? "native_speaker_pronunciation_correction" : "neutral_frequency_fallback_preserved";
+    const expectedKind = surface === "喀"
+      ? "native_speaker_pronunciation_correction"
+      : "reviewed_candidate_default_pronunciation";
     assert.equal(analyses[surface][0].provenance.kind, expectedKind, `${surface}: neutral-default provenance`);
     assert.ok(analyses[surface].slice(1).some((row) => row.provenance.kind === "reviewed_lexical_analysis"), `${surface}: reviewed candidate exists`);
   }
@@ -83,6 +91,7 @@ test("candidate-only surfaces preserve neutral defaults plus reviewed alternativ
   assert.ok(ids("都會").includes("lex:都會:metropolis_noun"));
   assert.equal(tokenLexicon["個位"].jyutping, "go3 wai2");
   assert.equal(tokenLexicon["哩個"].jyutping, "ni1 go3");
+  assert.equal(tokenLexicon["都會"].jyutping, "dou1 wui5");
 });
 
 test("direct promotions and named corrections carry reviewed provenance", () => {
@@ -104,14 +113,15 @@ test("direct promotions and named corrections carry reviewed provenance", () => 
   }
 });
 
-test("native reviewer correction makes kak1 the default for 喀 without erasing alternatives", () => {
-  assert.equal(tokenLexicon["喀"].jyutping, "kak1");
+test("native reviewer correction makes haak1 the default for 喀 and supersedes kak1", () => {
+  assert.equal(tokenLexicon["喀"].jyutping, "haak1");
   assert.equal(tokenLexicon["喀"].provenance.kind, "native_speaker_pronunciation_correction");
   assert.equal(tokenLexicon["喀"].provenance.source, nativeCorrections.SOURCE);
   assert.equal(analyses["喀"][0].id, "lex:喀:default");
-  assert.equal(analyses["喀"][0].jyutping, "kak1");
+  assert.equal(analyses["喀"][0].jyutping, "haak1");
   assert.equal(analyses["喀"][0].provenance.kind, "native_speaker_pronunciation_correction");
-  assert.deepEqual(new Set(readings("喀").filter(Boolean)), new Set(["kak1", "haak3", "kaa1", "kaa3"]));
+  assert.deepEqual(new Set(readings("喀").filter(Boolean)), new Set(["haak1", "haak3", "kaa1", "kaa3"]));
+  assert.ok(!readings("喀").includes("kak1"), "superseded kak1 must not control current runtime");
   assert.ok(!readings("喀").includes("haak6"), "packet haak6 must not be promoted");
 });
 
@@ -122,10 +132,13 @@ test("explicit analysis inventory preserves unique stable IDs and final reading 
   for (const [surface, rows] of Object.entries(reviewed.EXPLICIT_ANALYSES)) {
     assert.ok(tokenLexicon[surface], `${surface}: known runtime surface`);
     for (const row of rows) {
-      assert.ok(!seen.has(row.id), `${row.id}: stable analysis ID unique`);
+      assert.ok(!seen.has(row.id), `${row.id}: stable analysis ID unique within reviewed source`);
       seen.add(row.id);
     }
-    assert.deepEqual(ids(surface), rows.map((row) => row.id), `${surface}: runtime index uses reviewed analyses`);
+    const effectiveRows = nativeCorrections.EXPLICIT_ANALYSES[surface]
+      || candidateDefaults.EXPLICIT_ANALYSES[surface]
+      || rows;
+    assert.deepEqual(ids(surface), effectiveRows.map((row) => row.id), `${surface}: runtime index uses effective reviewed analyses`);
   }
 
   assert.deepEqual(readings("囉"), ["lo1", "lo4"]);
