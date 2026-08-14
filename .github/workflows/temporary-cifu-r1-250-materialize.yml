@@ -1,5 +1,6 @@
 name: Temporary Cifu ranks 1-250 corrected runtime materializer
 
+# Retry after assigning the independently reviewed seng4 productive whole/all default for 成.
 on:
   push:
     branches:
