@@ -52,7 +52,10 @@ test("runtime policy exposes the audited 79 / 84 / 29 / 10 / 99 partition", () =
   assert.equal(reviewed.BLOCKED_ATOMIC_SURFACES.size, 29);
   assert.equal(reviewed.RESEARCH_REQUIRED_SURFACES.size, 10);
   assert.equal(Object.keys(reviewed.ALTERNATIVE_SPECS).length, 99);
-  assert.equal(Object.keys(runtimePolicy.TYPED_DEFAULT_OVERRIDES).length, 4);
+  assert.deepEqual(new Set(Object.keys(runtimePolicy.TYPED_DEFAULT_OVERRIDES)), new Set(["魚", "飛", "小心", "全"]));
+  assert.deepEqual(new Set(Object.keys(reviewed.DEFAULT_READING_OVERRIDES)), new Set([
+    "勇", "外", "嘍", "嘿", "礦", "行為", "棵", "只不過", "井", "圈", "衰", "愛",
+  ]));
 
   const promotionSet = new Set(Object.keys(reviewed.PROMOTIONS));
   for (const surface of promotionSet) {
