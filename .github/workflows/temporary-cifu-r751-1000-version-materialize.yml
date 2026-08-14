@@ -56,6 +56,7 @@ jobs:
           node tools/build-runtime.js --check
           node tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js
           node tests/tooling/lexicon/cifu-r751-1000-reviewed-runtime.test.js
+          git restore --worktree -- validation/current/glossika-week16-runtime-lexicon.json
       - name: Verify bounded state diff
         shell: bash
         run: |
