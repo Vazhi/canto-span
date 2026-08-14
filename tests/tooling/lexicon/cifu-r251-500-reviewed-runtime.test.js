@@ -111,9 +111,10 @@ test("orthography and high-value reading splits match the final adjudication", (
   assert.equal(tokenLexicon["裏邊"].jyutping, "leoi5 bin6");
 });
 
-test("existing contextual analysis IDs survive while 定 gains reviewed alternatives", () => {
+test("existing contextual analysis IDs survive while later reviewed alternatives may coexist", () => {
   assert.deepEqual(ids("住"), ["lex:住:residence_verb", "lex:住:durative_marker"]);
-  assert.deepEqual(ids("咪"), ["lex:咪:prohibitive_marker", "lex:咪:discourse_focus_marker"]);
+  assert.ok(ids("咪").includes("lex:咪:prohibitive_marker"));
+  assert.ok(ids("咪").includes("lex:咪:discourse_focus_marker"));
   assert.deepEqual(ids("定"), [
     "lex:定:decide_fix_verb",
     "lex:定:alternative_connector",
