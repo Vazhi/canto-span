@@ -6,7 +6,7 @@ This file is the sole present-tense project snapshot. Live GitHub intake and wor
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.229 |
+| Runtime | v0.5.230 |
 | Runtime labels | 134 |
 | Current construction notes | 134 |
 | Available construction notes | 134 |
@@ -52,7 +52,9 @@ Twenty-one accepted batches have adjudicated 94 records; 88 remain pending. Cano
 
 Current consequences include:
 
-- v0.5.229 implements the finalized #858 Cifu ranks 251–500 lexical adjudication while retaining complete 2,000/2,000 exact-surface coverage: 71 previously neutral fallback surfaces receive reviewed typed entries, 18 `blocked_atomic` surfaces remain neutral/compositional, seven transparent or mixed whole-form surfaces retain neutral default tokenization with stable reviewed alternatives, and 82 reviewed surfaces expose explicit multi-analysis/reading/function records; the ranks 1–250 runtime reconciliation remains separate and unresolved, and no construction status, survey, corpus, release-publication, or deployment state is changed;
+- v0.5.230 implements the final #792 Cifu ranks 1–250 lexical adjudication on the v0.5.229 multi-analysis architecture while retaining complete 2,000/2,000 exact-surface coverage: 21 surfaces receive direct reviewed promotions after runtime-default safeguards, protected or compositional surfaces remain neutral where whole-form typing would damage productive structure, and stable alternatives preserve reviewed polyfunctionality and readings; existing typed `唔係` remains the ordinary negated-copula default with an independently supported otherwise/or-else alternative, `成` remains neutral by default with separate success/completion, whole/all, result-suffix, and 10%-measure analyses, and `喀` uses native-reviewed `haak1` as default while retaining attested `kaa1`, `kak1`, `haak3`, and `kaa3` alternatives and excluding packet-only `haak6`; no construction identity or status, survey, corpus, release-publication, or deployment state is changed;
+
+- v0.5.229 implements the finalized #858 Cifu ranks 251–500 lexical adjudication while retaining complete 2,000/2,000 exact-surface coverage: 71 previously neutral fallback surfaces receive reviewed typed entries, 18 `blocked_atomic` surfaces remain neutral/compositional, seven transparent or mixed whole-form surfaces retain neutral default tokenization with stable reviewed alternatives, and 82 reviewed surfaces expose explicit multi-analysis/reading/function records; no construction status, survey, corpus, release-publication, or deployment state is changed;
 
 - v0.5.228 introduces a first-class surface-to-analyses lexical compatibility layer with stable lexical-analysis IDs while retaining all 2,384 runtime lexical surfaces and complete 2,000/2,000 Cifu top-frequency surface coverage; legacy single-analysis entries normalize automatically, and existing context-sensitive `住`, `定`, and `咪` paths preserve explicit alternative analyses rather than forcing one global lexical category;
 
