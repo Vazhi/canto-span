@@ -51,10 +51,14 @@ const contextualAnalyses = Object.freeze({
   ]),
 });
 
+const reviewedR1250Polyanalyses = Object.freeze(Object.fromEntries(
+  Object.entries(REVIEWED_R1_250_ANALYSES).filter(([, rows]) => Array.isArray(rows) && rows.length >= 2)
+));
+
 module.exports = Object.freeze({
   ...contextualAnalyses,
   ...REVIEWED_R251_500_ANALYSES,
-  ...REVIEWED_R1_250_ANALYSES,
+  ...reviewedR1250Polyanalyses,
   ...REVIEWED_R1_250_CANDIDATE_DEFAULTS,
   ...NATIVE_REVIEW_CORRECTIONS,
 });
