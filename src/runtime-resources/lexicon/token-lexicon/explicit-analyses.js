@@ -2,6 +2,7 @@
 
 const { EXPLICIT_ANALYSES: REVIEWED_R251_500_ANALYSES } = require("./cifu-r251-500-reviewed");
 const { EXPLICIT_ANALYSES: REVIEWED_R1_250_ANALYSES } = require("./cifu-r1-250-reviewed");
+const { EXPLICIT_ANALYSES: REVIEWED_R1_250_CANDIDATE_DEFAULTS } = require("./cifu-r1-250-candidate-defaults");
 const { EXPLICIT_ANALYSES: NATIVE_REVIEW_CORRECTIONS } = require("./native-review-corrections");
 
 // Explicitly polyfunctional lexical analyses represented by bounded contextual
@@ -54,5 +55,6 @@ module.exports = Object.freeze({
   ...contextualAnalyses,
   ...REVIEWED_R251_500_ANALYSES,
   ...REVIEWED_R1_250_ANALYSES,
+  ...REVIEWED_R1_250_CANDIDATE_DEFAULTS,
   ...NATIVE_REVIEW_CORRECTIONS,
 });
