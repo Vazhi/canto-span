@@ -36,7 +36,7 @@ const CANDIDATE_ONLY_SURFACES = new Set([
 ]);
 
 const NEUTRAL_READING_OVERRIDES = Object.freeze({
-  "喀": "",
+  "喀": "kaa1",
   "哩個": "ni1 go3",
   "個位": "go3 wai2",
   "幾多": "gei2 do1",
