@@ -125,8 +125,8 @@ test("native reviewer correction makes haak1 the default for 喀 while retaining
 });
 
 test("explicit analysis inventory preserves unique stable IDs and final reading boundaries", () => {
-  assert.equal(Object.keys(reviewed.EXPLICIT_ANALYSES).length, 107);
-  assert.equal(Object.values(reviewed.EXPLICIT_ANALYSES).reduce((sum, rows) => sum + rows.length, 0), 280);
+  assert.equal(Object.keys(reviewed.EXPLICIT_ANALYSES).length, 102);
+  assert.equal(Object.values(reviewed.EXPLICIT_ANALYSES).reduce((sum, rows) => sum + rows.length, 0), 270);
   const seen = new Set();
   for (const [surface, rows] of Object.entries(reviewed.EXPLICIT_ANALYSES)) {
     assert.ok(tokenLexicon[surface], `${surface}: known runtime surface`);
