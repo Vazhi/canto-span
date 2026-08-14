@@ -64,7 +64,7 @@ const EXPLICIT_ANALYSIS_OVERRIDES = Object.freeze({
     Object.freeze({
       id: "lex:唔係:default",
       label: "func",
-      pos: "",
+      pos: "function",
       jyutping: "m4 hai6",
       syntax: "negated_copula",
       senses: Object.freeze([{ gloss: "not be; ordinary negative-copular default remains compositionally available" }]),
