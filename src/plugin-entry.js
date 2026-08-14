@@ -15,7 +15,8 @@ const createCantoSpanPlugin = require("./plugin/canto-span-plugin");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.228";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.229";
+// v0.5.229: reconciles finalized Cifu ranks 251–500 lexical adjudications with neutral/compositional safeguards and stable multi-analysis IDs.
 // v0.5.228: adds first-class surface-to-analyses lexical representation with stable analysis IDs and preserves existing context-selected 住/定/咪 analyses without broadening grammar.
 // v0.5.227: adds 184 source-audited high-frequency lexical entries from the Cifu spoken top-2000 audit without changing construction identity, status, or grammar scope.
 // v0.5.226: adds bounded behavior-first overt nominal-standard post-predicate 過 comparison through existing SubjectPredicateClause composition, plus missing 矮 lexical coverage, without changing construction identity or experiential/directional 過 behavior.

@@ -1,9 +1,11 @@
 "use strict";
 
-// Explicitly polyfunctional lexical analyses already represented by
-// bounded contextual behavior in the runtime. This registry preserves
-// all supported analyses without forcing one global POS/reading.
-module.exports = Object.freeze({
+const { EXPLICIT_ANALYSES: REVIEWED_R251_500_ANALYSES } = require("./cifu-r251-500-reviewed");
+
+// Explicitly polyfunctional lexical analyses represented by bounded contextual
+// runtime behavior or finalized reviewed lexical adjudication. This registry
+// preserves supported alternatives without forcing one global POS/reading.
+const contextualAnalyses = Object.freeze({
   "住": Object.freeze([
     Object.freeze({
       id: "lex:住:residence_verb",
@@ -21,26 +23,6 @@ module.exports = Object.freeze({
       jyutping: "zyu6",
       syntax: "durative_or_continuing_state_marker",
       senses: Object.freeze([{ gloss: "durative / continuing-state marker" }]),
-      provenance: Object.freeze({ kind: "existing_runtime_contextual_override", source: "src/parser/tokenization/contextual-overrides.js" }),
-    }),
-  ]),
-  "定": Object.freeze([
-    Object.freeze({
-      id: "lex:定:decide_fix_verb",
-      label: "doing",
-      pos: "verb",
-      jyutping: "ding6",
-      syntax: "verb decide_fix_schedule_verb",
-      senses: Object.freeze([{ gloss: "decide / settle / fix / schedule" }]),
-      provenance: Object.freeze({ kind: "existing_runtime_contextual_override", source: "src/parser/tokenization/contextual-overrides.js" }),
-    }),
-    Object.freeze({
-      id: "lex:定:alternative_connector",
-      label: "func",
-      pos: "function",
-      jyutping: "ding6",
-      syntax: "alternative_question_connector",
-      senses: Object.freeze([{ gloss: "or; alternative-question connector" }]),
       provenance: Object.freeze({ kind: "existing_runtime_contextual_override", source: "src/parser/tokenization/contextual-overrides.js" }),
     }),
   ]),
@@ -64,4 +46,9 @@ module.exports = Object.freeze({
       provenance: Object.freeze({ kind: "existing_runtime_contextual_override", source: "src/parser/tokenization/contextual-overrides.js" }),
     }),
   ]),
+});
+
+module.exports = Object.freeze({
+  ...contextualAnalyses,
+  ...REVIEWED_R251_500_ANALYSES,
 });
