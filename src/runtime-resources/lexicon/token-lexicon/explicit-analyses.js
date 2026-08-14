@@ -1,6 +1,7 @@
 "use strict";
 
 const { EXPLICIT_ANALYSES: REVIEWED_R251_500_ANALYSES } = require("./cifu-r251-500-reviewed");
+const { EXPLICIT_ANALYSES: REVIEWED_R1_250_ANALYSES } = require("./cifu-r1-250-reviewed");
 
 // Explicitly polyfunctional lexical analyses represented by bounded contextual
 // runtime behavior or finalized reviewed lexical adjudication. This registry
@@ -51,4 +52,5 @@ const contextualAnalyses = Object.freeze({
 module.exports = Object.freeze({
   ...contextualAnalyses,
   ...REVIEWED_R251_500_ANALYSES,
+  ...REVIEWED_R1_250_ANALYSES,
 });
