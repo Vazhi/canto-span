@@ -112,7 +112,7 @@ test("four stale pre-existing typed defaults are corrected to final adjudication
     assert.equal(entry.jyutping, jyutping, `${surface}: corrected reading`);
     assert.equal(entry.provenance && entry.provenance.kind, "reviewed_typed_default_correction", `${surface}: correction provenance`);
   }
-  assert.ok(!/ticket/.test(tokenLexicon["飛"].note), "飛: stale ticket default is removed");
+  assert.match(tokenLexicon["飛"].note, /^fly;/, "飛: current note describes the reviewed verb default");
 });
 
 test("blocked and research-required rows receive no new atomic reviewed analysis", () => {
