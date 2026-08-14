@@ -76,7 +76,7 @@ const EXPLICIT_ANALYSIS_OVERRIDES = Object.freeze({
     ...(mHaiOtherwise ? [mHaiOtherwise] : []),
   ]),
   "成": Object.freeze([
-    neutralDefault("成", "", "neutral exact-surface default; preserve 成個 and other productive composition while exposing reviewed lexical/function families"),
+    neutralDefault("成", "seng4", "neutral exact-surface default for productive whole/all composition; preserve 成個 and related component structure while exposing the reviewed sing4/seng4 lexical and functional families"),
     ...singAlternatives,
   ]),
 });
@@ -99,11 +99,13 @@ function applyRuntimePolicy(entries) {
         label: "lex",
         pos: "lexical_item",
         syntax: "lexical_item",
-        note: `${prior.note || "Exact surface retained as neutral lexical coverage."} Reviewed #792 runtime policy: polyfunctional analyses remain alternatives and do not replace the neutral default.`,
+        jyutping: "seng4",
+        note: `${prior.note || "Exact surface retained as neutral lexical coverage."} Reviewed #792 runtime policy: seng4 is retained for the productive whole/all default; the other reviewed sing4/seng4 families remain explicit alternatives rather than replacing this default.`,
         provenance: {
           kind: "reviewed_runtime_default_policy",
           source: SOURCE,
           status: "neutral_polyfunctional_default_preserved",
+          pronunciation_status: "reviewed_whole_quantifier_default_seng4",
           prior_provenance: prior.provenance || null,
         },
       }];
