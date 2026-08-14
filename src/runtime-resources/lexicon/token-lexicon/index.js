@@ -2,6 +2,7 @@
 
 const { applyReviewedEntries: applyReviewedR251500Entries } = require("./cifu-r251-500-reviewed");
 const { applyReviewedEntries: applyReviewedR1250Entries } = require("./cifu-r1-250-reviewed");
+const { applyNativeReviewCorrections } = require("./native-review-corrections");
 
 const baseEntries = [
   ...require("./people-and-address"),
@@ -16,4 +17,6 @@ const baseEntries = [
   ...require("./frequency-gap-fill-r7"),
 ];
 
-module.exports = applyReviewedR1250Entries(applyReviewedR251500Entries(baseEntries));
+module.exports = applyNativeReviewCorrections(
+  applyReviewedR1250Entries(applyReviewedR251500Entries(baseEntries))
+);
