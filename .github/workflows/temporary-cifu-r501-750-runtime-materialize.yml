@@ -1,0 +1,48 @@
+name: Temporary Cifu ranks 501-750 runtime materializer
+
+on:
+  push:
+    branches:
+      - agent/cifu-r501-750-runtime-reconcile
+    paths:
+      - .github/workflows/temporary-cifu-r501-750-runtime-materialize.yml
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/cifu-r501-750-runtime-reconcile
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Install dependencies
+        run: npm ci
+      - name: Build committed runtime bundle from canonical source
+        run: npm run build:runtime
+      - name: Verify bounded generated diff
+        shell: bash
+        run: |
+          rm .github/workflows/temporary-cifu-r501-750-runtime-materialize.yml
+          mapfile -t changed < <(git status --short | sed -E 's/^...//')
+          printf 'Pending paths:\n%s\n' "${changed[*]}"
+          test "${#changed[@]}" -eq 2
+          printf '%s\n' "${changed[@]}" | sort > /tmp/actual-paths
+          printf '%s\n' '.github/workflows/temporary-cifu-r501-750-runtime-materialize.yml' 'main.js' | sort > /tmp/expected-paths
+          diff -u /tmp/expected-paths /tmp/actual-paths
+          node tools/build-runtime.js --check
+      - name: Commit generated bundle and self-delete
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add main.js .github/workflows/temporary-cifu-r501-750-runtime-materialize.yml
+          git commit -m 'Regenerate runtime bundle for ranks 501-750'
+          git push origin HEAD:agent/cifu-r501-750-runtime-reconcile
