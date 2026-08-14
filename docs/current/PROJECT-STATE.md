@@ -6,7 +6,7 @@ This file is the sole present-tense project snapshot. Live GitHub intake and wor
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.230 |
+| Runtime | v0.5.231 |
 | Runtime labels | 134 |
 | Current construction notes | 134 |
 | Available construction notes | 134 |
@@ -51,6 +51,8 @@ The permanent registry contains 134 current and 48 retired records. UUID and sho
 Twenty-one accepted batches have adjudicated 94 records; 88 remain pending. Canonical decisions live in `data/construction-adjudications.json` and immutable batch files under `data/construction-adjudication-batches/`.
 
 Current consequences include:
+
+- v0.5.231 implements the final #866 R1+R2 Cifu ranks 501–750 lexical adjudication while retaining complete 2,000/2,000 exact-surface coverage: 45 previously neutral single-analysis lexical gaps receive reviewed typed defaults, 45 neutral or default-sensitive surfaces retain their existing neutral defaults while exposing reviewed whole-form alternatives, and 56 already-typed multi-analysis or reading-split surfaces retain their current defaults while reviewed alternatives are appended; all 30 `blocked_atomic` rows receive no new atomic lexical promotion, existing structured `一次` and `第二個` parser entries are preserved, 101 surfaces expose stable reviewed alternative records, R2 distinctions for `樂`, `磅`, and `直行` are represented, and the evidence-resolved `轉彎` and `早` records are complete; no construction identity or status, survey, corpus, release-publication, or deployment state is changed;
 
 - v0.5.230 implements the final #792 Cifu ranks 1–250 lexical adjudication on the v0.5.229 multi-analysis architecture while retaining complete 2,000/2,000 exact-surface coverage: 21 surfaces receive direct reviewed promotions after runtime-default safeguards, protected or compositional surfaces remain neutral where whole-form typing would damage productive structure, and stable alternatives preserve reviewed polyfunctionality and readings; existing typed `唔係` remains the ordinary negated-copula default with an independently supported otherwise/or-else alternative, `成` remains neutral by default with separate success/completion, whole/all, result-suffix, and 10%-measure analyses, and `喀` uses native-reviewed `haak1` as default while retaining attested `kaa1`, `kak1`, `haak3`, and `kaa3` alternatives and excluding packet-only `haak6`; no construction identity or status, survey, corpus, release-publication, or deployment state is changed;
 
