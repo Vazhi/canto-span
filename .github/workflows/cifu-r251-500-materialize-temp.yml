@@ -1,0 +1,117 @@
+name: Temporary Cifu ranks 251-500 materializer
+
+on:
+  push:
+    branches:
+      - agent/cifu-r251-500-runtime-reconcile
+    paths:
+      - .github/workflows/cifu-r251-500-materialize-temp.yml
+
+permissions:
+  contents: write
+  issues: read
+
+jobs:
+  materialize:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Verify live ownership, base, and pre-materialization scope
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = "agent/cifu-r251-500-runtime-reconcile"
+          git fetch origin main
+          test "$(git rev-parse origin/main)" = "fcbeba51cb0ac734923cb4df7d54ab9f6f4e790e"
+          intake="$(gh api "repos/$GITHUB_REPOSITORY/issues/861" --jq .body)"
+          claim="$(gh api "repos/$GITHUB_REPOSITORY/issues/862" --jq .body)"
+          printf '%s\n' "$intake" | grep -F '"active_claim_issue": 862'
+          printf '%s\n' "$intake" | grep -F '"active_branch": "agent/cifu-r251-500-runtime-reconcile"'
+          printf '%s\n' "$intake" | grep -F '"pickup_allowed": true'
+          printf '%s\n' "$claim" | grep -F '"status": "active"'
+          printf '%s\n' "$claim" | grep -F '"active_worker": "chatgpt"'
+          printf '%s\n' "$claim" | grep -F '"ownership_revision": 1'
+          git diff --exit-code origin/main -- src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js
+          git diff --name-only origin/main...HEAD | sort > /tmp/actual.txt
+          cat > /tmp/expected.txt <<'EOF'
+          .github/workflows/cifu-r251-500-materialize-temp.yml
+          src/runtime-resources/lexicon/token-lexicon/cifu-r251-500-reviewed.js
+          src/runtime-resources/lexicon/token-lexicon/explicit-analyses.js
+          src/runtime-resources/lexicon/token-lexicon/index.js
+          tests/run-all.js
+          tests/tooling/lexicon/cifu-r251-500-reviewed-runtime.test.js
+          EOF
+          sort -o /tmp/expected.txt /tmp/expected.txt
+          diff -u /tmp/expected.txt /tmp/actual.txt
+      - name: Install build dependencies
+        run: npm ci
+      - name: Apply v0.5.229 implementation metadata
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const pluginPath = 'src/plugin-entry.js';
+          let plugin = fs.readFileSync(pluginPath, 'utf8');
+          const oldVersion = 'const CANTO_SPAN_RUNTIME_VERSION = "0.5.228";';
+          if (!plugin.includes(oldVersion)) throw new Error('expected v0.5.228 runtime version line missing');
+          plugin = plugin.replace(
+            oldVersion,
+            'const CANTO_SPAN_RUNTIME_VERSION = "0.5.229";\n// v0.5.229: reconciles finalized Cifu ranks 251–500 lexical adjudications with neutral/compositional safeguards and stable multi-analysis IDs.'
+          );
+          fs.writeFileSync(pluginPath, plugin);
+
+          const manifest = JSON.parse(fs.readFileSync('manifest.json', 'utf8'));
+          manifest.version = '0.5.229';
+          manifest.description = 'v0.5.229 reconciles reviewed Cifu ranks 251–500 lexical analyses while preserving compositional guardrails and complete top-2000 coverage.';
+          fs.writeFileSync('manifest.json', JSON.stringify(manifest, null, 2) + '\n');
+
+          const pkg = JSON.parse(fs.readFileSync('package.json', 'utf8'));
+          pkg.version = '0.5.229';
+          fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2) + '\n');
+
+          const lock = JSON.parse(fs.readFileSync('package-lock.json', 'utf8'));
+          lock.version = '0.5.229';
+          lock.packages[''].version = '0.5.229';
+          fs.writeFileSync('package-lock.json', JSON.stringify(lock, null, 2) + '\n');
+          NODE
+      - name: Build canonical runtime bundle
+        run: npm run build:runtime
+      - name: Validate reviewed lexical source
+        run: |
+          node --test tests/tooling/lexicon/cifu-r251-500-reviewed-runtime.test.js
+          node -e 'console.log(JSON.stringify(require("./src/runtime-resources/lexicon/validate").validateRuntimeLexicalResources(), null, 2))'
+          npm test -- --allow-inherited-debt
+      - name: Verify final materialized scope
+        run: |
+          set -euo pipefail
+          git diff --exit-code origin/main -- src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js
+          git rm .github/workflows/cifu-r251-500-materialize-temp.yml
+          git diff --name-only origin/main | sort > /tmp/final-actual.txt
+          cat > /tmp/final-expected.txt <<'EOF'
+          main.js
+          manifest.json
+          package-lock.json
+          package.json
+          src/plugin-entry.js
+          src/runtime-resources/lexicon/token-lexicon/cifu-r251-500-reviewed.js
+          src/runtime-resources/lexicon/token-lexicon/explicit-analyses.js
+          src/runtime-resources/lexicon/token-lexicon/index.js
+          tests/run-all.js
+          tests/tooling/lexicon/cifu-r251-500-reviewed-runtime.test.js
+          EOF
+          sort -o /tmp/final-expected.txt /tmp/final-expected.txt
+          diff -u /tmp/final-expected.txt /tmp/final-actual.txt
+      - name: Commit materialized v0.5.229 state
+        run: |
+          set -euo pipefail
+          git config user.name "canto-span-materializer"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Build v0.5.229 reviewed lexical runtime"
+          git push origin HEAD:agent/cifu-r251-500-runtime-reconcile
