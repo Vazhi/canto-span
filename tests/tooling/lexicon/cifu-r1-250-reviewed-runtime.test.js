@@ -9,6 +9,7 @@ const test = require("node:test");
 const tokenEntries = require("../../../src/runtime-resources/lexicon/token-lexicon");
 const reviewed = require("../../../src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-reviewed");
 const candidateDefaults = require("../../../src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-candidate-defaults");
+const runtimePolicy = require("../../../src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-runtime-policy");
 const nativeCorrections = require("../../../src/runtime-resources/lexicon/token-lexicon/native-review-corrections");
 const { buildLexicalAnalysisIndex } = require("../../../src/runtime-resources/lexicon/lexical-analyses");
 
@@ -42,16 +43,19 @@ test("ranks 1-250 retain complete exact-surface coverage", () => {
   for (const surface of surfaces) assert.ok(tokenLexicon[surface], `${surface}: exact runtime surface`);
 });
 
-test("reviewed overlay exposes the audited operation sets without overlap", () => {
-  assert.equal(Object.keys(reviewed.PROMOTIONS).length, 22);
+test("effective reviewed operation sets remain bounded and non-overlapping", () => {
+  assert.equal(Object.keys(runtimePolicy.EFFECTIVE_PROMOTIONS).length, 21);
   assert.equal(Object.keys(reviewed.PROTECTED_NEUTRAL_SURFACES).length, 14);
-  assert.equal(reviewed.CANDIDATE_ONLY_SURFACES.size, 13);
+  assert.equal(runtimePolicy.EFFECTIVE_CANDIDATE_ONLY_SURFACES.size, 13);
   assert.equal(Object.keys(reviewed.CORRECTIONS).length, 5);
   assert.equal(Object.keys(candidateDefaults.DEFAULT_READINGS).length, 12);
+  assert.ok(runtimePolicy.PRESERVE_TYPED_DEFAULT_SURFACES.has("唔係"));
+  assert.ok(runtimePolicy.NEUTRAL_POLYFUNCTIONAL_DEFAULT_SURFACES.has("成"));
+
   const groups = [
-    new Set(Object.keys(reviewed.PROMOTIONS)),
+    new Set(Object.keys(runtimePolicy.EFFECTIVE_PROMOTIONS)),
     new Set(Object.keys(reviewed.PROTECTED_NEUTRAL_SURFACES)),
-    reviewed.CANDIDATE_ONLY_SURFACES,
+    runtimePolicy.EFFECTIVE_CANDIDATE_ONLY_SURFACES,
     new Set(Object.keys(reviewed.CORRECTIONS)),
   ];
   for (let left = 0; left < groups.length; left += 1) {
@@ -59,13 +63,9 @@ test("reviewed overlay exposes the audited operation sets without overlap", () =
       assert.deepEqual([...groups[left]].filter((surface) => groups[right].has(surface)), []);
     }
   }
-  assert.deepEqual(
-    new Set(Object.keys(candidateDefaults.DEFAULT_READINGS)),
-    new Set([...reviewed.CANDIDATE_ONLY_SURFACES].filter((surface) => surface !== "喀"))
-  );
 });
 
-test("blocked and research-neutral surfaces stay neutral, including demoted typed rows", () => {
+test("blocked and research-neutral surfaces stay neutral, including adjudicated demotions", () => {
   for (const surface of Object.keys(reviewed.PROTECTED_NEUTRAL_SURFACES)) {
     assert.ok(reviewed.isNeutralFrequencyFallback(tokenLexicon[surface]), `${surface}: protected neutral surface`);
     assert.equal(tokenLexicon[surface].provenance.kind, "reviewed_neutral_surface", `${surface}: reviewed neutral provenance`);
@@ -75,17 +75,18 @@ test("blocked and research-neutral surfaces stay neutral, including demoted type
 });
 
 test("candidate-only surfaces preserve neutral defaults plus reviewed alternatives", () => {
-  for (const surface of reviewed.CANDIDATE_ONLY_SURFACES) {
+  for (const surface of runtimePolicy.EFFECTIVE_CANDIDATE_ONLY_SURFACES) {
     assert.ok(reviewed.isNeutralFrequencyFallback(tokenLexicon[surface]), `${surface}: candidate default remains neutral`);
     assert.equal(analyses[surface][0].id, `lex:${surface}:default`, `${surface}: stable neutral default ID`);
     assert.equal(analyses[surface][0].pos, "lexical_item", `${surface}: neutral default analysis`);
     const expectedKind = surface === "喀"
       ? "native_speaker_pronunciation_correction"
-      : "reviewed_candidate_default_pronunciation";
+      : surface === "成"
+        ? "reviewed_runtime_default_policy"
+        : "reviewed_candidate_default_pronunciation";
     assert.equal(analyses[surface][0].provenance.kind, expectedKind, `${surface}: neutral-default provenance`);
     assert.ok(analyses[surface].slice(1).some((row) => row.provenance.kind === "reviewed_lexical_analysis"), `${surface}: reviewed candidate exists`);
   }
-  assert.ok(ids("唔係").includes("lex:唔係:otherwise_conjunction"));
   assert.ok(ids("個人").includes("lex:個人:noun"));
   assert.ok(ids("幾多").includes("lex:幾多:quantifier"));
   assert.ok(ids("都會").includes("lex:都會:metropolis_noun"));
@@ -94,8 +95,33 @@ test("candidate-only surfaces preserve neutral defaults plus reviewed alternativ
   assert.equal(tokenLexicon["都會"].jyutping, "dou1 wui5");
 });
 
+test("唔係 preserves its typed negated-copula default plus the reviewed conjunction alternative", () => {
+  assert.equal(tokenLexicon["唔係"].label, "func");
+  assert.equal(tokenLexicon["唔係"].syntax, "negated_copula");
+  assert.equal(tokenLexicon["唔係"].jyutping, "m4 hai6");
+  assert.deepEqual(ids("唔係"), ["lex:唔係:default", "lex:唔係:otherwise_conjunction"]);
+  assert.equal(analyses["唔係"][0].syntax, "negated_copula");
+  assert.equal(analyses["唔係"][1].pos, "conjunction");
+});
+
+test("成 stays neutral by default while preserving the four #792 analysis families", () => {
+  assert.ok(reviewed.isNeutralFrequencyFallback(tokenLexicon["成"]));
+  assert.deepEqual(ids("成"), [
+    "lex:成:default",
+    "lex:成:success_completion_verb",
+    "lex:成:seng4_quantifier",
+    "lex:成:seng4_result_suffix",
+    "lex:成:tenth_measure",
+  ]);
+  assert.equal(analyses["成"][0].pos, "lexical_item");
+  assert.equal(analyses["成"][1].pos, "verb");
+  assert.equal(analyses["成"][2].jyutping, "seng4");
+  assert.equal(analyses["成"][3].syntax, "completion_result_suffix");
+  assert.equal(analyses["成"][4].syntax, "fraction_measure");
+});
+
 test("direct promotions and named corrections carry reviewed provenance", () => {
-  for (const [surface, promotion] of Object.entries(reviewed.PROMOTIONS)) {
+  for (const [surface, promotion] of Object.entries(runtimePolicy.EFFECTIVE_PROMOTIONS)) {
     const entry = tokenLexicon[surface];
     assert.equal(entry.label, promotion.label, `${surface}: promoted label`);
     assert.equal(entry.pos, promotion.pos, `${surface}: promoted POS`);
@@ -124,7 +150,7 @@ test("native reviewer correction makes haak1 the default for 喀 while retaining
   assert.ok(!readings("喀").includes("haak6"), "packet haak6 must not be promoted");
 });
 
-test("explicit analysis inventory preserves unique stable IDs and final reading boundaries", () => {
+test("reviewed analysis inventory preserves unique stable IDs and final reading boundaries", () => {
   assert.equal(Object.keys(reviewed.EXPLICIT_ANALYSES).length, 102);
   assert.equal(Object.values(reviewed.EXPLICIT_ANALYSES).reduce((sum, rows) => sum + rows.length, 0), 270);
   const seen = new Set();
@@ -134,7 +160,8 @@ test("explicit analysis inventory preserves unique stable IDs and final reading 
       assert.ok(!seen.has(row.id), `${row.id}: stable analysis ID unique within reviewed source`);
       seen.add(row.id);
     }
-    const effectiveRows = nativeCorrections.EXPLICIT_ANALYSES[surface]
+    const effectiveRows = runtimePolicy.EXPLICIT_ANALYSIS_OVERRIDES[surface]
+      || nativeCorrections.EXPLICIT_ANALYSES[surface]
       || candidateDefaults.EXPLICIT_ANALYSES[surface]
       || rows;
     assert.deepEqual(ids(surface), effectiveRows.map((row) => row.id), `${surface}: runtime index uses effective reviewed analyses`);
