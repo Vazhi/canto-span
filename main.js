@@ -2964,6 +2964,116 @@ var require_cifu_r1_250_candidate_defaults = __commonJS({
   }
 });
 
+// src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-runtime-policy.js
+var require_cifu_r1_250_runtime_policy = __commonJS({
+  "src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-runtime-policy.js"(exports2, module2) {
+    "use strict";
+    var reviewed = require_cifu_r1_250_reviewed();
+    var candidateDefaults = require_cifu_r1_250_candidate_defaults();
+    var SOURCE = "#792 runtime-default reconciliation after exact-head v0.5.230 validation";
+    var PRESERVE_TYPED_DEFAULT_SURFACES = /* @__PURE__ */ new Set(["唔係"]);
+    var NEUTRAL_POLYFUNCTIONAL_DEFAULT_SURFACES = /* @__PURE__ */ new Set(["成"]);
+    var EFFECTIVE_PROMOTIONS = Object.freeze(Object.fromEntries(
+      Object.entries(reviewed.PROMOTIONS).filter(([surface]) => !NEUTRAL_POLYFUNCTIONAL_DEFAULT_SURFACES.has(surface))
+    ));
+    var EFFECTIVE_CANDIDATE_ONLY_SURFACES = /* @__PURE__ */ new Set([
+      ...[...reviewed.CANDIDATE_ONLY_SURFACES].filter((surface) => !PRESERVE_TYPED_DEFAULT_SURFACES.has(surface)),
+      ...NEUTRAL_POLYFUNCTIONAL_DEFAULT_SURFACES
+    ]);
+    function freezeAnalysis(row, overrides = {}) {
+      return Object.freeze({
+        ...row,
+        ...overrides,
+        senses: Object.freeze((overrides.senses || row.senses || []).map((sense) => Object.freeze({ ...sense }))),
+        provenance: Object.freeze({ ...overrides.provenance || row.provenance || {} })
+      });
+    }
+    function neutralDefault(surface, jyutping = "", note = "") {
+      return Object.freeze({
+        id: `lex:${surface}:default`,
+        label: "lex",
+        pos: "lexical_item",
+        jyutping,
+        syntax: "lexical_item",
+        senses: Object.freeze([{ gloss: note || "neutral default retained while reviewed alternatives remain available" }]),
+        provenance: Object.freeze({
+          kind: "reviewed_runtime_default_policy",
+          source: SOURCE,
+          status: "neutral_default_preserved"
+        })
+      });
+    }
+    var rawSingAnalyses = reviewed.EXPLICIT_ANALYSES["成"] || [];
+    var singAlternatives = rawSingAnalyses.map((row) => row.id === "lex:成:default" ? freezeAnalysis(row, {
+      id: "lex:成:success_completion_verb",
+      provenance: {
+        ...row.provenance || {},
+        runtime_default_status: "reviewed_alternative_not_global_default"
+      }
+    }) : row);
+    var mHaiOtherwise = candidateDefaults.CANDIDATE_ANALYSES["唔係"] && candidateDefaults.CANDIDATE_ANALYSES["唔係"][0];
+    var EXPLICIT_ANALYSIS_OVERRIDES = Object.freeze({
+      "唔係": Object.freeze([
+        Object.freeze({
+          id: "lex:唔係:default",
+          label: "func",
+          pos: "function",
+          jyutping: "m4 hai6",
+          syntax: "negated_copula",
+          senses: Object.freeze([{ gloss: "not be; ordinary negative-copular default remains compositionally available" }]),
+          provenance: Object.freeze({
+            kind: "existing_typed_runtime_default_preserved",
+            source: "function-words-and-particles.js plus #792 final correction"
+          })
+        }),
+        ...mHaiOtherwise ? [mHaiOtherwise] : []
+      ]),
+      "成": Object.freeze([
+        neutralDefault("成", "seng4", "neutral exact-surface default for productive whole/all composition; preserve 成個 and related component structure while exposing the reviewed sing4/seng4 lexical and functional families"),
+        ...singAlternatives
+      ])
+    });
+    function applyRuntimePolicy(entries) {
+      if (!Array.isArray(entries)) throw new TypeError("ranks 1–250 runtime policy requires an entry array");
+      const baseline = new Map(entries);
+      const adjudicated = reviewed.applyReviewedEntries(entries);
+      return adjudicated.map(([surface, entry]) => {
+        const prior = baseline.get(surface) || entry;
+        if (PRESERVE_TYPED_DEFAULT_SURFACES.has(surface) && !reviewed.isNeutralFrequencyFallback(prior)) {
+          return [surface, prior];
+        }
+        if (NEUTRAL_POLYFUNCTIONAL_DEFAULT_SURFACES.has(surface)) {
+          return [surface, {
+            ...prior,
+            label: "lex",
+            pos: "lexical_item",
+            syntax: "lexical_item",
+            jyutping: "seng4",
+            note: `${prior.note || "Exact surface retained as neutral lexical coverage."} Reviewed #792 runtime policy: seng4 is retained for the productive whole/all default; the other reviewed sing4/seng4 families remain explicit alternatives rather than replacing this default.`,
+            provenance: {
+              kind: "reviewed_runtime_default_policy",
+              source: SOURCE,
+              status: "neutral_polyfunctional_default_preserved",
+              pronunciation_status: "reviewed_whole_quantifier_default_seng4",
+              prior_provenance: prior.provenance || null
+            }
+          }];
+        }
+        return [surface, entry];
+      });
+    }
+    module2.exports = Object.freeze({
+      SOURCE,
+      PRESERVE_TYPED_DEFAULT_SURFACES,
+      NEUTRAL_POLYFUNCTIONAL_DEFAULT_SURFACES,
+      EFFECTIVE_PROMOTIONS,
+      EFFECTIVE_CANDIDATE_ONLY_SURFACES,
+      EXPLICIT_ANALYSIS_OVERRIDES,
+      applyRuntimePolicy
+    });
+  }
+});
+
 // src/runtime-resources/lexicon/token-lexicon/native-review-corrections.js
 var require_native_review_corrections = __commonJS({
   "src/runtime-resources/lexicon/token-lexicon/native-review-corrections.js"(exports2, module2) {
@@ -5554,7 +5664,7 @@ var require_token_lexicon = __commonJS({
   "src/runtime-resources/lexicon/token-lexicon/index.js"(exports2, module2) {
     "use strict";
     var { applyReviewedEntries: applyReviewedR251500Entries } = require_cifu_r251_500_reviewed();
-    var { applyReviewedEntries: applyReviewedR1250Entries } = require_cifu_r1_250_reviewed();
+    var { applyRuntimePolicy: applyReviewedR1250RuntimePolicy } = require_cifu_r1_250_runtime_policy();
     var { applyCandidateDefaultReadings } = require_cifu_r1_250_candidate_defaults();
     var { applyNativeReviewCorrections } = require_native_review_corrections();
     var baseEntries = [
@@ -5571,7 +5681,7 @@ var require_token_lexicon = __commonJS({
     ];
     module2.exports = applyNativeReviewCorrections(
       applyCandidateDefaultReadings(
-        applyReviewedR1250Entries(applyReviewedR251500Entries(baseEntries))
+        applyReviewedR1250RuntimePolicy(applyReviewedR251500Entries(baseEntries))
       )
     );
   }
@@ -5585,6 +5695,7 @@ var require_explicit_analyses = __commonJS({
     var { EXPLICIT_ANALYSES: REVIEWED_R1_250_ANALYSES } = require_cifu_r1_250_reviewed();
     var { EXPLICIT_ANALYSES: REVIEWED_R1_250_CANDIDATE_DEFAULTS } = require_cifu_r1_250_candidate_defaults();
     var { EXPLICIT_ANALYSES: NATIVE_REVIEW_CORRECTIONS } = require_native_review_corrections();
+    var { EXPLICIT_ANALYSIS_OVERRIDES: REVIEWED_R1_250_RUNTIME_POLICY } = require_cifu_r1_250_runtime_policy();
     var contextualAnalyses = Object.freeze({
       "住": Object.freeze([
         Object.freeze({
@@ -5635,7 +5746,8 @@ var require_explicit_analyses = __commonJS({
       ...REVIEWED_R251_500_ANALYSES,
       ...reviewedR1250Polyanalyses,
       ...REVIEWED_R1_250_CANDIDATE_DEFAULTS,
-      ...NATIVE_REVIEW_CORRECTIONS
+      ...NATIVE_REVIEW_CORRECTIONS,
+      ...REVIEWED_R1_250_RUNTIME_POLICY
     });
   }
 });
