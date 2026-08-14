@@ -1,9 +1,9 @@
 {
   "id": "canto-span",
   "name": "Canto Span",
-  "version": "0.5.228",
+  "version": "0.5.229",
   "minAppVersion": "1.5.0",
-  "description": "v0.5.228 adds first-class multi-analysis lexical representation while preserving complete top-2000 coverage and existing grammar scope.",
+  "description": "v0.5.229 reconciles reviewed Cifu ranks 251–500 lexical analyses while preserving compositional guardrails and complete top-2000 coverage.",
   "author": "Chris Crawford / OpenAI ChatGPT",
   "authorUrl": "",
   "isDesktopOnly": false
