@@ -28,24 +28,6 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Report reviewed inventory
-        run: |
-          node <<'NODE'
-          const reviewed = require('./src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-reviewed');
-          const candidate = require('./src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-candidate-defaults');
-          const native = require('./src/runtime-resources/lexicon/token-lexicon/native-review-corrections');
-          const rawSurfaces = Object.keys(reviewed.EXPLICIT_ANALYSES);
-          const rawRows = Object.values(reviewed.EXPLICIT_ANALYSES).reduce((sum, rows) => sum + rows.length, 0);
-          const singletonSurfaces = Object.entries(reviewed.EXPLICIT_ANALYSES).filter(([, rows]) => rows.length === 1).map(([surface]) => surface);
-          console.log(JSON.stringify({
-            raw_reviewed_surfaces: rawSurfaces.length,
-            raw_reviewed_rows: rawRows,
-            singleton_surfaces: singletonSurfaces,
-            candidate_override_surfaces: Object.keys(candidate.EXPLICIT_ANALYSES),
-            native_override_surfaces: Object.keys(native.EXPLICIT_ANALYSES),
-          }, null, 2));
-          NODE
-
       - name: Materialize v0.5.230 metadata
         shell: bash
         run: |
