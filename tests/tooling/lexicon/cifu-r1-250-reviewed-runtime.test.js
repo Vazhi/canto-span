@@ -113,15 +113,14 @@ test("direct promotions and named corrections carry reviewed provenance", () => 
   }
 });
 
-test("native reviewer correction makes haak1 the default for 喀 and supersedes kak1", () => {
+test("native reviewer correction makes haak1 the default for 喀 while retaining attested alternatives", () => {
   assert.equal(tokenLexicon["喀"].jyutping, "haak1");
   assert.equal(tokenLexicon["喀"].provenance.kind, "native_speaker_pronunciation_correction");
   assert.equal(tokenLexicon["喀"].provenance.source, nativeCorrections.SOURCE);
   assert.equal(analyses["喀"][0].id, "lex:喀:default");
   assert.equal(analyses["喀"][0].jyutping, "haak1");
   assert.equal(analyses["喀"][0].provenance.kind, "native_speaker_pronunciation_correction");
-  assert.deepEqual(new Set(readings("喀").filter(Boolean)), new Set(["haak1", "haak3", "kaa1", "kaa3"]));
-  assert.ok(!readings("喀").includes("kak1"), "superseded kak1 must not control current runtime");
+  assert.deepEqual(new Set(readings("喀").filter(Boolean)), new Set(["haak1", "haak3", "kaa1", "kaa3", "kak1"]));
   assert.ok(!readings("喀").includes("haak6"), "packet haak6 must not be promoted");
 });
 
