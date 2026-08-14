@@ -1,0 +1,104 @@
+name: Temporary Cifu ranks 501-750 runtime inventory
+
+on:
+  push:
+    branches:
+      - agent/cifu-r501-750-runtime-reconcile
+    paths:
+      - .github/workflows/temporary-cifu-r501-750-runtime-inventory.yml
+
+permissions:
+  contents: read
+
+jobs:
+  inventory:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/cifu-r501-750-runtime-reconcile
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Install dependencies
+        run: npm ci
+      - name: Report current ranks 501-750 runtime state
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const tokenEntries = require('./src/runtime-resources/lexicon/token-lexicon');
+          const { buildLexicalAnalysisIndex } = require('./src/runtime-resources/lexicon/lexical-analyses');
+
+          const tokenLexicon = new Map(tokenEntries);
+          const analyses = buildLexicalAnalysisIndex(tokenEntries);
+          const isNeutral = (entry) => Boolean(entry)
+            && entry.label === 'lex'
+            && entry.pos === 'lexical_item'
+            && entry.syntax === 'lexical_item';
+
+          const tsv = fs.readFileSync('data/lexical-frequency/cifu-spoken-top-2000.tsv', 'utf8').replace(/^\uFEFF/, '').trimEnd().split(/\r?\n/);
+          const header = tsv.shift().split('\t');
+          const ix = Object.fromEntries(header.map((name, i) => [name, i]));
+          const rankSurface = new Map();
+          for (const line of tsv) {
+            const row = line.split('\t');
+            const rank = Number(row[ix.rank]);
+            if (rank >= 501 && rank <= 750) rankSurface.set(rank, row[ix.word]);
+          }
+
+          const r1 = fs.readFileSync('docs/research/ISSUE-866-CIFU-R501-750-LEXICAL-ADJUDICATION-R1.md', 'utf8');
+          const categories = new Map();
+          for (const line of r1.split(/\r?\n/)) {
+            const m = line.match(/^- \*\*(\d{3}) (.+?) — (reviewed_selection|multiple|reading_split|blocked_atomic):/);
+            if (m) categories.set(Number(m[1]), { surface: m[2], category: m[3] });
+          }
+
+          if (rankSurface.size !== 250 || categories.size !== 250) {
+            throw new Error(`inventory input mismatch rankSurface=${rankSurface.size} categories=${categories.size}`);
+          }
+
+          const rows = [];
+          for (let rank = 501; rank <= 750; rank += 1) {
+            const surface = rankSurface.get(rank);
+            const spec = categories.get(rank);
+            if (!spec || spec.surface !== surface) throw new Error(`rank ${rank} surface mismatch ${surface} / ${spec && spec.surface}`);
+            const entry = tokenLexicon.get(surface);
+            if (!entry) throw new Error(`rank ${rank} ${surface}: missing exact runtime surface`);
+            const ids = (analyses[surface] || []).map((row) => row.id);
+            rows.push({
+              rank,
+              surface,
+              category: spec.category,
+              neutral: isNeutral(entry),
+              label: entry.label || '',
+              pos: entry.pos || '',
+              syntax: entry.syntax || '',
+              jyutping: entry.jyutping || '',
+              analysis_count: ids.length,
+              ids,
+            });
+          }
+
+          const neutral = rows.filter((r) => r.neutral);
+          const neutralNonblocked = rows.filter((r) => r.neutral && r.category !== 'blocked_atomic');
+          const blockedTyped = rows.filter((r) => !r.neutral && r.category === 'blocked_atomic');
+          const multiCurrent = rows.filter((r) => r.analysis_count > 1);
+          const splitNeedsAlternatives = rows.filter((r) => ['multiple', 'reading_split'].includes(r.category) && r.analysis_count <= 1);
+
+          const compact = (list) => list.map((r) => `${r.rank}:${r.surface}`).join(', ');
+          console.log(JSON.stringify({
+            band_rows: rows.length,
+            current_neutral: neutral.length,
+            current_typed: rows.length - neutral.length,
+            neutral_nonblocked_count: neutralNonblocked.length,
+            neutral_nonblocked: compact(neutralNonblocked),
+            blocked_typed_count: blockedTyped.length,
+            blocked_typed: blockedTyped.map((r) => ({rank:r.rank,surface:r.surface,label:r.label,pos:r.pos,syntax:r.syntax,jyutping:r.jyutping})),
+            current_multi_analysis_count: multiCurrent.length,
+            current_multi_analysis: compact(multiCurrent),
+            reviewed_split_with_0_or_1_current_analysis_count: splitNeedsAlternatives.length,
+            reviewed_split_with_0_or_1_current_analysis: compact(splitNeedsAlternatives),
+          }, null, 2));
+          NODE
