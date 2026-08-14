@@ -1,0 +1,239 @@
+name: Temporary Cifu ranks 501-750 adjudication consolidator
+
+on:
+  push:
+    branches:
+      - agent/cifu-r501-750-adjudication-consolidation
+    paths:
+      - .github/workflows/temporary-cifu-r501-750-consolidate.yml
+
+permissions:
+  contents: write
+
+jobs:
+  consolidate:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/cifu-r501-750-adjudication-consolidation
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Materialize corrected 250-rank ledger
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import csv, json, os, re, urllib.request
+          from collections import Counter
+          from pathlib import Path
+
+          repo = 'Vazhi/canto-span'
+          token = os.environ['GH_TOKEN']
+
+          def comment_body(comment_id):
+              req = urllib.request.Request(
+                  f'https://api.github.com/repos/{repo}/issues/comments/{comment_id}',
+                  headers={'Authorization': f'Bearer {token}', 'Accept': 'application/vnd.github+json'},
+              )
+              with urllib.request.urlopen(req) as r:
+                  return json.load(r)['body']
+
+          original = comment_body(5269186956)
+          correction = comment_body(5269668860)
+
+          section_specs = [
+              ('single', '### `reviewed_selection` — one broad lexical analysis (132)'),
+              ('multiple', '### `reviewed_selection` — multiple category/sense analyses (63)'),
+              ('reading_split', '### `reviewed_selection` — reading split required (25)'),
+              ('blocked', '### `blocked` — no atomic lexical selection yet (30)'),
+          ]
+
+          rows = {}
+          bullet = re.compile(r'^- `(?P<rank>\d{3})` \*\*(?P<surface>.+?)\*\* — (?P<desc>.+)$')
+          for category, heading in section_specs:
+              start = original.index(heading) + len(heading)
+              next_heads = [original.find('\n### ', start)]
+              ends = [p for p in next_heads if p != -1]
+              end = min(ends) if ends else len(original)
+              for line in original[start:end].splitlines():
+                  m = bullet.match(line.strip())
+                  if not m:
+                      continue
+                  rank = int(m.group('rank'))
+                  if 501 <= rank <= 750:
+                      if rank in rows:
+                          raise SystemExit(f'duplicate original rank {rank}')
+                      rows[rank] = {
+                          'rank': rank,
+                          'surface': m.group('surface'),
+                          'category': category,
+                          'description': m.group('desc').strip(),
+                      }
+
+          if set(rows) != set(range(501, 751)):
+              missing = sorted(set(range(501, 751)) - set(rows))
+              extra = sorted(set(rows) - set(range(501, 751)))
+              raise SystemExit(f'original ledger parse mismatch: missing={missing} extra={extra}')
+
+          category_changes = {
+              501: 'reading_split',
+              531: 'reading_split',
+              616: 'reading_split',
+              618: 'reading_split',
+              674: 'multiple',
+              680: 'reading_split',
+              696: 'reading_split',
+              711: 'single',
+          }
+          corrected_descriptions = {
+              501: '`dei6` noun ground/land/place plus written adverb-forming suffix; `dei2` bound land/field suffix. Preserve the reading/function split.',
+              523: '`co5` productive verb “sit / travel by / serve a prison sentence”; `zo6` literary/citation sit-family and independently documented placement verb. Do not import the noun/classifier families of distinct `座`.',
+              531: 'noun “this year”; preserve both independently supported `gam1 nin4` and `gam1 nin2` readings.',
+              565: 'multiple: noun “mistake/fault” plus adjective “wrong/incorrect”; corpus resultative-looking tags do not establish a separate lexical adverb.',
+              586: 'reading/function split: `ho1` breathe/puff and interjection “ah/oh/wow”; `ho2` confirmation/question-tag final particle “huh?/right?”.',
+              597: 'reading/sense split: `zoek3` verb “wear/put on”; `zoek6` preserves independently supported written suffix/bound/result uses, lexical ignite/turn-on verb, adjective “correct”, and classifier “move/strategy” families rather than one generic particle.',
+              616: '`neoi2` noun daughter/girlfriend/young woman; `neoi5` female distinction-word/modifier and noun “female/woman”.',
+              618: 'person noun “man”; preserve ordinary lexicalized changed-tone `naam4 jan2` together with the documented underlying/base `naam4 jan4` relationship.',
+              668: 'time-unit measure word `fan1 zung1` “minute”; type precisely as measure rather than noun-or-measure ambiguity.',
+              674: '`bou6` noun/measure “step/pace” plus lexical verb “walk/stroll/on foot”.',
+              680: '`zo6` bound seat/location morpheme plus classifier for buildings/mountains and placement verb; `zo2` noun “base/stand/holder”.',
+              696: 'adverb “slowly”; preserve Cantonese changed-tone `maan6 maan2` / `maan6 maan1`; do not use unshifted `maan6 maan6` as the sole reviewed pronunciation.',
+              711: 'one broad lexical adverb/discourse expression “unexpectedly / who would have thought”; literal “how know?” is transparent `點 + 知`, not a second atomic whole-form analysis.',
+          }
+          for rank, category in category_changes.items():
+              rows[rank]['category'] = category
+          for rank, desc in corrected_descriptions.items():
+              rows[rank]['description'] = desc
+              rows[rank]['supersession'] = '5269668860'
+
+          aggregate = {}
+          with open('external-evidence/lexical-pos/cifu-top-2000/ranks-0501-0750/aggregate.tsv', encoding='utf-8-sig', newline='') as f:
+              for row in csv.DictReader(f, delimiter='\t'):
+                  aggregate[int(row['rank'])] = row
+          if set(aggregate) != set(range(501, 751)):
+              raise SystemExit('aggregate packet does not contain exactly ranks 501-750')
+
+          independently_spot_checked = {
+              501, 502, 503, 513, 518, 523, 531, 534, 565, 569, 573, 586,
+              597, 616, 618, 626, 668, 674, 680, 696, 711, 714, 723, 733,
+          }
+
+          for rank in range(501, 751):
+              a = aggregate[rank]
+              hit_count = int(a['hkcancor_hits'])
+              rows[rank]['hkcancor_hits'] = hit_count
+              if hit_count > 0:
+                  rows[rank]['corpus_status'] = 'exact_hkcancor_attested'
+                  rows[rank]['implementation_evidence_status'] = 'packet_attested'
+              else:
+                  rows[rank]['corpus_status'] = 'corpus_zero'
+                  rows[rank]['implementation_evidence_status'] = (
+                      'independent_source_confirmed_corpus_zero'
+                      if rank in independently_spot_checked
+                      else 'independent_confirmation_pending_corpus_zero'
+                  )
+
+          counts = Counter(row['category'] for row in rows.values())
+          expected = Counter({'single': 128, 'multiple': 61, 'reading_split': 31, 'blocked': 30})
+          if counts != expected:
+              raise SystemExit(f'corrected category accounting mismatch: {counts} != {expected}')
+
+          selected_zero_pending = [
+              r for r in rows.values()
+              if r['category'] != 'blocked'
+              and r['implementation_evidence_status'] == 'independent_confirmation_pending_corpus_zero'
+          ]
+
+          out = []
+          out.append('# Issue #866 — Cifu ranks 501–750 lexical adjudication consolidation R1')
+          out.append('')
+          out.append('## Purpose')
+          out.append('')
+          out.append('This record consolidates the mechanical packet merged by PR #818 and the expert adjudication attached to closed issue #794 into one rank-complete authority for Cifu SpokenAdult ranks 501–750. It changes no runtime lexicon, parser behavior, executable tests, construction identity/status, survey/native-panel state, corpus classification, release state, or deployment state.')
+          out.append('')
+          out.append('Cifu rank and exact surface remain discovery/frequency evidence only. Cifu definitions and Jyutping have zero independent Cantonese lexical-semantic/POS authority. HKCanCor exact hits establish occurrence/context evidence, not unrestricted productivity. A zero exact-token hit is not negative evidence. The frozen Rime layer, where later consulted, may corroborate orthography/readings only.')
+          out.append('')
+          out.append('## Authority and supersession')
+          out.append('')
+          out.append('- Expert base: #794 comment `5269186956`, which accounted for all 250 ranks.')
+          out.append('- Final audit: #794 comment `5269668860`, which explicitly supersedes `5269186956` wherever they conflict.')
+          out.append('- Corrected accounting: **128 single / 61 multiple / 31 reading-specific / 30 blocked = 250**.')
+          out.append('- The final audit corrects categories for ranks 501, 531, 616, 618, 674, 680, 696, and 711 and materially corrects ranks 501, 523, 531, 565, 586, 597, 616, 618, 668, 674, 680, 696, and 711.')
+          out.append('- `blocked` means no new atomic whole-surface lexical analysis from the present evidence; it never means delete genuine exact-surface coverage.')
+          out.append('- Lexical analysis inventory and runtime default selection are separate questions. A later implementation must preserve already-valid typed/compositional defaults where a reviewed alternative should not become the global tokenizer/parser default.')
+          out.append('')
+          out.append('## Corpus-zero implementation gate')
+          out.append('')
+          out.append('The final audit requires corpus-zero reviewed selections to expose whether independent Cantonese confirmation exists. Rows explicitly spot-checked in the #794 expert chain are marked `independent_source_confirmed_corpus_zero`; other corpus-zero non-blocked rows are marked `independent_confirmation_pending_corpus_zero` and **must not be promoted merely from the Cifu row**. This status is an implementation gate, not a claim that the form is non-Cantonese.')
+          out.append('')
+          out.append(f'Pending independent confirmation before runtime promotion: **{len(selected_zero_pending)}** non-blocked corpus-zero rows.')
+          if selected_zero_pending:
+              out.append('')
+              out.append(', '.join(f"`{r['rank']} {r['surface']}`" for r in selected_zero_pending))
+          out.append('')
+          out.append('## Final rank ledger')
+          out.append('')
+          labels = {
+              'single': 'reviewed_selection',
+              'multiple': 'multiple',
+              'reading_split': 'reading_split',
+              'blocked': 'blocked_atomic',
+          }
+          for lo in range(501, 751, 25):
+              hi = lo + 24
+              out.append(f'### Ranks {lo}–{hi}')
+              out.append('')
+              for rank in range(lo, hi + 1):
+                  r = rows[rank]
+                  suffix = f"; HKCanCor exact hits={r['hkcancor_hits']}; evidence-status=`{r['implementation_evidence_status']}`"
+                  if r.get('supersession'):
+                      suffix += '; supersedes conflicting detail in `5269186956` via `5269668860`'
+                  out.append(f"- **{rank} {r['surface']} — {labels[r['category']]}:** {r['description']}{suffix}.")
+              out.append('')
+
+          out.append('## Downstream implementation rule')
+          out.append('')
+          out.append('A later, separately claimed runtime reconciliation may implement independently supported selections and stable alternatives. It must preserve blocked/compositional exact-surface coverage, avoid Cifu/Rime authority laundering, preserve cross-band stable IDs, distinguish lexical alternatives from default token behavior, and run the repository regression-debt ratchet. Corpus-zero rows still marked `independent_confirmation_pending_corpus_zero` require independent Cantonese confirmation before typed promotion.')
+          out.append('')
+          out.append('## Mechanical validation')
+          out.append('')
+          out.append('- 250/250 ranks present exactly once.')
+          out.append('- Corrected category accounting: 128 / 61 / 31 / 30.')
+          out.append('- Exact HKCanCor hit/zero status joined directly from the merged #818 packet.')
+          out.append('- No runtime or test state changed by this ledger.')
+
+          path = Path('docs/research/ISSUE-866-CIFU-R501-750-LEXICAL-ADJUDICATION-R1.md')
+          path.write_text('\n'.join(out) + '\n', encoding='utf-8')
+          print(json.dumps({
+              'rows': len(rows),
+              'categories': dict(counts),
+              'pending_corpus_zero_selected': [(r['rank'], r['surface']) for r in selected_zero_pending],
+          }, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Validate durable diff and self-delete
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rm .github/workflows/temporary-cifu-r501-750-consolidate.yml
+          python3 - <<'PY'
+          import subprocess
+          changed = subprocess.check_output(['git', 'status', '--short'], text=True).splitlines()
+          paths = {line[3:] for line in changed}
+          expected = {
+              'docs/research/ISSUE-866-CIFU-R501-750-LEXICAL-ADJUDICATION-R1.md',
+              '.github/workflows/temporary-cifu-r501-750-consolidate.yml',
+          }
+          if paths != expected:
+              raise SystemExit(f'unexpected diff: {sorted(paths)}')
+          PY
+          git diff --check
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Consolidate ranks 501–750 lexical adjudication'
+          git push origin HEAD:agent/cifu-r501-750-adjudication-consolidation
