@@ -12,6 +12,7 @@ const EFFECTIVE_CANDIDATE_ONLY_SURFACES = new Set([
 
 const DEFAULT_READING_OVERRIDES = Object.freeze({
   "着": Object.freeze({ jyutping: "zoek3", source: SOURCE_R1 }),
+  "轉彎": Object.freeze({ jyutping: "zyun3 waan1", source: SOURCE_R2 }),
   "直行": Object.freeze({ jyutping: "zik6 haang4", source: SOURCE_R2 }),
 });
 
