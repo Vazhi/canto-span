@@ -1,6 +1,9 @@
 "use strict";
 
-const { applyReviewedEntries } = require("./cifu-r251-500-reviewed");
+const { applyReviewedEntries: applyReviewedR251500Entries } = require("./cifu-r251-500-reviewed");
+const { applyRuntimePolicy: applyReviewedR1250RuntimePolicy } = require("./cifu-r1-250-runtime-policy");
+const { applyCandidateDefaultReadings } = require("./cifu-r1-250-candidate-defaults");
+const { applyNativeReviewCorrections } = require("./native-review-corrections");
 
 const baseEntries = [
   ...require("./people-and-address"),
@@ -15,4 +18,8 @@ const baseEntries = [
   ...require("./frequency-gap-fill-r7"),
 ];
 
-module.exports = applyReviewedEntries(baseEntries);
+module.exports = applyNativeReviewCorrections(
+  applyCandidateDefaultReadings(
+    applyReviewedR1250RuntimePolicy(applyReviewedR251500Entries(baseEntries))
+  )
+);
