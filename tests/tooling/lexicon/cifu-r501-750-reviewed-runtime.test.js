@@ -77,8 +77,10 @@ test("all 45 default-sensitive candidates remain neutral token defaults", () => 
   }
   assert.equal(tokenLexicon["着"].jyutping, "zoek3");
   assert.equal(tokenLexicon["着"].provenance.kind, "reviewed_candidate_default_pronunciation");
+  assert.equal(tokenLexicon["轉彎"].jyutping, "zyun3 waan1");
+  assert.equal(tokenLexicon["轉彎"].provenance.kind, "reviewed_candidate_default_pronunciation");
+  assert.ok(!reviewed.isNeutralLexicalEntry(tokenLexicon["直行"]), "直行: existing typed default remains typed");
   assert.equal(tokenLexicon["直行"].jyutping, "zik6 haang4");
-  assert.equal(tokenLexicon["直行"].provenance.kind, "reviewed_candidate_default_pronunciation");
 });
 
 test("blocked atomic rows receive no new lexical promotion or explicit alternative", () => {
@@ -93,7 +95,7 @@ test("blocked atomic rows receive no new lexical promotion or explicit alternati
   assert.deepEqual(new Set(structuredExisting), new Set(["一次", "第二個"]));
 });
 
-test("101 reviewed alternative surfaces preserve the current token entry as default", () => {
+test("101 reviewed alternative surfaces preserve normalized current defaults", () => {
   assert.equal(Object.keys(reviewed.ALTERNATIVE_SPECS).length, 101);
   assert.equal(Object.keys(dynamic).length, 101);
   const seen = new Set();
@@ -102,10 +104,10 @@ test("101 reviewed alternative surfaces preserve the current token entry as defa
     assert.ok(entry, `${surface}: dynamic analysis surface exists`);
     assert.ok(rows.length >= 2, `${surface}: default plus reviewed alternative(s)`);
     assert.equal(rows[0].id, `lex:${surface}:default`, `${surface}: preserved default first`);
-    assert.equal(rows[0].label, entry.label, `${surface}: default label preserved`);
-    assert.equal(rows[0].pos, entry.pos, `${surface}: default POS preserved`);
-    assert.equal(rows[0].syntax, entry.syntax, `${surface}: default syntax preserved`);
-    assert.equal(rows[0].jyutping, entry.jyutping, `${surface}: default reading preserved`);
+    assert.equal(rows[0].label, entry.label || "neutral", `${surface}: normalized default label preserved`);
+    assert.equal(rows[0].pos, entry.pos || "lexical_item", `${surface}: normalized default POS preserved`);
+    assert.equal(rows[0].syntax, entry.syntax || "lexical_candidate", `${surface}: normalized default syntax preserved`);
+    assert.equal(rows[0].jyutping, entry.jyutping || "", `${surface}: default reading preserved`);
     assert.deepEqual(ids(surface), rows.map((row) => row.id), `${surface}: dynamic records are the effective analysis index`);
     for (const row of rows) {
       assert.ok(row.jyutping, `${row.id}: non-empty Jyutping`);
@@ -128,6 +130,15 @@ test("R2 reading/function refinements are represented without Cifu reading colla
   const zikHang = new Set(readings("直行"));
   assert.deepEqual(zikHang, new Set(["zik6 haang4", "zik6 hong4"]));
   assert.ok(!zikHang.has("zik6hong4"));
+});
+
+test("CI-exposed omissions are represented from accepted evidence", () => {
+  assert.ok(ids("轉彎").includes("lex:轉彎:r625:turn_verb"));
+  assert.ok(readings("轉彎").includes("zyun3 waan1"));
+  assert.ok(ids("早").includes("lex:早:r647:early_stative"));
+  assert.ok(ids("早").includes("lex:早:r647:early_adverb"));
+  assert.ok(ids("早").includes("lex:早:r647:morning_temporal"));
+  assert.ok(readings("早").every((reading) => reading === "zou2"));
 });
 
 test("high-value R1 reading splits survive as explicit alternatives", () => {
