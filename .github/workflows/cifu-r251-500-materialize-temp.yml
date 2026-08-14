@@ -1,0 +1,81 @@
+name: Temporary Cifu ranks 251-500 project-state reconciler
+
+on:
+  push:
+    branches:
+      - agent/cifu-r251-500-runtime-reconcile
+    paths:
+      - .github/workflows/cifu-r251-500-materialize-temp.yml
+
+permissions:
+  contents: write
+  issues: read
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Verify live ownership and exact pre-reconciliation state
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REF_NAME" = "agent/cifu-r251-500-runtime-reconcile"
+          test "$(git rev-parse HEAD^)" = "417e8b61818cbdf3c1d2d402fd3b5d78a47e2aec"
+          git fetch origin main
+          test "$(git rev-parse origin/main)" = "fcbeba51cb0ac734923cb4df7d54ab9f6f4e790e"
+          intake="$(gh api "repos/$GITHUB_REPOSITORY/issues/861" --jq .body)"
+          claim="$(gh api "repos/$GITHUB_REPOSITORY/issues/862" --jq .body)"
+          printf '%s\n' "$intake" | grep -F '"active_claim_issue": 862'
+          printf '%s\n' "$intake" | grep -F '"active_branch": "agent/cifu-r251-500-runtime-reconcile"'
+          printf '%s\n' "$intake" | grep -F '"active_pr": 863'
+          printf '%s\n' "$intake" | grep -F '"pickup_allowed": true'
+          printf '%s\n' "$claim" | grep -F '"status": "active"'
+          printf '%s\n' "$claim" | grep -F '"active_worker": "chatgpt"'
+          printf '%s\n' "$claim" | grep -F '"ownership_revision": 1'
+          git diff --exit-code HEAD^ -- . ':(exclude).github/workflows/cifu-r251-500-materialize-temp.yml'
+      - name: Install dependencies
+        run: npm ci
+      - name: Render canonical project-state counters
+        run: npm run render:core:state -- --write
+      - name: Record v0.5.229 lexical consequence
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const file = 'docs/current/PROJECT-STATE.md';
+          let text = fs.readFileSync(file, 'utf8');
+          const marker = 'Current consequences include:\n\n';
+          const bullet = '- v0.5.229 implements the finalized #858 Cifu ranks 251–500 lexical adjudication while retaining complete 2,000/2,000 exact-surface coverage: 71 previously neutral fallback surfaces receive reviewed typed entries, 18 `blocked_atomic` surfaces remain neutral/compositional, seven transparent or mixed whole-form surfaces retain neutral default tokenization with stable reviewed alternatives, and 82 reviewed surfaces expose explicit multi-analysis/reading/function records; the ranks 1–250 runtime reconciliation remains separate and unresolved, and no construction status, survey, corpus, release-publication, or deployment state is changed;\n\n';
+          if (!text.includes(marker)) throw new Error('PROJECT-STATE current consequences marker missing');
+          if (!text.includes('- v0.5.229 implements the finalized #858 Cifu ranks 251–500 lexical adjudication')) {
+            text = text.replace(marker, marker + bullet);
+          }
+          fs.writeFileSync(file, text);
+          NODE
+      - name: Verify project-state and current documentation
+        run: |
+          set -euo pipefail
+          node tools/verify-project-state.js
+          node tools/verify-documentation-consistency.js
+      - name: Remove temporary workflow and verify scope
+        run: |
+          set -euo pipefail
+          git rm .github/workflows/cifu-r251-500-materialize-temp.yml
+          git diff --name-only 417e8b61818cbdf3c1d2d402fd3b5d78a47e2aec | sort > /tmp/actual.txt
+          printf '%s\n' 'docs/current/PROJECT-STATE.md' > /tmp/expected.txt
+          diff -u /tmp/expected.txt /tmp/actual.txt
+      - name: Commit reconciled project state
+        run: |
+          set -euo pipefail
+          git config user.name "canto-span-materializer"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Reconcile v0.5.229 project state"
+          git push origin HEAD:agent/cifu-r251-500-runtime-reconcile
