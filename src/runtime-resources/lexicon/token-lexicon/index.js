@@ -1,7 +1,7 @@
 "use strict";
 
 const { applyReviewedEntries: applyReviewedR251500Entries } = require("./cifu-r251-500-reviewed");
-const { applyReviewedEntries: applyReviewedR1250Entries } = require("./cifu-r1-250-reviewed");
+const { applyRuntimePolicy: applyReviewedR1250RuntimePolicy } = require("./cifu-r1-250-runtime-policy");
 const { applyCandidateDefaultReadings } = require("./cifu-r1-250-candidate-defaults");
 const { applyNativeReviewCorrections } = require("./native-review-corrections");
 
@@ -20,6 +20,6 @@ const baseEntries = [
 
 module.exports = applyNativeReviewCorrections(
   applyCandidateDefaultReadings(
-    applyReviewedR1250Entries(applyReviewedR251500Entries(baseEntries))
+    applyReviewedR1250RuntimePolicy(applyReviewedR251500Entries(baseEntries))
   )
 );
