@@ -1,0 +1,82 @@
+name: Temporary Cifu ranks 751-1000 v0.5.232 materializer
+
+on:
+  push:
+    branches:
+      - agent/cifu-r751-1000-runtime-reconcile
+    paths:
+      - .github/workflows/temporary-cifu-r751-1000-version-materialize.yml
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/cifu-r751-1000-runtime-reconcile
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Install dependencies
+        run: npm ci
+      - name: Synchronize v0.5.232 source metadata and project state
+        shell: bash
+        run: |
+          npm version 0.5.232 --no-git-tag-version
+          python - <<'PY'
+          from pathlib import Path
+
+          plugin = Path('src/plugin-entry.js')
+          text = plugin.read_text(encoding='utf-8')
+          old = 'const CANTO_SPAN_RUNTIME_VERSION = "0.5.231";\n// v0.5.231: reconciles reviewed Cifu ranks 501–750 with conservative default selection, 101 stable reviewed alternative surfaces, and preserved ranks 1–500 behavior.'
+          new = 'const CANTO_SPAN_RUNTIME_VERSION = "0.5.232";\n// v0.5.232: reconciles reviewed Cifu ranks 751–1000 with conservative defaults, stable alternatives, evidence-driven typed corrections, and preserved ranks 1–750 behavior.\n// v0.5.231: reconciles reviewed Cifu ranks 501–750 with conservative default selection, 101 stable reviewed alternative surfaces, and preserved ranks 1–500 behavior.'
+          assert text.count(old) == 1
+          plugin.write_text(text.replace(old, new, 1), encoding='utf-8')
+
+          state = Path('docs/current/PROJECT-STATE.md')
+          text = state.read_text(encoding='utf-8')
+          assert text.count('| Runtime | v0.5.231 |') == 1
+          text = text.replace('| Runtime | v0.5.231 |', '| Runtime | v0.5.232 |', 1)
+          marker = '- v0.5.231 implements the final #866 R1+R2 Cifu ranks 501–750 lexical adjudication'
+          assert text.count(marker) == 1
+          bullet = '- v0.5.232 implements the final #872 Cifu ranks 751–1000 lexical adjudication while retaining complete 2,000/2,000 exact-surface coverage: 79 previously neutral ordinary lexical gaps receive reviewed typed defaults, 84 transparent or default-sensitive surfaces retain neutral defaults while exposing reviewed whole-form or constructional alternatives, and 99 surfaces expose stable reviewed alternative records; all 29 `blocked_atomic` and 10 `research_required` rows receive no new atomic promotion, existing structured `我知` and `沿住` parser entries remain intact, and four stale pre-existing typed defaults are corrected to the final detailed authority (`魚 jyu2` free noun with `jyu4` bound/non-final, `飛 fei1` verb rather than the unsupported ticket default, stative `小心`, and universal determiner/quantifier `全`); the older Week 16 `魚/釣魚 jyu4` test expectation is superseded by the independently adjudicated free/final noun reading without weakening its structural checks; no construction identity or status, survey, corpus, release-publication, or deployment state is changed;\n\n'
+          text = text.replace(marker, bullet + marker, 1)
+          state.write_text(text, encoding='utf-8')
+          PY
+      - name: Build and verify source-first runtime
+        shell: bash
+        run: |
+          npm run build:runtime
+          node tools/build-runtime.js --check
+          node tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js
+          node tests/tooling/lexicon/cifu-r751-1000-reviewed-runtime.test.js
+      - name: Verify bounded state diff
+        shell: bash
+        run: |
+          rm .github/workflows/temporary-cifu-r751-1000-version-materialize.yml
+          mapfile -t changed < <(git status --short | sed -E 's/^...//')
+          printf 'Pending paths:\n%s\n' "${changed[*]}"
+          test "${#changed[@]}" -eq 6
+          printf '%s\n' "${changed[@]}" | sort > /tmp/actual-paths
+          printf '%s\n' \
+            '.github/workflows/temporary-cifu-r751-1000-version-materialize.yml' \
+            'docs/current/PROJECT-STATE.md' \
+            'main.js' \
+            'package-lock.json' \
+            'package.json' \
+            'src/plugin-entry.js' | sort > /tmp/expected-paths
+          diff -u /tmp/expected-paths /tmp/actual-paths
+      - name: Commit state synchronization and self-delete
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/plugin-entry.js package.json package-lock.json main.js docs/current/PROJECT-STATE.md .github/workflows/temporary-cifu-r751-1000-version-materialize.yml
+          git commit -m 'Synchronize ranks 751-1000 runtime v0.5.232'
+          git push origin HEAD:agent/cifu-r751-1000-runtime-reconcile
