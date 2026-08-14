@@ -75,6 +75,8 @@ test("all 45 default-sensitive candidates remain neutral token defaults", () => 
     assert.equal(analyses[surface][0].pos, "lexical_item", `${surface}: default analysis remains neutral`);
     assert.ok(analyses[surface].slice(1).some((row) => row.provenance && row.provenance.kind === "reviewed_lexical_analysis"), `${surface}: reviewed whole-form alternative exists`);
   }
+  assert.equal(tokenLexicon["着"].jyutping, "zoek3");
+  assert.equal(tokenLexicon["着"].provenance.kind, "reviewed_candidate_default_pronunciation");
   assert.equal(tokenLexicon["直行"].jyutping, "zik6 haang4");
   assert.equal(tokenLexicon["直行"].provenance.kind, "reviewed_candidate_default_pronunciation");
 });
