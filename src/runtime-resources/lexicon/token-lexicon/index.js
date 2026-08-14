@@ -1,6 +1,7 @@
 "use strict";
 
-const { applyReviewedEntries } = require("./cifu-r251-500-reviewed");
+const { applyReviewedEntries: applyReviewedR251500Entries } = require("./cifu-r251-500-reviewed");
+const { applyReviewedEntries: applyReviewedR1250Entries } = require("./cifu-r1-250-reviewed");
 
 const baseEntries = [
   ...require("./people-and-address"),
@@ -15,4 +16,4 @@ const baseEntries = [
   ...require("./frequency-gap-fill-r7"),
 ];
 
-module.exports = applyReviewedEntries(baseEntries);
+module.exports = applyReviewedR1250Entries(applyReviewedR251500Entries(baseEntries));
