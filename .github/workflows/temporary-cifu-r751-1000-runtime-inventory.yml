@@ -1,0 +1,116 @@
+name: Temporary Cifu ranks 751-1000 runtime inventory
+
+on:
+  push:
+    branches:
+      - agent/cifu-r751-1000-runtime-reconcile
+    paths:
+      - .github/workflows/temporary-cifu-r751-1000-runtime-inventory.yml
+
+permissions:
+  contents: read
+
+jobs:
+  inventory:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/cifu-r751-1000-runtime-reconcile
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Install dependencies
+        run: npm ci
+      - name: Report current ranks 751-1000 runtime state
+        shell: bash
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const tokenEntries = require('./src/runtime-resources/lexicon/token-lexicon');
+          const { buildLexicalAnalysisIndex } = require('./src/runtime-resources/lexicon/lexical-analyses');
+
+          const tokenLexicon = new Map(tokenEntries);
+          const analyses = buildLexicalAnalysisIndex(tokenEntries);
+          const isNeutral = (entry) => Boolean(entry)
+            && entry.label === 'lex'
+            && entry.pos === 'lexical_item'
+            && entry.syntax === 'lexical_item';
+
+          const ledger = fs.readFileSync('docs/research/ISSUE-872-CIFU-R751-1000-LEXICAL-ADJUDICATION-R1.md', 'utf8');
+          const specs = new Map();
+          for (const line of ledger.split(/\r?\n/)) {
+            const m = line.match(/^- \*\*(\d{3,4}) (.+?) — (reviewed_selection|multiple|reading_split|blocked_atomic|research_required|constructional_expression):/);
+            if (m) specs.set(Number(m[1]), { surface: m[2], disposition: m[3] });
+          }
+          if (specs.size !== 250) throw new Error(`expected 250 ledger specs, got ${specs.size}`);
+
+          const rows = [];
+          for (let rank = 751; rank <= 1000; rank += 1) {
+            const spec = specs.get(rank);
+            if (!spec) throw new Error(`missing rank ${rank}`);
+            const entry = tokenLexicon.get(spec.surface);
+            if (!entry) throw new Error(`rank ${rank} ${spec.surface}: missing exact runtime surface`);
+            const a = analyses[spec.surface] || [];
+            rows.push({
+              rank,
+              surface: spec.surface,
+              disposition: spec.disposition,
+              neutral: isNeutral(entry),
+              label: entry.label || '',
+              pos: entry.pos || '',
+              syntax: entry.syntax || '',
+              jyutping: entry.jyutping || '',
+              analysis_count: a.length,
+              ids: a.map((row) => row.id),
+              readings: [...new Set(a.map((row) => row.jyutping).filter(Boolean))],
+            });
+          }
+
+          const eligible = new Set(['reviewed_selection', 'multiple', 'reading_split', 'constructional_expression']);
+          const neutral = rows.filter((r) => r.neutral);
+          const typed = rows.filter((r) => !r.neutral);
+          const neutralEligible = rows.filter((r) => r.neutral && eligible.has(r.disposition));
+          const neutralSingles = rows.filter((r) => r.neutral && r.disposition === 'reviewed_selection');
+          const neutralMultiSplit = rows.filter((r) => r.neutral && ['multiple', 'reading_split'].includes(r.disposition));
+          const neutralConstructional = rows.filter((r) => r.neutral && r.disposition === 'constructional_expression');
+          const blockedTyped = rows.filter((r) => !r.neutral && r.disposition === 'blocked_atomic');
+          const researchTyped = rows.filter((r) => !r.neutral && r.disposition === 'research_required');
+          const constructional = rows.filter((r) => r.disposition === 'constructional_expression');
+          const currentMulti = rows.filter((r) => r.analysis_count > 1);
+          const needsAlternatives = rows.filter((r) => ['multiple', 'reading_split', 'constructional_expression'].includes(r.disposition) && r.analysis_count <= 1);
+          const blankDefaultReading = rows.filter((r) => !r.jyutping && eligible.has(r.disposition));
+
+          const compact = (list) => list.map((r) => `${r.rank}:${r.surface}`).join(', ');
+          const detail = (list) => list.map((r) => ({
+            rank: r.rank, surface: r.surface, disposition: r.disposition,
+            label: r.label, pos: r.pos, syntax: r.syntax, jyutping: r.jyutping,
+            analysis_count: r.analysis_count, ids: r.ids, readings: r.readings,
+          }));
+
+          console.log(JSON.stringify({
+            band_rows: rows.length,
+            current_neutral: neutral.length,
+            current_typed: typed.length,
+            neutral_eligible_count: neutralEligible.length,
+            neutral_eligible: compact(neutralEligible),
+            neutral_reviewed_single_count: neutralSingles.length,
+            neutral_reviewed_single: compact(neutralSingles),
+            neutral_multiple_or_split_count: neutralMultiSplit.length,
+            neutral_multiple_or_split: compact(neutralMultiSplit),
+            neutral_constructional_count: neutralConstructional.length,
+            neutral_constructional: compact(neutralConstructional),
+            blocked_typed_count: blockedTyped.length,
+            blocked_typed: detail(blockedTyped),
+            research_required_typed_count: researchTyped.length,
+            research_required_typed: detail(researchTyped),
+            constructional_state: detail(constructional),
+            current_multi_analysis_count: currentMulti.length,
+            current_multi_analysis: compact(currentMulti),
+            reviewed_multi_split_constructional_with_0_or_1_current_analysis_count: needsAlternatives.length,
+            reviewed_multi_split_constructional_with_0_or_1_current_analysis: compact(needsAlternatives),
+            eligible_blank_default_reading_count: blankDefaultReading.length,
+            eligible_blank_default_reading: detail(blankDefaultReading),
+          }, null, 2));
+          NODE
