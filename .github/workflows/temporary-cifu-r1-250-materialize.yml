@@ -1,6 +1,6 @@
 name: Temporary Cifu ranks 1-250 corrected runtime materializer
 
-# Retry after assigning the independently reviewed seng4 productive whole/all default for 成.
+# Final retry after completing explicit schemas for 成 and 唔係.
 on:
   push:
     branches:
