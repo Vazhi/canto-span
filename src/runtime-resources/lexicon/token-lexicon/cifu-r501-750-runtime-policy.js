@@ -2,7 +2,8 @@
 
 const reviewed = require("./cifu-r501-750-reviewed");
 
-const SOURCE = "docs/research/ISSUE-866-CIFU-R501-750-LEXICAL-ADJUDICATION-R2.md";
+const SOURCE_R1 = "docs/research/ISSUE-866-CIFU-R501-750-LEXICAL-ADJUDICATION-R1.md";
+const SOURCE_R2 = "docs/research/ISSUE-866-CIFU-R501-750-LEXICAL-ADJUDICATION-R2.md";
 const EXTRA_CANDIDATE_ONLY_SURFACES = new Set(["跟"]);
 const EFFECTIVE_CANDIDATE_ONLY_SURFACES = new Set([
   ...reviewed.CANDIDATE_ONLY_SURFACES,
@@ -10,21 +11,22 @@ const EFFECTIVE_CANDIDATE_ONLY_SURFACES = new Set([
 ]);
 
 const DEFAULT_READING_OVERRIDES = Object.freeze({
-  "直行": "zik6 haang4",
+  "着": Object.freeze({ jyutping: "zoek3", source: SOURCE_R1 }),
+  "直行": Object.freeze({ jyutping: "zik6 haang4", source: SOURCE_R2 }),
 });
 
 function applyRuntimePolicy(entries) {
   const adjudicated = reviewed.applyReviewedEntries(entries);
   return adjudicated.map(([surface, entry]) => {
-    const reading = DEFAULT_READING_OVERRIDES[surface];
-    if (!reading || !reviewed.isNeutralLexicalEntry(entry)) return [surface, entry];
+    const override = DEFAULT_READING_OVERRIDES[surface];
+    if (!override || !reviewed.isNeutralLexicalEntry(entry)) return [surface, entry];
     return [surface, {
       ...entry,
-      jyutping: reading,
-      note: `${entry.note || "Exact surface retained as neutral lexical coverage."} R2 preserves a neutral whole-form default while independently supported reading/function alternatives remain explicit.`,
+      jyutping: override.jyutping,
+      note: `${entry.note || "Exact surface retained as neutral lexical coverage."} Reviewed whole-form alternatives remain explicit while default tokenization stays neutral.`,
       provenance: {
         kind: "reviewed_candidate_default_pronunciation",
-        source: SOURCE,
+        source: override.source,
         pronunciation_status: "reviewed_default_reading_without_atomic_pos_promotion",
         prior_provenance: entry.provenance || null,
       },
@@ -33,7 +35,8 @@ function applyRuntimePolicy(entries) {
 }
 
 module.exports = Object.freeze({
-  SOURCE,
+  SOURCE_R1,
+  SOURCE_R2,
   EXTRA_CANDIDATE_ONLY_SURFACES,
   EFFECTIVE_CANDIDATE_ONLY_SURFACES,
   DEFAULT_READING_OVERRIDES,
