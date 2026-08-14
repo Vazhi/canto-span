@@ -326,6 +326,7 @@ const ALTERNATIVE_SPECS = Object.freeze({
     alt(618, "man_changed_tone", "person", "man, ordinary lexicalized changed-tone reading", "naam4 jan2"),
     alt(618, "man_base_reading", "person", "man, underlying/base reading relationship", "naam4 jan4"),
   ]),
+  "轉彎": Object.freeze([alt(625, "turn_verb", "verb", "turn / turn a corner", "zyun3 waan1", "turning_motion_predicate")]),
   "攬": Object.freeze([
     alt(626, "hug_support_verb", "verb", "hug / shoulder / support", "laam2"),
     alt(626, "gather_monopolize_bound", "bound", "gather / monopolize morphemic family", "laam5"),
@@ -364,6 +365,11 @@ const ALTERNATIVE_SPECS = Object.freeze({
   "段": Object.freeze([
     alt(644, "segment_noun", "noun", "segment / section"),
     alt(644, "passage_classifier", "classifier", "classifier for passages / stories"),
+  ]),
+  "早": Object.freeze([
+    alt(647, "early_stative", "adjective", "early", "zou2"),
+    alt(647, "early_adverb", "adverb", "early", "zou2", "temporal_adverb"),
+    alt(647, "morning_temporal", "temporal", "morning / early time", "zou2"),
   ]),
   "發展": Object.freeze([
     alt(650, "develop_verb", "verb", "develop"),
