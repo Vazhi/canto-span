@@ -1,0 +1,109 @@
+name: Temporary Cifu ranks 501-750 confirmation updater
+
+on:
+  push:
+    branches:
+      - agent/cifu-r501-750-adjudication-consolidation
+    paths:
+      - .github/workflows/temporary-cifu-r501-750-consolidate.yml
+
+permissions:
+  contents: write
+
+jobs:
+  confirm:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/cifu-r501-750-adjudication-consolidation
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Update authoritative ledger
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          p=Path('docs/research/ISSUE-866-CIFU-R501-750-LEXICAL-ADJUDICATION-R1.md')
+          t=p.read_text(encoding='utf-8')
+          ranks=[511,520,528,536,539,544,545,566,580,594,615,622,625,636,637,642,651,677,712,721,726,727,743]
+          for rank in ranks:
+              pat=re.compile(rf'(^- \*\*{rank} .+?evidence-status=`)independent_confirmation_pending_corpus_zero(`[^\n]*$)',re.M)
+              t,n=pat.subn(r'\1independent_source_confirmed_corpus_zero\2',t)
+              if n!=1: raise SystemExit(f'rank {rank}: status replacements={n}')
+          refinements={
+            'lok6 happy/name family; ngok6 music morpheme family':'lok6 happy/joyful family and surname; ngok6 music morpheme family; ngaau6 bound/formal enjoy/appreciate family',
+            'bong6 weigh/pound-related family versus bong2 scale/balance family; needs explicit sense-reading records':'bong6 pound/weight measure plus lexical weigh/pay verb family; bong2 noun scales/balance device; preserve explicit reading/function records',
+            "spoken motion reading zik6 haang4 versus hong4 row/line reading family; do not use Cifu's single zik6hong4 string for all senses":'zik6 haang4 lexical verb/expression “go straight”; zik6 hong4 noun “vertical column/line”; preserve both and do not use one Cifu concatenated reading for all senses',
+          }
+          for old,new in refinements.items():
+              if old not in t: raise SystemExit(f'missing refinement anchor: {old}')
+              t=t.replace(old,new,1)
+          a=t.index('## Corpus-zero implementation gate')
+          b=t.index('## Final rank ledger')
+          section='''## Corpus-zero implementation gate
+
+The final #794 audit requires corpus-zero reviewed selections to expose whether independent Cantonese confirmation exists. All **23 non-blocked corpus-zero selections** initially pending after mechanical consolidation have now been independently checked against Cantonese lexical/reference sources and are marked `independent_source_confirmed_corpus_zero`. Zero exact HKCanCor hits remain occurrence metadata, not negative evidence.
+
+No non-blocked ranks 501–750 selection remains gated solely for lack of independent Cantonese confirmation. Blocked/compositional corpus-zero rows remain blocked unless separately re-adjudicated; confirming component words does not turn them into atomic lexemes.
+
+### Independent corpus-zero confirmations
+
+- `511 瑞 seoi6` — auspicious/lucky adjective/root: CantoDict `瑞`.
+- `520 繞 jiu5/jiu2` — move/go around, coil/detour family: CantoDict `繞道` and component record.
+- `528 貧 pan4` — poor/deficient adjective with lack/humble-address extensions: CantoDict `貧`.
+- `536 灣 waan1` — bay/cove noun with moor/anchor verb extension: CantoDict `灣`.
+- `539 室 sat1` — room/home/chamber nominal root: CantoDict `室內` component record.
+- `544 樂 lok6/ngok6/ngaau6` — happy, music, and enjoy/appreciate families: 粵典 and CantoWords `樂`.
+- `545 樂園 lok6 jyun4` — paradise/amusement-park noun: Jyut Dictionary / 粵典 data.
+- `566 叢林 cung4 lam4` — jungle/forest noun: Wiktionary plus 粵典 forest cross-reference.
+- `580 直線 zik6 sin3` — straight-line noun: 粵典 `直線`.
+- `594 東方 dung1 fong1` — east/the East noun: 粵典 `東方`.
+- `615 灘 taan1` — beach/bank/shoal root: CantoDict `沙灘` component record.
+- `622 會話 wui6 waa2` — conversation noun with changed-tone 話: CantoDict and CC-Canto `會話`.
+- `625 轉彎 zyun3 waan1` with documented reading variation — turn/corner verb expression: CantoDict `彎` compound evidence.
+- `636 磅 bong6/bong2` — pound/measure and weigh/pay versus scales device: 粵典/CantoWords `磅`.
+- `637 山路 saan1 lou6` — mountain-road/path noun: 粵典 `山路`.
+- `642 西方 sai1 fong1` — west/the West noun: 粵典 `西方`.
+- `651 圖案 tou4 on3` — design/pattern noun: CantoDict `案` compound record.
+- `677 直行 zik6 haang4 / zik6 hong4` — go-straight verb versus vertical-column noun: Wiktionary and CantoDict.
+- `712 水平線 seoi2 ping4 sin3` — horizon/horizontal-line noun: CC-Canto.
+- `721 碑 bei1` — stele/monument root: CantoDict `石碑` and CantoWords `里程碑`.
+- `726 距離 keoi5 lei4` — distance / be apart: CantoDict plus 粵典 usage evidence.
+- `727 概念 koi3 nim6` — concept: Wiktionary and CantoDict component evidence.
+- `743 港人 gong2 jan4` — Hongkonger/Hong Kong people noun: 粵典 `港人`.
+
+Reference URLs verified during the 2026-08-14 independent follow-up include CantoDict, 粵典/Words.hk, CantoWords, CC-Canto, Jyut Dictionary, and Wiktionary. These sources establish lexical/readings evidence only to the extent stated above; they do not establish parser behavior.
+
+'''
+          t=t[:a]+section+t[b:]
+          lines=[x for x in t.splitlines() if re.match(r'^- \*\*\d{3} ',x)]
+          if len(lines)!=250: raise SystemExit(f'ledger rows={len(lines)}')
+          cats={'reviewed_selection':0,'multiple':0,'reading_split':0,'blocked_atomic':0}
+          pending=[]
+          for line in lines:
+              m=re.match(r'^- \*\*(\d{3}) .+? — ([a-z_]+):',line)
+              if not m or m.group(2) not in cats: raise SystemExit(f'bad row: {line}')
+              cats[m.group(2)]+=1
+              if m.group(2)!='blocked_atomic' and 'independent_confirmation_pending_corpus_zero' in line: pending.append(m.group(1))
+          exp={'reviewed_selection':128,'multiple':61,'reading_split':31,'blocked_atomic':30}
+          if cats!=exp: raise SystemExit(f'category drift {cats}')
+          if pending: raise SystemExit(f'pending nonblocked={pending}')
+          p.write_text(t,encoding='utf-8')
+          print('PASS 250/250; 128/61/31/30; non-blocked corpus-zero pending=0')
+          PY
+          git diff --check
+
+      - name: Self-delete and commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rm .github/workflows/temporary-cifu-r501-750-consolidate.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Confirm corpus-zero ranks 501–750 selections'
+          git push origin HEAD:agent/cifu-r501-750-adjudication-consolidation
