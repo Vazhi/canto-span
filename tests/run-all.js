@@ -16,6 +16,7 @@ const commands = [
   ["glossika_week16_lexicon", path.join(root, "tests", "tooling", "lexicon", "glossika-week16-runtime-lexicon.test.js")],
   ["cifu_r251_500_reviewed_lexicon", path.join(root, "tests", "tooling", "lexicon", "cifu-r251-500-reviewed-runtime.test.js")],
   ["cifu_r1_250_reviewed_lexicon", path.join(root, "tests", "tooling", "lexicon", "cifu-r1-250-reviewed-runtime.test.js")],
+  ["cifu_r501_750_reviewed_lexicon", path.join(root, "tests", "tooling", "lexicon", "cifu-r501-750-reviewed-runtime.test.js")],
   ["unit_word_evidence", path.join(root, "tests", "tooling", "runtime", "unit-word-evidence.test.js")],
   ["label_transition_policy", path.join(root, "tests", "tooling", "runtime", "label-transition-policy.test.js")],
   ["ab33_outer_question_composition", path.join(root, "tests", "tooling", "runtime", "ab33-outer-question-composition.test.js")],
