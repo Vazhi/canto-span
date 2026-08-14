@@ -15,7 +15,8 @@ const createCantoSpanPlugin = require("./plugin/canto-span-plugin");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.230";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.231";
+// v0.5.231: reconciles reviewed Cifu ranks 501–750 with conservative default selection, 101 stable reviewed alternative surfaces, and preserved ranks 1–500 behavior.
 // v0.5.230: reconciles reviewed Cifu ranks 1–250 lexical analyses with neutral/compositional safeguards, stable alternatives, and native-reviewed 喀 pronunciation handling.
 // v0.5.229: reconciles finalized Cifu ranks 251–500 lexical adjudications with neutral/compositional safeguards and stable multi-analysis IDs.
 // v0.5.228: adds first-class surface-to-analyses lexical representation with stable analysis IDs and preserves existing context-selected 住/定/咪 analyses without broadening grammar.

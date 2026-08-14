@@ -1,9 +1,9 @@
 {
   "id": "canto-span",
   "name": "Canto Span",
-  "version": "0.5.230",
+  "version": "0.5.231",
   "minAppVersion": "1.5.0",
-  "description": "v0.5.230 reconciles reviewed Cifu ranks 1–250 lexical analyses with neutral/compositional safeguards, stable alternatives, and native-reviewed 喀 pronunciation handling.",
+  "description": "v0.5.231 reconciles reviewed Cifu ranks 501–750 with conservative default selection, stable reviewed alternatives, and preserved ranks 1–500 behavior.",
   "author": "Chris Crawford / OpenAI ChatGPT",
   "authorUrl": "",
   "isDesktopOnly": false

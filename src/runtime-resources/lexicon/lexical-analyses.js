@@ -1,6 +1,7 @@
 "use strict";
 
 const EXPLICIT_ANALYSES = require("./token-lexicon/explicit-analyses");
+const { buildExplicitAnalyses: buildR501750ExplicitAnalyses } = require("./token-lexicon/cifu-r501-750-reviewed");
 
 function stableLegacyAnalysisId(surface) {
   return `lex:${String(surface || "")}:default`;
@@ -48,11 +49,21 @@ function lexicalAnalysesForEntry(surface, entry = {}, explicitAnalyses = EXPLICI
   return Object.freeze(source.map((analysis, index) => normalizeAnalysis(surface, entry, analysis, index)));
 }
 
+function effectiveExplicitAnalyses(entries, explicitAnalyses = EXPLICIT_ANALYSES) {
+  if (explicitAnalyses !== EXPLICIT_ANALYSES) return explicitAnalyses;
+  return Object.freeze({
+    ...EXPLICIT_ANALYSES,
+    ...buildR501750ExplicitAnalyses(entries),
+  });
+}
+
 function buildLexicalAnalysisIndex(entries, explicitAnalyses = EXPLICIT_ANALYSES) {
-  const defaultEntries = Object.fromEntries(entries || []);
+  const entryRows = entries || [];
+  const defaultEntries = Object.fromEntries(entryRows);
+  const effectiveExplicit = effectiveExplicitAnalyses(entryRows, explicitAnalyses);
   const out = Object.create(null);
   for (const [surface, entry] of Object.entries(defaultEntries)) {
-    out[surface] = lexicalAnalysesForEntry(surface, entry, explicitAnalyses);
+    out[surface] = lexicalAnalysesForEntry(surface, entry, effectiveExplicit);
   }
   return Object.freeze(out);
 }
@@ -67,6 +78,7 @@ module.exports = {
   stableLegacyAnalysisId,
   normalizeAnalysis,
   lexicalAnalysesForEntry,
+  effectiveExplicitAnalyses,
   buildLexicalAnalysisIndex,
   lexicalAnalysisById,
 };
