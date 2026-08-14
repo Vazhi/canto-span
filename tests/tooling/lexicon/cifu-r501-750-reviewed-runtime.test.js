@@ -49,6 +49,8 @@ test("runtime policy exposes the audited 45 promotion / 30 blocked / 45 candidat
   assert.equal(runtimePolicy.EXTRA_CANDIDATE_ONLY_SURFACES.size, 1);
   assert.ok(runtimePolicy.EXTRA_CANDIDATE_ONLY_SURFACES.has("跟"));
   assert.equal(runtimePolicy.EFFECTIVE_CANDIDATE_ONLY_SURFACES.size, 45);
+  assert.deepEqual(new Set(Object.keys(runtimePolicy.DEFAULT_READING_OVERRIDES)), new Set(["着", "轉彎"]));
+  assert.ok(!Object.prototype.hasOwnProperty.call(runtimePolicy.DEFAULT_READING_OVERRIDES, "直行"));
 
   const promotionSet = new Set(Object.keys(reviewed.PROMOTIONS));
   assert.deepEqual([...promotionSet].filter((surface) => reviewed.BLOCKED_ATOMIC_SURFACES.has(surface)), []);
