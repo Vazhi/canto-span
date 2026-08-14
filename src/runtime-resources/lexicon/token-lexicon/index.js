@@ -1,6 +1,8 @@
 "use strict";
 
-module.exports = [
+const { applyReviewedEntries } = require("./cifu-r251-500-reviewed");
+
+const baseEntries = [
   ...require("./people-and-address"),
   ...require("./referents-and-boundaries"),
   ...require("./things"),
@@ -12,3 +14,5 @@ module.exports = [
   ...require("./study-suite"),
   ...require("./frequency-gap-fill-r7"),
 ];
+
+module.exports = applyReviewedEntries(baseEntries);
