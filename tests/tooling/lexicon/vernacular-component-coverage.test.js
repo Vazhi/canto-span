@@ -47,3 +47,31 @@ test("strong source split batch fills only the three audited missing readings", 
   assert.equal((analyses["會"] || []).find((row) => row.id === "lex:會:meeting_noun").jyutping, "wui2");
   assert.equal((analyses["會"] || []).find((row) => row.id === "lex:會:assemble_verb").jyutping, "wui6");
 });
+
+test("verified bundled-reading batch adds seven missing Cantonese readings without replacing defaults", () => {
+  const analyses = buildLexicalAnalysisIndex(tokenEntries);
+  const readings = (surface) => new Set((analyses[surface] || []).map((row) => row.jyutping));
+
+  assert.deepEqual(readings("行"), new Set(["haang4", "hang4", "hong4", "hang6"]));
+  assert.equal((analyses["行"] || [])[0].id, "lex:行:default");
+  assert.equal((analyses["行"] || [])[0].jyutping, "haang4");
+  assert.ok((analyses["行"] || []).some((row) => row.id === "lex:行:industry_noun_hong4" && row.pos === "noun"));
+  assert.ok((analyses["行"] || []).some((row) => row.id === "lex:行:row_classifier_hong4" && row.pos === "classifier"));
+  assert.ok((analyses["行"] || []).some((row) => row.id === "lex:行:conduct_bound_hang6" && row.pos === "bound"));
+
+  assert.deepEqual(readings("知"), new Set(["zi1", "zi3"]));
+  assert.equal((analyses["知"] || [])[0].jyutping, "zi1");
+  assert.ok((analyses["知"] || []).some((row) => row.id === "lex:知:knowledge_bound_zi3" && row.pos === "bound"));
+
+  assert.deepEqual(readings("難"), new Set(["naan4", "naan6"]));
+  assert.equal((analyses["難"] || [])[0].jyutping, "naan4");
+  assert.ok((analyses["難"] || []).some((row) => row.id === "lex:難:calamity_bound_naan6" && row.pos === "bound"));
+
+  assert.deepEqual(readings("兩"), new Set(["loeng2", "loeng5"]));
+  assert.equal((analyses["兩"] || [])[0].jyutping, "loeng5");
+  assert.ok((analyses["兩"] || []).some((row) => row.id === "lex:兩:tael_measure_loeng2" && row.pos === "classifier"));
+
+  assert.deepEqual(readings("咋"), new Set(["zaa3", "zaa4"]));
+  assert.equal((analyses["咋"] || [])[0].jyutping, "zaa3");
+  assert.ok((analyses["咋"] || []).some((row) => row.id === "lex:咋:rhetorical_final_particle_zaa4" && row.pos === "particle"));
+});
