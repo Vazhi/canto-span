@@ -1,0 +1,24 @@
+name: Strong reading split audit
+
+on:
+  push:
+    branches:
+      - agent/cifu-r1751-2000-runtime-reconcile
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    if: github.event.head_commit.message == 'Run strong reading split audit'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - run: bash tools/tmp-audit-strong-reading-splits.sh
