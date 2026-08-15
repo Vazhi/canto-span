@@ -4,6 +4,12 @@ function surfaceSet(values = []) {
   return new Set(values || []);
 }
 
+function neutralFrequencyCoverageEntry(entry = {}) {
+  return String(entry.pos || "") === "lexical_item"
+    && String(entry.syntax || "").split(/\s+/u).includes("lexical_item")
+    && String(entry.note || "").includes("Exact surface retained as neutral lexical coverage");
+}
+
 function collectBlockedAtomicSurfaces(policyModules = []) {
   const surfaces = new Set();
   for (const policy of policyModules) {
@@ -43,6 +49,7 @@ const lexicalIngestions = Object.freeze([
     delimiter: "\t",
     surface_column: "word",
     rank_column: "rank",
+    source_jyutping_column: "cifu_jyutping",
     expected_rows: 2000,
     require_contiguous_ranks: true,
     require_exact_runtime_coverage: true,
@@ -56,12 +63,37 @@ const lexicalIngestions = Object.freeze([
 ]);
 
 const blockedAtomicSurfaces = new Set();
+const removedIngestionSurfaces = new Set();
 for (const ingestion of lexicalIngestions) {
   for (const surface of collectBlockedAtomicSurfaces(ingestion.policy_modules)) blockedAtomicSurfaces.add(surface);
+  for (const surface of ingestion.removed_surfaces || []) removedIngestionSurfaces.add(surface);
+}
+
+function blockedAtomicRuntimeDisposition(surface, tokenLexicon = {}, options = {}) {
+  const blocked = options.blocked_surfaces || blockedAtomicSurfaces;
+  const removed = options.removed_surfaces || removedIngestionSurfaces;
+  if (!blocked.has(surface)) return "not_blocked";
+  if (removed.has(surface)) return "removed_from_runtime";
+
+  const entry = tokenLexicon[surface];
+  if (!entry) return "promotion_only_no_runtime_entry";
+  if (Array.from(String(surface || "")).length <= 1) return "promotion_only_single_character";
+  if (neutralFrequencyCoverageEntry(entry)) return "force_compositional_neutral_fallback";
+  return "promotion_only_independent_runtime_authority";
+}
+
+function ingestionForcedCompositionalSurfaces(tokenLexicon = {}) {
+  return new Set([...blockedAtomicSurfaces].filter(
+    (surface) => blockedAtomicRuntimeDisposition(surface, tokenLexicon) === "force_compositional_neutral_fallback"
+  ));
 }
 
 module.exports = Object.freeze({
   lexicalIngestions,
   blockedAtomicSurfaces,
+  removedIngestionSurfaces,
+  neutralFrequencyCoverageEntry,
   collectBlockedAtomicSurfaces,
+  blockedAtomicRuntimeDisposition,
+  ingestionForcedCompositionalSurfaces,
 });
