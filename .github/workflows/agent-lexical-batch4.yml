@@ -1,0 +1,73 @@
+name: Lexical batch 4
+
+on:
+  push:
+    branches:
+      - agent/cifu-r1751-2000-runtime-reconcile
+
+permissions:
+  contents: write
+
+jobs:
+  ingest:
+    if: github.event.head_commit.message == 'Ingest vernacular reading batch 4'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Add 25 source-backed readings
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+          additions = {
+            "串":"cyun3", "仆":"puk1", "便":"bin6", "冚":"kam2", "利":"lei6",
+            "參":"caam1", "吧":"baa1", "呆":"ngoi4", "命":"ming6", "哼":"hang1",
+            "娜":"naa4", "惡":"ok3", "撚":"nan2", "斷":"dyun6", "朝":"ziu1",
+            "王":"wong4", "硬":"ngaang6", "立":"laap6", "悉":"sik1", "惜":"sik1",
+            "慮":"leoi6", "絡":"lok3", "蝕":"sit6", "觸":"zuk1", "訊":"seon3"
+          }
+          p = Path('src/runtime-resources/lexicon/token-lexicon/vernacular-component-coverage.js')
+          text = p.read_text()
+          start = text.index('const READINGS = Object.freeze({')
+          end = text.index('\n});', start)
+          block = text[start:end]
+          for surface in additions:
+            if json.dumps(surface, ensure_ascii=False) in block:
+              raise SystemExit(f'duplicate reading already present: {surface}')
+          lines = block.splitlines()
+          if not lines[-1].rstrip().endswith(','):
+            lines[-1] = lines[-1] + ','
+          for i, (surface, jyutping) in enumerate(additions.items()):
+            comma = ',' if i + 1 < len(additions) else ''
+            lines.append(f'  {json.dumps(surface, ensure_ascii=False)}: {json.dumps(jyutping)}{comma}')
+          text = text[:start] + '\n'.join(lines) + text[end:]
+          p.write_text(text)
+
+          t = Path('tests/tooling/lexicon/vernacular-component-coverage.test.js')
+          test_text = t.read_text()
+          test_text = test_text.replace('exactly 231 simple single-character readings', 'exactly 256 simple single-character readings')
+          test_text = test_text.replace('Object.keys(READINGS).length, 231', 'Object.keys(READINGS).length, 256')
+          t.write_text(test_text)
+          PY
+      - name: Build and verify
+        run: |
+          set -euo pipefail
+          npm run build:runtime
+          node --test tests/tooling/lexicon/vernacular-component-coverage.test.js
+          npm run verify:runtime
+      - name: Commit batch and remove helper
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/agent-lexical-batch4.yml
+          git add src/runtime-resources/lexicon/token-lexicon/vernacular-component-coverage.js tests/tooling/lexicon/vernacular-component-coverage.test.js main.js
+          git commit -m 'Ingest vernacular reading batch 4'
+          git push origin HEAD:agent/cifu-r1751-2000-runtime-reconcile
