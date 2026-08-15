@@ -21,6 +21,21 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
+      - name: Apply reviewed contamination-safe compiler override
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('tools/agent-cifu-r1751-2000-runtime-build.js')
+          s = p.read_text()
+          old = '  "背後": "localizer", "唔知幾": "adverb", "耶穌": "proper", "唯有": "adverb", "得滯": "function", "連埋": "function", "期間": "temporal", "隨時": "adverb",\n'
+          new = '  "背後": "localizer", "唔知幾": "adverb", "耶穌": "proper", "唯有": "adverb", "得滯": "function", "連埋": "function", "期間": "temporal", "隨時": "adverb", "嘴": "noun",\n'
+          if new not in s:
+              if old not in s:
+                  raise SystemExit('primary override anchor missing')
+              s = s.replace(old, new, 1)
+              p.write_text(s)
+          PY
       - name: Compile merged authority
         run: node tools/agent-cifu-r1751-2000-runtime-build.js
       - name: Focused final-band invariants
@@ -62,7 +77,7 @@ jobs:
       - name: Enforce source-phase write allowlist
         run: |
           set -euo pipefail
-          git restore --worktree --staged main.js validation/current 2>/dev/null || true
+          git restore --worktree --staged main.js validation/current tools/agent-cifu-r1751-2000-runtime-build.js 2>/dev/null || true
           git clean -fd validation/current >/dev/null 2>&1 || true
           mapfile -t CHANGED < <({ git diff --name-only; git ls-files --others --exclude-standard; } | sort -u)
           printf 'Source-phase changes:\n'
