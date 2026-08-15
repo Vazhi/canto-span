@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-cifu-mandarin-contamination-audit-v1",
-  "scope": "Historical Cifu SpokenAdult top 2,000 plus completed expert adjudications #792-#799; Mandarin contamination only",
+  "scope": "Historical Cifu SpokenAdult top 2,000 plus completed expert adjudications #792-#799 and consolidated ranks 1251-1500 authority #884/#886; Mandarin contamination only",
   "policy": {
     "removal_target": "positively identified Mandarin-only surface/reading/sense/category/function lacking independent Cantonese support",
     "shared_with_mandarin_is_not_contamination": true,
@@ -24,20 +24,21 @@
     "ledger": "data/lexical-frequency/cifu-explicit-mandarin-contamination.tsv"
   },
   "expert_identified_mandarin_oriented_analyses": {
-    "rows": 2,
-    "surfaces": ["仲", "法官"],
+    "rows": 3,
+    "surfaces": ["仲", "法官", "多少"],
     "ledger": "data/lexical-frequency/cifu-mandarin-oriented-adjudication.tsv"
   },
-  "combined_contamination_findings": 25,
+  "combined_contamination_findings": 26,
   "surface_decisions": {
     "retain_cantonese_surface": 25,
-    "remove_whole_surface": 0
+    "remove_whole_surface": 1
   },
   "runtime_audit": {
     "cantonese_specific_analysis": 12,
     "neutral_surface_coverage_without_contaminated_semantics": 13,
+    "non_cantonese_surface_removed": 1,
     "identified_mandarin_analysis_encoded_in_runtime": 0,
-    "runtime_changes_required_for_these_25": 0,
+    "runtime_changes_required_for_these_26": 1,
     "ledger": "data/lexical-frequency/cifu-mandarin-contamination-runtime-audit.tsv"
   },
   "historical_cleanup_correction": {
@@ -47,5 +48,5 @@
     "restoration_commit": "ac415c733b5372cf142c4b7615a26a1ba2d0054b",
     "broad_retirement_ledgers_and_tools_removed_from_active_branch": true
   },
-  "interpretation": "The audited Cifu Mandarin contamination is currently analysis-level metadata contamination, not evidence for deleting a Cantonese surface. Zero whole-surface deletions is the correct result unless later positive evidence establishes a Mandarin-only item and Cantonese rescue fails."
+  "interpretation": "Twenty-five audited findings are analysis-level metadata contamination on independently valid Cantonese surfaces and remain retained. Rank 1404 多少 is the first positively established whole-surface non-Cantonese item under the current policy: CantoDict marks it Standard written Chinese rather than Cantonese and gives 幾多, so the generated Cifu source remains provenance while the effective Cantonese runtime removes 多少."
 }
