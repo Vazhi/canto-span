@@ -3,10 +3,13 @@
 
 const assert = require("node:assert/strict");
 const test = require("node:test");
+const tokenLexicon = Object.fromEntries(require("../../../src/runtime-resources/lexicon/token-lexicon"));
 const {
   lexicalIngestions,
   blockedAtomicSurfaces,
   collectBlockedAtomicSurfaces,
+  blockedAtomicRuntimeDisposition,
+  ingestionForcedCompositionalSurfaces,
 } = require("../../../src/runtime-resources/lexicon/lexical-ingestion-registry");
 const compositionalLexicalPhrases = new Set(require("../../../src/runtime-resources/lexicon/compositional-lexical-phrases"));
 const {
@@ -24,11 +27,19 @@ test("lexical ingestion registry exposes reusable blocked-atomic policy extracti
   assert.ok(lexicalIngestions.every((spec) => spec.id && spec.source_file && spec.surface_column));
 });
 
-test("every registered blocked-atomic ingestion surface is parser-forced compositional", () => {
+test("only neutral multi-character blocked rows become automatic tokenizer guardrails", () => {
+  const forced = ingestionForcedCompositionalSurfaces(tokenLexicon);
   assert.ok(blockedAtomicSurfaces.size > 0);
-  for (const surface of blockedAtomicSurfaces) {
-    assert.ok(compositionalLexicalPhrases.has(surface), `${surface}: registered blocked_atomic surface must be forced compositional`);
+  assert.ok(forced.size > 0);
+  for (const surface of forced) {
+    assert.ok(blockedAtomicSurfaces.has(surface), `${surface}: force-compositional surface came from a blocked ingestion decision`);
+    assert.equal(blockedAtomicRuntimeDisposition(surface, tokenLexicon), "force_compositional_neutral_fallback");
+    assert.ok(compositionalLexicalPhrases.has(surface), `${surface}: neutral blocked surface must be parser-forced compositional`);
   }
+
+  assert.equal(blockedAtomicRuntimeDisposition("憂", tokenLexicon), "promotion_only_single_character");
+  assert.equal(blockedAtomicRuntimeDisposition("畫畫", tokenLexicon), "promotion_only_independent_runtime_authority");
+  assert.ok(!compositionalLexicalPhrases.has("畫畫"), "independently reviewed atomic 畫畫 must retain waak6 waa2 lexical authority");
 });
 
 test("all registered lexical ingestions pass contamination, tokenization, coverage, and injected architecture gates", () => {
@@ -42,7 +53,9 @@ test("all registered lexical ingestions pass contamination, tokenization, covera
   assert.equal(cifu.source_rows, 2000);
   assert.equal(cifu.effective_runtime_expected, 1999);
   assert.deepEqual(cifu.removed_surfaces, ["多少"]);
-  assert.ok(cifu.blocked_atomic_surfaces > 0);
+  assert.ok(cifu.blocked_atomic_surfaces > cifu.forced_compositional_surfaces);
+  assert.ok(cifu.forced_compositional_surfaces > 0);
+  assert.ok(cifu.promotion_only_blocked_surfaces > 0);
   assert.equal(cifu.architecture.status, "PASS");
   assert.equal(cifu.architecture.blocking_count, 0);
 });
