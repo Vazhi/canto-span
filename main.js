@@ -8309,11 +8309,79 @@ var require_address_terms = __commonJS({
   }
 });
 
+// src/runtime-resources/lexicon/lexical-ingestion-registry.js
+var require_lexical_ingestion_registry = __commonJS({
+  "src/runtime-resources/lexicon/lexical-ingestion-registry.js"(exports2, module2) {
+    "use strict";
+    function surfaceSet(values = []) {
+      return new Set(values || []);
+    }
+    function collectBlockedAtomicSurfaces(policyModules = []) {
+      const surfaces = /* @__PURE__ */ new Set();
+      for (const policy of policyModules) {
+        if (!policy || typeof policy !== "object") continue;
+        for (const [key, value] of Object.entries(policy)) {
+          if (/blocked.*atomic/i.test(key)) {
+            if (value instanceof Set || Array.isArray(value)) {
+              for (const surface of value) surfaces.add(surface);
+            } else if (value && typeof value === "object") {
+              for (const surface of Object.keys(value)) surfaces.add(surface);
+            }
+          }
+          if (value && typeof value === "object" && !(value instanceof Set) && !Array.isArray(value)) {
+            for (const [surface, disposition] of Object.entries(value)) {
+              if (disposition === "blocked_atomic") surfaces.add(surface);
+              if (disposition && typeof disposition === "object" && disposition.status === "blocked_atomic") surfaces.add(surface);
+            }
+          }
+        }
+      }
+      return surfaces;
+    }
+    var cifuPolicyModules = Object.freeze([
+      require_cifu_r1_250_reviewed(),
+      require_cifu_r251_500_reviewed(),
+      require_cifu_r501_750_reviewed(),
+      require_cifu_r751_1000_reviewed(),
+      require_cifu_r1001_1250_reviewed(),
+      require_cifu_r1251_1500_reviewed()
+    ]);
+    var lexicalIngestions = Object.freeze([
+      Object.freeze({
+        id: "cifu-spoken-top-2000",
+        source_file: "data/lexical-frequency/cifu-spoken-top-2000.tsv",
+        delimiter: "	",
+        surface_column: "word",
+        rank_column: "rank",
+        expected_rows: 2e3,
+        require_contiguous_ranks: true,
+        require_exact_runtime_coverage: true,
+        require_jyutping: true,
+        carrier_prefixes: Object.freeze(["", "我"]),
+        carrier_suffixes: Object.freeze(["", "呀"]),
+        policy_modules: cifuPolicyModules,
+        removed_surfaces: surfaceSet(["多少"]),
+        contamination_ledger: "data/lexical-frequency/cifu-mandarin-contamination-runtime-audit.tsv"
+      })
+    ]);
+    var blockedAtomicSurfaces = /* @__PURE__ */ new Set();
+    for (const ingestion of lexicalIngestions) {
+      for (const surface of collectBlockedAtomicSurfaces(ingestion.policy_modules)) blockedAtomicSurfaces.add(surface);
+    }
+    module2.exports = Object.freeze({
+      lexicalIngestions,
+      blockedAtomicSurfaces,
+      collectBlockedAtomicSurfaces
+    });
+  }
+});
+
 // src/runtime-resources/lexicon/compositional-lexical-phrases.js
 var require_compositional_lexical_phrases = __commonJS({
   "src/runtime-resources/lexicon/compositional-lexical-phrases.js"(exports2, module2) {
     "use strict";
-    module2.exports = [
+    var { blockedAtomicSurfaces } = require_lexical_ingestion_registry();
+    var authoredCompositionalPhrases = [
       "唔開心",
       "唔鍾意",
       "一百萬",
@@ -8396,6 +8464,10 @@ var require_compositional_lexical_phrases = __commonJS({
       "Book完枱",
       "話畀你知"
     ];
+    module2.exports = [.../* @__PURE__ */ new Set([
+      ...authoredCompositionalPhrases,
+      ...blockedAtomicSurfaces
+    ])];
   }
 });
 
