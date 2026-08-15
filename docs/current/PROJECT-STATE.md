@@ -6,7 +6,7 @@ This file is the sole present-tense project snapshot. Live GitHub intake and wor
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.234 |
+| Runtime | v0.5.235 |
 | Runtime labels | 134 |
 | Current construction notes | 134 |
 | Available construction notes | 134 |
@@ -51,6 +51,8 @@ The permanent registry contains 134 current and 48 retired records. UUID and sho
 Twenty-one accepted batches have adjudicated 94 records; 88 remain pending. Canonical decisions live in `data/construction-adjudications.json` and immutable batch files under `data/construction-adjudication-batches/`.
 
 Current consequences include:
+
+- v0.5.235 adds a reusable lexical-ingestion contamination/tokenization gate: registered ingestions are checked for source uniqueness, Unicode-normalization collisions, exact runtime coverage and removals, pronunciation authority, lexical-analysis ID integrity, contamination-ledger synchronization, promotion-block/runtime-token dispositions, carrier tokenization, and injected parser architecture; only multi-character `blocked_atomic` rows that remain neutral frequency fallbacks are automatically force-compositional, while independently reviewed atomic lexemes and single-character rows retain stronger runtime authority; the injected Cifu corpus also exposed and closed missing `generative_template` family metadata on generated modal-clause traces without changing linguistic recognition, construction status, evidence, survey, corpus, release-publication, or deployment state;
 
 - v0.5.234 implements the consolidated #884/#886 Cifu ranks 1251–1500 lexical authority: 126 independently supportable broad rows receive reviewed typed defaults when their prior runtime entry is neutral, 72 surfaces expose stable reviewed alternatives (43 polyfunctional and 29 reading-specific), the three source-only pending rows `平排`, `打直`, and `打斜` receive no band-specific typed promotion, and all 49 `blocked_atomic` rows receive no new typed whole-surface analysis; rank 1404 `多少 do1 siu2` is the first positively established whole-surface non-Cantonese contamination under the current policy and is removed from the effective Cantonese runtime while the generated Cifu source remains provenance and existing Cantonese `幾多` coverage remains intact, so Cifu exact-surface runtime coverage is truthfully 1,999/2,000 while the independent common-spoken-Cantonese priority inventory remains 2,000 items; ranks 1–1250 stable analyses/defaults remain protected, and no construction identity or status, survey, corpus, release-publication, or deployment state is changed;
 
