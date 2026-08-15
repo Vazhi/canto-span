@@ -79,11 +79,4 @@ module.exports = [
     syntax: "sequence_prerequisite_adverb",
     note: "only then / not until; links a prerequisite event to a following event; independently verified against 粵典.",
   }],
-  ["嘅話", {
-    label: "func",
-    pos: "conjunction",
-    jyutping: "ge3 waa2",
-    syntax: "conditional_clause_suffix_connector",
-    note: "post-clausal Cantonese conditional conjunction 'if'; ge3 waa2 is the default reading and ge3 waa6 is independently attested as a reading variant.",
-  }],
 ];
