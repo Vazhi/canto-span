@@ -59,7 +59,7 @@ jobs:
           anchor = '- v0.5.236 implements the consolidated Cifu ranks 1501–1750 lexical authority'
           if anchor not in state:
               raise SystemExit('PROJECT-STATE consequence anchor missing')
-          bullet = '- v0.5.237 completes reviewed runtime reconciliation for Cifu ranks 1751–2000: all 250 final-band ranks are accounted for as 143 `reviewed_selection`, 45 `multiple`, 23 `reading_split`, 37 `blocked_atomic`, and two `research_required` holds (`山個`, `猷`); effective exact Cifu surface coverage remains 1,999/2,000 with rank 1404 `多少` as the sole whole-surface exclusion; retained surfaces expose independently reviewed Cantonese analyses only, including `在`, `校`, and `嘴`, while rejected Mandarin-only progressive/classifier analyses and superseded contamination ledgers are absent from active lexical state; the raw imported Cifu snapshot remains unchanged for source fidelity and is non-authoritative for lexical meaning, category, or pronunciation; construction identity/status, survey/native-panel state, corpus classifications, release-publication state, deployment state, and unrelated parser behavior remain unchanged;\n\n'
+          bullet = '- v0.5.237 completes reviewed runtime reconciliation for Cifu ranks 1751–2000: all 250 final-band ranks are accounted for as 143 `reviewed_selection`, 45 `multiple`, 23 `reading_split`, 37 `blocked_atomic`, and two `research_required` holds (`山個`, `猷`); effective exact Cifu surface coverage remains 1,999/2,000 with rank 1404 `多少` as the sole whole-surface exclusion, specifically because its quantity-interrogative use is Standard Written Chinese/Mandarin rather than ordinary vernacular Cantonese (`幾多`); retained surfaces expose independently reviewed Cantonese analyses only, including `在`, `校`, and `嘴`, while rejected Mandarin-only progressive/classifier analyses and superseded contamination ledgers are absent from active lexical state; rank 801 `○` remains an explicit research hold with no fabricated Jyutping; the raw imported Cifu snapshot remains unchanged for source fidelity and is non-authoritative for lexical meaning, category, or pronunciation; construction identity/status, survey/native-panel state, corpus classifications, release-publication state, deployment state, and unrelated parser behavior remain unchanged;\n\n'
           state = state.replace(anchor, bullet + anchor, 1)
           state_path.write_text(state)
           PY
@@ -69,6 +69,9 @@ jobs:
 
       - name: Focused final-band invariants
         run: node --test tests/tooling/lexicon/cifu-r1751-2000-reviewed-runtime.test.js
+
+      - name: Quantity-exclusion terminology invariants
+        run: node --test tests/tooling/lexicon/cifu-r1251-1500-reviewed-runtime.test.js
 
       - name: Scalable lexical-ingestion tests
         run: npm run test:lexical-ingestions
@@ -91,6 +94,10 @@ jobs:
             ':!/tools/agent-cifu-r1751-2000-runtime-build.js' \
             ':!/tools/agent-cifu-active-tree-cleanup.js'; then
             echo 'Superseded contamination history is still referenced in active canonical files.' >&2
+            exit 1
+          fi
+          if git grep -n 'MANDARIN_ONLY_SURFACES' -- src tests; then
+            echo 'Overbroad 多少 Mandarin-only identifier remains in active source/tests.' >&2
             exit 1
           fi
 
@@ -143,7 +150,7 @@ jobs:
           printf '  %s\n' "${CHANGED[@]}"
           for p in "${CHANGED[@]}"; do
             case "$p" in
-              src/runtime-resources/lexicon/token-lexicon/cifu-r1751-2000-reviewed.js|src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js|src/runtime-resources/lexicon/lexical-ingestion-registry.js|tools/lexical-ingestion-tokenization-audit.js|data/lexical-frequency/common-spoken-cantonese-core-2000.tsv|data/lexical-frequency/common-spoken-cantonese-core-2000.manifest.json|data/lexical-frequency/cifu-runtime-exclusions.tsv|data/lexical-frequency/cifu-explicit-mandarin-contamination.tsv|data/lexical-frequency/cifu-mandarin-contamination-runtime-audit.tsv|data/lexical-frequency/cifu-mandarin-contamination-summary.json|data/lexical-frequency/cifu-mandarin-oriented-adjudication.tsv|docs/research/LEXICAL-COVERAGE-TOP-2000.md|src/plugin-entry.js|manifest.json|package.json|package-lock.json|main.js|docs/current/PROJECT-STATE.md) ;;
+              src/runtime-resources/lexicon/token-lexicon/cifu-r1751-2000-reviewed.js|src/runtime-resources/lexicon/token-lexicon/cifu-r1251-1500-runtime-policy.js|src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js|src/runtime-resources/lexicon/lexical-ingestion-registry.js|tools/lexical-ingestion-tokenization-audit.js|tests/tooling/lexicon/cifu-r1251-1500-reviewed-runtime.test.js|tests/tooling/lexicon/lexical-ingestion-tokenization-audit.test.js|data/lexical-frequency/common-spoken-cantonese-core-2000.tsv|data/lexical-frequency/common-spoken-cantonese-core-2000.manifest.json|data/lexical-frequency/cifu-runtime-exclusions.tsv|data/lexical-frequency/cifu-explicit-mandarin-contamination.tsv|data/lexical-frequency/cifu-mandarin-contamination-runtime-audit.tsv|data/lexical-frequency/cifu-mandarin-contamination-summary.json|data/lexical-frequency/cifu-mandarin-oriented-adjudication.tsv|docs/research/LEXICAL-COVERAGE-TOP-2000.md|src/plugin-entry.js|manifest.json|package.json|package-lock.json|main.js|docs/current/PROJECT-STATE.md) ;;
               *) echo "Unexpected finalization change: $p" >&2; exit 1 ;;
             esac
           done
@@ -154,6 +161,6 @@ jobs:
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A src/runtime-resources/lexicon/token-lexicon/cifu-r1751-2000-reviewed.js src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js src/runtime-resources/lexicon/lexical-ingestion-registry.js tools/lexical-ingestion-tokenization-audit.js data/lexical-frequency/common-spoken-cantonese-core-2000.tsv data/lexical-frequency/common-spoken-cantonese-core-2000.manifest.json data/lexical-frequency/cifu-runtime-exclusions.tsv data/lexical-frequency/cifu-explicit-mandarin-contamination.tsv data/lexical-frequency/cifu-mandarin-contamination-runtime-audit.tsv data/lexical-frequency/cifu-mandarin-contamination-summary.json data/lexical-frequency/cifu-mandarin-oriented-adjudication.tsv docs/research/LEXICAL-COVERAGE-TOP-2000.md src/plugin-entry.js manifest.json package.json package-lock.json main.js docs/current/PROJECT-STATE.md
+          git add -A src/runtime-resources/lexicon/token-lexicon/cifu-r1751-2000-reviewed.js src/runtime-resources/lexicon/token-lexicon/cifu-r1251-1500-runtime-policy.js src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js src/runtime-resources/lexicon/lexical-ingestion-registry.js tools/lexical-ingestion-tokenization-audit.js tests/tooling/lexicon/cifu-r1251-1500-reviewed-runtime.test.js tests/tooling/lexicon/lexical-ingestion-tokenization-audit.test.js data/lexical-frequency/common-spoken-cantonese-core-2000.tsv data/lexical-frequency/common-spoken-cantonese-core-2000.manifest.json data/lexical-frequency/cifu-runtime-exclusions.tsv data/lexical-frequency/cifu-explicit-mandarin-contamination.tsv data/lexical-frequency/cifu-mandarin-contamination-runtime-audit.tsv data/lexical-frequency/cifu-mandarin-contamination-summary.json data/lexical-frequency/cifu-mandarin-oriented-adjudication.tsv docs/research/LEXICAL-COVERAGE-TOP-2000.md src/plugin-entry.js manifest.json package.json package-lock.json main.js docs/current/PROJECT-STATE.md
           git commit -m 'Finalize Cifu top-2000 lexical reconciliation as v0.5.237'
           git push origin HEAD:agent/cifu-r1751-2000-runtime-reconcile
