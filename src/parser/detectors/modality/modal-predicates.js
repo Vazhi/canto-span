@@ -89,6 +89,7 @@ module.exports = function createModalPredicateDetectors(dependencies = {}) {
       slots: templateDerivedSlots(type, children),
       trace: traceInfo("generative_template", {
         construction_type: type,
+        template_family: "generative_template",
         template: modalClauseTemplateForType(type, modifiers),
         assigned_slots: [type === "LocativeModalPredicateClause" ? "location" : type === "SubjectModalPredicateClause" ? "subject" : "topic", ...modifiers.map((node) => nodeCanFillSlot(node, "time") ? "time" : nodeCanFillSlot(node, "how") ? "how" : "manner"), "modal_vp"],
         surfaces: children.map((node) => flattenSurface(node)),
