@@ -6,7 +6,7 @@ This file is the sole present-tense project snapshot. Live GitHub intake and wor
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.235 |
+| Runtime | v0.5.236 |
 | Runtime labels | 134 |
 | Current construction notes | 134 |
 | Available construction notes | 134 |
@@ -51,6 +51,8 @@ The permanent registry contains 134 current and 48 retired records. UUID and sho
 Twenty-one accepted batches have adjudicated 94 records; 88 remain pending. Canonical decisions live in `data/construction-adjudications.json` and immutable batch files under `data/construction-adjudication-batches/`.
 
 Current consequences include:
+
+- v0.5.236 implements the consolidated Cifu ranks 1501–1750 lexical authority through the reusable ingestion architecture: 139 broad reviewed selections are applied conservatively, 42 polyfunctional surfaces and 16 reading/category splits retain stable alternative analyses, 45 `blocked_atomic` rows receive no band-specific whole-surface promotion, and eight `research_required` rows remain unpromoted; executable ingestion testing exposed genuine missing component coverage for `刻` and `遇`, which is filled independently rather than weakening decomposition checks, while rank 1729 `響` moves from neutral fallback to reviewed Cantonese verb, locative-coverb, and locative-existential analyses without importing contaminated Mandarin metadata; ranks 1–1500, the `多少` exclusion, construction identity/status, survey/native-panel state, corpus classifications, release-publication state, deployment state, and unrelated parser behavior remain protected;
 
 - v0.5.235 adds a reusable lexical-ingestion contamination/tokenization gate: registered ingestions are checked for source uniqueness, Unicode-normalization collisions, exact runtime coverage and removals, pronunciation authority, lexical-analysis ID integrity, contamination-ledger synchronization, promotion-block/runtime-token dispositions, carrier tokenization, and injected parser architecture; only multi-character `blocked_atomic` rows that remain neutral frequency fallbacks are automatically force-compositional, while independently reviewed atomic lexemes and single-character rows retain stronger runtime authority; the injected Cifu corpus also exposed and closed missing `generative_template` family metadata on generated modal-clause traces without changing linguistic recognition, construction status, evidence, survey, corpus, release-publication, or deployment state;
 
