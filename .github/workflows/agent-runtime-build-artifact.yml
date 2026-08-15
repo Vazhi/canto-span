@@ -1,0 +1,26 @@
+name: Agent runtime build artifact
+
+on:
+  push:
+    branches:
+      - agent/cifu-r1501-1750-runtime-reconcile
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - run: npm run build:runtime
+      - uses: actions/upload-artifact@v6
+        with:
+          name: generated-runtime-main
+          path: main.js
+          if-no-files-found: error
