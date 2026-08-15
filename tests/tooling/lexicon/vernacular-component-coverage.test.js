@@ -107,3 +107,11 @@ test("informal 地 spellings map to the canonical plural-pronoun analyses", () =
     assert.match(tokenLexicon[variant].note, /variant/i, `${variant}: explicitly marked as an orthographic variant`);
   }
 });
+
+test("陣間 is covered as an exact Cantonese temporal lexeme", () => {
+  assert.ok(tokenLexicon["陣間"]);
+  assert.equal(tokenLexicon["陣間"].jyutping, "zan6 gaan1");
+  assert.equal(tokenLexicon["陣間"].label, "when");
+  assert.equal(tokenLexicon["陣間"].pos, "noun");
+  assert.match(tokenLexicon["陣間"].syntax, /time_np/);
+});
