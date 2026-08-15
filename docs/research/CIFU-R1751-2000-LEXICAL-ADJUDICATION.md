@@ -38,11 +38,13 @@ Runtime-consequence shorthand for later implementation:
 
 ## Progress accounting
 
-The final 250-row count is not frozen until every rank has been reviewed. Current completed tranche:
+The final 250-row count is not frozen until every rank has been reviewed. Current completed tranches:
 
 | Range | reviewed_selection | multiple | reading_split | blocked_atomic | research_required | Total |
 |---|---:|---:|---:|---:|---:|---:|
-| 1751–1800 | 28 | 13 | 1 | 8 | 0 | 50 |
+| 1751–1800 | 27 | 13 | 2 | 8 | 0 | 50 |
+| 1801–1850 | 30 | 9 | 4 | 7 | 0 | 50 |
+| **1751–1850 subtotal** | **57** | **22** | **6** | **15** | **0** | **100** |
 
 ## Authoritative ledger
 
@@ -78,7 +80,7 @@ The final 250-row count is not frozen until every rank has been reviewed. Curren
 |1776|咀|multiple|noun spelling variant of `嘴` “mouth/spout/protruding landform” + slang verb “kiss”|`zeoi2`|A|
 |1777|定義|multiple|noun “definition” + verb “define”|`ding6 ji6`|A|
 |1778|忽然|reviewed_selection|adverb “suddenly”|`fat1 jin4`|T|
-|1779|拃|reviewed_selection|classifier/measure for a patch, area, or spread; HKCanCor independently supplies `zaa6`|`zaa6`; Cifu unknown reading is superseded|T|
+|1779|拃|reading_split|Cantonese `zaa6` classifier for handfuls/groups plus obstruction verb; distinct `zaa3` handspan measure family|`zaa6` classifier/verb vs `zaa3` handspan measure; Cifu unknown reading is superseded|A|
 |1780|杯|multiple|count noun “cup/glass” + classifier/measure for cupfuls/drinks|`bui1`|A|
 |1781|東面|reviewed_selection|spatial/locality noun “east side”|`dung1 min6`|T|
 |1782|欣賞|reviewed_selection|verb “appreciate; admire; enjoy”|`jan1 soeng2`|T|
@@ -101,9 +103,64 @@ The final 250-row count is not frozen until every rank has been reviewed. Curren
 |1799|婚姻|reviewed_selection|abstract/social noun “marriage; matrimony”|`fan1 jan1`|T|
 |1800|接觸|multiple|verb “contact; touch; be in contact” + noun/event “contact”|`zip3 zuk1`|A|
 
-## Targeted independent checks used in ranks 1751–1800
+### Ranks 1801–1850
 
-These checks resolve nontrivial category, reading, or contamination questions; the mechanical packet remains occurrence evidence rather than final authority.
+| Rank | Surface | Final class | Reviewed lexical decision | Reading/status | Runtime consequence |
+|---:|---|---|---|---|---|
+|1801|梗|reading_split|`gang2` stative/property “fixed/rigid” and certainty adverb “certainly”; distinct nominal `kwaang2` “stem/stalk” family|`gang2` property/adverb/bound vs `kwaang2` noun; Cifu `gang2` “stem” pairing rejected|A|
+|1802|清|multiple|stative/property “clear/clean/pure” + verb “clear/clean/set straight”|`cing1`|A|
+|1803|率|reading_split|formal `seot1` lead/command, frank/hasty and general-adverbial family vs `leot6` rate/ratio noun/measure-root family|`seot1` vs `leot6`|A|
+|1804|現象|reviewed_selection|abstract/count noun “phenomenon”|`jin6 zoeng6`|T|
+|1805|笪|multiple|Cantonese classifier/measure for a patch/plot/area + noun “rough bamboo mat”|`daat3`; Cifu surname material does not drive the runtime category|A|
+|1806|第二個韻|blocked_atomic|transparent ordinal + classifier + noun phrase|—|B|
+|1807|第時|reading_split|lexical temporal noun/expression “future; later; next time” with independently recorded colloquial reading variation|`dai6 si4` / `dai6 si2`; `第二時 dai6 ji6 si4` is a recorded variant form|A|
+|1808|粗口|reviewed_selection|mass/count noun “swear words; obscene language”|`cou1 hau2`|T|
+|1809|細妹|reviewed_selection|person/kin noun “younger sister”|`sai3 mui2`; packet candidate `mui6` is not promoted|T|
+|1810|終|multiple|formal noun/bound “end/conclusion” + verb “end/finish” + adverbial “finally/in the end” family|`zung1`|A|
+|1811|規則|reviewed_selection|count/abstract noun “rule; regulation”|`kwai1 zak1`|T|
+|1812|通|multiple|verb “pass/connect/communicate/understand/clear” + property/bound “through/general” + classifier/measure for communications where independently licensed|`tung1`|A|
+|1813|通知|multiple|verb “notify/inform” + noun “notification/notice”|`tung1 zi1`|A|
+|1814|創意|reviewed_selection|abstract/count noun “creativity; creative idea”|`cong3 ji3`; no separate adjective promoted from attribution alone|T|
+|1815|創新|multiple|stative/property “innovative/pioneering” + verb “innovate; introduce something new”|`cong3 san1`|A|
+|1816|就講|blocked_atomic|productive focus/adverb + verb sequence|—|B|
+|1817|幾日|blocked_atomic|productive interrogative/indefinite quantity + temporal noun phrase|—|B|
+|1818|換|reviewed_selection|verb “change; exchange; replace”|`wun6`|T|
+|1819|普通話|reviewed_selection|language-name noun “Putonghua; Mandarin”|`pou2 tung1 waa2`|T|
+|1820|普遍|reviewed_selection|stative/property “general; widespread; common”|`pou2 pin3`|T|
+|1821|評價|reviewed_selection|verb “evaluate; assess”|`ping4 gaa3`; noun is not promoted from the Cifu gloss without direct lexical evidence|T|
+|1822|意義|reviewed_selection|abstract noun “meaning; significance”|`ji3 ji6`|T|
+|1823|愛情|reviewed_selection|abstract/social noun “romantic love; love relationship”|`oi3 cing4`|T|
+|1824|業|reviewed_selection|noun/bound nominal family “business; occupation; profession; field/study”|`jip6`|T|
+|1825|業主|reviewed_selection|person/role noun “owner; proprietor; property owner”|`jip6 zyu2`|T|
+|1826|當你|blocked_atomic|productive `當 + 你` sequence; interpretation depends on the ordinary lexical/constructional value of `當`|—|B|
+|1827|當我|blocked_atomic|productive `當 + 我` sequence|—|B|
+|1828|罪行|reviewed_selection|count/abstract legal noun “crime; offence”|`zeoi6 hang4`|T|
+|1829|較|multiple|comparative degree/relation function “comparatively/rather” + formal verb “compare/contest/haggle”; other bound senses remain category-sensitive|`gaau3`|A|
+|1830|遊戲|reviewed_selection|count/mass noun “game; play”|`jau4 hei3`|T|
+|1831|電訊|reviewed_selection|domain/mass noun “telecommunications”|`din6 seon3`|T|
+|1832|鼓勵|reviewed_selection|verb “encourage; support and motivate”|`gu2 lai6`|T|
+|1833|嘔|reviewed_selection|verb “vomit; retch”|`au2`|T|
+|1834|實際上|reviewed_selection|lexical adverbial expression “in fact; in reality; in practice”|`sat6 zai3 soeng6`; productive internal history does not erase the conventional adverbial|M|
+|1835|慳|multiple|verb “save/economize” + stative/property “thrifty/frugal”|`haan1`|A|
+|1836|樓下|reviewed_selection|spatial/locality noun “downstairs; area below”|`lau4 haa6`|T|
+|1837|瘦|reviewed_selection|stative/property “thin; lean”|`sau3`|T|
+|1838|賭|reviewed_selection|verb “gamble; bet”|`dou2`|T|
+|1839|踩|reviewed_selection|verb family “step/tread/stamp/pedal; cross into”|`caai2`|T|
+|1840|燕梳|reviewed_selection|Cantonese loan noun “insurance policy/insurance”, especially vehicle insurance|`jin3 so1`; packet alternative initial readings are not promoted|T|
+|1841|遲|reviewed_selection|stative/property “late; delayed; slow”|`ci4`|T|
+|1842|幫到|blocked_atomic|productive verb + result/potential complement sequence|—|B|
+|1843|戲院|reviewed_selection|place/institution noun “cinema; theatre”|`hei3 jyun2`|T|
+|1844|擦紙膠|reviewed_selection|count noun “eraser; rubber”|`caat3 zi2 gaau1`; independently established Cantonese lexical compound despite internal transparency|T|
+|1845|營|multiple|noun/bound nominal “camp/barracks/battalion” + formal verb “operate/manage/run; seek”|`jing4`|A|
+|1846|聯絡|reviewed_selection|verb “contact; get in touch with”|`lyun4 lok3`; nominal “contact” is not promoted without direct lexical evidence|T|
+|1847|講法|reviewed_selection|count/abstract noun “way of saying; formulation; account/claim”|`gong2 faat3`|T|
+|1848|講開|blocked_atomic|productive `講 + 開` sequence that participates in larger conventional discourse formulae such as `講開又講`; standalone opaque whole-lexeme status is not established by those larger formulae|—|B|
+|1849|黏|reading_split|verb “stick/adhere” vs stative/property “sticky/glutinous” with independently distinguished readings|`nim4` verb vs `nim1` stative; packet `zim1` candidate not promoted without independent support|A|
+|1850|禮拜三|reviewed_selection|temporal noun/expression “Wednesday”|`lai5 baai3 saam1`|T|
+
+## Targeted independent checks
+
+### Ranks 1751–1800
 
 - 粵典 `妄想`: directly separates `mong5 soeng2` verb and noun entries.
 - 粵典 `成年`: directly treats `sing4 nin4` as a verb/predicate “come of age; become an adult”.
@@ -113,12 +170,30 @@ These checks resolve nontrivial category, reading, or contamination questions; t
 - CantoDict `邪`: records noun and adjective functions for `ce4` and Cantonese examples such as `中邪`.
 - CantoDict `接觸`: records both verbal contact and nominal “a contact”.
 - CantoDict `在`: supports shared formal locative/existential material, while its own progressive examples distinguish Standard-Chinese-only usage; therefore the Cifu progressive sense is not promoted into Cantonese runtime authority.
-- 粵典 examples for `笪`: independently attest `daat3` as a Cantonese classifier/measure for areas/patches (e.g. `一笪地方`, `一笪污漬`), superseding the Cifu unknown reading.
+- **Corrected provenance for `拃`:** CantoDict directly records `zaa6` as an obstruction verb and Cantonese classifier for handfuls/groups, while 粵音資料集叢 independently records `zaa6` for the same Cantonese obstruction/classifier family and `zaa3` for handspan measurement. Earlier use of `笪` evidence for rank 1779 was erroneous and is superseded here.
+
+### Ranks 1801–1850
+
+- 粵典 `梗`: separates `gang2` fixed/rigid property and certainty-adverb material from `kwaang2` “stem/stalk” noun material; this rejects the Cifu `gang2 = stem` pairing.
+- CantoDict `率`: distinguishes `seot1` lead/command/frank/general material from `leot6` rate/frequency/ratio material.
+- CantoDict `笪`: directly records Cantonese `daat3` as a patch/plot classifier and bamboo-mat noun; the mechanical HKCanCor classifier evidence agrees.
+- 粵典 `第時`: directly records the temporal noun with `dai6 si4` and `dai6 si2`, plus variant `第二時 dai6 ji6 si4`.
+- 粵典 `細妹`: directly records younger-sister noun `sai3 mui2`, correcting the packet's final-tone candidate.
+- 粵典 `通知`: directly separates noun “notification” and verb “notify/inform”.
+- 粵典 `創新` gives a predicative property/adjective “innovative”; CantoDict independently records the verb “innovate”, so both are retained.
+- CantoDict `較`: independently records comparative/adverbial and verbal comparison families rather than forcing the lone HKCanCor verb tag to decide the lexeme.
+- 粵典/CantoDict `燕梳`: directly record the Cantonese insurance loan noun with ordinary reading `jin3 so1`.
+- CantoDict/Wiktionary `擦紙膠`: independently record Cantonese `caat3 zi2 gaau1` “eraser/rubber”; this is lexicalized rather than blocked merely for being internally transparent.
+- CantoDict `營`: directly records nominal military/camp material and formal verbal operate/manage material.
+- CantoDict `聯絡` supports the verb “contact”; no separate noun is added from English gloss transfer alone.
+- Larger Cantonese discourse formulae `講開又講` / `講開至講` establish that `講開` can be a constructional component, but do not by themselves justify an opaque standalone lexical atom.
+- 粵典 `黏`: distinguishes `nim4` verb “stick/adhere” from `nim1` stative “sticky/glutinous”; Cifu candidate `zim1` remains unpromoted absent independent support.
 
 ## Interim notes
 
-1. The first 50 rows already confirm that raw HKCanCor POS labels are not reliable final categories: `咀` is tagged noun in its one packet hit but independent Cantonese evidence also supports the slang verb; `妄想` has zero packet hits but independently has both verb and noun lexical entries.
-2. The Mandarin-contamination boundary remains analysis-specific rather than surface-wide: `在` is retained for formal Cantonese-compatible locative material while the Mandarin progressive-marker analysis is excluded; `校` remains a genuine Cantonese surface while the packet's explicitly Mandarin classifier gloss is excluded.
-3. Transparent frequency strings (`好多人`, `好快`, `兩點`, etc.) remain useful source/provenance surfaces without being promoted into opaque lexical atoms.
+1. Raw HKCanCor POS labels remain useful occurrence evidence but are not final lexical categories: `梗` is a particularly clear example because all 11 packet hits are adverbial `gang2`, while the Cifu English gloss says “stem”; independent Cantonese evidence places the stem noun under a different reading `kwaang2`.
+2. The Mandarin-contamination boundary remains analysis-specific rather than surface-wide: `在` retains formal Cantonese-compatible locative material while the Mandarin progressive-marker analysis is excluded; `校` remains a genuine Cantonese surface while the packet's explicitly Mandarin classifier gloss is excluded.
+3. Transparent frequency strings (`好多人`, `好快`, `兩點`, `第二個韻`, `幾日`, `幫到`, etc.) remain useful source/provenance surfaces without being promoted into opaque lexical atoms.
+4. Internal transparency alone is not a deletion criterion: conventional lexical items such as `擦紙膠` and the adverbial `實際上` are retained when independent Cantonese lexical evidence supports the whole form.
 
-Next ledger tranche: ranks 1801–1850.
+Next ledger tranche: ranks 1851–1900.
