@@ -1,0 +1,276 @@
+name: Agent vernacular reading ingest
+
+on:
+  push:
+    branches:
+      - agent/cifu-r1751-2000-runtime-reconcile
+
+permissions:
+  contents: write
+
+jobs:
+  ingest:
+    if: github.event.head_commit.message == 'Add temporary vernacular reading ingest'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Generate conservative source-backed reading batch
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 \
+            'https://docs.google.com/spreadsheets/d/1ArxEFo46PTrDyDDhWyu3wB0epxqTyd8WBaprnwTEPm4/export?format=csv&gid=1428902047' \
+            -o /tmp/canto-frequency.csv
+          python - <<'PY'
+          import csv, json, re, unicodedata
+          from pathlib import Path
+          with Path('/tmp/canto-frequency.csv').open(encoding='utf-8-sig', newline='') as f:
+              rows = list(csv.DictReader(f))
+          def tombstone(s):
+              x = s.lower()
+              return x == 'del' or re.search(r'(^|[-\s?])del($|[-\s?])', x) is not None
+          seen = set(); bounded = []
+          for row in rows:
+              surface = unicodedata.normalize('NFC', (row.get('Word') or '').strip())
+              if not surface or tombstone(surface) or surface in seen:
+                  continue
+              seen.add(surface); bounded.append(surface)
+              if len(bounded) == 2000:
+                  break
+          if len(bounded) != 2000:
+              raise SystemExit(f'Expected 2000 bounded surfaces, got {len(bounded)}')
+          Path('/tmp/bounded.json').write_text(json.dumps(bounded, ensure_ascii=False))
+          PY
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const { loadRuntimeApi } = require('./tools/lib/runtime-api');
+          const api = loadRuntimeApi({ apiNames: ['analyzeLine'] });
+          const bounded = JSON.parse(fs.readFileSync('/tmp/bounded.json', 'utf8'));
+          function flatten(nodes, out = []) {
+            for (const node of nodes || []) {
+              if (!node || typeof node !== 'object') continue;
+              if (node.kind === 'token') out.push(node);
+              if (Array.isArray(node.children)) flatten(node.children, out);
+            }
+            return out;
+          }
+          function cjkOnly(surface) {
+            return [...String(surface || '')].every((ch) => /[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff〇○]/u.test(ch));
+          }
+          const unknown = new Set();
+          for (const surface of bounded) {
+            for (const token of flatten(api.analyzeLine(surface).tokens)) {
+              if (cjkOnly(token.surface) && !String(token.jyutping || '').trim()) unknown.add(token.surface);
+            }
+          }
+          console.log(`baseline parser-exposed CJK tokens without Jyutping: ${unknown.size}`);
+          if (unknown.size !== 282) throw new Error(`expected 282 baseline missing-reading tokens, got ${unknown.size}`);
+          fs.writeFileSync('/tmp/unknown.json', JSON.stringify([...unknown].sort()));
+          NODE
+          python - <<'PY'
+          import csv, json, re, unicodedata
+          from pathlib import Path
+          with Path('/tmp/canto-frequency.csv').open(encoding='utf-8-sig', newline='') as f:
+              rows = list(csv.DictReader(f))
+          unknown = set(json.loads(Path('/tmp/unknown.json').read_text()))
+          first = {}
+          for row in rows:
+              surface = unicodedata.normalize('NFC', (row.get('Word') or '').strip())
+              if surface and surface not in first:
+                  first[surface] = row
+          markers = ['嘅','唔','冇','佢','喺','咗','呢','嗰','啲','咁','係','哋','喇','啦','㗎','嘢','吓','咪','噉','嚟','返','畀','啫','喎','吖','呀','晒','曬','乜','邊','點解','使']
+          simple = re.compile(r'^[a-z]+[1-6]$', re.I)
+          def supported(row):
+              examples = ' '.join(str(row.get(k) or '') for k in ('Sentence1','Sentence2','Sentence3'))
+              meta = (str(row.get('Meaning') or '') + ' ' + str(row.get('Note') or '')).lower()
+              return any(marker in examples for marker in markers) or 'cantonese' in meta or 'variant form for 嘅' in meta or 'place of 嚟' in meta or 'colloq' in meta
+          readings = {}
+          for token in sorted(unknown):
+              row = first.get(token)
+              if not row:
+                  continue
+              pronunciation = (row.get('Pronunciation') or '').strip().lower()
+              if len(token) == 1 and simple.fullmatch(pronunciation) and supported(row):
+                  readings[token] = pronunciation
+          if len(readings) != 166:
+              raise SystemExit(f'Expected 166 conservative source-backed readings, got {len(readings)}')
+          lines = [
+              '"use strict";', '',
+              '// Neutral component-level Cantonese pronunciation coverage surfaced by the external',
+              '// “Most Common Cantonese Words (Frequency List)” Google Sheet. This file retains',
+              '// readings only: no frequency, rank, gloss, POS, grammar category, or phrase atomicity.',
+              'const SOURCE = "Most Common Cantonese Words (Frequency List)";',
+              'const SOURCE_URL = "https://docs.google.com/spreadsheets/d/1ArxEFo46PTrDyDDhWyu3wB0epxqTyd8WBaprnwTEPm4";', '',
+              'const READINGS = Object.freeze({'
+          ]
+          items = list(readings.items())
+          for index, (surface, jyutping) in enumerate(items):
+              comma = ',' if index + 1 < len(items) else ''
+              lines.append(f'  {json.dumps(surface, ensure_ascii=False)}: {json.dumps(jyutping)}{comma}')
+          lines += [
+              '});', '',
+              'function applyVernacularComponentCoverage(entries) {',
+              '  const seen = new Set();',
+              '  const out = entries.map(([surface, entry]) => {',
+              '    seen.add(surface);',
+              '    const reading = READINGS[surface];',
+              '    if (!reading || String(entry && entry.jyutping || "").trim()) return [surface, entry];',
+              '    return [surface, {',
+              '      ...entry,',
+              '      jyutping: reading,',
+              '      note: [entry && entry.note, `Pronunciation filled from ${SOURCE}; bounded vernacular parser audit exposed a missing component reading.`].filter(Boolean).join(" "),',
+              '    }];',
+              '  });',
+              '  for (const [surface, jyutping] of Object.entries(READINGS)) {',
+              '    if (seen.has(surface)) continue;',
+              '    out.push([surface, {',
+              '      label: "lex",',
+              '      pos: "lexical_item",',
+              '      syntax: "lexical_item",',
+              '      jyutping,',
+              '      note: `Neutral component pronunciation coverage from ${SOURCE}; no grammar/category promotion is implied.`,',
+              '      provenance: { kind: "external_vernacular_component_reading", source: SOURCE, url: SOURCE_URL },',
+              '    }]);',
+              '  }',
+              '  return out;',
+              '}', '',
+              'module.exports = Object.freeze({ SOURCE, SOURCE_URL, READINGS, applyVernacularComponentCoverage });', ''
+          ]
+          Path('src/runtime-resources/lexicon/token-lexicon/vernacular-component-coverage.js').write_text('\n'.join(lines))
+          print('generated source-backed readings:', len(readings))
+          PY
+      - name: Wire reading overlay into existing lexicon architecture
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('src/runtime-resources/lexicon/token-lexicon/index.js')
+          text = p.read_text()
+          anchor = 'const { applyRuntimePolicy: applyReviewedR17512000RuntimePolicy } = require("./cifu-r1751-2000-runtime-policy");\n'
+          import_line = 'const { applyVernacularComponentCoverage } = require("./vernacular-component-coverage");\n'
+          if import_line not in text:
+              if anchor not in text:
+                  raise SystemExit('missing token-lexicon import anchor')
+              text = text.replace(anchor, anchor + import_line, 1)
+          old = '''module.exports = applyReviewedR17512000RuntimePolicy(
+  applyReviewedR15011750RuntimePolicy(
+    applyReviewedR12511500RuntimePolicy(
+      applyReviewedR10011250RuntimePolicy(
+        applyReviewedR7511000RuntimePolicy(
+          applyReviewedR501750RuntimePolicy(
+            applyNativeReviewCorrections(
+              applyCandidateDefaultReadings(
+                applyReviewedR1250RuntimePolicy(applyReviewedR251500Entries(baseEntries))
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+);
+'''
+          new = '''module.exports = applyVernacularComponentCoverage(
+  applyReviewedR17512000RuntimePolicy(
+    applyReviewedR15011750RuntimePolicy(
+      applyReviewedR12511500RuntimePolicy(
+        applyReviewedR10011250RuntimePolicy(
+          applyReviewedR7511000RuntimePolicy(
+            applyReviewedR501750RuntimePolicy(
+              applyNativeReviewCorrections(
+                applyCandidateDefaultReadings(
+                  applyReviewedR1250RuntimePolicy(applyReviewedR251500Entries(baseEntries))
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+);
+'''
+          if old not in text:
+              raise SystemExit('missing token-lexicon composition anchor')
+          p.write_text(text.replace(old, new, 1))
+          PY
+          cat > tests/tooling/lexicon/vernacular-component-coverage.test.js <<'EOF'
+          #!/usr/bin/env node
+          "use strict";
+          const assert = require("node:assert/strict");
+          const test = require("node:test");
+          const tokenLexicon = Object.fromEntries(require("../../../src/runtime-resources/lexicon/token-lexicon"));
+          const { READINGS, applyVernacularComponentCoverage } = require("../../../src/runtime-resources/lexicon/token-lexicon/vernacular-component-coverage");
+
+          test("source-backed vernacular reading batch contains exactly 166 single-character readings", () => {
+            assert.equal(Object.keys(READINGS).length, 166);
+            for (const [surface, jyutping] of Object.entries(READINGS)) {
+              assert.equal(Array.from(surface).length, 1, `${surface}: single-character component`);
+              assert.match(jyutping, /^[a-z]+[1-6]$/u, `${surface}: simple Jyutping`);
+              assert.ok(tokenLexicon[surface], `${surface}: runtime entry exists`);
+              assert.ok(tokenLexicon[surface].jyutping, `${surface}: runtime has a reading`);
+            }
+          });
+
+          test("reading overlay preserves richer pre-existing readings", () => {
+            const sample = [["世", { label: "what", pos: "noun", syntax: "common_noun", jyutping: "KEEP", note: "existing" }]];
+            const out = Object.fromEntries(applyVernacularComponentCoverage(sample));
+            assert.equal(out["世"].jyutping, "KEEP");
+            assert.equal(out["世"].pos, "noun");
+          });
+          EOF
+      - name: Validate lexical ingestion
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm run build:runtime
+          node --test tests/tooling/lexicon/vernacular-component-coverage.test.js
+          node --test tests/tooling/lexicon/cifu-r501-750-reviewed-runtime.test.js
+          node --test tests/tooling/lexicon/cifu-r751-1000-reviewed-runtime.test.js
+          node --test tests/tooling/lexicon/cifu-r1001-1250-reviewed-runtime.test.js
+          node --test tests/tooling/lexicon/cifu-r1251-1500-reviewed-runtime.test.js
+          node --test tests/tooling/lexicon/cifu-r1501-1750-reviewed-runtime.test.js
+          node --test tests/tooling/lexicon/cifu-r1751-2000-reviewed-runtime.test.js
+          npm run verify:runtime
+      - name: Re-audit top-2000 parser reading gaps
+        shell: bash
+        run: |
+          set -euo pipefail
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const { loadRuntimeApi } = require('./tools/lib/runtime-api');
+          const api = loadRuntimeApi({ apiNames: ['analyzeLine'] });
+          const bounded = JSON.parse(fs.readFileSync('/tmp/bounded.json', 'utf8'));
+          function flatten(nodes, out = []) { for (const node of nodes || []) { if (!node || typeof node !== 'object') continue; if (node.kind === 'token') out.push(node); if (Array.isArray(node.children)) flatten(node.children, out); } return out; }
+          function cjkOnly(surface) { return [...String(surface || '')].every((ch) => /[\u3400-\u4dbf\u4e00-\u9fff\uf900-\ufaff〇○]/u.test(ch)); }
+          const unknown = new Set(); let affected = 0;
+          for (const surface of bounded) {
+            let local = false;
+            for (const token of flatten(api.analyzeLine(surface).tokens)) {
+              if (cjkOnly(token.surface) && !String(token.jyutping || '').trim()) { unknown.add(token.surface); local = true; }
+            }
+            if (local) affected += 1;
+          }
+          console.log(JSON.stringify({ bounded_surfaces: bounded.length, surfaces_with_missing_readings: affected, unique_missing_reading_tokens: unknown.size, remaining_tokens: [...unknown].sort() }, null, 2));
+          if (unknown.size >= 282) throw new Error('reading ingestion did not reduce lexical coverage debt');
+          NODE
+      - name: Commit ingestion and remove temporary workflow clutter
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/agent-vernacular-reading-ingest.yml
+          git rm -f .github/workflows/agent-vernacular-ingestion-batch1.yml
+          git rm -f .github/workflows/agent-cifu-r1751-2000-runtime-build.yml
+          git add src/runtime-resources/lexicon/token-lexicon/index.js src/runtime-resources/lexicon/token-lexicon/vernacular-component-coverage.js tests/tooling/lexicon/vernacular-component-coverage.test.js main.js
+          git commit -m 'Ingest source-backed vernacular component readings'
+          git push origin HEAD:agent/cifu-r1751-2000-runtime-reconcile
