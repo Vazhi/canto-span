@@ -1,8 +1,8 @@
 "use strict";
 
 // General lexical coverage discovered while auditing ranked lexical ingestions.
-// These are independently sourced component lexemes, not promotions merely
-// because a longer frequency-list surface contains them.
+// These are independently sourced lexemes, not promotions merely because a
+// longer frequency-list surface contains them.
 module.exports = [
   ["刻", {
     label: "when",
@@ -15,5 +15,40 @@ module.exports = [
     jyutping: "jyu6",
     syntax: "verb transitive_affordance encounter_verb",
     note: "meet / encounter; independently attested Cantonese verbal root, added because the reviewed lexicalized surface 遇到 exposed a missing component lexeme.",
+  }],
+  ["爸", {
+    label: "who",
+    pos: "noun",
+    jyutping: "baa4",
+    syntax: "kinship_person_np kinship_term",
+    note: "dad / father; ordinary vernacular Cantonese reading baa4. The source Sheet's standalone ba1 value is not used as runtime authority.",
+  }],
+  ["阿爸", {
+    label: "who",
+    pos: "noun",
+    jyutping: "aa3 baa4",
+    syntax: "kinship_person_np kinship_term",
+    note: "dad / father; independently verified familiar Cantonese kinship term.",
+  }],
+  ["打算", {
+    label: "doing",
+    pos: "verb",
+    jyutping: "daa2 syun3",
+    syntax: "verb intention_verb",
+    note: "intend / plan; independently verified Cantonese whole lexical verb. Nominal plan/intention use will be reviewed separately rather than blocking default lexical coverage.",
+  }],
+  ["由於", {
+    label: "func",
+    pos: "preposition",
+    jyutping: "jau4 jyu1",
+    syntax: "causal_relation_preposition causal_connector",
+    note: "because of / due to; independently verified fixed Cantonese causal relation expression.",
+  }],
+  ["一陣", {
+    label: "when",
+    pos: "noun",
+    jyutping: "jat1 zan6",
+    syntax: "temporal_expression duration_np",
+    note: "a while / a moment; independently verified Cantonese temporal lexical expression. Changed-tone zan2 is left for the next small reading-split batch.",
   }],
 ];
