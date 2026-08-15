@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   verify:
-    if: github.event.head_commit.message == 'Verify bundled Cantonese reading batch 1'
+    if: github.event.head_commit.message == 'Verify bundled batch after explicit-default fix'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -21,6 +21,25 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
+      - name: Make audited defaults explicit for raw-analysis validation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('src/runtime-resources/lexicon/token-lexicon/explicit-analyses.js')
+          text = p.read_text()
+          replacements = {
+            'Object.freeze({ id: "lex:行:default" })': 'Object.freeze({ id: "lex:行:default", label: "doing", pos: "verb", jyutping: "haang4", syntax: "verb action_verb walking_verb", senses: Object.freeze([{ gloss: "walk / go on foot" }]), provenance: Object.freeze({ kind: "existing_runtime_default_preserved", source: "token lexicon default before bundled-reading supplement" }) })',
+            'Object.freeze({ id: "lex:知:default" })': 'Object.freeze({ id: "lex:知:default", label: "doing", pos: "verb", jyutping: "zi1", syntax: "cognition_verb", senses: Object.freeze([{ gloss: "know" }]), provenance: Object.freeze({ kind: "existing_runtime_default_preserved", source: "token lexicon default before bundled-reading supplement" }) })',
+            'Object.freeze({ id: "lex:難:default" })': 'Object.freeze({ id: "lex:難:default", label: "like", pos: "adjective", jyutping: "naan4", syntax: "stative_predicate", senses: Object.freeze([{ gloss: "hard / difficult" }]), provenance: Object.freeze({ kind: "existing_runtime_default_preserved", source: "token lexicon default before bundled-reading supplement" }) })',
+            'Object.freeze({ id: "lex:兩:default" })': 'Object.freeze({ id: "lex:兩:default", label: "like", pos: "numeral", jyutping: "loeng5", syntax: "quantity count_value numeral_two", senses: Object.freeze([{ gloss: "two; quantity descriptor before classifier or time head" }]), provenance: Object.freeze({ kind: "existing_runtime_default_preserved", source: "token lexicon default before bundled-reading supplement" }) })',
+            'Object.freeze({ id: "lex:咋:default" })': 'Object.freeze({ id: "lex:咋:default", label: "particle", pos: "particle", jyutping: "zaa3", syntax: "sentence_final_particle restrictive_focus_particle exhaustive_limit_particle", senses: Object.freeze([{ gloss: "only / that is all" }]), provenance: Object.freeze({ kind: "existing_runtime_default_preserved", source: "token lexicon default before bundled-reading supplement" }) })',
+          }
+          for old, new in replacements.items():
+            if old not in text:
+              raise SystemExit(f'missing explicit default placeholder: {old}')
+            text = text.replace(old, new, 1)
+          p.write_text(text)
+          PY
       - run: |
           set -euo pipefail
           npm run build:runtime
@@ -33,6 +52,6 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git rm .github/workflows/agent-build-bundled-readings-1.yml
-          git add main.js
+          git add src/runtime-resources/lexicon/token-lexicon/explicit-analyses.js main.js
           git commit -m 'Build bundled Cantonese reading batch 1'
           git push origin HEAD:agent/cifu-r1751-2000-runtime-reconcile
