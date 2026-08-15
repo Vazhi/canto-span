@@ -23,6 +23,18 @@ jobs:
       - run: npm ci
       - name: Compile merged final-band authority
         run: node tools/agent-cifu-r1751-2000-runtime-build.js
+      - name: Repair temporary cleanup helper regex
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p = Path('tools/agent-cifu-active-tree-cleanup.js')
+          s = p.read_text()
+          old = r'''const gapPattern = /note: \"Cifu SpokenAdult rank (\\d+), frequency ([^;\\\"]+);.*?Exact surface retained as neutral lexical coverage; POS\\/grammar-role verification is intentionally separate\\.\"/gu;'''
+          new = r'''const gapPattern = /note: "Cifu SpokenAdult rank (\d+), frequency ([^;"]+);.*?Exact surface retained as neutral lexical coverage; POS\/grammar-role verification is intentionally separate\."/g;'''
+          if old not in s:
+              raise SystemExit('cleanup helper regex anchor missing')
+          p.write_text(s.replace(old, new, 1))
+          PY
       - name: Purge active Cifu contamination history
         run: node tools/agent-cifu-active-tree-cleanup.js
       - name: Focused final-band invariants
@@ -81,7 +93,7 @@ jobs:
       - name: Enforce source-phase write allowlist
         run: |
           set -euo pipefail
-          git restore --worktree --staged main.js validation/current 2>/dev/null || true
+          git restore --worktree --staged main.js validation/current tools/agent-cifu-active-tree-cleanup.js 2>/dev/null || true
           git clean -fd validation/current >/dev/null 2>&1 || true
           mapfile -t CHANGED < <({ git diff --name-only; git ls-files --others --exclude-standard; } | sort -u)
           printf 'Source-phase changes:\n'
