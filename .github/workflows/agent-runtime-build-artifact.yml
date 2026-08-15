@@ -95,6 +95,7 @@ jobs:
           rm -rf "$BASE_DIR"
           git worktree add --detach "$BASE_DIR" "$BASE_SHA"
           trap 'git worktree remove --force "$BASE_DIR" >/dev/null 2>&1 || true' EXIT
+          (cd "$BASE_DIR" && npm ci)
 
           rm -f \
             "$BASE_DIR/validation/current/regression-suite.json" \
