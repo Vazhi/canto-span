@@ -68,7 +68,7 @@ jobs:
       - name: Verify bounded state diff
         shell: bash
         run: |
-          git restore --source=HEAD --staged --worktree -- validation/current/glossika-week16-runtime-lexicon.json
+          rm -f validation/current/glossika-week16-runtime-lexicon.json
           rm .github/workflows/temporary-cifu-r751-1000-version-materialize.yml
           mapfile -t changed < <(git status --short | sed -E 's/^...//')
           printf 'Pending paths:\n%s\n' "${changed[*]}"
