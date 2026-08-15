@@ -31,10 +31,10 @@ No comment wins by chronology. Conflicts resolve from independent Cantonese lexi
 Packet: 250 rows; 166 HKCanCor-attested surfaces; 84 zero-hit surfaces; 1,327 exact matching tokens; 217 surface×raw-POS×Jyutping buckets; 301 concordance rows.
 
 Final mutually exclusive partition:
-- **131** `reviewed_selection`
+- **129** `reviewed_selection`
 - **43** `multiple`
-- **28** `reading_split`
-- **48** `blocked_atomic`
+- **29** `reading_split`
+- **49** `blocked_atomic`
 - **250/250** ranks accounted for exactly once.
 
 ## Zero-hit overlay
@@ -111,9 +111,9 @@ Each rank appears exactly once. `Decision` is the implementation-facing lexical 
 | 1304 | `後面` | `reviewed_selection` | spatial/temporal locality noun/localizer “behind/back/later”; adverbial placement alone does not make a separate ADV |
 | 1305 | `計劃` | `multiple` | noun “plan/project” + verb “plan” |
 | 1306 | `個害` | `blocked_atomic` | unsupported/data-quality rank string with no coherent standalone lexical item; no typed whole-surface analysis |
-| 1307 | `唔好意思` | `reviewed_selection` | lexicalized politeness/stative expression “sorry/excuse me; embarrassed/shy”; do not convert packet tag spread into separate POS entries |
+| 1307 | `唔好意思` | `reading_split` | lexicalized politeness/stative expression “sorry/excuse me; embarrassed/shy”; preserve independently documented `m4 hou2 ji3 si1` and `m4 hou2 ji3 si3` rather than treating either as the sole reading |
 | 1308 | `租` | `multiple` | verb “rent/lease” + noun “rent/rental payment” |
-| 1309 | `純粹` | `reading_split` | manner/focus adverb “purely/merely”; `seon4 seoi5` |
+| 1309 | `純粹` | `reading_split` | manner/focus adverb “purely/merely”; preserve independently documented `seon4 seoi5` and `seon4 seoi6` variation rather than allowing one source/register to erase the other |
 | 1310 | `高度` | `reviewed_selection` | abstract/measure noun “height/altitude/degree”; written adverbial use does not by itself require another lexical category |
 | 1311 | `基本法` | `reviewed_selection` | Basic Law proper title in entity use; generic “basic law” remains compositionally/contextually distinguishable |
 | 1312 | `將個` | `blocked_atomic` | disposal/coverb `將` + classifier/determiner fragment; no typed whole-surface analysis |
@@ -198,7 +198,7 @@ Each rank appears exactly once. `Decision` is the implementation-facing lexical 
 | 1391 | `攪` | `reviewed_selection` | verb `gaau2` “stir/disturb/mix”, variant family with `搞` where senses overlap |
 | 1392 | `一次過` | `reviewed_selection` | lexicalized adverb “all at once/in one go” |
 | 1393 | `一百蚊` | `blocked_atomic` | compositional numeral + currency measure phrase; no typed whole-surface analysis |
-| 1394 | `乜鬼` | `reviewed_selection` | independently recorded Cantonese pronoun/expression `mat1 gwai2`, a stronger emphatic version of `乜嘢`; retain as a lexicalized whole rather than blocking it solely for internal transparency |
+| 1394 | `乜鬼` | `blocked_atomic` | conventional `mat1 gwai2` “what the heck” is attested, but independent linguistic research analyzes expressive `gwai2 鬼` as a productive morpheme modifying wh-pronouns and other expressions; preserve that internal structure rather than fabricating an opaque whole-surface lexeme |
 | 1395 | `上年` | `reading_split` | temporal noun/expression “last year”; exact reading `soeng6 nin2` |
 | 1396 | `不斷` | `reading_split` | adverb `bat1 dyun6` “continuously/constantly”; do not add a separate adjective from packet/gloss projection |
 | 1397 | `之類` | `reading_split` | listing suffix/expression “and the like/and so on”; preserve both independently listed `zi1 leoi6` and `zi1 leoi2` |
@@ -252,7 +252,7 @@ Each rank appears exactly once. `Decision` is the implementation-facing lexical 
 | 1445 | `答案` | `reviewed_selection` | noun “answer/solution” |
 | 1446 | `著` | `reading_split` | graph-family split: preserve literary/bound `zyu3` writing/works/notability family and separate `zoek3` wear plus independently attested `zoek6` lexical families |
 | 1447 | `賀` | `multiple` | verb `ho6` “congratulate/celebrate” + surname/proper-name family; preserve the independently recorded homograph |
-| 1448 | `黑` | `reading_split` | black/dark/unlucky adjective family with independently recorded `haak1`/`hak1` pronunciation variation; do not invent a separate ‘hack’ verb from the reading difference |
+| 1448 | `黑` | `reading_split` | black/dark/unlucky adjective family with independently recorded `haak1`/`hak1` pronunciation variation; do not invent a separate “hack” verb from the reading difference; the English loan `hack` is separately `hek1` |
 | 1449 | `椰` | `reviewed_selection` | noun/bound noun “coconut/coconut palm” |
 | 1450 | `落返` | `blocked_atomic` | transparent motion verb + restitutive/directional `返`; no typed whole-surface analysis |
 | 1451 | `過個` | `blocked_atomic` | transparent `過 + 個` sequence; no typed whole-surface analysis |
@@ -316,6 +316,8 @@ The following rows materially differed across the broad summary and detailed pas
 | 1299 | `咁上下` | `5275370635` | `5275384123` |
 | 1303 | `後生` | `5275370635` | `5275417104` |
 | 1306 | `個害` | `5275370635` | `5275417104` |
+| 1307 | `唔好意思` | `5275370635` | `5275417104` |
+| 1309 | `純粹` | `5275370635` | `5275417104` |
 | 1316 | `圍住` | `5275370635` | `5275417104` |
 | 1320 | `落落` | `5275370635` | `5275417104` |
 | 1325 | `論` | `5275370635` | `5275417104` |
@@ -356,12 +358,17 @@ The following rows materially differed across the broad summary and detailed pas
 
 ## Independent source checks added/preserved during consolidation
 
+- `1276 下邊` — [CC-Canto](https://cantonese.org/search.php?q=%E4%B8%8B): exact graph `下邊` listed as `haa6 bin1`; distinguish Words.hk `下便 haa6 bin6`.
 - `1277 公眾` — [Words.hk](https://words.hk/zidin/公眾): noun “the public” + 區別詞/public modifier.
 - `1279 毋` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/search/?searchtype=1&text=毋): formal negative function plus Chinese surname/proper-name homograph.
 - `1286 民主黨` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/characters/3758/): `man4 zyu2 dong2` Democratic Party formation.
 - `1297 言論` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/words/5337/): `jin4 leon6` expression/opinion noun.
 - `1300 波浪` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/words/3460/): `bo1 long6` wave noun.
+- `1307 唔好意思` — [Words.hk](https://words.hk/zidin/唔好意思) and [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/words/1830/): conventional Cantonese expression with both `si1` and `si3` independently recorded.
+- `1309 純粹` — Words.hk Cantonese examples use `seon4 seoi5`; [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/characters/2836/) records `seon4 seoi6`. Preserve both as independently attested reading/register variation.
 - `1311 基本法` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/characters/496/): `gei1 bun2 faat3` Basic Law formation.
+- `1325 論` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/characters/995/) / [Words.hk](https://words.hk/zidin/論): verb + noun/bound theory/view + relational/prepositional families.
+- `1328 靚仔` — [Words.hk](https://words.hk/zidin/靚仔): noun and adjective, both ordinary `leng3 zai2`.
 - `1330 瞭解` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/words/569/): `liu5 gaai2` verb “understand”.
 - `1332 權利` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/words/4017/): `kyun4 lei6` right/entitlement noun.
 - `1343 失敗` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/words/2082/): fail/lose + failure/loss, supporting verbal and nominal use.
@@ -371,25 +378,22 @@ The following rows materially differed across the broad summary and detailed pas
 - `1385 環保` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/words/13483/): adjective eco-friendly + noun environmental protection.
 - `1390 黨` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/characters/3758/): noun party/faction + verb take sides.
 - `1391 攪` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/characters/2150/): verb `gaau2` disturb/stir.
+- `1394 乜鬼` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/words/27004/) confirms the conventional exact expression; Words.hk documents productive emphatic `鬼` in `乜鬼`, `咩鬼`, `乜鬼嘢`, `邊鬼個`, `點鬼樣`, etc.; Winterstein, Lai & Luk, “Denials and Negative Emotions: A Unified Analysis of the Cantonese Expressive Gwai2” (2018) independently treats expressive `gwai2` as modifying wh-pronouns among other categories; Ye, *Cross-categorical Intensification: The Case of Cantonese -gwai2* (Ohio State MA thesis, 2021) independently analyzes productive bound `-gwai2`. Together these support conventionality without an opaque atomic whole-surface analysis.
+- `1404 多少` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/words/1968/): explicitly Standard written Chinese, not Cantonese; Cantonese counterpart 幾多.
 - `1415 角色` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/characters/角/): `gok3 sik1` role formation.
 - `1416 車主` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/words/13713/): `ce1 zyu2` vehicle-owner noun.
 - `1419 坦白` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/words/8982/): adjective frank + verb confess.
 - `1422 法例` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/words/13655/): `faat3 lai6` legal-regulation noun.
 - `1440 票` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/characters/1014/): noun `piu3` ticket/vote/invoice/banknote.
-- `1441 終審` — [CantoDict / Words.hk](https://www.cantonese.sheik.co.uk/dictionary/characters/1095/): `zung1 sam2` final judgment/hearing; attested in 終審法院.
+- `1441 終審` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/characters/1095/): `zung1 sam2` final judgment/hearing; attested in 終審法院.
 - `1447 賀` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/characters/3318/): verb congratulate/celebrate + surname family.
+- `1448 黑` — [Words.hk](https://words.hk/zidin/黑): black/dark/unlucky adjective family with `haak1`/`hak1` pronunciation variation; [Words.hk `hack`](https://words.hk/zidin/hack) separately records the English loan as `hek1`, so `hak1` does not create a separate hack analysis of `黑`.
 - `1449 椰` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/characters/2287/): noun `je4` coconut/coconut palm.
 - `1459 劍` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/characters/209/): noun `gim3` sword.
 - `1479 引起` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/characters/1031/): `jan5 hei2` “give rise to”.
+- `1493 沙` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/characters/39/): noun sand/granules + adjective hoarse/husky.
 - `1499 果` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/characters/391/): noun + adverbial + verbal + surname families at `gwo2`.
 - `1500 沾污` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/characters/978/): `zim1 wu1` is independently listed under 污 compounds.
-- `1404 多少` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/words/1968/): explicitly Standard written Chinese, not Cantonese; Cantonese counterpart 幾多.
-- `1276 下邊` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/characters/739/?full=true): exact graph `下邊` listed as `haa6 bin1`; distinguish `下便 haa6 bin6`.
-- `1325 論` — [CantoDict / Words.hk](https://www.cantonese.sheik.co.uk/dictionary/characters/995/): verb + noun/bound theory/view + relational/prepositional families.
-- `1328 靚仔` — [Words.hk](https://words.hk/zidin/靚仔): noun and adjective, both ordinary `leng3 zai2`.
-- `1394 乜鬼` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/words/27004/): Cantonese pronoun/expression `mat1 gwai2`, stronger version of `乜嘢`.
-- `1448 黑` — [Words.hk](https://words.hk/zidin/黑): adjective family with `haak1`/`hak1` pronunciation variation.
-- `1493 沙` — [CantoDict](https://www.cantonese.sheik.co.uk/dictionary/characters/39/): noun sand/granules + adjective hoarse/husky.
 
 ## Implementation boundary
 
@@ -401,7 +405,7 @@ The later implementation must not create typed analyses for `1282 平排`, `1284
 
 - ranks 1251–1500: **250/250**, each exactly once;
 - classes mutually exclusive: **yes**;
-- final counts: **131/43/28/48**;
+- final counts: **129/43/29/49**;
 - zero-hit overlay: **40 positive / 44 blocked**, with **37** independently checked positive rows and **3** pending typed confirmation;
 - known thread conflicts explicitly accounted for;
 - no Cifu definition/Jyutping or raw HKCanCor/UD tag used as final lexical authority;
