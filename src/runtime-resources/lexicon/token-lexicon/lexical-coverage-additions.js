@@ -65,4 +65,25 @@ module.exports = [
     syntax: "subject_or_topic",
     note: "Informal orthographic variant of 佢哋 'they/them'; attested separately in the bounded vernacular source. Canonical spelling remains 佢哋.",
   }],
+  ["定係", {
+    label: "func",
+    pos: "conjunction",
+    jyutping: "ding6 hai6",
+    syntax: "alternative_connector",
+    note: "Cantonese disjunctive conjunction 'or', used to connect alternatives; independently verified against 粵典.",
+  }],
+  ["先至", {
+    label: "how",
+    pos: "adverb",
+    jyutping: "sin1 zi3",
+    syntax: "sequence_prerequisite_adverb",
+    note: "only then / not until; links a prerequisite event to a following event; independently verified against 粵典.",
+  }],
+  ["嘅話", {
+    label: "func",
+    pos: "conjunction",
+    jyutping: "ge3 waa2",
+    syntax: "conditional_clause_suffix_connector",
+    note: "post-clausal Cantonese conditional conjunction 'if'; ge3 waa2 is the default reading and ge3 waa6 is independently attested as a reading variant.",
+  }],
 ];
