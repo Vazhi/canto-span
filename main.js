@@ -5038,6 +5038,299 @@ var require_cifu_r1001_1250_runtime_policy = __commonJS({
   }
 });
 
+// src/runtime-resources/lexicon/token-lexicon/cifu-r1251-1500-reviewed.js
+var require_cifu_r1251_1500_reviewed = __commonJS({
+  "src/runtime-resources/lexicon/token-lexicon/cifu-r1251-1500-reviewed.js"(exports2, module2) {
+    "use strict";
+    var SOURCE = "docs/research/ISSUE-884-CIFU-R1251-1500-LEXICAL-ADJUDICATION-R3.md";
+    var KIND = Object.freeze({ noun: ["what", "noun", "common_noun"], person: ["who", "noun", "person_noun"], place: ["where", "noun", "place_noun"], verb: ["doing", "verb", "verb"], adjective: ["like", "adjective", "stative_predicate"], adverb: ["how", "adverb", "adverb"], function: ["func", "function", "function"], classifier: ["what", "classifier", "classifier"], measure: ["what", "measure", "measure_word"], determiner: ["what", "determiner", "determiner"], pronoun: ["what", "pronoun", "pronoun"], bound: ["func", "bound", "bound_morpheme"], suffix: ["func", "suffix", "derivational_suffix"], formula: ["func", "formula", "discourse_formula"], coverb: ["func", "coverb", "coverb"], proper: ["what", "proper_noun", "proper_name"], localizer: ["where", "localizer", "localizer"], temporal: ["when", "noun", "temporal_expression"] });
+    function lexicalSpec(rank, kind, gloss, jyutping = "", syntax = "") {
+      const m = KIND[kind];
+      if (!m) throw new Error(`unknown lexical kind ${kind}`);
+      return Object.freeze({ rank, kind, gloss, jyutping, label: m[0], pos: m[1], syntax: syntax || m[2] });
+    }
+    function alt(rank, row) {
+      const [suffix, kind, gloss, jyutping = "", syntax = ""] = row;
+      return Object.freeze({ ...lexicalSpec(rank, kind, gloss, jyutping, syntax), suffix });
+    }
+    var PROMOTION_ROWS = Object.freeze([
+      [1251, "畢業", "verb", "graduate / finish a course"],
+      [1254, "提供", "verb", "provide"],
+      [1256, "感情", "noun", "emotion / relationship / affection"],
+      [1258, "解決", "verb", "solve / resolve"],
+      [1260, "熄", "verb", "switch off / extinguish"],
+      [1261, "廠", "noun", "factory / works"],
+      [1262, "熟", "adjective", "ripe / cooked / familiar"],
+      [1263, "適合", "adjective", "suitable / fit"],
+      [1264, "靚女", "person", "pretty woman / girl"],
+      [1267, "戲", "noun", "play / show / drama"],
+      [1268, "擦膠", "noun", "eraser", "caat3 gaau1"],
+      [1269, "禮物", "noun", "gift"],
+      [1270, "雞", "noun", "chicken"],
+      [1272, "鐘意", "verb", "like / be fond of", "", "cognition_verb"],
+      [1273, "權", "noun", "right / authority / power; bound-root family"],
+      [1278, "太過", "adverb", "too / excessively", "", "degree_adverb"],
+      [1283, "必須", "function", "must / have to", "", "modal_necessity"],
+      [1286, "民主黨", "proper", "Democratic Party / political-party name"],
+      [1293, "有機", "adjective", "organic"],
+      [1294, "告", "verb", "tell / inform / sue"],
+      [1297, "言論", "noun", "speech / opinion / comment / discourse"],
+      [1298, "受到", "verb", "receive / be subjected to"],
+      [1299, "咁上下", "adjective", "roughly that level / about so much / so-so", "", "degree_stative_expression"],
+      [1300, "波浪", "noun", "wave / waves"],
+      [1302, "阿哥", "person", "older brother"],
+      [1304, "後面", "localizer", "behind / back / later"],
+      [1310, "高度", "noun", "height / altitude / degree"],
+      [1311, "基本法", "proper", "Basic Law; generic basic-law reading remains contextual"],
+      [1313, "理論", "noun", "theory"],
+      [1315, "喊", "verb", "cry / yell / shout / call out"],
+      [1317, "尊嚴", "noun", "dignity / honor"],
+      [1321, "資料", "noun", "data / information / materials"],
+      [1322, "審", "verb", "examine / investigate / try in court"],
+      [1323, "撳", "verb", "press / push down / restrain / extort", "gam6"],
+      [1324, "複雜", "adjective", "complicated / complex"],
+      [1329, "鬧", "verb", "scold / quarrel / make a disturbance"],
+      [1330, "瞭解", "verb", "understand / find out", "", "cognition_verb"],
+      [1332, "權利", "noun", "right / privilege"],
+      [1334, "一點", "measure", "a little / a bit", "", "quantity_expression"],
+      [1335, "人士", "person", "person / figure"],
+      [1337, "上邊", "localizer", "above / on top / upper side"],
+      [1339, "已", "adverb", "already", "", "temporal_adverb"],
+      [1340, "不嬲", "adverb", "always / all along", "", "habitual_temporal_adverb"],
+      [1341, "公平", "adjective", "fair / impartial"],
+      [1342, "冇所謂", "adjective", "does not matter / do not care", "", "stative_expression"],
+      [1345, "合格", "adjective", "be qualified / pass", "", "result_stative_predicate"],
+      [1348, "肉", "noun", "meat / flesh / pulp"],
+      [1349, "自", "bound", "formal reflexive / source bound morpheme"],
+      [1350, "似乎", "adverb", "apparently / seem", "", "epistemic_seeming_expression"],
+      [1352, "吸引", "verb", "attract / be attractive"],
+      [1354, "垂直", "adjective", "vertical / perpendicular"],
+      [1355, "奇怪", "adjective", "strange / odd"],
+      [1356, "空間", "noun", "space"],
+      [1357, "阿婆", "person", "old woman / grandmother"],
+      [1359, "咬", "verb", "bite"],
+      [1360, "城堡", "noun", "castle"],
+      [1361, "政黨", "noun", "political party", "", "organization_noun"],
+      [1363, "效", "bound", "effect / efficacy / imitative bound family", "haau6"],
+      [1364, "酒店", "place", "hotel / hotel-business noun"],
+      [1367, "基本", "adjective", "basic / fundamental", "", "relational_modifier"],
+      [1369, "殺", "verb", "kill"],
+      [1370, "毫子", "measure", "ten cents", "hou4 zi2", "currency_measure"],
+      [1371, "深", "adjective", "deep / profound"],
+      [1372, "雀仔", "noun", "small bird / birdie"],
+      [1375, "朝頭早", "temporal", "morning / early in the morning"],
+      [1376, "無端端", "adverb", "for no reason / out of nowhere", "", "discourse_adverb"],
+      [1379, "搞錯", "verb", "make a mistake / get wrong", "", "resultative_verb"],
+      [1380, "資訊", "noun", "information"],
+      [1381, "對方", "person", "the other side / counterpart"],
+      [1382, "語言", "noun", "language"],
+      [1383, "整體", "noun", "whole / entity / overall body"],
+      [1389, "證明", "verb", "prove / verify / testify"],
+      [1391, "攪", "verb", "stir / disturb / mix", "gaau2"],
+      [1392, "一次過", "adverb", "all at once / in one go"],
+      [1398, "冇用", "adjective", "useless / of no use", "", "stative_expression"],
+      [1401, "左手邊", "localizer", "left-hand side", "zo2 sau2 bin1"],
+      [1403, "地點", "place", "location / site / venue"],
+      [1407, "好處", "noun", "benefit / advantage"],
+      [1408, "存在", "verb", "exist / be present"],
+      [1409, "有趣", "adjective", "interesting / amusing"],
+      [1410, "老實", "adjective", "honest / sincere"],
+      [1413, "冷氣", "noun", "air conditioning / cool air"],
+      [1414, "沖", "verb", "rinse / flush / infuse / rush against"],
+      [1415, "角色", "noun", "role / character"],
+      [1416, "車主", "person", "vehicle / car owner"],
+      [1418, "依家", "temporal", "now; orthographic variant of 而家", "ji1 gaa1"],
+      [1421, "明顯", "adjective", "obvious / clear"],
+      [1422, "法例", "noun", "law / statute / regulation"],
+      [1423, "波", "noun", "ball / wave / typhoon nominal family"],
+      [1429, "重新", "adverb", "again / anew"],
+      [1430, "音樂", "noun", "music"],
+      [1431, "音響", "noun", "audio / sound system / acoustics"],
+      [1437, "除非", "function", "unless / only if", "", "conditional_subordinator"],
+      [1438, "情", "noun", "feeling / emotion / situation"],
+      [1439, "排隊", "verb", "line up / queue"],
+      [1440, "票", "noun", "ticket / note / vote"],
+      [1441, "終審", "noun", "final adjudication / final appeal", "", "legal_nominal"],
+      [1442, "竟然", "adverb", "unexpectedly / to one's surprise", "", "evaluative_adverb"],
+      [1444, "提出", "verb", "raise / propose / put forward"],
+      [1445, "答案", "noun", "answer / solution"],
+      [1449, "椰", "noun", "coconut / coconut palm", "je4"],
+      [1452, "隔", "verb", "separate / be apart / lie between", "gaak3", "relational_predicate"],
+      [1453, "電影", "noun", "movie / film", "din6 jing2"],
+      [1455, "摺", "verb", "fold / bend", "zip3"],
+      [1457, "福利", "noun", "welfare / benefits / well-being", "fuk1 lei6"],
+      [1459, "劍", "noun", "sword", "gim3"],
+      [1464, "諗法", "noun", "way of thinking / opinion / idea", "nam2 faat3"],
+      [1465, "質素", "noun", "quality / standard", "zat1 sou3"],
+      [1466, "選", "verb", "choose / select / elect", "syun2"],
+      [1467, "錄", "verb", "record / copy", "luk6"],
+      [1470, "醫療", "noun", "medical treatment / healthcare", "ji1 liu4"],
+      [1471, "贊成", "verb", "approve / support / endorse", "zaan3 sing4"],
+      [1472, "曬", "verb", "sun / dry / sunbathe; loan share-files sense remains same POS", "saai3"],
+      [1476, "大隻", "adjective", "big-built / large-bodied / strong"],
+      [1477, "女皇", "person", "queen / empress"],
+      [1479, "引起", "verb", "cause / give rise to / arouse"],
+      [1480, "心理", "noun", "psychology / mental state; nominal-bound modifier family"],
+      [1481, "文化", "noun", "culture / civilization; nominal-bound modifier family"],
+      [1485, "各", "determiner", "each / every", "", "distributive_determiner"],
+      [1488, "有關", "verb", "be related to / concern", "jau5 gwaan1", "relational_verb"],
+      [1489, "行業", "noun", "industry / trade", "hong4 jip6"],
+      [1490, "初初", "adverb", "at first / initially", "", "temporal_adverb"],
+      [1494, "角度", "noun", "angle / point of view"],
+      [1495, "事實上", "adverb", "in fact / actually", "", "discourse_adverb"],
+      [1498, "拍拖", "verb", "date / be in a romantic relationship"],
+      [1500, "沾污", "verb", "stain / soil / defile", "zim1 wu1"]
+    ]);
+    var PROMOTIONS = Object.freeze(Object.fromEntries(PROMOTION_ROWS.map(([r, s, k, g, j = "", y = ""]) => [s, lexicalSpec(r, k, g, j, y)])));
+    var SOURCE_ONLY_SURFACES = /* @__PURE__ */ new Set(["平排", "打直", "打斜"]);
+    var INDEPENDENT_ZERO_HIT_SURFACES = /* @__PURE__ */ new Set(["象徵", "解決", "擦膠", "公眾", "毋", "必須", "民主黨", "收到", "言論", "波浪", "基本法", "瞭解", "權利", "失敗", "垂直", "城堡", "政黨", "冤", "效", "環保", "黨", "攪", "左手邊", "角色", "車主", "坦白", "法例", "票", "終審", "著", "賀", "椰", "劍", "引起", "回應", "果", "沾污"]);
+    var BLOCKED_ATOMIC_SURFACES = /* @__PURE__ */ new Set(["幾大", "試下", "鑑林", "三點", "四十五度", "左下", "再落", "好大", "好慘", "我估", "我畫", "知有", "個害", "將個", "圍住", "落落", "邊行", "一晚", "上角", "成張", "即個", "信佳", "問我", "幾喇", "越來", "講個", "轉個", "一百蚊", "乜鬼", "右下方", "印椰樹", "多少", "多次", "多個", "個意", "時話", "就畫", "落返", "過個", "講番", "點會", "一本", "一座", "下角", "五點", "右畫", "再畫", "好貴", "每個"]);
+    var MULTI_ROWS = Object.freeze([
+      [1255, "象徵", ["symbol_noun", "noun", "symbol / emblem"], ["symbolize_verb", "verb", "symbolize / represent"]],
+      [1271, "懷疑", ["doubt_verb", "verb", "doubt / suspect"], ["suspicion_noun", "noun", "doubt / suspicion"]],
+      [1277, "公眾", ["public_noun", "noun", "the public"], ["public_modifier", "adjective", "public modifier / distinguishing-word use", "", "relational_modifier"]],
+      [1279, "毋", ["formal_negative", "function", "formal / written negative", "mou4", "negative_function"], ["surname", "proper", "surname / proper-name homograph", "mou4", "proper_name"]],
+      [1287, "任", ["appoint_allow_verb", "verb", "appoint / take office / allow"], ["surname", "proper", "surname / proper-name homograph", "", "proper_name"]],
+      [1289, "多數", ["majority_noun", "noun", "majority / most"], ["mostly_adverb", "adverb", "usually / mostly"]],
+      [1303, "後生", ["young_stative", "adjective", "young"], ["young_person", "person", "young person / young people"]],
+      [1305, "計劃", ["plan_noun", "noun", "plan / project"], ["plan_verb", "verb", "plan"]],
+      [1308, "租", ["rent_verb", "verb", "rent / lease"], ["rent_noun", "noun", "rent / rental payment"]],
+      [1318, "發", ["send_emit_verb", "verb", "send / issue / develop / emit"], ["round_classifier", "classifier", "classifier / measure for shots or rounds"]],
+      [1319, "照", ["shine_photo_verb", "verb", "shine / photograph / reflect"], ["according_coverb", "coverb", "according to", "", "relation_coverb"], ["photo_noun", "noun", "photo"]],
+      [1325, "論", ["discuss_verb", "verb", "discuss / evaluate"], ["theory_noun", "noun", "view / theory / discourse"], ["regarding_coverb", "coverb", "regarding / in terms of", "", "relation_coverb"]],
+      [1326, "輪", ["wheel_round_noun", "noun", "wheel / round"], ["round_classifier", "classifier", "classifier for rounds / turns / round objects"], ["rotate_verb", "verb", "rotate / take turns"]],
+      [1327, "遮", ["cover_verb", "verb", "cover / screen / conceal"], ["umbrella_noun", "noun", "umbrella"]],
+      [1328, "靚仔", ["handsome_guy_noun", "person", "handsome guy / boy", "leng3 zai2"], ["handsome_stative", "adjective", "handsome / good / fine", "leng3 zai2"]],
+      [1343, "失敗", ["fail_verb", "verb", "fail / be defeated"], ["failure_noun", "noun", "failure / defeat"]],
+      [1344, "申請", ["apply_verb", "verb", "apply / request"], ["application_noun", "noun", "application / request"]],
+      [1346, "安排", ["arrange_verb", "verb", "arrange / plan"], ["arrangement_noun", "noun", "arrangement / plan"]],
+      [1362, "冤", ["grievance_noun", "noun", "injustice / grievance"], ["wronged_stative", "adjective", "wronged / unjust"]],
+      [1368, "教育", ["educate_verb", "verb", "educate / teach"], ["education_noun", "noun", "education"]],
+      [1373, "創作", ["create_verb", "verb", "create / produce / write"], ["creation_noun", "noun", "creative work / creation"]],
+      [1378, "黃", ["yellow_stative", "adjective", "yellow"], ["surname", "proper", "surname / proper-name homograph"]],
+      [1385, "環保", ["eco_friendly_stative", "adjective", "eco-friendly / environmentally friendly"], ["environmental_protection_noun", "noun", "environmental protection"]],
+      [1386, "總", ["total_stative", "adjective", "total / overall"], ["total_gather_verb", "verb", "gather / total"], ["always_overall_adverb", "adverb", "always / overall / in every case"]],
+      [1390, "黨", ["party_noun", "noun", "party / gang / faction"], ["take_sides_verb", "verb", "be partial / take sides"]],
+      [1412, "何", ["surname", "proper", "surname / proper-name family"], ["formal_interrogative", "pronoun", "formal interrogative what / how / why / which", "", "formal_interrogative"]],
+      [1419, "坦白", ["frank_stative", "adjective", "frank / honest"], ["confess_verb", "verb", "confess / state frankly"]],
+      [1420, "姓", ["surname_noun", "noun", "surname"], ["be_surnamed_verb", "verb", "have the surname / be surnamed"]],
+      [1424, "花", ["flower_noun", "noun", "flower"], ["spend_verb", "verb", "spend / use up"], ["variegated_stative", "adjective", "multicoloured / scratched / dirty"], ["productive_bound", "bound", "productive bound / suffix-like family", "", "bound_morpheme"]],
+      [1425, "金", ["gold_noun", "noun", "gold / money"], ["golden_modifier", "adjective", "gold / golden modifier", "", "relational_modifier"]],
+      [1426, "約", ["appointment_noun", "noun", "appointment / agreement"], ["arrange_restrict_verb", "verb", "arrange / restrict"], ["approximately_adverb", "adverb", "about / approximately", "", "approximation_adverb"]],
+      [1434, "恐怖", ["frightening_stative", "adjective", "frightening / terrible"], ["terror_noun", "noun", "terror / horror"]],
+      [1447, "賀", ["congratulate_verb", "verb", "congratulate / celebrate", "ho6"], ["surname", "proper", "surname / proper-name family", "ho6"]],
+      [1456, "盡", ["exhaust_verb", "verb", "use up / exhaust"], ["utmost_adverb", "adverb", "to the utmost / as much as possible", "", "degree_adverb"], ["limit_noun", "noun", "end / limit"], ["limit_localizer", "localizer", "end / limit localizer family"]],
+      [1458, "與", ["and_with_function", "function", "formal and / with", "jyu5", "coordination_relation"], ["give_participate_verb", "verb", "verb family independently attested", "jyu5"], ["with_coverb", "coverb", "formal relational / prepositional with", "jyu5", "relation_coverb"]],
+      [1460, "層", ["layer_classifier", "classifier", "classifier for floors / layers", "cang4"], ["layer_noun", "noun", "layer / storey", "cang4"]],
+      [1482, "毛", ["hair_noun", "noun", "hair / fur"], ["money_measure", "measure", "monetary measure / classifier", "", "currency_measure"]],
+      [1486, "回應", ["response_noun", "noun", "response"], ["respond_verb", "verb", "respond / reply"]],
+      [1491, "困難", ["difficulty_noun", "noun", "difficulty / problem"], ["difficult_stative", "adjective", "difficult"]],
+      [1493, "沙", ["sand_noun", "noun", "sand / granules", "saa1"], ["hoarse_stative", "adjective", "hoarse / husky of voice", "saa1"]],
+      [1496, "佬", ["man_noun", "person", "man / male"], ["person_suffix", "suffix", "productive colloquial person suffix", "", "person_suffix"]],
+      [1497, "或", ["or_function", "function", "formal or", "waak6", "alternative_connector"], ["possibly_adverb", "adverb", "possibly", "waak6"]],
+      [1499, "果", ["fruit_result_noun", "noun", "fruit / result", "gwo2"], ["surely_adverb", "adverb", "surely / really", "gwo2"], ["stuff_succeed_verb", "verb", "stuff / succeed lexical family", "gwo2"], ["surname", "proper", "surname / proper-name family", "gwo2"]]
+    ]);
+    var READING_ROWS = Object.freeze([
+      [1252, "剩", ["remain_sing6", "verb", "remain / be left, standard-literary reading", "sing6"], ["remain_zing6", "verb", "remain / be left, spoken-variant reading", "zing6"]],
+      [1257, "號", ["designation_hou6", "noun", "number / designation / date / title family", "hou6"], ["howl_hou4", "verb", "howl / cry family", "hou4"]],
+      [1265, "儲", ["store_cou5", "verb", "store / save, colloquial reading", "cou5"], ["store_cyu5", "verb", "store / save, literary reading", "cyu5"]],
+      [1266, "應", ["should_jing1", "function", "should / ought to", "jing1", "modal_necessity"], ["respond_jing3", "verb", "answer / respond family", "jing3"]],
+      [1276, "下邊", ["below_bin1", "localizer", "below / under; exact graph 下邊", "haa6 bin1"]],
+      [1292, "收到", ["receive_result", "verb", "receive / result family", "sau1 dou2"], ["received_understood_formula", "formula", "received / understood discourse response", "sau1 dou2", "discourse_formula"]],
+      [1307, "唔好意思", ["politeness_si1", "formula", "sorry / excuse me; embarrassed / shy family", "m4 hou2 ji3 si1", "politeness_expression"], ["politeness_si3", "formula", "sorry / excuse me; embarrassed / shy reading variant", "m4 hou2 ji3 si3", "politeness_expression"]],
+      [1309, "純粹", ["purely_seoi5", "adverb", "purely / merely", "seon4 seoi5", "focus_adverb"], ["purely_seoi6", "adverb", "purely / merely reading variant", "seon4 seoi6", "focus_adverb"]],
+      [1314, "處", ["place_cyu3", "noun", "place / office / department", "cyu3"], ["locality_syu3", "localizer", "colloquial locality family", "syu3"], ["locality_syu2", "localizer", "colloquial locality reading variant", "syu2"], ["formal_verb_cyu2", "verb", "formal verbal family", "cyu2"], ["formal_bound_cyu5", "bound", "formal bound family", "cyu5", "bound_morpheme"]],
+      [1338, "下下", ["every_time_haa5haa5", "temporal", "every time / each instance", "haa5 haa5", "distributive_temporal_expression"]],
+      [1353, "更", ["more_gang3", "adverb", "more / even more", "gang3", "degree_adverb"], ["change_gang1", "verb", "change-family reading", "gang1"]],
+      [1365, "區", ["district_keoi1", "noun", "area / district", "keoi1"], ["surname_au1", "proper", "surname / proper-name family", "au1"]],
+      [1384, "醒", ["wake_seng2", "verb", "wake / regain consciousness", "seng2"], ["treat_sing2", "verb", "give / treat family", "sing2"], ["smart_sing2", "adjective", "smart / alert", "sing2"]],
+      [1395, "上年", ["last_year", "temporal", "last year", "soeng6 nin2"]],
+      [1396, "不斷", ["continuously", "adverb", "continuously / constantly", "bat1 dyun6"]],
+      [1397, "之類", ["and_the_like_leoi6", "suffix", "and the like / and so on", "zi1 leoi6", "listing_expression"], ["and_the_like_leoi2", "suffix", "and the like / and so on reading variant", "zi1 leoi2", "listing_expression"]],
+      [1399, "片", ["film_pin2", "noun", "film / video / scan / diaper family", "pin2"], ["slice_classifier_pin3", "classifier", "classifier for slices / tracts / broad scenes", "pin3"]],
+      [1411, "艾爾頓", ["proper_name", "proper", "proper-name transliteration", "aai6 ji5 deon6"]],
+      [1417, "亞視", ["asia_television", "proper", "ATV / Asia Television", "aa3 si6"]],
+      [1427, "訂", ["order_deng6", "verb", "order / book / subscribe / reserve", "deng6"], ["formal_set_ding3", "bound", "formal / bound conclude / set / draw up family", "ding3", "bound_morpheme"]],
+      [1428, "迫", ["force_bik1", "verb", "force / press; crowded-pressing family", "bik1"], ["execute_baak1", "verb", "specialized slang execution family", "baak1"]],
+      [1433, "家姐", ["elder_sister", "person", "elder sister", "gaa1 ze1"]],
+      [1435, "捉", ["catch", "verb", "catch / grab", "zuk1"]],
+      [1446, "著", ["writing_zyu3", "bound", "writing / works / notability literary-bound family", "zyu3", "bound_morpheme"], ["wear_zoek3", "verb", "wear / put on family", "zoek3"], ["lexical_zoek6", "verb", "independently attested zoek6 lexical family", "zoek6", "separate_reading_family"]],
+      [1448, "黑", ["black_haak1", "adjective", "black / dark / unlucky color family", "haak1"], ["black_hak1", "adjective", "black / dark / unlucky pronunciation variant", "hak1"]],
+      [1454, "寧願", ["prefer_jyun2", "verb", "would rather / prefer predicate", "ning4 jyun2", "preference_predicate"], ["rather_jyun6", "adverb", "would rather modal-adverb function", "ning4 jyun6", "preference_adverb"]],
+      [1461, "數", ["count_sou2", "verb", "count / enumerate / criticize by listing", "sou2"], ["number_sou3", "noun", "number / figure / amount", "sou3"]],
+      [1462, "樓", ["building_lau2", "noun", "building / flat / floor", "lau2"], ["surname_bound_lau4", "proper", "surname / proper / bound-compound family", "lau4"]],
+      [1463, "膠袋", ["plastic_bag", "noun", "plastic bag", "gaau1 doi2"]]
+    ]);
+    function specMap(rows) {
+      return Object.freeze(Object.fromEntries(rows.map(([r, s, ...specs]) => [s, Object.freeze(specs.map((x) => alt(r, x)))])));
+    }
+    var MULTI_SPECS = specMap(MULTI_ROWS);
+    var READING_SPECS = specMap(READING_ROWS);
+    var ALTERNATIVE_SPECS = Object.freeze({ ...MULTI_SPECS, ...READING_SPECS });
+    var CANDIDATE_ONLY_SURFACES = new Set(Object.keys(ALTERNATIVE_SPECS));
+    var DEFAULT_READING_OVERRIDES = Object.freeze({ "下邊": "haa6 bin1", "收到": "sau1 dou2", "下下": "haa5 haa5", "上年": "soeng6 nin2", "不斷": "bat1 dyun6", "艾爾頓": "aai6 ji5 deon6", "亞視": "aa3 si6", "家姐": "gaa1 ze1", "捉": "zuk1", "膠袋": "gaau1 doi2" });
+    function isNeutralLexicalEntry(e) {
+      return Boolean(e) && e.label === "lex" && e.pos === "lexical_item" && e.syntax === "lexical_item";
+    }
+    function applyReviewedEntries(entries) {
+      if (!Array.isArray(entries)) throw new TypeError("ranks 1251–1500 reviewed overlay requires an entry array");
+      return entries.map(([surface, entry]) => {
+        const p = PROMOTIONS[surface];
+        let next = entry;
+        if (p && isNeutralLexicalEntry(next)) next = { ...next, label: p.label, pos: p.pos, syntax: p.syntax, jyutping: p.jyutping || next.jyutping || "", note: p.gloss, provenance: { kind: "reviewed_lexical_promotion", source: SOURCE, rank: p.rank, pronunciation_status: p.jyutping ? "reviewed_explicit_reading" : "inherited_runtime_candidate_not_independently_promoted", prior_provenance: next.provenance || null } };
+        const j = DEFAULT_READING_OVERRIDES[surface];
+        if (j && next && next.jyutping !== j) next = { ...next, jyutping: j, provenance: { kind: isNeutralLexicalEntry(next) ? "reviewed_candidate_default_pronunciation" : "reviewed_default_pronunciation_correction", source: SOURCE, pronunciation_status: "reviewed_explicit_reading", prior_provenance: next.provenance || null } };
+        return [surface, next];
+      });
+    }
+    function defaultAnalysis(surface, e) {
+      return Object.freeze({ id: `lex:${surface}:default`, label: e.label || "neutral", pos: e.pos || "lexical_item", jyutping: e.jyutping || "", syntax: e.syntax || "lexical_candidate", senses: Object.freeze([{ gloss: e.note || "existing runtime default preserved" }]), provenance: Object.freeze({ kind: "existing_runtime_default_preserved", source: "v0.5.233 token lexicon before ranks 1251–1500 alternatives", prior_provenance: e.provenance || null }) });
+    }
+    function reviewedAlternative(surface, spec, e) {
+      return Object.freeze({ id: `lex:${surface}:r${spec.rank}:${spec.suffix}`, label: spec.label, pos: spec.pos, jyutping: spec.jyutping || e.jyutping || "", syntax: spec.syntax, senses: Object.freeze([{ gloss: spec.gloss }]), provenance: Object.freeze({ kind: "reviewed_lexical_analysis", source: SOURCE, rank: spec.rank, pronunciation_status: spec.jyutping ? "reviewed_explicit_reading" : "inherited_runtime_candidate_not_independently_promoted" }) });
+    }
+    function buildExplicitAnalyses(entries) {
+      const defaults = new Map(entries || []), out = /* @__PURE__ */ Object.create(null);
+      for (const [surface, specs] of Object.entries(ALTERNATIVE_SPECS)) {
+        const e = defaults.get(surface);
+        if (!e) throw new Error(`ranks 1251–1500 explicit analyses reference missing runtime surface: ${surface}`);
+        const rows = [defaultAnalysis(surface, e), ...specs.map((s) => reviewedAlternative(surface, s, e))], seen = /* @__PURE__ */ new Set();
+        for (const row of rows) {
+          if (!row.jyutping) throw new Error(`${row.id}: explicit lexical analysis requires non-empty jyutping`);
+          if (seen.has(row.id)) throw new Error(`${row.id}: duplicate ranks 1251–1500 stable analysis ID`);
+          seen.add(row.id);
+        }
+        out[surface] = Object.freeze(rows);
+      }
+      return Object.freeze(out);
+    }
+    module2.exports = Object.freeze({ SOURCE, PROMOTIONS, SOURCE_ONLY_SURFACES, INDEPENDENT_ZERO_HIT_SURFACES, BLOCKED_ATOMIC_SURFACES, MULTI_SPECS, READING_SPECS, ALTERNATIVE_SPECS, CANDIDATE_ONLY_SURFACES, DEFAULT_READING_OVERRIDES, isNeutralLexicalEntry, applyReviewedEntries, buildExplicitAnalyses });
+  }
+});
+
+// src/runtime-resources/lexicon/token-lexicon/cifu-r1251-1500-runtime-policy.js
+var require_cifu_r1251_1500_runtime_policy = __commonJS({
+  "src/runtime-resources/lexicon/token-lexicon/cifu-r1251-1500-runtime-policy.js"(exports2, module2) {
+    "use strict";
+    var reviewed = require_cifu_r1251_1500_reviewed();
+    var MANDARIN_ONLY_SURFACES = /* @__PURE__ */ new Set(["多少"]);
+    function applyRuntimePolicy(entries) {
+      return reviewed.applyReviewedEntries(entries).filter(([surface]) => !MANDARIN_ONLY_SURFACES.has(surface));
+    }
+    module2.exports = Object.freeze({
+      SOURCE: reviewed.SOURCE,
+      PROMOTIONS: reviewed.PROMOTIONS,
+      SOURCE_ONLY_SURFACES: reviewed.SOURCE_ONLY_SURFACES,
+      INDEPENDENT_ZERO_HIT_SURFACES: reviewed.INDEPENDENT_ZERO_HIT_SURFACES,
+      BLOCKED_ATOMIC_SURFACES: reviewed.BLOCKED_ATOMIC_SURFACES,
+      CANDIDATE_ONLY_SURFACES: reviewed.CANDIDATE_ONLY_SURFACES,
+      DEFAULT_READING_OVERRIDES: reviewed.DEFAULT_READING_OVERRIDES,
+      MANDARIN_ONLY_SURFACES,
+      applyRuntimePolicy
+    });
+  }
+});
+
 // src/runtime-resources/lexicon/token-lexicon/people-and-address.js
 var require_people_and_address = __commonJS({
   "src/runtime-resources/lexicon/token-lexicon/people-and-address.js"(exports2, module2) {
@@ -7586,6 +7879,7 @@ var require_token_lexicon = __commonJS({
     var { applyRuntimePolicy: applyReviewedR501750RuntimePolicy } = require_cifu_r501_750_runtime_policy();
     var { applyRuntimePolicy: applyReviewedR7511000RuntimePolicy } = require_cifu_r751_1000_runtime_policy();
     var { applyRuntimePolicy: applyReviewedR10011250RuntimePolicy } = require_cifu_r1001_1250_runtime_policy();
+    var { applyRuntimePolicy: applyReviewedR12511500RuntimePolicy } = require_cifu_r1251_1500_runtime_policy();
     var baseEntries = [
       ...require_people_and_address(),
       ...require_referents_and_boundaries(),
@@ -7598,12 +7892,14 @@ var require_token_lexicon = __commonJS({
       ...require_study_suite(),
       ...require_frequency_gap_fill_r7()
     ];
-    module2.exports = applyReviewedR10011250RuntimePolicy(
-      applyReviewedR7511000RuntimePolicy(
-        applyReviewedR501750RuntimePolicy(
-          applyNativeReviewCorrections(
-            applyCandidateDefaultReadings(
-              applyReviewedR1250RuntimePolicy(applyReviewedR251500Entries(baseEntries))
+    module2.exports = applyReviewedR12511500RuntimePolicy(
+      applyReviewedR10011250RuntimePolicy(
+        applyReviewedR7511000RuntimePolicy(
+          applyReviewedR501750RuntimePolicy(
+            applyNativeReviewCorrections(
+              applyCandidateDefaultReadings(
+                applyReviewedR1250RuntimePolicy(applyReviewedR251500Entries(baseEntries))
+              )
             )
           )
         )
@@ -7685,6 +7981,7 @@ var require_lexical_analyses = __commonJS({
     var { buildExplicitAnalyses: buildR501750ExplicitAnalyses } = require_cifu_r501_750_reviewed();
     var { buildExplicitAnalyses: buildR7511000ExplicitAnalyses } = require_cifu_r751_1000_reviewed();
     var { buildExplicitAnalyses: buildR10011250ExplicitAnalyses } = require_cifu_r1001_1250_reviewed();
+    var { buildExplicitAnalyses: buildR12511500ExplicitAnalyses } = require_cifu_r1251_1500_reviewed();
     function stableLegacyAnalysisId(surface) {
       return `lex:${String(surface || "")}:default`;
     }
@@ -7731,7 +8028,8 @@ var require_lexical_analyses = __commonJS({
         ...EXPLICIT_ANALYSES,
         ...buildR501750ExplicitAnalyses(entries),
         ...buildR7511000ExplicitAnalyses(entries),
-        ...buildR10011250ExplicitAnalyses(entries)
+        ...buildR10011250ExplicitAnalyses(entries),
+        ...buildR12511500ExplicitAnalyses(entries)
       });
     }
     function buildLexicalAnalysisIndex2(entries, explicitAnalyses = EXPLICIT_ANALYSES) {
