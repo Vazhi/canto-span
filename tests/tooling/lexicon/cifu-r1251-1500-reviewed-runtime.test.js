@@ -16,15 +16,21 @@ const tokenLexicon = Object.fromEntries(tokenEntries);
 const analyses = buildLexicalAnalysisIndex(tokenEntries);
 const dynamic = reviewed.buildExplicitAnalyses(tokenEntries);
 
-function bandSurfaces() {
+function cifuRows() {
   const file = path.join(root, "data", "lexical-frequency", "cifu-spoken-top-2000.tsv");
   const lines = fs.readFileSync(file, "utf8").replace(/^\uFEFF/, "").trimEnd().split(/\r?\n/);
   const header = lines.shift().split("\t");
   const ix = Object.fromEntries(header.map((name, index) => [name, index]));
-  return lines
-    .map((line) => line.split("\t"))
-    .filter((row) => Number(row[ix.rank]) >= 1251 && Number(row[ix.rank]) <= 1500)
-    .map((row) => row[ix.word]);
+  return lines.map((line) => {
+    const row = line.split("\t");
+    return { rank: Number(row[ix.rank]), surface: row[ix.word] };
+  });
+}
+
+function bandSurfaces() {
+  return cifuRows()
+    .filter((row) => row.rank >= 1251 && row.rank <= 1500)
+    .map((row) => row.surface);
 }
 
 function ids(surface) {
@@ -51,6 +57,14 @@ test("ranks 1251-1500 retain every Cantonese surface while excluding positive co
     }
   }
   assert.ok(tokenLexicon["幾多"], "幾多: Cantonese counterpart remains covered");
+});
+
+test("Cifu top-2000 exact runtime coverage is truthfully 1999/2000 after removing 多少", () => {
+  const rows = cifuRows();
+  assert.equal(rows.length, 2000);
+  assert.equal(new Set(rows.map((row) => row.surface)).size, 2000);
+  const missing = rows.filter((row) => !tokenLexicon[row.surface]);
+  assert.deepEqual(missing, [{ rank: 1404, surface: "多少" }]);
 });
 
 test("runtime policy exactly reflects the 126 + 3 + 43 + 29 + 49 authority partition", () => {
