@@ -76,13 +76,12 @@ test("verified bundled-reading batch adds seven missing Cantonese readings witho
   assert.ok((analyses["咋"] || []).some((row) => row.id === "lex:咋:rhetorical_final_particle_zaa4" && row.pos === "particle"));
 });
 
-test("first whole-form batch adds five independently supported lexical defaults", () => {
+test("first whole-form batch adds four independently supported lexical defaults", () => {
   const expected = {
     "爸": ["baa4", "noun"],
     "阿爸": ["aa3 baa4", "noun"],
     "打算": ["daa2 syun3", "verb"],
     "由於": ["jau4 jyu1", "preposition"],
-    "一陣": ["jat1 zan6", "noun"],
   };
   for (const [surface, [jyutping, pos]] of Object.entries(expected)) {
     assert.ok(tokenLexicon[surface], `${surface}: exact lexical entry exists`);
@@ -90,4 +89,5 @@ test("first whole-form batch adds five independently supported lexical defaults"
     assert.equal(tokenLexicon[surface].pos, pos, `${surface}: reviewed default POS`);
   }
   assert.notEqual(tokenLexicon["爸"].jyutping, "ba1", "爸: Sheet romanization does not override verified vernacular baa4");
+  assert.ok(tokenLexicon["一陣"], "一陣: pre-existing exact lexical coverage remains available");
 });
