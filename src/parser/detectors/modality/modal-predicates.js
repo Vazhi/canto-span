@@ -113,6 +113,7 @@ module.exports = function createModalPredicateDetectors(dependencies = {}) {
       slots: templateDerivedSlots("CoordinatedSubjectModalPredicateClause", children),
       trace: traceInfo("generative_template", {
         construction_type: "CoordinatedSubjectModalPredicateClause",
+        template_family: "generative_template",
         template: ["subject!", "modal_vp!", "particle?"],
         assigned_slots: ["subject", "modal_vp", ...particles.map(() => "particle")],
         surfaces: children.map((node) => flattenSurface(node)),
