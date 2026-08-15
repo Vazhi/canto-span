@@ -1,0 +1,54 @@
+name: Temporary ranks 1251-1500 runtime materializer
+
+on:
+  push:
+    branches:
+      - agent/cifu-r1251-1500-runtime-reconcile
+    paths:
+      - .github/workflows/materialize-r1251-1500-runtime.yml
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    if: github.repository == 'Vazhi/canto-span' && github.ref == 'refs/heads/agent/cifu-r1251-1500-runtime-reconcile'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: agent/cifu-r1251-1500-runtime-reconcile
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Verify exact triggering head
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Install build dependencies
+        run: npm ci
+      - name: Run focused ranks 1251-1500 lexical invariants
+        run: node tests/tooling/lexicon/cifu-r1251-1500-reviewed-runtime.test.js
+      - name: Build canonical runtime bundle
+        run: npm run build:runtime
+      - name: Verify generated bundle is source-synchronized
+        run: node tools/build-runtime.js --check
+      - name: Verify bounded generated diff
+        run: |
+          set -euo pipefail
+          changed="$(git diff --name-only)"
+          test "$changed" = "main.js"
+      - name: Commit generated bundle and self-delete
+        run: |
+          set -euo pipefail
+          rm .github/workflows/materialize-r1251-1500-runtime.yml
+          actual="$(git status --porcelain | awk '{print $2}' | sort)"
+          expected="$(printf '%s\n' '.github/workflows/materialize-r1251-1500-runtime.yml' 'main.js' | sort)"
+          test "$actual" = "$expected"
+          git config user.name 'canto-span-automation'
+          git config user.email 'actions@users.noreply.github.com'
+          git add main.js .github/workflows/materialize-r1251-1500-runtime.yml
+          git commit -m 'Rematerialize ranks 1251-1500 runtime bundle'
+          git push origin HEAD:agent/cifu-r1251-1500-runtime-reconcile
