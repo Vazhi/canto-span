@@ -15,6 +15,8 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v6
         with:
           node-version: 24
@@ -62,3 +64,104 @@ jobs:
         run: node --test --test-name-pattern='ranks 1-1000 stable high-value analyses' tests/tooling/lexicon/cifu-r1001-1250-reviewed-runtime.test.js
       - name: Run parser architecture audit
         run: node tests/tooling/parser-coverage/architecture-audit.test.js
+      - name: Run standard suite with inherited debt visible
+        run: node tests/run-all.js --allow-inherited-debt
+      - name: Enforce source-phase inherited-debt ratchets
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE_SHA="88aa6e5d6c3582956ba97c43a9e238954c0935a2"
+          BASE_DIR="$RUNNER_TEMP/canto-span-ratchet-base"
+          rm -rf "$BASE_DIR"
+          git worktree add --detach "$BASE_DIR" "$BASE_SHA"
+          cleanup() {
+            git worktree remove --force "$BASE_DIR" >/dev/null 2>&1 || true
+          }
+          trap cleanup EXIT
+
+          rm -f \
+            "$BASE_DIR/validation/current/regression-suite.json" \
+            "$BASE_DIR/validation/current/np-subsystem-results.json" \
+            "$BASE_DIR/validation/current/construction-tests.json" \
+            "validation/current/regression-suite.json" \
+            "validation/current/np-subsystem-results.json" \
+            "validation/current/construction-tests.json"
+
+          run_baseline() {
+            local label="$1"
+            shift
+            set +e
+            (cd "$BASE_DIR" && "$@") >"$RUNNER_TEMP/baseline-$label.stdout" 2>"$RUNNER_TEMP/baseline-$label.stderr"
+            local exit_code=$?
+            set -e
+            printf '%s\n' "$exit_code" >"$RUNNER_TEMP/baseline-$label.exit"
+          }
+
+          run_baseline regression node tests/run-regression.js
+          run_baseline np node tests/run-np-subsystem.js
+          run_baseline constructions node tests/run-constructions.js
+
+          node tests/run-regression.js >"$RUNNER_TEMP/candidate-regression.stdout" 2>"$RUNNER_TEMP/candidate-regression.stderr" || true
+          node tests/run-np-subsystem.js >"$RUNNER_TEMP/candidate-np.stdout" 2>"$RUNNER_TEMP/candidate-np.stderr" || true
+          node tests/run-constructions.js >"$RUNNER_TEMP/candidate-constructions.stdout" 2>"$RUNNER_TEMP/candidate-constructions.stderr" || true
+
+          synthesize_baseline_if_unobservable() {
+            local suite="$1"
+            local label="$2"
+            local report="$3"
+            local universe="$4"
+            if [[ -f "$report" ]]; then return 0; fi
+            local exit_code
+            exit_code="$(cat "$RUNNER_TEMP/baseline-$label.exit")"
+            if [[ "$exit_code" == "0" ]]; then
+              echo "Baseline suite exited successfully but did not produce required report: $report" >&2
+              exit 1
+            fi
+            local reason_file="$RUNNER_TEMP/baseline-$label.reason"
+            {
+              echo "baseline_exit_code=$exit_code"
+              cat "$RUNNER_TEMP/baseline-$label.stderr"
+              cat "$RUNNER_TEMP/baseline-$label.stdout"
+            } >"$reason_file"
+            node tools/ratchet-unobservable-baseline.js \
+              --suite "$suite" \
+              --universe "$universe" \
+              --output "$report" \
+              --reason-file "$reason_file" >/dev/null
+          }
+
+          synthesize_baseline_if_unobservable regression regression \
+            "$BASE_DIR/validation/current/regression-suite.json" \
+            "$BASE_DIR/tests/fixtures/regression-snapshots.json"
+          synthesize_baseline_if_unobservable np_subsystem np \
+            "$BASE_DIR/validation/current/np-subsystem-results.json" \
+            "$BASE_DIR/tests/fixtures/np-subsystem.json"
+          synthesize_baseline_if_unobservable construction_files constructions \
+            "$BASE_DIR/validation/current/construction-tests.json" \
+            "$BASE_DIR/tests/constructions"
+
+          for report in \
+            "validation/current/regression-suite.json" \
+            "validation/current/np-subsystem-results.json" \
+            "validation/current/construction-tests.json"; do
+            test -f "$report"
+          done
+
+          node tools/verify-regression-ratchet.js \
+            --suite regression \
+            --baseline-result "$BASE_DIR/validation/current/regression-suite.json" \
+            --candidate-result "validation/current/regression-suite.json" \
+            --baseline-universe "$BASE_DIR/tests/fixtures/regression-snapshots.json" \
+            --candidate-universe "tests/fixtures/regression-snapshots.json"
+          node tools/verify-regression-ratchet.js \
+            --suite np_subsystem \
+            --baseline-result "$BASE_DIR/validation/current/np-subsystem-results.json" \
+            --candidate-result "validation/current/np-subsystem-results.json" \
+            --baseline-universe "$BASE_DIR/tests/fixtures/np-subsystem.json" \
+            --candidate-universe "tests/fixtures/np-subsystem.json"
+          node tools/verify-regression-ratchet.js \
+            --suite construction_files \
+            --baseline-result "$BASE_DIR/validation/current/construction-tests.json" \
+            --candidate-result "validation/current/construction-tests.json" \
+            --baseline-universe "$BASE_DIR/tests/constructions" \
+            --candidate-universe "tests/constructions"
