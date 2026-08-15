@@ -1,0 +1,107 @@
+name: Agent Google lexical gap audit
+
+on:
+  push:
+    branches:
+      - agent/cifu-r1751-2000-runtime-reconcile
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    if: github.event.head_commit.message == 'Add temporary Google lexical gap audit'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Download live Google Sheet and audit bounded top 2000
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 \
+            'https://docs.google.com/spreadsheets/d/1ArxEFo46PTrDyDDhWyu3wB0epxqTyd8WBaprnwTEPm4/export?format=csv&gid=1428902047' \
+            -o /tmp/canto-frequency.csv
+          node - <<'NODE' > /tmp/runtime-surfaces.json
+          const entries = require('./src/runtime-resources/lexicon/token-lexicon');
+          process.stdout.write(JSON.stringify([...new Map(entries).keys()]));
+          NODE
+          python - <<'PY'
+          import csv, json, unicodedata
+          from pathlib import Path
+
+          csv_path = Path('/tmp/canto-frequency.csv')
+          runtime = set(json.loads(Path('/tmp/runtime-surfaces.json').read_text()))
+          with csv_path.open(encoding='utf-8-sig', newline='') as f:
+              reader = csv.DictReader(f)
+              rows = list(reader)
+          required = {'Word', 'Frequency', 'Meaning', 'Pronunciation'}
+          missing_headers = required - set(reader.fieldnames or [])
+          if missing_headers:
+              raise SystemExit(f'Google Sheet export missing expected columns: {sorted(missing_headers)}; got {reader.fieldnames}')
+
+          seen = set()
+          bounded = []
+          source_rows = {}
+          for source_index, row in enumerate(rows, start=1):
+              surface = unicodedata.normalize('NFC', (row.get('Word') or '').strip())
+              if not surface or surface in seen:
+                  continue
+              seen.add(surface)
+              bounded.append(surface)
+              source_rows[surface] = {
+                  'source_row': source_index,
+                  'frequency': (row.get('Frequency') or '').strip(),
+                  'pronunciation': (row.get('Pronunciation') or '').strip(),
+                  'meaning': (row.get('Meaning') or '').strip(),
+              }
+              if len(bounded) == 2000:
+                  break
+
+          if len(bounded) != 2000:
+              raise SystemExit(f'Expected at least 2000 distinct surfaces, got {len(bounded)}')
+
+          gaps = [s for s in bounded if s not in runtime]
+          marked = ['面','走','公司','頭','覺','地','跟','海','機','教','把','車','靠','腳','旗','門','口','抹','片','罷','響','校','嘴','仲','法官','多少']
+          marked_status = []
+          for surface in marked:
+              try:
+                  bounded_rank = bounded.index(surface) + 1
+              except ValueError:
+                  bounded_rank = None
+              marked_status.append({
+                  'surface': surface,
+                  'bounded_rank': bounded_rank,
+                  'in_bounded_top_2000': bounded_rank is not None,
+                  'in_runtime': surface in runtime,
+              })
+
+          print('GOOGLE_LEXICAL_GAP_AUDIT_BEGIN')
+          print(json.dumps({
+              'sheet_rows': len(rows),
+              'bounded_distinct_surfaces': len(bounded),
+              'runtime_surface_count': len(runtime),
+              'bounded_runtime_covered': len(bounded) - len(gaps),
+              'bounded_runtime_missing': len(gaps),
+              'marked_status': marked_status,
+              'gaps': [
+                  {'bounded_rank': i + 1, 'surface': s, **source_rows[s]}
+                  for i, s in enumerate(bounded) if s in set(gaps)
+              ],
+          }, ensure_ascii=False, indent=2))
+          print('GOOGLE_LEXICAL_GAP_AUDIT_END')
+          PY
+      - name: Self-delete temporary audit workflow
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/agent-google-lexical-gap-audit.yml
+          git commit -m 'Remove temporary Google lexical gap audit'
+          git push origin HEAD:agent/cifu-r1751-2000-runtime-reconcile
