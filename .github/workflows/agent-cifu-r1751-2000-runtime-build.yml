@@ -21,169 +21,10 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
-      - name: Compile merged authority
+      - name: Compile merged final-band authority
         run: node tools/agent-cifu-r1751-2000-runtime-build.js
-      - name: Purge active contamination history and enforce reviewed default corrections
-        run: |
-          set -euo pipefail
-          python - <<'PY'
-          from pathlib import Path
-          import csv
-          import hashlib
-          import io
-          import json
-          import re
-
-          reviewed_path = Path('src/runtime-resources/lexicon/token-lexicon/cifu-r1751-2000-reviewed.js')
-          reviewed = reviewed_path.read_text()
-          anchor = '    const promotion = PROMOTIONS[surface]; let next = entry;\n'
-          correction = '''    const promotion = PROMOTIONS[surface]; let next = entry;
-              if (surface === "嘴" && next) {
-                next = {
-                  ...next,
-                  label: "what",
-                  pos: "noun",
-                  syntax: "common_noun",
-                  jyutping: "zeoi2",
-                  note: "Reviewed Cifu ranks 1751–2000 lexical selection: noun mouth / beak / spout",
-                  provenance: {
-                    kind: "reviewed_typed_default_correction",
-                    source: SOURCE,
-                    rank: 1995,
-                    pronunciation_status: "reviewed_explicit_reading",
-                    prior_provenance: next.provenance || null,
-                  },
-                };
-              }
-          '''
-          if 'kind: "reviewed_typed_default_correction"' not in reviewed:
-              if anchor not in reviewed:
-                  raise SystemExit('final-band reviewed default-correction anchor missing')
-              reviewed = reviewed.replace(anchor, correction, 1)
-              reviewed_path.write_text(reviewed)
-
-          source_path = Path('data/lexical-frequency/cifu-spoken-top-2000.tsv')
-          source_lines = source_path.read_text(encoding='utf-8-sig').splitlines()
-          reader = csv.DictReader(source_lines, delimiter='\t')
-          source_rows = list(reader)
-          if len(source_rows) != 2000:
-              raise SystemExit(f'expected 2000 Cifu rows before cleanup, got {len(source_rows)}')
-          for required in ('rank', 'word', 'cifu_spoken_adult'):
-              if required not in (reader.fieldnames or []):
-                  raise SystemExit(f'Cifu source missing required field {required}')
-          out = io.StringIO()
-          writer = csv.DictWriter(out, fieldnames=['rank', 'word', 'cifu_spoken_adult'], delimiter='\t', lineterminator='\n')
-          writer.writeheader()
-          for row in source_rows:
-              writer.writerow({key: row[key] for key in ('rank', 'word', 'cifu_spoken_adult')})
-          source_path.write_text(out.getvalue())
-          source_sha = hashlib.sha256(source_path.read_bytes()).hexdigest()
-
-          core_path = Path('data/lexical-frequency/common-spoken-cantonese-core-2000.tsv')
-          core_lines = core_path.read_text().splitlines()
-          core_reader = csv.DictReader(core_lines, delimiter='\t')
-          core_rows = list(core_reader)
-          if len(core_rows) != 2000:
-              raise SystemExit(f'expected 2000 common-core rows, got {len(core_rows)}')
-          core_fields = list(core_reader.fieldnames or [])
-          if 'cifu_candidate_jyutping' in core_fields:
-              core_fields.remove('cifu_candidate_jyutping')
-          core_out = io.StringIO()
-          core_writer = csv.DictWriter(core_out, fieldnames=core_fields, delimiter='\t', lineterminator='\n', extrasaction='ignore')
-          core_writer.writeheader()
-          core_writer.writerows(core_rows)
-          core_path.write_text(core_out.getvalue())
-
-          manifest_path = Path('data/lexical-frequency/common-spoken-cantonese-core-2000.manifest.json')
-          manifest = json.loads(manifest_path.read_text())
-          limitations = manifest.get('limitations', [])
-          limitations = [line for line in limitations if 'Cifu definitions/Jyutping' not in line and 'Mandarin contamination' not in line]
-          cleaned_limitation = 'The active Cifu comparison source contributes rank, surface, and frequency only; imported lexical meanings, candidate readings, and historical runtime audit metadata are intentionally absent.'
-          if cleaned_limitation not in limitations:
-              limitations.append(cleaned_limitation)
-          manifest['limitations'] = limitations
-          cifu_secondary = manifest['sources']['cifu_secondary']
-          cifu_secondary['role'] = 'secondary rank/frequency comparison only; not mandatory inclusion or lexical authority'
-          cifu_secondary['sha256'] = source_sha
-          manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2, sort_keys=True) + '\n')
-
-          gap_path = Path('src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js')
-          gap = gap_path.read_text()
-          pattern = re.compile(r'note: "Cifu SpokenAdult rank (\d+), frequency ([^;\"]+);.*?Exact surface retained as neutral lexical coverage; POS/grammar-role verification is intentionally separate\."')
-          gap, replacements = pattern.subn(lambda m: f'note: "Cifu SpokenAdult rank {m.group(1)}, frequency {m.group(2)}. Exact surface retained as neutral lexical coverage; lexical meaning/category comes only from reviewed overlays or independent evidence."', gap)
-          if replacements == 0 and ('Source readings:' in gap or 'prior audit status' in gap):
-              raise SystemExit('frequency-gap Cifu narrative cleanup could not remove stale content')
-          if 'Source readings:' in gap or 'prior audit status' in gap:
-              raise SystemExit('frequency-gap imported Cifu narrative remains after cleanup')
-          gap_path.write_text(gap)
-
-          registry_path = Path('src/runtime-resources/lexicon/lexical-ingestion-registry.js')
-          registry = registry_path.read_text()
-          registry = re.sub(r'^\s*source_jyutping_column:.*\n', '', registry, flags=re.MULTILINE)
-          registry = re.sub(r'^\s*source_jyutping_unknown_values:.*\n', '', registry, flags=re.MULTILINE)
-          old_ledger = '    contamination_ledger: "data/lexical-frequency/cifu-mandarin-contamination-runtime-audit.tsv",'
-          new_ledger = '    exclusion_ledger: "data/lexical-frequency/cifu-runtime-exclusions.tsv",'
-          if old_ledger in registry:
-              registry = registry.replace(old_ledger, new_ledger, 1)
-          elif new_ledger not in registry:
-              raise SystemExit('lexical-ingestion registry ledger anchor missing')
-          registry_path.write_text(registry)
-
-          audit_path = Path('tools/lexical-ingestion-tokenization-audit.js')
-          audit = audit_path.read_text()
-          audit = audit.replace('spec.contamination_ledger', 'spec.exclusion_ledger')
-          audit = audit.replace('removed_surface_missing_from_contamination_ledger', 'removed_surface_missing_from_exclusion_ledger')
-          audit = audit.replace('contamination_ledger_removal_not_in_runtime_policy', 'exclusion_ledger_removal_not_in_runtime_policy')
-          audit_path.write_text(audit)
-
-          exclusions_path = Path('data/lexical-frequency/cifu-runtime-exclusions.tsv')
-          exclusions_path.write_text(
-              'rank\tsurface\taction\tevidence\n'
-              '1404\t多少\tremove_runtime_surface\tIndependent Cantonese review excludes this whole surface; ordinary Cantonese quantity questions use 幾多.\n'
-          )
-
-          retired = [
-              'data/lexical-frequency/cifu-explicit-mandarin-contamination.tsv',
-              'data/lexical-frequency/cifu-mandarin-contamination-runtime-audit.tsv',
-              'data/lexical-frequency/cifu-mandarin-contamination-summary.json',
-              'data/lexical-frequency/cifu-mandarin-oriented-adjudication.tsv',
-          ]
-          for name in retired:
-              Path(name).unlink(missing_ok=True)
-
-          docs_path = Path('docs/research/LEXICAL-COVERAGE-TOP-2000.md')
-          docs = docs_path.read_text()
-          docs = docs.replace('For disputed Cifu metadata, use independent Cantonese evidence such as:', 'For lexical adjudication, use independent Cantonese evidence such as:')
-          start = docs.find('## Mandarin-contamination ledgers')
-          end = docs.find('## Regression policy')
-          if start == -1 or end == -1 or end <= start:
-              if '## Runtime exclusion policy' not in docs:
-                  raise SystemExit('lexical coverage cleanup section anchors missing')
-          else:
-              replacement = '''## Runtime exclusion policy
-
-The active repository does not retain rejected source analyses as historical fallback authority. Cifu contributes rank, exact surface, and frequency only.
-
-- Whole-surface exclusions live in `data/lexical-frequency/cifu-runtime-exclusions.tsv` as positive executable constraints.
-- Rank 1404 `多少` is currently excluded from the effective runtime; ordinary Cantonese quantity questions use `幾多`.
-- Retained surfaces receive only independently reviewed Cantonese analyses.
-- A surface is never deleted merely because it is compositional, rare, formal, domain-specific, or regression-causing.
-- When independent evidence changes a lexical judgment, update the reviewed authority and executable runtime state directly rather than preserving superseded source interpretations in active docs/data.
-
-'''
-              docs = docs[:start] + replacement + docs[end:]
-          docs_path.write_text(docs)
-
-          print(json.dumps({
-              'cifu_rows': len(source_rows),
-              'cifu_active_columns': ['rank', 'word', 'cifu_spoken_adult'],
-              'common_core_rows': len(core_rows),
-              'frequency_gap_notes_cleaned_this_run': replacements,
-              'retired_contamination_artifacts': retired,
-              'exclusion_registry': str(exclusions_path),
-              'lexical_coverage_doc_cleaned': str(docs_path),
-          }, ensure_ascii=False, indent=2))
-          PY
+      - name: Purge active Cifu contamination history
+        run: node tools/agent-cifu-active-tree-cleanup.js
       - name: Focused final-band invariants
         run: node --test tests/tooling/lexicon/cifu-r1751-2000-reviewed-runtime.test.js
       - name: Scalable lexical-ingestion tests
@@ -204,7 +45,8 @@ The active repository does not retain rejected source analyses as historical fal
           done
           if git grep -n -E 'cifu-explicit-mandarin-contamination|cifu-mandarin-contamination|cifu-mandarin-oriented-adjudication|explicit_mandarin_marker|expert_mandarin_oriented' -- \
             ':!/.github/workflows/agent-cifu-r1751-2000-runtime-build.yml' \
-            ':!/tools/agent-cifu-r1751-2000-runtime-build.js'; then
+            ':!/tools/agent-cifu-r1751-2000-runtime-build.js' \
+            ':!/tools/agent-cifu-active-tree-cleanup.js'; then
             echo 'Retired contamination history is still referenced in the active tree.' >&2
             exit 1
           fi
@@ -239,7 +81,7 @@ The active repository does not retain rejected source analyses as historical fal
       - name: Enforce source-phase write allowlist
         run: |
           set -euo pipefail
-          git restore --worktree --staged main.js validation/current tools/agent-cifu-r1751-2000-runtime-build.js 2>/dev/null || true
+          git restore --worktree --staged main.js validation/current 2>/dev/null || true
           git clean -fd validation/current >/dev/null 2>&1 || true
           mapfile -t CHANGED < <({ git diff --name-only; git ls-files --others --exclude-standard; } | sort -u)
           printf 'Source-phase changes:\n'
@@ -255,25 +97,6 @@ The active repository does not retain rejected source analyses as historical fal
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A \
-            src/runtime-resources/lexicon/lexical-analyses.js \
-            src/runtime-resources/lexicon/lexical-ingestion-registry.js \
-            src/runtime-resources/lexicon/token-lexicon/index.js \
-            src/runtime-resources/lexicon/token-lexicon/cifu-r1751-2000-reviewed.js \
-            src/runtime-resources/lexicon/token-lexicon/cifu-r1751-2000-runtime-policy.js \
-            src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js \
-            tools/lexical-ingestion-tokenization-audit.js \
-            tests/tooling/lexicon/cifu-r1751-2000-reviewed-runtime.test.js \
-            tests/tooling/lexicon/lexical-ingestion-tokenization-audit.test.js \
-            tests/run-all.js \
-            data/lexical-frequency/cifu-spoken-top-2000.tsv \
-            data/lexical-frequency/common-spoken-cantonese-core-2000.tsv \
-            data/lexical-frequency/common-spoken-cantonese-core-2000.manifest.json \
-            data/lexical-frequency/cifu-runtime-exclusions.tsv \
-            data/lexical-frequency/cifu-explicit-mandarin-contamination.tsv \
-            data/lexical-frequency/cifu-mandarin-contamination-runtime-audit.tsv \
-            data/lexical-frequency/cifu-mandarin-contamination-summary.json \
-            data/lexical-frequency/cifu-mandarin-oriented-adjudication.tsv \
-            docs/research/LEXICAL-COVERAGE-TOP-2000.md
+          git add -A src/runtime-resources/lexicon tools/lexical-ingestion-tokenization-audit.js tests/tooling/lexicon tests/run-all.js data/lexical-frequency docs/research/LEXICAL-COVERAGE-TOP-2000.md
           git commit -m 'Implement final Cifu band and purge active contamination history'
           git push origin HEAD:agent/cifu-r1751-2000-runtime-reconcile
