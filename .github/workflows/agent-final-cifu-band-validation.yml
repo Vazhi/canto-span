@@ -20,6 +20,67 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
+      - name: Audit Cantonese-first lexical admission boundary
+        run: |
+          node <<'NODE'
+          const fs = require('node:fs');
+          const path = require('node:path');
+          const root = process.cwd();
+          function rows(rel) {
+            const lines = fs.readFileSync(path.join(root, rel), 'utf8').replace(/^\uFEFF/u, '').trimEnd().split(/\r?\n/u);
+            const header = lines.shift().split('\t');
+            return lines.map((line) => {
+              const cells = line.split('\t');
+              return Object.fromEntries(header.map((name, i) => [name, cells[i] ?? '']));
+            });
+          }
+          const coreRows = rows('data/lexical-frequency/common-spoken-cantonese-core-2000.tsv');
+          const core = new Set(coreRows.map((row) => row.word));
+          const runtimeEntries = require('./src/runtime-resources/lexicon/token-lexicon');
+          const runtime = new Map(runtimeEntries);
+          const r7 = require('./src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7');
+          const reviewedModules = [
+            './src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-reviewed',
+            './src/runtime-resources/lexicon/token-lexicon/cifu-r251-500-reviewed',
+            './src/runtime-resources/lexicon/token-lexicon/cifu-r501-750-reviewed',
+            './src/runtime-resources/lexicon/token-lexicon/cifu-r751-1000-reviewed',
+            './src/runtime-resources/lexicon/token-lexicon/cifu-r1001-1250-reviewed',
+            './src/runtime-resources/lexicon/token-lexicon/cifu-r1251-1500-reviewed',
+            './src/runtime-resources/lexicon/token-lexicon/cifu-r1501-1750-reviewed',
+            './src/runtime-resources/lexicon/token-lexicon/cifu-r1751-2000-reviewed',
+          ].map((name) => require(name));
+          const accepted = new Set();
+          const acceptedObjectExports = [
+            'PROMOTIONS', 'CORRECTIONS', 'EXPLICIT_ANALYSES', 'ALTERNATIVE_SPECS',
+            'MULTI_SPECS', 'READING_SPECS'
+          ];
+          for (const mod of reviewedModules) {
+            for (const name of acceptedObjectExports) {
+              const value = mod[name];
+              if (value && typeof value === 'object' && !Array.isArray(value) && !(value instanceof Set)) {
+                for (const surface of Object.keys(value)) accepted.add(surface);
+              }
+            }
+          }
+          const coreMissing = coreRows.filter((row) => !runtime.has(row.word)).map((row) => ({ rank: Number(row.rank), surface: row.word }));
+          const r7OutsideAuthority = r7
+            .filter(([surface]) => !core.has(surface) && !accepted.has(surface))
+            .map(([surface, entry]) => ({ surface, jyutping: entry.jyutping || '', note: entry.note || '' }));
+          const report = {
+            core_rows: coreRows.length,
+            core_runtime_missing_count: coreMissing.length,
+            core_runtime_missing: coreMissing.slice(0, 100),
+            r7_rows: r7.length,
+            independently_reviewed_surface_count: accepted.size,
+            r7_outside_cantonese_core_or_positive_review_count: r7OutsideAuthority.length,
+            r7_outside_cantonese_core_or_positive_review: r7OutsideAuthority.slice(0, 200),
+            raw_cifu_special_cases: {
+              '多少': { in_core: core.has('多少'), positively_reviewed: accepted.has('多少'), in_r7: r7.some(([s]) => s === '多少'), in_effective_runtime: runtime.has('多少') },
+              '○': { in_core: core.has('○'), positively_reviewed: accepted.has('○'), in_r7: r7.some(([s]) => s === '○'), in_effective_runtime: runtime.has('○') },
+            },
+          };
+          console.log(JSON.stringify(report, null, 2));
+          NODE
       - name: Build deterministic runtime in workspace
         run: npm run build:runtime
       - name: Run final-band focused invariants
