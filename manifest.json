@@ -1,9 +1,9 @@
 {
   "id": "canto-span",
   "name": "Canto Span",
-  "version": "0.5.234",
+  "version": "0.5.235",
   "minAppVersion": "1.5.0",
-  "description": "v0.5.234 reconciles reviewed Cifu ranks 1251–1500 with stable lexical alternatives, evidence-strength safeguards, and positive non-Cantonese 多少 removal.",
+  "description": "v0.5.235 adds scalable lexical-ingestion contamination/tokenization architecture gates and preserves independent lexical authority.",
   "author": "Chris Crawford / OpenAI ChatGPT",
   "authorUrl": "",
   "isDesktopOnly": false

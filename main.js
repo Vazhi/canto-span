@@ -8309,11 +8309,107 @@ var require_address_terms = __commonJS({
   }
 });
 
+// src/runtime-resources/lexicon/lexical-ingestion-registry.js
+var require_lexical_ingestion_registry = __commonJS({
+  "src/runtime-resources/lexicon/lexical-ingestion-registry.js"(exports2, module2) {
+    "use strict";
+    function surfaceSet(values = []) {
+      return new Set(values || []);
+    }
+    function neutralFrequencyCoverageEntry(entry = {}) {
+      return String(entry.pos || "") === "lexical_item" && String(entry.syntax || "").split(/\s+/u).includes("lexical_item") && String(entry.note || "").includes("Exact surface retained as neutral lexical coverage");
+    }
+    function collectBlockedAtomicSurfaces(policyModules = []) {
+      const surfaces = /* @__PURE__ */ new Set();
+      for (const policy of policyModules) {
+        if (!policy || typeof policy !== "object") continue;
+        for (const [key, value] of Object.entries(policy)) {
+          if (/blocked.*atomic/i.test(key)) {
+            if (value instanceof Set || Array.isArray(value)) {
+              for (const surface of value) surfaces.add(surface);
+            } else if (value && typeof value === "object") {
+              for (const surface of Object.keys(value)) surfaces.add(surface);
+            }
+          }
+          if (value && typeof value === "object" && !(value instanceof Set) && !Array.isArray(value)) {
+            for (const [surface, disposition] of Object.entries(value)) {
+              if (disposition === "blocked_atomic") surfaces.add(surface);
+              if (disposition && typeof disposition === "object" && disposition.status === "blocked_atomic") surfaces.add(surface);
+            }
+          }
+        }
+      }
+      return surfaces;
+    }
+    var cifuPolicyModules = Object.freeze([
+      require_cifu_r1_250_reviewed(),
+      require_cifu_r251_500_reviewed(),
+      require_cifu_r501_750_reviewed(),
+      require_cifu_r751_1000_reviewed(),
+      require_cifu_r1001_1250_reviewed(),
+      require_cifu_r1251_1500_reviewed()
+    ]);
+    var lexicalIngestions = Object.freeze([
+      Object.freeze({
+        id: "cifu-spoken-top-2000",
+        source_file: "data/lexical-frequency/cifu-spoken-top-2000.tsv",
+        delimiter: "	",
+        surface_column: "word",
+        rank_column: "rank",
+        source_jyutping_column: "cifu_jyutping",
+        source_jyutping_unknown_values: Object.freeze(["", "-", "?", "*?"]),
+        expected_rows: 2e3,
+        require_contiguous_ranks: true,
+        require_exact_runtime_coverage: true,
+        require_jyutping: true,
+        carrier_prefixes: Object.freeze(["", "我"]),
+        carrier_suffixes: Object.freeze(["", "呀"]),
+        policy_modules: cifuPolicyModules,
+        removed_surfaces: surfaceSet(["多少"]),
+        contamination_ledger: "data/lexical-frequency/cifu-mandarin-contamination-runtime-audit.tsv"
+      })
+    ]);
+    var blockedAtomicSurfaces = /* @__PURE__ */ new Set();
+    var removedIngestionSurfaces = /* @__PURE__ */ new Set();
+    for (const ingestion of lexicalIngestions) {
+      for (const surface of collectBlockedAtomicSurfaces(ingestion.policy_modules)) blockedAtomicSurfaces.add(surface);
+      for (const surface of ingestion.removed_surfaces || []) removedIngestionSurfaces.add(surface);
+    }
+    function blockedAtomicRuntimeDisposition(surface, tokenLexicon = {}, options = {}) {
+      const blocked = options.blocked_surfaces || blockedAtomicSurfaces;
+      const removed = options.removed_surfaces || removedIngestionSurfaces;
+      if (!blocked.has(surface)) return "not_blocked";
+      if (removed.has(surface)) return "removed_from_runtime";
+      const entry = tokenLexicon[surface];
+      if (!entry) return "promotion_only_no_runtime_entry";
+      if (Array.from(String(surface || "")).length <= 1) return "promotion_only_single_character";
+      if (neutralFrequencyCoverageEntry(entry)) return "force_compositional_neutral_fallback";
+      return "promotion_only_independent_runtime_authority";
+    }
+    function ingestionForcedCompositionalSurfaces(tokenLexicon = {}) {
+      return new Set([...blockedAtomicSurfaces].filter(
+        (surface) => blockedAtomicRuntimeDisposition(surface, tokenLexicon) === "force_compositional_neutral_fallback"
+      ));
+    }
+    module2.exports = Object.freeze({
+      lexicalIngestions,
+      blockedAtomicSurfaces,
+      removedIngestionSurfaces,
+      neutralFrequencyCoverageEntry,
+      collectBlockedAtomicSurfaces,
+      blockedAtomicRuntimeDisposition,
+      ingestionForcedCompositionalSurfaces
+    });
+  }
+});
+
 // src/runtime-resources/lexicon/compositional-lexical-phrases.js
 var require_compositional_lexical_phrases = __commonJS({
   "src/runtime-resources/lexicon/compositional-lexical-phrases.js"(exports2, module2) {
     "use strict";
-    module2.exports = [
+    var tokenLexicon = Object.fromEntries(require_token_lexicon());
+    var { ingestionForcedCompositionalSurfaces } = require_lexical_ingestion_registry();
+    var authoredCompositionalPhrases = [
       "唔開心",
       "唔鍾意",
       "一百萬",
@@ -8396,6 +8492,10 @@ var require_compositional_lexical_phrases = __commonJS({
       "Book完枱",
       "話畀你知"
     ];
+    module2.exports = [.../* @__PURE__ */ new Set([
+      ...authoredCompositionalPhrases,
+      ...ingestionForcedCompositionalSurfaces(tokenLexicon)
+    ])];
   }
 });
 
@@ -16735,6 +16835,7 @@ var require_modal_predicates = __commonJS({
           slots: templateDerivedSlots2(type, children),
           trace: traceInfo2("generative_template", {
             construction_type: type,
+            template_family: "generative_template",
             template: modalClauseTemplateForType(type, modifiers),
             assigned_slots: [type === "LocativeModalPredicateClause" ? "location" : type === "SubjectModalPredicateClause" ? "subject" : "topic", ...modifiers.map((node) => nodeCanFillSlot2(node, "time") ? "time" : nodeCanFillSlot2(node, "how") ? "how" : "manner"), "modal_vp"],
             surfaces: children.map((node) => flattenSurface2(node)),
@@ -16757,6 +16858,7 @@ var require_modal_predicates = __commonJS({
           slots: templateDerivedSlots2("CoordinatedSubjectModalPredicateClause", children),
           trace: traceInfo2("generative_template", {
             construction_type: "CoordinatedSubjectModalPredicateClause",
+            template_family: "generative_template",
             template: ["subject!", "modal_vp!", "particle?"],
             assigned_slots: ["subject", "modal_vp", ...particles.map(() => "particle")],
             surfaces: children.map((node) => flattenSurface2(node)),
@@ -28243,7 +28345,7 @@ var {
 } = require_learner_glosses();
 var createLearnerDisplay = require_learner_display();
 var createCantoSpanPlugin = require_canto_span_plugin();
-var CANTO_SPAN_RUNTIME_VERSION = "0.5.234";
+var CANTO_SPAN_RUNTIME_VERSION = "0.5.235";
 var {
   runtimeConstructionRegistryVersion: RUNTIME_CONSTRUCTION_REGISTRY_VERSION,
   constructionLabelRegistry,

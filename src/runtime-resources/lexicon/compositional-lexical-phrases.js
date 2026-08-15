@@ -1,6 +1,9 @@
 "use strict";
 
-module.exports = [
+const tokenLexicon = Object.fromEntries(require("./token-lexicon"));
+const { ingestionForcedCompositionalSurfaces } = require("./lexical-ingestion-registry");
+
+const authoredCompositionalPhrases = [
   "唔開心", "唔鍾意",
   "一百萬", "二百萬", "三百萬", "四百萬", "五百萬", "六百萬", "七百萬", "八百萬", "九百萬",
   "一千萬", "二千萬", "三千萬", "四千萬", "五千萬", "六千萬", "七千萬", "八千萬", "九千萬", "一億",
@@ -15,3 +18,14 @@ module.exports = [
   "好貴", "好靚", "好正", "好出名", "好適合", "平啲",
   "聽過", "去過", "未去過", "講緊", "試吓", "睇睇", "Book完", "Book完枱", "話畀你知",
 ];
+
+// An ingestion-level blocked_atomic decision only blocks that ingestion from
+// promoting the source row as a new opaque lexeme. It becomes a tokenizer
+// compositional guardrail only when the effective runtime still contains the
+// same multi-character surface solely as a neutral frequency-list fallback.
+// Independently reviewed typed lexemes (for example 畫畫) retain their stronger
+// runtime authority, and single-character rows cannot meaningfully decompose.
+module.exports = [...new Set([
+  ...authoredCompositionalPhrases,
+  ...ingestionForcedCompositionalSurfaces(tokenLexicon),
+])];
