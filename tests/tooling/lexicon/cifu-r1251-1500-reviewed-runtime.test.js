@@ -73,6 +73,8 @@ test("runtime policy exactly reflects the 126 + 3 + 43 + 29 + 49 authority parti
     assert.ok(!reviewed.BLOCKED_ATOMIC_SURFACES.has(surface), `${surface}: blocked row is not promoted`);
     assert.ok(!alternativeSet.has(surface), `${surface}: broad selection is not duplicated as an alternative set`);
   }
+  assert.equal(reviewed.PROMOTIONS["似乎"].pos, "function", "似乎: R3 keeps the broad epistemic/seeming family category-neutral");
+  assert.equal(reviewed.PROMOTIONS["似乎"].syntax, "epistemic_seeming_expression");
 });
 
 test("126 independently supportable broad rows are typed without flattening richer existing defaults", () => {
@@ -166,6 +168,12 @@ test("implementation-critical polyfunctionality and reading splits survive", () 
   assert.ok(bandRows("花").some((row) => row.pos === "verb"));
   assert.ok(bandRows("花").some((row) => row.pos === "adjective"));
   assert.ok(bandRows("花").some((row) => row.pos === "bound"));
+  assert.ok(bandRows("金").some((row) => row.pos === "noun"));
+  assert.ok(bandRows("金").some((row) => row.pos === "bound"), "金: R3 preserves a bound/attributive family");
+  assert.ok(!bandRows("金").some((row) => row.pos === "adjective"), "金: no unsupported free adjective analysis");
+  assert.ok(bandRows("迫").some((row) => row.pos === "verb" && row.jyutping === "bik1"));
+  assert.ok(bandRows("迫").some((row) => row.pos === "adjective" && row.jyutping === "bik1"), "迫: crowded/pressing property use is preserved separately");
+  assert.ok(bandRows("迫").some((row) => row.pos === "verb" && row.jyutping === "baak1"));
 
   assert.deepEqual(new Set(readings("唔好意思")), new Set(["m4 hou2 ji3 si1", "m4 hou2 ji3 si3"]));
   assert.deepEqual(new Set(readings("純粹")), new Set(["seon4 seoi5", "seon4 seoi6"]));
