@@ -1,8 +1,8 @@
 "use strict";
 
 // General lexical coverage discovered while auditing ranked lexical ingestions.
-// These are independently sourced lexemes, not promotions merely because a
-// longer frequency-list surface contains them.
+// These are independently sourced lexemes or attested orthographic variants,
+// not promotions merely because a longer frequency-list surface contains them.
 module.exports = [
   ["刻", {
     label: "when",
@@ -43,5 +43,26 @@ module.exports = [
     jyutping: "jau4 jyu1",
     syntax: "causal_relation_preposition causal_connector",
     note: "because of / due to; independently verified fixed Cantonese causal relation expression.",
+  }],
+  ["我地", {
+    label: "who",
+    pos: "pronoun",
+    jyutping: "ngo5 dei6",
+    syntax: "subject_or_topic",
+    note: "Informal orthographic variant of 我哋 'we/us'; attested separately in the bounded vernacular source. Canonical spelling remains 我哋.",
+  }],
+  ["你地", {
+    label: "who",
+    pos: "pronoun",
+    jyutping: "nei5 dei6",
+    syntax: "subject_or_topic",
+    note: "Informal orthographic variant of 你哋 'you (plural)'; attested in vernacular transcript data. Canonical spelling remains 你哋.",
+  }],
+  ["佢地", {
+    label: "who",
+    pos: "pronoun",
+    jyutping: "keoi5 dei6",
+    syntax: "subject_or_topic",
+    note: "Informal orthographic variant of 佢哋 'they/them'; attested separately in the bounded vernacular source. Canonical spelling remains 佢哋.",
   }],
 ];
