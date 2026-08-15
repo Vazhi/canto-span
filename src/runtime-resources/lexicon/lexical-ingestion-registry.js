@@ -50,6 +50,7 @@ const lexicalIngestions = Object.freeze([
     surface_column: "word",
     rank_column: "rank",
     source_jyutping_column: "cifu_jyutping",
+    source_jyutping_unknown_values: Object.freeze(["", "-", "?", "*?"]),
     expected_rows: 2000,
     require_contiguous_ranks: true,
     require_exact_runtime_coverage: true,
