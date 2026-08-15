@@ -62,18 +62,13 @@ jobs:
       - name: Verify source-first bundle
         run: node tools/build-runtime.js --check
       - name: Verify Week 16 lexical contract
-        shell: bash
-        run: |
-          set +e
-          node tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js
-          status=$?
-          git restore --worktree -- validation/current/glossika-week16-runtime-lexicon.json
-          exit "$status"
+        run: node tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js
       - name: Verify ranks 751-1000 focused invariants
         run: node tests/tooling/lexicon/cifu-r751-1000-reviewed-runtime.test.js
       - name: Verify bounded state diff
         shell: bash
         run: |
+          git restore --source=HEAD --staged --worktree -- validation/current/glossika-week16-runtime-lexicon.json
           rm .github/workflows/temporary-cifu-r751-1000-version-materialize.yml
           mapfile -t changed < <(git status --short | sed -E 's/^...//')
           printf 'Pending paths:\n%s\n' "${changed[*]}"
