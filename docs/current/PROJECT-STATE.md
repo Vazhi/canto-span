@@ -6,7 +6,7 @@ This file is the sole present-tense project snapshot. Live GitHub intake and wor
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.232 |
+| Runtime | v0.5.233 |
 | Runtime labels | 134 |
 | Current construction notes | 134 |
 | Available construction notes | 134 |
@@ -51,6 +51,8 @@ The permanent registry contains 134 current and 48 retired records. UUID and sho
 Twenty-one accepted batches have adjudicated 94 records; 88 remain pending. Canonical decisions live in `data/construction-adjudications.json` and immutable batch files under `data/construction-adjudication-batches/`.
 
 Current consequences include:
+
+- v0.5.233 implements the consolidated #878/#880 Cifu ranks 1001–1250 lexical authority while retaining complete 2,000/2,000 exact-surface coverage: 93 independently supportable broad rows receive reviewed typed defaults when their prior runtime entry was neutral, 76 surfaces expose stable reviewed alternative records (51 multi-analysis and 25 reading-specific), 32 zero-hit rows explicitly marked `source_only_pending_cantonese_confirmation` receive no new band-specific typed fact, and all 49 `blocked_atomic` rows receive no new typed whole-surface analysis; the independently checked zero-hit rows `兆`, `整個`, and `好話` are implemented according to the authority, explicit audit supersessions for `處理`, `舖`, `好話`, and `拿` are preserved, `盡量` remains split only on independent lexical/orthographic evidence rather than raw HKCanCor tag disagreement, richer pre-existing typed defaults such as `百` are preserved rather than flattened to a generic band role, and ranks 1–1000 stable analyses/defaults remain protected; no construction identity or status, survey, corpus, release-publication, or deployment state is changed;
 
 - v0.5.232 implements the final #872 Cifu ranks 751–1000 lexical adjudication while retaining complete 2,000/2,000 exact-surface coverage: 79 previously neutral ordinary lexical gaps receive reviewed typed defaults, 84 transparent or default-sensitive surfaces retain neutral defaults while exposing reviewed whole-form or constructional alternatives, and 99 surfaces expose stable reviewed alternative records; all 29 `blocked_atomic` and 10 `research_required` rows receive no new atomic promotion, existing structured `我知` and `沿住` parser entries remain intact, and four stale pre-existing typed defaults are corrected to the final detailed authority (`魚 jyu2` free noun with `jyu4` bound/non-final, `飛 fei1` verb rather than the unsupported ticket default, stative `小心`, and universal determiner/quantifier `全`); the older Week 16 `魚/釣魚 jyu4` test expectation is superseded by the independently adjudicated free/final noun reading without weakening its structural checks; no construction identity or status, survey, corpus, release-publication, or deployment state is changed;
 

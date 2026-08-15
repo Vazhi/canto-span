@@ -6,6 +6,7 @@ const { applyCandidateDefaultReadings } = require("./cifu-r1-250-candidate-defau
 const { applyNativeReviewCorrections } = require("./native-review-corrections");
 const { applyRuntimePolicy: applyReviewedR501750RuntimePolicy } = require("./cifu-r501-750-runtime-policy");
 const { applyRuntimePolicy: applyReviewedR7511000RuntimePolicy } = require("./cifu-r751-1000-runtime-policy");
+const { applyRuntimePolicy: applyReviewedR10011250RuntimePolicy } = require("./cifu-r1001-1250-runtime-policy");
 
 const baseEntries = [
   ...require("./people-and-address"),
@@ -20,11 +21,13 @@ const baseEntries = [
   ...require("./frequency-gap-fill-r7"),
 ];
 
-module.exports = applyReviewedR7511000RuntimePolicy(
-  applyReviewedR501750RuntimePolicy(
-    applyNativeReviewCorrections(
-      applyCandidateDefaultReadings(
-        applyReviewedR1250RuntimePolicy(applyReviewedR251500Entries(baseEntries))
+module.exports = applyReviewedR10011250RuntimePolicy(
+  applyReviewedR7511000RuntimePolicy(
+    applyReviewedR501750RuntimePolicy(
+      applyNativeReviewCorrections(
+        applyCandidateDefaultReadings(
+          applyReviewedR1250RuntimePolicy(applyReviewedR251500Entries(baseEntries))
+        )
       )
     )
   )
