@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v6
         with:
           node-version: 24
@@ -24,8 +26,62 @@ jobs:
         run: node --test tests/tooling/lexicon/cifu-r1501-1750-reviewed-runtime.test.js
       - name: Run scalable lexical-ingestion gate
         run: npm run test:lexical-ingestions
+      - name: Emit lexical-ingestion audit summary
+        run: npm run audit:lexical-ingestions
       - name: Run runtime verification against generated bundle
         run: npm run verify:runtime
+      - name: Enforce regression-debt ratchet against v0.5.235 main
+        run: |
+          set -euo pipefail
+          BASE_SHA="3678bdee3193c81f46374c1b64801a60fd8c6b77"
+          BASE_DIR="$RUNNER_TEMP/canto-span-ratchet-base"
+          rm -rf "$BASE_DIR"
+          git worktree add --detach "$BASE_DIR" "$BASE_SHA"
+          trap 'git worktree remove --force "$BASE_DIR" >/dev/null 2>&1 || true' EXIT
+
+          rm -f \
+            "$BASE_DIR/validation/current/regression-suite.json" \
+            "$BASE_DIR/validation/current/np-subsystem-results.json" \
+            "$BASE_DIR/validation/current/construction-tests.json" \
+            "validation/current/regression-suite.json" \
+            "validation/current/np-subsystem-results.json" \
+            "validation/current/construction-tests.json"
+
+          (cd "$BASE_DIR" && node tests/run-regression.js) || true
+          (cd "$BASE_DIR" && node tests/run-np-subsystem.js) || true
+          (cd "$BASE_DIR" && node tests/run-constructions.js) || true
+          node tests/run-regression.js || true
+          node tests/run-np-subsystem.js || true
+          node tests/run-constructions.js || true
+
+          for report in \
+            "$BASE_DIR/validation/current/regression-suite.json" \
+            "$BASE_DIR/validation/current/np-subsystem-results.json" \
+            "$BASE_DIR/validation/current/construction-tests.json" \
+            "validation/current/regression-suite.json" \
+            "validation/current/np-subsystem-results.json" \
+            "validation/current/construction-tests.json"; do
+            test -f "$report" || { echo "Missing ratchet report: $report" >&2; exit 1; }
+          done
+
+          node tools/verify-regression-ratchet.js \
+            --suite regression \
+            --baseline-result "$BASE_DIR/validation/current/regression-suite.json" \
+            --candidate-result "validation/current/regression-suite.json" \
+            --baseline-universe "$BASE_DIR/tests/fixtures/regression-snapshots.json" \
+            --candidate-universe "tests/fixtures/regression-snapshots.json"
+          node tools/verify-regression-ratchet.js \
+            --suite np_subsystem \
+            --baseline-result "$BASE_DIR/validation/current/np-subsystem-results.json" \
+            --candidate-result "validation/current/np-subsystem-results.json" \
+            --baseline-universe "$BASE_DIR/tests/fixtures/np-subsystem.json" \
+            --candidate-universe "tests/fixtures/np-subsystem.json"
+          node tools/verify-regression-ratchet.js \
+            --suite construction_files \
+            --baseline-result "$BASE_DIR/validation/current/construction-tests.json" \
+            --candidate-result "validation/current/construction-tests.json" \
+            --baseline-universe "$BASE_DIR/tests/constructions" \
+            --candidate-universe "tests/constructions"
       - uses: actions/upload-artifact@v6
         if: always()
         with:
