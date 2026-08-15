@@ -214,7 +214,32 @@ const READINGS = Object.freeze({
   "駛": "sai2",
   "鬆": "sung1",
   "黎": "lai4",
-  "龍": "lung4"
+  "龍": "lung4",
+  "圍": "wai4",
+  "嗌": "aai3",
+  "嚇": "haak3",
+  "姨": "ji4",
+  "安": "on1",
+  "廚": "cyu4",
+  "掛": "gwaa3",
+  "玉": "juk6",
+  "現": "jin6",
+  "盒": "hap6",
+  "紹": "siu6",
+  "親": "can1",
+  "觀": "gun1",
+  "贏": "jeng4",
+  "輕": "hing1",
+  "造": "zou6",
+  "馮": "fung4",
+  "士": "si6",
+  "契": "kai3",
+  "強": "koeng4",
+  "抱": "pou5",
+  "搶": "coeng2",
+  "散": "saan3",
+  "枝": "zi1",
+  "歉": "him3"
 });
 
 function applyVernacularComponentCoverage(entries) {
