@@ -84,7 +84,7 @@ write(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
 // Remove imported source gloss/readings from active neutral runtime notes.
 const gapPath = "src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js";
 let gap = read(gapPath);
-const gapPattern = /note: "Cifu SpokenAdult rank (\d+), frequency ([^;\"]+);.*?Exact surface retained as neutral lexical coverage; POS\/grammar-role verification is intentionally separate\."/gu;
+const gapPattern = /note: "Cifu SpokenAdult rank (\d+), frequency ([^;"]+);.*?Exact surface retained as neutral lexical coverage; POS\/grammar-role verification is intentionally separate\."/gu;
 let replacements = 0;
 gap = gap.replace(gapPattern, (_whole, rank, frequency) => {
   replacements += 1;
