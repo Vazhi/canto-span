@@ -44,11 +44,4 @@ module.exports = [
     syntax: "causal_relation_preposition causal_connector",
     note: "because of / due to; independently verified fixed Cantonese causal relation expression.",
   }],
-  ["一陣", {
-    label: "when",
-    pos: "noun",
-    jyutping: "jat1 zan6",
-    syntax: "temporal_expression duration_np",
-    note: "a while / a moment; independently verified Cantonese temporal lexical expression. Changed-tone zan2 is left for the next small reading-split batch.",
-  }],
 ];
