@@ -6,7 +6,7 @@ This file is the sole present-tense project snapshot. Live GitHub intake and wor
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.231 |
+| Runtime | v0.5.232 |
 | Runtime labels | 134 |
 | Current construction notes | 134 |
 | Available construction notes | 134 |
@@ -51,6 +51,8 @@ The permanent registry contains 134 current and 48 retired records. UUID and sho
 Twenty-one accepted batches have adjudicated 94 records; 88 remain pending. Canonical decisions live in `data/construction-adjudications.json` and immutable batch files under `data/construction-adjudication-batches/`.
 
 Current consequences include:
+
+- v0.5.232 implements the final #872 Cifu ranks 751–1000 lexical adjudication while retaining complete 2,000/2,000 exact-surface coverage: 79 previously neutral ordinary lexical gaps receive reviewed typed defaults, 84 transparent or default-sensitive surfaces retain neutral defaults while exposing reviewed whole-form or constructional alternatives, and 99 surfaces expose stable reviewed alternative records; all 29 `blocked_atomic` and 10 `research_required` rows receive no new atomic promotion, existing structured `我知` and `沿住` parser entries remain intact, and four stale pre-existing typed defaults are corrected to the final detailed authority (`魚 jyu2` free noun with `jyu4` bound/non-final, `飛 fei1` verb rather than the unsupported ticket default, stative `小心`, and universal determiner/quantifier `全`); the older Week 16 `魚/釣魚 jyu4` test expectation is superseded by the independently adjudicated free/final noun reading without weakening its structural checks; no construction identity or status, survey, corpus, release-publication, or deployment state is changed;
 
 - v0.5.231 implements the final #866 R1+R2 Cifu ranks 501–750 lexical adjudication while retaining complete 2,000/2,000 exact-surface coverage: 45 previously neutral single-analysis lexical gaps receive reviewed typed defaults, 45 neutral or default-sensitive surfaces retain their existing neutral defaults while exposing reviewed whole-form alternatives, and 56 already-typed multi-analysis or reading-split surfaces retain their current defaults while reviewed alternatives are appended; all 30 `blocked_atomic` rows receive no new atomic lexical promotion, existing structured `一次` and `第二個` parser entries are preserved, 101 surfaces expose stable reviewed alternative records, R2 distinctions for `樂`, `磅`, and `直行` are represented, and the evidence-resolved `轉彎` and `早` records are complete; no construction identity or status, survey, corpus, release-publication, or deployment state is changed;
 
