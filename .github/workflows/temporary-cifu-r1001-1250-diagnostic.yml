@@ -24,7 +24,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: R1001-1250 focused suite
-        run: node tests/tooling/lexicon/cifu-r1001-1250-reviewed-runtime.test.js
+        shell: bash
+        run: |
+          set +e
+          node tests/tooling/lexicon/cifu-r1001-1250-reviewed-runtime.test.js >/tmp/focused.log 2>&1
+          status=$?
+          set -e
+          if [[ "$status" != "0" ]]; then
+            message="$(tail -c 7000 /tmp/focused.log | tr '\n' ' ' | sed -e 's/%/%25/g' -e 's/\r/%0D/g')"
+            echo "::error title=R1001-1250 focused failure::$message"
+            exit "$status"
+          fi
       - name: Parser architecture audit
         run: node tests/tooling/parser-coverage/architecture-audit.test.js
       - name: Week 16 lexical contract
