@@ -7,6 +7,8 @@
 // category, or phrase atomicity is imported.
 const SOURCE = "Most Common Cantonese Words (Frequency List)";
 const SOURCE_URL = "https://docs.google.com/spreadsheets/d/1ArxEFo46PTrDyDDhWyu3wB0epxqTyd8WBaprnwTEPm4";
+const DICTIONARY_VERIFIED_SURFACES = new Set(["丫", "唓", "喔", "尷", "氛", "瑩", "痴", "薛", "訓", "訝", "輝"]);
+const DICTIONARY_SOURCE = "粵音資料集叢 / established Cantonese reading references";
 
 const READINGS = Object.freeze({
   "世": "sai3",
@@ -278,7 +280,18 @@ const READINGS = Object.freeze({
   "豆": "dau6",
   "隊": "deoi6",
   "青": "cing1",
-  "麻": "maa4"
+  "麻": "maa4",
+  "丫": "aa1",
+  "唓": "ce1",
+  "喔": "o1",
+  "尷": "gaam1",
+  "氛": "fan1",
+  "瑩": "jing4",
+  "痴": "ci1",
+  "薛": "sit3",
+  "訓": "fan3",
+  "訝": "ngaa6",
+  "輝": "fai1"
 });
 
 function applyVernacularComponentCoverage(entries) {
@@ -301,10 +314,12 @@ function applyVernacularComponentCoverage(entries) {
       syntax: "lexical_item",
       jyutping,
       note: `Neutral component pronunciation coverage from ${SOURCE}; no grammar/category promotion is implied.`,
-      provenance: { kind: "external_vernacular_component_reading", source: SOURCE, url: SOURCE_URL },
+      provenance: DICTIONARY_VERIFIED_SURFACES.has(surface)
+        ? { kind: "independently_verified_cantonese_component_reading", source: DICTIONARY_SOURCE }
+        : { kind: "external_vernacular_component_reading", source: SOURCE, url: SOURCE_URL },
     }]);
   }
   return out;
 }
 
-module.exports = Object.freeze({ SOURCE, SOURCE_URL, READINGS, applyVernacularComponentCoverage });
+module.exports = Object.freeze({ SOURCE, SOURCE_URL, DICTIONARY_SOURCE, DICTIONARY_VERIFIED_SURFACES, READINGS, applyVernacularComponentCoverage });
