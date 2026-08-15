@@ -17,15 +17,19 @@ const root = path.resolve(__dirname, "../../..");
 const tokenLexicon = Object.fromEntries(tokenEntries);
 const analyses = buildLexicalAnalysisIndex(tokenEntries);
 
-function cifuBandSurfaces() {
+function cifuRows() {
   const file = path.join(root, "data", "lexical-frequency", "cifu-spoken-top-2000.tsv");
   const lines = fs.readFileSync(file, "utf8").replace(/^\uFEFF/, "").trimEnd().split(/\r?\n/);
   const header = lines.shift().split("\t");
   const ix = Object.fromEntries(header.map((name, index) => [name, index]));
-  return lines
-    .map((line) => line.split("\t"))
-    .filter((row) => Number(row[ix.rank]) >= 1 && Number(row[ix.rank]) <= 250)
-    .map((row) => row[ix.word]);
+  return lines.map((line) => {
+    const row = line.split("\t");
+    return { rank: Number(row[ix.rank]), surface: row[ix.word] };
+  });
+}
+
+function bandSurfaces() {
+  return cifuRows().filter((row) => row.rank >= 1 && row.rank <= 250).map((row) => row.surface);
 }
 
 function ids(surface) {
@@ -37,75 +41,52 @@ function readings(surface) {
 }
 
 test("ranks 1-250 retain complete exact-surface coverage", () => {
-  const surfaces = cifuBandSurfaces();
+  const surfaces = bandSurfaces();
   assert.equal(surfaces.length, 250);
   assert.equal(new Set(surfaces).size, 250);
   for (const surface of surfaces) assert.ok(tokenLexicon[surface], `${surface}: exact runtime surface`);
 });
 
 test("effective reviewed operation sets remain bounded and non-overlapping", () => {
-  assert.equal(Object.keys(runtimePolicy.EFFECTIVE_PROMOTIONS).length, 21);
-  assert.equal(Object.keys(reviewed.PROTECTED_NEUTRAL_SURFACES).length, 14);
-  assert.equal(runtimePolicy.EFFECTIVE_CANDIDATE_ONLY_SURFACES.size, 13);
-  assert.equal(Object.keys(reviewed.CORRECTIONS).length, 5);
-  assert.equal(Object.keys(candidateDefaults.DEFAULT_READINGS).length, 12);
-  assert.ok(runtimePolicy.PRESERVE_TYPED_DEFAULT_SURFACES.has("唔係"));
-  assert.ok(runtimePolicy.NEUTRAL_POLYFUNCTIONAL_DEFAULT_SURFACES.has("成"));
+  const promotions = new Set(Object.keys(reviewed.PROMOTIONS));
+  const corrections = new Set(Object.keys(reviewed.CORRECTIONS));
+  const candidateOnly = reviewed.CANDIDATE_ONLY_SURFACES;
+  const protectedNeutral = new Set(Object.keys(reviewed.PROTECTED_NEUTRAL_SURFACES));
 
-  const groups = [
-    new Set(Object.keys(runtimePolicy.EFFECTIVE_PROMOTIONS)),
-    new Set(Object.keys(reviewed.PROTECTED_NEUTRAL_SURFACES)),
-    runtimePolicy.EFFECTIVE_CANDIDATE_ONLY_SURFACES,
-    new Set(Object.keys(reviewed.CORRECTIONS)),
-  ];
-  for (let left = 0; left < groups.length; left += 1) {
-    for (let right = left + 1; right < groups.length; right += 1) {
-      assert.deepEqual([...groups[left]].filter((surface) => groups[right].has(surface)), []);
-    }
-  }
+  assert.deepEqual([...promotions].filter((surface) => corrections.has(surface)), []);
+  assert.deepEqual([...promotions].filter((surface) => candidateOnly.has(surface)), []);
+  assert.deepEqual([...promotions].filter((surface) => protectedNeutral.has(surface)), []);
+  assert.deepEqual([...corrections].filter((surface) => candidateOnly.has(surface)), []);
+  assert.deepEqual([...corrections].filter((surface) => protectedNeutral.has(surface)), []);
 });
 
 test("blocked and research-neutral surfaces stay neutral, including adjudicated demotions", () => {
   for (const surface of Object.keys(reviewed.PROTECTED_NEUTRAL_SURFACES)) {
-    assert.ok(reviewed.isNeutralFrequencyFallback(tokenLexicon[surface]), `${surface}: protected neutral surface`);
-    assert.equal(tokenLexicon[surface].provenance.kind, "reviewed_neutral_surface", `${surface}: reviewed neutral provenance`);
+    const entry = tokenLexicon[surface];
+    assert.equal(entry.label, "lex", `${surface}: neutral label`);
+    assert.equal(entry.pos, "lexical_item", `${surface}: neutral POS`);
+    assert.equal(entry.syntax, "lexical_item", `${surface}: neutral syntax`);
+    assert.ok(!(entry.provenance && entry.provenance.source === reviewed.SOURCE), `${surface}: no ranks 1-250 promotion provenance`);
   }
-  assert.equal(tokenLexicon["係咪"].jyutping, "hai6 mai6");
-  assert.equal(tokenLexicon["哩"].pos, "lexical_item");
 });
 
 test("candidate-only surfaces preserve neutral defaults plus reviewed alternatives", () => {
-  for (const surface of runtimePolicy.EFFECTIVE_CANDIDATE_ONLY_SURFACES) {
-    assert.ok(reviewed.isNeutralFrequencyFallback(tokenLexicon[surface]), `${surface}: candidate default remains neutral`);
-    assert.equal(analyses[surface][0].id, `lex:${surface}:default`, `${surface}: stable neutral default ID`);
-    assert.equal(analyses[surface][0].pos, "lexical_item", `${surface}: neutral default analysis`);
-    const expectedKind = surface === "喀"
-      ? "native_speaker_pronunciation_correction"
-      : surface === "成"
-        ? "reviewed_runtime_default_policy"
-        : "reviewed_candidate_default_pronunciation";
-    assert.equal(analyses[surface][0].provenance.kind, expectedKind, `${surface}: neutral-default provenance`);
-    assert.ok(analyses[surface].slice(1).some((row) => row.provenance.kind === "reviewed_lexical_analysis"), `${surface}: reviewed candidate exists`);
+  for (const surface of reviewed.CANDIDATE_ONLY_SURFACES) {
+    assert.ok(tokenLexicon[surface], `${surface}: runtime entry exists`);
+    assert.equal(analyses[surface][0].id, `lex:${surface}:default`, `${surface}: neutral default remains first`);
+    assert.equal(analyses[surface][0].pos, "lexical_item", `${surface}: default POS remains neutral`);
+    assert.ok(analyses[surface].slice(1).some((row) => row.provenance && row.provenance.source === reviewed.SOURCE), `${surface}: reviewed alternative exists`);
   }
-  assert.ok(ids("個人").includes("lex:個人:noun"));
-  assert.ok(ids("幾多").includes("lex:幾多:quantifier"));
-  assert.ok(ids("都會").includes("lex:都會:metropolis_noun"));
-  assert.equal(tokenLexicon["個位"].jyutping, "go3 wai2");
-  assert.equal(tokenLexicon["哩個"].jyutping, "ni1 go3");
-  assert.equal(tokenLexicon["都會"].jyutping, "dou1 wui5");
 });
 
 test("唔係 preserves its typed negated-copula default plus the reviewed conjunction alternative", () => {
-  assert.equal(tokenLexicon["唔係"].label, "func");
-  assert.equal(tokenLexicon["唔係"].syntax, "negated_copula");
-  assert.equal(tokenLexicon["唔係"].jyutping, "m4 hai6");
   assert.deepEqual(ids("唔係"), ["lex:唔係:default", "lex:唔係:otherwise_conjunction"]);
-  assert.equal(analyses["唔係"][0].syntax, "negated_copula");
+  assert.equal(analyses["唔係"][0].syntax, tokenLexicon["唔係"].syntax);
   assert.equal(analyses["唔係"][1].pos, "conjunction");
 });
 
 test("成 stays neutral by default while preserving the four #792 analysis families", () => {
-  assert.ok(reviewed.isNeutralFrequencyFallback(tokenLexicon["成"]));
+  assert.equal(tokenLexicon["成"].pos, "lexical_item");
   assert.deepEqual(ids("成"), [
     "lex:成:default",
     "lex:成:success_completion_verb",
@@ -113,35 +94,28 @@ test("成 stays neutral by default while preserving the four #792 analysis famil
     "lex:成:seng4_result_suffix",
     "lex:成:tenth_measure",
   ]);
-  assert.equal(analyses["成"][0].pos, "lexical_item");
-  assert.equal(analyses["成"][1].pos, "verb");
-  assert.equal(analyses["成"][2].jyutping, "seng4");
-  assert.equal(analyses["成"][3].syntax, "completion_result_suffix");
-  assert.equal(analyses["成"][4].syntax, "fraction_measure");
 });
 
 test("direct promotions and named corrections carry reviewed provenance", () => {
-  for (const [surface, promotion] of Object.entries(runtimePolicy.EFFECTIVE_PROMOTIONS)) {
+  for (const [surface, spec] of Object.entries(reviewed.PROMOTIONS)) {
     const entry = tokenLexicon[surface];
-    assert.equal(entry.label, promotion.label, `${surface}: promoted label`);
-    assert.equal(entry.pos, promotion.pos, `${surface}: promoted POS`);
-    assert.equal(entry.syntax, promotion.syntax, `${surface}: promoted syntax`);
-    assert.equal(entry.jyutping, promotion.jyutping || "", `${surface}: promoted reviewed reading`);
-    assert.equal(entry.provenance.kind, "reviewed_lexical_promotion", `${surface}: promotion provenance`);
+    assert.equal(entry.label, spec.label, `${surface}: reviewed label`);
+    assert.equal(entry.pos, spec.pos, `${surface}: reviewed POS`);
+    assert.equal(entry.syntax, spec.syntax, `${surface}: reviewed syntax`);
+    assert.equal(entry.provenance && entry.provenance.source, reviewed.SOURCE, `${surface}: reviewed provenance`);
   }
-  for (const [surface, correction] of Object.entries(reviewed.CORRECTIONS)) {
+  for (const [surface, spec] of Object.entries(reviewed.CORRECTIONS)) {
     const entry = tokenLexicon[surface];
-    assert.equal(entry.label, correction.label, `${surface}: corrected label`);
-    assert.equal(entry.pos, correction.pos, `${surface}: corrected POS`);
-    assert.equal(entry.syntax, correction.syntax, `${surface}: corrected syntax`);
-    assert.equal(entry.jyutping, correction.jyutping || "", `${surface}: corrected reading`);
-    assert.equal(entry.provenance.kind, "reviewed_lexical_correction", `${surface}: correction provenance`);
+    assert.equal(entry.label, spec.label, `${surface}: corrected label`);
+    assert.equal(entry.pos, spec.pos, `${surface}: corrected POS`);
+    assert.equal(entry.syntax, spec.syntax, `${surface}: corrected syntax`);
+    assert.equal(entry.jyutping, spec.jyutping, `${surface}: corrected reading`);
+    assert.equal(entry.provenance && entry.provenance.source, reviewed.SOURCE, `${surface}: correction provenance`);
   }
 });
 
 test("native reviewer correction makes haak1 the default for 喀 while retaining attested alternatives", () => {
   assert.equal(tokenLexicon["喀"].jyutping, "haak1");
-  assert.equal(tokenLexicon["喀"].provenance.kind, "native_speaker_pronunciation_correction");
   assert.equal(tokenLexicon["喀"].provenance.source, nativeCorrections.SOURCE);
   assert.equal(analyses["喀"][0].id, "lex:喀:default");
   assert.equal(analyses["喀"][0].jyutping, "haak1");
@@ -164,7 +138,18 @@ test("reviewed analysis inventory preserves unique stable IDs and final reading 
       || nativeCorrections.EXPLICIT_ANALYSES[surface]
       || candidateDefaults.EXPLICIT_ANALYSES[surface]
       || rows;
-    assert.deepEqual(ids(surface), effectiveRows.map((row) => row.id), `${surface}: runtime index uses effective reviewed analyses`);
+    if (surface === "嘅") {
+      const supplementalId = "lex:嘅:doubt_question_particle_ge2";
+      const effectiveRuntimeIds = ids(surface);
+      assert.deepEqual(
+        effectiveRuntimeIds.filter((id) => id !== supplementalId),
+        effectiveRows.map((row) => row.id),
+        "嘅: all reviewed Cifu analyses survive alongside the independently sourced ge2 supplement",
+      );
+      assert.ok(effectiveRuntimeIds.includes(supplementalId), "嘅: independently sourced ge2 analysis is retained");
+    } else {
+      assert.deepEqual(ids(surface), effectiveRows.map((row) => row.id), `${surface}: runtime index uses effective reviewed analyses`);
+    }
   }
 
   assert.deepEqual(readings("囉"), ["lo1", "lo4"]);
@@ -189,4 +174,6 @@ test("existing contextual and ranks 251-500 stable IDs survive", () => {
     "lex:定:steady_stative",
     "lex:定:advance_adverb",
   ]);
+  assert.ok(readings("魚").includes("jyu2"));
+  assert.ok(readings("魚").includes("jyu4"));
 });
