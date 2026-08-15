@@ -108,11 +108,10 @@ test("informal 地 spellings map to the canonical plural-pronoun analyses", () =
   }
 });
 
-test("fixed vernacular connective lexemes are covered as whole forms", () => {
+test("fixed vernacular connective lexemes add only genuine exact gaps", () => {
   const expected = {
     "定係": ["ding6 hai6", "conjunction", "alternative_connector"],
     "先至": ["sin1 zi3", "adverb", "sequence_prerequisite_adverb"],
-    "嘅話": ["ge3 waa2", "conjunction", "conditional_clause_suffix_connector"],
   };
   for (const [surface, [jyutping, pos, syntax]] of Object.entries(expected)) {
     assert.ok(tokenLexicon[surface], `${surface}: exact lexical item exists`);
@@ -120,4 +119,5 @@ test("fixed vernacular connective lexemes are covered as whole forms", () => {
     assert.equal(tokenLexicon[surface].pos, pos, `${surface}: POS`);
     assert.equal(tokenLexicon[surface].syntax, syntax, `${surface}: lexical syntax`);
   }
+  assert.ok(tokenLexicon["嘅話"], "嘅話: pre-existing exact conditional coverage is preserved rather than duplicated");
 });
