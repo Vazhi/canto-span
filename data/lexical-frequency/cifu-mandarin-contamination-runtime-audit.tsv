@@ -22,6 +22,6 @@ rank	surface	contamination_source	runtime_module	runtime_jyutping	runtime_meta	r
 1399	片	explicit_mandarin_marker	frequency-gap-fill-r7.js	pin3	lex:lexical_item	neutral_surface_coverage	no_runtime_change
 1404	多少	expert_mandarin_only_surface	cifu-r1251-1500-runtime-policy.js	do1 siu2	generated Cifu provenance retained; effective reviewed runtime filters the surface	non_cantonese_surface_removed	remove_runtime_surface
 1532	罷	explicit_mandarin_marker	frequency-gap-fill-r7.js	baa6	lex:lexical_item	neutral_surface_coverage	no_runtime_change
-1729	響	explicit_mandarin_marker	frequency-gap-fill-r7.js	hoeng2	lex:lexical_item	neutral_surface_coverage	no_runtime_change
+1729	響	explicit_mandarin_marker	cifu-r1501-1750-reviewed.js	hoeng2	reviewed alternatives: doing:verb sound_verb; func:coverb locative_relation_coverb; doing:verb locative_existential_verb	cantonese_specific_analysis	no_runtime_change
 1792	校	explicit_mandarin_marker	frequency-gap-fill-r7.js	haau6	lex:lexical_item	neutral_surface_coverage	no_runtime_change
 1995	嘴	explicit_mandarin_marker	frequency-gap-fill-r7.js	zeoi2	lex:lexical_item	neutral_surface_coverage	no_runtime_change
