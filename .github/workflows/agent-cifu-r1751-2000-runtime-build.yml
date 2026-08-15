@@ -1,4 +1,4 @@
-name: Agent final-band lexical source phase
+name: Agent final-band cleanup and version sync
 
 on:
   push:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  source-phase:
+  finalize:
     if: ${{ github.actor != 'github-actions[bot]' }}
     runs-on: ubuntu-latest
     steps:
@@ -21,31 +21,62 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
-      - name: Compile merged final-band authority
-        run: node tools/agent-cifu-r1751-2000-runtime-build.js
-      - name: Repair temporary cleanup helper regex
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          p = Path('tools/agent-cifu-active-tree-cleanup.js')
-          s = p.read_text()
-          old = r'''const gapPattern = /note: \"Cifu SpokenAdult rank (\\d+), frequency ([^;\\\"]+);.*?Exact surface retained as neutral lexical coverage; POS\\/grammar-role verification is intentionally separate\\.\"/gu;'''
-          new = r'''const gapPattern = /note: "Cifu SpokenAdult rank (\d+), frequency ([^;"]+);.*?Exact surface retained as neutral lexical coverage; POS\/grammar-role verification is intentionally separate\."/g;'''
-          if old not in s:
-              raise SystemExit('cleanup helper regex anchor missing')
-          p.write_text(s.replace(old, new, 1))
-          PY
-      - name: Purge active Cifu contamination history
+
+      - name: Purge superseded active contamination history
         run: node tools/agent-cifu-active-tree-cleanup.js
+
+      - name: Preserve immutable raw Cifu source
+        run: git diff --exit-code -- data/lexical-frequency/cifu-spoken-top-2000.tsv
+
+      - name: Synchronize v0.5.237 metadata
+        run: |
+          set -euo pipefail
+          npm version 0.5.237 --no-git-tag-version --allow-same-version
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          manifest_path = Path('manifest.json')
+          manifest = json.loads(manifest_path.read_text())
+          manifest['version'] = '0.5.237'
+          manifest['description'] = 'v0.5.237 completes reviewed Cifu ranks 1751–2000, removes rejected Mandarin-only analyses from active lexical state, and retains only executable Cantonese exclusions while preserving the raw source snapshot.'
+          manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
+
+          plugin_path = Path('src/plugin-entry.js')
+          plugin = plugin_path.read_text()
+          old = 'const CANTO_SPAN_RUNTIME_VERSION = "0.5.236";\n// v0.5.236:'
+          new = 'const CANTO_SPAN_RUNTIME_VERSION = "0.5.237";\n// v0.5.237: completes reviewed Cifu ranks 1751–2000, removes rejected Mandarin-only analyses from active lexical state, replaces superseded contamination ledgers with executable Cantonese exclusions, and preserves the raw imported Cifu snapshot as non-authoritative source evidence.\n// v0.5.236:'
+          if old not in plugin:
+              raise SystemExit('plugin version anchor missing')
+          plugin_path.write_text(plugin.replace(old, new, 1))
+
+          state_path = Path('docs/current/PROJECT-STATE.md')
+          state = state_path.read_text()
+          runtime_old = '| Runtime | v0.5.236 |'
+          if runtime_old not in state:
+              raise SystemExit('PROJECT-STATE runtime anchor missing')
+          state = state.replace(runtime_old, '| Runtime | v0.5.237 |', 1)
+          anchor = '- v0.5.236 implements the consolidated Cifu ranks 1501–1750 lexical authority'
+          if anchor not in state:
+              raise SystemExit('PROJECT-STATE consequence anchor missing')
+          bullet = '- v0.5.237 completes reviewed runtime reconciliation for Cifu ranks 1751–2000: all 250 final-band ranks are accounted for as 143 `reviewed_selection`, 45 `multiple`, 23 `reading_split`, 37 `blocked_atomic`, and two `research_required` holds (`山個`, `猷`); effective exact Cifu surface coverage remains 1,999/2,000 with rank 1404 `多少` as the sole whole-surface exclusion; retained surfaces expose independently reviewed Cantonese analyses only, including `在`, `校`, and `嘴`, while rejected Mandarin-only progressive/classifier analyses and superseded contamination ledgers are absent from active lexical state; the raw imported Cifu snapshot remains unchanged for source fidelity and is non-authoritative for lexical meaning, category, or pronunciation; construction identity/status, survey/native-panel state, corpus classifications, release-publication state, deployment state, and unrelated parser behavior remain unchanged;\n\n'
+          state = state.replace(anchor, bullet + anchor, 1)
+          state_path.write_text(state)
+          PY
+
+      - name: Build deterministic runtime
+        run: npm run build:runtime
+
       - name: Focused final-band invariants
         run: node --test tests/tooling/lexicon/cifu-r1751-2000-reviewed-runtime.test.js
+
       - name: Scalable lexical-ingestion tests
         run: npm run test:lexical-ingestions
+
       - name: Scalable lexical-ingestion audit
         run: npm run audit:lexical-ingestions
-      - name: Build deterministic runtime in workspace
-        run: npm run build:runtime
-      - name: Assert retired contamination artifacts and markers are absent
+
+      - name: Assert superseded contamination artifacts and markers are absent
         run: |
           set -euo pipefail
           for p in \
@@ -53,21 +84,32 @@ jobs:
             data/lexical-frequency/cifu-mandarin-contamination-runtime-audit.tsv \
             data/lexical-frequency/cifu-mandarin-contamination-summary.json \
             data/lexical-frequency/cifu-mandarin-oriented-adjudication.tsv; do
-            test ! -e "$p" || { echo "Retired contamination artifact still exists: $p" >&2; exit 1; }
+            test ! -e "$p" || { echo "Superseded contamination artifact still exists: $p" >&2; exit 1; }
           done
           if git grep -n -E 'cifu-explicit-mandarin-contamination|cifu-mandarin-contamination|cifu-mandarin-oriented-adjudication|explicit_mandarin_marker|expert_mandarin_oriented' -- \
             ':!/.github/workflows/agent-cifu-r1751-2000-runtime-build.yml' \
             ':!/tools/agent-cifu-r1751-2000-runtime-build.js' \
             ':!/tools/agent-cifu-active-tree-cleanup.js'; then
-            echo 'Retired contamination history is still referenced in the active tree.' >&2
+            echo 'Superseded contamination history is still referenced in active canonical files.' >&2
             exit 1
           fi
-      - name: Verify runtime against workspace bundle
+
+      - name: Verify synchronized runtime version
+        run: |
+          set -euo pipefail
+          test "$(node -p "require('./package.json').version")" = '0.5.237'
+          test "$(node -p "require('./manifest.json').version")" = '0.5.237'
+          node main.js --version | grep -F '0.5.237'
+
+      - name: Verify runtime
         run: npm run verify:runtime
+
       - name: Verify research provenance
         run: npm run verify:research
+
       - name: Verify core state
         run: npm run verify
+
       - name: Regression-debt ratchet against v0.5.236
         run: |
           set -euo pipefail
@@ -90,25 +132,28 @@ jobs:
           node tools/verify-regression-ratchet.js --suite regression --baseline-result "$BASE_DIR/validation/current/regression-suite.json" --candidate-result validation/current/regression-suite.json --baseline-universe "$BASE_DIR/tests/fixtures/regression-snapshots.json" --candidate-universe tests/fixtures/regression-snapshots.json
           node tools/verify-regression-ratchet.js --suite np_subsystem --baseline-result "$BASE_DIR/validation/current/np-subsystem-results.json" --candidate-result validation/current/np-subsystem-results.json --baseline-universe "$BASE_DIR/tests/fixtures/np-subsystem.json" --candidate-universe tests/fixtures/np-subsystem.json
           node tools/verify-regression-ratchet.js --suite construction_files --baseline-result "$BASE_DIR/validation/current/construction-tests.json" --candidate-result validation/current/construction-tests.json --baseline-universe "$BASE_DIR/tests/constructions" --candidate-universe tests/constructions
-      - name: Enforce source-phase write allowlist
+
+      - name: Enforce finalization write allowlist
         run: |
           set -euo pipefail
-          git restore --worktree --staged main.js validation/current tools/agent-cifu-active-tree-cleanup.js 2>/dev/null || true
+          git restore --worktree --staged validation/current 2>/dev/null || true
           git clean -fd validation/current >/dev/null 2>&1 || true
           mapfile -t CHANGED < <({ git diff --name-only; git ls-files --others --exclude-standard; } | sort -u)
-          printf 'Source-phase changes:\n'
+          printf 'Finalization changes:\n'
           printf '  %s\n' "${CHANGED[@]}"
           for p in "${CHANGED[@]}"; do
             case "$p" in
-              src/runtime-resources/lexicon/lexical-analyses.js|src/runtime-resources/lexicon/lexical-ingestion-registry.js|src/runtime-resources/lexicon/token-lexicon/index.js|src/runtime-resources/lexicon/token-lexicon/cifu-r1751-2000-reviewed.js|src/runtime-resources/lexicon/token-lexicon/cifu-r1751-2000-runtime-policy.js|src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js|tools/lexical-ingestion-tokenization-audit.js|tests/tooling/lexicon/cifu-r1751-2000-reviewed-runtime.test.js|tests/tooling/lexicon/lexical-ingestion-tokenization-audit.test.js|tests/run-all.js|data/lexical-frequency/cifu-spoken-top-2000.tsv|data/lexical-frequency/common-spoken-cantonese-core-2000.tsv|data/lexical-frequency/common-spoken-cantonese-core-2000.manifest.json|data/lexical-frequency/cifu-runtime-exclusions.tsv|data/lexical-frequency/cifu-explicit-mandarin-contamination.tsv|data/lexical-frequency/cifu-mandarin-contamination-runtime-audit.tsv|data/lexical-frequency/cifu-mandarin-contamination-summary.json|data/lexical-frequency/cifu-mandarin-oriented-adjudication.tsv|docs/research/LEXICAL-COVERAGE-TOP-2000.md) ;;
-              *) echo "Unexpected source-phase change: $p" >&2; exit 1 ;;
+              src/runtime-resources/lexicon/token-lexicon/cifu-r1751-2000-reviewed.js|src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js|src/runtime-resources/lexicon/lexical-ingestion-registry.js|tools/lexical-ingestion-tokenization-audit.js|data/lexical-frequency/common-spoken-cantonese-core-2000.tsv|data/lexical-frequency/common-spoken-cantonese-core-2000.manifest.json|data/lexical-frequency/cifu-runtime-exclusions.tsv|data/lexical-frequency/cifu-explicit-mandarin-contamination.tsv|data/lexical-frequency/cifu-mandarin-contamination-runtime-audit.tsv|data/lexical-frequency/cifu-mandarin-contamination-summary.json|data/lexical-frequency/cifu-mandarin-oriented-adjudication.tsv|docs/research/LEXICAL-COVERAGE-TOP-2000.md|src/plugin-entry.js|manifest.json|package.json|package-lock.json|main.js|docs/current/PROJECT-STATE.md) ;;
+              *) echo "Unexpected finalization change: $p" >&2; exit 1 ;;
             esac
           done
-      - name: Commit validated source phase
+          git diff --exit-code -- data/lexical-frequency/cifu-spoken-top-2000.tsv
+
+      - name: Commit validated v0.5.237 finalization
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add -A src/runtime-resources/lexicon tools/lexical-ingestion-tokenization-audit.js tests/tooling/lexicon tests/run-all.js data/lexical-frequency docs/research/LEXICAL-COVERAGE-TOP-2000.md
-          git commit -m 'Implement final Cifu band and purge active contamination history'
+          git add -A src/runtime-resources/lexicon/token-lexicon/cifu-r1751-2000-reviewed.js src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js src/runtime-resources/lexicon/lexical-ingestion-registry.js tools/lexical-ingestion-tokenization-audit.js data/lexical-frequency/common-spoken-cantonese-core-2000.tsv data/lexical-frequency/common-spoken-cantonese-core-2000.manifest.json data/lexical-frequency/cifu-runtime-exclusions.tsv data/lexical-frequency/cifu-explicit-mandarin-contamination.tsv data/lexical-frequency/cifu-mandarin-contamination-runtime-audit.tsv data/lexical-frequency/cifu-mandarin-contamination-summary.json data/lexical-frequency/cifu-mandarin-oriented-adjudication.tsv docs/research/LEXICAL-COVERAGE-TOP-2000.md src/plugin-entry.js manifest.json package.json package-lock.json main.js docs/current/PROJECT-STATE.md
+          git commit -m 'Finalize Cifu top-2000 lexical reconciliation as v0.5.237'
           git push origin HEAD:agent/cifu-r1751-2000-runtime-reconcile
