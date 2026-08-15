@@ -2,6 +2,8 @@
 
 const reviewed = require("./cifu-r1251-1500-reviewed");
 
+// Keep the generated Cifu source as provenance; remove positively identified
+// non-Cantonese whole surfaces only from the reviewed effective runtime layer.
 const MANDARIN_ONLY_SURFACES = new Set(["多少"]);
 
 function applyRuntimePolicy(entries) {
