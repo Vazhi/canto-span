@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   verify:
-    if: github.event.head_commit.message == 'Verify fixed vernacular connective batch'
+    if: github.event.head_commit.message == 'Retry fixed connectives after duplicate removal'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
