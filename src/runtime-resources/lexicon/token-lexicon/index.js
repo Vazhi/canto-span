@@ -9,6 +9,7 @@ const { applyRuntimePolicy: applyReviewedR7511000RuntimePolicy } = require("./ci
 const { applyRuntimePolicy: applyReviewedR10011250RuntimePolicy } = require("./cifu-r1001-1250-runtime-policy");
 const { applyRuntimePolicy: applyReviewedR12511500RuntimePolicy } = require("./cifu-r1251-1500-runtime-policy");
 const { applyRuntimePolicy: applyReviewedR15011750RuntimePolicy } = require("./cifu-r1501-1750-runtime-policy");
+const { applyRuntimePolicy: applyReviewedR17512000RuntimePolicy } = require("./cifu-r1751-2000-runtime-policy");
 
 const baseEntries = [
   ...require("./people-and-address"),
@@ -24,14 +25,16 @@ const baseEntries = [
   ...require("./frequency-gap-fill-r7"),
 ];
 
-module.exports = applyReviewedR15011750RuntimePolicy(
-  applyReviewedR12511500RuntimePolicy(
-    applyReviewedR10011250RuntimePolicy(
-      applyReviewedR7511000RuntimePolicy(
-        applyReviewedR501750RuntimePolicy(
-          applyNativeReviewCorrections(
-            applyCandidateDefaultReadings(
-              applyReviewedR1250RuntimePolicy(applyReviewedR251500Entries(baseEntries))
+module.exports = applyReviewedR17512000RuntimePolicy(
+  applyReviewedR15011750RuntimePolicy(
+    applyReviewedR12511500RuntimePolicy(
+      applyReviewedR10011250RuntimePolicy(
+        applyReviewedR7511000RuntimePolicy(
+          applyReviewedR501750RuntimePolicy(
+            applyNativeReviewCorrections(
+              applyCandidateDefaultReadings(
+                applyReviewedR1250RuntimePolicy(applyReviewedR251500Entries(baseEntries))
+              )
             )
           )
         )
