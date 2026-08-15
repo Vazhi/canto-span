@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   build:
-    if: github.event.head_commit.message == 'Retry strong split batch after test correction'
+    if: github.event.head_commit.message == 'Verify corrected strong split batch'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
