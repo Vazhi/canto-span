@@ -40,6 +40,7 @@ const cifuPolicyModules = Object.freeze([
   require("./token-lexicon/cifu-r751-1000-reviewed"),
   require("./token-lexicon/cifu-r1001-1250-reviewed"),
   require("./token-lexicon/cifu-r1251-1500-reviewed"),
+  require("./token-lexicon/cifu-r1501-1750-reviewed"),
 ]);
 
 const lexicalIngestions = Object.freeze([

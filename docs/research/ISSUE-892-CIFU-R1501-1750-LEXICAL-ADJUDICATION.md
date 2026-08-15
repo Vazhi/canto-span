@@ -52,8 +52,8 @@ Implementation consequence codes:
 
 | Class | Count |
 |---|---:|
-| `reviewed_selection` | 140 |
-| `multiple` | 41 |
+| `reviewed_selection` | 139 |
+| `multiple` | 42 |
 | `reading_split` | 16 |
 | `blocked_atomic` | 45 |
 | `research_required` | 8 |
@@ -390,7 +390,7 @@ The broad band-completion comment 5275392749 is not used as a blanket “later w
 |1637|一刻|P6 provisional blocked; B broad|reviewed lexical temporal expression: Words.hk directly records `一刻` “the moment/an instant” with `jat1 haak1/jat1 hak1`; internal analyzability does not erase lexicalization.|
 |1641|十分|P6 lexical degree adverb; B also literal measure|degree adverb only as lexical entry; literal ten-parts reading remains numeral+measure composition.|
 |1702|痛|P9 adjective/predicate; B adjective+noun|stative adjective/predicate only; noun is not promoted absent direct nominal syntax.|
-|1703|睇住|B blocked; P9 lexical verb + composition|lexical verb MWE plus productive `睇 + 住`: Words.hk directly records `睇住 tai2 zyu6` “watch/keep an eye on/watch out”.|
+|1703|睇住|B blocked; P9 lexical verb + composition|lexical verb MWE plus productive `睇 + 住`: Words.hk directly records `睇住 tai2 zyu6` “watch over/keep an eye on/watch out”.|
 |1708|溜|B three-reading split; P9 `lau6` secure|reviewed verb with secure `lau6`; `lau1/liu1` remain unpromoted pronunciation candidates until independent evidence supports their exact families.|
 |1711|補充|B noun+verb+adjective; P9 noun+verb|multiple verb+noun; Words.hk directly records the verb, and an independent Cantonese teaching source records N/V use; attributive supplementary use does not force a separate adjective.|
 |1723|燒|B verb+noun; P9 verb primary|verb only for free lexical POS in this pass; fever/roast-food extensions remain senses/bound uses unless direct nominal syntax establishes another entry.|

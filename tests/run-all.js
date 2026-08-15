@@ -20,6 +20,7 @@ const commands = [
   ["cifu_r751_1000_reviewed_lexicon", path.join(root, "tests", "tooling", "lexicon", "cifu-r751-1000-reviewed-runtime.test.js")],
   ["cifu_r1001_1250_reviewed_lexicon", path.join(root, "tests", "tooling", "lexicon", "cifu-r1001-1250-reviewed-runtime.test.js")],
   ["cifu_r1251_1500_reviewed_lexicon", path.join(root, "tests", "tooling", "lexicon", "cifu-r1251-1500-reviewed-runtime.test.js")],
+  ["cifu_r1501_1750_reviewed_lexicon", path.join(root, "tests", "tooling", "lexicon", "cifu-r1501-1750-reviewed-runtime.test.js")],
   ["lexical_ingestion_tokenization", path.join(root, "tests", "tooling", "lexicon", "lexical-ingestion-tokenization-audit.test.js")],
   ["unit_word_evidence", path.join(root, "tests", "tooling", "runtime", "unit-word-evidence.test.js")],
   ["label_transition_policy", path.join(root, "tests", "tooling", "runtime", "label-transition-policy.test.js")],
