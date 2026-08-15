@@ -1,4 +1,4 @@
-name: Agent Cifu ranks 1751-2000 runtime source phase
+name: Agent final-band lexical source phase
 
 on:
   push:
@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   source-phase:
-    if: github.actor != 'github-actions[bot]'
+    if: ${{ github.actor != 'github-actions[bot]' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -21,411 +21,23 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
-      - name: Compile merged final-band authority into reviewed runtime source
-        run: |
-          node <<'NODE'
-          const fs = require('node:fs');
-          const path = require('node:path');
-
-          const AUTHORITY = 'docs/research/CIFU-R1751-2000-LEXICAL-ADJUDICATION.md';
-          const SOURCE = AUTHORITY;
-          const text = fs.readFileSync(AUTHORITY, 'utf8');
-          const rows = [];
-          for (const line of text.split(/\r?\n/)) {
-            const m = line.match(/^\|(\d{4})\|([^|]+)\|(reviewed_selection|multiple|reading_split|blocked_atomic|research_required)\|([^|]*)\|([^|]*)\|([^|]*)\|$/u);
-            if (!m) continue;
-            const rank = Number(m[1]);
-            if (rank < 1751 || rank > 2000) continue;
-            rows.push({ rank, surface: m[2].trim(), cls: m[3], decision: m[4].trim(), readingStatus: m[5].trim(), consequence: m[6].trim() });
-          }
-          rows.sort((a,b) => a.rank - b.rank);
-          if (rows.length !== 250) throw new Error('authority must contain 250 final-band rows; got ' + rows.length);
-          for (let i = 0; i < rows.length; i += 1) {
-            if (rows[i].rank !== 1751 + i) throw new Error('authority rank gap/duplicate around ' + rows[i].rank);
-          }
-          if (new Set(rows.map(r => r.surface)).size !== 250) throw new Error('authority surfaces must be unique');
-          const counts = Object.create(null);
-          for (const row of rows) counts[row.cls] = (counts[row.cls] || 0) + 1;
-          const expectedCounts = { reviewed_selection: 143, multiple: 45, reading_split: 23, blocked_atomic: 37, research_required: 2 };
-          if (JSON.stringify(counts) !== JSON.stringify(expectedCounts)) throw new Error('authority class counts drifted: ' + JSON.stringify(counts));
-
-          const primaryOverrides = Object.freeze({
-            '本地':'localizer','在':'coverb','自從':'function','初頭':'temporal','東面':'localizer','晏晝':'temporal','轉頭':'temporal',
-            '出邊':'localizer','民建聯':'proper','中國人':'person','同時':'temporal','地球':'proper','好人':'person','呢邊':'localizer',
-            '背後':'localizer','唔知幾':'adverb','耶穌':'proper','唯有':'adverb','得滯':'function','連埋':'function','期間':'temporal','隨時':'adverb'
-          });
-
-          const splitSpecs = Object.freeze({
-            '拃': [['zaa6',['classifier','verb']],['zaa3',['measure']]],
-            '校': [['haau6',['noun']],['gaau3',['verb','bound']]],
-            '梗': [['gang2',['adjective','adverb']],['kwaang2',['noun']]],
-            '率': [['seot1',['verb','adjective','adverb']],['leot6',['noun','measure']]],
-            '第時': [['dai6 si4',['temporal']],['dai6 si2',['temporal']]],
-            '黏': [['nim4',['verb']],['nim1',['adjective']]],
-            '文': [['man4',['noun','adjective']],['man1',['classifier','measure']],['man6',['verb']]],
-            '凹': [['nap1',['adjective']],['aau3',['adjective']],['waa1',['adjective']]],
-            '合': [['hap6',['verb','adjective']],['ho4',['noun']],['gap3',['measure']]],
-            '同樣': [['tung4 joeng6',['adjective','adverb']],['tung4 joeng2',['noun']]],
-            '有份': [['jau5 fan2',['verb']]],
-            '判斷': [['pun3 dyun3',['verb']],['pun3 dyun6',['noun']]],
-            '兔仔': [['tou3 zai2',['noun']]],
-            '和': [['wo4',['function','noun','adjective']],['wo6',['verb']],['wu2',['verb']]],
-            '姊妹': [['zi2 mui6',['person']],['zi2 mui2',['person']]],
-            '界定': [['gaai3 deng6',['verb']]],
-            '紅籌': [['hung4 cau2',['noun']],['hung4 cau4',['noun']]],
-            '淨': [['zing6',['adjective','adverb','verb']],['zeng6',['adjective','verb']]],
-            '硬係': [['ngaang2 hai6',['adverb']],['ngaang6 hai6',['adverb']]],
-            '量': [['loeng4',['verb']],['loeng6',['noun']]],
-            '傳': [['cyun4',['verb']],['zyun6',['noun']]],
-            '傾計': [['king1 gai2',['verb']]],
-            '撈': [['lou1',['verb']],['laau4',['verb']]],
-          });
-
-          const splitRows = rows.filter(r => r.cls === 'reading_split').map(r => r.surface).sort();
-          const splitKeys = Object.keys(splitSpecs).sort();
-          if (JSON.stringify(splitRows) !== JSON.stringify(splitKeys)) {
-            throw new Error('reading split compiler map drift: authority=' + JSON.stringify(splitRows) + ' compiler=' + JSON.stringify(splitKeys));
-          }
-
-          function normalizeReading(reading) {
-            return String(reading || '').trim().replace(/([a-z]+)[1-6]\*([1-6])/giu, '$1$2').replace(/\s+/gu, ' ');
-          }
-          function firstReading(status) {
-            const m = String(status || '').match(/`([^`]+)`/u);
-            return m ? normalizeReading(m[1]) : '';
-          }
-          function primaryKind(row) {
-            if (primaryOverrides[row.surface]) return primaryOverrides[row.surface];
-            const d = row.decision.toLowerCase();
-            if (/interjection|onomatopoe/u.test(d)) return 'interjection';
-            if (/person\/title|person noun|kin noun|person\/kin|person\/role|demonym/u.test(d)) return 'person';
-            if (/proper (?:organization|person|name)|proper\/celestial|proper noun|organization abbreviation/u.test(d)) return 'proper';
-            if (/place(?:\/abstract)? noun|place noun/u.test(d)) return 'place';
-            if (/temporal/u.test(d)) return 'temporal';
-            if (/locality|spatial/u.test(d)) return 'localizer';
-            if (/measure\/classifier|measure word/u.test(d)) return 'measure';
-            if (/classifier/u.test(d)) return 'classifier';
-            if (/stative|property|adjective/u.test(d)) return 'adjective';
-            if (/adverb/u.test(d)) return 'adverb';
-            if (/function|connective|conjunction|suffix/u.test(d)) return 'function';
-            if (/relational verb|transitive verb|lexical verb|verb(?:\/predicate)?|verb “/u.test(d)) return 'verb';
-            if (/noun|nominal/u.test(d)) return 'noun';
-            throw new Error(row.surface + ': cannot infer reviewed-selection kind from ' + row.decision);
-          }
-          function kindsForMultiple(row) {
-            const d = row.decision.toLowerCase();
-            const kinds = [];
-            const add = kind => { if (!kinds.includes(kind)) kinds.push(kind); };
-            if (/person|kin/u.test(d)) add('person');
-            if (/proper/u.test(d)) add('proper');
-            if (/place/u.test(d)) add('place');
-            if (/locality|spatial/u.test(d)) add('localizer');
-            if (/temporal/u.test(d)) add('temporal');
-            if (/classifier/u.test(d)) add('classifier');
-            if (/measure/u.test(d)) add('measure');
-            if (/coverb/u.test(d)) add('coverb');
-            if (/stative|property|adjective/u.test(d)) add('adjective');
-            if (/adverb/u.test(d)) add('adverb');
-            if (/function|connective|conjunction|preposition/u.test(d)) add('function');
-            if (/verb/u.test(d)) add('verb');
-            if (/noun|nominal/u.test(d)) add('noun');
-            if (/bound|modifier/u.test(d)) add('bound');
-            if (kinds.length < 2) throw new Error(row.surface + ': multiple row inferred fewer than two kinds from ' + row.decision + ' => ' + kinds.join(','));
-            return kinds;
-          }
-          function suffixPart(value) {
-            return String(value).normalize('NFKD').replace(/[^A-Za-z0-9]+/gu, '_').replace(/^_+|_+$/gu, '').toLowerCase() || 'analysis';
-          }
-
-          const promotionRows = [];
-          const rawAlternatives = Object.create(null);
-          const defaultReadings = Object.create(null);
-          const multi = [];
-          const split = [];
-          const blocked = [];
-          const held = [];
-
-          for (const row of rows) {
-            if (row.cls === 'reviewed_selection') {
-              const reading = firstReading(row.readingStatus);
-              promotionRows.push([row.rank,row.surface,primaryKind(row),row.decision,reading]);
-              if (reading) defaultReadings[row.surface] = reading;
-            } else if (row.cls === 'multiple') {
-              multi.push(row.surface);
-              const reading = firstReading(row.readingStatus);
-              if (reading) defaultReadings[row.surface] = reading;
-              const kinds = kindsForMultiple(row);
-              rawAlternatives[row.surface] = kinds.map((kind,index) => ({ rank: row.rank, suffix: 'reviewed_' + kind + '_' + (index + 1), kind, gloss: row.decision, jyutping: reading }));
-            } else if (row.cls === 'reading_split') {
-              split.push(row.surface);
-              const specs = splitSpecs[row.surface];
-              defaultReadings[row.surface] = specs[0][0];
-              rawAlternatives[row.surface] = [];
-              for (const [reading,kinds] of specs) {
-                kinds.forEach((kind,index) => rawAlternatives[row.surface].push({ rank: row.rank, suffix: 'reviewed_' + suffixPart(reading) + '_' + kind + '_' + (index + 1), kind, gloss: row.decision, jyutping: reading }));
-              }
-            } else if (row.cls === 'blocked_atomic') {
-              blocked.push(row.surface);
-            } else if (row.cls === 'research_required') {
-              held.push(row.surface);
-            }
-          }
-          if (promotionRows.length !== 143 || multi.length !== 45 || split.length !== 23 || blocked.length !== 37 || held.length !== 2) throw new Error('compiler partition mismatch');
-          if (Object.keys(rawAlternatives).length !== 68) throw new Error('expected 68 alternative surfaces');
-          if (JSON.stringify(new Set(held)) === '{}') throw new Error('unreachable');
-          if (held.sort().join('|') !== ['山個','猷'].sort().join('|')) throw new Error('held surfaces drifted: ' + held.join(','));
-
-          const moduleText = `"use strict";
-
-const SOURCE = ${JSON.stringify(SOURCE)};
-
-const KIND = Object.freeze({
-  noun: ["what", "noun", "common_noun"],
-  person: ["who", "noun", "person_noun"],
-  place: ["where", "noun", "place_noun"],
-  verb: ["doing", "verb", "verb"],
-  adjective: ["like", "adjective", "stative_predicate"],
-  adverb: ["how", "adverb", "adverb"],
-  function: ["func", "function", "function"],
-  classifier: ["what", "classifier", "classifier"],
-  measure: ["what", "measure", "measure_word"],
-  bound: ["func", "bound", "bound_morpheme"],
-  coverb: ["func", "coverb", "coverb"],
-  proper: ["what", "proper_noun", "proper_name"],
-  localizer: ["where", "localizer", "localizer"],
-  temporal: ["when", "noun", "temporal_expression"],
-  interjection: ["func", "interjection", "interjection"],
-});
-
-function lexicalSpec(rank, kind, gloss, jyutping = "", syntax = "") {
-  const meta = KIND[kind];
-  if (!meta) throw new Error("unknown lexical kind " + kind);
-  return Object.freeze({ rank, kind, gloss, jyutping, label: meta[0], pos: meta[1], syntax: syntax || meta[2] });
-}
-
-const PROMOTION_ROWS = Object.freeze(${JSON.stringify(promotionRows,null,2)});
-const PROMOTIONS = Object.freeze(Object.fromEntries(PROMOTION_ROWS.map(([rank,surface,kind,gloss,jyutping="",syntax=""]) => [surface, lexicalSpec(rank,kind,gloss,jyutping,syntax)])));
-const RESEARCH_REQUIRED_SURFACES = new Set(${JSON.stringify(held)});
-const BLOCKED_ATOMIC_SURFACES = new Set(${JSON.stringify(blocked)});
-const MULTI_SURFACES = new Set(${JSON.stringify(multi)});
-const READING_SPLIT_SURFACES = new Set(${JSON.stringify(split)});
-const RAW_ALTERNATIVE_SPECS = Object.freeze(${JSON.stringify(rawAlternatives,null,2)});
-const ALTERNATIVE_SPECS = Object.freeze(Object.fromEntries(Object.entries(RAW_ALTERNATIVE_SPECS).map(([surface,specs]) => [surface, Object.freeze(specs.map((spec) => Object.freeze({ ...lexicalSpec(spec.rank,spec.kind,spec.gloss,spec.jyutping,spec.syntax || ""), suffix: spec.suffix })))])));
-const CANDIDATE_ONLY_SURFACES = new Set(Object.keys(ALTERNATIVE_SPECS));
-const DEFAULT_READING_OVERRIDES = Object.freeze(${JSON.stringify(defaultReadings,null,2)});
-
-function isNeutralLexicalEntry(entry) {
-  return Boolean(entry) && entry.label === "lex" && entry.pos === "lexical_item" && entry.syntax === "lexical_item";
-}
-
-function applyReviewedEntries(entries) {
-  if (!Array.isArray(entries)) throw new TypeError("ranks 1751–2000 reviewed overlay requires an entry array");
-  return entries.map(([surface, entry]) => {
-    const promotion = PROMOTIONS[surface];
-    let next = entry;
-    if (promotion && isNeutralLexicalEntry(next)) {
-      next = {
-        ...next,
-        label: promotion.label,
-        pos: promotion.pos,
-        syntax: promotion.syntax,
-        note: "Reviewed Cifu ranks 1751–2000 lexical selection: " + promotion.gloss,
-        provenance: {
-          kind: "reviewed_lexical_promotion",
-          source: SOURCE,
-          rank: promotion.rank,
-          pronunciation_status: promotion.jyutping ? "reviewed_explicit_reading" : "inherited_runtime_candidate_not_independently_promoted",
-          prior_provenance: next.provenance || null,
-        },
-      };
-    }
-    const reviewedReading = DEFAULT_READING_OVERRIDES[surface];
-    if (reviewedReading && next && next.jyutping !== reviewedReading) {
-      next = {
-        ...next,
-        jyutping: reviewedReading,
-        provenance: {
-          kind: isNeutralLexicalEntry(next) ? "reviewed_candidate_default_pronunciation" : "reviewed_default_pronunciation_correction",
-          source: SOURCE,
-          pronunciation_status: "reviewed_explicit_reading",
-          prior_provenance: next.provenance || null,
-        },
-      };
-    }
-    return [surface, next];
-  });
-}
-
-function defaultAnalysis(surface, entry) {
-  return Object.freeze({
-    id: "lex:" + surface + ":default",
-    label: entry.label || "neutral",
-    pos: entry.pos || "lexical_item",
-    jyutping: entry.jyutping || "",
-    syntax: entry.syntax || "lexical_candidate",
-    senses: Object.freeze([{ gloss: entry.note || "existing runtime default preserved" }]),
-    provenance: Object.freeze({ kind: "existing_runtime_default_preserved", source: "v0.5.236 token lexicon before ranks 1751–2000 alternatives", prior_provenance: entry.provenance || null }),
-  });
-}
-
-function reviewedAlternative(surface, spec, defaultEntry) {
-  return Object.freeze({
-    id: "lex:" + surface + ":r" + spec.rank + ":" + spec.suffix,
-    label: spec.label,
-    pos: spec.pos,
-    jyutping: spec.jyutping || defaultEntry.jyutping || "",
-    syntax: spec.syntax,
-    senses: Object.freeze([{ gloss: spec.gloss }]),
-    provenance: Object.freeze({ kind: "reviewed_lexical_analysis", source: SOURCE, rank: spec.rank, pronunciation_status: spec.jyutping ? "reviewed_explicit_reading" : "inherited_runtime_candidate_not_independently_promoted" }),
-  });
-}
-
-function buildExplicitAnalyses(entries) {
-  const defaults = new Map(entries || []);
-  const out = Object.create(null);
-  for (const [surface, specs] of Object.entries(ALTERNATIVE_SPECS)) {
-    const entry = defaults.get(surface);
-    if (!entry) throw new Error("ranks 1751–2000 explicit analyses reference missing runtime surface: " + surface);
-    const rows = [defaultAnalysis(surface, entry), ...specs.map((spec) => reviewedAlternative(surface, spec, entry))];
-    const seen = new Set();
-    for (const row of rows) {
-      if (!row.jyutping) throw new Error(row.id + ": explicit lexical analysis requires non-empty jyutping");
-      if (seen.has(row.id)) throw new Error(row.id + ": duplicate ranks 1751–2000 stable analysis ID");
-      seen.add(row.id);
-    }
-    out[surface] = Object.freeze(rows);
-  }
-  return Object.freeze(out);
-}
-
-module.exports = Object.freeze({ SOURCE, PROMOTIONS, RESEARCH_REQUIRED_SURFACES, BLOCKED_ATOMIC_SURFACES, MULTI_SURFACES, READING_SPLIT_SURFACES, ALTERNATIVE_SPECS, CANDIDATE_ONLY_SURFACES, DEFAULT_READING_OVERRIDES, isNeutralLexicalEntry, applyReviewedEntries, buildExplicitAnalyses });
-`;
-          fs.writeFileSync('src/runtime-resources/lexicon/token-lexicon/cifu-r1751-2000-reviewed.js', moduleText);
-
-          const policyText = `"use strict";
-
-const reviewed = require("./cifu-r1751-2000-reviewed");
-
-// No whole-surface removal is authorized in this band. The final authority keeps
-// valid Cantonese surfaces while excluding unsupported Mandarin-only analyses.
-const MANDARIN_ONLY_SURFACES = new Set();
-
-function applyRuntimePolicy(entries) {
-  return reviewed.applyReviewedEntries(entries).filter(([surface]) => !MANDARIN_ONLY_SURFACES.has(surface));
-}
-
-module.exports = Object.freeze({ SOURCE: reviewed.SOURCE, PROMOTIONS: reviewed.PROMOTIONS, RESEARCH_REQUIRED_SURFACES: reviewed.RESEARCH_REQUIRED_SURFACES, BLOCKED_ATOMIC_SURFACES: reviewed.BLOCKED_ATOMIC_SURFACES, CANDIDATE_ONLY_SURFACES: reviewed.CANDIDATE_ONLY_SURFACES, DEFAULT_READING_OVERRIDES: reviewed.DEFAULT_READING_OVERRIDES, MANDARIN_ONLY_SURFACES, applyRuntimePolicy });
-`;
-          fs.writeFileSync('src/runtime-resources/lexicon/token-lexicon/cifu-r1751-2000-runtime-policy.js', policyText);
-
-          function replaceOnce(file, needle, replacement) {
-            let value = fs.readFileSync(file, 'utf8');
-            if (!value.includes(needle)) throw new Error(file + ': wiring anchor missing: ' + needle);
-            if (value.includes(replacement)) return;
-            value = value.replace(needle, replacement);
-            fs.writeFileSync(file, value);
-          }
-
-          replaceOnce('src/runtime-resources/lexicon/lexical-analyses.js',
-            'const { buildExplicitAnalyses: buildR15011750ExplicitAnalyses } = require("./token-lexicon/cifu-r1501-1750-reviewed");',
-            'const { buildExplicitAnalyses: buildR15011750ExplicitAnalyses } = require("./token-lexicon/cifu-r1501-1750-reviewed");\nconst { buildExplicitAnalyses: buildR17512000ExplicitAnalyses } = require("./token-lexicon/cifu-r1751-2000-reviewed");');
-          replaceOnce('src/runtime-resources/lexicon/lexical-analyses.js',
-            '    ...buildR15011750ExplicitAnalyses(entries),',
-            '    ...buildR15011750ExplicitAnalyses(entries),\n    ...buildR17512000ExplicitAnalyses(entries),');
-
-          replaceOnce('src/runtime-resources/lexicon/lexical-ingestion-registry.js',
-            '  require("./token-lexicon/cifu-r1501-1750-reviewed"),',
-            '  require("./token-lexicon/cifu-r1501-1750-reviewed"),\n  require("./token-lexicon/cifu-r1751-2000-reviewed"),');
-
-          let index = fs.readFileSync('src/runtime-resources/lexicon/token-lexicon/index.js','utf8');
-          const requireAnchor = 'const { applyRuntimePolicy: applyReviewedR15011750RuntimePolicy } = require("./cifu-r1501-1750-runtime-policy");';
-          if (!index.includes('applyReviewedR17512000RuntimePolicy')) {
-            if (!index.includes(requireAnchor)) throw new Error('token-lexicon index require anchor missing');
-            index = index.replace(requireAnchor, requireAnchor + '\nconst { applyRuntimePolicy: applyReviewedR17512000RuntimePolicy } = require("./cifu-r1751-2000-runtime-policy");');
-            const marker = 'module.exports = applyReviewedR15011750RuntimePolicy(';
-            if (!index.includes(marker)) throw new Error('token-lexicon index export anchor missing');
-            index = index.replace(marker, 'module.exports = applyReviewedR17512000RuntimePolicy(\n  applyReviewedR15011750RuntimePolicy(');
-            index = index.replace(/\n\);\s*$/u, '\n  )\n);\n');
-            fs.writeFileSync('src/runtime-resources/lexicon/token-lexicon/index.js', index);
-          }
-
-          replaceOnce('tests/run-all.js',
-            '  ["cifu_r1501_1750_reviewed_lexicon", path.join(root, "tests", "tooling", "lexicon", "cifu-r1501-1750-reviewed-runtime.test.js")],',
-            '  ["cifu_r1501_1750_reviewed_lexicon", path.join(root, "tests", "tooling", "lexicon", "cifu-r1501-1750-reviewed-runtime.test.js")],\n  ["cifu_r1751_2000_reviewed_lexicon", path.join(root, "tests", "tooling", "lexicon", "cifu-r1751-2000-reviewed-runtime.test.js")],');
-
-          const testText = `#!/usr/bin/env node
-"use strict";
-const assert = require("node:assert/strict");
-const fs = require("node:fs");
-const path = require("node:path");
-const test = require("node:test");
-const tokenEntries = require("../../../src/runtime-resources/lexicon/token-lexicon");
-const reviewed = require("../../../src/runtime-resources/lexicon/token-lexicon/cifu-r1751-2000-reviewed");
-const policy = require("../../../src/runtime-resources/lexicon/token-lexicon/cifu-r1751-2000-runtime-policy");
-const { buildLexicalAnalysisIndex } = require("../../../src/runtime-resources/lexicon/lexical-analyses");
-const root = path.resolve(__dirname, "../../..");
-const tokenLexicon = Object.fromEntries(tokenEntries);
-const analyses = buildLexicalAnalysisIndex(tokenEntries);
-const dynamic = reviewed.buildExplicitAnalyses(tokenEntries);
-function cifuRows() {
-  const lines = fs.readFileSync(path.join(root,"data","lexical-frequency","cifu-spoken-top-2000.tsv"),"utf8").replace(/^\\uFEFF/,"").trimEnd().split(/\\r?\\n/);
-  const header = lines.shift().split("\\t"); const ix = Object.fromEntries(header.map((n,i)=>[n,i]));
-  return lines.map(line => { const row=line.split("\\t"); return {rank:Number(row[ix.rank]),surface:row[ix.word]}; });
-}
-function bandRowsFromCifu(){ return cifuRows().filter(r=>r.rank>=1751&&r.rank<=2000); }
-function bandRows(surface){ return (analyses[surface]||[]).slice(1).filter(r=>r.provenance&&r.provenance.source===reviewed.SOURCE); }
-function readings(surface){ return (analyses[surface]||[]).map(r=>r.jyutping); }
-test("ranks 1751-2000 retain all 250 exact Cantonese surfaces",()=>{ const rows=bandRowsFromCifu(); assert.equal(rows.length,250); assert.equal(new Set(rows.map(r=>r.surface)).size,250); for(const {surface} of rows) assert.ok(tokenLexicon[surface],surface+": exact runtime surface retained"); assert.equal(policy.MANDARIN_ONLY_SURFACES.size,0); });
-test("global Cifu exact runtime coverage remains 1999/2000 with only 多少 removed",()=>{ const missing=cifuRows().filter(r=>!tokenLexicon[r.surface]); assert.deepEqual(missing,[{rank:1404,surface:"多少"}]); });
-test("final authority partition is exactly 143 + 45 + 23 + 37 + 2",()=>{ assert.equal(Object.keys(reviewed.PROMOTIONS).length,143); assert.equal(reviewed.MULTI_SURFACES.size,45); assert.equal(reviewed.READING_SPLIT_SURFACES.size,23); assert.equal(Object.keys(reviewed.ALTERNATIVE_SPECS).length,68); assert.equal(reviewed.CANDIDATE_ONLY_SURFACES.size,68); assert.equal(reviewed.BLOCKED_ATOMIC_SURFACES.size,37); assert.deepEqual(new Set(reviewed.RESEARCH_REQUIRED_SURFACES),new Set(["山個","猷"])); const sets=[new Set(Object.keys(reviewed.PROMOTIONS)),reviewed.MULTI_SURFACES,reviewed.READING_SPLIT_SURFACES,reviewed.BLOCKED_ATOMIC_SURFACES,reviewed.RESEARCH_REQUIRED_SURFACES]; const union=new Set(); for(const set of sets) for(const s of set){ assert.ok(!union.has(s),s+": authority class overlap"); union.add(s); } assert.equal(union.size,250); });
-test("143 broad rows are typed without flattening richer defaults",()=>{ for(const [surface,promotion] of Object.entries(reviewed.PROMOTIONS)){ const entry=tokenLexicon[surface]; assert.ok(entry,surface+": entry exists"); assert.ok(!reviewed.isNeutralLexicalEntry(entry),surface+": broad reviewed row typed"); if(entry.provenance&&entry.provenance.source===reviewed.SOURCE&&entry.provenance.kind==="reviewed_lexical_promotion"){ assert.equal(entry.label,promotion.label); assert.equal(entry.pos,promotion.pos); assert.equal(entry.syntax,promotion.syntax); } } });
-test("held and blocked rows receive no band-specific atomic fact",()=>{ for(const surface of [...reviewed.RESEARCH_REQUIRED_SURFACES,...reviewed.BLOCKED_ATOMIC_SURFACES]){ const entry=tokenLexicon[surface]; assert.ok(entry,surface+": exact surface retained"); assert.ok(!dynamic[surface],surface+": no reviewed alternative set"); assert.ok(!(entry.provenance&&entry.provenance.source===reviewed.SOURCE),surface+": no band-specific default typing"); } });
-test("68 alternative surfaces preserve default first and stable nonempty IDs",()=>{ assert.equal(Object.keys(dynamic).length,68); const seen=new Set(); for(const [surface,rows] of Object.entries(dynamic)){ assert.ok(rows.length>=2,surface+": default plus alternatives"); assert.equal(rows[0].id,"lex:"+surface+":default"); for(const row of rows){ assert.ok(row.jyutping,row.id+": nonempty Jyutping"); assert.ok(!seen.has(row.id),row.id+": unique"); seen.add(row.id); } } });
-test("high-risk reviewed reading corrections replace rejected packet candidates",()=>{ const expected={"拃":"zaa6","校":"haau6","梗":"gang2","第時":"dai6 si4","細妹":"sai3 mui2","黏":"nim4","出邊":"ceot1 bin6","全名":"cyun4 meng2","同樣":"tung4 joeng6","有份":"jau5 fan2","判斷":"pun3 dyun3","兔仔":"tou3 zai2","界定":"gaai3 deng6","紅籌":"hung4 cau2","孭":"me1","偈":"gai2","梳打":"so1 daa2","硬係":"ngaang2 hai6","傾計":"king1 gai2","嘴":"zeoi2","撈":"lou1"}; for(const [s,j] of Object.entries(expected)) assert.equal(tokenLexicon[s].jyutping,j,s+": reviewed default reading"); assert.ok(!readings("判斷").includes("pun3 tyun5")); assert.ok(!readings("兔仔").some(j=>/zi2$/u.test(j))); assert.ok(!readings("界定").includes("gaai3 ding6")); assert.ok(!readings("傾計").includes("king1 gai3")); assert.ok(!readings("撈").includes("lou4")); });
-test("critical polyfunctionality and reading splits survive as reviewed",()=>{ const has=(s,pos,j)=>bandRows(s).some(r=>r.pos===pos&&(!j||r.jyutping===j)); assert.ok(has("校","noun","haau6")); assert.ok(has("校","verb","gaau3")); assert.ok(has("文","noun","man4")); assert.ok(has("文","classifier","man1")); assert.ok(has("文","verb","man6")); assert.ok(has("和","function","wo4")); assert.ok(has("和","verb","wo6")); assert.ok(has("和","verb","wu2")); assert.ok(has("量","verb","loeng4")); assert.ok(has("量","noun","loeng6")); assert.ok(has("傳","verb","cyun4")); assert.ok(has("傳","noun","zyun6")); assert.ok(has("悶","adjective","mun6")); assert.ok(has("悶","verb","mun6")); assert.ok(has("旅遊","verb","leoi5 jau4")); assert.ok(has("旅遊","noun","leoi5 jau4")); assert.ok(has("撈","verb","lou1")); assert.ok(has("撈","verb","laau4")); assert.equal(tokenLexicon["嘴"].pos,"noun"); assert.ok(!(analyses["嘴"]||[]).some(r=>r.pos==="classifier")); });
-test("Mandarin-only analyses are not encoded for retained Cantonese surfaces",()=>{ assert.notEqual(tokenLexicon["在"].syntax,"progressive_marker"); assert.ok(!(analyses["校"]||[]).some(r=>r.pos==="classifier")); assert.ok(!(analyses["嘴"]||[]).some(r=>r.pos==="classifier")); });
-test("ranks 1-1750 protected analysis identities and 多少 exclusion survive",()=>{ assert.deepEqual((analyses["住"]||[]).map(r=>r.id),["lex:住:residence_verb","lex:住:durative_marker"]); assert.equal(tokenLexicon["多少"],undefined); assert.equal(analyses["多少"],undefined); assert.ok((analyses["響"]||[]).some(r=>r.pos==="coverb")); });
-`;
-          fs.writeFileSync('tests/tooling/lexicon/cifu-r1751-2000-reviewed-runtime.test.js', testText);
-
-          const ledgerPath = 'data/lexical-frequency/cifu-mandarin-contamination-runtime-audit.tsv';
-          const ledgerLines = fs.readFileSync(ledgerPath,'utf8').trimEnd().split(/\r?\n/);
-          const header = ledgerLines[0].split('\t');
-          const parsed = ledgerLines.slice(1).map(line=>line.split('\t'));
-          const rankIx = header.indexOf('rank');
-          function setLedger(rank, fields){ const row=parsed.find(r=>Number(r[rankIx])===rank); if(!row) throw new Error('missing contamination row '+rank); for(const [key,value] of Object.entries(fields)){ const i=header.indexOf(key); if(i<0) throw new Error('missing contamination column '+key); row[i]=value; } }
-          setLedger(1792,{runtime_module:'cifu-r1751-2000-reviewed.js',runtime_jyutping:'haau6',runtime_meta:'reviewed alternatives: what:noun school family; doing:verb and func:bound gaau3 proofread/check/field-officer family; Mandarin classifier metadata excluded',runtime_disposition:'cantonese_specific_analysis',action:'no_runtime_change'});
-          setLedger(1995,{runtime_module:'cifu-r1751-2000-reviewed.js',runtime_jyutping:'zeoi2',runtime_meta:'reviewed what:noun mouth/beak/spout; Cifu Mandarin 張 classifier analysis excluded',runtime_disposition:'cantonese_specific_analysis',action:'no_runtime_change'});
-          fs.writeFileSync(ledgerPath,[header.join('\t'),...parsed.map(r=>r.join('\t'))].join('\n')+'\n');
-
-          const summaryPath='data/lexical-frequency/cifu-mandarin-contamination-summary.json';
-          const summary=JSON.parse(fs.readFileSync(summaryPath,'utf8'));
-          summary.scope='Historical Cifu SpokenAdult top 2,000 plus completed expert adjudications #792-#799, consolidated ranks 1251-1500 authority #884/#886, consolidated ranks 1501-1750 authority #892/#894, and final ranks 1751-2000 authority #901; Mandarin contamination only';
-          const dispIx=header.indexOf('runtime_disposition');
-          const dispCounts=Object.create(null); for(const row of parsed) dispCounts[row[dispIx]]=(dispCounts[row[dispIx]]||0)+1;
-          summary.runtime_audit.cantonese_specific_analysis=dispCounts.cantonese_specific_analysis||0;
-          summary.runtime_audit.neutral_surface_coverage_without_contaminated_semantics=dispCounts.neutral_surface_coverage||0;
-          summary.runtime_audit.non_cantonese_surface_removed=dispCounts.non_cantonese_surface_removed||0;
-          summary.interpretation='Twenty-five audited findings are analysis-level metadata contamination on independently valid Cantonese surfaces and remain retained. Reviewed final-band authority now gives 校 explicit Cantonese school and gaau3 proofread/check families and 嘴 an ordinary Cantonese mouth/beak/spout noun while excluding their Cifu Mandarin classifier metadata. Rank 1729 響 retains reviewed Cantonese verb/coverb/existential analyses. Rank 1404 多少 remains the sole positively established whole-surface non-Cantonese item and remains removed from effective runtime.';
-          fs.writeFileSync(summaryPath,JSON.stringify(summary,null,2)+'\n');
-
-          console.log(JSON.stringify({counts,promotions:promotionRows.length,alternative_surfaces:Object.keys(rawAlternatives).length,blocked:blocked.length,held,summary_runtime_audit:summary.runtime_audit},null,2));
-          NODE
-      - name: Run focused final-band invariants
+      - name: Compile merged authority
+        run: node tools/agent-cifu-r1751-2000-runtime-build.js
+      - name: Focused final-band invariants
         run: node --test tests/tooling/lexicon/cifu-r1751-2000-reviewed-runtime.test.js
-      - name: Run scalable lexical-ingestion gate
+      - name: Scalable lexical-ingestion tests
         run: npm run test:lexical-ingestions
-      - name: Emit scalable ingestion audit
+      - name: Scalable lexical-ingestion audit
         run: npm run audit:lexical-ingestions
       - name: Build deterministic runtime in workspace
         run: npm run build:runtime
-      - name: Verify runtime against workspace-built bundle
+      - name: Verify runtime against workspace bundle
         run: npm run verify:runtime
       - name: Verify research provenance
         run: npm run verify:research
-      - name: Verify core current state
+      - name: Verify core state
         run: npm run verify
-      - name: Enforce regression-debt ratchet against v0.5.236 main
+      - name: Regression-debt ratchet against v0.5.236
         run: |
           set -euo pipefail
           BASE_SHA='2af0a9b440bb5ca93e4463ed774fc6ecd6ff1754'
@@ -441,24 +53,27 @@ test("ranks 1-1750 protected analysis identities and 多少 exclusion survive",(
           node tests/run-regression.js || true
           node tests/run-np-subsystem.js || true
           node tests/run-constructions.js || true
-          for report in "$BASE_DIR/validation/current/regression-suite.json" "$BASE_DIR/validation/current/np-subsystem-results.json" "$BASE_DIR/validation/current/construction-tests.json" validation/current/regression-suite.json validation/current/np-subsystem-results.json validation/current/construction-tests.json; do test -f "$report" || { echo "Missing ratchet report: $report" >&2; exit 1; }; done
+          for report in "$BASE_DIR/validation/current/regression-suite.json" "$BASE_DIR/validation/current/np-subsystem-results.json" "$BASE_DIR/validation/current/construction-tests.json" validation/current/regression-suite.json validation/current/np-subsystem-results.json validation/current/construction-tests.json; do
+            test -f "$report" || { echo "Missing ratchet report: $report" >&2; exit 1; }
+          done
           node tools/verify-regression-ratchet.js --suite regression --baseline-result "$BASE_DIR/validation/current/regression-suite.json" --candidate-result validation/current/regression-suite.json --baseline-universe "$BASE_DIR/tests/fixtures/regression-snapshots.json" --candidate-universe tests/fixtures/regression-snapshots.json
           node tools/verify-regression-ratchet.js --suite np_subsystem --baseline-result "$BASE_DIR/validation/current/np-subsystem-results.json" --candidate-result validation/current/np-subsystem-results.json --baseline-universe "$BASE_DIR/tests/fixtures/np-subsystem.json" --candidate-universe tests/fixtures/np-subsystem.json
           node tools/verify-regression-ratchet.js --suite construction_files --baseline-result "$BASE_DIR/validation/current/construction-tests.json" --candidate-result validation/current/construction-tests.json --baseline-universe "$BASE_DIR/tests/constructions" --candidate-universe tests/constructions
-      - name: Clean generated byproducts and enforce source-phase allowlist
+      - name: Enforce source-phase write allowlist
         run: |
           set -euo pipefail
           git restore --worktree --staged main.js validation/current 2>/dev/null || true
           git clean -fd validation/current >/dev/null 2>&1 || true
           mapfile -t CHANGED < <({ git diff --name-only; git ls-files --others --exclude-standard; } | sort -u)
-          printf 'Source-phase changes:\n'; printf '  %s\n' "${CHANGED[@]}"
+          printf 'Source-phase changes:\n'
+          printf '  %s\n' "${CHANGED[@]}"
           for p in "${CHANGED[@]}"; do
             case "$p" in
               src/runtime-resources/lexicon/lexical-analyses.js|src/runtime-resources/lexicon/lexical-ingestion-registry.js|src/runtime-resources/lexicon/token-lexicon/index.js|src/runtime-resources/lexicon/token-lexicon/cifu-r1751-2000-reviewed.js|src/runtime-resources/lexicon/token-lexicon/cifu-r1751-2000-runtime-policy.js|tests/tooling/lexicon/cifu-r1751-2000-reviewed-runtime.test.js|tests/run-all.js|data/lexical-frequency/cifu-mandarin-contamination-runtime-audit.tsv|data/lexical-frequency/cifu-mandarin-contamination-summary.json) ;;
-              *) echo "Unexpected source-phase change: $p" >&2; exit 1;;
+              *) echo "Unexpected source-phase change: $p" >&2; exit 1 ;;
             esac
           done
-      - name: Commit validated source phase to claimed branch
+      - name: Commit validated source phase
         run: |
           set -euo pipefail
           git config user.name 'github-actions[bot]'
