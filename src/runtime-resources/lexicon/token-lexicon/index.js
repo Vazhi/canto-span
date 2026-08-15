@@ -20,6 +20,7 @@ const baseEntries = [
   ...require("./function-words-and-particles"),
   ...require("./degree-and-formulas"),
   ...require("./study-suite"),
+  ...require("./lexical-coverage-additions"),
   ...require("./frequency-gap-fill-r7"),
 ];
 
