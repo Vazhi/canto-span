@@ -73,10 +73,14 @@ test("93 independently supportable broad rows are typed without flattening exist
     const entry = tokenLexicon[surface];
     assert.ok(entry, `${surface}: runtime entry exists`);
     assert.ok(!reviewed.isNeutralLexicalEntry(entry), `${surface}: broad reviewed selection is typed`);
-    assert.equal(entry.label, promotion.label, `${surface}: broad lexical role matches the authority`);
     if (entry.provenance && entry.provenance.source === reviewed.SOURCE) {
       assert.equal(entry.provenance.kind, "reviewed_lexical_promotion", `${surface}: new typing is provenance-marked`);
+      assert.equal(entry.label, promotion.label, `${surface}: promoted lexical role`);
       assert.equal(entry.pos, promotion.pos, `${surface}: promoted POS`);
+      assert.equal(entry.syntax, promotion.syntax, `${surface}: promoted syntax`);
+    } else {
+      assert.notEqual(entry.pos, "lexical_item", `${surface}: pre-existing richer typed default remains typed`);
+      assert.notEqual(entry.syntax, "lexical_item", `${surface}: pre-existing richer syntax is preserved`);
     }
   }
 });
