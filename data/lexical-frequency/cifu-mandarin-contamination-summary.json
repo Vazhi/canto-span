@@ -1,6 +1,6 @@
 {
   "schema": "canto-span-cifu-mandarin-contamination-audit-v1",
-  "scope": "Historical Cifu SpokenAdult top 2,000 plus completed expert adjudications #792-#799 and consolidated ranks 1251-1500 authority #884/#886; Mandarin contamination only",
+  "scope": "Historical Cifu SpokenAdult top 2,000 plus completed expert adjudications #792-#799, consolidated ranks 1251-1500 authority #884/#886, and consolidated ranks 1501-1750 authority #892/#894; Mandarin contamination only",
   "policy": {
     "removal_target": "positively identified Mandarin-only surface/reading/sense/category/function lacking independent Cantonese support",
     "shared_with_mandarin_is_not_contamination": true,
@@ -34,8 +34,8 @@
     "remove_whole_surface": 1
   },
   "runtime_audit": {
-    "cantonese_specific_analysis": 12,
-    "neutral_surface_coverage_without_contaminated_semantics": 13,
+    "cantonese_specific_analysis": 13,
+    "neutral_surface_coverage_without_contaminated_semantics": 12,
     "non_cantonese_surface_removed": 1,
     "identified_mandarin_analysis_encoded_in_runtime": 0,
     "runtime_changes_required_for_these_26": 1,
@@ -48,5 +48,5 @@
     "restoration_commit": "ac415c733b5372cf142c4b7615a26a1ba2d0054b",
     "broad_retirement_ledgers_and_tools_removed_from_active_branch": true
   },
-  "interpretation": "Twenty-five audited findings are analysis-level metadata contamination on independently valid Cantonese surfaces and remain retained. Rank 1404 多少 is the first positively established whole-surface non-Cantonese item under the current policy: CantoDict marks it Standard written Chinese rather than Cantonese and gives 幾多, so the generated Cifu source remains provenance while the effective Cantonese runtime removes 多少."
+  "interpretation": "Twenty-five audited findings are analysis-level metadata contamination on independently valid Cantonese surfaces and remain retained. Rank 1729 響 now has reviewed Cantonese verb, locative-coverb, and locative-existential analyses while the contaminated Cifu metadata remains excluded. Rank 1404 多少 remains the first positively established whole-surface non-Cantonese item under the current policy: CantoDict marks it Standard written Chinese rather than Cantonese and gives 幾多, so the generated Cifu source remains provenance while the effective Cantonese runtime removes 多少."
 }
