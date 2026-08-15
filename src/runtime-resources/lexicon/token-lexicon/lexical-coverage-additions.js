@@ -65,11 +65,4 @@ module.exports = [
     syntax: "subject_or_topic",
     note: "Informal orthographic variant of 佢哋 'they/them'; attested separately in the bounded vernacular source. Canonical spelling remains 佢哋.",
   }],
-  ["陣間", {
-    label: "when",
-    pos: "noun",
-    jyutping: "zan6 gaan1",
-    syntax: "time_np temporal_adjunct",
-    note: "in a little while / soon / later; specifically Cantonese temporal lexeme independently confirmed by CUHK Cantonese Express, Wiktionary, and Cantonese dictionaries.",
-  }],
 ];
