@@ -1,6 +1,8 @@
 "use strict";
 
-module.exports = [
+const { blockedAtomicSurfaces } = require("./lexical-ingestion-registry");
+
+const authoredCompositionalPhrases = [
   "唔開心", "唔鍾意",
   "一百萬", "二百萬", "三百萬", "四百萬", "五百萬", "六百萬", "七百萬", "八百萬", "九百萬",
   "一千萬", "二千萬", "三千萬", "四千萬", "五千萬", "六千萬", "七千萬", "八千萬", "九千萬", "一億",
@@ -15,3 +17,13 @@ module.exports = [
   "好貴", "好靚", "好正", "好出名", "好適合", "平啲",
   "聽過", "去過", "未去過", "講緊", "試吓", "睇睇", "Book完", "Book完枱", "話畀你知",
 ];
+
+// Reviewed ingestion rows explicitly classified as blocked_atomic are parser
+// policy, not one-off test fixtures: exact source coverage may remain for
+// provenance/Jyutping, but longest-match lexical lookup must never collapse
+// those surfaces into opaque whole tokens. Future ingestions opt in by adding
+// their policy module to lexical-ingestion-registry.js.
+module.exports = [...new Set([
+  ...authoredCompositionalPhrases,
+  ...blockedAtomicSurfaces,
+])];
