@@ -1,0 +1,33 @@
+name: Temporary Cifu ranks 1001-1250 diagnostics
+
+on:
+  push:
+    branches:
+      - agent/cifu-r1001-1250-runtime-reconcile
+    paths:
+      - .github/workflows/temporary-cifu-r1001-1250-diagnostic.yml
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - name: Install dependencies
+        run: npm ci
+      - name: Load reviewed module
+        run: node -e 'const r=require("./src/runtime-resources/lexicon/token-lexicon/cifu-r1001-1250-reviewed"); console.log({promotions:Object.keys(r.PROMOTIONS).length, alternatives:Object.keys(r.ALTERNATIVE_SPECS).length, sourceOnly:r.SOURCE_ONLY_SURFACES.size, blocked:r.BLOCKED_ATOMIC_SURFACES.size})'
+      - name: Load composed token lexicon
+        run: node -e 'const x=require("./src/runtime-resources/lexicon/token-lexicon"); console.log(`entries=${x.length}`)'
+      - name: Load composed lexical analyses
+        run: node -e 'const x=require("./src/runtime-resources/lexicon/token-lexicon"); const a=require("./src/runtime-resources/lexicon/lexical-analyses").buildLexicalAnalysisIndex(x); console.log(`surfaces=${Object.keys(a).length}`)'
+      - name: Run ranks 1001-1250 focused test
+        run: node tests/tooling/lexicon/cifu-r1001-1250-reviewed-runtime.test.js
+      - name: Run parser architecture audit
+        run: node tests/tooling/parser-coverage/architecture-audit.test.js
