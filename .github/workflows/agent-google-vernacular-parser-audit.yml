@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   audit:
-    if: github.event.head_commit.message == 'Add temporary vernacular parser audit'
+    if: github.event.head_commit.message == 'Run temporary vernacular parser audit'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -35,7 +35,7 @@ jobs:
               rows = list(csv.DictReader(f))
           def tombstone(s):
               x=s.lower()
-              return x == 'del' or re.search(r'(?:^|[\\s\\-?])del(?:$|[\\s\\-?])', x) is not None
+              return x == 'del' or re.search(r'(^|[-\\s?])del($|[-\\s?])', x) is not None
           seen=set(); out=[]
           for source_row,row in enumerate(rows,start=1):
               surface=unicodedata.normalize('NFC',(row.get('Word') or '').strip())
