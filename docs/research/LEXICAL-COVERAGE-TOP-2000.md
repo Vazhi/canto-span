@@ -80,7 +80,7 @@ For disputed Cifu metadata, use independent Cantonese evidence such as:
 - Jyut.net / Jyut Dictionary;
 - Cantonese dictionaries and reference grammars;
 - direct Cantonese linguistic research;
-- completed expert adjudications #792-#799.
+- completed expert adjudications #792-#799 and later explicit consolidation records such as #884/#886.
 
 Absence from one resource is not negative evidence.
 
@@ -89,14 +89,15 @@ Absence from one resource is not negative evidence.
 Two narrow ledgers own the current contamination findings:
 
 - `data/lexical-frequency/cifu-explicit-mandarin-contamination.tsv` — Cifu definitions explicitly marked `(Mandarin)`;
-- `data/lexical-frequency/cifu-mandarin-oriented-adjudication.tsv` — additional Mandarin-oriented senses/categories identified by expert Cantonese adjudication.
+- `data/lexical-frequency/cifu-mandarin-oriented-adjudication.tsv` — additional Mandarin-oriented senses/categories or whole surfaces identified by expert Cantonese adjudication.
 
 At the current checkpoint:
 
 - **23** explicit `(Mandarin)` Cifu cases have been isolated;
-- **2** additional Mandarin-oriented Cifu analyses (`仲`, `法官`) have been isolated through expert adjudication;
-- all **25 surfaces remain valid Cantonese items** in another independently supported Cantonese analysis;
-- therefore these findings currently require **analysis-level rejection/correction, not whole-surface deletion**.
+- **3** additional Mandarin-oriented findings (`仲`, `法官`, `多少`) have been isolated through expert adjudication;
+- **25 of 26** contaminated findings remain valid Cantonese surfaces in another independently supported Cantonese analysis and therefore receive analysis-level rejection/correction only;
+- **1 of 26**, rank 1404 `多少`, is positively identified as Standard written Chinese rather than Cantonese and has no Cantonese whole-surface rescue; the reviewed runtime removes that surface while preserving the generated Cifu record as provenance and retaining Cantonese `幾多`;
+- the independent common-spoken-Cantonese development-priority inventory remains **2,000 items**; Cifu exact-surface runtime coverage is intentionally **1,999/2,000** after the `多少` removal and is no longer treated as a lexical-validity target.
 
 Examples:
 
@@ -106,6 +107,7 @@ Examples:
 - `把 baa2`: retain independently supported Cantonese classifier/lexical behavior; reject the Mandarin disposal-construction analysis.
 - `仲 zung6`: retain Cantonese `still/yet/also`; reject Cifu's Mandarin-oriented `middle/second in seniority` sense family for this spoken item.
 - `法官 faat3 gun1`: retain Cantonese person/title noun `judge`; do not import Cifu's free verbal `to judge` analysis.
+- `多少 do1 siu2`: CantoDict explicitly marks the form Standard written Chinese rather than Cantonese and supplies `幾多` as Cantonese; remove the whole surface from the effective Cantonese runtime rather than retaining it for a historical coverage count.
 
 ## Correction of historical PR #843 cleanup
 
@@ -129,7 +131,7 @@ Before changing runtime lexical data, compare each contamination finding with th
 - If the runtime explicitly encodes the Mandarin-only sense/reading/category, remove or correct that specific analysis.
 - Delete an entire runtime surface only if positive evidence establishes that the represented lexical item itself is Mandarin-only in the relevant usage and Cantonese rescue fails.
 
-This makes **zero whole-surface deletions a valid and expected audit result** if the contamination is confined to source metadata.
+A zero whole-surface deletion count is valid when contamination is confined to source metadata. It is not a target: `多少` demonstrates that positive surface-level evidence can and should produce a whole-surface removal under the same narrow rule.
 
 ## Regression policy
 
