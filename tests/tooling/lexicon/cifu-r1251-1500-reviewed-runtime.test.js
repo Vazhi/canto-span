@@ -52,6 +52,7 @@ test("ranks 1251-1500 retain every Cantonese surface while excluding positive co
   for (const surface of surfaces) {
     if (surface === "多少") {
       assert.equal(tokenLexicon[surface], undefined, "多少: positive non-Cantonese surface is absent from effective runtime");
+      assert.equal(analyses[surface], undefined, "多少: no lexical-analysis fallback survives contamination removal");
     } else {
       assert.ok(tokenLexicon[surface], `${surface}: exact runtime surface retained`);
     }
