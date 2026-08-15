@@ -18,8 +18,16 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
-      - run: npm run build:runtime
+      - name: Build deterministic runtime in workspace
+        run: npm run build:runtime
+      - name: Run ranks 1501-1750 focused invariants
+        run: node --test tests/tooling/lexicon/cifu-r1501-1750-reviewed-runtime.test.js
+      - name: Run scalable lexical-ingestion gate
+        run: npm run test:lexical-ingestions
+      - name: Run runtime verification against generated bundle
+        run: npm run verify:runtime
       - uses: actions/upload-artifact@v6
+        if: always()
         with:
           name: generated-runtime-main
           path: main.js
