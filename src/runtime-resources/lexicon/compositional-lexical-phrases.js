@@ -1,6 +1,7 @@
 "use strict";
 
-const { blockedAtomicSurfaces } = require("./lexical-ingestion-registry");
+const tokenLexicon = Object.fromEntries(require("./token-lexicon"));
+const { ingestionForcedCompositionalSurfaces } = require("./lexical-ingestion-registry");
 
 const authoredCompositionalPhrases = [
   "唔開心", "唔鍾意",
@@ -18,12 +19,13 @@ const authoredCompositionalPhrases = [
   "聽過", "去過", "未去過", "講緊", "試吓", "睇睇", "Book完", "Book完枱", "話畀你知",
 ];
 
-// Reviewed ingestion rows explicitly classified as blocked_atomic are parser
-// policy, not one-off test fixtures: exact source coverage may remain for
-// provenance/Jyutping, but longest-match lexical lookup must never collapse
-// those surfaces into opaque whole tokens. Future ingestions opt in by adding
-// their policy module to lexical-ingestion-registry.js.
+// An ingestion-level blocked_atomic decision only blocks that ingestion from
+// promoting the source row as a new opaque lexeme. It becomes a tokenizer
+// compositional guardrail only when the effective runtime still contains the
+// same multi-character surface solely as a neutral frequency-list fallback.
+// Independently reviewed typed lexemes (for example 畫畫) retain their stronger
+// runtime authority, and single-character rows cannot meaningfully decompose.
 module.exports = [...new Set([
   ...authoredCompositionalPhrases,
-  ...blockedAtomicSurfaces,
+  ...ingestionForcedCompositionalSurfaces(tokenLexicon),
 ])];
