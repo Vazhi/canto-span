@@ -21,6 +21,7 @@ const commands = [
   ["cifu_r1001_1250_reviewed_lexicon", path.join(root, "tests", "tooling", "lexicon", "cifu-r1001-1250-reviewed-runtime.test.js")],
   ["cifu_r1251_1500_reviewed_lexicon", path.join(root, "tests", "tooling", "lexicon", "cifu-r1251-1500-reviewed-runtime.test.js")],
   ["cifu_r1501_1750_reviewed_lexicon", path.join(root, "tests", "tooling", "lexicon", "cifu-r1501-1750-reviewed-runtime.test.js")],
+  ["lexical_ingestion_tokenization", path.join(root, "tests", "tooling", "lexicon", "lexical-ingestion-tokenization-audit.test.js")],
   ["unit_word_evidence", path.join(root, "tests", "tooling", "runtime", "unit-word-evidence.test.js")],
   ["label_transition_policy", path.join(root, "tests", "tooling", "runtime", "label-transition-policy.test.js")],
   ["ab33_outer_question_composition", path.join(root, "tests", "tooling", "runtime", "ab33-outer-question-composition.test.js")],
@@ -48,7 +49,10 @@ const generatedPaths = Object.values(debtReports);
 const originalGeneratedFiles = new Map(
   generatedPaths.map((relativePath) => {
     const absolutePath = path.join(root, relativePath);
-    return [absolutePath, fs.existsSync(absolutePath) ? fs.readFileSync(absolutePath) : null];
+    return [
+      absolutePath,
+      fs.existsSync(absolutePath) ? fs.readFileSync(absolutePath) : null,
+    ];
   }),
 );
 const results = [];
@@ -103,8 +107,9 @@ try {
   }
 } finally {
   for (const [absolutePath, original] of originalGeneratedFiles) {
-    if (original === null) fs.rmSync(absolutePath, { force: true });
-    else {
+    if (original === null) {
+      fs.rmSync(absolutePath, { force: true });
+    } else {
       fs.mkdirSync(path.dirname(absolutePath), { recursive: true });
       fs.writeFileSync(absolutePath, original);
     }

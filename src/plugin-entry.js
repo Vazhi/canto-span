@@ -15,7 +15,8 @@ const createCantoSpanPlugin = require("./plugin/canto-span-plugin");
  * never overwrite child learner roles.
  */
 
-const CANTO_SPAN_RUNTIME_VERSION = "0.5.234";
+const CANTO_SPAN_RUNTIME_VERSION = "0.5.235";
+// v0.5.235: adds a scalable lexical-ingestion contamination/tokenization architecture gate, force-composes only neutral multi-character promotion-blocked fallbacks, and completes generated modal-clause trace-family metadata.
 // v0.5.234: reconciles reviewed Cifu ranks 1251–1500 with 126 evidence-supported broad defaults, 72 stable alternative surfaces, pending/blocked safeguards, and positive non-Cantonese 多少 removal while preserving ranks 1–1250 behavior.
 // v0.5.233: reconciles reviewed Cifu ranks 1001–1250 with evidence-graded promotions, stable alternatives, zero-hit safeguards, and preserved ranks 1–1000 behavior.
 // v0.5.232: reconciles reviewed Cifu ranks 751–1000 with conservative defaults, stable alternatives, evidence-driven typed corrections, and preserved ranks 1–750 behavior.
