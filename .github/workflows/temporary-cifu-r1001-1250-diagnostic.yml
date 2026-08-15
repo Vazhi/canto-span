@@ -23,49 +23,52 @@ jobs:
           package-manager-cache: false
       - name: Install dependencies
         run: npm ci
-      - name: Load reviewed module
-        run: node -e 'const r=require("./src/runtime-resources/lexicon/token-lexicon/cifu-r1001-1250-reviewed"); console.log({promotions:Object.keys(r.PROMOTIONS).length, alternatives:Object.keys(r.ALTERNATIVE_SPECS).length, sourceOnly:r.SOURCE_ONLY_SURFACES.size, blocked:r.BLOCKED_ATOMIC_SURFACES.size})'
-      - name: Load composed token lexicon
-        run: node -e 'const x=require("./src/runtime-resources/lexicon/token-lexicon"); console.log(`entries=${x.length}`)'
-      - name: Load composed lexical analyses
-        run: node -e 'const x=require("./src/runtime-resources/lexicon/token-lexicon"); const a=require("./src/runtime-resources/lexicon/lexical-analyses").buildLexicalAnalysisIndex(x); console.log(`surfaces=${Object.keys(a).length}`)'
-      - name: Coverage invariant
-        continue-on-error: true
-        run: node --test --test-name-pattern='retain complete exact-surface coverage' tests/tooling/lexicon/cifu-r1001-1250-reviewed-runtime.test.js
-      - name: Partition invariant
-        continue-on-error: true
-        run: node --test --test-name-pattern='runtime policy exposes' tests/tooling/lexicon/cifu-r1001-1250-reviewed-runtime.test.js
-      - name: Broad typing invariant
-        continue-on-error: true
-        run: node --test --test-name-pattern='93 independently supportable broad rows' tests/tooling/lexicon/cifu-r1001-1250-reviewed-runtime.test.js
-      - name: Source-only safeguard
-        continue-on-error: true
-        run: node --test --test-name-pattern='32 source-only zero-hit rows' tests/tooling/lexicon/cifu-r1001-1250-reviewed-runtime.test.js
-      - name: Blocked safeguard
-        continue-on-error: true
-        run: node --test --test-name-pattern='49 blocked atomic rows' tests/tooling/lexicon/cifu-r1001-1250-reviewed-runtime.test.js
-      - name: Alternative-ID invariant
-        continue-on-error: true
-        run: node --test --test-name-pattern='76 reviewed alternative surfaces' tests/tooling/lexicon/cifu-r1001-1250-reviewed-runtime.test.js
-      - name: Default-reading invariant
-        continue-on-error: true
-        run: node --test --test-name-pattern='reviewed default-reading corrections' tests/tooling/lexicon/cifu-r1001-1250-reviewed-runtime.test.js
-      - name: Reading-split invariant
-        continue-on-error: true
-        run: node --test --test-name-pattern='implementation-critical reading splits' tests/tooling/lexicon/cifu-r1001-1250-reviewed-runtime.test.js
-      - name: 好話 supersession invariant
-        continue-on-error: true
-        run: node --test --test-name-pattern='好話 stays one broad lexical family' tests/tooling/lexicon/cifu-r1001-1250-reviewed-runtime.test.js
-      - name: 盡量 ontology invariant
-        continue-on-error: true
-        run: node --test --test-name-pattern='raw HKCanCor tag disagreement' tests/tooling/lexicon/cifu-r1001-1250-reviewed-runtime.test.js
-      - name: Prior-band stability invariant
-        continue-on-error: true
-        run: node --test --test-name-pattern='ranks 1-1000 stable high-value analyses' tests/tooling/lexicon/cifu-r1001-1250-reviewed-runtime.test.js
-      - name: Run parser architecture audit
+      - name: R1001-1250 focused suite
+        run: node tests/tooling/lexicon/cifu-r1001-1250-reviewed-runtime.test.js
+      - name: Parser architecture audit
         run: node tests/tooling/parser-coverage/architecture-audit.test.js
-      - name: Run standard suite with inherited debt visible
-        run: node tests/run-all.js --allow-inherited-debt
+      - name: Week 16 lexical contract
+        run: node tests/tooling/lexicon/glossika-week16-runtime-lexicon.test.js
+      - name: R251-500 lexical contract
+        run: node tests/tooling/lexicon/cifu-r251-500-reviewed-runtime.test.js
+      - name: R1-250 lexical contract
+        run: node tests/tooling/lexicon/cifu-r1-250-reviewed-runtime.test.js
+      - name: R501-750 lexical contract
+        run: node tests/tooling/lexicon/cifu-r501-750-reviewed-runtime.test.js
+      - name: R751-1000 lexical contract
+        run: node tests/tooling/lexicon/cifu-r751-1000-reviewed-runtime.test.js
+      - name: Unit-word evidence contract
+        run: node tests/tooling/runtime/unit-word-evidence.test.js
+      - name: Label-transition policy
+        run: node tests/tooling/runtime/label-transition-policy.test.js
+      - name: AB33 outer-question composition
+        run: node tests/tooling/runtime/ab33-outer-question-composition.test.js
+      - name: AA11 change-into-dim boundary
+        run: node tests/tooling/runtime/aa11-change-into-dim-boundary.test.js
+      - name: AA49 independent-motion boundary
+        run: node tests/tooling/runtime/aa49-independent-motion-boundary.test.js
+      - name: AB45 quantified-classifier boundary
+        run: node tests/tooling/runtime/ab45-quantified-classifier-boundary.test.js
+      - name: AB78 transitive boundary
+        run: node tests/tooling/runtime/ab78-transitive-boundary.test.js
+      - name: AB35 verb-object compound boundary
+        run: node tests/tooling/runtime/ab35-verb-object-compound-boundary.test.js
+      - name: AB35 做功課 rehome
+        run: node tests/tooling/runtime/ab35-zo-gungfo-rehome.test.js
+      - name: 過3 comparative behavior
+        run: node tests/tooling/runtime/behavior-gwo3-comparative.test.js
+      - name: AA61 experiential-question boundary
+        run: node tests/tooling/runtime/aa61-experiential-question-boundary.test.js
+      - name: AA84 marked-manner boundary
+        run: node tests/tooling/runtime/aa84-marked-manner-boundary.test.js
+      - name: Parser coverage auditor
+        run: node tests/tooling/parser-coverage/coverage.test.js
+      - name: Parser coverage enhanced
+        run: node tests/tooling/parser-coverage/enhanced.test.js
+      - name: Parser prioritizer
+        run: node tests/tooling/parser-coverage/prioritizer.test.js
+      - name: Regression-ratchet verifier unit suite
+        run: node tests/tooling/runtime/regression-ratchet-verifier.test.js
       - name: Enforce source-phase inherited-debt ratchets
         shell: bash
         run: |
@@ -74,9 +77,7 @@ jobs:
           BASE_DIR="$RUNNER_TEMP/canto-span-ratchet-base"
           rm -rf "$BASE_DIR"
           git worktree add --detach "$BASE_DIR" "$BASE_SHA"
-          cleanup() {
-            git worktree remove --force "$BASE_DIR" >/dev/null 2>&1 || true
-          }
+          cleanup() { git worktree remove --force "$BASE_DIR" >/dev/null 2>&1 || true; }
           trap cleanup EXIT
 
           rm -f \
@@ -88,80 +89,40 @@ jobs:
             "validation/current/construction-tests.json"
 
           run_baseline() {
-            local label="$1"
-            shift
+            local label="$1"; shift
             set +e
             (cd "$BASE_DIR" && "$@") >"$RUNNER_TEMP/baseline-$label.stdout" 2>"$RUNNER_TEMP/baseline-$label.stderr"
             local exit_code=$?
             set -e
             printf '%s\n' "$exit_code" >"$RUNNER_TEMP/baseline-$label.exit"
           }
-
           run_baseline regression node tests/run-regression.js
           run_baseline np node tests/run-np-subsystem.js
           run_baseline constructions node tests/run-constructions.js
 
-          node tests/run-regression.js >"$RUNNER_TEMP/candidate-regression.stdout" 2>"$RUNNER_TEMP/candidate-regression.stderr" || true
-          node tests/run-np-subsystem.js >"$RUNNER_TEMP/candidate-np.stdout" 2>"$RUNNER_TEMP/candidate-np.stderr" || true
-          node tests/run-constructions.js >"$RUNNER_TEMP/candidate-constructions.stdout" 2>"$RUNNER_TEMP/candidate-constructions.stderr" || true
+          node tests/run-regression.js >/dev/null 2>&1 || true
+          node tests/run-np-subsystem.js >/dev/null 2>&1 || true
+          node tests/run-constructions.js >/dev/null 2>&1 || true
 
-          synthesize_baseline_if_unobservable() {
-            local suite="$1"
-            local label="$2"
-            local report="$3"
-            local universe="$4"
+          synthesize() {
+            local suite="$1" label="$2" report="$3" universe="$4"
             if [[ -f "$report" ]]; then return 0; fi
-            local exit_code
-            exit_code="$(cat "$RUNNER_TEMP/baseline-$label.exit")"
-            if [[ "$exit_code" == "0" ]]; then
-              echo "Baseline suite exited successfully but did not produce required report: $report" >&2
-              exit 1
-            fi
-            local reason_file="$RUNNER_TEMP/baseline-$label.reason"
-            {
-              echo "baseline_exit_code=$exit_code"
-              cat "$RUNNER_TEMP/baseline-$label.stderr"
-              cat "$RUNNER_TEMP/baseline-$label.stdout"
-            } >"$reason_file"
-            node tools/ratchet-unobservable-baseline.js \
-              --suite "$suite" \
-              --universe "$universe" \
-              --output "$report" \
-              --reason-file "$reason_file" >/dev/null
+            local code="$(cat "$RUNNER_TEMP/baseline-$label.exit")"
+            if [[ "$code" == "0" ]]; then echo "missing baseline report $report" >&2; exit 1; fi
+            local reason="$RUNNER_TEMP/baseline-$label.reason"
+            { echo "baseline_exit_code=$code"; cat "$RUNNER_TEMP/baseline-$label.stderr"; cat "$RUNNER_TEMP/baseline-$label.stdout"; } >"$reason"
+            node tools/ratchet-unobservable-baseline.js --suite "$suite" --universe "$universe" --output "$report" --reason-file "$reason" >/dev/null
           }
+          synthesize regression regression "$BASE_DIR/validation/current/regression-suite.json" "$BASE_DIR/tests/fixtures/regression-snapshots.json"
+          synthesize np_subsystem np "$BASE_DIR/validation/current/np-subsystem-results.json" "$BASE_DIR/tests/fixtures/np-subsystem.json"
+          synthesize construction_files constructions "$BASE_DIR/validation/current/construction-tests.json" "$BASE_DIR/tests/constructions"
 
-          synthesize_baseline_if_unobservable regression regression \
-            "$BASE_DIR/validation/current/regression-suite.json" \
-            "$BASE_DIR/tests/fixtures/regression-snapshots.json"
-          synthesize_baseline_if_unobservable np_subsystem np \
-            "$BASE_DIR/validation/current/np-subsystem-results.json" \
-            "$BASE_DIR/tests/fixtures/np-subsystem.json"
-          synthesize_baseline_if_unobservable construction_files constructions \
-            "$BASE_DIR/validation/current/construction-tests.json" \
-            "$BASE_DIR/tests/constructions"
-
-          for report in \
-            "validation/current/regression-suite.json" \
-            "validation/current/np-subsystem-results.json" \
-            "validation/current/construction-tests.json"; do
-            test -f "$report"
-          done
-
-          node tools/verify-regression-ratchet.js \
-            --suite regression \
-            --baseline-result "$BASE_DIR/validation/current/regression-suite.json" \
-            --candidate-result "validation/current/regression-suite.json" \
-            --baseline-universe "$BASE_DIR/tests/fixtures/regression-snapshots.json" \
-            --candidate-universe "tests/fixtures/regression-snapshots.json"
-          node tools/verify-regression-ratchet.js \
-            --suite np_subsystem \
-            --baseline-result "$BASE_DIR/validation/current/np-subsystem-results.json" \
-            --candidate-result "validation/current/np-subsystem-results.json" \
-            --baseline-universe "$BASE_DIR/tests/fixtures/np-subsystem.json" \
-            --candidate-universe "tests/fixtures/np-subsystem.json"
-          node tools/verify-regression-ratchet.js \
-            --suite construction_files \
-            --baseline-result "$BASE_DIR/validation/current/construction-tests.json" \
-            --candidate-result "validation/current/construction-tests.json" \
-            --baseline-universe "$BASE_DIR/tests/constructions" \
-            --candidate-universe "tests/constructions"
+          node tools/verify-regression-ratchet.js --suite regression \
+            --baseline-result "$BASE_DIR/validation/current/regression-suite.json" --candidate-result validation/current/regression-suite.json \
+            --baseline-universe "$BASE_DIR/tests/fixtures/regression-snapshots.json" --candidate-universe tests/fixtures/regression-snapshots.json
+          node tools/verify-regression-ratchet.js --suite np_subsystem \
+            --baseline-result "$BASE_DIR/validation/current/np-subsystem-results.json" --candidate-result validation/current/np-subsystem-results.json \
+            --baseline-universe "$BASE_DIR/tests/fixtures/np-subsystem.json" --candidate-universe tests/fixtures/np-subsystem.json
+          node tools/verify-regression-ratchet.js --suite construction_files \
+            --baseline-result "$BASE_DIR/validation/current/construction-tests.json" --candidate-result validation/current/construction-tests.json \
+            --baseline-universe "$BASE_DIR/tests/constructions" --candidate-universe tests/constructions
