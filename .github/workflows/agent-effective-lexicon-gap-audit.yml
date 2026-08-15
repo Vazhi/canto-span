@@ -1,0 +1,69 @@
+name: Audit effective top-2000 lexical gaps
+
+on:
+  push:
+    branches:
+      - agent/cifu-r1751-2000-runtime-reconcile
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    if: github.event.head_commit.message == 'Audit effective top-2000 lexical gaps'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Compare live source with effective runtime lexicon
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 'https://docs.google.com/spreadsheets/d/1ArxEFo46PTrDyDDhWyu3wB0epxqTyd8WBaprnwTEPm4/export?format=csv&gid=1428902047' -o /tmp/canto-frequency.csv
+          python - <<'PY'
+          import csv,json,re,unicodedata
+          rows=list(csv.DictReader(open('/tmp/canto-frequency.csv',encoding='utf-8-sig',newline='')))
+          def tombstone(s):
+            x=s.lower(); return x=='del' or re.search(r'(^|[-\\s?])del($|[-\\s?])',x) is not None
+          seen=set(); bounded=[]; first={}
+          for row in rows:
+            s=unicodedata.normalize('NFC',(row.get('Word') or '').strip())
+            if not s or tombstone(s): continue
+            first.setdefault(s,row)
+            if s in seen: continue
+            seen.add(s); bounded.append(s)
+            if len(bounded)==2000: break
+          payload=[]
+          for rank,s in enumerate(bounded,1):
+            row=first[s]
+            payload.append({'rank':rank,'surface':s,'pronunciation':row.get('Pronunciation') or '','meaning':row.get('Meaning') or '','example':row.get('Sentence1') or ''})
+          open('/tmp/bounded.json','w').write(json.dumps(payload,ensure_ascii=False))
+          PY
+          node - <<'NODE'
+          const fs=require('node:fs');
+          const lexicon=Object.fromEntries(require('./src/runtime-resources/lexicon/token-lexicon'));
+          const rows=JSON.parse(fs.readFileSync('/tmp/bounded.json','utf8'));
+          const missing=rows.filter(r=>!lexicon[r.surface]);
+          const single=missing.filter(r=>[...r.surface].length===1);
+          const multi=missing.filter(r=>[...r.surface].length>1);
+          const pronounStart=/^(我|你|佢|我哋|你哋|佢哋)/u;
+          const clauseLike=/^(係|唔係|有|冇|要|想|知|講|去|返|睇|做|食|用|可以|應該|會)/u;
+          const lexicalish=multi.filter(r=>!pronounStart.test(r.surface)&&!clauseLike.test(r.surface));
+          console.log('EFFECTIVE_GAP_SUMMARY',JSON.stringify({bounded:rows.length,missing_exact:missing.length,single:single.length,multi:multi.length,lexicalish:lexicalish.length}));
+          console.log('LEXICALISH_TOP120_JSON');
+          console.log(JSON.stringify(lexicalish.slice(0,120),null,2));
+          console.log('ALL_TOP80_JSON');
+          console.log(JSON.stringify(missing.slice(0,80),null,2));
+          NODE
+      - name: Remove audit helper
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/agent-effective-lexicon-gap-audit.yml
+          git commit -m 'Remove effective lexical gap audit helper'
+          git push origin HEAD:agent/cifu-r1751-2000-runtime-reconcile
