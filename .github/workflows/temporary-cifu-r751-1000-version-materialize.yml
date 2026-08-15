@@ -31,6 +31,7 @@ jobs:
           npm version 0.5.232 --no-git-tag-version
           python - <<'PY'
           from pathlib import Path
+          import json
 
           plugin = Path('src/plugin-entry.js')
           text = plugin.read_text(encoding='utf-8')
@@ -38,6 +39,13 @@ jobs:
           new = 'const CANTO_SPAN_RUNTIME_VERSION = "0.5.232";\n// v0.5.232: reconciles reviewed Cifu ranks 751–1000 with conservative defaults, stable alternatives, evidence-driven typed corrections, and preserved ranks 1–750 behavior.\n// v0.5.231: reconciles reviewed Cifu ranks 501–750 with conservative default selection, 101 stable reviewed alternative surfaces, and preserved ranks 1–500 behavior.'
           assert text.count(old) == 1
           plugin.write_text(text.replace(old, new, 1), encoding='utf-8')
+
+          manifest_path = Path('manifest.json')
+          manifest = json.loads(manifest_path.read_text(encoding='utf-8'))
+          assert manifest.get('version') == '0.5.231'
+          manifest['version'] = '0.5.232'
+          manifest['description'] = 'v0.5.232 reconciles reviewed Cifu ranks 751–1000 with conservative defaults, stable reviewed alternatives, evidence-driven typed corrections, and preserved ranks 1–750 behavior.'
+          manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 
           state = Path('docs/current/PROJECT-STATE.md')
           text = state.read_text(encoding='utf-8')
@@ -69,21 +77,30 @@ jobs:
           rm .github/workflows/temporary-cifu-r751-1000-version-materialize.yml
           mapfile -t changed < <(git status --short | sed -E 's/^...//')
           printf 'Pending paths:\n%s\n' "${changed[*]}"
-          test "${#changed[@]}" -eq 6
+          if [ "${#changed[@]}" -ne 7 ]; then
+            joined=$(printf '%s;' "${changed[@]}")
+            echo "::error title=Unexpected bounded diff::Expected 7 paths; found ${#changed[@]}: ${joined}"
+            exit 1
+          fi
           printf '%s\n' "${changed[@]}" | sort > /tmp/actual-paths
           printf '%s\n' \
             '.github/workflows/temporary-cifu-r751-1000-version-materialize.yml' \
             'docs/current/PROJECT-STATE.md' \
             'main.js' \
+            'manifest.json' \
             'package-lock.json' \
             'package.json' \
             'src/plugin-entry.js' | sort > /tmp/expected-paths
-          diff -u /tmp/expected-paths /tmp/actual-paths
+          if ! diff -u /tmp/expected-paths /tmp/actual-paths; then
+            joined=$(printf '%s;' "${changed[@]}")
+            echo "::error title=Unexpected bounded paths::${joined}"
+            exit 1
+          fi
       - name: Commit state synchronization and self-delete
         shell: bash
         run: |
           git config user.name 'github-actions[bot]'
-          git config user.email '4189823+github-actions[bot]@users.noreply.github.com'
-          git add src/plugin-entry.js package.json package-lock.json main.js docs/current/PROJECT-STATE.md .github/workflows/temporary-cifu-r751-1000-version-materialize.yml
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src/plugin-entry.js manifest.json package.json package-lock.json main.js docs/current/PROJECT-STATE.md .github/workflows/temporary-cifu-r751-1000-version-materialize.yml
           git commit -m 'Synchronize ranks 751-1000 runtime v0.5.232'
           git push origin HEAD:agent/cifu-r751-1000-runtime-reconcile
