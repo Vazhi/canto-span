@@ -39,7 +39,7 @@ const hobbyJyutping = new Map([
   ["踢波", "tek3 bo1"],
   ["打波", "daa2 bo1"],
   ["彈琴", "taan4 kam4"],
-  ["釣魚", "diu3 jyu4"],
+  ["釣魚", "diu3 jyu2"],
   ["旅行", "leoi5 hang4"],
   ["唱歌", "coeng3 go1"],
   ["睇波", "tai2 bo1"],
@@ -92,7 +92,7 @@ const validation = {
   checks: {},
   limitations: [
     "Lexical and pronunciation coverage does not establish frequency or unrestricted productivity.",
-    "Glossika's diu3 jyu2 source spelling for 釣魚 was not imported; the runtime retains 魚 jyu4.",
+    "The final independent Cifu-rank adjudication supersedes the older Week 16 collision note: free/final 魚 is jyu2, while jyu4 is retained for the distinct bound/non-final family.",
   ],
 };
 
@@ -130,7 +130,7 @@ test("lexical collision boundaries remain protected", () => {
   assert.deepEqual(Array.from(tokenRows("有冇嘢食啊？"), (row) => row.surface), ["有冇", "嘢", "食", "啊"]);
   assert.ok(!constructions("下棋").includes("TemporalClause"), "下棋 must not be parsed as a temporal clause");
   assert.equal(tokenRows("下棋").find((row) => row.surface === "下").jyutping, "haa5");
-  assert.equal(api.TOKEN_LEXICON["魚"].jyutping, "jyu4", "Glossika jyu2 must not replace the reviewed fish reading");
+  assert.equal(api.TOKEN_LEXICON["魚"].jyutping, "jyu2", "final reviewed free-noun 魚 reading");
   validation.checks.collision_boundaries = true;
 });
 
