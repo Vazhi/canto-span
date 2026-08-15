@@ -9028,7 +9028,13 @@ var require_vernacular_component_coverage = __commonJS({
       "薛": "sit3",
       "訓": "fan3",
       "訝": "ngaa6",
-      "輝": "fai1"
+      "輝": "fai1",
+      "哂": "saai3",
+      // recurrent vernacular corpus spelling of 晒 in exhaustive/completive contexts
+      "跙": "zau2",
+      // recurrent corpus spelling used with 走 “leave/go” syntax
+      "咧": "le4"
+      // default for independently supported le4/le5 particle analyses
     });
     function applyVernacularComponentCoverage(entries) {
       const seen = /* @__PURE__ */ new Set();
@@ -11715,6 +11721,26 @@ var require_explicit_analyses = __commonJS({
           syntax: "discourse_focus_marker",
           senses: Object.freeze([{ gloss: "discourse / focus marker" }]),
           provenance: Object.freeze({ kind: "existing_runtime_contextual_override", source: "src/parser/tokenization/contextual-overrides.js" })
+        })
+      ]),
+      "咧": Object.freeze([
+        Object.freeze({
+          id: "lex:咧:proposal_particle_le4",
+          label: "func",
+          pos: "particle",
+          jyutping: "le4",
+          syntax: "sentence_final_proposal_or_consent_particle",
+          senses: Object.freeze([{ gloss: "sentence-final particle seeking consent / proposing a course of action" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: "Most Common Cantonese Words (Frequency List) + Cantonese dictionary cross-check" })
+        }),
+        Object.freeze({
+          id: "lex:咧:agreement_particle_le5",
+          label: "func",
+          pos: "particle",
+          jyutping: "le5",
+          syntax: "sentence_final_agreement_or_confirmation_particle",
+          senses: Object.freeze([{ gloss: "sentence-final particle inviting agreement / confirming an observation" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: "Most Common Cantonese Words (Frequency List) + Cantonese dictionary cross-check" })
         })
       ])
     });

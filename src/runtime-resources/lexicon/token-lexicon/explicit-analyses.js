@@ -50,6 +50,27 @@ const contextualAnalyses = Object.freeze({
       provenance: Object.freeze({ kind: "existing_runtime_contextual_override", source: "src/parser/tokenization/contextual-overrides.js" }),
     }),
   ]),
+  "咧": Object.freeze([
+    Object.freeze({
+      id: "lex:咧:proposal_particle_le4",
+      label: "func",
+      pos: "particle",
+      jyutping: "le4",
+      syntax: "sentence_final_proposal_or_consent_particle",
+      senses: Object.freeze([{ gloss: "sentence-final particle seeking consent / proposing a course of action" }]),
+      provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: "Most Common Cantonese Words (Frequency List) + Cantonese dictionary cross-check" }),
+    }),
+    Object.freeze({
+      id: "lex:咧:agreement_particle_le5",
+      label: "func",
+      pos: "particle",
+      jyutping: "le5",
+      syntax: "sentence_final_agreement_or_confirmation_particle",
+      senses: Object.freeze([{ gloss: "sentence-final particle inviting agreement / confirming an observation" }]),
+      provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: "Most Common Cantonese Words (Frequency List) + Cantonese dictionary cross-check" }),
+    }),
+  ]),
+
 });
 
 const reviewedR1250Polyanalyses = Object.freeze(Object.fromEntries(

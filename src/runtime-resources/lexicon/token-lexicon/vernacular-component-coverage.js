@@ -291,7 +291,10 @@ const READINGS = Object.freeze({
   "薛": "sit3",
   "訓": "fan3",
   "訝": "ngaa6",
-  "輝": "fai1"
+  "輝": "fai1",
+  "哂": "saai3", // recurrent vernacular corpus spelling of 晒 in exhaustive/completive contexts
+  "跙": "zau2", // recurrent corpus spelling used with 走 “leave/go” syntax
+  "咧": "le4" // default for independently supported le4/le5 particle analyses
 });
 
 function applyVernacularComponentCoverage(entries) {
