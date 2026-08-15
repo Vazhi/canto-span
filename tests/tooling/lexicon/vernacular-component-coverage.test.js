@@ -107,3 +107,17 @@ test("informal 地 spellings map to the canonical plural-pronoun analyses", () =
     assert.match(tokenLexicon[variant].note, /variant/i, `${variant}: explicitly marked as an orthographic variant`);
   }
 });
+
+test("fixed vernacular connective lexemes are covered as whole forms", () => {
+  const expected = {
+    "定係": ["ding6 hai6", "conjunction", "alternative_connector"],
+    "先至": ["sin1 zi3", "adverb", "sequence_prerequisite_adverb"],
+    "嘅話": ["ge3 waa2", "conjunction", "conditional_clause_suffix_connector"],
+  };
+  for (const [surface, [jyutping, pos, syntax]] of Object.entries(expected)) {
+    assert.ok(tokenLexicon[surface], `${surface}: exact lexical item exists`);
+    assert.equal(tokenLexicon[surface].jyutping, jyutping, `${surface}: default reading`);
+    assert.equal(tokenLexicon[surface].pos, pos, `${surface}: POS`);
+    assert.equal(tokenLexicon[surface].syntax, syntax, `${surface}: lexical syntax`);
+  }
+});
