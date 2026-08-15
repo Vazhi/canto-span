@@ -123,7 +123,7 @@ const vernacularSourceAnalyses = Object.freeze({
     });
   })),
   "行": Object.freeze([
-    Object.freeze({ id: "lex:行:default" }),
+    Object.freeze({ id: "lex:行:default", label: "doing", pos: "verb", jyutping: "haang4", syntax: "verb action_verb walking_verb", senses: Object.freeze([{ gloss: "walk / go on foot" }]), provenance: Object.freeze({ kind: "existing_runtime_default_preserved", source: "token lexicon default before bundled-reading supplement" }) }),
     Object.freeze({
       id: "lex:行:journey_action_bound_hang4",
       label: "func",
@@ -176,7 +176,7 @@ const vernacularSourceAnalyses = Object.freeze({
     }),
   ]),
   "知": Object.freeze([
-    Object.freeze({ id: "lex:知:default" }),
+    Object.freeze({ id: "lex:知:default", label: "doing", pos: "verb", jyutping: "zi1", syntax: "cognition_verb", senses: Object.freeze([{ gloss: "know" }]), provenance: Object.freeze({ kind: "existing_runtime_default_preserved", source: "token lexicon default before bundled-reading supplement" }) }),
     Object.freeze({
       id: "lex:知:knowledge_bound_zi3",
       label: "func",
@@ -189,7 +189,7 @@ const vernacularSourceAnalyses = Object.freeze({
     }),
   ]),
   "難": Object.freeze([
-    Object.freeze({ id: "lex:難:default" }),
+    Object.freeze({ id: "lex:難:default", label: "like", pos: "adjective", jyutping: "naan4", syntax: "stative_predicate", senses: Object.freeze([{ gloss: "hard / difficult" }]), provenance: Object.freeze({ kind: "existing_runtime_default_preserved", source: "token lexicon default before bundled-reading supplement" }) }),
     Object.freeze({
       id: "lex:難:calamity_bound_naan6",
       label: "func",
@@ -202,7 +202,7 @@ const vernacularSourceAnalyses = Object.freeze({
     }),
   ]),
   "兩": Object.freeze([
-    Object.freeze({ id: "lex:兩:default" }),
+    Object.freeze({ id: "lex:兩:default", label: "like", pos: "numeral", jyutping: "loeng5", syntax: "quantity count_value numeral_two", senses: Object.freeze([{ gloss: "two; quantity descriptor before classifier or time head" }]), provenance: Object.freeze({ kind: "existing_runtime_default_preserved", source: "token lexicon default before bundled-reading supplement" }) }),
     Object.freeze({
       id: "lex:兩:tael_measure_loeng2",
       label: "measure_word",
@@ -215,7 +215,7 @@ const vernacularSourceAnalyses = Object.freeze({
     }),
   ]),
   "咋": Object.freeze([
-    Object.freeze({ id: "lex:咋:default" }),
+    Object.freeze({ id: "lex:咋:default", label: "particle", pos: "particle", jyutping: "zaa3", syntax: "sentence_final_particle restrictive_focus_particle exhaustive_limit_particle", senses: Object.freeze([{ gloss: "only / that is all" }]), provenance: Object.freeze({ kind: "existing_runtime_default_preserved", source: "token lexicon default before bundled-reading supplement" }) }),
     Object.freeze({
       id: "lex:咋:rhetorical_final_particle_zaa4",
       label: "particle",
