@@ -10,7 +10,9 @@ const { buildLexicalAnalysisIndex } = require("../src/runtime-resources/lexicon/
 const compositionalLexicalPhrases = new Set(require("../src/runtime-resources/lexicon/compositional-lexical-phrases"));
 const {
   lexicalIngestions,
+  neutralFrequencyCoverageEntry,
   collectBlockedAtomicSurfaces,
+  blockedAtomicRuntimeDisposition,
 } = require("../src/runtime-resources/lexicon/lexical-ingestion-registry");
 
 const root = path.resolve(__dirname, "..");
@@ -23,7 +25,7 @@ function readDelimitedRows(spec, relativePath = spec.source_file) {
   const lines = text.split(/\r?\n/u);
   const delimiter = spec.delimiter || "\t";
   const header = lines.shift().split(delimiter);
-  return lines.map((line, index) => {
+  return lines.map((line) => {
     const cells = line.split(delimiter);
     return Object.fromEntries(header.map((name, column) => [name, cells[column] === undefined ? "" : cells[column]]));
   }).map((row, index) => ({ ...row, __source_row: index + 2 }));
@@ -38,20 +40,35 @@ function flattenTokens(nodes, out = []) {
   return out;
 }
 
-function neutralFrequencyCoverageEntry(entry = {}) {
-  return String(entry.pos || "") === "lexical_item"
-    && String(entry.syntax || "").split(/\s+/u).includes("lexical_item")
-    && String(entry.note || "").includes("Exact surface retained as neutral lexical coverage");
-}
-
 function carrierSources(spec, surface) {
   const prefixes = Array.isArray(spec.carrier_prefixes) && spec.carrier_prefixes.length ? spec.carrier_prefixes : [""];
   const suffixes = Array.isArray(spec.carrier_suffixes) && spec.carrier_suffixes.length ? spec.carrier_suffixes : [""];
   return [...new Set(prefixes.flatMap((prefix) => suffixes.map((suffix) => `${prefix}${surface}${suffix}`)))];
 }
 
+function sourceJyutpingKnown(spec, row) {
+  if (!spec.source_jyutping_column) return true;
+  const raw = String(row[spec.source_jyutping_column] || "").trim();
+  const unknown = new Set(spec.source_jyutping_unknown_values || ["", "-", "?", "*?"]);
+  return !unknown.has(raw);
+}
+
+function runtimeJyutpingCoverage(entry = {}, analysisRows = []) {
+  const defaultReading = String(entry.jyutping || "").trim();
+  if (defaultReading) return { covered: true, mode: "default", readings: [defaultReading] };
+  const readings = [...new Set((analysisRows || [])
+    .map((row) => String(row.jyutping || "").trim())
+    .filter(Boolean))];
+  if (readings.length) return { covered: true, mode: "explicit_analysis", readings };
+  return { covered: false, mode: "none", readings: [] };
+}
+
 function addFailure(failures, code, detail) {
   failures.push({ code, ...detail });
+}
+
+function bump(target, key) {
+  target[key] = (target[key] || 0) + 1;
 }
 
 function auditIngestion(spec, options = {}) {
@@ -65,6 +82,19 @@ function auditIngestion(spec, options = {}) {
   const rankColumn = spec.rank_column || "rank";
   const removed = new Set(spec.removed_surfaces || []);
   const blocked = collectBlockedAtomicSurfaces(spec.policy_modules || []);
+  const blockedDispositionCounts = {};
+  const forceCompositional = new Set();
+  const promotionOnlyBlocked = [];
+
+  for (const surface of blocked) {
+    const disposition = blockedAtomicRuntimeDisposition(surface, tokenLexicon, {
+      blocked_surfaces: blocked,
+      removed_surfaces: removed,
+    });
+    bump(blockedDispositionCounts, disposition);
+    if (disposition === "force_compositional_neutral_fallback") forceCompositional.add(surface);
+    else if (disposition.startsWith("promotion_only_")) promotionOnlyBlocked.push({ surface, disposition });
+  }
 
   if (Number.isInteger(spec.expected_rows) && rows.length !== spec.expected_rows) {
     addFailure(failures, "unexpected_source_row_count", { expected: spec.expected_rows, actual: rows.length });
@@ -107,14 +137,17 @@ function auditIngestion(spec, options = {}) {
   const missingRuntime = [];
   const unexpectedRemovedRuntime = [];
   const missingJyutping = [];
+  const sourceUnknownJyutping = [];
+  const analysisBackedJyutping = [];
   const neutralAtomic = [];
   const blockedAtomicLeaks = [];
   const duplicateAnalysisIds = [];
   const globalAnalysisIds = new Map();
 
-  for (const { surface, rank } of rankedRows) {
+  for (const { row, surface, rank } of rankedRows) {
     if (!surface) continue;
     const entry = tokenLexicon[surface];
+    const surfaceAnalyses = analyses[surface] || [];
     if (removed.has(surface)) {
       if (entry || analyses[surface]) unexpectedRemovedRuntime.push({ rank, surface });
       continue;
@@ -123,9 +156,18 @@ function auditIngestion(spec, options = {}) {
       missingRuntime.push({ rank, surface });
       continue;
     }
-    if (spec.require_jyutping && entry && !String(entry.jyutping || "").trim()) missingJyutping.push({ rank, surface });
 
-    const surfaceAnalyses = analyses[surface] || [];
+    if (spec.require_jyutping && entry) {
+      const runtimeCoverage = runtimeJyutpingCoverage(entry, surfaceAnalyses);
+      if (runtimeCoverage.covered && runtimeCoverage.mode === "explicit_analysis") {
+        analysisBackedJyutping.push({ rank, surface, readings: runtimeCoverage.readings });
+      } else if (!runtimeCoverage.covered && !sourceJyutpingKnown(spec, row)) {
+        sourceUnknownJyutping.push({ rank, surface, source_value: spec.source_jyutping_column ? row[spec.source_jyutping_column] : "" });
+      } else if (!runtimeCoverage.covered) {
+        missingJyutping.push({ rank, surface });
+      }
+    }
+
     const localIds = new Set();
     for (const analysis of surfaceAnalyses) {
       const id = String(analysis.id || "");
@@ -153,10 +195,9 @@ function auditIngestion(spec, options = {}) {
     }
   }
 
-  for (const surface of blocked) {
-    if (removed.has(surface)) continue;
+  for (const surface of forceCompositional) {
     if (!compositionalLexicalPhrases.has(surface)) {
-      addFailure(failures, "blocked_surface_not_forced_compositional", { surface });
+      addFailure(failures, "neutral_blocked_surface_not_forced_compositional", { surface });
       continue;
     }
     for (const source of carrierSources(spec, surface)) {
@@ -194,15 +235,38 @@ function auditIngestion(spec, options = {}) {
       code: "neutral_atomic_surface_inventory",
       count: neutralAtomic.length,
       examples: neutralAtomic.slice(0, 20),
-      note: "Informational unless the surface is explicitly blocked_atomic. These are candidates for future adjudication, not automatic errors.",
+      note: "Informational unless adjudication leaves a multi-character blocked_atomic row solely as neutral frequency fallback. Those rows are force-compositional and blocking.",
+    });
+  }
+  if (promotionOnlyBlocked.length) {
+    warnings.push({
+      code: "blocked_promotion_only_inventory",
+      count: promotionOnlyBlocked.length,
+      examples: promotionOnlyBlocked.slice(0, 20),
+      note: "blocked_atomic prevents this ingestion from promoting the source row; it does not override independent runtime authority or require decomposition of one-character forms.",
+    });
+  }
+  if (sourceUnknownJyutping.length) {
+    warnings.push({
+      code: "source_pronunciation_unknown",
+      count: sourceUnknownJyutping.length,
+      examples: sourceUnknownJyutping.slice(0, 20),
+      note: "The ingestion source itself supplies no usable pronunciation. This remains explicit research debt rather than a fabricated runtime reading.",
+    });
+  }
+  if (analysisBackedJyutping.length) {
+    warnings.push({
+      code: "jyutping_covered_by_explicit_analysis",
+      count: analysisBackedJyutping.length,
+      examples: analysisBackedJyutping.slice(0, 20),
+      note: "No single default reading is forced because reviewed lexical analyses carry the supported readings.",
     });
   }
 
   const architectureCorpus = rankedRows
     .filter((item) => item.surface)
     .map((item) => ({ source: item.surface, context_source: "", origins: [`lexical-ingestion:${spec.id}`] }));
-  for (const surface of blocked) {
-    if (removed.has(surface)) continue;
+  for (const surface of forceCompositional) {
     for (const source of carrierSources(spec, surface)) {
       if (source === surface) continue;
       architectureCorpus.push({ source, context_source: "", origins: [`lexical-ingestion:${spec.id}:blocked-carrier`] });
@@ -223,9 +287,13 @@ function auditIngestion(spec, options = {}) {
     source_rows: rows.length,
     effective_runtime_expected: rows.length - removed.size,
     blocked_atomic_surfaces: blocked.size,
+    blocked_runtime_disposition_counts: blockedDispositionCounts,
+    forced_compositional_surfaces: forceCompositional.size,
+    promotion_only_blocked_surfaces: promotionOnlyBlocked.length,
     removed_surfaces: [...removed].sort(),
     neutral_atomic_surface_count: neutralAtomic.length,
     neutral_atomic_examples: neutralAtomic.slice(0, 20),
+    source_unknown_jyutping_count: sourceUnknownJyutping.length,
     architecture: architecture ? {
       status: architecture.status,
       analyzed: architecture.corpus.analyzed,
@@ -253,7 +321,7 @@ function auditAllLexicalIngestions(options = {}) {
 function formatHuman(report) {
   const lines = [`Lexical ingestion tokenization audit: ${report.status}`];
   for (const item of report.reports) {
-    lines.push(`${item.id}: ${item.status}; ${item.source_rows} source rows; ${item.blocked_atomic_surfaces} blocked-atomic; ${item.neutral_atomic_surface_count} neutral atomic informational`);
+    lines.push(`${item.id}: ${item.status}; ${item.source_rows} source rows; ${item.blocked_atomic_surfaces} promotion-blocked; ${item.forced_compositional_surfaces} force-compositional; ${item.neutral_atomic_surface_count} neutral atomic informational`);
     if (item.architecture) lines.push(`  architecture: ${item.architecture.status}; ${item.architecture.analyzed} analyzed; ${item.architecture.blocking_count} blockers`);
     for (const failure of item.failures) lines.push(`  FAIL ${failure.code}: ${JSON.stringify(failure)}`);
   }
@@ -271,8 +339,9 @@ module.exports = {
   AUDIT_SCHEMA,
   readDelimitedRows,
   flattenTokens,
-  neutralFrequencyCoverageEntry,
   carrierSources,
+  sourceJyutpingKnown,
+  runtimeJyutpingCoverage,
   auditIngestion,
   auditAllLexicalIngestions,
   formatHuman,
