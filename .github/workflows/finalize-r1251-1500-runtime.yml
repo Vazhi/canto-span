@@ -29,58 +29,84 @@ jobs:
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
       - name: Install build dependencies
         run: npm ci
-      - name: Synchronize v0.5.234 metadata and project state
+      - name: Synchronize package and manifest metadata
         run: |
           set -euo pipefail
-          npm version 0.5.234 --no-git-tag-version
           python3 - <<'PY'
           import json
           from pathlib import Path
 
+          package_path = Path('package.json')
+          package = json.loads(package_path.read_text())
+          if package.get('version') != '0.5.233':
+              raise SystemExit(f"unexpected package version: {package.get('version')}")
+          package['version'] = '0.5.234'
+          package_path.write_text(json.dumps(package, ensure_ascii=False, indent=2) + '\n')
+
+          lock_path = Path('package-lock.json')
+          lock = json.loads(lock_path.read_text())
+          if lock.get('version') != '0.5.233' or lock.get('packages', {}).get('', {}).get('version') != '0.5.233':
+              raise SystemExit('unexpected package-lock version anchors')
+          lock['version'] = '0.5.234'
+          lock['packages']['']['version'] = '0.5.234'
+          lock_path.write_text(json.dumps(lock, ensure_ascii=False, indent=2) + '\n')
+
           manifest_path = Path('manifest.json')
           manifest = json.loads(manifest_path.read_text())
+          if manifest.get('version') != '0.5.233':
+              raise SystemExit(f"unexpected manifest version: {manifest.get('version')}")
           manifest['version'] = '0.5.234'
           manifest['description'] = 'v0.5.234 reconciles reviewed Cifu ranks 1251–1500, preserves stable alternatives and prior-band behavior, and excludes positive Mandarin contamination 多少.'
           manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
-
-          plugin_path = Path('src/plugin-entry.js')
-          plugin = plugin_path.read_text()
+          PY
+      - name: Synchronize runtime source version
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('src/plugin-entry.js')
+          text = path.read_text()
           old = 'const CANTO_SPAN_RUNTIME_VERSION = "0.5.233";\n// v0.5.233:'
           new = 'const CANTO_SPAN_RUNTIME_VERSION = "0.5.234";\n// v0.5.234: reconciles reviewed Cifu ranks 1251–1500, preserves stable alternatives and ranks 1–1250 behavior, and excludes positive Mandarin contamination 多少.\n// v0.5.233:'
-          if old not in plugin:
+          if old not in text:
               raise SystemExit('plugin-entry version anchor missing')
-          plugin_path.write_text(plugin.replace(old, new, 1))
-
-          state_path = Path('docs/current/PROJECT-STATE.md')
-          state = state_path.read_text()
+          path.write_text(text.replace(old, new, 1))
+          PY
+      - name: Synchronize project state
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          path = Path('docs/current/PROJECT-STATE.md')
+          text = path.read_text()
           old_runtime = '| Runtime | v0.5.233 |'
-          if old_runtime not in state:
+          if old_runtime not in text:
               raise SystemExit('PROJECT-STATE runtime anchor missing')
-          state = state.replace(old_runtime, '| Runtime | v0.5.234 |', 1)
-          marker = 'Current consequences include:\n\n- v0.5.233 implements'
-          bullet = ('Current consequences include:\n\n'
-                    '- v0.5.234 implements the merged #884/#886 Cifu ranks 1251–1500 lexical authority: '
-                    '126 independently supportable broad rows can receive reviewed typed defaults when their prior runtime entry is neutral; '
-                    '72 surfaces expose stable reviewed alternatives (43 multi-analysis and 29 reading-specific); '
-                    'the three source-only rows `平排`, `打直`, and `打斜` receive no band-specific typed fact; '
-                    'all 49 `blocked_atomic` rows receive no new typed whole-surface analysis; '
-                    '`多少` is removed from the effective Cantonese token lexicon as positively identified Standard Written Chinese contamination while `幾多` remains covered, '
-                    'so historical Cifu top-2000 exact-surface runtime coverage is truthfully 1,999/2,000 rather than being preserved as an independent lexical-validity target; '
-                    'R3 distinctions including category-neutral `似乎`, bound/attributive `金`, `迫 bik1` force versus crowded/property uses, exact-graph `下邊 haa6 bin1`, and the reviewed reading families for `著`, `黑`, `寧願`, `數`, `樓`, and `膠袋` are preserved; '
-                    'ranks 1–1250 stable analyses/defaults and all construction identity/status, survey, corpus, release-publication, and deployment state remain protected;\n\n'
-                    '- v0.5.233 implements')
-          if marker not in state:
-              raise SystemExit('PROJECT-STATE consequence anchor missing')
-          state_path.write_text(state.replace(marker, bullet, 1))
+          text = text.replace(old_runtime, '| Runtime | v0.5.234 |', 1)
+          heading = 'Current consequences include:\n\n'
+          if heading not in text:
+              raise SystemExit('PROJECT-STATE consequence heading missing')
+          bullet = (
+              '- v0.5.234 implements the merged #884/#886 Cifu ranks 1251–1500 lexical authority: '
+              '126 independently supportable broad rows can receive reviewed typed defaults when their prior runtime entry is neutral; '
+              '72 surfaces expose stable reviewed alternatives (43 multi-analysis and 29 reading-specific); '
+              'the three source-only rows `平排`, `打直`, and `打斜` receive no band-specific typed fact; '
+              'all 49 `blocked_atomic` rows receive no new typed whole-surface analysis; '
+              '`多少` is removed from the effective Cantonese token lexicon as positively identified Standard Written Chinese contamination while `幾多` remains covered, '
+              'so historical Cifu top-2000 exact-surface runtime coverage is truthfully 1,999/2,000 rather than being preserved as an independent lexical-validity target; '
+              'R3 distinctions including category-neutral `似乎`, bound/attributive `金`, `迫 bik1` force versus crowded/property uses, exact-graph `下邊 haa6 bin1`, and the reviewed reading families for `著`, `黑`, `寧願`, `數`, `樓`, and `膠袋` are preserved; '
+              'ranks 1–1250 stable analyses/defaults and all construction identity/status, survey, corpus, release-publication, and deployment state remain protected;\n\n'
+          )
+          path.write_text(text.replace(heading, heading + bullet, 1))
           PY
       - name: Build canonical runtime bundle
         run: npm run build:runtime
       - name: Verify focused lexical authority
         run: node tests/tooling/lexicon/cifu-r1251-1500-reviewed-runtime.test.js
-      - name: Verify runtime and core state
-        run: |
-          npm run verify:runtime
-          npm run verify
+      - name: Verify runtime state
+        run: npm run verify:runtime
+      - name: Verify core state
+        run: npm run verify
       - name: Verify bounded final diff
         run: |
           set -euo pipefail
