@@ -1,0 +1,34 @@
+name: Build first whole-form lexical defaults
+
+on:
+  push:
+    branches:
+      - agent/cifu-r1751-2000-runtime-reconcile
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: github.event.head_commit.message == 'Build first whole-form lexical defaults'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - run: npm run build:runtime
+      - run: node --test tests/tooling/lexicon/vernacular-component-coverage.test.js
+      - run: npm run verify:runtime
+      - run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/agent-build-whole-form-defaults.yml
+          git rm -f .github/workflows/agent-vernacular-whole-form-batch1.yml
+          git add main.js
+          git commit -m 'Build first whole-form lexical defaults'
+          git push origin HEAD:agent/cifu-r1751-2000-runtime-reconcile
