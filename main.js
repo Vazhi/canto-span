@@ -8976,7 +8976,32 @@ var require_vernacular_component_coverage = __commonJS({
       "搶": "coeng2",
       "散": "saan3",
       "枝": "zi1",
-      "歉": "him3"
+      "歉": "him3",
+      "串": "cyun3",
+      "仆": "puk1",
+      "便": "bin6",
+      "冚": "kam2",
+      "利": "lei6",
+      "參": "caam1",
+      "吧": "baa1",
+      "呆": "ngoi4",
+      "命": "ming6",
+      "哼": "hang1",
+      "娜": "naa4",
+      "惡": "ok3",
+      "撚": "nan2",
+      "斷": "dyun6",
+      "朝": "ziu1",
+      "王": "wong4",
+      "硬": "ngaang6",
+      "立": "laap6",
+      "悉": "sik1",
+      "惜": "sik1",
+      "慮": "leoi6",
+      "絡": "lok3",
+      "蝕": "sit6",
+      "觸": "zuk1",
+      "訊": "seon3"
     });
     function applyVernacularComponentCoverage(entries) {
       const seen = /* @__PURE__ */ new Set();

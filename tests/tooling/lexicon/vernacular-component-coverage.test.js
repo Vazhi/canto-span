@@ -5,8 +5,8 @@ const test = require("node:test");
 const tokenLexicon = Object.fromEntries(require("../../../src/runtime-resources/lexicon/token-lexicon"));
 const { READINGS, applyVernacularComponentCoverage } = require("../../../src/runtime-resources/lexicon/token-lexicon/vernacular-component-coverage");
 
-test("source-backed vernacular reading batch contains exactly 231 simple single-character readings", () => {
-  assert.equal(Object.keys(READINGS).length, 231);
+test("source-backed vernacular reading batch contains exactly 256 simple single-character readings", () => {
+  assert.equal(Object.keys(READINGS).length, 256);
   for (const [surface, jyutping] of Object.entries(READINGS)) {
     assert.equal(Array.from(surface).length, 1, `${surface}: single-character component`);
     assert.match(jyutping, /^[a-z]+[1-6]$/u, `${surface}: simple Jyutping`);
