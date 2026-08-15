@@ -5043,11 +5043,38 @@ var require_cifu_r1251_1500_reviewed = __commonJS({
   "src/runtime-resources/lexicon/token-lexicon/cifu-r1251-1500-reviewed.js"(exports2, module2) {
     "use strict";
     var SOURCE = "docs/research/ISSUE-884-CIFU-R1251-1500-LEXICAL-ADJUDICATION-R3.md";
-    var KIND = Object.freeze({ noun: ["what", "noun", "common_noun"], person: ["who", "noun", "person_noun"], place: ["where", "noun", "place_noun"], verb: ["doing", "verb", "verb"], adjective: ["like", "adjective", "stative_predicate"], adverb: ["how", "adverb", "adverb"], function: ["func", "function", "function"], classifier: ["what", "classifier", "classifier"], measure: ["what", "measure", "measure_word"], determiner: ["what", "determiner", "determiner"], pronoun: ["what", "pronoun", "pronoun"], bound: ["func", "bound", "bound_morpheme"], suffix: ["func", "suffix", "derivational_suffix"], formula: ["func", "formula", "discourse_formula"], coverb: ["func", "coverb", "coverb"], proper: ["what", "proper_noun", "proper_name"], localizer: ["where", "localizer", "localizer"], temporal: ["when", "noun", "temporal_expression"] });
+    var KIND = Object.freeze({
+      noun: ["what", "noun", "common_noun"],
+      person: ["who", "noun", "person_noun"],
+      place: ["where", "noun", "place_noun"],
+      verb: ["doing", "verb", "verb"],
+      adjective: ["like", "adjective", "stative_predicate"],
+      adverb: ["how", "adverb", "adverb"],
+      function: ["func", "function", "function"],
+      classifier: ["what", "classifier", "classifier"],
+      measure: ["what", "measure", "measure_word"],
+      determiner: ["what", "determiner", "determiner"],
+      pronoun: ["what", "pronoun", "pronoun"],
+      bound: ["func", "bound", "bound_morpheme"],
+      suffix: ["func", "suffix", "derivational_suffix"],
+      formula: ["func", "formula", "discourse_formula"],
+      coverb: ["func", "coverb", "coverb"],
+      proper: ["what", "proper_noun", "proper_name"],
+      localizer: ["where", "localizer", "localizer"],
+      temporal: ["when", "noun", "temporal_expression"]
+    });
     function lexicalSpec(rank, kind, gloss, jyutping = "", syntax = "") {
-      const m = KIND[kind];
-      if (!m) throw new Error(`unknown lexical kind ${kind}`);
-      return Object.freeze({ rank, kind, gloss, jyutping, label: m[0], pos: m[1], syntax: syntax || m[2] });
+      const meta = KIND[kind];
+      if (!meta) throw new Error(`unknown lexical kind ${kind}`);
+      return Object.freeze({
+        rank,
+        kind,
+        gloss,
+        jyutping,
+        label: meta[0],
+        pos: meta[1],
+        syntax: syntax || meta[2]
+      });
     }
     function alt(rank, row) {
       const [suffix, kind, gloss, jyutping = "", syntax = ""] = row;
@@ -5102,7 +5129,7 @@ var require_cifu_r1251_1500_reviewed = __commonJS({
       [1345, "合格", "adjective", "be qualified / pass", "", "result_stative_predicate"],
       [1348, "肉", "noun", "meat / flesh / pulp"],
       [1349, "自", "bound", "formal reflexive / source bound morpheme"],
-      [1350, "似乎", "adverb", "apparently / seem", "", "epistemic_seeming_expression"],
+      [1350, "似乎", "function", "epistemic / seeming predicate-adverbial family: apparently / seem", "", "epistemic_seeming_expression"],
       [1352, "吸引", "verb", "attract / be attractive"],
       [1354, "垂直", "adjective", "vertical / perpendicular"],
       [1355, "奇怪", "adjective", "strange / odd"],
@@ -5181,10 +5208,103 @@ var require_cifu_r1251_1500_reviewed = __commonJS({
       [1498, "拍拖", "verb", "date / be in a romantic relationship"],
       [1500, "沾污", "verb", "stain / soil / defile", "zim1 wu1"]
     ]);
-    var PROMOTIONS = Object.freeze(Object.fromEntries(PROMOTION_ROWS.map(([r, s, k, g, j = "", y = ""]) => [s, lexicalSpec(r, k, g, j, y)])));
+    var PROMOTIONS = Object.freeze(Object.fromEntries(
+      PROMOTION_ROWS.map(([rank, surface, kind, gloss, jyutping = "", syntax = ""]) => [
+        surface,
+        lexicalSpec(rank, kind, gloss, jyutping, syntax)
+      ])
+    ));
     var SOURCE_ONLY_SURFACES = /* @__PURE__ */ new Set(["平排", "打直", "打斜"]);
-    var INDEPENDENT_ZERO_HIT_SURFACES = /* @__PURE__ */ new Set(["象徵", "解決", "擦膠", "公眾", "毋", "必須", "民主黨", "收到", "言論", "波浪", "基本法", "瞭解", "權利", "失敗", "垂直", "城堡", "政黨", "冤", "效", "環保", "黨", "攪", "左手邊", "角色", "車主", "坦白", "法例", "票", "終審", "著", "賀", "椰", "劍", "引起", "回應", "果", "沾污"]);
-    var BLOCKED_ATOMIC_SURFACES = /* @__PURE__ */ new Set(["幾大", "試下", "鑑林", "三點", "四十五度", "左下", "再落", "好大", "好慘", "我估", "我畫", "知有", "個害", "將個", "圍住", "落落", "邊行", "一晚", "上角", "成張", "即個", "信佳", "問我", "幾喇", "越來", "講個", "轉個", "一百蚊", "乜鬼", "右下方", "印椰樹", "多少", "多次", "多個", "個意", "時話", "就畫", "落返", "過個", "講番", "點會", "一本", "一座", "下角", "五點", "右畫", "再畫", "好貴", "每個"]);
+    var INDEPENDENT_ZERO_HIT_SURFACES = /* @__PURE__ */ new Set([
+      "象徵",
+      "解決",
+      "擦膠",
+      "公眾",
+      "毋",
+      "必須",
+      "民主黨",
+      "收到",
+      "言論",
+      "波浪",
+      "基本法",
+      "瞭解",
+      "權利",
+      "失敗",
+      "垂直",
+      "城堡",
+      "政黨",
+      "冤",
+      "效",
+      "環保",
+      "黨",
+      "攪",
+      "左手邊",
+      "角色",
+      "車主",
+      "坦白",
+      "法例",
+      "票",
+      "終審",
+      "著",
+      "賀",
+      "椰",
+      "劍",
+      "引起",
+      "回應",
+      "果",
+      "沾污"
+    ]);
+    var BLOCKED_ATOMIC_SURFACES = /* @__PURE__ */ new Set([
+      "幾大",
+      "試下",
+      "鑑林",
+      "三點",
+      "四十五度",
+      "左下",
+      "再落",
+      "好大",
+      "好慘",
+      "我估",
+      "我畫",
+      "知有",
+      "個害",
+      "將個",
+      "圍住",
+      "落落",
+      "邊行",
+      "一晚",
+      "上角",
+      "成張",
+      "即個",
+      "信佳",
+      "問我",
+      "幾喇",
+      "越來",
+      "講個",
+      "轉個",
+      "一百蚊",
+      "乜鬼",
+      "右下方",
+      "印椰樹",
+      "多少",
+      "多次",
+      "多個",
+      "個意",
+      "時話",
+      "就畫",
+      "落返",
+      "過個",
+      "講番",
+      "點會",
+      "一本",
+      "一座",
+      "下角",
+      "五點",
+      "右畫",
+      "再畫",
+      "好貴",
+      "每個"
+    ]);
     var MULTI_ROWS = Object.freeze([
       [1255, "象徵", ["symbol_noun", "noun", "symbol / emblem"], ["symbolize_verb", "verb", "symbolize / represent"]],
       [1271, "懷疑", ["doubt_verb", "verb", "doubt / suspect"], ["suspicion_noun", "noun", "doubt / suspicion"]],
@@ -5215,7 +5335,7 @@ var require_cifu_r1251_1500_reviewed = __commonJS({
       [1419, "坦白", ["frank_stative", "adjective", "frank / honest"], ["confess_verb", "verb", "confess / state frankly"]],
       [1420, "姓", ["surname_noun", "noun", "surname"], ["be_surnamed_verb", "verb", "have the surname / be surnamed"]],
       [1424, "花", ["flower_noun", "noun", "flower"], ["spend_verb", "verb", "spend / use up"], ["variegated_stative", "adjective", "multicoloured / scratched / dirty"], ["productive_bound", "bound", "productive bound / suffix-like family", "", "bound_morpheme"]],
-      [1425, "金", ["gold_noun", "noun", "gold / money"], ["golden_modifier", "adjective", "gold / golden modifier", "", "relational_modifier"]],
+      [1425, "金", ["gold_noun", "noun", "gold / money"], ["golden_bound", "bound", "gold / golden bound-attributive family", "", "bound_morpheme"]],
       [1426, "約", ["appointment_noun", "noun", "appointment / agreement"], ["arrange_restrict_verb", "verb", "arrange / restrict"], ["approximately_adverb", "adverb", "about / approximately", "", "approximation_adverb"]],
       [1434, "恐怖", ["frightening_stative", "adjective", "frightening / terrible"], ["terror_noun", "noun", "terror / horror"]],
       [1447, "賀", ["congratulate_verb", "verb", "congratulate / celebrate", "ho6"], ["surname", "proper", "surname / proper-name family", "ho6"]],
@@ -5251,7 +5371,7 @@ var require_cifu_r1251_1500_reviewed = __commonJS({
       [1411, "艾爾頓", ["proper_name", "proper", "proper-name transliteration", "aai6 ji5 deon6"]],
       [1417, "亞視", ["asia_television", "proper", "ATV / Asia Television", "aa3 si6"]],
       [1427, "訂", ["order_deng6", "verb", "order / book / subscribe / reserve", "deng6"], ["formal_set_ding3", "bound", "formal / bound conclude / set / draw up family", "ding3", "bound_morpheme"]],
-      [1428, "迫", ["force_bik1", "verb", "force / press; crowded-pressing family", "bik1"], ["execute_baak1", "verb", "specialized slang execution family", "baak1"]],
+      [1428, "迫", ["force_bik1", "verb", "force / press", "bik1"], ["crowded_bik1", "adjective", "crowded / pressing", "bik1"], ["execute_baak1", "verb", "specialized slang execution family", "baak1"]],
       [1433, "家姐", ["elder_sister", "person", "elder sister", "gaa1 ze1"]],
       [1435, "捉", ["catch", "verb", "catch / grab", "zuk1"]],
       [1446, "著", ["writing_zyu3", "bound", "writing / works / notability literary-bound family", "zyu3", "bound_morpheme"], ["wear_zoek3", "verb", "wear / put on family", "zoek3"], ["lexical_zoek6", "verb", "independently attested zoek6 lexical family", "zoek6", "separate_reading_family"]],
@@ -5262,39 +5382,109 @@ var require_cifu_r1251_1500_reviewed = __commonJS({
       [1463, "膠袋", ["plastic_bag", "noun", "plastic bag", "gaau1 doi2"]]
     ]);
     function specMap(rows) {
-      return Object.freeze(Object.fromEntries(rows.map(([r, s, ...specs]) => [s, Object.freeze(specs.map((x) => alt(r, x)))])));
+      return Object.freeze(Object.fromEntries(
+        rows.map(([rank, surface, ...specs]) => [surface, Object.freeze(specs.map((row) => alt(rank, row)))])
+      ));
     }
     var MULTI_SPECS = specMap(MULTI_ROWS);
     var READING_SPECS = specMap(READING_ROWS);
     var ALTERNATIVE_SPECS = Object.freeze({ ...MULTI_SPECS, ...READING_SPECS });
     var CANDIDATE_ONLY_SURFACES = new Set(Object.keys(ALTERNATIVE_SPECS));
-    var DEFAULT_READING_OVERRIDES = Object.freeze({ "下邊": "haa6 bin1", "收到": "sau1 dou2", "下下": "haa5 haa5", "上年": "soeng6 nin2", "不斷": "bat1 dyun6", "艾爾頓": "aai6 ji5 deon6", "亞視": "aa3 si6", "家姐": "gaa1 ze1", "捉": "zuk1", "膠袋": "gaau1 doi2" });
-    function isNeutralLexicalEntry(e) {
-      return Boolean(e) && e.label === "lex" && e.pos === "lexical_item" && e.syntax === "lexical_item";
+    var DEFAULT_READING_OVERRIDES = Object.freeze({
+      "下邊": "haa6 bin1",
+      "收到": "sau1 dou2",
+      "下下": "haa5 haa5",
+      "上年": "soeng6 nin2",
+      "不斷": "bat1 dyun6",
+      "艾爾頓": "aai6 ji5 deon6",
+      "亞視": "aa3 si6",
+      "家姐": "gaa1 ze1",
+      "捉": "zuk1",
+      "膠袋": "gaau1 doi2"
+    });
+    function isNeutralLexicalEntry(entry) {
+      return Boolean(entry) && entry.label === "lex" && entry.pos === "lexical_item" && entry.syntax === "lexical_item";
     }
     function applyReviewedEntries(entries) {
       if (!Array.isArray(entries)) throw new TypeError("ranks 1251–1500 reviewed overlay requires an entry array");
       return entries.map(([surface, entry]) => {
-        const p = PROMOTIONS[surface];
+        const promotion = PROMOTIONS[surface];
         let next = entry;
-        if (p && isNeutralLexicalEntry(next)) next = { ...next, label: p.label, pos: p.pos, syntax: p.syntax, jyutping: p.jyutping || next.jyutping || "", note: p.gloss, provenance: { kind: "reviewed_lexical_promotion", source: SOURCE, rank: p.rank, pronunciation_status: p.jyutping ? "reviewed_explicit_reading" : "inherited_runtime_candidate_not_independently_promoted", prior_provenance: next.provenance || null } };
-        const j = DEFAULT_READING_OVERRIDES[surface];
-        if (j && next && next.jyutping !== j) next = { ...next, jyutping: j, provenance: { kind: isNeutralLexicalEntry(next) ? "reviewed_candidate_default_pronunciation" : "reviewed_default_pronunciation_correction", source: SOURCE, pronunciation_status: "reviewed_explicit_reading", prior_provenance: next.provenance || null } };
+        if (promotion && isNeutralLexicalEntry(next)) {
+          next = {
+            ...next,
+            label: promotion.label,
+            pos: promotion.pos,
+            syntax: promotion.syntax,
+            jyutping: promotion.jyutping || next.jyutping || "",
+            note: promotion.gloss,
+            provenance: {
+              kind: "reviewed_lexical_promotion",
+              source: SOURCE,
+              rank: promotion.rank,
+              pronunciation_status: promotion.jyutping ? "reviewed_explicit_reading" : "inherited_runtime_candidate_not_independently_promoted",
+              prior_provenance: next.provenance || null
+            }
+          };
+        }
+        const reviewedReading = DEFAULT_READING_OVERRIDES[surface];
+        if (reviewedReading && next && next.jyutping !== reviewedReading) {
+          next = {
+            ...next,
+            jyutping: reviewedReading,
+            provenance: {
+              kind: isNeutralLexicalEntry(next) ? "reviewed_candidate_default_pronunciation" : "reviewed_default_pronunciation_correction",
+              source: SOURCE,
+              pronunciation_status: "reviewed_explicit_reading",
+              prior_provenance: next.provenance || null
+            }
+          };
+        }
         return [surface, next];
       });
     }
-    function defaultAnalysis(surface, e) {
-      return Object.freeze({ id: `lex:${surface}:default`, label: e.label || "neutral", pos: e.pos || "lexical_item", jyutping: e.jyutping || "", syntax: e.syntax || "lexical_candidate", senses: Object.freeze([{ gloss: e.note || "existing runtime default preserved" }]), provenance: Object.freeze({ kind: "existing_runtime_default_preserved", source: "v0.5.233 token lexicon before ranks 1251–1500 alternatives", prior_provenance: e.provenance || null }) });
+    function defaultAnalysis(surface, entry) {
+      return Object.freeze({
+        id: `lex:${surface}:default`,
+        label: entry.label || "neutral",
+        pos: entry.pos || "lexical_item",
+        jyutping: entry.jyutping || "",
+        syntax: entry.syntax || "lexical_candidate",
+        senses: Object.freeze([{ gloss: entry.note || "existing runtime default preserved" }]),
+        provenance: Object.freeze({
+          kind: "existing_runtime_default_preserved",
+          source: "v0.5.233 token lexicon before ranks 1251–1500 alternatives",
+          prior_provenance: entry.provenance || null
+        })
+      });
     }
-    function reviewedAlternative(surface, spec, e) {
-      return Object.freeze({ id: `lex:${surface}:r${spec.rank}:${spec.suffix}`, label: spec.label, pos: spec.pos, jyutping: spec.jyutping || e.jyutping || "", syntax: spec.syntax, senses: Object.freeze([{ gloss: spec.gloss }]), provenance: Object.freeze({ kind: "reviewed_lexical_analysis", source: SOURCE, rank: spec.rank, pronunciation_status: spec.jyutping ? "reviewed_explicit_reading" : "inherited_runtime_candidate_not_independently_promoted" }) });
+    function reviewedAlternative(surface, spec, defaultEntry) {
+      return Object.freeze({
+        id: `lex:${surface}:r${spec.rank}:${spec.suffix}`,
+        label: spec.label,
+        pos: spec.pos,
+        jyutping: spec.jyutping || defaultEntry.jyutping || "",
+        syntax: spec.syntax,
+        senses: Object.freeze([{ gloss: spec.gloss }]),
+        provenance: Object.freeze({
+          kind: "reviewed_lexical_analysis",
+          source: SOURCE,
+          rank: spec.rank,
+          pronunciation_status: spec.jyutping ? "reviewed_explicit_reading" : "inherited_runtime_candidate_not_independently_promoted"
+        })
+      });
     }
     function buildExplicitAnalyses(entries) {
-      const defaults = new Map(entries || []), out = /* @__PURE__ */ Object.create(null);
+      const defaults = new Map(entries || []);
+      const out = /* @__PURE__ */ Object.create(null);
       for (const [surface, specs] of Object.entries(ALTERNATIVE_SPECS)) {
-        const e = defaults.get(surface);
-        if (!e) throw new Error(`ranks 1251–1500 explicit analyses reference missing runtime surface: ${surface}`);
-        const rows = [defaultAnalysis(surface, e), ...specs.map((s) => reviewedAlternative(surface, s, e))], seen = /* @__PURE__ */ new Set();
+        const entry = defaults.get(surface);
+        if (!entry) throw new Error(`ranks 1251–1500 explicit analyses reference missing runtime surface: ${surface}`);
+        const rows = [
+          defaultAnalysis(surface, entry),
+          ...specs.map((spec) => reviewedAlternative(surface, spec, entry))
+        ];
+        const seen = /* @__PURE__ */ new Set();
         for (const row of rows) {
           if (!row.jyutping) throw new Error(`${row.id}: explicit lexical analysis requires non-empty jyutping`);
           if (seen.has(row.id)) throw new Error(`${row.id}: duplicate ranks 1251–1500 stable analysis ID`);
@@ -5304,7 +5494,21 @@ var require_cifu_r1251_1500_reviewed = __commonJS({
       }
       return Object.freeze(out);
     }
-    module2.exports = Object.freeze({ SOURCE, PROMOTIONS, SOURCE_ONLY_SURFACES, INDEPENDENT_ZERO_HIT_SURFACES, BLOCKED_ATOMIC_SURFACES, MULTI_SPECS, READING_SPECS, ALTERNATIVE_SPECS, CANDIDATE_ONLY_SURFACES, DEFAULT_READING_OVERRIDES, isNeutralLexicalEntry, applyReviewedEntries, buildExplicitAnalyses });
+    module2.exports = Object.freeze({
+      SOURCE,
+      PROMOTIONS,
+      SOURCE_ONLY_SURFACES,
+      INDEPENDENT_ZERO_HIT_SURFACES,
+      BLOCKED_ATOMIC_SURFACES,
+      MULTI_SPECS,
+      READING_SPECS,
+      ALTERNATIVE_SPECS,
+      CANDIDATE_ONLY_SURFACES,
+      DEFAULT_READING_OVERRIDES,
+      isNeutralLexicalEntry,
+      applyReviewedEntries,
+      buildExplicitAnalyses
+    });
   }
 });
 
