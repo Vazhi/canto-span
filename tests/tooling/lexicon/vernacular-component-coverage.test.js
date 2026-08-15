@@ -91,3 +91,19 @@ test("first whole-form batch adds four independently supported lexical defaults"
   assert.notEqual(tokenLexicon["爸"].jyutping, "ba1", "爸: Sheet romanization does not override verified vernacular baa4");
   assert.ok(tokenLexicon["一陣"], "一陣: pre-existing exact lexical coverage remains available");
 });
+
+test("informal 地 spellings map to the canonical plural-pronoun analyses", () => {
+  const pairs = [
+    ["我地", "我哋"],
+    ["你地", "你哋"],
+    ["佢地", "佢哋"],
+  ];
+  for (const [variant, canonical] of pairs) {
+    assert.ok(tokenLexicon[variant], `${variant}: informal orthographic variant is covered`);
+    assert.ok(tokenLexicon[canonical], `${canonical}: canonical pronoun remains covered`);
+    assert.equal(tokenLexicon[variant].jyutping, tokenLexicon[canonical].jyutping, `${variant}: same pronunciation as ${canonical}`);
+    assert.equal(tokenLexicon[variant].syntax, tokenLexicon[canonical].syntax, `${variant}: same pronoun syntax as ${canonical}`);
+    assert.equal(tokenLexicon[variant].label, tokenLexicon[canonical].label, `${variant}: same learner role as ${canonical}`);
+    assert.match(tokenLexicon[variant].note, /variant/i, `${variant}: explicitly marked as an orthographic variant`);
+  }
+});
