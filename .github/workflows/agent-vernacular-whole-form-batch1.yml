@@ -1,0 +1,203 @@
+name: Ingest vernacular whole-form batch 1
+
+on:
+  push:
+    branches:
+      - agent/cifu-r1751-2000-runtime-reconcile
+
+permissions:
+  contents: write
+
+jobs:
+  ingest:
+    if: github.event.head_commit.message == 'Ingest vernacular whole-form batch 1'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Apply five lexical additions/corrections
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          # Canonical audit-discovered lexical additions.
+          p = Path('src/runtime-resources/lexicon/token-lexicon/lexical-coverage-additions.js')
+          text = p.read_text()
+          insert = '''
+  ["爸", {
+    label: "who",
+    pos: "noun",
+    jyutping: "baa4",
+    syntax: "kinship_person_np kinship_term",
+    note: "dad / father; ordinary vernacular Cantonese reading baa4. Written-register baa1 is preserved as an explicit alternative analysis.",
+  }],
+  ["阿爸", {
+    label: "who",
+    pos: "noun",
+    jyutping: "aa3 baa4",
+    syntax: "kinship_person_np kinship_term",
+    note: "dad / father; lexicalized familiar kinship term independently verified against Cantonese dictionary evidence.",
+  }],
+  ["打算", {
+    label: "doing",
+    pos: "verb",
+    jyutping: "daa2 syun3",
+    syntax: "verb intention_verb",
+    note: "intend / plan; independently verified whole lexical verb. Nominal 'plan/intention' use is preserved as an explicit alternative analysis.",
+  }],
+  ["由於", {
+    label: "func",
+    pos: "preposition",
+    jyutping: "jau4 jyu1",
+    syntax: "causal_relation_preposition causal_connector",
+    note: "because of / due to; fixed causal relation expression independently verified in Cantonese.",
+  }],
+  ["一陣", {
+    label: "when",
+    pos: "noun",
+    jyutping: "jat1 zan6",
+    syntax: "temporal_expression duration_np",
+    note: "a while / a moment; lexicalized Cantonese temporal expression. jat1 zan2 is preserved as an explicit reading alternative.",
+  }],
+'''
+          if '["阿爸", {' not in text:
+            if not text.rstrip().endswith('];'):
+              raise SystemExit('lexical-coverage-additions end anchor missing')
+            text = text.rstrip()[:-2] + insert + '];\n'
+            p.write_text(text)
+
+          # Correct the Sheet-derived standalone 爸 default to ordinary vernacular Cantonese.
+          p = Path('src/runtime-resources/lexicon/token-lexicon/vernacular-component-coverage.js')
+          text = p.read_text()
+          if '"爸": "ba1"' in text:
+            text = text.replace('"爸": "ba1"', '"爸": "baa4"', 1)
+          elif '"爸": "baa4"' not in text:
+            raise SystemExit('爸 reading anchor missing')
+          set_anchor = 'const DICTIONARY_VERIFIED_SURFACES = new Set(['
+          if '"爸"' not in text[text.index(set_anchor):text.index(']);', text.index(set_anchor))]:
+            text = text.replace(set_anchor, set_anchor + '"爸", ', 1)
+          p.write_text(text)
+
+          # Preserve independently supported reading/POS alternatives without changing defaults.
+          p = Path('src/runtime-resources/lexicon/token-lexicon/explicit-analyses.js')
+          text = p.read_text()
+          anchor = '  "咋": Object.freeze(['
+          if 'lex:爸:written_register_baa1' not in text:
+            block = '''  "爸": Object.freeze([
+    Object.freeze({
+      id: "lex:爸:default",
+      label: "who",
+      pos: "noun",
+      jyutping: "baa4",
+      syntax: "kinship_person_np kinship_term",
+      senses: Object.freeze([{ gloss: "dad / father; ordinary vernacular reading" }]),
+      provenance: Object.freeze({ kind: "independently_verified_cantonese_default", source: VERNACULAR_SOURCE }),
+    }),
+    Object.freeze({
+      id: "lex:爸:written_register_baa1",
+      label: "who",
+      pos: "noun",
+      jyutping: "baa1",
+      syntax: "kinship_person_np kinship_term written_register_reading",
+      senses: Object.freeze([{ gloss: "father; written-register reading" }]),
+      provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
+    }),
+  ]),
+  "打算": Object.freeze([
+    Object.freeze({
+      id: "lex:打算:default",
+      label: "doing",
+      pos: "verb",
+      jyutping: "daa2 syun3",
+      syntax: "verb intention_verb",
+      senses: Object.freeze([{ gloss: "intend / plan" }]),
+      provenance: Object.freeze({ kind: "independently_verified_cantonese_default", source: VERNACULAR_SOURCE }),
+    }),
+    Object.freeze({
+      id: "lex:打算:plan_noun",
+      label: "what",
+      pos: "noun",
+      jyutping: "daa2 syun3",
+      syntax: "plan_intention_noun",
+      senses: Object.freeze([{ gloss: "plan / intention" }]),
+      provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
+    }),
+  ]),
+  "一陣": Object.freeze([
+    Object.freeze({
+      id: "lex:一陣:default",
+      label: "when",
+      pos: "noun",
+      jyutping: "jat1 zan6",
+      syntax: "temporal_expression duration_np",
+      senses: Object.freeze([{ gloss: "a while / a moment" }]),
+      provenance: Object.freeze({ kind: "independently_verified_cantonese_default", source: VERNACULAR_SOURCE }),
+    }),
+    Object.freeze({
+      id: "lex:一陣:changed_tone_zan2",
+      label: "when",
+      pos: "noun",
+      jyutping: "jat1 zan2",
+      syntax: "temporal_expression duration_np",
+      senses: Object.freeze([{ gloss: "a while / a moment; changed-tone variant" }]),
+      provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
+    }),
+  ]),
+'''
+            if anchor not in text:
+              raise SystemExit('explicit-analysis insertion anchor missing')
+            text = text.replace(anchor, block + anchor, 1)
+            p.write_text(text)
+
+          # Focused assertions stay with the same source-ingestion test file.
+          p = Path('tests/tooling/lexicon/vernacular-component-coverage.test.js')
+          text = p.read_text()
+          if 'whole-form batch adds only independently supported lexicalized entries' not in text:
+            text += '''\n
+test("whole-form batch adds only independently supported lexicalized entries", () => {
+  const analyses = buildLexicalAnalysisIndex(tokenEntries);
+  const expectedDefaults = {
+    "爸": ["baa4", "noun"],
+    "阿爸": ["aa3 baa4", "noun"],
+    "打算": ["daa2 syun3", "verb"],
+    "由於": ["jau4 jyu1", "preposition"],
+    "一陣": ["jat1 zan6", "noun"],
+  };
+  for (const [surface, [jyutping, pos]] of Object.entries(expectedDefaults)) {
+    assert.ok(tokenLexicon[surface], `${surface}: exact lexical entry exists`);
+    assert.equal(tokenLexicon[surface].jyutping, jyutping, `${surface}: reviewed default reading`);
+    assert.equal(tokenLexicon[surface].pos, pos, `${surface}: reviewed default POS`);
+  }
+
+  assert.deepEqual(new Set((analyses["爸"] || []).map((row) => row.jyutping)), new Set(["baa4", "baa1"]));
+  assert.equal((analyses["爸"] || [])[0].jyutping, "baa4");
+  assert.ok((analyses["爸"] || []).some((row) => row.id === "lex:爸:written_register_baa1"));
+
+  assert.ok((analyses["打算"] || []).some((row) => row.pos === "verb"));
+  assert.ok((analyses["打算"] || []).some((row) => row.pos === "noun"));
+  assert.deepEqual(new Set((analyses["一陣"] || []).map((row) => row.jyutping)), new Set(["jat1 zan6", "jat1 zan2"]));
+});
+'''
+            p.write_text(text)
+          PY
+      - name: Build and verify
+        run: |
+          set -euo pipefail
+          npm run build:runtime
+          node --test tests/tooling/lexicon/vernacular-component-coverage.test.js
+          npm run verify:runtime
+      - name: Commit batch and remove helper
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/agent-vernacular-whole-form-batch1.yml
+          git add src/runtime-resources/lexicon/token-lexicon/lexical-coverage-additions.js src/runtime-resources/lexicon/token-lexicon/vernacular-component-coverage.js src/runtime-resources/lexicon/token-lexicon/explicit-analyses.js tests/tooling/lexicon/vernacular-component-coverage.test.js main.js
+          git commit -m 'Ingest vernacular whole-form batch 1'
+          git push origin HEAD:agent/cifu-r1751-2000-runtime-reconcile
