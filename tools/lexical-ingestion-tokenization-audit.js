@@ -16,7 +16,8 @@ const {
 } = require("../src/runtime-resources/lexicon/lexical-ingestion-registry");
 
 const root = path.resolve(__dirname, "..");
-const AUDIT_SCHEMA = "canto-span-lexical-ingestion-tokenization-audit-v1";
+const AUDIT_SCHEMA = "canto-span-lexical-ingestion-tokenization-audit-v2";
+const CJK_RE = /[\u3400-\u9fff\uf900-\ufaff]/u;
 
 function readDelimitedRows(spec, relativePath = spec.source_file) {
   const file = path.join(root, relativePath);
@@ -63,6 +64,12 @@ function runtimeJyutpingCoverage(entry = {}, analysisRows = []) {
   return { covered: false, mode: "none", readings: [] };
 }
 
+function tokenHasRequiredReading(token) {
+  const surface = String(token && token.surface || "");
+  if (!CJK_RE.test(surface)) return true;
+  return Boolean(String(token && token.jyutping || "").trim());
+}
+
 function addFailure(failures, code, detail) {
   failures.push({ code, ...detail });
 }
@@ -80,7 +87,6 @@ function auditIngestion(spec, options = {}) {
   const warnings = [];
   const surfaceColumn = spec.surface_column || "surface";
   const rankColumn = spec.rank_column || "rank";
-  const removed = new Set(spec.removed_surfaces || []);
   const blocked = collectBlockedAtomicSurfaces(spec.policy_modules || []);
   const blockedDispositionCounts = {};
   const forceCompositional = new Set();
@@ -89,7 +95,6 @@ function auditIngestion(spec, options = {}) {
   for (const surface of blocked) {
     const disposition = blockedAtomicRuntimeDisposition(surface, tokenLexicon, {
       blocked_surfaces: blocked,
-      removed_surfaces: removed,
     });
     bump(blockedDispositionCounts, disposition);
     if (disposition === "force_compositional_neutral_fallback") forceCompositional.add(surface);
@@ -105,8 +110,9 @@ function auditIngestion(spec, options = {}) {
     surface: String(row[surfaceColumn] || ""),
     rank: Number(row[rankColumn]),
   }));
-  const emptySurfaces = rankedRows.filter((item) => !item.surface);
-  for (const item of emptySurfaces) addFailure(failures, "empty_source_surface", { source_row: item.row.__source_row });
+  for (const item of rankedRows.filter((item) => !item.surface)) {
+    addFailure(failures, "empty_source_surface", { source_row: item.row.__source_row });
+  }
 
   const surfaceCounts = new Map();
   const normalizedCounts = new Map();
@@ -134,28 +140,22 @@ function auditIngestion(spec, options = {}) {
     }
   }
 
-  const missingRuntime = [];
-  const unexpectedRemovedRuntime = [];
   const missingJyutping = [];
   const sourceUnknownJyutping = [];
   const analysisBackedJyutping = [];
+  const functionalCoverageGaps = [];
+  const functionalCoverageModes = { exact: 0, compositional: 0 };
   const neutralAtomic = [];
   const blockedAtomicLeaks = [];
   const duplicateAnalysisIds = [];
   const globalAnalysisIds = new Map();
+  let exactRuntimeSurfaceCount = 0;
 
   for (const { row, surface, rank } of rankedRows) {
     if (!surface) continue;
     const entry = tokenLexicon[surface];
     const surfaceAnalyses = analyses[surface] || [];
-    if (removed.has(surface)) {
-      if (entry || analyses[surface]) unexpectedRemovedRuntime.push({ rank, surface });
-      continue;
-    }
-    if (spec.require_exact_runtime_coverage && !entry) {
-      missingRuntime.push({ rank, surface });
-      continue;
-    }
+    if (entry) exactRuntimeSurfaceCount += 1;
 
     if (spec.require_jyutping && entry) {
       const runtimeCoverage = runtimeJyutpingCoverage(entry, surfaceAnalyses);
@@ -190,6 +190,25 @@ function auditIngestion(spec, options = {}) {
       continue;
     }
     const bareTokens = flattenTokens(bareAnalysis.tokens);
+
+    if (spec.require_functional_runtime_coverage) {
+      if (!bareTokens.length) {
+        functionalCoverageGaps.push({ rank, surface, reason: "no_runtime_tokens" });
+      } else {
+        const unreadable = bareTokens.filter((token) => !tokenHasRequiredReading(token));
+        if (unreadable.length) {
+          functionalCoverageGaps.push({
+            rank,
+            surface,
+            reason: "unreadable_runtime_token",
+            tokens: unreadable.slice(0, 8).map((token) => ({ surface: token.surface, jyutping: token.jyutping || "" })),
+          });
+        } else {
+          functionalCoverageModes[entry ? "exact" : "compositional"] += 1;
+        }
+      }
+    }
+
     if (neutralFrequencyCoverageEntry(entry) && bareTokens.some((token) => token.surface === surface)) {
       neutralAtomic.push({ rank, surface });
     }
@@ -213,22 +232,10 @@ function auditIngestion(spec, options = {}) {
     }
   }
 
-  if (missingRuntime.length) addFailure(failures, "runtime_coverage_gap", { count: missingRuntime.length, examples: missingRuntime.slice(0, 12) });
-  if (unexpectedRemovedRuntime.length) addFailure(failures, "removed_surface_still_runtime_reachable", { count: unexpectedRemovedRuntime.length, examples: unexpectedRemovedRuntime.slice(0, 12) });
+  if (functionalCoverageGaps.length) addFailure(failures, "functional_runtime_coverage_gap", { count: functionalCoverageGaps.length, examples: functionalCoverageGaps.slice(0, 12) });
   if (missingJyutping.length) addFailure(failures, "missing_ingested_jyutping", { count: missingJyutping.length, examples: missingJyutping.slice(0, 12) });
   if (duplicateAnalysisIds.length) addFailure(failures, "duplicate_or_empty_lexical_analysis_id", { count: duplicateAnalysisIds.length, examples: duplicateAnalysisIds.slice(0, 12) });
   if (blockedAtomicLeaks.length) addFailure(failures, "blocked_atomic_tokenization_leak", { count: blockedAtomicLeaks.length, examples: blockedAtomicLeaks.slice(0, 12) });
-
-  if (spec.contamination_ledger) {
-    const ledgerRows = readDelimitedRows(spec, spec.contamination_ledger);
-    const ledgerRemoved = new Set(ledgerRows.filter((row) => row.action === "remove_runtime_surface").map((row) => row.surface));
-    for (const surface of removed) {
-      if (!ledgerRemoved.has(surface)) addFailure(failures, "removed_surface_missing_from_contamination_ledger", { surface });
-    }
-    for (const surface of ledgerRemoved) {
-      if (!removed.has(surface)) addFailure(failures, "contamination_ledger_removal_not_in_runtime_policy", { surface });
-    }
-  }
 
   if (neutralAtomic.length) {
     warnings.push({
@@ -251,7 +258,7 @@ function auditIngestion(spec, options = {}) {
       code: "source_pronunciation_unknown",
       count: sourceUnknownJyutping.length,
       examples: sourceUnknownJyutping.slice(0, 20),
-      note: "The ingestion source itself supplies no usable pronunciation. This remains explicit research debt rather than a fabricated runtime reading.",
+      note: "The discovery source itself supplies no usable pronunciation. Runtime acceptance still depends on Cantonese evidence rather than fabricated source repair.",
     });
   }
   if (analysisBackedJyutping.length) {
@@ -285,12 +292,15 @@ function auditIngestion(spec, options = {}) {
     id: spec.id,
     source_file: spec.source_file,
     source_rows: rows.length,
-    effective_runtime_expected: rows.length - removed.size,
+    exact_runtime_surface_count: exactRuntimeSurfaceCount,
+    functional_runtime_coverage_required: Boolean(spec.require_functional_runtime_coverage),
+    functional_runtime_covered: functionalCoverageModes.exact + functionalCoverageModes.compositional,
+    functional_runtime_coverage_modes: functionalCoverageModes,
+    functional_runtime_gap_count: functionalCoverageGaps.length,
     blocked_atomic_surfaces: blocked.size,
     blocked_runtime_disposition_counts: blockedDispositionCounts,
     forced_compositional_surfaces: forceCompositional.size,
     promotion_only_blocked_surfaces: promotionOnlyBlocked.length,
-    removed_surfaces: [...removed].sort(),
     neutral_atomic_surface_count: neutralAtomic.length,
     neutral_atomic_examples: neutralAtomic.slice(0, 20),
     source_unknown_jyutping_count: sourceUnknownJyutping.length,
@@ -321,28 +331,26 @@ function auditAllLexicalIngestions(options = {}) {
 function formatHuman(report) {
   const lines = [`Lexical ingestion tokenization audit: ${report.status}`];
   for (const item of report.reports) {
-    lines.push(`${item.id}: ${item.status}; ${item.source_rows} source rows; ${item.blocked_atomic_surfaces} promotion-blocked; ${item.forced_compositional_surfaces} force-compositional; ${item.neutral_atomic_surface_count} neutral atomic informational`);
+    lines.push(`${item.id}: ${item.status}; ${item.source_rows} source rows; ${item.functional_runtime_covered} functionally covered; ${item.functional_runtime_gap_count} functional gaps; ${item.blocked_atomic_surfaces} promotion-blocked; ${item.forced_compositional_surfaces} force-compositional`);
     if (item.architecture) lines.push(`  architecture: ${item.architecture.status}; ${item.architecture.analyzed} analyzed; ${item.architecture.blocking_count} blockers`);
     for (const failure of item.failures) lines.push(`  FAIL ${failure.code}: ${JSON.stringify(failure)}`);
+    for (const warning of item.warnings) lines.push(`  WARN ${warning.code}: ${warning.count}`);
   }
   return lines.join("\n");
 }
 
 if (require.main === module) {
+  const json = process.argv.includes("--json");
   const report = auditAllLexicalIngestions();
-  if (process.argv.includes("--json")) console.log(JSON.stringify(report, null, 2));
-  else console.log(formatHuman(report));
+  process.stdout.write(`${json ? JSON.stringify(report, null, 2) : formatHuman(report)}\n`);
   if (report.status !== "PASS") process.exit(1);
 }
 
-module.exports = {
+module.exports = Object.freeze({
   AUDIT_SCHEMA,
-  readDelimitedRows,
-  flattenTokens,
-  carrierSources,
-  sourceJyutpingKnown,
-  runtimeJyutpingCoverage,
   auditIngestion,
   auditAllLexicalIngestions,
   formatHuman,
-};
+  flattenTokens,
+  runtimeJyutpingCoverage,
+});
