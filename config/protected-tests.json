@@ -13,8 +13,8 @@
     },
     {
       "path": "tests/tooling/verification/protected-tests.test.js",
-      "sha256": "53dd9673dfcf9c9349d982e9221e5c24776c5d11c40fe34fe8e8defa9fcd2323",
-      "reason": "Enforces the protected-test constitutional doctrine itself: no SHA laundering, no stale review, exact-path review coverage, and no inferred user override.",
+      "sha256": "ece52a4203af5984c90a9cd9c01d10c54ea0f65ba206ef6f545daa423eaef310",
+      "reason": "Enforces the protected-test constitutional doctrine itself: no SHA laundering, no stale review, exact-path control-plane coverage, viable single-author review semantics, and no inferred user override.",
       "scope": "governance",
       "protection_class": "constitutional_doctrine",
       "expected_change_frequency": "rare-to-never",
