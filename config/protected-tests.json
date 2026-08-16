@@ -13,8 +13,8 @@
     },
     {
       "path": "tests/tooling/verification/protected-tests.test.js",
-      "sha256": "fed3ccc972b84227434748324b0a4b2ef0363aa670634cbd8ad819c0eecf5a4b",
-      "reason": "Enforces the protected-test constitutional doctrine itself: no SHA laundering, no stale review including base-retarget freshness, exact-path control-plane coverage, viable single-author review semantics, and no inferred user override.",
+      "sha256": "d79c530711315791893c5d93fa9f5c318d0ac3ac2201b1a3d37228b27c76f249",
+      "reason": "Enforces the protected-test constitutional doctrine itself: no SHA laundering, no stale review including base-retarget freshness, complete protected control-plane coverage, fail-closed GitHub PR enumeration limits, viable single-author review semantics, and no inferred user override.",
       "scope": "governance",
       "protection_class": "constitutional_doctrine",
       "expected_change_frequency": "rare-to-never",
