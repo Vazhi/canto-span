@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   repair:
-    if: github.event.head_commit.message == 'Retry systemic repair with functional audit fix'
+    if: github.event.head_commit.message == 'Retry systemic repair after rank-1501 test cleanup'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -25,6 +25,7 @@ jobs:
         run: |
           python3 tools/agent-systemic-lexical-repair.py
           python3 tools/agent-fix-functional-lexical-audit.py
+          python3 tools/agent-fix-r1501-test.py
       - name: Assert retired active-tree machinery is gone
         run: |
           set -euo pipefail
@@ -40,6 +41,7 @@ jobs:
           npm run build:runtime
           node --test tests/tooling/lexicon/vernacular-component-coverage.test.js
           node --test tests/tooling/lexicon/cifu-r1251-1500-reviewed-runtime.test.js
+          node --test tests/tooling/lexicon/cifu-r1501-1750-reviewed-runtime.test.js
           node --test tests/tooling/lexicon/cifu-r1751-2000-reviewed-runtime.test.js
           npm run test:lexical-ingestions
           npm run verify:runtime
@@ -53,6 +55,7 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git rm tools/agent-systemic-lexical-repair.py
           git rm tools/agent-fix-functional-lexical-audit.py
+          git rm tools/agent-fix-r1501-test.py
           git rm .github/workflows/agent-systemic-lexical-repair.yml
           git add -A
           git commit -m 'Repair lexical ingestion authority and invariants'
