@@ -1,0 +1,44 @@
+name: Verify pronunciation-quality batch 1
+
+on:
+  push:
+    branches:
+      - agent/cifu-r1751-2000-runtime-reconcile
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    if: github.event.head_commit.message == 'Verify pronunciation-quality batch 1'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - run: python tools/tmp-pronunciation-quality-batch1.py
+      - name: Build and run focused lexical gates
+        run: |
+          set -euo pipefail
+          npm run build:runtime
+          node --test tests/tooling/lexicon/vernacular-component-coverage.test.js
+          node --test tests/tooling/lexicon/cifu-r1-250-reviewed-runtime.test.js
+          node --test tests/tooling/lexicon/cifu-r501-750-reviewed-runtime.test.js
+          node --test tests/tooling/lexicon/cifu-r1001-1250-reviewed-runtime.test.js
+          npm run verify:runtime
+          npm run verify:research
+      - name: Commit verified state and remove helpers
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/agent-pronunciation-quality-batch1.yml
+          git rm tools/tmp-pronunciation-quality-batch1.py
+          git add src/runtime-resources/lexicon/token-lexicon/people-and-address.js src/runtime-resources/lexicon/token-lexicon/cifu-r1001-1250-reviewed.js src/runtime-resources/lexicon/token-lexicon/explicit-analyses.js tests/tooling/lexicon/cifu-r1001-1250-reviewed-runtime.test.js tests/tooling/lexicon/vernacular-component-coverage.test.js docs/research/ISSUE-878-CIFU-R1001-1250-LEXICAL-ADJUDICATION-R1.md main.js
+          git commit -m 'Build pronunciation-quality batch 1'
+          git push origin HEAD:agent/cifu-r1751-2000-runtime-reconcile
