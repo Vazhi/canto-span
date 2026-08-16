@@ -163,6 +163,15 @@ test("all protected control-plane enforcement files require review", () => {
   }
 });
 
+test("trusted review workflow reruns when pull request metadata can change the base", () => {
+  const workflowPath = path.resolve(__dirname, "../../../.github/workflows/protected-test-review.yml");
+  const workflow = fs.readFileSync(workflowPath, "utf8");
+  const match = workflow.match(/pull_request_target:\s*\n\s+types:\s*\[([^\]]+)\]/u);
+  assert.ok(match, "protected review workflow must declare pull_request_target activity types");
+  const activityTypes = match[1].split(",").map((item) => item.trim());
+  assert.ok(activityTypes.includes("edited"), "protected review must rerun when PR metadata/base changes");
+});
+
 test("a review made before the latest protected change is stale", () => {
   const required = [REGISTRY_PATH, "tests/doctrine.test.js"];
   const commits = [
