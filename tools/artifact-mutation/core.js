@@ -31,6 +31,15 @@ function validationEntry(phase, errors) {
   return { phase, status: errors.length ? "FAIL" : "PASS", errors: [...errors].sort() };
 }
 
+function runValidator(phase, validator, ...args) {
+  if (typeof validator !== "function") return [];
+  try {
+    return asErrors(validator(...args));
+  } catch (error) {
+    return [`${phase} validator threw: ${error.message}`];
+  }
+}
+
 function emptyGaps() {
   return { records: [], by_dimension: {}, systematic_omissions: [] };
 }
@@ -212,13 +221,17 @@ function commitWrites(writes, options = {}) {
       if (entry.committed) safeUnlink(fsImpl, entry.path, rollbackErrors);
       if (entry.hadOriginal) {
         try {
-          if (fsImpl.existsSync(entry.backup)) fsImpl.renameSync(entry.backup, entry.path);
+          if (!fsImpl.existsSync(entry.backup)) {
+            rollbackErrors.push(`restore ${entry.path}: backup missing at ${entry.backup}`);
+          } else {
+            fsImpl.renameSync(entry.backup, entry.path);
+          }
         } catch (rollbackError) {
           rollbackErrors.push(`restore ${entry.path}: ${rollbackError.message}`);
         }
       }
       safeUnlink(fsImpl, entry.temp, rollbackErrors);
-      safeUnlink(fsImpl, entry.backup, rollbackErrors);
+      if (!entry.hadOriginal) safeUnlink(fsImpl, entry.backup, rollbackErrors);
     }
     const wrapped = new Error(`artifact mutation commit failed: ${error.message}`);
     wrapped.code = "ARTIFACT_MUTATION_COMMIT_FAILED";
@@ -274,7 +287,7 @@ function runMutation(adapter, candidates, options = {}) {
     report.errors.push(`load failed: ${error.message}`);
     return report;
   }
-  const currentErrors = typeof adapter.validateCurrent === "function" ? asErrors(adapter.validateCurrent(current)) : [];
+  const currentErrors = runValidator("current", adapter.validateCurrent, current);
   report.validation_results.push(validationEntry("current", currentErrors));
   if (currentErrors.length) return report;
 
@@ -315,7 +328,7 @@ function runMutation(adapter, candidates, options = {}) {
     return report;
   }
 
-  const resultErrors = typeof adapter.validateResult === "function" ? asErrors(adapter.validateResult(plan.nextState, plan)) : [];
+  const resultErrors = runValidator("result", adapter.validateResult, plan.nextState, plan);
   report.validation_results.push(validationEntry("result", resultErrors));
   if (resultErrors.length) return report;
 
