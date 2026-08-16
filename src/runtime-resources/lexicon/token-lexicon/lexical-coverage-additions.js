@@ -222,9 +222,9 @@ module.exports = [
   }],
   ["米", {
     label: "measure_word",
-    pos: "measure",
+    pos: "classifier",
     jyutping: "mai5",
-    syntax: "measurement_unit distance_unit metre_unit",
+    syntax: "measure_unit length_measure_unit nominal_measure_unit",
     note: "metre measurement unit in the bounded source's 一百米 example; the ordinary rice noun remains a separate explicit lexical analysis.",
   }],
   ["堆", {
