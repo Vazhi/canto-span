@@ -147,10 +147,11 @@ test("renaming a protected path requires review of both old and new identities",
   ]);
 });
 
-test("protected control-plane edits require review even when no doctrine-test hash changes", () => {
+test("all protected control-plane enforcement files require review", () => {
   const unchanged = registry([]);
   for (const protectedControlPath of [
     ".github/workflows/protected-test-review.yml",
+    ".github/workflows/full-diagnostic-verification.yml",
     "config/verification-profiles.json",
   ]) {
     const analysis = analyzeProtectedChanges({
@@ -174,7 +175,7 @@ test("a review made before the latest protected change is stale", () => {
   assert.equal(result.code, "PROTECTED_TEST_REVIEW_REQUIRED");
 });
 
-test("a fresh structured review must cover the exact protected change set", () => {
+test("a fresh structured COMMENTED attestation can pass in the single-author repository", () => {
   const required = [REGISTRY_PATH, "tests/doctrine.test.js"];
   const commits = [
     { sha: "c1", files: [{ filename: "tests/doctrine.test.js" }] },
@@ -187,7 +188,35 @@ test("a fresh structured review must cover the exact protected change set", () =
   const result = evaluateReviewGate({ requiredPaths: required, registryChanged: true, commits, reviews: complete });
   assert.equal(result.status, "PASS");
   assert.equal(result.review.commit_id, "c2");
+  assert.equal(result.review.state, "COMMENTED");
   assert.equal(result.review.basis, "doctrine_review");
+});
+
+test("pending, dismissed, and changes-requested reviews cannot satisfy the gate", () => {
+  const required = [REGISTRY_PATH];
+  const commits = [{ sha: "c1", files: [{ filename: REGISTRY_PATH }] }];
+  for (const state of ["PENDING", "DISMISSED", "CHANGES_REQUESTED"]) {
+    const result = evaluateReviewGate({
+      requiredPaths: required,
+      registryChanged: true,
+      commits,
+      reviews: [{ id: 1, state, commit_id: "c1", body: reviewBody({ paths: required }) }],
+    });
+    assert.equal(result.status, "FAIL");
+    assert.equal(result.code, "PROTECTED_TEST_REVIEW_REQUIRED");
+  }
+});
+
+test("an APPROVED structured review remains valid when a separate reviewer exists", () => {
+  const required = [REGISTRY_PATH];
+  const result = evaluateReviewGate({
+    requiredPaths: required,
+    registryChanged: true,
+    commits: [{ sha: "c1", files: [{ filename: REGISTRY_PATH }] }],
+    reviews: [{ id: 1, state: "APPROVED", commit_id: "c1", body: reviewBody({ paths: required }) }],
+  });
+  assert.equal(result.status, "PASS");
+  assert.equal(result.review.state, "APPROVED");
 });
 
 test("ordinary prose or a generic request to make tests pass is never authorization", () => {
