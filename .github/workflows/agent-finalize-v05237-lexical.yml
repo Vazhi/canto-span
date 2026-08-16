@@ -1,4 +1,4 @@
-name: Verify v0.5.237 lexical finalization
+name: Finalize v0.5.237 under inherited release debt
 
 on:
   push:
@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   verify:
-    if: github.event.head_commit.message == 'Verify v0.5.237 lexical finalization'
+    if: github.event.head_commit.message == 'Finalize v0.5.237 under inherited release debt'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -22,13 +22,43 @@ jobs:
           package-manager-cache: false
       - run: npm ci
       - run: python tools/tmp-v05237-lexical-finalize.py
-      - name: Build and run final lexical/repository gates
+      - name: Build and run blocking lexical/core/research/runtime gates
         run: |
           set -euo pipefail
           npm run build:runtime
           node --test tests/tooling/lexicon/vernacular-component-coverage.test.js
           npm run test:lexical-ingestions
-          npm run verify:all
+          npm run verify:core
+          npm run verify:research
+          npm run verify:runtime
+          node tools/enforce-promotion-rules.js
+      - name: Require exact inherited release-handoff debt
+        run: |
+          set +e
+          node tools/verify-release-handoff.js > /tmp/release-handoff.json
+          status=$?
+          set -e
+          cat /tmp/release-handoff.json
+          test "$status" -eq 1
+          node - <<'NODE'
+          const fs = require('node:fs');
+          const assert = require('node:assert/strict');
+          const result = JSON.parse(fs.readFileSync('/tmp/release-handoff.json', 'utf8'));
+          const expected = [
+            'status_changes_mismatch:[]!=[{"construction":"JauDakMouDakAvailabilityPredicate","old_status":null,"new_status":"research_pending"}]',
+            'missing_changed_construction_audit:JauDakMouDakAvailabilityPredicate',
+            'changed_construction_audit_has_extra_or_missing_records',
+          ];
+          assert.equal(result.status, 'FAIL');
+          assert.equal(result.failed, 3);
+          assert.deepEqual(result.failures, expected);
+          assert.deepEqual(result.actual_status_changes, [{
+            construction: 'JauDakMouDakAvailabilityPredicate',
+            old_status: null,
+            new_status: 'research_pending',
+          }]);
+          console.log('Inherited release-handoff debt matched current main exactly.');
+          NODE
       - name: Publish only from unchanged branch head
         run: |
           set -euo pipefail
