@@ -415,6 +415,46 @@ const vernacularSourceAnalyses = Object.freeze({
       provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
     }),
   ]),
+  "一時": Object.freeze([
+    Object.freeze({
+      id: "lex:一時:temporal_adverb",
+      label: "when",
+      pos: "adverb",
+      jyutping: "jat1 si4",
+      syntax: "temporal_adjunct temporary_state_adverb",
+      senses: Object.freeze([{ gloss: "for the moment / for a short while / suddenly" }]),
+      provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
+    }),
+    Object.freeze({
+      id: "lex:一時:alternating_connector",
+      label: "func",
+      pos: "conjunction",
+      jyutping: "jat1 si4",
+      syntax: "alternating_state_connector",
+      senses: Object.freeze([{ gloss: "sometimes ... sometimes ...; alternates between two intermittent states" }]),
+      provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
+    }),
+  ]),
+  "幫手": Object.freeze([
+    Object.freeze({
+      id: "lex:幫手:help_verb",
+      label: "doing",
+      pos: "verb",
+      jyutping: "bong1 sau2",
+      syntax: "verb help_benefactive_verb",
+      senses: Object.freeze([{ gloss: "help / assist / do someone a favour" }]),
+      provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
+    }),
+    Object.freeze({
+      id: "lex:幫手:helper_noun",
+      label: "what",
+      pos: "noun",
+      jyutping: "bong1 sau2",
+      syntax: "object_np helper_noun person_or_object_np",
+      senses: Object.freeze([{ gloss: "helper; a person or thing that makes work easier" }]),
+      provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
+    }),
+  ]),
   "咋": Object.freeze([
     Object.freeze({ id: "lex:咋:default", label: "particle", pos: "particle", jyutping: "zaa3", syntax: "sentence_final_particle restrictive_focus_particle exhaustive_limit_particle", senses: Object.freeze([{ gloss: "only / that is all" }]), provenance: Object.freeze({ kind: "existing_runtime_default_preserved", source: "token lexicon default before bundled-reading supplement" }) }),
     Object.freeze({

@@ -175,3 +175,26 @@ test("corrected final lexical tail preserves only independently supported altern
   assert.ok(pos("哎吔").has("interjection"));
   assert.ok(rows("哎吔").some((row) => row.id === "lex:哎吔:nonliteral_kinship_modifier" && row.pos === "adjective"));
 });
+
+
+test("verified multi-character lexical batch preserves dictionary-level lexicalization", () => {
+  const analyses = buildLexicalAnalysisIndex(tokenEntries);
+  const expected = {
+    "一早": ["jat1 zou2", "adverb"],
+    "一時": ["jat1 si4", "adverb"],
+    "幫手": ["bong1 sau2", "verb"],
+    "好意": ["hou2 ji3", "noun"],
+    "好好": ["hou2 hou2", "adverb"],
+    "裏面": ["leoi5 min6", "noun"],
+  };
+  for (const [surface, [jyutping, pos]] of Object.entries(expected)) {
+    assert.ok(tokenLexicon[surface], `${surface}: exact lexical coverage exists`);
+    assert.equal(tokenLexicon[surface].jyutping, jyutping, `${surface}: reading`);
+    assert.equal(tokenLexicon[surface].pos, pos, `${surface}: default POS`);
+  }
+
+  assert.deepEqual(new Set((analyses["一時"] || []).map((row) => row.pos)), new Set(["adverb", "conjunction"]));
+  assert.deepEqual(new Set((analyses["一時"] || []).map((row) => row.jyutping)), new Set(["jat1 si4"]));
+  assert.deepEqual(new Set((analyses["幫手"] || []).map((row) => row.pos)), new Set(["verb", "noun"]));
+  assert.deepEqual(new Set((analyses["幫手"] || []).map((row) => row.jyutping)), new Set(["bong1 sau2"]));
+});

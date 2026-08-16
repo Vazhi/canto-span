@@ -10482,6 +10482,48 @@ var require_lexical_coverage_additions = __commonJS({
         jyutping: "ai1 jaa3",
         syntax: "pain_surprise_annoyance_interjection",
         note: "ouch / oh no; Cantonese interjection. ai1 jaa3 is the default reading; independently attested reading variants remain explicit lexical alternatives."
+      }],
+      ["一早", {
+        label: "when",
+        pos: "adverb",
+        jyutping: "jat1 zou2",
+        syntax: "temporal_adjunct temporal_adverb",
+        note: "since a long time ago / long before; independently verified as a Cantonese adverb in 粵典."
+      }],
+      ["一時", {
+        label: "when",
+        pos: "adverb",
+        jyutping: "jat1 si4",
+        syntax: "temporal_adjunct temporary_state_adverb",
+        note: "for the moment / suddenly / for a short time; independently verified in 粵典. Alternating 'sometimes...sometimes...' conjunction use is preserved separately."
+      }],
+      ["幫手", {
+        label: "doing",
+        pos: "verb",
+        jyutping: "bong1 sau2",
+        syntax: "verb help_benefactive_verb",
+        note: "help / assist / do someone a favour; independently verified in 粵典. Helper-noun use is preserved separately."
+      }],
+      ["好意", {
+        label: "what",
+        pos: "noun",
+        jyutping: "hou2 ji3",
+        syntax: "abstract_noun intention_noun object_np",
+        note: "good intention / kindness; independently verified as a Cantonese noun in 粵典."
+      }],
+      ["好好", {
+        label: "how",
+        pos: "adverb",
+        jyutping: "hou2 hou2",
+        syntax: "manner_adverb positive_manner_adverb",
+        note: "well / properly; independently verified as a Cantonese adverb in 粵典 rather than treated as an arbitrary exact-string gap."
+      }],
+      ["裏面", {
+        label: "where",
+        pos: "noun",
+        jyutping: "leoi5 min6",
+        syntax: "place_or_goal spatial_localizer interior_location",
+        note: "inside / interior; attested in Cantonese examples in 粵典, with 裏 identified as the traditional variant of 裡."
       }]
     ];
   }
@@ -12129,24 +12171,6 @@ var require_explicit_analyses = __commonJS({
           syntax: "small_discrete_classifier quantity_classifier",
           senses: Object.freeze([{ gloss: "classifier for small compact or discrete objects; pronunciation variant" }]),
           provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
-        }),
-        Object.freeze({
-          id: "lex:粒:grain_noun_nap1",
-          label: "what",
-          pos: "noun",
-          jyutping: "nap1",
-          syntax: "object_np grain_granule_noun",
-          senses: Object.freeze([{ gloss: "grain / granule / pellet" }]),
-          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
-        }),
-        Object.freeze({
-          id: "lex:粒:grain_noun_lap1",
-          label: "what",
-          pos: "noun",
-          jyutping: "lap1",
-          syntax: "object_np grain_granule_noun",
-          senses: Object.freeze([{ gloss: "grain / granule / pellet; l-initial pronunciation variant" }]),
-          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
         })
       ]),
       "超": Object.freeze([
@@ -12202,6 +12226,26 @@ var require_explicit_analyses = __commonJS({
           jyutping: "ciu1",
           syntax: "object_np sunglasses_noun slang",
           senses: Object.freeze([{ gloss: "sunglasses" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        })
+      ]),
+      "簿": Object.freeze([
+        Object.freeze({
+          id: "lex:簿:notebook_bou2",
+          label: "what",
+          pos: "noun",
+          jyutping: "bou2",
+          syntax: "object_np document_noun notebook_noun",
+          senses: Object.freeze([{ gloss: "notebook / writing pad" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        }),
+        Object.freeze({
+          id: "lex:簿:notebook_bou6",
+          label: "what",
+          pos: "noun",
+          jyutping: "bou6",
+          syntax: "object_np document_noun notebook_noun",
+          senses: Object.freeze([{ gloss: "notebook / register; citation-tone reading retained by the frequency source and Cantonese dictionaries" }]),
           provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
         })
       ]),
@@ -12265,6 +12309,15 @@ var require_explicit_analyses = __commonJS({
           provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
         }),
         Object.freeze({
+          id: "lex:哎吔:interjection_ai1_jaa1",
+          label: "particle",
+          pos: "interjection",
+          jyutping: "ai1 jaa1",
+          syntax: "pain_surprise_annoyance_interjection",
+          senses: Object.freeze([{ gloss: "aiya / ah / oh; independently attested interjection reading" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        }),
+        Object.freeze({
           id: "lex:哎吔:interjection_ai1_jaa5",
           label: "particle",
           pos: "interjection",
@@ -12289,6 +12342,55 @@ var require_explicit_analyses = __commonJS({
           jyutping: "ai1 jaa6",
           syntax: "pain_surprise_annoyance_interjection",
           senses: Object.freeze([{ gloss: "ouch / oh no; attested reading variant" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        }),
+        Object.freeze({
+          id: "lex:哎吔:nonliteral_kinship_modifier",
+          label: "like",
+          pos: "adjective",
+          jyutping: "ai1 jaa1",
+          syntax: "distinguishing_modifier nonliteral_kinship_modifier",
+          senses: Object.freeze([{ gloss: "so-called / not actual; used before a kinship term" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        })
+      ]),
+      "一時": Object.freeze([
+        Object.freeze({
+          id: "lex:一時:temporal_adverb",
+          label: "when",
+          pos: "adverb",
+          jyutping: "jat1 si4",
+          syntax: "temporal_adjunct temporary_state_adverb",
+          senses: Object.freeze([{ gloss: "for the moment / for a short while / suddenly" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        }),
+        Object.freeze({
+          id: "lex:一時:alternating_connector",
+          label: "func",
+          pos: "conjunction",
+          jyutping: "jat1 si4",
+          syntax: "alternating_state_connector",
+          senses: Object.freeze([{ gloss: "sometimes ... sometimes ...; alternates between two intermittent states" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        })
+      ]),
+      "幫手": Object.freeze([
+        Object.freeze({
+          id: "lex:幫手:help_verb",
+          label: "doing",
+          pos: "verb",
+          jyutping: "bong1 sau2",
+          syntax: "verb help_benefactive_verb",
+          senses: Object.freeze([{ gloss: "help / assist / do someone a favour" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        }),
+        Object.freeze({
+          id: "lex:幫手:helper_noun",
+          label: "what",
+          pos: "noun",
+          jyutping: "bong1 sau2",
+          syntax: "object_np helper_noun person_or_object_np",
+          senses: Object.freeze([{ gloss: "helper; a person or thing that makes work easier" }]),
           provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
         })
       ]),
