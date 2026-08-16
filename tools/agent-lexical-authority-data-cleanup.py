@@ -45,7 +45,33 @@ require(n == 1, "dynamic accepted-reading derivation missing")
 text = text.replace('  DISCOVERY_READINGS,\n', '')
 write(rel, text)
 
-# 2. Remove candidate pronunciation comparison from the project-owned common-core
+# 2. Make neutral-fallback identity structural rather than prose-dependent. Reviewed
+# promotions must continue to win after discovery notes are cleaned or rewritten.
+rel = "src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-reviewed.js"
+text = read(rel)
+old = '''function isNeutralFrequencyFallback(entry) {
+  return Boolean(
+    entry
+      && entry.label === "lex"
+      && entry.pos === "lexical_item"
+      && entry.syntax === "lexical_item"
+      && typeof entry.note === "string"
+      && entry.note.includes("Exact surface retained as neutral lexical coverage")
+  );
+}'''
+new = '''function isNeutralFrequencyFallback(entry) {
+  return Boolean(
+    entry
+      && entry.label === "lex"
+      && entry.pos === "lexical_item"
+      && entry.syntax === "lexical_item"
+  );
+}'''
+require(old in text, "neutral fallback detector anchor missing")
+text = text.replace(old, new, 1)
+write(rel, text)
+
+# 3. Remove candidate pronunciation comparison from the project-owned common-core
 # priority table while preserving all rows/rank/corpus evidence.
 rel = "data/lexical-frequency/common-spoken-cantonese-core-2000.tsv"
 raw = read(rel)
@@ -59,7 +85,7 @@ out = io.StringIO()
 csv.writer(out, delimiter='\t', lineterminator='\n').writerows(new_rows)
 write(rel, out.getvalue())
 
-# 3. Clarify the common-core source role: Cifu is frequency corroboration, not
+# 4. Clarify the common-core source role: Cifu is frequency corroboration, not
 # pronunciation/lexical authority or a source of runtime exclusions.
 rel = "data/lexical-frequency/common-spoken-cantonese-core-2000.manifest.json"
 data = json.loads(read(rel))
@@ -73,7 +99,7 @@ data['limitations'] = [
 data['sources']['cifu_secondary']['role'] = "secondary rank/frequency corroboration only; not lexical, pronunciation, grammar, or parser authority"
 write(rel, json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True) + '\n')
 
-# 4. Neutralize legacy fallback notes. Preserve surface, default fields and readings
+# 5. Neutralize legacy fallback notes. Preserve surface, default fields and readings
 # already adjudicated by the reviewed-band stack; remove imported gloss/status/source-
 # reading narrative from learner/runtime notes.
 rel = "src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js"
@@ -88,7 +114,7 @@ for line in text.splitlines(True):
 require(count > 0, "no legacy fallback notes were neutralized")
 write(rel, ''.join(lines))
 
-# 5. Remove migration/batch wording from durable lexical behavior tests.
+# 6. Remove migration/batch wording from durable lexical behavior tests.
 rel = "tests/tooling/lexicon/vernacular-component-coverage.test.js"
 text = read(rel)
 renames = {
