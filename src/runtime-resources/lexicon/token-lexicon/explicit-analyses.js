@@ -78,6 +78,26 @@ const reviewedR1250Polyanalyses = Object.freeze(Object.fromEntries(
 
 const VERNACULAR_SOURCE = "Most Common Cantonese Words (Frequency List) + Cantonese dictionary cross-check";
 const vernacularSourceAnalyses = Object.freeze({
+  "爸": Object.freeze([
+    Object.freeze({
+      id: "lex:爸:default",
+      label: "who",
+      pos: "noun",
+      jyutping: "baa4",
+      syntax: "kinship_person_np kinship_term",
+      senses: Object.freeze([{ gloss: "dad / father; ordinary standalone Guangzhou reading" }]),
+      provenance: Object.freeze({ kind: "reference_dictionary_cantonese_reading", source: "廣州話正音字典 via 粵音資料集叢" }),
+    }),
+    Object.freeze({
+      id: "lex:爸:character_or_compound_baa1",
+      label: "who",
+      pos: "noun",
+      jyutping: "baa1",
+      syntax: "kinship_person_np kinship_term character_or_compound_reading",
+      senses: Object.freeze([{ gloss: "father; character/compound reading, including 爸媽 contexts" }]),
+      provenance: Object.freeze({ kind: "reference_dictionary_cantonese_reading", source: "廣州話正音字典 via 粵音資料集叢" }),
+    }),
+  ]),
   "嘅": Object.freeze([
     ...(REVIEWED_R1_250_ANALYSES["嘅"] || []),
     Object.freeze({

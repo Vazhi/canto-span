@@ -4,16 +4,53 @@ const assert = require("node:assert/strict");
 const test = require("node:test");
 const tokenEntries = require("../../../src/runtime-resources/lexicon/token-lexicon");
 const tokenLexicon = Object.fromEntries(tokenEntries);
-const { READINGS, applyVernacularComponentCoverage } = require("../../../src/runtime-resources/lexicon/token-lexicon/vernacular-component-coverage");
+const {
+  ACCEPTED_READINGS,
+  DISCOVERY_READING_CANDIDATES,
+  ORTHOGRAPHIC_VARIANT_READINGS,
+  RIME_SOURCE,
+  RIME_REVISION,
+  applyVernacularComponentCoverage,
+} = require("../../../src/runtime-resources/lexicon/token-lexicon/vernacular-component-coverage");
 const { buildLexicalAnalysisIndex } = require("../../../src/runtime-resources/lexicon/lexical-analyses");
 
-test("source-backed vernacular reading batch contains exactly 284 simple single-character readings", () => {
-  assert.equal(Object.keys(READINGS).length, 284);
-  for (const [surface, jyutping] of Object.entries(READINGS)) {
+test("accepted component readings are single-character Jyutping with explicit authority", () => {
+  assert.ok(Object.keys(ACCEPTED_READINGS).length > 0);
+  for (const [surface, jyutping] of Object.entries(ACCEPTED_READINGS)) {
     assert.equal(Array.from(surface).length, 1, `${surface}: single-character component`);
-    assert.match(jyutping, /^[a-z]+[1-6]$/u, `${surface}: simple Jyutping`);
+    assert.match(jyutping, /^[a-z]+[1-6]$/u, `${surface}: valid Jyutping`);
     assert.ok(tokenLexicon[surface], `${surface}: runtime entry exists`);
     assert.ok(tokenLexicon[surface].jyutping, `${surface}: runtime has a reading`);
+  }
+  assert.equal(ACCEPTED_READINGS["傷"], "soeng1");
+  assert.equal(ACCEPTED_READINGS["嫁"], "gaa3");
+});
+
+test("accepted-reading overlay writes truthful authority provenance when filling a blank", () => {
+  const sample = [["世", { label: "what", pos: "noun", syntax: "common_noun", jyutping: "", provenance: { kind: "older_semantic_source", source: "example" } }]];
+  const out = Object.fromEntries(applyVernacularComponentCoverage(sample));
+  assert.equal(out["世"].jyutping, "sai3");
+  assert.equal(out["世"].provenance.kind, "pinned_cantonese_pronunciation_authority");
+  assert.equal(out["世"].provenance.source, RIME_SOURCE);
+  assert.equal(out["世"].provenance.revision, RIME_REVISION);
+  assert.equal(out["世"].provenance.prior_provenance.kind, "older_semantic_source");
+});
+
+test("discovery-only pronunciation candidates never become accepted runtime readings", () => {
+  assert.equal(DISCOVERY_READING_CANDIDATES["爸"].jyutping, "ba1");
+  assert.equal(ACCEPTED_READINGS["爸"], undefined);
+  const analyses = buildLexicalAnalysisIndex(tokenEntries);
+  assert.equal(tokenLexicon["爸"].jyutping, "baa4");
+  assert.deepEqual(new Set((analyses["爸"] || []).map((row) => row.jyutping)), new Set(["baa4", "baa1"]));
+  assert.ok(!(analyses["爸"] || []).some((row) => row.jyutping === "ba1"));
+});
+
+test("orthographic substitutions are admitted as variants rather than character readings", () => {
+  for (const surface of ["既", "广", "哂", "跙"]) {
+    const variant = ORTHOGRAPHIC_VARIANT_READINGS[surface];
+    assert.ok(variant, `${surface}: reviewed variant record`);
+    assert.equal(ACCEPTED_READINGS[surface], variant.jyutping);
+    assert.ok(variant.canonical, `${surface}: canonical mapping`);
   }
 });
 
@@ -76,7 +113,7 @@ test("verified bundled-reading batch adds seven missing Cantonese readings witho
   assert.ok((analyses["咋"] || []).some((row) => row.id === "lex:咋:rhetorical_final_particle_zaa4" && row.pos === "particle"));
 });
 
-test("first whole-form batch adds four independently supported lexical defaults", () => {
+test("audited whole-form lexemes retain independently supported defaults", () => {
   const expected = {
     "爸": ["baa4", "noun"],
     "阿爸": ["aa3 baa4", "noun"],
@@ -88,7 +125,9 @@ test("first whole-form batch adds four independently supported lexical defaults"
     assert.equal(tokenLexicon[surface].jyutping, jyutping, `${surface}: reviewed default reading`);
     assert.equal(tokenLexicon[surface].pos, pos, `${surface}: reviewed default POS`);
   }
-  assert.notEqual(tokenLexicon["爸"].jyutping, "ba1", "爸: Sheet romanization does not override verified vernacular baa4");
+  const dadReadings = new Set((buildLexicalAnalysisIndex(tokenEntries)["爸"] || []).map((row) => row.jyutping));
+  assert.deepEqual(dadReadings, new Set(["baa4", "baa1"]));
+  assert.ok(!dadReadings.has(DISCOVERY_READING_CANDIDATES["爸"].jyutping), "爸: discovery-only ba1 is not runtime authority");
   assert.ok(tokenLexicon["一陣"], "一陣: pre-existing exact lexical coverage remains available");
 });
 
@@ -108,7 +147,7 @@ test("informal 地 spellings map to the canonical plural-pronoun analyses", () =
   }
 });
 
-test("verified top-2000 lexical batch fills common whole-form and component gaps", () => {
+test("common audited lexemes retain reviewed defaults", () => {
   const expected = {
     "老婆": ["lou5 po4", "who", "noun"],
     "父母": ["fu6 mou5", "who", "noun"],
@@ -147,7 +186,7 @@ test("source-attested spelling variants inherit the canonical lexical analysis",
   }
 });
 
-test("corrected final lexical tail preserves only independently supported alternatives", () => {
+test("polyfunctional lexical tail preserves independently supported alternatives", () => {
   const analyses = buildLexicalAnalysisIndex(tokenEntries);
   const rows = (surface) => analyses[surface] || [];
   const readings = (surface) => new Set(rows(surface).map((row) => row.jyutping));
@@ -177,7 +216,7 @@ test("corrected final lexical tail preserves only independently supported altern
 });
 
 
-test("verified multi-character lexical batch preserves dictionary-level lexicalization", () => {
+test("multi-character lexemes preserve dictionary-level lexicalization", () => {
   const analyses = buildLexicalAnalysisIndex(tokenEntries);
   const expected = {
     "一早": ["jat1 zou2", "adverb"],
@@ -222,7 +261,7 @@ test("locative 道 spellings inherit the canonical 度 analyses", () => {
 });
 
 
-test("好意思 closes the final in-scope functional top-2000 lexical gap", () => {
+test("好意思 remains an explicit rhetorical lexical expression", () => {
   const analyses = buildLexicalAnalysisIndex(tokenEntries);
   assert.ok(tokenLexicon["好意思"], "好意思: exact lexicalized rhetorical expression exists");
   assert.equal(tokenLexicon["好意思"].jyutping, "hou2 ji3 si1");

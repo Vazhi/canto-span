@@ -7,10 +7,10 @@
 // category, or phrase atomicity is imported.
 const SOURCE = "Most Common Cantonese Words (Frequency List)";
 const SOURCE_URL = "https://docs.google.com/spreadsheets/d/1ArxEFo46PTrDyDDhWyu3wB0epxqTyd8WBaprnwTEPm4";
-const DICTIONARY_VERIFIED_SURFACES = new Set(["丫", "唓", "喔", "尷", "氛", "瑩", "痴", "薛", "訓", "訝", "輝"]);
-const DICTIONARY_SOURCE = "粵音資料集叢 / established Cantonese reading references";
+const RIME_REVISION = "259f0e48bba840c3a2e0d117539e96937f3d89bc";
+const RIME_SOURCE = "Rime-Cantonese jyut6ping3.chars.dict.yaml";
 
-const READINGS = Object.freeze({
+const DISCOVERY_READINGS = Object.freeze({
   "世": "sai3",
   "並": "bing6",
   "主": "zyu2",
@@ -297,32 +297,121 @@ const READINGS = Object.freeze({
   "咧": "le4" // default for independently supported le4/le5 particle analyses
 });
 
+const RIME_NORMALIZED_OVERRIDES = Object.freeze({
+  "傷": "soeng1",
+  "嫁": "gaa3",
+});
+
+// Discovery-only readings are retained for adjudication but never become runtime
+// authority merely because the source supplied them. 爸 ba1 is kept here because
+// the source transcription may reflect a reduced realization; standard Jyutping
+// references instead encode contextual baa4 / baa1 readings.
+const DISCOVERY_READING_CANDIDATES = Object.freeze({
+  "爸": Object.freeze({
+    jyutping: "ba1",
+    status: "unresolved_phonetic_candidate",
+    source: SOURCE,
+    url: SOURCE_URL,
+    note: "Do not auto-promote: requires phonetic evidence distinguishing /a/ from /aa/ and contextual tone behavior.",
+  }),
+});
+
+// These source spellings are not validated by the character's dictionary reading;
+// they are accepted only as independently reviewed orthographic substitutions for
+// an already-supported Cantonese form.
+const ORTHOGRAPHIC_VARIANT_READINGS = Object.freeze({
+  "既": Object.freeze({ jyutping: "ge3", canonical: "嘅", evidence: "vernacular orthographic substitute" }),
+  "广": Object.freeze({ jyutping: "gwong2", canonical: "廣", evidence: "simplified orthographic form" }),
+  "哂": Object.freeze({ jyutping: "saai3", canonical: "晒", evidence: "recurrent vernacular corpus spelling" }),
+  "跙": Object.freeze({ jyutping: "zau2", canonical: "走", evidence: "recurrent vernacular corpus spelling with 走 syntax" }),
+});
+
+const RIME_ACCEPTED_READINGS = Object.freeze(Object.fromEntries(
+  Object.entries(DISCOVERY_READINGS)
+    .filter(([surface]) => !Object.prototype.hasOwnProperty.call(DISCOVERY_READING_CANDIDATES, surface))
+    .filter(([surface]) => !Object.prototype.hasOwnProperty.call(ORTHOGRAPHIC_VARIANT_READINGS, surface))
+    .map(([surface, discoveryReading]) => [surface, RIME_NORMALIZED_OVERRIDES[surface] || discoveryReading])
+));
+
+const ACCEPTED_READINGS = Object.freeze({
+  ...RIME_ACCEPTED_READINGS,
+  ...Object.fromEntries(Object.entries(ORTHOGRAPHIC_VARIANT_READINGS).map(([surface, row]) => [surface, row.jyutping])),
+});
+
+function acceptedReadingRecord(surface) {
+  if (Object.prototype.hasOwnProperty.call(ORTHOGRAPHIC_VARIANT_READINGS, surface)) {
+    const row = ORTHOGRAPHIC_VARIANT_READINGS[surface];
+    return {
+      jyutping: row.jyutping,
+      provenance: {
+        kind: "independently_reviewed_orthographic_variant",
+        source: SOURCE,
+        url: SOURCE_URL,
+        canonical_surface: row.canonical,
+        evidence: row.evidence,
+      },
+    };
+  }
+  if (Object.prototype.hasOwnProperty.call(RIME_ACCEPTED_READINGS, surface)) {
+    return {
+      jyutping: RIME_ACCEPTED_READINGS[surface],
+      provenance: {
+        kind: "pinned_cantonese_pronunciation_authority",
+        source: RIME_SOURCE,
+        revision: RIME_REVISION,
+      },
+    };
+  }
+  return null;
+}
+
 function applyVernacularComponentCoverage(entries) {
   const seen = new Set();
   const out = entries.map(([surface, entry]) => {
     seen.add(surface);
-    const reading = READINGS[surface];
-    if (!reading || String(entry && entry.jyutping || "").trim()) return [surface, entry];
+    const authority = acceptedReadingRecord(surface);
+    if (!authority || String(entry && entry.jyutping || "").trim()) return [surface, entry];
+    const priorProvenance = entry && entry.provenance;
     return [surface, {
       ...entry,
-      jyutping: reading,
-      note: [entry && entry.note, `Pronunciation filled from ${SOURCE}; bounded vernacular parser audit exposed a missing component reading.`].filter(Boolean).join(" "),
+      jyutping: authority.jyutping,
+      note: [entry && entry.note, "Pronunciation filled from accepted Cantonese authority after external-source gap discovery."].filter(Boolean).join(" "),
+      provenance: {
+        ...authority.provenance,
+        ...(priorProvenance ? { prior_provenance: priorProvenance } : {}),
+      },
     }];
   });
-  for (const [surface, jyutping] of Object.entries(READINGS)) {
+  for (const surface of Object.keys(ACCEPTED_READINGS)) {
     if (seen.has(surface)) continue;
+    const authority = acceptedReadingRecord(surface);
+    if (!authority) continue;
     out.push([surface, {
       label: "lex",
       pos: "lexical_item",
       syntax: "lexical_item",
-      jyutping,
-      note: `Neutral component pronunciation coverage from ${SOURCE}; no grammar/category promotion is implied.`,
-      provenance: DICTIONARY_VERIFIED_SURFACES.has(surface)
-        ? { kind: "independently_verified_cantonese_component_reading", source: DICTIONARY_SOURCE }
-        : { kind: "external_vernacular_component_reading", source: SOURCE, url: SOURCE_URL },
+      jyutping: authority.jyutping,
+      note: "Neutral component pronunciation coverage admitted from accepted Cantonese authority; no grammar/category promotion is implied.",
+      provenance: authority.provenance,
     }]);
   }
   return out;
 }
 
-module.exports = Object.freeze({ SOURCE, SOURCE_URL, DICTIONARY_SOURCE, DICTIONARY_VERIFIED_SURFACES, READINGS, applyVernacularComponentCoverage });
+// READINGS remains a compatibility alias for accepted runtime readings only.
+const READINGS = ACCEPTED_READINGS;
+
+module.exports = Object.freeze({
+  SOURCE,
+  SOURCE_URL,
+  RIME_SOURCE,
+  RIME_REVISION,
+  DISCOVERY_READINGS,
+  DISCOVERY_READING_CANDIDATES,
+  ORTHOGRAPHIC_VARIANT_READINGS,
+  RIME_ACCEPTED_READINGS,
+  ACCEPTED_READINGS,
+  READINGS,
+  acceptedReadingRecord,
+  applyVernacularComponentCoverage,
+});

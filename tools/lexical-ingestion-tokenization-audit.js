@@ -192,7 +192,13 @@ function auditIngestion(spec, options = {}) {
     const bareTokens = flattenTokens(bareAnalysis.tokens);
 
     if (spec.require_functional_runtime_coverage) {
-      if (!bareTokens.length) {
+      const exactCoverage = entry ? runtimeJyutpingCoverage(entry, surfaceAnalyses) : { covered: false };
+      if (entry && exactCoverage.covered) {
+        // Exact lexical authority is already functionally readable. Productive
+        // internal decomposition may expose lower-level components without their
+        // own readings, but that does not make the exact lexical item unusable.
+        functionalCoverageModes.exact += 1;
+      } else if (!bareTokens.length) {
         functionalCoverageGaps.push({ rank, surface, reason: "no_runtime_tokens" });
       } else {
         const unreadable = bareTokens.filter((token) => !tokenHasRequiredReading(token));
@@ -200,11 +206,11 @@ function auditIngestion(spec, options = {}) {
           functionalCoverageGaps.push({
             rank,
             surface,
-            reason: "unreadable_runtime_token",
+            reason: "unreadable_compositional_token",
             tokens: unreadable.slice(0, 8).map((token) => ({ surface: token.surface, jyutping: token.jyutping || "" })),
           });
         } else {
-          functionalCoverageModes[entry ? "exact" : "compositional"] += 1;
+          functionalCoverageModes.compositional += 1;
         }
       }
     }

@@ -5517,9 +5517,8 @@ var require_cifu_r1251_1500_runtime_policy = __commonJS({
   "src/runtime-resources/lexicon/token-lexicon/cifu-r1251-1500-runtime-policy.js"(exports2, module2) {
     "use strict";
     var reviewed = require_cifu_r1251_1500_reviewed();
-    var MANDARIN_ONLY_SURFACES = /* @__PURE__ */ new Set(["多少"]);
     function applyRuntimePolicy(entries) {
-      return reviewed.applyReviewedEntries(entries).filter(([surface]) => !MANDARIN_ONLY_SURFACES.has(surface));
+      return reviewed.applyReviewedEntries(entries);
     }
     module2.exports = Object.freeze({
       SOURCE: reviewed.SOURCE,
@@ -5529,7 +5528,6 @@ var require_cifu_r1251_1500_runtime_policy = __commonJS({
       BLOCKED_ATOMIC_SURFACES: reviewed.BLOCKED_ATOMIC_SURFACES,
       CANDIDATE_ONLY_SURFACES: reviewed.CANDIDATE_ONLY_SURFACES,
       DEFAULT_READING_OVERRIDES: reviewed.DEFAULT_READING_OVERRIDES,
-      MANDARIN_ONLY_SURFACES,
       applyRuntimePolicy
     });
   }
@@ -5964,9 +5962,8 @@ var require_cifu_r1501_1750_runtime_policy = __commonJS({
   "src/runtime-resources/lexicon/token-lexicon/cifu-r1501-1750-runtime-policy.js"(exports2, module2) {
     "use strict";
     var reviewed = require_cifu_r1501_1750_reviewed();
-    var MANDARIN_ONLY_SURFACES = /* @__PURE__ */ new Set();
     function applyRuntimePolicy(entries) {
-      return reviewed.applyReviewedEntries(entries).filter(([surface]) => !MANDARIN_ONLY_SURFACES.has(surface));
+      return reviewed.applyReviewedEntries(entries);
     }
     module2.exports = Object.freeze({
       SOURCE: reviewed.SOURCE,
@@ -5975,7 +5972,6 @@ var require_cifu_r1501_1750_runtime_policy = __commonJS({
       BLOCKED_ATOMIC_SURFACES: reviewed.BLOCKED_ATOMIC_SURFACES,
       CANDIDATE_ONLY_SURFACES: reviewed.CANDIDATE_ONLY_SURFACES,
       DEFAULT_READING_OVERRIDES: reviewed.DEFAULT_READING_OVERRIDES,
-      MANDARIN_ONLY_SURFACES,
       applyRuntimePolicy
     });
   }
@@ -8731,11 +8727,18 @@ var require_cifu_r1751_2000_runtime_policy = __commonJS({
   "src/runtime-resources/lexicon/token-lexicon/cifu-r1751-2000-runtime-policy.js"(exports2, module2) {
     "use strict";
     var reviewed = require_cifu_r1751_2000_reviewed();
-    var MANDARIN_ONLY_SURFACES = /* @__PURE__ */ new Set();
     function applyRuntimePolicy(entries) {
-      return reviewed.applyReviewedEntries(entries).filter(([surface]) => !MANDARIN_ONLY_SURFACES.has(surface));
+      return reviewed.applyReviewedEntries(entries);
     }
-    module2.exports = Object.freeze({ SOURCE: reviewed.SOURCE, PROMOTIONS: reviewed.PROMOTIONS, RESEARCH_REQUIRED_SURFACES: reviewed.RESEARCH_REQUIRED_SURFACES, BLOCKED_ATOMIC_SURFACES: reviewed.BLOCKED_ATOMIC_SURFACES, CANDIDATE_ONLY_SURFACES: reviewed.CANDIDATE_ONLY_SURFACES, DEFAULT_READING_OVERRIDES: reviewed.DEFAULT_READING_OVERRIDES, MANDARIN_ONLY_SURFACES, applyRuntimePolicy });
+    module2.exports = Object.freeze({
+      SOURCE: reviewed.SOURCE,
+      PROMOTIONS: reviewed.PROMOTIONS,
+      RESEARCH_REQUIRED_SURFACES: reviewed.RESEARCH_REQUIRED_SURFACES,
+      BLOCKED_ATOMIC_SURFACES: reviewed.BLOCKED_ATOMIC_SURFACES,
+      CANDIDATE_ONLY_SURFACES: reviewed.CANDIDATE_ONLY_SURFACES,
+      DEFAULT_READING_OVERRIDES: reviewed.DEFAULT_READING_OVERRIDES,
+      applyRuntimePolicy
+    });
   }
 });
 
@@ -8745,9 +8748,9 @@ var require_vernacular_component_coverage = __commonJS({
     "use strict";
     var SOURCE = "Most Common Cantonese Words (Frequency List)";
     var SOURCE_URL = "https://docs.google.com/spreadsheets/d/1ArxEFo46PTrDyDDhWyu3wB0epxqTyd8WBaprnwTEPm4";
-    var DICTIONARY_VERIFIED_SURFACES = /* @__PURE__ */ new Set(["丫", "唓", "喔", "尷", "氛", "瑩", "痴", "薛", "訓", "訝", "輝"]);
-    var DICTIONARY_SOURCE = "粵音資料集叢 / established Cantonese reading references";
-    var READINGS = Object.freeze({
+    var RIME_REVISION = "259f0e48bba840c3a2e0d117539e96937f3d89bc";
+    var RIME_SOURCE = "Rime-Cantonese jyut6ping3.chars.dict.yaml";
+    var DISCOVERY_READINGS = Object.freeze({
       "世": "sai3",
       "並": "bing6",
       "主": "zyu2",
@@ -9036,32 +9039,105 @@ var require_vernacular_component_coverage = __commonJS({
       "咧": "le4"
       // default for independently supported le4/le5 particle analyses
     });
+    var RIME_NORMALIZED_OVERRIDES = Object.freeze({
+      "傷": "soeng1",
+      "嫁": "gaa3"
+    });
+    var DISCOVERY_READING_CANDIDATES = Object.freeze({
+      "爸": Object.freeze({
+        jyutping: "ba1",
+        status: "unresolved_phonetic_candidate",
+        source: SOURCE,
+        url: SOURCE_URL,
+        note: "Do not auto-promote: requires phonetic evidence distinguishing /a/ from /aa/ and contextual tone behavior."
+      })
+    });
+    var ORTHOGRAPHIC_VARIANT_READINGS = Object.freeze({
+      "既": Object.freeze({ jyutping: "ge3", canonical: "嘅", evidence: "vernacular orthographic substitute" }),
+      "广": Object.freeze({ jyutping: "gwong2", canonical: "廣", evidence: "simplified orthographic form" }),
+      "哂": Object.freeze({ jyutping: "saai3", canonical: "晒", evidence: "recurrent vernacular corpus spelling" }),
+      "跙": Object.freeze({ jyutping: "zau2", canonical: "走", evidence: "recurrent vernacular corpus spelling with 走 syntax" })
+    });
+    var RIME_ACCEPTED_READINGS = Object.freeze(Object.fromEntries(
+      Object.entries(DISCOVERY_READINGS).filter(([surface]) => !Object.prototype.hasOwnProperty.call(DISCOVERY_READING_CANDIDATES, surface)).filter(([surface]) => !Object.prototype.hasOwnProperty.call(ORTHOGRAPHIC_VARIANT_READINGS, surface)).map(([surface, discoveryReading]) => [surface, RIME_NORMALIZED_OVERRIDES[surface] || discoveryReading])
+    ));
+    var ACCEPTED_READINGS = Object.freeze({
+      ...RIME_ACCEPTED_READINGS,
+      ...Object.fromEntries(Object.entries(ORTHOGRAPHIC_VARIANT_READINGS).map(([surface, row]) => [surface, row.jyutping]))
+    });
+    function acceptedReadingRecord(surface) {
+      if (Object.prototype.hasOwnProperty.call(ORTHOGRAPHIC_VARIANT_READINGS, surface)) {
+        const row = ORTHOGRAPHIC_VARIANT_READINGS[surface];
+        return {
+          jyutping: row.jyutping,
+          provenance: {
+            kind: "independently_reviewed_orthographic_variant",
+            source: SOURCE,
+            url: SOURCE_URL,
+            canonical_surface: row.canonical,
+            evidence: row.evidence
+          }
+        };
+      }
+      if (Object.prototype.hasOwnProperty.call(RIME_ACCEPTED_READINGS, surface)) {
+        return {
+          jyutping: RIME_ACCEPTED_READINGS[surface],
+          provenance: {
+            kind: "pinned_cantonese_pronunciation_authority",
+            source: RIME_SOURCE,
+            revision: RIME_REVISION
+          }
+        };
+      }
+      return null;
+    }
     function applyVernacularComponentCoverage(entries) {
       const seen = /* @__PURE__ */ new Set();
       const out = entries.map(([surface, entry]) => {
         seen.add(surface);
-        const reading = READINGS[surface];
-        if (!reading || String(entry && entry.jyutping || "").trim()) return [surface, entry];
+        const authority = acceptedReadingRecord(surface);
+        if (!authority || String(entry && entry.jyutping || "").trim()) return [surface, entry];
+        const priorProvenance = entry && entry.provenance;
         return [surface, {
           ...entry,
-          jyutping: reading,
-          note: [entry && entry.note, `Pronunciation filled from ${SOURCE}; bounded vernacular parser audit exposed a missing component reading.`].filter(Boolean).join(" ")
+          jyutping: authority.jyutping,
+          note: [entry && entry.note, "Pronunciation filled from accepted Cantonese authority after external-source gap discovery."].filter(Boolean).join(" "),
+          provenance: {
+            ...authority.provenance,
+            ...priorProvenance ? { prior_provenance: priorProvenance } : {}
+          }
         }];
       });
-      for (const [surface, jyutping] of Object.entries(READINGS)) {
+      for (const surface of Object.keys(ACCEPTED_READINGS)) {
         if (seen.has(surface)) continue;
+        const authority = acceptedReadingRecord(surface);
+        if (!authority) continue;
         out.push([surface, {
           label: "lex",
           pos: "lexical_item",
           syntax: "lexical_item",
-          jyutping,
-          note: `Neutral component pronunciation coverage from ${SOURCE}; no grammar/category promotion is implied.`,
-          provenance: DICTIONARY_VERIFIED_SURFACES.has(surface) ? { kind: "independently_verified_cantonese_component_reading", source: DICTIONARY_SOURCE } : { kind: "external_vernacular_component_reading", source: SOURCE, url: SOURCE_URL }
+          jyutping: authority.jyutping,
+          note: "Neutral component pronunciation coverage admitted from accepted Cantonese authority; no grammar/category promotion is implied.",
+          provenance: authority.provenance
         }]);
       }
       return out;
     }
-    module2.exports = Object.freeze({ SOURCE, SOURCE_URL, DICTIONARY_SOURCE, DICTIONARY_VERIFIED_SURFACES, READINGS, applyVernacularComponentCoverage });
+    var READINGS = ACCEPTED_READINGS;
+    module2.exports = Object.freeze({
+      SOURCE,
+      SOURCE_URL,
+      RIME_SOURCE,
+      RIME_REVISION,
+      DISCOVERY_READINGS,
+      DISCOVERY_READING_CANDIDATES,
+      ORTHOGRAPHIC_VARIANT_READINGS,
+      RIME_ACCEPTED_READINGS,
+      ACCEPTED_READINGS,
+      READINGS,
+      acceptedReadingRecord,
+      applyVernacularComponentCoverage
+    });
   }
 });
 
@@ -10262,7 +10338,7 @@ var require_lexical_coverage_additions = __commonJS({
         pos: "noun",
         jyutping: "baa4",
         syntax: "kinship_person_np kinship_term",
-        note: "dad / father; ordinary vernacular Cantonese reading baa4. The source Sheet's standalone ba1 value is not used as runtime authority."
+        note: "dad / father; ordinary standalone Guangzhou reading baa4. baa1 is independently supported as a character/compound reading; the Sheet's raw ba1 remains a discovery pronunciation candidate rather than runtime authority."
       }],
       ["阿爸", {
         label: "who",
@@ -11374,7 +11450,6 @@ var require_frequency_gap_fill_r7 = __commonJS({
       ["左手邊", { label: "lex", pos: "lexical_item", jyutping: "zo2 sau2 bin1", syntax: "lexical_item", note: "Cifu SpokenAdult rank 1401, frequency 15; prior audit status manual_review. frequency-list surface; lexical definition requires later human review. Source readings: zo2sau2bin1. Exact surface retained as neutral lexical coverage; POS/grammar-role verification is intentionally separate." }],
       ["印椰樹", { label: "lex", pos: "lexical_item", jyutping: "jan3 je4 syu6", syntax: "lexical_item", note: "Cifu SpokenAdult rank 1402, frequency 15; prior audit status manual_review. frequency-list surface; lexical definition requires later human review. Source readings: *jan3je4syu6. Exact surface retained as neutral lexical coverage; POS/grammar-role verification is intentionally separate." }],
       ["地點", { label: "lex", pos: "lexical_item", jyutping: "dei6 dim2", syntax: "lexical_item", note: "Cifu SpokenAdult rank 1403, frequency 15; prior audit status missing. place/site/location/venue. Source readings: dei6dim2. Exact surface retained as neutral lexical coverage; POS/grammar-role verification is intentionally separate." }],
-      ["多少", { label: "lex", pos: "lexical_item", jyutping: "do1 siu2", syntax: "lexical_item", note: "Cifu SpokenAdult rank 1404, frequency 15; prior audit status handled_structurally. number/amount/somewhat. Source readings: do1siu2. Exact surface retained as neutral lexical coverage; POS/grammar-role verification is intentionally separate." }],
       ["多次", { label: "lex", pos: "lexical_item", jyutping: "do1 ci3", syntax: "lexical_item", note: "Cifu SpokenAdult rank 1405, frequency 15; prior audit status handled_structurally. many times/repeatedly. Source readings: do1ci3. Exact surface retained as neutral lexical coverage; POS/grammar-role verification is intentionally separate." }],
       ["多個", { label: "lex", pos: "lexical_item", jyutping: "do1 go3", syntax: "lexical_item", note: "Cifu SpokenAdult rank 1406, frequency 15; prior audit status handled_structurally. many/multiple/multi- (faceted, ethnic etc). Source readings: do1go3. Exact surface retained as neutral lexical coverage; POS/grammar-role verification is intentionally separate." }],
       ["好處", { label: "lex", pos: "lexical_item", jyutping: "hou2 cyu3", syntax: "lexical_item", note: "Cifu SpokenAdult rank 1407, frequency 15; prior audit status missing. benefit; advantage/gain; profit/also pr. hao3 chu4. Source readings: hou2cyu3. Exact surface retained as neutral lexical coverage; POS/grammar-role verification is intentionally separate." }],
@@ -12043,6 +12118,26 @@ var require_explicit_analyses = __commonJS({
     ));
     var VERNACULAR_SOURCE = "Most Common Cantonese Words (Frequency List) + Cantonese dictionary cross-check";
     var vernacularSourceAnalyses = Object.freeze({
+      "爸": Object.freeze([
+        Object.freeze({
+          id: "lex:爸:default",
+          label: "who",
+          pos: "noun",
+          jyutping: "baa4",
+          syntax: "kinship_person_np kinship_term",
+          senses: Object.freeze([{ gloss: "dad / father; ordinary standalone Guangzhou reading" }]),
+          provenance: Object.freeze({ kind: "reference_dictionary_cantonese_reading", source: "廣州話正音字典 via 粵音資料集叢" })
+        }),
+        Object.freeze({
+          id: "lex:爸:character_or_compound_baa1",
+          label: "who",
+          pos: "noun",
+          jyutping: "baa1",
+          syntax: "kinship_person_np kinship_term character_or_compound_reading",
+          senses: Object.freeze([{ gloss: "father; character/compound reading, including 爸媽 contexts" }]),
+          provenance: Object.freeze({ kind: "reference_dictionary_cantonese_reading", source: "廣州話正音字典 via 粵音資料集叢" })
+        })
+      ]),
       "嘅": Object.freeze([
         ...REVIEWED_R1_250_ANALYSES["嘅"] || [],
         Object.freeze({
@@ -12666,9 +12761,6 @@ var require_address_terms = __commonJS({
 var require_lexical_ingestion_registry = __commonJS({
   "src/runtime-resources/lexicon/lexical-ingestion-registry.js"(exports2, module2) {
     "use strict";
-    function surfaceSet(values = []) {
-      return new Set(values || []);
-    }
     function neutralFrequencyCoverageEntry(entry = {}) {
       return String(entry.pos || "") === "lexical_item" && String(entry.syntax || "").split(/\s+/u).includes("lexical_item") && String(entry.note || "").includes("Exact surface retained as neutral lexical coverage");
     }
@@ -12715,26 +12807,20 @@ var require_lexical_ingestion_registry = __commonJS({
         source_jyutping_unknown_values: Object.freeze(["", "-", "?", "*?"]),
         expected_rows: 2e3,
         require_contiguous_ranks: true,
-        require_exact_runtime_coverage: true,
+        require_functional_runtime_coverage: true,
         require_jyutping: true,
         carrier_prefixes: Object.freeze(["", "我"]),
         carrier_suffixes: Object.freeze(["", "呀"]),
-        policy_modules: cifuPolicyModules,
-        removed_surfaces: surfaceSet(["多少"]),
-        contamination_ledger: "data/lexical-frequency/cifu-mandarin-contamination-runtime-audit.tsv"
+        policy_modules: cifuPolicyModules
       })
     ]);
     var blockedAtomicSurfaces = /* @__PURE__ */ new Set();
-    var removedIngestionSurfaces = /* @__PURE__ */ new Set();
     for (const ingestion of lexicalIngestions) {
       for (const surface of collectBlockedAtomicSurfaces(ingestion.policy_modules)) blockedAtomicSurfaces.add(surface);
-      for (const surface of ingestion.removed_surfaces || []) removedIngestionSurfaces.add(surface);
     }
     function blockedAtomicRuntimeDisposition(surface, tokenLexicon = {}, options = {}) {
       const blocked = options.blocked_surfaces || blockedAtomicSurfaces;
-      const removed = options.removed_surfaces || removedIngestionSurfaces;
       if (!blocked.has(surface)) return "not_blocked";
-      if (removed.has(surface)) return "removed_from_runtime";
       const entry = tokenLexicon[surface];
       if (!entry) return "promotion_only_no_runtime_entry";
       if (Array.from(String(surface || "")).length <= 1) return "promotion_only_single_character";
@@ -12749,7 +12835,6 @@ var require_lexical_ingestion_registry = __commonJS({
     module2.exports = Object.freeze({
       lexicalIngestions,
       blockedAtomicSurfaces,
-      removedIngestionSurfaces,
       neutralFrequencyCoverageEntry,
       collectBlockedAtomicSurfaces,
       blockedAtomicRuntimeDisposition,

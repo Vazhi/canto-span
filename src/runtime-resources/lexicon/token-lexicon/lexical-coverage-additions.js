@@ -21,7 +21,7 @@ module.exports = [
     pos: "noun",
     jyutping: "baa4",
     syntax: "kinship_person_np kinship_term",
-    note: "dad / father; ordinary vernacular Cantonese reading baa4. The source Sheet's standalone ba1 value is not used as runtime authority.",
+    note: "dad / father; ordinary standalone Guangzhou reading baa4. baa1 is independently supported as a character/compound reading; the Sheet's raw ba1 remains a discovery pronunciation candidate rather than runtime authority.",
   }],
   ["阿爸", {
     label: "who",
