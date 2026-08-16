@@ -1,0 +1,53 @@
+name: Run lexical authority data cleanup
+
+on:
+  push:
+    branches:
+      - agent/cifu-r1751-2000-runtime-reconcile
+
+permissions:
+  contents: write
+
+jobs:
+  cleanup:
+    if: github.event.head_commit.message == 'Run lexical authority data cleanup'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Apply authority-data cleanup
+        run: python3 tools/agent-lexical-authority-data-cleanup.py
+      - name: Assert source roles are separated
+        run: |
+          set -euo pipefail
+          ! head -n 1 data/lexical-frequency/common-spoken-cantonese-core-2000.tsv | grep -q 'cifu_candidate_jyutping'
+          ! grep -q 'Object.entries(DISCOVERY_READINGS)' src/runtime-resources/lexicon/token-lexicon/vernacular-component-coverage.js
+          ! grep -q 'const DISCOVERY_READINGS' src/runtime-resources/lexicon/token-lexicon/vernacular-component-coverage.js
+          grep -q 'const RIME_ACCEPTED_READINGS = Object.freeze({' src/runtime-resources/lexicon/token-lexicon/vernacular-component-coverage.js
+          grep -q 'unresolved_phonetic_candidate' src/runtime-resources/lexicon/token-lexicon/vernacular-component-coverage.js
+      - name: Build and verify
+        run: |
+          set -euo pipefail
+          npm run build:runtime
+          node --test tests/tooling/lexicon/vernacular-component-coverage.test.js
+          npm run test:lexical-ingestions
+          npm run verify:runtime
+          npm run verify:research
+          npm run verify
+          npm run verify:runtime-build
+      - name: Commit clean authority state
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm tools/agent-lexical-authority-data-cleanup.py
+          git rm .github/workflows/agent-lexical-authority-data-cleanup.yml
+          git add -A
+          git commit -m 'Freeze lexical pronunciation authority and source roles'
+          git push origin HEAD:agent/cifu-r1751-2000-runtime-reconcile
