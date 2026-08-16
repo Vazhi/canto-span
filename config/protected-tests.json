@@ -1,0 +1,35 @@
+{
+  "schema": "canto-span-protected-tests-v1",
+  "tests": [
+    {
+      "path": "tests/tooling/runtime/regression-ratchet-verifier.test.js",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "reason": "Enforces the repository-wide monotonic regression-debt doctrine: stable failure identities may not expand or be hidden by changing the executable test contract.",
+      "scope": "runtime",
+      "protection_class": "constitutional_doctrine",
+      "expected_change_frequency": "rare-to-never",
+      "normal_growth_requires_edit": false,
+      "review_required_on_change": true
+    },
+    {
+      "path": "tests/tooling/verification/protected-tests.test.js",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "reason": "Enforces the protected-test constitutional doctrine itself: no SHA laundering, no stale review, exact-path review coverage, and no inferred user override.",
+      "scope": "governance",
+      "protection_class": "constitutional_doctrine",
+      "expected_change_frequency": "rare-to-never",
+      "normal_growth_requires_edit": false,
+      "review_required_on_change": true
+    },
+    {
+      "path": "tests/tooling/verification/verification-profiles.test.js",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "reason": "Enforces fail-closed canonical verification orchestration so registered profiles cannot be silently omitted, duplicated, renamed, or partially executed.",
+      "scope": "governance",
+      "protection_class": "constitutional_doctrine",
+      "expected_change_frequency": "rare-to-never",
+      "normal_growth_requires_edit": false,
+      "review_required_on_change": true
+    }
+  ]
+}
