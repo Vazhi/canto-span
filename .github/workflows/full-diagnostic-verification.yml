@@ -4,18 +4,28 @@ on:
   push:
     paths:
       - "config/verification-profiles.json"
+      - "config/protected-tests.json"
+      - "schemas/protected-test-registry.schema.json"
       - "tools/verify-current-state.js"
+      - "tools/verify-protected-tests.js"
+      - "tools/verify-protected-test-review.js"
       - "tests/tooling/verification/**"
       - "package.json"
       - "package-lock.json"
+      - ".github/workflows/protected-test-review.yml"
       - ".github/workflows/full-diagnostic-verification.yml"
   pull_request:
     paths:
       - "config/verification-profiles.json"
+      - "config/protected-tests.json"
+      - "schemas/protected-test-registry.schema.json"
       - "tools/verify-current-state.js"
+      - "tools/verify-protected-tests.js"
+      - "tools/verify-protected-test-review.js"
       - "tests/tooling/verification/**"
       - "package.json"
       - "package-lock.json"
+      - ".github/workflows/protected-test-review.yml"
       - ".github/workflows/full-diagnostic-verification.yml"
   workflow_dispatch:
 
@@ -33,8 +43,8 @@ jobs:
           package-manager-cache: false
       - name: Install build dependencies
         run: npm ci
-      - name: Test verification orchestration
-        run: npm run test:verification-orchestration
+      - name: Test verification and protected-test governance
+        run: node --test tests/tooling/verification/*.test.js
       - name: Run full diagnostic sweep
         continue-on-error: true
         run: npm run verify:all -- --keep-going --output /tmp/full-verification.json
