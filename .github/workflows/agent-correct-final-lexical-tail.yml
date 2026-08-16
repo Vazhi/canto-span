@@ -1,0 +1,235 @@
+name: Verify corrected final lexical tail
+
+on:
+  push:
+    branches:
+      - agent/cifu-r1751-2000-runtime-reconcile
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    if: github.event.head_commit.message == 'Verify corrected final lexical tail'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Complete verified lexical alternatives
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          p = Path('src/runtime-resources/lexicon/token-lexicon/explicit-analyses.js')
+          text = p.read_text()
+
+          def add_before_next(surface, next_surface, payload, guard):
+              global text
+              if guard in text:
+                  return
+              start = text.index(f'  "{surface}": Object.freeze([')
+              end = text.index(f'  "{next_surface}": Object.freeze([', start)
+              segment = text[start:end]
+              marker = '  ]),\n'
+              pos = segment.rfind(marker)
+              if pos < 0:
+                  raise SystemExit(f'closing marker missing for {surface}')
+              segment = segment[:pos] + payload + segment[pos:]
+              text = text[:start] + segment + text[end:]
+
+          add_before_next('粒', '超', '''    Object.freeze({
+              id: "lex:粒:grain_noun_nap1",
+              label: "what",
+              pos: "noun",
+              jyutping: "nap1",
+              syntax: "object_np grain_granule_noun",
+              senses: Object.freeze([{ gloss: "grain / granule / pellet" }]),
+              provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
+            }),
+            Object.freeze({
+              id: "lex:粒:grain_noun_lap1",
+              label: "what",
+              pos: "noun",
+              jyutping: "lap1",
+              syntax: "object_np grain_granule_noun",
+              senses: Object.freeze([{ gloss: "grain / granule / pellet; l-initial pronunciation variant" }]),
+              provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
+            }),
+          ''', 'lex:粒:grain_noun_nap1')
+
+          add_before_next('超', '米', '''    Object.freeze({
+              id: "lex:超:disdain_interjection_ciu1",
+              label: "particle",
+              pos: "interjection",
+              jyutping: "ciu1",
+              syntax: "disdain_interjection",
+              senses: Object.freeze([{ gloss: "interjection expressing disdain" }]),
+              provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
+            }),
+            Object.freeze({
+              id: "lex:超:disdain_interjection_ciu2",
+              label: "particle",
+              pos: "interjection",
+              jyutping: "ciu2",
+              syntax: "disdain_interjection",
+              senses: Object.freeze([{ gloss: "interjection expressing disdain; changed-tone variant" }]),
+              provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
+            }),
+            Object.freeze({
+              id: "lex:超:glare_verb",
+              label: "doing",
+              pos: "verb",
+              jyutping: "ciu1",
+              syntax: "verb glare_verb slang",
+              senses: Object.freeze([{ gloss: "glare at someone in an unfriendly way" }]),
+              provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
+            }),
+            Object.freeze({
+              id: "lex:超:sunglasses_noun",
+              label: "what",
+              pos: "noun",
+              jyutping: "ciu1",
+              syntax: "object_np sunglasses_noun slang",
+              senses: Object.freeze([{ gloss: "sunglasses" }]),
+              provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
+            }),
+          ''', 'lex:超:disdain_interjection_ciu1')
+
+          add_before_next('堆', '咋', '''    Object.freeze({
+              id: "lex:堆:pile_verb",
+              label: "doing",
+              pos: "verb",
+              jyutping: "deoi1",
+              syntax: "verb pile_stack_verb",
+              senses: Object.freeze([{ gloss: "pile up / heap up / stack up" }]),
+              provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
+            }),
+          ''', 'lex:堆:pile_verb')
+
+          if 'lex:哎吔:interjection_ai1_jaa3' not in text:
+              anchor = '  "咋": Object.freeze(['
+              block = '''  "哎吔": Object.freeze([
+            Object.freeze({
+              id: "lex:哎吔:interjection_ai1_jaa3",
+              label: "particle",
+              pos: "interjection",
+              jyutping: "ai1 jaa3",
+              syntax: "pain_surprise_annoyance_interjection",
+              senses: Object.freeze([{ gloss: "ouch / oh no; pain, surprise, annoyance, complaint, or sudden realization" }]),
+              provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
+            }),
+            Object.freeze({
+              id: "lex:哎吔:interjection_ai1_jaa5",
+              label: "particle",
+              pos: "interjection",
+              jyutping: "ai1 jaa5",
+              syntax: "pain_surprise_annoyance_interjection",
+              senses: Object.freeze([{ gloss: "ouch / oh no; attested reading variant" }]),
+              provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
+            }),
+            Object.freeze({
+              id: "lex:哎吔:interjection_ai1_jaak3",
+              label: "particle",
+              pos: "interjection",
+              jyutping: "ai1 jaak3",
+              syntax: "pain_surprise_annoyance_interjection",
+              senses: Object.freeze([{ gloss: "ouch / oh no; attested reading variant" }]),
+              provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
+            }),
+            Object.freeze({
+              id: "lex:哎吔:interjection_ai1_jaa6",
+              label: "particle",
+              pos: "interjection",
+              jyutping: "ai1 jaa6",
+              syntax: "pain_surprise_annoyance_interjection",
+              senses: Object.freeze([{ gloss: "ouch / oh no; attested reading variant" }]),
+              provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
+            }),
+          ]),
+'''
+              if anchor not in text:
+                  raise SystemExit('咋 anchor missing')
+              text = text.replace(anchor, block + anchor, 1)
+
+          p.write_text(text)
+
+          p = Path('tests/tooling/lexicon/vernacular-component-coverage.test.js')
+          text = p.read_text()
+          if 'corrected final lexical tail preserves verified alternatives' not in text:
+              text += '''\n
+test("corrected final lexical tail preserves verified alternatives", () => {
+  const analyses = buildLexicalAnalysisIndex(tokenEntries);
+  const rows = (surface) => analyses[surface] || [];
+  const readings = (surface) => new Set(rows(surface).map((row) => row.jyutping));
+  const pos = (surface) => new Set(rows(surface).map((row) => row.pos));
+
+  assert.equal(tokenLexicon["簿"].jyutping, "bou2", "簿: independently verified standalone Cantonese reading overrides Sheet bou6");
+
+  assert.deepEqual(readings("粒"), new Set(["nap1", "lap1"]));
+  assert.ok(pos("粒").has("classifier"));
+  assert.ok(pos("粒").has("noun"));
+
+  assert.deepEqual(readings("超"), new Set(["ciu1", "ciu2"]));
+  for (const category of ["adverb", "verb", "interjection", "noun"]) assert.ok(pos("超").has(category), `超: ${category} analysis`);
+
+  assert.deepEqual(pos("米"), new Set(["classifier", "noun"]));
+  assert.equal(readings("米").size, 1);
+  assert.ok(readings("米").has("mai5"));
+
+  assert.deepEqual(pos("堆"), new Set(["classifier", "noun", "verb"]));
+  assert.deepEqual(readings("堆"), new Set(["deoi1"]));
+
+  assert.deepEqual(readings("哎吔"), new Set(["ai1 jaa3", "ai1 jaa5", "ai1 jaak3", "ai1 jaa6"]));
+  assert.ok(rows("哎吔").every((row) => row.pos === "interjection"));
+});
+'''
+              p.write_text(text)
+          PY
+      - name: Build and verify runtime
+        run: |
+          set -euo pipefail
+          npm run build:runtime
+          node --test tests/tooling/lexicon/vernacular-component-coverage.test.js
+          npm run verify:runtime
+      - name: Confirm no genuine single-character source gaps remain
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 'https://docs.google.com/spreadsheets/d/1ArxEFo46PTrDyDDhWyu3wB0epxqTyd8WBaprnwTEPm4/export?format=csv&gid=1428902047' -o /tmp/canto-frequency.csv
+          python - <<'PY'
+          import csv, json, re, unicodedata
+          rows=list(csv.DictReader(open('/tmp/canto-frequency.csv',encoding='utf-8-sig',newline='')))
+          def tombstone(s):
+              x=s.lower(); return x=='del' or re.search(r'(^|[-\\s?])del($|[-\\s?])',x) is not None
+          seen=set(); bounded=[]
+          for row in rows:
+              s=unicodedata.normalize('NFC',(row.get('Word') or '').strip())
+              if not s or tombstone(s) or s in seen: continue
+              seen.add(s); bounded.append(s)
+              if len(bounded)==2000: break
+          open('/tmp/bounded.json','w').write(json.dumps(bounded,ensure_ascii=False))
+          PY
+          node - <<'NODE'
+          const fs=require('node:fs');
+          const lexicon=Object.fromEntries(require('./src/runtime-resources/lexicon/token-lexicon'));
+          const bounded=JSON.parse(fs.readFileSync('/tmp/bounded.json','utf8'));
+          const single=bounded.filter(s=>[...s].length===1 && !lexicon[s]);
+          console.log('REMAINING_SINGLE_EXACT_GAPS', JSON.stringify(single));
+          const allowed=new Set(['M','D','Y','R','P','Q','這']);
+          const genuine=single.filter(s=>!allowed.has(s));
+          if (genuine.length) throw new Error(`genuine single-character lexical gaps remain: ${genuine.join(', ')}`);
+          NODE
+      - name: Commit verified generated state and remove helper
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/agent-correct-final-lexical-tail.yml
+          git add src/runtime-resources/lexicon/token-lexicon/explicit-analyses.js tests/tooling/lexicon/vernacular-component-coverage.test.js main.js
+          git commit -m 'Build corrected final lexical tail'
+          git push origin HEAD:agent/cifu-r1751-2000-runtime-reconcile
