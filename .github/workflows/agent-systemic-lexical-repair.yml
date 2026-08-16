@@ -1,0 +1,56 @@
+name: Run systemic lexical ingestion repair
+
+on:
+  push:
+    branches:
+      - agent/cifu-r1751-2000-runtime-reconcile
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    if: github.event.head_commit.message == 'Run systemic lexical ingestion repair'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Apply systemic repair
+        run: python3 tools/agent-systemic-lexical-repair.py
+      - name: Assert retired active-tree machinery is gone
+        run: |
+          set -euo pipefail
+          test ! -e data/lexical-frequency/cifu-explicit-mandarin-contamination.tsv
+          test ! -e data/lexical-frequency/cifu-mandarin-contamination-runtime-audit.tsv
+          test ! -e data/lexical-frequency/cifu-mandarin-contamination-summary.json
+          test ! -e data/lexical-frequency/cifu-mandarin-oriented-adjudication.tsv
+          test ! -e tests/tooling/lexicon/top2000-single-character-gap-closure.test.js
+          ! grep -R "MANDARIN_ONLY_SURFACES\|contamination_ledger\|removed_surfaces" src/runtime-resources/lexicon tools/lexical-ingestion-tokenization-audit.js tests/tooling/lexicon/lexical-ingestion-tokenization-audit.test.js
+      - name: Build and verify lexical repair
+        run: |
+          set -euo pipefail
+          npm run build:runtime
+          node --test tests/tooling/lexicon/vernacular-component-coverage.test.js
+          node --test tests/tooling/lexicon/cifu-r1251-1500-reviewed-runtime.test.js
+          node --test tests/tooling/lexicon/cifu-r1751-2000-reviewed-runtime.test.js
+          npm run test:lexical-ingestions
+          npm run verify:runtime
+          npm run verify:research
+          npm run verify
+          npm run verify:runtime-build
+      - name: Commit verified repair and remove helpers
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm tools/agent-systemic-lexical-repair.py
+          git rm .github/workflows/agent-systemic-lexical-repair.yml
+          git add -A
+          git commit -m 'Repair lexical ingestion authority and invariants'
+          git push origin HEAD:agent/cifu-r1751-2000-runtime-reconcile
