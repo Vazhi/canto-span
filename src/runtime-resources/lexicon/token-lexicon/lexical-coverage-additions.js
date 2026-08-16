@@ -209,9 +209,10 @@ module.exports = [
   ["簿", {
     label: "what",
     pos: "noun",
-    jyutping: "bou6",
+    jyutping: "bou2",
     syntax: "object_np document_noun notebook_noun",
-    note: "notebook / register; Cantonese bou6, with changed-tone bou6-2 attested in some lexical contexts.",
+    classifier_classes: ["book"],
+    note: "notebook / writing pad; independent Cantonese dictionary evidence gives standalone bou2, correcting the source Sheet's bou6 value.",
   }],
   ["銀", {
     label: "what",
@@ -232,6 +233,13 @@ module.exports = [
     pos: "classifier",
     jyutping: "deoi1",
     syntax: "pile_classifier quantity_classifier",
-    note: "classifier for a pile / heap / mass; the same surface also has an ordinary pile/heap noun analysis.",
+    note: "classifier for a pile / heap / mass; the same surface also has ordinary noun and verb analyses.",
+  }],
+  ["哎吔", {
+    label: "particle",
+    pos: "interjection",
+    jyutping: "ai1 jaa3",
+    syntax: "pain_surprise_annoyance_interjection",
+    note: "ouch / oh no; Cantonese interjection. ai1 jaa3 is the default reading; independently attested reading variants remain explicit lexical alternatives.",
   }],
 ];
