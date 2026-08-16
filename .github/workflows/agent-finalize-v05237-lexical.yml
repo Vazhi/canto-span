@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   verify:
-    if: github.event.head_commit.message == 'Run exact v0.5.237 finalization gates'
+    if: github.event.head_commit.message == 'Use canonical v0.5.237 verification profiles'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -22,28 +22,15 @@ jobs:
           package-manager-cache: false
       - run: npm ci
       - run: python tools/tmp-v05237-lexical-finalize.py
-      - name: Build and run blocking lexical and repository gates
+      - name: Build and run blocking lexical and canonical profiles
         run: |
           set -euo pipefail
           npm run build:runtime
           node --test tests/tooling/lexicon/vernacular-component-coverage.test.js
           npm run test:lexical-ingestions
-          node tools/verify-supported-productive-cantonese.js
-          node tools/verify-audit-corpus.js
-          node tools/verify-named-construction-tests.js
-          node tools/verify-construction-identity.js
-          node tools/verify-promotion-ready.js
-          node tools/verify-migration-closure.js
-          node tools/verify-coordination-policies.js
-          node tools/verify-project-state-consistency.js
-          node tools/verify-repository-surface-hygiene.js
-          node tools/verify-research-provenance.js
-          node tools/verify-runtime-decomposition.js
-          node tools/verify-runtime-contextual-jyutping.js
-          node tools/verify-runtime-source-first.js
-          node tools/verify-runtime-module-boundaries.js
-          node tools/verify-runtime-regression-debt.js
-          node tools/enforce-promotion-rules.js
+          npm run verify
+          npm run verify:research
+          npm run verify:runtime
       - name: Require exact inherited release-handoff debt
         run: |
           set +e
