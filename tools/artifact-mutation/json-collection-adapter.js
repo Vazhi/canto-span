@@ -69,6 +69,22 @@ function createJsonCollectionAdapter(config = {}) {
     return errors;
   }
 
+  function applicableDimensions(target) {
+    return lifecycleDimensions.filter((dimension) => !dimension.targets || !target || dimension.targets.includes(target));
+  }
+
+  function validateExplicitStatuses(record, context, target) {
+    const errors = [];
+    for (const dimension of applicableDimensions(target)) {
+      if (!dimension.statusField || !hasOwn(record, dimension.statusField)) continue;
+      const explicitStatus = record[dimension.statusField];
+      if (!EXPLICIT_GAP_STATUSES.has(explicitStatus)) {
+        errors.push(`${context} field ${dimension.statusField} has invalid lifecycle status ${String(explicitStatus)}`);
+      }
+    }
+    return errors;
+  }
+
   const adapter = {
     id: config.id || "json-collection",
 
@@ -103,15 +119,17 @@ function createJsonCollectionAdapter(config = {}) {
         throw new Error("candidate.record must be an object");
       }
       const record = JSON.parse(JSON.stringify(candidate.record));
-      const errors = validateRecord(record, `input ${context.index == null ? "?" : context.index} record`);
+      const label = `input ${context.index == null ? "?" : context.index} record`;
+      const errors = [
+        ...validateRecord(record, label),
+        ...validateExplicitStatuses(record, label, context.target),
+      ];
       if (errors.length) throw new Error(errors.join("; "));
       return { operation: candidate.operation, record };
     },
 
     completenessDimensions({ target } = {}) {
-      return lifecycleDimensions
-        .filter((dimension) => !dimension.targets || !target || dimension.targets.includes(target))
-        .map((dimension) => dimension.name);
+      return applicableDimensions(target).map((dimension) => dimension.name);
     },
 
     assessCompleteness({ rawCandidate, normalizedCandidate, target }) {
@@ -119,28 +137,17 @@ function createJsonCollectionAdapter(config = {}) {
         ? rawCandidate.record
         : {};
       const key = identity(normalizedCandidate.record);
-      return lifecycleDimensions
-        .filter((dimension) => !dimension.targets || !target || dimension.targets.includes(target))
-        .map((dimension) => {
-          const fieldProvided = hasOwn(rawRecord, dimension.field) && usableValue(rawRecord[dimension.field]);
-          if (fieldProvided) {
-            return { identity: key, dimension: dimension.name, status: "complete", provided: true };
-          }
-          if (dimension.statusField && hasOwn(rawRecord, dimension.statusField)) {
-            const explicitStatus = rawRecord[dimension.statusField];
-            if (!EXPLICIT_GAP_STATUSES.has(explicitStatus)) {
-              return {
-                identity: key,
-                dimension: dimension.name,
-                status: "unresolved",
-                provided: true,
-                detail: `invalid explicit status ${String(explicitStatus)}`,
-              };
-            }
-            return { identity: key, dimension: dimension.name, status: explicitStatus, provided: true };
-          }
-          return { identity: key, dimension: dimension.name, status: "unresolved", provided: false };
-        });
+      return applicableDimensions(target).map((dimension) => {
+        const fieldProvided = hasOwn(rawRecord, dimension.field) && usableValue(rawRecord[dimension.field]);
+        if (fieldProvided) {
+          return { identity: key, dimension: dimension.name, status: "complete", provided: true };
+        }
+        if (dimension.statusField && hasOwn(rawRecord, dimension.statusField)) {
+          const explicitStatus = rawRecord[dimension.statusField];
+          return { identity: key, dimension: dimension.name, status: explicitStatus, provided: true };
+        }
+        return { identity: key, dimension: dimension.name, status: "unresolved", provided: false };
+      });
     },
 
     plan({ current, candidates }) {
