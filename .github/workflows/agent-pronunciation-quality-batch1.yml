@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   verify:
-    if: github.event.head_commit.message == 'Verify pronunciation-quality batch 1'
+    if: github.event.head_commit.message == 'Reconcile pronunciation-quality batch 1'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -39,6 +39,7 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git rm .github/workflows/agent-pronunciation-quality-batch1.yml
           git rm tools/tmp-pronunciation-quality-batch1.py
-          git add src/runtime-resources/lexicon/token-lexicon/people-and-address.js src/runtime-resources/lexicon/token-lexicon/cifu-r1001-1250-reviewed.js src/runtime-resources/lexicon/token-lexicon/explicit-analyses.js tests/tooling/lexicon/cifu-r1001-1250-reviewed-runtime.test.js tests/tooling/lexicon/vernacular-component-coverage.test.js docs/research/ISSUE-878-CIFU-R1001-1250-LEXICAL-ADJUDICATION-R1.md main.js
+          git add src/runtime-resources/lexicon/token-lexicon/cifu-r1001-1250-reviewed.js src/runtime-resources/lexicon/token-lexicon/explicit-analyses.js tests/tooling/lexicon/cifu-r1001-1250-reviewed-runtime.test.js tests/tooling/lexicon/vernacular-component-coverage.test.js docs/research/ISSUE-878-CIFU-R1001-1250-LEXICAL-ADJUDICATION-R1.md main.js
           git commit -m 'Build pronunciation-quality batch 1'
+          git pull --rebase origin agent/cifu-r1751-2000-runtime-reconcile
           git push origin HEAD:agent/cifu-r1751-2000-runtime-reconcile
