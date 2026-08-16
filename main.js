@@ -10411,6 +10411,77 @@ var require_lexical_coverage_additions = __commonJS({
         jyutping: "kau4",
         syntax: "object_np ball_or_sphere_noun",
         note: "ball / sphere lexical element; independently supported across common Cantonese ball and sphere nouns and required by the high-frequency lexical audit."
+      }],
+      ["偷", {
+        label: "doing",
+        pos: "verb",
+        jyutping: "tau1",
+        syntax: "verb transitive_affordance theft_verb",
+        note: "steal / pilfer; directly attested in the bounded vernacular source and independently pronunciation-checked."
+      }],
+      ["探", {
+        label: "doing",
+        pos: "verb",
+        jyutping: "taam3",
+        syntax: "verb transitive_affordance visit_investigate_verb",
+        note: "visit / explore / investigate; the bounded source directly attests the ordinary visit use."
+      }],
+      ["粒", {
+        label: "measure_word",
+        pos: "classifier",
+        jyutping: "nap1",
+        syntax: "small_discrete_classifier quantity_classifier",
+        note: "classifier for small compact/discrete objects; nap1 default, with independently attested lap1 pronunciation preserved through explicit lexical analysis."
+      }],
+      ["腦", {
+        label: "what",
+        pos: "noun",
+        jyutping: "nou5",
+        syntax: "object_np body_part_np",
+        note: "brain; independently pronunciation-checked against Cantonese dictionary evidence."
+      }],
+      ["超", {
+        label: "how",
+        pos: "adverb",
+        jyutping: "ciu1",
+        syntax: "degree_adverb intensifier",
+        note: "super / extremely; ordinary Cantonese intensifier default. The exceed/surpass verbal use remains a separate explicit lexical analysis."
+      }],
+      ["簿", {
+        label: "what",
+        pos: "noun",
+        jyutping: "bou2",
+        syntax: "object_np document_noun notebook_noun",
+        classifier_classes: ["book"],
+        note: "notebook / writing pad; independent Cantonese dictionary evidence gives standalone bou2, correcting the source Sheet's bou6 value."
+      }],
+      ["銀", {
+        label: "what",
+        pos: "noun",
+        jyutping: "ngan4",
+        syntax: "money_noun material_noun",
+        note: "silver / money; the bounded vernacular source directly attests the colloquial money/dollar use."
+      }],
+      ["米", {
+        label: "measure_word",
+        pos: "classifier",
+        jyutping: "mai5",
+        syntax: "measure_unit length_measure_unit nominal_measure_unit",
+        note: "metre measurement unit in the bounded source's 一百米 example; the ordinary rice noun remains a separate explicit lexical analysis."
+      }],
+      ["堆", {
+        label: "measure_word",
+        pos: "classifier",
+        jyutping: "deoi1",
+        syntax: "pile_classifier quantity_classifier",
+        note: "classifier for a pile / heap / mass; the same surface also has ordinary noun and verb analyses."
+      }],
+      ["哎吔", {
+        label: "particle",
+        pos: "interjection",
+        jyutping: "ai1 jaa3",
+        syntax: "pain_surprise_annoyance_interjection",
+        note: "ouch / oh no; Cantonese interjection. ai1 jaa3 is the default reading; independently attested reading variants remain explicit lexical alternatives."
       }]
     ];
   }
@@ -12037,6 +12108,187 @@ var require_explicit_analyses = __commonJS({
           syntax: "tael_weight_measure",
           senses: Object.freeze([{ gloss: "tael; traditional East Asian weight measure" }]),
           note: "Cantonese tael measure reading; ordinary numeral two remains loeng5.",
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        })
+      ]),
+      "粒": Object.freeze([
+        Object.freeze({
+          id: "lex:粒:classifier_nap1",
+          label: "measure_word",
+          pos: "classifier",
+          jyutping: "nap1",
+          syntax: "small_discrete_classifier quantity_classifier",
+          senses: Object.freeze([{ gloss: "classifier for small compact or discrete objects" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        }),
+        Object.freeze({
+          id: "lex:粒:classifier_lap1",
+          label: "measure_word",
+          pos: "classifier",
+          jyutping: "lap1",
+          syntax: "small_discrete_classifier quantity_classifier",
+          senses: Object.freeze([{ gloss: "classifier for small compact or discrete objects; pronunciation variant" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        }),
+        Object.freeze({
+          id: "lex:粒:grain_noun_nap1",
+          label: "what",
+          pos: "noun",
+          jyutping: "nap1",
+          syntax: "object_np grain_granule_noun",
+          senses: Object.freeze([{ gloss: "grain / granule / pellet" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        }),
+        Object.freeze({
+          id: "lex:粒:grain_noun_lap1",
+          label: "what",
+          pos: "noun",
+          jyutping: "lap1",
+          syntax: "object_np grain_granule_noun",
+          senses: Object.freeze([{ gloss: "grain / granule / pellet; l-initial pronunciation variant" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        })
+      ]),
+      "超": Object.freeze([
+        Object.freeze({
+          id: "lex:超:intensifier",
+          label: "how",
+          pos: "adverb",
+          jyutping: "ciu1",
+          syntax: "degree_adverb intensifier",
+          senses: Object.freeze([{ gloss: "super / extremely" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        }),
+        Object.freeze({
+          id: "lex:超:exceed_verb",
+          label: "doing",
+          pos: "verb",
+          jyutping: "ciu1",
+          syntax: "verb transitive_affordance exceed_verb",
+          senses: Object.freeze([{ gloss: "exceed / surpass" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        }),
+        Object.freeze({
+          id: "lex:超:disdain_interjection_ciu1",
+          label: "particle",
+          pos: "interjection",
+          jyutping: "ciu1",
+          syntax: "disdain_interjection",
+          senses: Object.freeze([{ gloss: "interjection expressing disdain" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        }),
+        Object.freeze({
+          id: "lex:超:disdain_interjection_ciu2",
+          label: "particle",
+          pos: "interjection",
+          jyutping: "ciu2",
+          syntax: "disdain_interjection",
+          senses: Object.freeze([{ gloss: "interjection expressing disdain; changed-tone variant" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        }),
+        Object.freeze({
+          id: "lex:超:glare_verb",
+          label: "doing",
+          pos: "verb",
+          jyutping: "ciu1",
+          syntax: "verb glare_verb slang",
+          senses: Object.freeze([{ gloss: "glare at someone in an unfriendly way" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        }),
+        Object.freeze({
+          id: "lex:超:sunglasses_noun",
+          label: "what",
+          pos: "noun",
+          jyutping: "ciu1",
+          syntax: "object_np sunglasses_noun slang",
+          senses: Object.freeze([{ gloss: "sunglasses" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        })
+      ]),
+      "米": Object.freeze([
+        Object.freeze({
+          id: "lex:米:metre_unit",
+          label: "measure_word",
+          pos: "classifier",
+          jyutping: "mai5",
+          syntax: "measure_unit length_measure_unit nominal_measure_unit",
+          senses: Object.freeze([{ gloss: "metre; unit of length" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        }),
+        Object.freeze({
+          id: "lex:米:rice_noun",
+          label: "what",
+          pos: "noun",
+          jyutping: "mai5",
+          syntax: "food_np mass_noun rice_noun",
+          senses: Object.freeze([{ gloss: "rice" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        })
+      ]),
+      "堆": Object.freeze([
+        Object.freeze({
+          id: "lex:堆:pile_classifier",
+          label: "measure_word",
+          pos: "classifier",
+          jyutping: "deoi1",
+          syntax: "pile_classifier quantity_classifier",
+          senses: Object.freeze([{ gloss: "classifier for a pile, heap, mass, or group" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        }),
+        Object.freeze({
+          id: "lex:堆:pile_noun",
+          label: "what",
+          pos: "noun",
+          jyutping: "deoi1",
+          syntax: "object_np pile_heap_noun",
+          senses: Object.freeze([{ gloss: "pile / heap / stack" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        }),
+        Object.freeze({
+          id: "lex:堆:pile_verb",
+          label: "doing",
+          pos: "verb",
+          jyutping: "deoi1",
+          syntax: "verb pile_stack_verb",
+          senses: Object.freeze([{ gloss: "pile up / heap up / stack up" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        })
+      ]),
+      "哎吔": Object.freeze([
+        Object.freeze({
+          id: "lex:哎吔:interjection_ai1_jaa3",
+          label: "particle",
+          pos: "interjection",
+          jyutping: "ai1 jaa3",
+          syntax: "pain_surprise_annoyance_interjection",
+          senses: Object.freeze([{ gloss: "ouch / oh no; pain, surprise, annoyance, complaint, or sudden realization" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        }),
+        Object.freeze({
+          id: "lex:哎吔:interjection_ai1_jaa5",
+          label: "particle",
+          pos: "interjection",
+          jyutping: "ai1 jaa5",
+          syntax: "pain_surprise_annoyance_interjection",
+          senses: Object.freeze([{ gloss: "ouch / oh no; attested reading variant" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        }),
+        Object.freeze({
+          id: "lex:哎吔:interjection_ai1_jaak3",
+          label: "particle",
+          pos: "interjection",
+          jyutping: "ai1 jaak3",
+          syntax: "pain_surprise_annoyance_interjection",
+          senses: Object.freeze([{ gloss: "ouch / oh no; attested reading variant" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        }),
+        Object.freeze({
+          id: "lex:哎吔:interjection_ai1_jaa6",
+          label: "particle",
+          pos: "interjection",
+          jyutping: "ai1 jaa6",
+          syntax: "pain_surprise_annoyance_interjection",
+          senses: Object.freeze([{ gloss: "ouch / oh no; attested reading variant" }]),
           provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
         })
       ]),

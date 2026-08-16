@@ -146,3 +146,31 @@ test("source-attested spelling variants inherit the canonical lexical analysis",
     assert.match(tokenLexicon[variant].note, /variant/i, `${variant}: explicitly documented as a spelling variant`);
   }
 });
+
+
+test("corrected final lexical tail preserves verified alternatives", () => {
+  const analyses = buildLexicalAnalysisIndex(tokenEntries);
+  const rows = (surface) => analyses[surface] || [];
+  const readings = (surface) => new Set(rows(surface).map((row) => row.jyutping));
+  const pos = (surface) => new Set(rows(surface).map((row) => row.pos));
+
+  assert.equal(tokenLexicon["簿"].jyutping, "bou2", "簿: verified standalone Cantonese reading overrides Sheet bou6");
+
+  assert.deepEqual(readings("粒"), new Set(["nap1", "lap1"]));
+  assert.ok(pos("粒").has("classifier"));
+  assert.ok(pos("粒").has("noun"));
+
+  assert.deepEqual(readings("超"), new Set(["ciu1", "ciu2"]));
+  for (const category of ["adverb", "verb", "interjection", "noun"]) {
+    assert.ok(pos("超").has(category), `超: ${category} analysis`);
+  }
+
+  assert.deepEqual(pos("米"), new Set(["classifier", "noun"]));
+  assert.deepEqual(readings("米"), new Set(["mai5"]));
+
+  assert.deepEqual(pos("堆"), new Set(["classifier", "noun", "verb"]));
+  assert.deepEqual(readings("堆"), new Set(["deoi1"]));
+
+  assert.deepEqual(readings("哎吔"), new Set(["ai1 jaa3", "ai1 jaa5", "ai1 jaak3", "ai1 jaa6"]));
+  assert.ok(rows("哎吔").every((row) => row.pos === "interjection"));
+});
