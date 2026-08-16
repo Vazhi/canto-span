@@ -107,3 +107,42 @@ test("informal 地 spellings map to the canonical plural-pronoun analyses", () =
     assert.match(tokenLexicon[variant].note, /variant/i, `${variant}: explicitly marked as an orthographic variant`);
   }
 });
+
+test("verified top-2000 lexical batch fills common whole-form and component gaps", () => {
+  const expected = {
+    "老婆": ["lou5 po4", "who", "noun"],
+    "父母": ["fu6 mou5", "who", "noun"],
+    "警察": ["ging2 caat3", "who", "noun"],
+    "兄弟": ["hing1 dai6", "who", "noun"],
+    "心情": ["sam1 cing4", "what", "noun"],
+    "應承": ["jing1 sing4", "doing", "verb"],
+    "今朝": ["gam1 ziu1", "when", "noun"],
+    "尋晚": ["cam4 maan5", "when", "noun"],
+    "即時": ["zik1 si4", "how", "adjective"],
+    "媽": ["maa1", "who", "noun"],
+    "紅": ["hung4", "like", "adjective"],
+    "球": ["kau4", "what", "noun"],
+  };
+  for (const [surface, [jyutping, label, pos]] of Object.entries(expected)) {
+    assert.ok(tokenLexicon[surface], `${surface}: exact lexical coverage exists`);
+    assert.equal(tokenLexicon[surface].jyutping, jyutping, `${surface}: verified reading`);
+    assert.equal(tokenLexicon[surface].label, label, `${surface}: learner role`);
+    assert.equal(tokenLexicon[surface].pos, pos, `${surface}: lexical category`);
+  }
+});
+
+test("source-attested spelling variants inherit the canonical lexical analysis", () => {
+  const pairs = [
+    ["乜野", "乜嘢"],
+    ["人地", "人哋"],
+    ["中意", "鍾意"],
+  ];
+  for (const [variant, canonical] of pairs) {
+    assert.ok(tokenLexicon[variant], `${variant}: variant is covered`);
+    assert.ok(tokenLexicon[canonical], `${canonical}: canonical form remains covered`);
+    assert.equal(tokenLexicon[variant].jyutping, tokenLexicon[canonical].jyutping, `${variant}: reading matches canonical form`);
+    assert.equal(tokenLexicon[variant].label, tokenLexicon[canonical].label, `${variant}: learner role matches canonical form`);
+    assert.equal(tokenLexicon[variant].syntax, tokenLexicon[canonical].syntax, `${variant}: syntax matches canonical form`);
+    assert.match(tokenLexicon[variant].note, /variant/i, `${variant}: explicitly documented as a spelling variant`);
+  }
+});
