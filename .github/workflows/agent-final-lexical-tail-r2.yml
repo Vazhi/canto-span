@@ -1,0 +1,48 @@
+name: Run corrected final lexical-tail batch
+
+on:
+  push:
+    branches:
+      - agent/cifu-r1751-2000-runtime-reconcile
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    if: github.event.head_commit.message == 'Run corrected final lexical-tail batch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Apply bounded lexical-tail completion
+        run: python tools/tmp-final-lexical-tail-r2.py
+      - name: Build and verify runtime
+        run: |
+          set -euo pipefail
+          npm run build:runtime
+          node --test tests/tooling/lexicon/vernacular-component-coverage.test.js
+          npm run verify:runtime
+      - name: Re-audit live top-2000 single-character closure
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 'https://docs.google.com/spreadsheets/d/1ArxEFo46PTrDyDDhWyu3wB0epxqTyd8WBaprnwTEPm4/export?format=csv&gid=1428902047' -o /tmp/canto-frequency.csv
+          node -e "const x=Object.keys(Object.fromEntries(require('./src/runtime-resources/lexicon/token-lexicon'))); require('fs').writeFileSync('/tmp/lexicon-keys.json',JSON.stringify(x))"
+          python tools/tmp-final-lexical-tail-r2.py --audit /tmp/canto-frequency.csv /tmp/lexicon-keys.json
+      - name: Commit verified state and remove temporary helpers
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm -f .github/workflows/agent-final-lexical-tail-r2.yml
+          git rm -f .github/workflows/agent-correct-final-lexical-tail.yml
+          git rm -f tools/tmp-final-lexical-tail-r2.py
+          git add src/runtime-resources/lexicon/token-lexicon/explicit-analyses.js tests/tooling/lexicon/vernacular-component-coverage.test.js main.js
+          git commit -m 'Build corrected final lexical tail'
+          git push origin HEAD:agent/cifu-r1751-2000-runtime-reconcile
