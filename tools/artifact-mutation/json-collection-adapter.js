@@ -73,9 +73,9 @@ function createJsonCollectionAdapter(config = {}) {
     return lifecycleDimensions.filter((dimension) => !dimension.targets || !target || dimension.targets.includes(target));
   }
 
-  function validateExplicitStatuses(record, context, target) {
+  function validateExplicitStatuses(record, context) {
     const errors = [];
-    for (const dimension of applicableDimensions(target)) {
+    for (const dimension of lifecycleDimensions) {
       if (!dimension.statusField || !hasOwn(record, dimension.statusField)) continue;
       const explicitStatus = record[dimension.statusField];
       if (!EXPLICIT_GAP_STATUSES.has(explicitStatus)) {
@@ -99,6 +99,7 @@ function createJsonCollectionAdapter(config = {}) {
       for (let index = 0; index < current.records.length; index += 1) {
         const record = current.records[index];
         errors.push(...validateRecord(record, `current record ${index}`));
+        errors.push(...validateExplicitStatuses(record, `current record ${index}`));
         const key = identity(record);
         if (key !== null) {
           if (seen.has(key)) errors.push(`current collection has duplicate ${keyField}: ${key}`);
@@ -122,7 +123,7 @@ function createJsonCollectionAdapter(config = {}) {
       const label = `input ${context.index == null ? "?" : context.index} record`;
       const errors = [
         ...validateRecord(record, label),
-        ...validateExplicitStatuses(record, label, context.target),
+        ...validateExplicitStatuses(record, label),
       ];
       if (errors.length) throw new Error(errors.join("; "));
       return { operation: candidate.operation, record };
