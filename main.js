@@ -10305,6 +10305,112 @@ var require_lexical_coverage_additions = __commonJS({
         jyutping: "keoi5 dei6",
         syntax: "subject_or_topic",
         note: "Informal orthographic variant of 佢哋 'they/them'; attested separately in the bounded vernacular source. Canonical spelling remains 佢哋."
+      }],
+      ["老婆", {
+        label: "who",
+        pos: "noun",
+        jyutping: "lou5 po4",
+        syntax: "person_np relationship_person_np",
+        note: "wife / female partner; common Cantonese person noun independently verified against 粵典."
+      }],
+      ["父母", {
+        label: "who",
+        pos: "noun",
+        jyutping: "fu6 mou5",
+        syntax: "person_np kinship_collective",
+        note: "parents; common Cantonese kinship collective independently verified against 粵典."
+      }],
+      ["警察", {
+        label: "who",
+        pos: "noun",
+        jyutping: "ging2 caat3",
+        syntax: "person_np profession_person_np",
+        classifier_classes: ["person"],
+        note: "police officer / police; common Cantonese profession noun independently verified against 粵典."
+      }],
+      ["兄弟", {
+        label: "who",
+        pos: "noun",
+        jyutping: "hing1 dai6",
+        syntax: "person_np kinship_collective",
+        note: "brothers / close male companions; common Cantonese person noun independently verified against 粵典."
+      }],
+      ["心情", {
+        label: "what",
+        pos: "noun",
+        jyutping: "sam1 cing4",
+        syntax: "state_noun emotion_state_noun object_np",
+        note: "mood / state of mind; common Cantonese abstract noun independently verified against 粵典."
+      }],
+      ["應承", {
+        label: "doing",
+        pos: "verb",
+        jyutping: "jing1 sing4",
+        syntax: "verb commitment_verb speech_act_verb",
+        note: "promise / commit / agree to do something; independently verified against 粵典."
+      }],
+      ["今朝", {
+        label: "when",
+        pos: "noun",
+        jyutping: "gam1 ziu1",
+        syntax: "temporal_adjunct time_np",
+        note: "this morning; common Cantonese temporal noun independently verified against 粵典."
+      }],
+      ["尋晚", {
+        label: "when",
+        pos: "noun",
+        jyutping: "cam4 maan5",
+        syntax: "temporal_adjunct time_np",
+        note: "last night; Cantonese spelling/readout independently verified against 粵典 alongside 噚晚 and 琴晚 variants."
+      }],
+      ["即時", {
+        label: "how",
+        pos: "adjective",
+        jyutping: "zik1 si4",
+        syntax: "temporal_immediacy_modifier",
+        note: "instant / immediate; independently verified against 粵典, including adverbial-like use before predicates."
+      }],
+      ["乜野", {
+        label: "what",
+        pos: "pronoun",
+        jyutping: "mat1 je5",
+        syntax: "wh_thing",
+        note: "Informal orthographic variant of canonical 乜嘢 'what'; the bounded vernacular source independently exposes this spelling."
+      }],
+      ["人地", {
+        label: "who",
+        pos: "pronoun",
+        jyutping: "jan4 dei6",
+        syntax: "person_np plural_or_indefinite_pronoun",
+        note: "Informal orthographic variant of canonical 人哋 'other people / they'; the bounded vernacular source independently exposes this spelling."
+      }],
+      ["中意", {
+        label: "like",
+        pos: "verb",
+        jyutping: "zung1 ji3",
+        syntax: "preference_predicate",
+        note: "Orthographic variant of canonical 鍾意 'like / prefer'; 粵典 treats 鍾意 and 中意 as variant writings."
+      }],
+      ["媽", {
+        label: "who",
+        pos: "noun",
+        jyutping: "maa1",
+        syntax: "kinship_term kinship_person_np",
+        note: "mum / mother kinship element; source-backed high-frequency component, consistent with Cantonese 媽媽 and 阿媽 forms."
+      }],
+      ["紅", {
+        label: "like",
+        pos: "adjective",
+        jyutping: "hung4",
+        syntax: "stative_predicate color_property",
+        note: "red; independently verified Cantonese adjective, with an additional popular/favoured sense not promoted into separate runtime behavior here."
+      }],
+      ["球", {
+        label: "what",
+        pos: "noun",
+        jyutping: "kau4",
+        syntax: "object_np ball_or_sphere_noun",
+        note: "ball / sphere lexical element; independently supported across common Cantonese ball and sphere nouns and required by the high-frequency lexical audit."
       }]
     ];
   }
