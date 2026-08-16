@@ -104,6 +104,45 @@ test("required input and staged-result validation fail before write", () => {
   assert.deepEqual(readJson(file), []);
 });
 
+test("throwing validators become machine-readable FAIL reports", () => {
+  const file = path.join(tempDir(), "records.json");
+  writeJson(file, []);
+
+  const baseAdapter = {
+    id: "throwing-validator-test",
+    load: () => ({ records: [] }),
+    normalize: (candidate) => candidate,
+    plan: ({ candidates }) => ({
+      nextState: { records: candidates },
+      operations: candidates.map((item) => ({ identity: item.id, action: "added" })),
+      conflicts: [],
+    }),
+    serialize: () => [{ path: file, content: "[]\n" }],
+  };
+
+  const currentFailure = runMutation({
+    ...baseAdapter,
+    validateCurrent: () => { throw new Error("current exploded"); },
+  }, [{ id: "a" }], { write: true });
+  assert.equal(currentFailure.status, "FAIL");
+  assert.deepEqual(currentFailure.validation_results, [{
+    phase: "current",
+    status: "FAIL",
+    errors: ["current validator threw: current exploded"],
+  }]);
+  assert.equal(currentFailure.writes_occurred, false);
+
+  const resultFailure = runMutation({
+    ...baseAdapter,
+    validateResult: () => { throw new Error("result exploded"); },
+  }, [{ id: "a" }], { write: true });
+  assert.equal(resultFailure.status, "FAIL");
+  assert.equal(resultFailure.validation_results.at(-1).status, "FAIL");
+  assert.deepEqual(resultFailure.validation_results.at(-1).errors, ["result validator threw: result exploded"]);
+  assert.equal(resultFailure.writes_occurred, false);
+  assert.deepEqual(readJson(file), []);
+});
+
 test("lifecycle omissions remain explicit and target gap policy can block writes", () => {
   const file = path.join(tempDir(), "records.json");
   writeJson(file, []);
@@ -145,6 +184,26 @@ test("lifecycle omissions remain explicit and target gap policy can block writes
   assert.equal(blocked.status, "FAIL");
   assert.match(blocked.errors.at(-1), /unresolved completeness gaps: 2/);
   assert.equal(blocked.writes_occurred, false);
+  assert.deepEqual(readJson(file), []);
+});
+
+test("invalid explicit lifecycle statuses fail normalization before write", () => {
+  const file = path.join(tempDir(), "records.json");
+  writeJson(file, []);
+  const adapter = createJsonCollectionAdapter({
+    file,
+    keyField: "id",
+    lifecycleDimensions: [
+      { name: "evidence", field: "evidence", statusField: "evidence_status", targets: ["runtime"] },
+    ],
+  });
+
+  const invalid = runMutation(adapter, [
+    { operation: "add", record: { id: "a", evidence_status: "bogus" } },
+  ], { target: "runtime", write: true });
+  assert.equal(invalid.status, "FAIL");
+  assert.match(invalid.errors[0], /evidence_status has invalid lifecycle status bogus/);
+  assert.equal(invalid.writes_occurred, false);
   assert.deepEqual(readJson(file), []);
 });
 
@@ -206,4 +265,47 @@ test("multi-file commit rolls back earlier replacements after a later rename fai
   assert.equal(fs.readFileSync(first, "utf8"), "old-first\n");
   assert.equal(fs.readFileSync(second, "utf8"), "old-second\n");
   assert.deepEqual(fs.readdirSync(dir).sort(), ["first.txt", "second.txt"]);
+});
+
+test("rollback preserves a backup when restoring that backup fails", () => {
+  const dir = tempDir();
+  const first = path.join(dir, "first.txt");
+  const second = path.join(dir, "second.txt");
+  fs.writeFileSync(first, "old-first\n");
+  fs.writeFileSync(second, "old-second\n");
+
+  let commitFailureInjected = false;
+  let restoreFailureInjected = false;
+  const failingFs = Object.create(fs);
+  failingFs.renameSync = (source, destination) => {
+    if (!commitFailureInjected && source.includes(".tmp") && destination === second) {
+      commitFailureInjected = true;
+      throw new Error("injected commit failure");
+    }
+    if (!restoreFailureInjected && source.includes(".bak") && destination === first) {
+      restoreFailureInjected = true;
+      throw new Error("injected restore failure");
+    }
+    return fs.renameSync(source, destination);
+  };
+
+  let failure;
+  try {
+    commitWrites([
+      { path: first, content: "new-first\n" },
+      { path: second, content: "new-second\n" },
+    ], { fsImpl: failingFs });
+    assert.fail("expected commitWrites to throw");
+  } catch (error) {
+    failure = error;
+  }
+
+  assert.match(failure.message, /artifact mutation commit failed: injected commit failure/);
+  assert.ok(failure.rollbackErrors.some((item) => item.includes("restore") && item.includes("injected restore failure")));
+  assert.equal(fs.readFileSync(second, "utf8"), "old-second\n");
+  assert.equal(fs.existsSync(first), false);
+
+  const backup = fs.readdirSync(dir).find((name) => name.startsWith("first.txt.artifact-mutation-") && name.endsWith(".bak"));
+  assert.ok(backup, "failed restore must preserve the original backup");
+  assert.equal(fs.readFileSync(path.join(dir, backup), "utf8"), "old-first\n");
 });
