@@ -1,0 +1,85 @@
+name: Verify final functional top-2000 closure
+
+on:
+  push:
+    branches:
+      - agent/cifu-r1751-2000-runtime-reconcile
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    if: github.event.head_commit.message == 'Verify final functional top-2000 closure'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - run: python tools/tmp-close-top2000-functional.py
+      - name: Build and verify runtime
+        run: |
+          set -euo pipefail
+          npm run build:runtime
+          node --test tests/tooling/lexicon/vernacular-component-coverage.test.js
+          npm run verify:runtime
+      - name: Re-audit functional top-2000 coverage
+        run: |
+          set -euo pipefail
+          curl -L --fail --retry 3 'https://docs.google.com/spreadsheets/d/1ArxEFo46PTrDyDDhWyu3wB0epxqTyd8WBaprnwTEPm4/export?format=csv&gid=1428902047' -o /tmp/canto-frequency.csv
+          python - <<'PY'
+          import csv,json,re,unicodedata
+          rows=list(csv.DictReader(open('/tmp/canto-frequency.csv',encoding='utf-8-sig',newline='')))
+          def tombstone(s):
+              x=s.lower(); return x=='del' or re.search(r'(^|[-\\s?])del($|[-\\s?])',x) is not None
+          seen=set(); bounded=[]
+          for row in rows:
+              s=unicodedata.normalize('NFC',(row.get('Word') or '').strip()).replace(' ','')
+              if not s or tombstone(s) or s in seen: continue
+              seen.add(s); bounded.append({'surface':s,'pronunciation':row.get('Pronunciation') or '','meaning':row.get('Meaning') or ''})
+              if len(bounded)==2000: break
+          open('/tmp/bounded.json','w').write(json.dumps(bounded,ensure_ascii=False))
+          PY
+          node - <<'NODE'
+          const fs=require('node:fs');
+          const entries=require('./src/runtime-resources/lexicon/token-lexicon');
+          const lexicon=Object.fromEntries(entries);
+          const {loadRuntimeApi}=require('./tools/lib/runtime-api');
+          const api=loadRuntimeApi({apiNames:['analyzeLine']});
+          const rows=JSON.parse(fs.readFileSync('/tmp/bounded.json','utf8'));
+          const isCjk=(ch)=>{const cp=ch.codePointAt(0);return(cp>=0x3400&&cp<=0x4dbf)||(cp>=0x4e00&&cp<=0x9fff)||(cp>=0xf900&&cp<=0xfaff)||(cp>=0x20000&&cp<=0x3134f)};
+          const hasCjk=(s)=>[...s].some(isCjk);
+          const compact=(s)=>String(s||'').normalize('NFC').replace(/\s+/gu,'');
+          const clean=(s)=>String(s||'').toLowerCase().replace(/[^a-z1-6]/gu,'');
+          function flatten(nodes,out=[]){for(const n of nodes||[]){if(!n||typeof n!=='object')continue;if(n.kind==='token')out.push(n);if(Array.isArray(n.children))flatten(n.children,out);}return out;}
+          let cjk=0,exact=0,compositional=0,nonCjk=0; const incomplete=[];
+          for(const row of rows){
+            if(!hasCjk(row.surface)){nonCjk++;continue;} cjk++;
+            if(lexicon[row.surface]){exact++;continue;}
+            let tokens=[]; try{tokens=flatten(api.analyzeLine(row.surface).tokens);}catch(error){incomplete.push({...row,reason:'analyze_error'});continue;}
+            const joined=compact(tokens.map(t=>t.surface||'').join(''));
+            const cjkTokens=tokens.filter(t=>hasCjk(t.surface||''));
+            const good=joined===row.surface&&cjkTokens.length&&cjkTokens.every(t=>clean(t.jyutping||''));
+            if(good) compositional++; else incomplete.push({...row,joined,tokens:tokens.map(t=>({surface:t.surface||'',jyutping:t.jyutping||''}))});
+          }
+          console.log('FUNCTIONAL_TOP2000_CLOSURE',JSON.stringify({bounded:rows.length,cjk_items:cjk,exact,compositional,incomplete:incomplete.length,non_cjk:nonCjk}));
+          console.log('INCOMPLETE_JSON',JSON.stringify(incomplete,null,2));
+          const unexpected=incomplete.filter(r=>r.surface!=='這');
+          if(unexpected.length) throw new Error(`unexpected in-scope functional lexical gaps: ${unexpected.map(r=>r.surface).join(', ')}`);
+          if(incomplete.length!==1||incomplete[0].surface!=='這') throw new Error('closure invariant requires only intentional 這 hold');
+          NODE
+      - name: Commit verified state and remove helpers
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/agent-close-top2000-functional.yml
+          git rm tools/tmp-close-top2000-functional.py
+          git add src/runtime-resources/lexicon/token-lexicon/lexical-coverage-additions.js src/runtime-resources/lexicon/token-lexicon/explicit-analyses.js tests/tooling/lexicon/vernacular-component-coverage.test.js main.js
+          git commit -m 'Build final functional top-2000 closure'
+          git push origin HEAD:agent/cifu-r1751-2000-runtime-reconcile
