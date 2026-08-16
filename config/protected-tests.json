@@ -3,7 +3,7 @@
   "tests": [
     {
       "path": "tests/tooling/runtime/regression-ratchet-verifier.test.js",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "sha256": "40000b8210240eae98e34a7e16cc73ecd44b708bc916f2494313f64b5914b799",
       "reason": "Enforces the repository-wide monotonic regression-debt doctrine: stable failure identities may not expand or be hidden by changing the executable test contract.",
       "scope": "runtime",
       "protection_class": "constitutional_doctrine",
@@ -13,7 +13,7 @@
     },
     {
       "path": "tests/tooling/verification/protected-tests.test.js",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "sha256": "2544482b9617ac42745c9d8eec82532ffb5d871cea14f9cc73be31a4ed224b46",
       "reason": "Enforces the protected-test constitutional doctrine itself: no SHA laundering, no stale review, exact-path review coverage, and no inferred user override.",
       "scope": "governance",
       "protection_class": "constitutional_doctrine",
@@ -23,7 +23,7 @@
     },
     {
       "path": "tests/tooling/verification/verification-profiles.test.js",
-      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "sha256": "9005a8c0e1fb4b7a86131bbab7c3a338466f2c979ba2c8b7059d71d07fc723f6",
       "reason": "Enforces fail-closed canonical verification orchestration so registered profiles cannot be silently omitted, duplicated, renamed, or partially executed.",
       "scope": "governance",
       "protection_class": "constitutional_doctrine",
