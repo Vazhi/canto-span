@@ -97,7 +97,7 @@ const rows = (surface) => analyses[surface] || [];
 const readings = (surface) => new Set(rows(surface).map((row) => row.jyutping).filter(Boolean));
 const ids = (surface) => rows(surface).map((row) => row.id);
 const matches = (row, spec) => ["id","pos","jyutping","syntax","label"].every((key) => spec[key] === undefined || row[key] === spec[key]);
-const finalRows = (surface) => api.diagnosticFinalRows(api.analyzeLine(surface));
+const finalRows = (surface) => Array.from(api.diagnosticFinalRows(api.analyzeLine(surface)));
 const tokenRows = (surface) => finalRows(surface).filter((row) => row.kind === "token");
 const constructions = (surface) => finalRows(surface).filter((row) => row.kind === "construction").map((row) => row.internal_construction || row.construction || row.type || "");
 
