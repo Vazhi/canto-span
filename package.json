@@ -14,7 +14,7 @@
     "audit:parser-architecture": "node tools/parser-architecture-audit.js",
     "test:parser-priorities": "node --test tests/tooling/parser-coverage/prioritizer.test.js",
     "audit:parser-priorities": "node tools/parser-work-prioritizer.js",
-    "test:lexical-ingestions": "node --test tests/tooling/lexicon/lexical-ingestion-tokenization-audit.test.js",
+    "test:lexical-ingestions": "node --test tests/tooling/lexicon/lexical-*.test.js",
     "audit:lexical-ingestions": "node tools/lexical-ingestion-tokenization-audit.js",
     "test:constructions": "node tests/run-constructions.js",
     "test:regression": "node tests/run-regression.js",
