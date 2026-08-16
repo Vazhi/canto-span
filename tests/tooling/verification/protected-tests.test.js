@@ -12,12 +12,16 @@ const {
   verifyProtectedTests,
 } = require("../../../tools/verify-protected-tests");
 const {
+  CONTROL_PLANE_PATHS,
   REGISTRY_PATH,
   REVIEW_SCHEMA,
   OVERRIDE_SCHEMA,
+  PR_COMMIT_API_LIMIT,
+  PR_FILE_API_LIMIT,
   analyzeProtectedChanges,
   evaluateReviewGate,
   evaluateUserOverride,
+  validateReviewApiCompleteness,
 } = require("../../../tools/verify-protected-test-review");
 
 function registry(entries) {
@@ -149,11 +153,7 @@ test("renaming a protected path requires review of both old and new identities",
 
 test("all protected control-plane enforcement files require review", () => {
   const unchanged = registry([]);
-  for (const protectedControlPath of [
-    ".github/workflows/protected-test-review.yml",
-    ".github/workflows/full-diagnostic-verification.yml",
-    "config/verification-profiles.json",
-  ]) {
+  for (const protectedControlPath of CONTROL_PLANE_PATHS) {
     const analysis = analyzeProtectedChanges({
       baseRegistry: unchanged,
       headRegistry: unchanged,
@@ -163,13 +163,44 @@ test("all protected control-plane enforcement files require review", () => {
   }
 });
 
-test("trusted review workflow reruns when pull request metadata can change the base", () => {
+test("trusted review API enumeration fails closed beyond GitHub limits", () => {
+  assert.deepEqual(
+    validateReviewApiCompleteness({
+      commitCount: PR_COMMIT_API_LIMIT,
+      changedFileCount: PR_FILE_API_LIMIT,
+    }),
+    []
+  );
+
+  const tooManyCommits = validateReviewApiCompleteness({
+    commitCount: PR_COMMIT_API_LIMIT + 1,
+    changedFileCount: 1,
+  });
+  assert.equal(tooManyCommits[0].code, "pr_commit_api_limit_exceeded");
+
+  const tooManyFiles = validateReviewApiCompleteness({
+    commitCount: 1,
+    changedFileCount: PR_FILE_API_LIMIT + 1,
+  });
+  assert.equal(tooManyFiles[0].code, "pr_file_api_limit_exceeded");
+
+  const missingCounts = validateReviewApiCompleteness({});
+  assert.deepEqual(
+    missingCounts.map((failure) => failure.code),
+    ["pr_commit_count_invalid", "pr_changed_file_count_invalid"]
+  );
+});
+
+test("trusted review workflow reruns on base edits and enforces API completeness", () => {
   const workflowPath = path.resolve(__dirname, "../../../.github/workflows/protected-test-review.yml");
   const workflow = fs.readFileSync(workflowPath, "utf8");
   const match = workflow.match(/pull_request_target:\s*\n\s+types:\s*\[([^\]]+)\]/u);
   assert.ok(match, "protected review workflow must declare pull_request_target activity types");
   const activityTypes = match[1].split(",").map((item) => item.trim());
   assert.ok(activityTypes.includes("edited"), "protected review must rerun when PR metadata/base changes");
+  assert.ok(workflow.includes("validateReviewApiCompleteness"), "trusted workflow must enforce PR enumeration completeness");
+  assert.ok(workflow.includes("prDetails.data.commits"), "trusted workflow must validate authoritative PR commit count");
+  assert.ok(workflow.includes("prDetails.data.changed_files"), "trusted workflow must validate authoritative changed-file count");
 });
 
 test("a review made before the latest protected change is stale", () => {
