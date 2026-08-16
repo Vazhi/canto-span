@@ -64,7 +64,8 @@ A stored hash alone is insufficient because a branch could change both a protect
 5. requires review for changes to the protected-test control plane itself, including the registry, schema, SHA verifier, review analyzer, doctrine test, trusted review workflow, core verification-profile registration, and full-diagnostic enforcement workflow;
 6. finds the latest PR commit touching the affected protected/control-plane paths;
 7. requires a structured review attached to a commit at or after that latest protected change;
-8. invalidates an earlier review when a later protected change occurs.
+8. invalidates an earlier review when a later protected change occurs;
+9. reruns when the pull request is edited so a base-branch retarget cannot leave a stale trusted-base decision in place.
 
 A later unrelated commit does not invalidate a review that already contains the latest protected change.
 
@@ -86,7 +87,7 @@ Ordinary doctrine changes require a PR review containing an exact fenced record:
 
 The path set must exactly match the gate's affected path set, and the review must be attached to a commit containing the latest protected change. A generic approval, ordinary review prose, or a request to "make the tests pass" is not a protected-test review.
 
-After a reviewed doctrine change, update the registry SHA to the reviewed final content. The gate never performs that update automatically.
+Finalize the protected test content first, update `config/protected-tests.json` to the exact SHA-256 of that final content, and only then submit the structured review against the resulting commit. Because the registry is itself protected control-plane state, any later protected-test or registry edit invalidates that review and requires a new structured review. The gate never performs or blesses the SHA update automatically.
 
 ## Explicit user override
 
