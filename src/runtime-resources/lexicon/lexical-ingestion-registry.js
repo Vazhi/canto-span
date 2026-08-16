@@ -1,9 +1,5 @@
 "use strict";
 
-function surfaceSet(values = []) {
-  return new Set(values || []);
-}
-
 function neutralFrequencyCoverageEntry(entry = {}) {
   return String(entry.pos || "") === "lexical_item"
     && String(entry.syntax || "").split(/\s+/u).includes("lexical_item")
@@ -55,28 +51,22 @@ const lexicalIngestions = Object.freeze([
     source_jyutping_unknown_values: Object.freeze(["", "-", "?", "*?"]),
     expected_rows: 2000,
     require_contiguous_ranks: true,
-    require_exact_runtime_coverage: true,
+    require_functional_runtime_coverage: true,
     require_jyutping: true,
     carrier_prefixes: Object.freeze(["", "我"]),
     carrier_suffixes: Object.freeze(["", "呀"]),
     policy_modules: cifuPolicyModules,
-    removed_surfaces: surfaceSet(["多少"]),
-    contamination_ledger: "data/lexical-frequency/cifu-mandarin-contamination-runtime-audit.tsv",
   }),
 ]);
 
 const blockedAtomicSurfaces = new Set();
-const removedIngestionSurfaces = new Set();
 for (const ingestion of lexicalIngestions) {
   for (const surface of collectBlockedAtomicSurfaces(ingestion.policy_modules)) blockedAtomicSurfaces.add(surface);
-  for (const surface of ingestion.removed_surfaces || []) removedIngestionSurfaces.add(surface);
 }
 
 function blockedAtomicRuntimeDisposition(surface, tokenLexicon = {}, options = {}) {
   const blocked = options.blocked_surfaces || blockedAtomicSurfaces;
-  const removed = options.removed_surfaces || removedIngestionSurfaces;
   if (!blocked.has(surface)) return "not_blocked";
-  if (removed.has(surface)) return "removed_from_runtime";
 
   const entry = tokenLexicon[surface];
   if (!entry) return "promotion_only_no_runtime_entry";
@@ -94,7 +84,6 @@ function ingestionForcedCompositionalSurfaces(tokenLexicon = {}) {
 module.exports = Object.freeze({
   lexicalIngestions,
   blockedAtomicSurfaces,
-  removedIngestionSurfaces,
   neutralFrequencyCoverageEntry,
   collectBlockedAtomicSurfaces,
   blockedAtomicRuntimeDisposition,
