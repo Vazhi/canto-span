@@ -284,4 +284,11 @@ module.exports = [
     syntax: "place_or_goal spatial_localizer interior_location",
     note: "inside / interior; attested in Cantonese examples in 粵典, with 裏 identified as the traditional variant of 裡.",
   }],
+  ["嚟講", {
+    label: "func",
+    pos: "function",
+    jyutping: "lai4 gong2",
+    syntax: "perspective_topic_frame_marker",
+    note: "in terms of / regarding / ... speaking; dedicated Cantonese expression marking topic, aspect, perspective, or manner. 粵典 attests both lai4 gong2 and lei4 gong2.",
+  }],
 ];
