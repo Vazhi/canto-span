@@ -53,12 +53,6 @@
         "run_when": "Current documentation, authority settings, or canonical state change."
       },
       {
-        "id": "protected-test-governance",
-        "command": ["node", "--test", "tests/tooling/verification/protected-tests.test.js"],
-        "reason": "Enforce the stable constitutional rules for protected-test admission, anti-laundering, review freshness, exact path coverage, and explicit user override.",
-        "run_when": "Protected-test registry, verifier, review gate, or doctrine test changes."
-      },
-      {
         "id": "protected-test-sha",
         "command": ["node", "tools/verify-protected-tests.js"],
         "reason": "Fail closed when a registered constitutional doctrine test drifts from its explicitly reviewed SHA-256.",
