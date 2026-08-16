@@ -2,13 +2,8 @@
 
 const reviewed = require("./cifu-r1251-1500-reviewed");
 
-// Keep the generated Cifu source as provenance; remove positively identified
-// non-Cantonese whole surfaces only from the reviewed effective runtime layer.
-const MANDARIN_ONLY_SURFACES = new Set(["多少"]);
-
 function applyRuntimePolicy(entries) {
-  return reviewed.applyReviewedEntries(entries)
-    .filter(([surface]) => !MANDARIN_ONLY_SURFACES.has(surface));
+  return reviewed.applyReviewedEntries(entries);
 }
 
 module.exports = Object.freeze({
@@ -19,6 +14,5 @@ module.exports = Object.freeze({
   BLOCKED_ATOMIC_SURFACES: reviewed.BLOCKED_ATOMIC_SURFACES,
   CANDIDATE_ONLY_SURFACES: reviewed.CANDIDATE_ONLY_SURFACES,
   DEFAULT_READING_OVERRIDES: reviewed.DEFAULT_READING_OVERRIDES,
-  MANDARIN_ONLY_SURFACES,
   applyRuntimePolicy,
 });
