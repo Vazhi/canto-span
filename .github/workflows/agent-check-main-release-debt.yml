@@ -1,0 +1,39 @@
+name: Check inherited release-handoff debt on main
+
+on:
+  push:
+    branches:
+      - agent/cifu-r1751-2000-runtime-reconcile
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    if: github.event.head_commit.message == 'Check inherited release-handoff debt on main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Run release-handoff gate on main
+        id: gate
+        continue-on-error: true
+        run: node tools/verify-release-handoff.js
+      - name: Require inherited release debt
+        run: |
+          test "${{ steps.gate.outcome }}" = "failure"
+      - name: Remove temporary checker from work branch
+        run: |
+          git checkout agent/cifu-r1751-2000-runtime-reconcile
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/agent-check-main-release-debt.yml
+          git commit -m 'Remove main release-debt checker'
+          git push origin HEAD:agent/cifu-r1751-2000-runtime-reconcile
