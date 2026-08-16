@@ -21,8 +21,43 @@ jobs:
           node-version: 24
           package-manager-cache: false
       - run: npm ci
+      - name: Snapshot effective lexicon and marker consumers
+        run: |
+          set -euo pipefail
+          node - <<'NODE' > /tmp/lex-before.json
+          const entries = require('./src/runtime-resources/lexicon/token-lexicon');
+          process.stdout.write(JSON.stringify(Object.fromEntries(entries)));
+          NODE
+          echo 'OLD_MARKER_CONSUMERS_BEGIN'
+          grep -R -n --exclude='frequency-gap-fill-r7.js' --exclude='agent-lexical-authority-data-cleanup.py' 'Exact surface retained as neutral lexical coverage' src tools tests || true
+          echo 'OLD_MARKER_CONSUMERS_END'
       - name: Apply authority-data cleanup
         run: python3 tools/agent-lexical-authority-data-cleanup.py
+      - name: Diagnose effective lexicon delta
+        run: |
+          set -euo pipefail
+          node - <<'NODE' > /tmp/lex-after.json
+          const entries = require('./src/runtime-resources/lexicon/token-lexicon');
+          process.stdout.write(JSON.stringify(Object.fromEntries(entries)));
+          NODE
+          python3 - <<'PY'
+          import json
+          before=json.load(open('/tmp/lex-before.json'))
+          after=json.load(open('/tmp/lex-after.json'))
+          def semantic(v):
+              if not isinstance(v,dict): return v
+              return {k:x for k,x in v.items() if k not in {'note'}}
+          changed=[]
+          for s in sorted(set(before)|set(after)):
+              b=before.get(s); a=after.get(s)
+              if semantic(b)!=semantic(a):
+                  changed.append((s,b,a))
+          print('NON_NOTE_EFFECTIVE_LEXICON_CHANGES',len(changed))
+          for s,b,a in changed:
+              print('LEXDELTA',s)
+              print('  BEFORE',json.dumps(semantic(b),ensure_ascii=False,sort_keys=True))
+              print('  AFTER ',json.dumps(semantic(a),ensure_ascii=False,sort_keys=True))
+          PY
       - name: Assert source roles are separated
         run: |
           set -euo pipefail
