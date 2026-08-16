@@ -51,6 +51,22 @@ test("accepted component readings are frozen authority records rather than disco
   }
 });
 
+test("accepted-reading coverage never overwrites an existing runtime reading", () => {
+  const surface = Object.keys(ACCEPTED_READINGS)[0];
+  assert.ok(surface, "accepted reading inventory is non-empty");
+  const existing = {
+    label: "what",
+    pos: "noun",
+    syntax: "common_noun",
+    jyutping: "keep1",
+    provenance: { kind: "independent_runtime_authority", source: "test" },
+  };
+  const applied = Object.fromEntries(applyVernacularComponentCoverage([[surface, existing]]));
+  assert.equal(applied[surface].jyutping, "keep1", `${surface}: accepted-reading overlay only fills missing readings`);
+  assert.equal(applied[surface].pos, "noun", `${surface}: richer lexical typing is preserved`);
+  assert.equal(applied[surface].provenance.kind, "independent_runtime_authority", `${surface}: existing authority remains the owner`);
+});
+
 test("discovery-only pronunciation candidates cannot silently become runtime authority", () => {
   for (const [surface, candidate] of Object.entries(DISCOVERY_READING_CANDIDATES)) {
     assert.ok(candidate && candidate.jyutping, `${surface}: discovery candidate has a recorded reading`);
