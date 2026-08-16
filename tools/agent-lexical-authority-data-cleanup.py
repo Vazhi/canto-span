@@ -33,23 +33,19 @@ text = text.replace('  "嫁": "ga3",', '  "嫁": "gaa3",', 1)
 for surface in ["既", "爸", "广", "哂", "跙"]:
     text, n = re.subn(rf'^  "{re.escape(surface)}": .*?\n', '', text, count=1, flags=re.M)
     require(n == 1, f"expected authority-map row for {surface}")
-# Remove comments that belonged to removed variant rows if left standalone.
 text = text.replace(' // recurrent vernacular corpus spelling of 晒 in exhaustive/completive contexts', '')
 text = text.replace(' // recurrent corpus spelling used with 走 “leave/go” syntax', '')
-# Remove the dynamic derivation/override block: accepted authority must be literal/frozen.
 text, n = re.subn(r'''\nconst RIME_NORMALIZED_OVERRIDES = Object\.freeze\(\{.*?\}\);\n''', '\n', text, count=1, flags=re.S)
 require(n == 1, "Rime override block missing")
 text, n = re.subn(r'''\nconst RIME_ACCEPTED_READINGS = Object\.freeze\(Object\.fromEntries\(\n  Object\.entries\(DISCOVERY_READINGS\).*?\n\)\);\n''', '\n', text, count=1, flags=re.S)
 require(n == 1, "dynamic accepted-reading derivation missing")
-# DISCOVERY_READINGS is no longer a runtime/exported map; only unresolved candidates remain.
 text = text.replace('  DISCOVERY_READINGS,\n', '')
 write(rel, text)
 
-# 2. Make neutral-fallback identity structural rather than prose-dependent. Reviewed
-# promotions must continue to win after discovery notes are cleaned or rewritten.
-rel = "src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-reviewed.js"
-text = read(rel)
-old = '''function isNeutralFrequencyFallback(entry) {
+# 2. Neutral fallback identity is structural state, not prose in a note. Rewriting
+# discovery notes must never disable reviewed promotions. The first two reviewed
+# bands share this legacy helper; later bands already use explicit authority sets.
+old_fallback = '''function isNeutralFrequencyFallback(entry) {
   return Boolean(
     entry
       && entry.label === "lex"
@@ -59,7 +55,7 @@ old = '''function isNeutralFrequencyFallback(entry) {
       && entry.note.includes("Exact surface retained as neutral lexical coverage")
   );
 }'''
-new = '''function isNeutralFrequencyFallback(entry) {
+new_fallback = '''function isNeutralFrequencyFallback(entry) {
   return Boolean(
     entry
       && entry.label === "lex"
@@ -67,9 +63,14 @@ new = '''function isNeutralFrequencyFallback(entry) {
       && entry.syntax === "lexical_item"
   );
 }'''
-require(old in text, "neutral fallback detector anchor missing")
-text = text.replace(old, new, 1)
-write(rel, text)
+for rel in [
+    "src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-reviewed.js",
+    "src/runtime-resources/lexicon/token-lexicon/cifu-r251-500-reviewed.js",
+]:
+    text = read(rel)
+    require(old_fallback in text, f"neutral fallback detector anchor missing in {rel}")
+    text = text.replace(old_fallback, new_fallback, 1)
+    write(rel, text)
 
 # 3. Remove candidate pronunciation comparison from the project-owned common-core
 # priority table while preserving all rows/rank/corpus evidence.
