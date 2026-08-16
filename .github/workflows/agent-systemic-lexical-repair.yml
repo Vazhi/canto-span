@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   repair:
-    if: github.event.head_commit.message == 'Retry systemic lexical ingestion repair'
+    if: github.event.head_commit.message == 'Retry systemic repair with functional audit fix'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -22,7 +22,9 @@ jobs:
           package-manager-cache: false
       - run: npm ci
       - name: Apply systemic repair
-        run: python3 tools/agent-systemic-lexical-repair.py
+        run: |
+          python3 tools/agent-systemic-lexical-repair.py
+          python3 tools/agent-fix-functional-lexical-audit.py
       - name: Assert retired active-tree machinery is gone
         run: |
           set -euo pipefail
@@ -50,6 +52,7 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git rm tools/agent-systemic-lexical-repair.py
+          git rm tools/agent-fix-functional-lexical-audit.py
           git rm .github/workflows/agent-systemic-lexical-repair.yml
           git add -A
           git commit -m 'Repair lexical ingestion authority and invariants'
