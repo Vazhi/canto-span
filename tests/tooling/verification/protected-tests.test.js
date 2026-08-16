@@ -62,15 +62,22 @@ function reviewBody({ paths, registryChanged = true, basis = "doctrine_review", 
   return `\`\`\`protected-test-review\n${JSON.stringify(record)}\n\`\`\``;
 }
 
-test("working-tree verifier accepts only the registered content hash", () => {
+test("working-tree verifier rejects changed or deleted protected content", () => {
   const item = fixture();
   try {
     assert.equal(verifyProtectedTests(item.root, item.registry).status, "PASS");
+
     fs.writeFileSync(path.join(item.root, item.path), "weakened\n");
-    const report = verifyProtectedTests(item.root, item.registry);
-    assert.equal(report.status, "FAIL");
-    assert.equal(report.failures[0].code, "PROTECTED_TEST_REVIEW_REQUIRED");
-    assert.equal(report.failures[0].path, item.path);
+    const changed = verifyProtectedTests(item.root, item.registry);
+    assert.equal(changed.status, "FAIL");
+    assert.equal(changed.failures[0].code, "PROTECTED_TEST_REVIEW_REQUIRED");
+    assert.equal(changed.failures[0].path, item.path);
+
+    fs.rmSync(path.join(item.root, item.path));
+    const deleted = verifyProtectedTests(item.root, item.registry);
+    assert.equal(deleted.status, "FAIL");
+    assert.equal(deleted.failures[0].code, "protected_test_missing");
+    assert.equal(deleted.failures[0].path, item.path);
   } finally {
     fs.rmSync(item.root, { recursive: true, force: true });
   }
@@ -113,14 +120,46 @@ test("removing a registry entry still requires review of the removed protection"
   assert.deepEqual(analysis.required_paths, [REGISTRY_PATH, "tests/doctrine.test.js"]);
 });
 
+test("renaming a protected path requires review of both old and new identities", () => {
+  const base = registry([{ path: "tests/old-doctrine.test.js", sha256: "a".repeat(64) }]);
+  const head = registry([{ path: "tests/new-doctrine.test.js", sha256: "b".repeat(64) }]);
+  const analysis = analyzeProtectedChanges({
+    baseRegistry: base,
+    headRegistry: head,
+    files: [
+      {
+        filename: "tests/new-doctrine.test.js",
+        previous_filename: "tests/old-doctrine.test.js",
+        status: "renamed",
+      },
+      { filename: REGISTRY_PATH, status: "modified" },
+    ],
+  });
+  assert.equal(analysis.status, "PASS");
+  assert.deepEqual(analysis.affected_protected_paths, [
+    "tests/new-doctrine.test.js",
+    "tests/old-doctrine.test.js",
+  ]);
+  assert.deepEqual(analysis.required_paths, [
+    REGISTRY_PATH,
+    "tests/new-doctrine.test.js",
+    "tests/old-doctrine.test.js",
+  ]);
+});
+
 test("protected control-plane edits require review even when no doctrine-test hash changes", () => {
   const unchanged = registry([]);
-  const analysis = analyzeProtectedChanges({
-    baseRegistry: unchanged,
-    headRegistry: unchanged,
-    files: [{ filename: ".github/workflows/protected-test-review.yml", status: "modified" }],
-  });
-  assert.deepEqual(analysis.required_paths, [".github/workflows/protected-test-review.yml"]);
+  for (const protectedControlPath of [
+    ".github/workflows/protected-test-review.yml",
+    "config/verification-profiles.json",
+  ]) {
+    const analysis = analyzeProtectedChanges({
+      baseRegistry: unchanged,
+      headRegistry: unchanged,
+      files: [{ filename: protectedControlPath, status: "modified" }],
+    });
+    assert.deepEqual(analysis.required_paths, [protectedControlPath]);
+  }
 });
 
 test("a review made before the latest protected change is stale", () => {
