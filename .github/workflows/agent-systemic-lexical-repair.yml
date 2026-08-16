@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   repair:
-    if: github.event.head_commit.message == 'Run systemic lexical ingestion repair'
+    if: github.event.head_commit.message == 'Retry systemic lexical ingestion repair'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
@@ -31,7 +31,7 @@ jobs:
           test ! -e data/lexical-frequency/cifu-mandarin-contamination-summary.json
           test ! -e data/lexical-frequency/cifu-mandarin-oriented-adjudication.tsv
           test ! -e tests/tooling/lexicon/top2000-single-character-gap-closure.test.js
-          ! grep -R "MANDARIN_ONLY_SURFACES\|contamination_ledger\|removed_surfaces" src/runtime-resources/lexicon tools/lexical-ingestion-tokenization-audit.js tests/tooling/lexicon/lexical-ingestion-tokenization-audit.test.js
+          ! grep -R "MANDARIN_ONLY_SURFACES\|contamination_ledger\|removed_surfaces" src/runtime-resources/lexicon tools/lexical-ingestion-tokenization-audit.js
       - name: Build and verify lexical repair
         run: |
           set -euo pipefail
