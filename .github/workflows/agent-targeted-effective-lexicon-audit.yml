@@ -1,0 +1,39 @@
+name: Audit targeted effective lexical candidates
+
+on:
+  push:
+    branches:
+      - agent/cifu-r1751-2000-runtime-reconcile
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    if: github.event.head_commit.message == 'Audit targeted effective lexical candidates'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          package-manager-cache: false
+      - run: npm ci
+      - name: Inspect exact effective entries
+        run: |
+          node - <<'NODE'
+          const lexicon=Object.fromEntries(require('./src/runtime-resources/lexicon/token-lexicon'));
+          const targets=['老婆','父母','警察','兄弟','心情','應承','今朝','尋晚','即時','哎吔','乜嘢','乜野','人哋','人地','鍾意','中意','媽','紅','球'];
+          for (const surface of targets) {
+            console.log('TARGET', surface, JSON.stringify(lexicon[surface] || null));
+          }
+          NODE
+      - name: Remove helper
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/agent-targeted-effective-lexicon-audit.yml
+          git commit -m 'Remove targeted effective lexical audit helper'
+          git push origin HEAD:agent/cifu-r1751-2000-runtime-reconcile
