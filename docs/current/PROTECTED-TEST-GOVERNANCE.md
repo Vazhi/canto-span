@@ -61,12 +61,20 @@ A stored hash alone is insufficient because a branch could change both a protect
 2. verifies every head registry SHA against the head file bytes;
 3. uses the union of base/head protected paths so removing or renaming protection cannot hide a change;
 4. treats registry entry addition/removal/change as a protected change;
-5. requires review for changes to the protected-test control plane itself (registry, schema, verifier, review logic, doctrine test, or trusted workflow);
+5. requires review for changes to the protected-test control plane itself, including the registry, schema, SHA verifier, review analyzer, doctrine test, trusted review workflow, core verification-profile registration, and full-diagnostic enforcement workflow;
 6. finds the latest PR commit touching the affected protected/control-plane paths;
 7. requires a structured review attached to a commit at or after that latest protected change;
 8. invalidates an earlier review when a later protected change occurs.
 
 A later unrelated commit does not invalidate a review that already contains the latest protected change.
+
+## Single-author/shared-account review model
+
+Canto Span currently has one GitHub author account. The user, ChatGPT, and Codex all make repository changes through that same account, so GitHub actor identity cannot distinguish the human owner from an assisting agent. GitHub also does not permit a pull-request author to submit an `APPROVED` review on their own PR.
+
+Therefore protected-test governance does **not** use reviewer identity or a separate-reviewer requirement as an authorization boundary. A structured `COMMENTED` review is intentionally valid in this repository when it satisfies the exact-path and freshness rules below. `APPROVED` is also accepted if a genuinely separate reviewer exists in the future. `PENDING`, `DISMISSED`, and `CHANGES_REQUESTED` reviews cannot satisfy the gate.
+
+This mechanism is designed to prevent silent, accidental, stale, inferred, or convenience-driven doctrine drift by repository agents following the project contract. It is not a cryptographic defense against a malicious actor already controlling the repository owner's GitHub credentials. Any future requirement for cryptographically distinct human authorization would need an external trust mechanism rather than GitHub account identity alone.
 
 ## Structured review
 
@@ -76,9 +84,9 @@ Ordinary doctrine changes require a PR review containing an exact fenced record:
 {"schema":"canto-span-protected-test-review-v1","decision":"approve","basis":"doctrine_review","paths":["config/protected-tests.json","tests/path/to/doctrine.test.js"],"registry_changed":true,"reason":"Independent reason the doctrine expectation itself must change."}
 ```
 
-The path set must exactly match the gate's affected path set. A generic approval, ordinary review prose, or a request to "make the tests pass" is not a protected-test review.
+The path set must exactly match the gate's affected path set, and the review must be attached to a commit containing the latest protected change. A generic approval, ordinary review prose, or a request to "make the tests pass" is not a protected-test review.
 
-After an approved doctrine change, update the registry SHA to the reviewed final content. The gate never performs that update automatically.
+After a reviewed doctrine change, update the registry SHA to the reviewed final content. The gate never performs that update automatically.
 
 ## Explicit user override
 
@@ -91,6 +99,8 @@ The authorizing issue must contain:
 ```
 
 The subsequent structured PR review uses `basis: user_override` and names that issue in `authorization_issue`. The override paths must exactly match the affected protected-test paths.
+
+Because all repository writes currently share one GitHub account, the automated gate can validate that this record is explicit, exact, and auditable but cannot cryptographically prove which same-account actor typed it. Repository agents are therefore forbidden by project doctrine from fabricating or inferring a user override that was not actually requested.
 
 A user override is a basis for the required review. It is not a bypass: final head SHA consistency and normal PR/merge review still apply.
 
