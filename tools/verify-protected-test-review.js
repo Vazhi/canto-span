@@ -14,6 +14,7 @@ const CONTROL_PLANE_PATHS = Object.freeze([
   "tools/verify-protected-test-review.js",
   "tests/tooling/verification/protected-tests.test.js",
   ".github/workflows/protected-test-review.yml",
+  ".github/workflows/full-diagnostic-verification.yml",
 ]);
 
 function stableEntry(entry) {
@@ -147,7 +148,8 @@ function evaluateReviewGate({ requiredPaths, registryChanged, commits, reviews }
 
   const candidates = [];
   for (const review of reviews || []) {
-    if (["DISMISSED", "CHANGES_REQUESTED"].includes(String(review.state || "").toUpperCase())) continue;
+    const reviewState = String(review.state || "").toUpperCase();
+    if (!["COMMENTED", "APPROVED"].includes(reviewState)) continue;
     const reviewIndex = commitShas.indexOf(review.commit_id);
     if (reviewIndex < latest) continue;
     for (const record of extractFencedJson(review.body, "protected-test-review")) {
@@ -155,7 +157,7 @@ function evaluateReviewGate({ requiredPaths, registryChanged, commits, reviews }
       if (failures.length) continue;
       if (!setEquals(record.paths, requiredPaths)) continue;
       if (record.registry_changed !== registryChanged) continue;
-      candidates.push({ review, record, review_index: reviewIndex });
+      candidates.push({ review, record, review_index: reviewIndex, review_state: reviewState });
     }
   }
   if (!candidates.length) {
@@ -170,6 +172,7 @@ function evaluateReviewGate({ requiredPaths, registryChanged, commits, reviews }
     review: {
       id: selected.review.id,
       commit_id: selected.review.commit_id,
+      state: selected.review_state,
       basis: selected.record.basis,
       authorization_issue: selected.record.authorization_issue || null,
       paths: [...selected.record.paths].sort(),
