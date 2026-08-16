@@ -34,6 +34,7 @@ jobs:
               analyzeProtectedChanges,
               evaluateReviewGate,
               evaluateUserOverride,
+              validateReviewApiCompleteness,
             } = require("./tools/verify-protected-test-review");
 
             const pr = context.payload.pull_request;
@@ -49,6 +50,21 @@ jobs:
 
             const baseRepo = splitRepo(pr.base.repo.full_name);
             const headRepo = splitRepo(pr.head.repo.full_name);
+
+            const prDetails = await github.rest.pulls.get({
+              ...baseRepo,
+              pull_number: pr.number,
+            });
+            const completenessFailures = validateReviewApiCompleteness({
+              commitCount: prDetails.data.commits,
+              changedFileCount: prDetails.data.changed_files,
+            });
+            if (completenessFailures.length) {
+              core.setFailed(
+                `Protected-review PR enumeration cannot be proven complete: ${JSON.stringify(completenessFailures)}`
+              );
+              return;
+            }
 
             async function getBytes(repoRef, filePath, ref, required = true) {
               try {
