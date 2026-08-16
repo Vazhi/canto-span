@@ -32700,7 +32700,7 @@ var {
 } = require_learner_glosses();
 var createLearnerDisplay = require_learner_display();
 var createCantoSpanPlugin = require_canto_span_plugin();
-var CANTO_SPAN_RUNTIME_VERSION = "0.5.236";
+var CANTO_SPAN_RUNTIME_VERSION = "0.5.237";
 var {
   runtimeConstructionRegistryVersion: RUNTIME_CONSTRUCTION_REGISTRY_VERSION,
   constructionLabelRegistry,

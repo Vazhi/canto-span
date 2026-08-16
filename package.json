@@ -1,7 +1,7 @@
 {
   "name": "canto-span",
   "private": true,
-  "version": "0.5.236",
+  "version": "0.5.237",
   "description": "Cantonese parser and evidence-governance project",
   "scripts": {
     "build:runtime": "node tools/build-runtime.js",
