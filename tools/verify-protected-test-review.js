@@ -8,6 +8,7 @@ const REVIEW_SCHEMA = "canto-span-protected-test-review-v1";
 const OVERRIDE_SCHEMA = "canto-span-protected-test-override-v1";
 const CONTROL_PLANE_PATHS = Object.freeze([
   REGISTRY_PATH,
+  "config/verification-profiles.json",
   "schemas/protected-test-registry.schema.json",
   "tools/verify-protected-tests.js",
   "tools/verify-protected-test-review.js",
