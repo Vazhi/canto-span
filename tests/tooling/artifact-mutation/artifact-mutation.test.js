@@ -207,6 +207,32 @@ test("invalid explicit lifecycle statuses fail normalization before write", () =
   assert.deepEqual(readJson(file), []);
 });
 
+test("declared lifecycle statuses are validated independent of target and in current state", () => {
+  const file = path.join(tempDir(), "records.json");
+  const config = {
+    file,
+    keyField: "id",
+    lifecycleDimensions: [
+      { name: "evidence", field: "evidence", statusField: "evidence_status", targets: ["runtime"] },
+    ],
+  };
+
+  writeJson(file, []);
+  const adapter = createJsonCollectionAdapter(config);
+  const wrongTarget = runMutation(adapter, [
+    { operation: "add", record: { id: "a", evidence_status: "bogus" } },
+  ], { target: "survey", write: true });
+  assert.equal(wrongTarget.status, "FAIL");
+  assert.match(wrongTarget.errors[0], /evidence_status has invalid lifecycle status bogus/);
+  assert.deepEqual(readJson(file), []);
+
+  writeJson(file, [{ id: "existing", evidence_status: "bogus" }]);
+  const invalidCurrent = runMutation(createJsonCollectionAdapter(config), [], { target: "survey", write: true });
+  assert.equal(invalidCurrent.status, "FAIL");
+  assert.equal(invalidCurrent.validation_results[0].status, "FAIL");
+  assert.match(invalidCurrent.validation_results[0].errors[0], /evidence_status has invalid lifecycle status bogus/);
+});
+
 test("large batches load and stage each affected artifact once", () => {
   const file = path.join(tempDir(), "records.json");
   writeJson(file, []);
