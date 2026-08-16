@@ -231,3 +231,23 @@ test("好意思 closes the final in-scope functional top-2000 lexical gap", () =
   assert.deepEqual(new Set((analyses["好意思"] || []).map((row) => row.jyutping)), new Set(["hou2 ji3 si1", "hou2 ji3 si3"]));
   assert.ok((analyses["好意思"] || []).every((row) => row.pos === "adverb"));
 });
+
+
+test("independent pronunciation-quality batch preserves spoken defaults and supported variants", () => {
+  const analyses = buildLexicalAnalysisIndex(tokenEntries);
+  const readings = (surface) => new Set((analyses[surface] || []).map((row) => row.jyutping));
+
+  assert.equal(tokenLexicon["爸爸"].jyutping, "baa4 baa1", "爸爸: ordinary spoken default");
+  assert.deepEqual(readings("爸爸"), new Set(["baa4 baa1", "baa4 baa4", "baa1 baa1"]));
+  assert.ok((analyses["爸爸"] || []).some((row) => row.id.includes("father_written") && row.jyutping === "baa1 baa1"));
+
+  assert.equal(tokenLexicon["時間"].jyutping, "si4 gaan3");
+  assert.deepEqual(readings("時間"), new Set(["si4 gaan3", "si4 gaan1"]));
+
+  assert.equal(tokenLexicon["處理"].jyutping, "cyu5 lei5");
+  assert.deepEqual(readings("處理"), new Set(["cyu5 lei5", "cyu2 lei5"]));
+
+  assert.equal(tokenLexicon["嘛"].jyutping, "maa5", "嘛: existing runtime variant remains default");
+  assert.deepEqual(readings("嘛"), new Set(["maa5", "maa3"]));
+  assert.ok(!readings("嘛").has("maa4"), "嘛: lama-only maa4 is not promoted as the final-particle reading");
+});

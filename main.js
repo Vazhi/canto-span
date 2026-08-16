@@ -4885,7 +4885,7 @@ var require_cifu_r1001_1250_reviewed = __commonJS({
       "入邊": Object.freeze([alt(1069, "inside_bin6", "localizer", "inside", "jap6 bin6"), alt(1069, "inside_bin1", "localizer", "inside reading variant", "jap6 bin1")]),
       "覆": Object.freeze([alt(1100, "reply_fuk1", "verb", "reply / cover / overturn family", "fuk1")]),
       "廿": Object.freeze([alt(1106, "twenty_jaa6", "numeral", "twenty", "jaa6")]),
-      "處理": Object.freeze([alt(1123, "handle_cyu5lei5", "verb", "handle / process / deal with", "cyu5 lei5")]),
+      "處理": Object.freeze([alt(1123, "handle_cyu5lei5", "verb", "handle / process / deal with", "cyu5 lei5"), alt(1123, "handle_cyu2lei5", "verb", "handle / process / deal with; independently confirmed reading alternative", "cyu2 lei5")]),
       "新聞": Object.freeze([alt(1126, "news_man4", "noun", "news", "san1 man4"), alt(1126, "news_man2", "noun", "news reading variant", "san1 man2")]),
       "解": Object.freeze([alt(1128, "solve_gaai2", "verb", "solve / explain / untie", "gaai2"), alt(1128, "separate_haai6_family", "bound", "separate haai6 lexical reading family", "haai6", "separate_reading_family")]),
       "舖": Object.freeze([alt(1133, "shop_pou3", "noun", "shop / store", "pou3"), alt(1133, "shop_changed_tone_pou2", "noun", "shop / store changed-tone use", "pou2")]),
@@ -9078,7 +9078,7 @@ var require_people_and_address = __commonJS({
       ["你哋", { label: "who", jyutping: "nei5 dei6", syntax: "subject_or_topic", note: "you plural" }],
       ["佢哋", { label: "who", jyutping: "keoi5 dei6", syntax: "subject_or_topic", note: "they" }],
       ["媽媽", { label: "who", jyutping: "maa4 maa1", syntax: "person_np", note: "mother" }],
-      ["爸爸", { label: "who", jyutping: "baa1 baa1", syntax: "person_np", note: "father" }],
+      ["爸爸", { label: "who", jyutping: "baa4 baa1", syntax: "person_np", note: "father; ordinary colloquial Cantonese reading. baa1 baa1 remains a written-register alternative in reviewed lexical analyses." }],
       ["老師", { label: "who", jyutping: "lou5 si1", syntax: "person_np", classifier_classes: ["person"], note: "teacher" }],
       ["經理", { label: "who", jyutping: "ging1 lei5", syntax: "person_np title_np", note: "manager; reviewed CP021B heavy-theme boundary participant." }],
       ["朋友", { label: "who", jyutping: "pang4 jau5", syntax: "person_np", note: "friend" }],
@@ -9107,7 +9107,7 @@ var require_people_and_address = __commonJS({
       ["姐", { label: "who", jyutping: "ze2", syntax: "address_suffix_or_kinship", note: "Address suffix / elder-sister title element." }],
       ["明", { label: "who", jyutping: "ming4", syntax: "name_element", note: "Name element used in address-form diagnostics." }],
       ["哥", { label: "who", jyutping: "go1", syntax: "address_suffix_or_kinship", note: "Address suffix / elder-brother title element." }],
-      ["陳", { label: "who", jyutping: "can4", syntax: "surname_element", note: "Surname element used in address-form diagnostics." }],
+      ["陳", { label: "who", jyutping: "can4", syntax: "surname_element", note: "Surname element used in native-speech address-form diagnostics." }],
       ["生", { label: "who", jyutping: "saang1", syntax: "address_suffix", note: "Abbreviated address suffix from 先生 in names such as 陳生." }],
       ["先生", { label: "who", jyutping: "sin1 saang1", syntax: "person_title", note: "Mr. / teacher / gentleman; protected from fallback named-address overgeneration when standalone." }],
       ["家姐", { label: "who", jyutping: "gaa1 ze2", syntax: "kinship_term", note: "elder sister; protected from fallback named-address overgeneration." }],
@@ -12458,6 +12458,46 @@ var require_explicit_analyses = __commonJS({
           syntax: "rhetorical_shame_or_nerve_adverb",
           senses: Object.freeze([{ gloss: "have the nerve / have the cheek; attested si3 reading variant" }]),
           provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        })
+      ]),
+      "時間": Object.freeze([
+        Object.freeze({
+          id: "lex:時間:default",
+          label: "when",
+          pos: "noun",
+          jyutping: "si4 gaan3",
+          syntax: "time_np",
+          senses: Object.freeze([{ gloss: "time / duration" }]),
+          provenance: Object.freeze({ kind: "existing_runtime_default_preserved", source: "token lexicon default before independent pronunciation cross-check" })
+        }),
+        Object.freeze({
+          id: "lex:時間:time_noun_si4_gaan1",
+          label: "when",
+          pos: "noun",
+          jyutping: "si4 gaan1",
+          syntax: "time_np",
+          senses: Object.freeze([{ gloss: "time / duration; independently attested reading variant" }]),
+          provenance: Object.freeze({ kind: "external_cantonese_pronunciation_analysis", source: "Words.hk 時間" })
+        })
+      ]),
+      "嘛": Object.freeze([
+        Object.freeze({
+          id: "lex:嘛:default",
+          label: "particle",
+          pos: "particle",
+          jyutping: "maa5",
+          syntax: "sentence_final_particle",
+          senses: Object.freeze([{ gloss: "modal/final particle; existing runtime variant reading" }]),
+          provenance: Object.freeze({ kind: "existing_runtime_default_preserved", source: "rank 1-250 reviewed lexical promotion" })
+        }),
+        Object.freeze({
+          id: "lex:嘛:standard_particle_maa3",
+          label: "particle",
+          pos: "particle",
+          jyutping: "maa3",
+          syntax: "sentence_final_particle",
+          senses: Object.freeze([{ gloss: "final/modal particle; standard Cantonese reading" }]),
+          provenance: Object.freeze({ kind: "external_cantonese_pronunciation_analysis", source: "CantoDict 嘛" })
         })
       ]),
       "咋": Object.freeze([

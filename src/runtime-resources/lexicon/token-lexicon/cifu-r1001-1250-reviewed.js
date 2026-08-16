@@ -212,7 +212,7 @@ const READING_SPECS = Object.freeze({
   "入邊": Object.freeze([alt(1069, "inside_bin6", "localizer", "inside", "jap6 bin6"), alt(1069, "inside_bin1", "localizer", "inside reading variant", "jap6 bin1")]),
   "覆": Object.freeze([alt(1100, "reply_fuk1", "verb", "reply / cover / overturn family", "fuk1")]),
   "廿": Object.freeze([alt(1106, "twenty_jaa6", "numeral", "twenty", "jaa6")]),
-  "處理": Object.freeze([alt(1123, "handle_cyu5lei5", "verb", "handle / process / deal with", "cyu5 lei5")]),
+  "處理": Object.freeze([alt(1123, "handle_cyu5lei5", "verb", "handle / process / deal with", "cyu5 lei5"), alt(1123, "handle_cyu2lei5", "verb", "handle / process / deal with; independently confirmed reading alternative", "cyu2 lei5")]),
   "新聞": Object.freeze([alt(1126, "news_man4", "noun", "news", "san1 man4"), alt(1126, "news_man2", "noun", "news reading variant", "san1 man2")]),
   "解": Object.freeze([alt(1128, "solve_gaai2", "verb", "solve / explain / untie", "gaai2"), alt(1128, "separate_haai6_family", "bound", "separate haai6 lexical reading family", "haai6", "separate_reading_family")]),
   "舖": Object.freeze([alt(1133, "shop_pou3", "noun", "shop / store", "pou3"), alt(1133, "shop_changed_tone_pou2", "noun", "shop / store changed-tone use", "pou2")]),

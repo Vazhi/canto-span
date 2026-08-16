@@ -153,8 +153,9 @@ test("implementation-critical reading splits and supersessions survive", () => {
   assert.ok(readings("零").includes("leng2"));
   assert.ok(readings("零").includes("leng1"));
 
-  assert.ok(readings("處理").includes("cyu5 lei5"));
-  assert.ok(!readings("處理").includes("cyu2 lei5"), "處理: lower-confidence source reading is not exposed as co-equal reviewed runtime analysis");
+  assert.equal(tokenLexicon["處理"].jyutping, "cyu5 lei5", "處理: established runtime default remains cyu5 lei5");
+  assert.deepEqual(new Set(readings("處理")), new Set(["cyu5 lei5", "cyu2 lei5"]));
+  assert.ok(ids("處理").includes("lex:處理:r1123:handle_cyu2lei5"), "處理: independently confirmed cyu2 lei5 alternative survives");
 
   assert.ok(readings("拿").includes("naa4"));
   assert.ok(readings("拿").includes("laa4"));

@@ -495,6 +495,46 @@ const vernacularSourceAnalyses = Object.freeze({
       provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
     }),
   ]),
+  "時間": Object.freeze([
+    Object.freeze({
+      id: "lex:時間:default",
+      label: "when",
+      pos: "noun",
+      jyutping: "si4 gaan3",
+      syntax: "time_np",
+      senses: Object.freeze([{ gloss: "time / duration" }]),
+      provenance: Object.freeze({ kind: "existing_runtime_default_preserved", source: "token lexicon default before independent pronunciation cross-check" }),
+    }),
+    Object.freeze({
+      id: "lex:時間:time_noun_si4_gaan1",
+      label: "when",
+      pos: "noun",
+      jyutping: "si4 gaan1",
+      syntax: "time_np",
+      senses: Object.freeze([{ gloss: "time / duration; independently attested reading variant" }]),
+      provenance: Object.freeze({ kind: "external_cantonese_pronunciation_analysis", source: "Words.hk 時間" }),
+    }),
+  ]),
+  "嘛": Object.freeze([
+    Object.freeze({
+      id: "lex:嘛:default",
+      label: "particle",
+      pos: "particle",
+      jyutping: "maa5",
+      syntax: "sentence_final_particle",
+      senses: Object.freeze([{ gloss: "modal/final particle; existing runtime variant reading" }]),
+      provenance: Object.freeze({ kind: "existing_runtime_default_preserved", source: "rank 1-250 reviewed lexical promotion" }),
+    }),
+    Object.freeze({
+      id: "lex:嘛:standard_particle_maa3",
+      label: "particle",
+      pos: "particle",
+      jyutping: "maa3",
+      syntax: "sentence_final_particle",
+      senses: Object.freeze([{ gloss: "final/modal particle; standard Cantonese reading" }]),
+      provenance: Object.freeze({ kind: "external_cantonese_pronunciation_analysis", source: "CantoDict 嘛" }),
+    }),
+  ]),
   "咋": Object.freeze([
     Object.freeze({ id: "lex:咋:default", label: "particle", pos: "particle", jyutping: "zaa3", syntax: "sentence_final_particle restrictive_focus_particle exhaustive_limit_particle", senses: Object.freeze([{ gloss: "only / that is all" }]), provenance: Object.freeze({ kind: "existing_runtime_default_preserved", source: "token lexicon default before bundled-reading supplement" }) }),
     Object.freeze({
