@@ -25,11 +25,8 @@ text = text.replace(
 // discovery-source values do not auto-promote when this file is edited.''')
 require('const DISCOVERY_READINGS = Object.freeze({' in text, "discovery map anchor missing")
 text = text.replace('const DISCOVERY_READINGS = Object.freeze({', 'const RIME_ACCEPTED_READINGS = Object.freeze({', 1)
-# Normalize the two candidate transcription mismatches that Rime resolved.
 text = text.replace('  "傷": "seung1",', '  "傷": "soeng1",', 1)
 text = text.replace('  "嫁": "ga3",', '  "嫁": "gaa3",', 1)
-# Remove rows that are not dictionary-character matches. 爸 stays candidate-only;
-# the other four are independently reviewed orthographic substitutions.
 for surface in ["既", "爸", "广", "哂", "跙"]:
     text, n = re.subn(rf'^  "{re.escape(surface)}": .*?\n', '', text, count=1, flags=re.M)
     require(n == 1, f"expected authority-map row for {surface}")
@@ -42,35 +39,17 @@ require(n == 1, "dynamic accepted-reading derivation missing")
 text = text.replace('  DISCOVERY_READINGS,\n', '')
 write(rel, text)
 
-# 2. Neutral fallback identity is structural state, not prose in a note. Rewriting
-# discovery notes must never disable reviewed promotions. The first two reviewed
-# bands share this legacy helper; later bands already use explicit authority sets.
-old_fallback = '''function isNeutralFrequencyFallback(entry) {
-  return Boolean(
-    entry
-      && entry.label === "lex"
-      && entry.pos === "lexical_item"
-      && entry.syntax === "lexical_item"
-      && typeof entry.note === "string"
-      && entry.note.includes("Exact surface retained as neutral lexical coverage")
-  );
-}'''
-new_fallback = '''function isNeutralFrequencyFallback(entry) {
-  return Boolean(
-    entry
-      && entry.label === "lex"
-      && entry.pos === "lexical_item"
-      && entry.syntax === "lexical_item"
-  );
-}'''
+# 2. Preserve human-readable parser state. Neutral fallback identity is intentionally
+# encoded by the readable note marker together with the neutral lexical fields; note
+# cleanup must retain that marker so review promotion and tokenization remain stable.
 for rel in [
+    "src/parser/tokenization/lexical-selection.js",
+    "src/runtime-resources/lexicon/lexical-ingestion-registry.js",
     "src/runtime-resources/lexicon/token-lexicon/cifu-r1-250-reviewed.js",
     "src/runtime-resources/lexicon/token-lexicon/cifu-r251-500-reviewed.js",
 ]:
     text = read(rel)
-    require(old_fallback in text, f"neutral fallback detector anchor missing in {rel}")
-    text = text.replace(old_fallback, new_fallback, 1)
-    write(rel, text)
+    require('Exact surface retained as neutral lexical coverage' in text, f"human-readable neutral-state marker missing in {rel}")
 
 # 3. Remove candidate pronunciation comparison from the project-owned common-core
 # priority table while preserving all rows/rank/corpus evidence.
@@ -100,16 +79,20 @@ data['limitations'] = [
 data['sources']['cifu_secondary']['role'] = "secondary rank/frequency corroboration only; not lexical, pronunciation, grammar, or parser authority"
 write(rel, json.dumps(data, ensure_ascii=False, indent=2, sort_keys=True) + '\n')
 
-# 5. Neutralize legacy fallback notes. Preserve surface, default fields and readings
-# already adjudicated by the reviewed-band stack; remove imported gloss/status/source-
-# reading narrative from learner/runtime notes.
+# 5. Remove imported gloss/status/source-reading narrative from legacy fallback notes
+# while retaining the intentional human-readable parser-state marker verbatim.
 rel = "src/runtime-resources/lexicon/token-lexicon/frequency-gap-fill-r7.js"
 text = read(rel)
 count = 0
 lines = []
+replacement_note = (
+    'note: "Exact surface retained as neutral lexical coverage. '
+    'Source-derived glosses/readings are not runtime authority; lexical semantics, '
+    'pronunciation authority, and grammar are governed by reviewed runtime sources."'
+)
 for line in text.splitlines(True):
     if 'Exact surface retained as neutral lexical coverage' in line and 'note: "' in line:
-        line, n = re.subn(r'note: ".*?"(?= \}\],?$)', 'note: "Neutral exact-surface coverage from legacy frequency discovery; lexical semantics, pronunciation authority, and grammar are governed by reviewed runtime sources."', line)
+        line, n = re.subn(r'note: ".*?"(?= \}\],?$)', replacement_note, line)
         count += n
     lines.append(line)
 require(count > 0, "no legacy fallback notes were neutralized")
@@ -129,4 +112,4 @@ for old, new in renames.items():
     text = text.replace(old, new, 1)
 write(rel, text)
 
-print(f"lexical authority data cleanup applied; neutralized {count} fallback notes")
+print(f"lexical authority data cleanup applied; standardized {count} human-readable neutral fallback notes")
