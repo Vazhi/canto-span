@@ -291,4 +291,16 @@ module.exports = [
     syntax: "perspective_topic_frame_marker",
     note: "in terms of / regarding / ... speaking; dedicated Cantonese expression marking topic, aspect, perspective, or manner. 粵典 attests both lai4 gong2 and lei4 gong2.",
   }],
+  ["呢道", {
+    label: "where",
+    jyutping: "ni1 dou6",
+    syntax: "place",
+    note: "Orthographic variant of 呢度 'here'; Cantonese locative 道 dou6 is independently attested as a writing variant of 度 dou6.",
+  }],
+  ["嗰道", {
+    label: "where",
+    jyutping: "go2 dou6",
+    syntax: "place",
+    note: "Orthographic variant of 嗰度 'there'; 粵典 explicitly lists 嗰度 / 嗰道 with the same go2 dou6 reading and locative-pronoun function.",
+  }],
 ];

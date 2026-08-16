@@ -208,3 +208,15 @@ test("嚟講 preserves its dedicated perspective expression and both attested re
   assert.deepEqual(new Set((analyses["嚟講"] || []).map((row) => row.jyutping)), new Set(["lai4 gong2", "lei4 gong2"]));
   assert.ok((analyses["嚟講"] || []).every((row) => row.pos === "function"));
 });
+
+
+test("locative 道 spellings inherit the canonical 度 analyses", () => {
+  for (const [variant, canonical] of [["呢道", "呢度"], ["嗰道", "嗰度"]]) {
+    assert.ok(tokenLexicon[variant], `${variant}: spelling variant is covered`);
+    assert.ok(tokenLexicon[canonical], `${canonical}: canonical spelling remains covered`);
+    assert.equal(tokenLexicon[variant].jyutping, tokenLexicon[canonical].jyutping, `${variant}: reading matches ${canonical}`);
+    assert.equal(tokenLexicon[variant].label, tokenLexicon[canonical].label, `${variant}: learner role matches ${canonical}`);
+    assert.equal(tokenLexicon[variant].syntax, tokenLexicon[canonical].syntax, `${variant}: locative syntax matches ${canonical}`);
+    assert.match(tokenLexicon[variant].note, /variant/i);
+  }
+});
