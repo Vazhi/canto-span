@@ -10543,6 +10543,13 @@ var require_lexical_coverage_additions = __commonJS({
         jyutping: "go2 dou6",
         syntax: "place",
         note: "Orthographic variant of 嗰度 'there'; 粵典 explicitly lists 嗰度 / 嗰道 with the same go2 dou6 reading and locative-pronoun function."
+      }],
+      ["好意思", {
+        label: "how",
+        pos: "adverb",
+        jyutping: "hou2 ji3 si1",
+        syntax: "rhetorical_shame_or_nerve_adverb",
+        note: "have the nerve / have the cheek; dedicated Cantonese rhetorical expression independently attested with hou2 ji3 si1 and hou2 ji3 si3 readings."
       }]
     ];
   }
@@ -12430,6 +12437,26 @@ var require_explicit_analyses = __commonJS({
           jyutping: "lei4 gong2",
           syntax: "perspective_topic_frame_marker",
           senses: Object.freeze([{ gloss: "in terms of / regarding / ... speaking; attested lei4 pronunciation variant" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        })
+      ]),
+      "好意思": Object.freeze([
+        Object.freeze({
+          id: "lex:好意思:nerve_adverb_si1",
+          label: "how",
+          pos: "adverb",
+          jyutping: "hou2 ji3 si1",
+          syntax: "rhetorical_shame_or_nerve_adverb",
+          senses: Object.freeze([{ gloss: "have the nerve / have the cheek; feel no shame in doing something" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        }),
+        Object.freeze({
+          id: "lex:好意思:nerve_adverb_si3",
+          label: "how",
+          pos: "adverb",
+          jyutping: "hou2 ji3 si3",
+          syntax: "rhetorical_shame_or_nerve_adverb",
+          senses: Object.freeze([{ gloss: "have the nerve / have the cheek; attested si3 reading variant" }]),
           provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
         })
       ]),

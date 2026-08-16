@@ -303,4 +303,11 @@ module.exports = [
     syntax: "place",
     note: "Orthographic variant of 嗰度 'there'; 粵典 explicitly lists 嗰度 / 嗰道 with the same go2 dou6 reading and locative-pronoun function.",
   }],
+  ["好意思", {
+    label: "how",
+    pos: "adverb",
+    jyutping: "hou2 ji3 si1",
+    syntax: "rhetorical_shame_or_nerve_adverb",
+    note: "have the nerve / have the cheek; dedicated Cantonese rhetorical expression independently attested with hou2 ji3 si1 and hou2 ji3 si3 readings.",
+  }],
 ];

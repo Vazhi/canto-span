@@ -220,3 +220,14 @@ test("locative 道 spellings inherit the canonical 度 analyses", () => {
     assert.match(tokenLexicon[variant].note, /variant/i);
   }
 });
+
+
+test("好意思 closes the final in-scope functional top-2000 lexical gap", () => {
+  const analyses = buildLexicalAnalysisIndex(tokenEntries);
+  assert.ok(tokenLexicon["好意思"], "好意思: exact lexicalized rhetorical expression exists");
+  assert.equal(tokenLexicon["好意思"].jyutping, "hou2 ji3 si1");
+  assert.equal(tokenLexicon["好意思"].pos, "adverb");
+  assert.equal(tokenLexicon["好意思"].syntax, "rhetorical_shame_or_nerve_adverb");
+  assert.deepEqual(new Set((analyses["好意思"] || []).map((row) => row.jyutping)), new Set(["hou2 ji3 si1", "hou2 ji3 si3"]));
+  assert.ok((analyses["好意思"] || []).every((row) => row.pos === "adverb"));
+});

@@ -475,6 +475,26 @@ const vernacularSourceAnalyses = Object.freeze({
       provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
     }),
   ]),
+  "好意思": Object.freeze([
+    Object.freeze({
+      id: "lex:好意思:nerve_adverb_si1",
+      label: "how",
+      pos: "adverb",
+      jyutping: "hou2 ji3 si1",
+      syntax: "rhetorical_shame_or_nerve_adverb",
+      senses: Object.freeze([{ gloss: "have the nerve / have the cheek; feel no shame in doing something" }]),
+      provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
+    }),
+    Object.freeze({
+      id: "lex:好意思:nerve_adverb_si3",
+      label: "how",
+      pos: "adverb",
+      jyutping: "hou2 ji3 si3",
+      syntax: "rhetorical_shame_or_nerve_adverb",
+      senses: Object.freeze([{ gloss: "have the nerve / have the cheek; attested si3 reading variant" }]),
+      provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
+    }),
+  ]),
   "咋": Object.freeze([
     Object.freeze({ id: "lex:咋:default", label: "particle", pos: "particle", jyutping: "zaa3", syntax: "sentence_final_particle restrictive_focus_particle exhaustive_limit_particle", senses: Object.freeze([{ gloss: "only / that is all" }]), provenance: Object.freeze({ kind: "existing_runtime_default_preserved", source: "token lexicon default before bundled-reading supplement" }) }),
     Object.freeze({
