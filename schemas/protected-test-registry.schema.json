@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://canto-span.local/schemas/protected-test-registry.schema.json",
+  "title": "Canto Span protected doctrine-test registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "tests"],
+  "properties": {
+    "schema": {
+      "const": "canto-span-protected-tests-v1"
+    },
+    "tests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256",
+          "reason",
+          "scope",
+          "protection_class",
+          "expected_change_frequency",
+          "normal_growth_requires_edit",
+          "review_required_on_change"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^tests/.+\\.test\\.(js|py)$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "scope": {
+            "enum": ["runtime", "research", "governance", "release"]
+          },
+          "protection_class": {
+            "const": "constitutional_doctrine"
+          },
+          "expected_change_frequency": {
+            "const": "rare-to-never"
+          },
+          "normal_growth_requires_edit": {
+            "const": false
+          },
+          "review_required_on_change": {
+            "const": true
+          }
+        }
+      }
+    }
+  }
+}

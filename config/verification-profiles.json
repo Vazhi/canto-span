@@ -50,7 +50,13 @@
         "id": "documentation",
         "command": ["node", "tools/verify-documentation-consistency.js"],
         "reason": "Prevent broken current-document links and competing current authority.",
-        "run_when": "Current documentation, authority settings, or canonical state changes."
+        "run_when": "Current documentation, authority settings, or canonical state change."
+      },
+      {
+        "id": "protected-test-sha",
+        "command": ["node", "tools/verify-protected-tests.js"],
+        "reason": "Fail closed when a registered constitutional doctrine test drifts from its explicitly reviewed SHA-256.",
+        "run_when": "A protected doctrine test or the protected-test registry changes; core verification also confirms the reviewed hashes remain intact."
       }
     ],
     "research": [

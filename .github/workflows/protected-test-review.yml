@@ -1,0 +1,222 @@
+name: Protected doctrine-test review
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review, edited]
+  pull_request_review:
+    types: [submitted, edited, dismissed]
+
+permissions:
+  contents: read
+  pull-requests: read
+  issues: read
+
+jobs:
+  protected-test-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout trusted base
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          persist-credentials: false
+
+      - name: Evaluate protected doctrine-test changes from trusted base code
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const {
+              sha256,
+              validateRegistry,
+            } = require("./tools/verify-protected-tests");
+            const {
+              REGISTRY_PATH,
+              analyzeProtectedChanges,
+              evaluateReviewGate,
+              evaluateUserOverride,
+              validateReviewApiCompleteness,
+            } = require("./tools/verify-protected-test-review");
+
+            const pr = context.payload.pull_request;
+            if (!pr) {
+              core.setFailed("Protected-test review requires a pull_request payload.");
+              return;
+            }
+
+            function splitRepo(fullName) {
+              const [owner, repo] = fullName.split("/");
+              return { owner, repo };
+            }
+
+            const baseRepo = splitRepo(pr.base.repo.full_name);
+            const headRepo = splitRepo(pr.head.repo.full_name);
+
+            const prDetails = await github.rest.pulls.get({
+              ...baseRepo,
+              pull_number: pr.number,
+            });
+            const completenessFailures = validateReviewApiCompleteness({
+              commitCount: prDetails.data.commits,
+              changedFileCount: prDetails.data.changed_files,
+            });
+            if (completenessFailures.length) {
+              core.setFailed(
+                `Protected-review PR enumeration cannot be proven complete: ${JSON.stringify(completenessFailures)}`
+              );
+              return;
+            }
+
+            async function getBytes(repoRef, filePath, ref, required = true) {
+              try {
+                const response = await github.rest.repos.getContent({
+                  ...repoRef,
+                  path: filePath,
+                  ref,
+                });
+                if (Array.isArray(response.data) || response.data.type !== "file" || !response.data.content) {
+                  throw new Error(`${filePath} did not resolve to a file`);
+                }
+                return Buffer.from(response.data.content.replace(/\n/g, ""), "base64");
+              } catch (error) {
+                if (!required && error.status === 404) return null;
+                throw error;
+              }
+            }
+
+            async function getRegistry(repoRef, ref, side) {
+              const bytes = await getBytes(repoRef, REGISTRY_PATH, ref, true);
+              let parsed;
+              try {
+                parsed = JSON.parse(bytes.toString("utf8"));
+              } catch (error) {
+                throw new Error(`${side} protected-test registry is not valid JSON: ${error.message}`);
+              }
+              const failures = validateRegistry(parsed);
+              if (failures.length) {
+                throw new Error(`${side} protected-test registry is invalid: ${JSON.stringify(failures)}`);
+              }
+              return parsed;
+            }
+
+            let baseRegistry;
+            let headRegistry;
+            try {
+              baseRegistry = await getRegistry(baseRepo, pr.base.sha, "base");
+              headRegistry = await getRegistry(headRepo, pr.head.sha, "head");
+            } catch (error) {
+              core.setFailed(error.message);
+              return;
+            }
+
+            const headHashFailures = [];
+            for (const entry of headRegistry.tests) {
+              const bytes = await getBytes(headRepo, entry.path, pr.head.sha, false);
+              if (!bytes) {
+                headHashFailures.push({ path: entry.path, code: "protected_test_missing" });
+                continue;
+              }
+              const actual = sha256(bytes);
+              if (actual !== entry.sha256) {
+                headHashFailures.push({
+                  path: entry.path,
+                  code: "PROTECTED_TEST_REVIEW_REQUIRED",
+                  expected_sha256: entry.sha256,
+                  actual_sha256: actual,
+                });
+              }
+            }
+            if (headHashFailures.length) {
+              core.setFailed(`Head protected-test SHA verification failed: ${JSON.stringify(headHashFailures)}`);
+              return;
+            }
+
+            const files = await github.paginate(github.rest.pulls.listFiles, {
+              ...baseRepo,
+              pull_number: pr.number,
+              per_page: 100,
+            });
+            const analysis = analyzeProtectedChanges({ baseRegistry, headRegistry, files });
+            if (analysis.status !== "PASS") {
+              core.setFailed(`Protected-change analysis failed closed: ${JSON.stringify(analysis.failures)}`);
+              return;
+            }
+            if (!analysis.required_paths.length) {
+              core.notice("No protected doctrine-test or protected-test control-plane change detected.");
+              return;
+            }
+
+            const prCommits = await github.paginate(github.rest.pulls.listCommits, {
+              ...baseRepo,
+              pull_number: pr.number,
+              per_page: 100,
+            });
+            const commits = [];
+            for (const commit of prCommits) {
+              const commitFiles = [];
+              for (let page = 1; page <= 30; page += 1) {
+                const response = await github.request("GET /repos/{owner}/{repo}/commits/{ref}", {
+                  ...headRepo,
+                  ref: commit.sha,
+                  per_page: 100,
+                  page,
+                });
+                const batch = response.data.files || [];
+                commitFiles.push(...batch);
+                if (batch.length < 100) break;
+                if (page === 30) {
+                  core.setFailed(`Commit ${commit.sha} exceeds the fail-closed protected-review file pagination limit.`);
+                  return;
+                }
+              }
+              commits.push({ sha: commit.sha, files: commitFiles });
+            }
+
+            const reviews = await github.paginate(github.rest.pulls.listReviews, {
+              ...baseRepo,
+              pull_number: pr.number,
+              per_page: 100,
+            });
+            const decision = evaluateReviewGate({
+              requiredPaths: analysis.required_paths,
+              registryChanged: analysis.registry_changed,
+              commits,
+              reviews,
+            });
+            if (decision.status !== "PASS") {
+              const template = {
+                schema: "canto-span-protected-test-review-v1",
+                decision: "approve",
+                basis: "doctrine_review",
+                paths: analysis.required_paths,
+                registry_changed: analysis.registry_changed,
+                reason: "Explain why the protected doctrine/control-plane change is justified independently of making tests pass.",
+              };
+              core.setFailed(
+                `${decision.code}: latest protected change requires a fresh structured PR review. `
+                + `Required paths: ${JSON.stringify(analysis.required_paths)}. `
+                + `Review block: \`\`\`protected-test-review\n${JSON.stringify(template)}\n\`\`\``
+              );
+              return;
+            }
+
+            if (decision.review && decision.review.basis === "user_override") {
+              if (!analysis.affected_protected_paths.length) {
+                core.setFailed("User override cannot authorize a control-plane-only change; use doctrine_review.");
+                return;
+              }
+              const issue = await github.rest.issues.get({
+                ...baseRepo,
+                issue_number: decision.review.authorization_issue,
+              });
+              const override = evaluateUserOverride(issue.data.body || "", analysis.affected_protected_paths);
+              if (override.status !== "PASS") {
+                core.setFailed(
+                  `${override.code}: issue #${decision.review.authorization_issue} must contain an explicit exact-path protected-test-override record.`
+                );
+                return;
+              }
+            }
+
+            core.notice(
+              `Protected-test review accepted at ${decision.review.commit_id} for ${analysis.required_paths.join(", ")}.`
+            );

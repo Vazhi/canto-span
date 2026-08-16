@@ -1,0 +1,35 @@
+{
+  "schema": "canto-span-protected-tests-v1",
+  "tests": [
+    {
+      "path": "tests/tooling/runtime/regression-ratchet-verifier.test.js",
+      "sha256": "40000b8210240eae98e34a7e16cc73ecd44b708bc916f2494313f64b5914b799",
+      "reason": "Enforces the repository-wide monotonic regression-debt doctrine: stable failure identities may not expand or be hidden by changing the executable test contract.",
+      "scope": "runtime",
+      "protection_class": "constitutional_doctrine",
+      "expected_change_frequency": "rare-to-never",
+      "normal_growth_requires_edit": false,
+      "review_required_on_change": true
+    },
+    {
+      "path": "tests/tooling/verification/protected-tests.test.js",
+      "sha256": "d79c530711315791893c5d93fa9f5c318d0ac3ac2201b1a3d37228b27c76f249",
+      "reason": "Enforces the protected-test constitutional doctrine itself: no SHA laundering, no stale review including base-retarget freshness, complete protected control-plane coverage, fail-closed GitHub PR enumeration limits, viable single-author review semantics, and no inferred user override.",
+      "scope": "governance",
+      "protection_class": "constitutional_doctrine",
+      "expected_change_frequency": "rare-to-never",
+      "normal_growth_requires_edit": false,
+      "review_required_on_change": true
+    },
+    {
+      "path": "tests/tooling/verification/verification-profiles.test.js",
+      "sha256": "9005a8c0e1fb4b7a86131bbab7c3a338466f2c979ba2c8b7059d71d07fc723f6",
+      "reason": "Enforces fail-closed canonical verification orchestration so registered profiles cannot be silently omitted, duplicated, renamed, or partially executed.",
+      "scope": "governance",
+      "protection_class": "constitutional_doctrine",
+      "expected_change_frequency": "rare-to-never",
+      "normal_growth_requires_edit": false,
+      "review_required_on_change": true
+    }
+  ]
+}
