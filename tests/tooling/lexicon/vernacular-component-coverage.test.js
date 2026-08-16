@@ -198,3 +198,13 @@ test("verified multi-character lexical batch preserves dictionary-level lexicali
   assert.deepEqual(new Set((analyses["幫手"] || []).map((row) => row.pos)), new Set(["verb", "noun"]));
   assert.deepEqual(new Set((analyses["幫手"] || []).map((row) => row.jyutping)), new Set(["bong1 sau2"]));
 });
+
+
+test("嚟講 preserves its dedicated perspective expression and both attested readings", () => {
+  const analyses = buildLexicalAnalysisIndex(tokenEntries);
+  assert.ok(tokenLexicon["嚟講"], "嚟講: exact lexicalized perspective expression exists");
+  assert.equal(tokenLexicon["嚟講"].jyutping, "lai4 gong2");
+  assert.equal(tokenLexicon["嚟講"].syntax, "perspective_topic_frame_marker");
+  assert.deepEqual(new Set((analyses["嚟講"] || []).map((row) => row.jyutping)), new Set(["lai4 gong2", "lei4 gong2"]));
+  assert.ok((analyses["嚟講"] || []).every((row) => row.pos === "function"));
+});

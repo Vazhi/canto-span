@@ -455,6 +455,26 @@ const vernacularSourceAnalyses = Object.freeze({
       provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
     }),
   ]),
+  "嚟講": Object.freeze([
+    Object.freeze({
+      id: "lex:嚟講:perspective_lai4_gong2",
+      label: "func",
+      pos: "function",
+      jyutping: "lai4 gong2",
+      syntax: "perspective_topic_frame_marker",
+      senses: Object.freeze([{ gloss: "in terms of / regarding / ... speaking; marks topic, aspect, perspective, or manner" }]),
+      provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
+    }),
+    Object.freeze({
+      id: "lex:嚟講:perspective_lei4_gong2",
+      label: "func",
+      pos: "function",
+      jyutping: "lei4 gong2",
+      syntax: "perspective_topic_frame_marker",
+      senses: Object.freeze([{ gloss: "in terms of / regarding / ... speaking; attested lei4 pronunciation variant" }]),
+      provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE }),
+    }),
+  ]),
   "咋": Object.freeze([
     Object.freeze({ id: "lex:咋:default", label: "particle", pos: "particle", jyutping: "zaa3", syntax: "sentence_final_particle restrictive_focus_particle exhaustive_limit_particle", senses: Object.freeze([{ gloss: "only / that is all" }]), provenance: Object.freeze({ kind: "existing_runtime_default_preserved", source: "token lexicon default before bundled-reading supplement" }) }),
     Object.freeze({

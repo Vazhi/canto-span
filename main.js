@@ -10524,6 +10524,13 @@ var require_lexical_coverage_additions = __commonJS({
         jyutping: "leoi5 min6",
         syntax: "place_or_goal spatial_localizer interior_location",
         note: "inside / interior; attested in Cantonese examples in 粵典, with 裏 identified as the traditional variant of 裡."
+      }],
+      ["嚟講", {
+        label: "func",
+        pos: "function",
+        jyutping: "lai4 gong2",
+        syntax: "perspective_topic_frame_marker",
+        note: "in terms of / regarding / ... speaking; dedicated Cantonese expression marking topic, aspect, perspective, or manner. 粵典 attests both lai4 gong2 and lei4 gong2."
       }]
     ];
   }
@@ -12391,6 +12398,26 @@ var require_explicit_analyses = __commonJS({
           jyutping: "bong1 sau2",
           syntax: "object_np helper_noun person_or_object_np",
           senses: Object.freeze([{ gloss: "helper; a person or thing that makes work easier" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        })
+      ]),
+      "嚟講": Object.freeze([
+        Object.freeze({
+          id: "lex:嚟講:perspective_lai4_gong2",
+          label: "func",
+          pos: "function",
+          jyutping: "lai4 gong2",
+          syntax: "perspective_topic_frame_marker",
+          senses: Object.freeze([{ gloss: "in terms of / regarding / ... speaking; marks topic, aspect, perspective, or manner" }]),
+          provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
+        }),
+        Object.freeze({
+          id: "lex:嚟講:perspective_lei4_gong2",
+          label: "func",
+          pos: "function",
+          jyutping: "lei4 gong2",
+          syntax: "perspective_topic_frame_marker",
+          senses: Object.freeze([{ gloss: "in terms of / regarding / ... speaking; attested lei4 pronunciation variant" }]),
           provenance: Object.freeze({ kind: "external_vernacular_lexical_analysis", source: VERNACULAR_SOURCE })
         })
       ]),
