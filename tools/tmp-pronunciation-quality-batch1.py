@@ -2,6 +2,7 @@
 """One-shot helper for independently verified pronunciation-quality batch 1."""
 from pathlib import Path
 
+# Triggered after the colloquial 爸爸 default was independently corrected in source.
 PEOPLE = Path("src/runtime-resources/lexicon/token-lexicon/people-and-address.js")
 CIFU = Path("src/runtime-resources/lexicon/token-lexicon/cifu-r1001-1250-reviewed.js")
 EXPLICIT = Path("src/runtime-resources/lexicon/token-lexicon/explicit-analyses.js")
