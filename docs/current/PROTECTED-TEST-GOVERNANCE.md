@@ -39,7 +39,7 @@ The bootstrap registry is deliberately small:
 
 - `tests/tooling/runtime/regression-ratchet-verifier.test.js` — protects monotonic regression-debt semantics and prevents stable failures from being hidden through test-contract drift;
 - `tests/tooling/verification/verification-profiles.test.js` — protects fail-closed canonical verification orchestration;
-- `tests/tooling/verification/protected-tests.test.js` — protects this governance mechanism's anti-laundering, review-freshness, exact-path, and explicit-user-override doctrine.
+- `tests/tooling/verification/protected-tests.test.js` — protects this governance mechanism's anti-laundering, review-freshness, exact-path, API-completeness, and explicit-user-override doctrine.
 
 Parser architecture, native-panel lifecycle, lexical coverage, construction inventories, generated-runtime behavior, and other important but evolving suites are intentionally **not** in the protected SHA registry.
 
@@ -61,13 +61,16 @@ A stored hash alone is insufficient because a branch could change both a protect
 2. verifies every head registry SHA against the head file bytes;
 3. uses the union of base/head protected paths so removing or renaming protection cannot hide a change;
 4. treats registry entry addition/removal/change as a protected change;
-5. requires review for changes to the protected-test control plane itself, including the registry, schema, SHA verifier, review analyzer, doctrine test, trusted review workflow, core verification-profile registration, and full-diagnostic enforcement workflow;
+5. requires review for every path in the canonical `CONTROL_PLANE_PATHS` set, including the registry, schema, SHA verifier, review analyzer, doctrine test, trusted review workflow, core verification-profile registration, and full-diagnostic enforcement workflow;
 6. finds the latest PR commit touching the affected protected/control-plane paths;
 7. requires a structured review attached to a commit at or after that latest protected change;
 8. invalidates an earlier review when a later protected change occurs;
-9. reruns when the pull request is edited so a base-branch retarget cannot leave a stale trusted-base decision in place.
+9. reruns when the pull request is edited so a base-branch retarget cannot leave a stale trusted-base decision in place;
+10. fails closed before PR enumeration when GitHub reports more than 250 commits or more than 3,000 changed files, or when those counts are unavailable or invalid, because the REST endpoints used by this gate cannot prove complete enumeration beyond those limits.
 
 A later unrelated commit does not invalidate a review that already contains the latest protected change.
+
+The enumeration limits are safety boundaries, not project-size targets. A PR that exceeds either limit must be reduced/split or the gate must first move to a mechanism that can prove complete protected-path and commit enumeration. The gate must never treat a truncated API response as complete.
 
 ## Single-author/shared-account review model
 
