@@ -6,6 +6,8 @@ const { validateRegistry } = require("./verify-protected-tests");
 const REGISTRY_PATH = "config/protected-tests.json";
 const REVIEW_SCHEMA = "canto-span-protected-test-review-v1";
 const OVERRIDE_SCHEMA = "canto-span-protected-test-override-v1";
+const PR_COMMIT_API_LIMIT = 250;
+const PR_FILE_API_LIMIT = 3000;
 const CONTROL_PLANE_PATHS = Object.freeze([
   REGISTRY_PATH,
   "config/verification-profiles.json",
@@ -54,6 +56,29 @@ function changedCandidates(files, candidates) {
     }
   }
   return changed;
+}
+
+function validateReviewApiCompleteness({ commitCount, changedFileCount }) {
+  const failures = [];
+  if (!Number.isInteger(commitCount) || commitCount < 0) {
+    failures.push({ code: "pr_commit_count_invalid", actual: commitCount ?? null });
+  } else if (commitCount > PR_COMMIT_API_LIMIT) {
+    failures.push({
+      code: "pr_commit_api_limit_exceeded",
+      actual: commitCount,
+      limit: PR_COMMIT_API_LIMIT,
+    });
+  }
+  if (!Number.isInteger(changedFileCount) || changedFileCount < 0) {
+    failures.push({ code: "pr_changed_file_count_invalid", actual: changedFileCount ?? null });
+  } else if (changedFileCount > PR_FILE_API_LIMIT) {
+    failures.push({
+      code: "pr_file_api_limit_exceeded",
+      actual: changedFileCount,
+      limit: PR_FILE_API_LIMIT,
+    });
+  }
+  return failures;
 }
 
 function analyzeProtectedChanges({ baseRegistry, headRegistry, files }) {
@@ -202,6 +227,8 @@ function evaluateUserOverride(issueBody, affectedProtectedPaths) {
 module.exports = {
   CONTROL_PLANE_PATHS,
   OVERRIDE_SCHEMA,
+  PR_COMMIT_API_LIMIT,
+  PR_FILE_API_LIMIT,
   REGISTRY_PATH,
   REVIEW_SCHEMA,
   analyzeProtectedChanges,
@@ -215,5 +242,6 @@ module.exports = {
   registryEntryDeltaPaths,
   setEquals,
   validateOverrideRecord,
+  validateReviewApiCompleteness,
   validateReviewRecord,
 };
