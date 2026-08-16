@@ -67,7 +67,7 @@ test("咧 preserves both supported Cantonese particle readings", () => {
   assert.ok((analyses["咧"] || []).every((row) => row.pos === "particle"));
 });
 
-test("strong source split batch fills only the three audited missing readings", () => {
+test("high-frequency particle and lexical reading splits remain explicit", () => {
   const analyses = buildLexicalAnalysisIndex(tokenEntries);
 
   assert.deepEqual(new Set((analyses["嘅"] || []).map((row) => row.jyutping)), new Set(["ge2", "ge3"]));
@@ -85,7 +85,7 @@ test("strong source split batch fills only the three audited missing readings", 
   assert.equal((analyses["會"] || []).find((row) => row.id === "lex:會:assemble_verb").jyutping, "wui6");
 });
 
-test("verified bundled-reading batch adds seven missing Cantonese readings without replacing defaults", () => {
+test("polyfunctional single-character readings preserve reviewed defaults and alternatives", () => {
   const analyses = buildLexicalAnalysisIndex(tokenEntries);
   const readings = (surface) => new Set((analyses[surface] || []).map((row) => row.jyutping));
 
@@ -170,7 +170,7 @@ test("common audited lexemes retain reviewed defaults", () => {
   }
 });
 
-test("source-attested spelling variants inherit the canonical lexical analysis", () => {
+test("reviewed spelling variants inherit the canonical lexical analysis", () => {
   const pairs = [
     ["乜野", "乜嘢"],
     ["人地", "人哋"],
@@ -272,7 +272,7 @@ test("好意思 remains an explicit rhetorical lexical expression", () => {
 });
 
 
-test("independent pronunciation-quality batch preserves spoken defaults and supported variants", () => {
+test("independently supported pronunciation variants preserve spoken defaults", () => {
   const analyses = buildLexicalAnalysisIndex(tokenEntries);
   const readings = (surface) => new Set((analyses[surface] || []).map((row) => row.jyutping));
 

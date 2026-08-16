@@ -1,16 +1,15 @@
 "use strict";
 
-// Neutral component-level Cantonese pronunciation coverage surfaced by the external
-// “Most Common Cantonese Words (Frequency List)” Google Sheet. The bounded parser-gap
-// audit exposed these CJK components without Jyutping; the source supplies one simple
-// unambiguous Jyutping reading for each. No frequency, rank, gloss, POS, grammar
-// category, or phrase atomicity is imported.
+// Component-level gaps were discovered with the external “Most Common Cantonese
+// Words (Frequency List)” Google Sheet. Runtime readings below are a frozen accepted
+// authority map cross-validated against the pinned Rime-Cantonese character dictionary;
+// discovery-source values do not auto-promote when this file is edited.
 const SOURCE = "Most Common Cantonese Words (Frequency List)";
 const SOURCE_URL = "https://docs.google.com/spreadsheets/d/1ArxEFo46PTrDyDDhWyu3wB0epxqTyd8WBaprnwTEPm4";
 const RIME_REVISION = "259f0e48bba840c3a2e0d117539e96937f3d89bc";
 const RIME_SOURCE = "Rime-Cantonese jyut6ping3.chars.dict.yaml";
 
-const DISCOVERY_READINGS = Object.freeze({
+const RIME_ACCEPTED_READINGS = Object.freeze({
   "世": "sai3",
   "並": "bing6",
   "主": "zyu2",
@@ -22,7 +21,7 @@ const DISCOVERY_READINGS = Object.freeze({
   "佑": "jau6",
   "倉": "cong1",
   "們": "mun4",
-  "傷": "seung1",
+  "傷": "soeng1",
   "兄": "hing1",
   "充": "cung1",
   "兒": "ji4",
@@ -58,7 +57,7 @@ const DISCOVERY_READINGS = Object.freeze({
   "姑": "gu1",
   "娘": "noeng4",
   "婚": "fan1",
-  "嫁": "ga3",
+  "嫁": "gaa3",
   "嫂": "sou2",
   "子": "zi2",
   "孝": "haau3",
@@ -103,7 +102,6 @@ const DISCOVERY_READINGS = Object.freeze({
   "敬": "ging3",
   "斬": "zaam2",
   "施": "si1",
-  "既": "ge3",
   "李": "lei5",
   "栽": "zoi1",
   "桂": "gwai3",
@@ -129,7 +127,6 @@ const DISCOVERY_READINGS = Object.freeze({
   "火": "fo2",
   "爆": "baau3",
   "父": "fu6",
-  "爸": "ba1",
   "爺": "je4",
   "猶": "jau4",
   "獨": "duk6",
@@ -271,7 +268,6 @@ const DISCOVERY_READINGS = Object.freeze({
   "妮": "nei4",
   "妳": "nei5",
   "几": "gei2",
-  "广": "gwong2",
   "无": "mou4",
   "爲": "wai4",
   "確": "kok3",
@@ -292,15 +288,9 @@ const DISCOVERY_READINGS = Object.freeze({
   "訓": "fan3",
   "訝": "ngaa6",
   "輝": "fai1",
-  "哂": "saai3", // recurrent vernacular corpus spelling of 晒 in exhaustive/completive contexts
-  "跙": "zau2", // recurrent corpus spelling used with 走 “leave/go” syntax
   "咧": "le4" // default for independently supported le4/le5 particle analyses
 });
 
-const RIME_NORMALIZED_OVERRIDES = Object.freeze({
-  "傷": "soeng1",
-  "嫁": "gaa3",
-});
 
 // Discovery-only readings are retained for adjudication but never become runtime
 // authority merely because the source supplied them. 爸 ba1 is kept here because
@@ -326,12 +316,6 @@ const ORTHOGRAPHIC_VARIANT_READINGS = Object.freeze({
   "跙": Object.freeze({ jyutping: "zau2", canonical: "走", evidence: "recurrent vernacular corpus spelling with 走 syntax" }),
 });
 
-const RIME_ACCEPTED_READINGS = Object.freeze(Object.fromEntries(
-  Object.entries(DISCOVERY_READINGS)
-    .filter(([surface]) => !Object.prototype.hasOwnProperty.call(DISCOVERY_READING_CANDIDATES, surface))
-    .filter(([surface]) => !Object.prototype.hasOwnProperty.call(ORTHOGRAPHIC_VARIANT_READINGS, surface))
-    .map(([surface, discoveryReading]) => [surface, RIME_NORMALIZED_OVERRIDES[surface] || discoveryReading])
-));
 
 const ACCEPTED_READINGS = Object.freeze({
   ...RIME_ACCEPTED_READINGS,
@@ -406,7 +390,6 @@ module.exports = Object.freeze({
   SOURCE_URL,
   RIME_SOURCE,
   RIME_REVISION,
-  DISCOVERY_READINGS,
   DISCOVERY_READING_CANDIDATES,
   ORTHOGRAPHIC_VARIANT_READINGS,
   RIME_ACCEPTED_READINGS,
