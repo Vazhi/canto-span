@@ -92,8 +92,7 @@ function createJsonCollectionAdapter(config = {}) {
 
   function reportIdentity(record) {
     const value = identityValue(record);
-    if (value === null || typeof value === "string") return value;
-    return `${typeof value}:${JSON.stringify(value)}`;
+    return value === null ? null : `${typeof value}:${JSON.stringify(value)}`;
   }
 
   function identityLabel(value) {

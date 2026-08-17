@@ -343,12 +343,23 @@ test("primitive identity types remain distinct in current state and mutations", 
     { id: "1", value: "string-one" },
     { id: true, value: "boolean-true" },
     { id: "true", value: "string-true" },
+    { id: "number:1", value: "tag-looking-string" },
   ]);
   const adapter = createJsonCollectionAdapter({ file, keyField: "id", requiredFields: ["value"] });
 
   const audit = runMutation(adapter, []);
   assert.equal(audit.status, "PASS");
   assert.equal(audit.validation_results[0].status, "PASS");
+
+  const numericConflict = runMutation(adapter, [
+    { operation: "add", record: { id: 1, value: "conflicting-number" } },
+  ]);
+  const taggedStringConflict = runMutation(adapter, [
+    { operation: "add", record: { id: "number:1", value: "conflicting-string" } },
+  ]);
+  assert.equal(numericConflict.status, "FAIL");
+  assert.equal(taggedStringConflict.status, "FAIL");
+  assert.notEqual(numericConflict.conflicts[0].identity, taggedStringConflict.conflicts[0].identity);
 
   const committed = runMutation(adapter, [
     { operation: "replace", record: { id: 1, value: "updated-number" } },
