@@ -72,11 +72,10 @@ function adapterContractErrors(adapter) {
   for (const name of ["load", "normalize", "plan", "serialize"]) {
     if (typeof adapter[name] !== "function") errors.push(`adapter.${name} must be a function`);
   }
-  if (adapter.completenessDimensions && typeof adapter.completenessDimensions !== "function") {
-    errors.push("adapter.completenessDimensions must be a function when provided");
-  }
-  if (adapter.assessCompleteness && typeof adapter.assessCompleteness !== "function") {
-    errors.push("adapter.assessCompleteness must be a function when provided");
+  for (const name of ["validateCurrent", "validateResult", "completenessDimensions", "assessCompleteness"]) {
+    if (adapter[name] !== undefined && typeof adapter[name] !== "function") {
+      errors.push(`adapter.${name} must be a function when provided`);
+    }
   }
   return errors;
 }
@@ -316,9 +315,19 @@ function runMutation(adapter, candidates, options = {}) {
     return report;
   }
   report.errors.push(...asErrors(plan.errors).sort());
-  report.conflicts = sortedCopy(Array.isArray(plan.conflicts) ? plan.conflicts : []);
+  if (!Array.isArray(plan.operations)) {
+    report.errors.push("adapter.plan must return an operations array");
+  } else if (plan.operations.length !== normalized.length) {
+    report.errors.push(`adapter.plan operations length ${plan.operations.length} does not match input count ${normalized.length}`);
+  }
+  if (plan.conflicts !== undefined && !Array.isArray(plan.conflicts)) {
+    report.errors.push("adapter.plan conflicts must be an array when provided");
+  }
+  if (report.errors.length) return report;
+
+  report.conflicts = sortedCopy(plan.conflicts || []);
   try {
-    report.counts = deriveCounts(Array.isArray(plan.operations) ? plan.operations : []);
+    report.counts = deriveCounts(plan.operations);
   } catch (error) {
     report.errors.push(`planning failed: ${error.message}`);
   }
@@ -342,14 +351,19 @@ function runMutation(adapter, candidates, options = {}) {
   report.affected_artifacts = writes.map((write) => write.path);
   report.planned_write_count = writes.length;
 
+  const changed = report.counts.added + report.counts.updated > 0;
+  if (changed && !writes.length) {
+    report.errors.push("changed plan must serialize at least one write");
+    return report;
+  }
+
   const unresolved = report.gaps.records.filter((gap) => gap.status === "unresolved");
   if (effective.failOnGap && unresolved.length) {
     report.errors.push(`unresolved completeness gaps: ${unresolved.length}`);
     return report;
   }
 
-  const changed = report.counts.added + report.counts.updated > 0;
-  if (!effective.write || !changed || !writes.length) {
+  if (!effective.write || !changed) {
     report.status = "PASS";
     return report;
   }

@@ -335,3 +335,126 @@ test("rollback preserves a backup when restoring that backup fails", () => {
   assert.ok(backup, "failed restore must preserve the original backup");
   assert.equal(fs.readFileSync(path.join(dir, backup), "utf8"), "old-first\n");
 });
+
+test("primitive identity types remain distinct in current state and mutations", () => {
+  const file = path.join(tempDir(), "records.json");
+  writeJson(file, [
+    { id: 1, value: "number-one" },
+    { id: "1", value: "string-one" },
+    { id: true, value: "boolean-true" },
+    { id: "true", value: "string-true" },
+  ]);
+  const adapter = createJsonCollectionAdapter({ file, keyField: "id", requiredFields: ["value"] });
+
+  const audit = runMutation(adapter, []);
+  assert.equal(audit.status, "PASS");
+  assert.equal(audit.validation_results[0].status, "PASS");
+
+  const committed = runMutation(adapter, [
+    { operation: "replace", record: { id: 1, value: "updated-number" } },
+    { operation: "replace", record: { id: "1", value: "updated-string" } },
+  ], { write: true });
+  assert.equal(committed.status, "PASS");
+  assert.deepEqual(committed.counts, { added: 0, updated: 2, already_present: 0, skipped: 0 });
+  assert.deepEqual(readJson(file).slice(0, 2), [
+    { id: 1, value: "updated-number" },
+    { id: "1", value: "updated-string" },
+  ]);
+});
+
+test("malformed plan operations and conflicts fail closed", () => {
+  const file = path.join(tempDir(), "records.json");
+  writeJson(file, []);
+  const baseAdapter = {
+    id: "plan-contract-test",
+    load: () => ({ records: [] }),
+    normalize: (candidate) => candidate,
+    serialize: () => [{ path: file, content: "[]\n" }],
+  };
+
+  const missingOperations = runMutation({
+    ...baseAdapter,
+    plan: () => ({ nextState: { records: [] }, conflicts: [] }),
+  }, [{ id: "a" }], { write: true });
+  assert.equal(missingOperations.status, "FAIL");
+  assert.match(missingOperations.errors[0], /must return an operations array/);
+
+  const malformedOperations = runMutation({
+    ...baseAdapter,
+    plan: () => ({ nextState: { records: [] }, operations: "added", conflicts: [] }),
+  }, [{ id: "a" }], { write: true });
+  assert.equal(malformedOperations.status, "FAIL");
+  assert.ok(malformedOperations.errors.some((item) => /must return an operations array/.test(item)));
+
+  const missingOperationEntry = runMutation({
+    ...baseAdapter,
+    plan: () => ({ nextState: { records: [{ id: "a" }] }, operations: [], conflicts: [] }),
+  }, [{ id: "a" }], { write: true });
+  assert.equal(missingOperationEntry.status, "FAIL");
+  assert.ok(missingOperationEntry.errors.some((item) => /operations length 0 does not match input count 1/.test(item)));
+
+  const malformedConflicts = runMutation({
+    ...baseAdapter,
+    plan: () => ({ nextState: { records: [] }, operations: [], conflicts: "none" }),
+  }, [], { write: true });
+  assert.equal(malformedConflicts.status, "FAIL");
+  assert.ok(malformedConflicts.errors.some((item) => /conflicts must be an array/.test(item)));
+});
+
+test("changed plans must serialize at least one write", () => {
+  const adapter = {
+    id: "missing-write-test",
+    load: () => ({ records: [] }),
+    normalize: (candidate) => candidate,
+    plan: ({ candidates }) => ({
+      nextState: { records: candidates },
+      operations: candidates.map((item) => ({ identity: item.id, action: "added" })),
+      conflicts: [],
+    }),
+    serialize: () => [],
+  };
+
+  const dryRun = runMutation(adapter, [{ id: "a" }]);
+  assert.equal(dryRun.status, "FAIL");
+  assert.match(dryRun.errors.at(-1), /changed plan must serialize at least one write/);
+
+  const write = runMutation(adapter, [{ id: "a" }], { write: true });
+  assert.equal(write.status, "FAIL");
+  assert.equal(write.writes_occurred, false);
+  assert.match(write.errors.at(-1), /changed plan must serialize at least one write/);
+});
+
+test("present non-function optional validators fail the adapter contract", () => {
+  const file = path.join(tempDir(), "records.json");
+  writeJson(file, []);
+  const baseAdapter = {
+    id: "optional-validator-contract-test",
+    load: () => ({ records: [] }),
+    normalize: (candidate) => candidate,
+    plan: () => ({ nextState: { records: [] }, operations: [], conflicts: [] }),
+    serialize: () => [{ path: file, content: "[]\n" }],
+  };
+
+  const badCurrent = runMutation({ ...baseAdapter, validateCurrent: "nope" }, []);
+  assert.equal(badCurrent.status, "FAIL");
+  assert.ok(badCurrent.errors.includes("adapter.validateCurrent must be a function when provided"));
+
+  const badResult = runMutation({ ...baseAdapter, validateResult: null }, []);
+  assert.equal(badResult.status, "FAIL");
+  assert.ok(badResult.errors.includes("adapter.validateResult must be a function when provided"));
+});
+
+test("non-array lifecycle target configuration fails closed", () => {
+  const file = path.join(tempDir(), "records.json");
+  writeJson(file, []);
+  assert.throws(
+    () => createJsonCollectionAdapter({
+      file,
+      keyField: "id",
+      lifecycleDimensions: [
+        { name: "evidence", targets: "runtime" },
+      ],
+    }),
+    /lifecycle dimension evidence targets must be an array when provided/
+  );
+});
