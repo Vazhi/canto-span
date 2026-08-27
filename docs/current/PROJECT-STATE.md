@@ -6,7 +6,7 @@ This file is the sole present-tense project snapshot. Live GitHub intake and wor
 
 | Measure | Current value |
 |---|---:|
-| Runtime | v0.5.236 |
+| Runtime | v0.5.237 |
 | Runtime labels | 134 |
 | Current construction notes | 134 |
 | Available construction notes | 134 |
@@ -51,6 +51,8 @@ The permanent registry contains 134 current and 48 retired records. UUID and sho
 Twenty-one accepted batches have adjudicated 94 records; 88 remain pending. Canonical decisions live in `data/construction-adjudications.json` and immutable batch files under `data/construction-adjudication-batches/`.
 
 Current consequences include:
+
+- v0.5.237 completes the final Cifu ranks 1751–2000 lexical reconciliation and the user-supplied live vernacular top-2,000 audit under the Cantonese-first source boundary: the external list contains 1,973 CJK-bearing items, of which 1,407 have exact runtime lexical entries and 565 are fully covered compositionally with readable Cantonese token analyses; the sole incomplete CJK source row is Standard Written Chinese `這`, which the source itself supplies without a Cantonese pronunciation, meaning, or example and remains an intentional non-ingestion; the audit also fills independently verified high-frequency lexical/orthographic gaps and preserves reading/function alternatives rather than flattening them, including spoken `爸爸 baa4 baa1`, `時間 si4 gaan3 / si4 gaan1`, `處理 cyu5 lei5 / cyu2 lei5`, and final-particle `嘛 maa5 / maa3`; construction identity/status, survey/native-panel state, corpus classifications, release-publication state, deployment state, and unrelated parser behavior remain unchanged;
 
 - v0.5.236 implements the consolidated Cifu ranks 1501–1750 lexical authority through the reusable ingestion architecture: 139 broad reviewed selections are applied conservatively, 42 polyfunctional surfaces and 16 reading/category splits retain stable alternative analyses, 45 `blocked_atomic` rows receive no band-specific whole-surface promotion, and eight `research_required` rows remain unpromoted; executable ingestion testing exposed genuine missing component coverage for `刻` and `遇`, which is filled independently rather than weakening decomposition checks, while rank 1729 `響` moves from neutral fallback to reviewed Cantonese verb, locative-coverb, and locative-existential analyses without importing contaminated Mandarin metadata; ranks 1–1500, the `多少` exclusion, construction identity/status, survey/native-panel state, corpus classifications, release-publication state, deployment state, and unrelated parser behavior remain protected;
 

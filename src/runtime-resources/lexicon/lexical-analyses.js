@@ -6,6 +6,7 @@ const { buildExplicitAnalyses: buildR7511000ExplicitAnalyses } = require("./toke
 const { buildExplicitAnalyses: buildR10011250ExplicitAnalyses } = require("./token-lexicon/cifu-r1001-1250-reviewed");
 const { buildExplicitAnalyses: buildR12511500ExplicitAnalyses } = require("./token-lexicon/cifu-r1251-1500-reviewed");
 const { buildExplicitAnalyses: buildR15011750ExplicitAnalyses } = require("./token-lexicon/cifu-r1501-1750-reviewed");
+const { buildExplicitAnalyses: buildR17512000ExplicitAnalyses } = require("./token-lexicon/cifu-r1751-2000-reviewed");
 
 function stableLegacyAnalysisId(surface) {
   return `lex:${String(surface || "")}:default`;
@@ -62,6 +63,7 @@ function effectiveExplicitAnalyses(entries, explicitAnalyses = EXPLICIT_ANALYSES
     ...buildR10011250ExplicitAnalyses(entries),
     ...buildR12511500ExplicitAnalyses(entries),
     ...buildR15011750ExplicitAnalyses(entries),
+    ...buildR17512000ExplicitAnalyses(entries),
   });
 }
 

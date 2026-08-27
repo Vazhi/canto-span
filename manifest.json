@@ -1,9 +1,9 @@
 {
   "id": "canto-span",
   "name": "Canto Span",
-  "version": "0.5.236",
+  "version": "0.5.237",
   "minAppVersion": "1.5.0",
-  "description": "v0.5.236 implements reviewed Cifu ranks 1501–1750 under the scalable lexical-ingestion audit, with independently verified component coverage and preserved contamination safeguards.",
+  "description": "v0.5.237 completes the final Cifu lexical reconciliation and the live top-2,000 vernacular functional-coverage audit, with independently verified readings and Cantonese-first evidence boundaries.",
   "author": "Chris Crawford / OpenAI ChatGPT",
   "authorUrl": "",
   "isDesktopOnly": false
