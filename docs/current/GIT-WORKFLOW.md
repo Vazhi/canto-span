@@ -92,7 +92,7 @@ explicitly reserved by the active issue still require their own scope and gates.
 
 ## Documentation and generated records
 
-Current documentation follows the authority order in `00-START-HERE.md`. Update
+Current documentation follows the responsibility-specific ownership map in `00-START-HERE.md`. Update
 canonical inputs and deterministic generated outputs in the same branch or
 integration step. Historical reports remain immutable provenance.
 
