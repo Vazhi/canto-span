@@ -18,7 +18,7 @@ Before the first repository edit:
 3. inspect current `main`, open pull requests, current intake issues, and open work
    claims for overlap/dependencies;
 4. follow the task-specific reading route in `00-START-HERE.md`;
-5. classify/rout the task through `CODEX-ISSUE-WORKFLOW.md` and apply the checked-in
+5. classify/route the task through `CODEX-ISSUE-WORKFLOW.md` and apply the checked-in
    agent-availability setting;
 6. re-fetch the canonical intake and verify owner, permission,
    `ownership_revision`, claim, branch, and PR bindings;
