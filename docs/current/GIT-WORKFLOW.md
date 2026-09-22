@@ -81,17 +81,18 @@ integration-owned files. The authorized integrator may:
 3. reconcile integration-owned files;
 4. mark a complete PR ready;
 5. verify checks, dependencies, mergeability, and exact head SHA;
-6. notify the user with the PR, exact head, scope, validation, risks, and limitations,
-   then stop without merging;
-7. after explicit approval for that PR and unchanged head, re-check the gates and
-   merge in dependency order.
+6. record the PR, exact reviewed head, scope, validation, risks, and limitations in
+   the live handoff/progress record;
+7. apply `USER-MERGE-REVIEW.md`: merge in dependency order under valid standing
+   authority when every live safety check passes, or stop only when that owner
+   requires a safety stop.
 
-Status promotion, survey deployment, and release publication still require their
-own explicitly authorized scope and gates.
+Status promotion, survey deployment, release publication, and other decisions
+explicitly reserved by the active issue still require their own scope and gates.
 
 ## Documentation and generated records
 
-Current documentation follows the authority order in `00-START-HERE.md`. Update
+Current documentation follows the responsibility-specific ownership map in `00-START-HERE.md`. Update
 canonical inputs and deterministic generated outputs in the same branch or
 integration step. Historical reports remain immutable provenance.
 
@@ -127,8 +128,9 @@ Automation follows least privilege, not a blanket read-only or no-writer rule.
   preconditions before writing.
 - Writes are limited to the claimed non-`main` branch or issue/PR metadata.
 - Automation may not write directly to `main`, expand its own scope, adjudicate
-  linguistic evidence, promote status, deploy surveys, publish releases, merge, or
-  enable auto-merge without the separately required scope, gates, and user approval.
+  linguistic evidence, promote status, deploy surveys, or publish releases outside
+  their separately required scope and gates. Merge or auto-merge also requires valid
+  authority and live safety checks under `USER-MERGE-REVIEW.md`.
 - Branch automation must leave an auditable coherent state. If the relevant suite has
   inherited regression debt, acceptance means the ratchet in `TESTING.md` is
   satisfied. Automation must not redefine or suppress still-valid debt to manufacture
@@ -217,7 +219,7 @@ The following are not current project-state mechanisms:
 - active-note whitelists and global grammar freezes;
 - unscoped direct-to-main writer workflows;
 - repair bots that complete intentionally failing commits;
-- autonomous merge based only on integrator role, passing checks, labels, or elapsed
-  time without explicit user approval for the specific PR and head.
+- merge based only on integrator role, passing checks, labels, or elapsed time
+  without valid `USER-MERGE-REVIEW.md` authority and live safety checks.
 
 Their history remains available in Git and, where needed, under `archive/`.

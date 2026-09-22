@@ -20,7 +20,7 @@ Never collapse these into one registry or one confidence score:
 6. **Discovery readiness** — which hard promotion gates are complete.
 7. **Learner presentation** — simplified labels and explanations.
 
-The authority order is defined in [`00-START-HERE.md`](00-START-HERE.md).
+Responsibility-specific authority routing is defined in [`00-START-HERE.md`](00-START-HERE.md).
 
 ## Claim classes
 
