@@ -20,7 +20,7 @@ Comment `5269508577` explicitly states that the base adjudication is structurall
 The correction audit changes or materially qualifies these implementation decisions:
 
 - `1022 盡量`: the multi-analysis distinction may remain, but its basis is independent orthographic/lexical evidence, not the raw HKCanCor `d`/`v` tag disagreement.
-- `1123 處理`: active high-confidence Cantonese reading is `cyu5 lei5`; source-listed `cyu2 lei5` remains lower-confidence provenance and must not be exposed as an equally verified reading without stronger Cantonese-specific evidence.
+- `1123 處理`: `cyu5 lei5` remains the runtime default, but a later independent Cantonese cross-check resolves the earlier evidence gap: CantoDict directly lists `處理 cyu2 lei5` (https://www.cantonese.sheik.co.uk/dictionary/words/7533/), while existing Cantonese evidence supports `cyu5 lei5`. Preserve both as reading alternatives rather than suppressing `cyu2 lei5` as source-only.
 - `1133 舖`: preserve one noun analysis with licensed `pou3` and changed-tone `pou2`; the base instruction to discard `pou2` was wrong.
 - `1195 好話`: one broad nominal/discourse lexical family; remove the invented separate lexical verb analysis. This changes the headline accounting from 114/62 to 115/61.
 - `1244 拿`: preserve `naa4` written/formal verb and separate `laa4` discourse/嗱-family use; packet `laa2` remains unresolved.

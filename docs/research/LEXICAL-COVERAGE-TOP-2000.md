@@ -159,3 +159,22 @@ Do not use an atomicity-purity metric as a deletion target.
 ## Scope
 
 This lexical audit does not by itself change construction identity/status, evidence sufficiency, survey/native-panel state, release state, or deployment state.
+
+## External vernacular top-2,000 functional audit — 2026-08-16
+
+The user-supplied Google Sheet **Most Common Cantonese Words (Frequency List)** is now a bounded external discovery/pronunciation source in addition to the project-owned Cifu/HKCanCor/CantoMap inventories. It is not treated as a lexical whitelist or as sole authority for readings, senses, POS, or grammar.
+
+After normalizing the first 2,000 distinct non-tombstoned surfaces and checking the **effective runtime**, the final functional-coverage result is:
+
+- bounded source items: **2,000**;
+- CJK-bearing items: **1,973**;
+- exact runtime lexical coverage: **1,407**;
+- fully readable compositional runtime coverage: **565**;
+- in-scope Cantonese/CJK functional gaps: **0**;
+- intentional CJK hold: **1** — `這`, a Standard Written Chinese source row with no source pronunciation, meaning, or example;
+- non-CJK rows: **27**.
+
+Thus the in-scope CJK set is **1,972 / 1,972 functionally covered**. Exact whole-string absence is not counted as a lexical failure when the runtime correctly decomposes the expression into readable Cantonese tokens. Productive strings such as negated VPs, pronoun clauses, classifier phrases, particle sequences, and transparent verb-object combinations remain compositional rather than being promoted merely to improve an exact-surface percentage.
+
+The audit also exposed source errors and missing alternatives that were independently checked before runtime use. Representative corrections include `爸 baa4` rather than the Sheet's `ba1`, `簿 bou2` rather than `bou6`, ordinary spoken `爸爸 baa4 baa1` while preserving written `baa1 baa1`, `時間 si4 gaan3 / si4 gaan1`, `處理 cyu5 lei5 / cyu2 lei5`, and final-particle `嘛 maa5 / maa3`. Multi-reading and polyfunctional items remain explicit analyses rather than collapsed defaults.
+

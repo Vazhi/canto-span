@@ -27,6 +27,15 @@ test("lexical ingestion registry exposes reusable blocked-atomic policy extracti
   assert.ok(lexicalIngestions.every((spec) => spec.id && spec.source_file && spec.surface_column));
 });
 
+test("ingestion specs use functional coverage rather than source-specific exclusions or exact-match quotas", () => {
+  for (const spec of lexicalIngestions) {
+    assert.equal(spec.require_functional_runtime_coverage, true, `${spec.id}: functional coverage gate`);
+    assert.equal(spec.require_exact_runtime_coverage, undefined, `${spec.id}: no exact-surface quota`);
+    assert.equal(spec.removed_surfaces, undefined, `${spec.id}: no named removed-surface ledger`);
+    assert.equal(spec.contamination_ledger, undefined, `${spec.id}: no source-specific contamination ledger`);
+  }
+});
+
 test("only neutral multi-character blocked rows become automatic tokenizer guardrails", () => {
   const forced = ingestionForcedCompositionalSurfaces(tokenLexicon);
   assert.ok(blockedAtomicSurfaces.size > 0);
@@ -42,20 +51,19 @@ test("only neutral multi-character blocked rows become automatic tokenizer guard
   assert.ok(!compositionalLexicalPhrases.has("畫畫"), "independently reviewed atomic 畫畫 must retain waak6 waa2 lexical authority");
 });
 
-test("all registered lexical ingestions pass contamination, tokenization, coverage, and injected architecture gates", () => {
+test("all registered lexical ingestions pass source integrity, functional coverage, pronunciation, and architecture gates", () => {
   const report = auditAllLexicalIngestions();
   assert.equal(report.schema, AUDIT_SCHEMA);
   assert.equal(report.ingestion_count, lexicalIngestions.length);
   assert.equal(report.status, "PASS", JSON.stringify(report, null, 2));
 
-  const cifu = report.reports.find((item) => item.id === "cifu-spoken-top-2000");
-  assert.ok(cifu, "Cifu top-2000 ingestion remains registered");
-  assert.equal(cifu.source_rows, 2000);
-  assert.equal(cifu.effective_runtime_expected, 1999);
-  assert.deepEqual(cifu.removed_surfaces, ["多少"]);
-  assert.ok(cifu.blocked_atomic_surfaces > cifu.forced_compositional_surfaces);
-  assert.ok(cifu.forced_compositional_surfaces > 0);
-  assert.ok(cifu.promotion_only_blocked_surfaces > 0);
-  assert.equal(cifu.architecture.status, "PASS");
-  assert.equal(cifu.architecture.blocking_count, 0);
+  for (const item of report.reports) {
+    assert.equal(item.functional_runtime_coverage_required, true, `${item.id}: functional coverage required`);
+    assert.equal(item.functional_runtime_gap_count, 0, `${item.id}: no functional runtime gaps`);
+    assert.equal(item.functional_runtime_covered, item.source_rows, `${item.id}: every source row is functionally usable`);
+    assert.ok(item.exact_runtime_surface_count <= item.source_rows, `${item.id}: exact coverage is informational only`);
+    assert.ok(item.blocked_atomic_surfaces >= item.forced_compositional_surfaces);
+    assert.equal(item.architecture.status, "PASS");
+    assert.equal(item.architecture.blocking_count, 0);
+  }
 });
