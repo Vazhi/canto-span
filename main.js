@@ -345,10 +345,98 @@ var require_learner_display = __commonJS({
   }
 });
 
+// src/render/learner-inspector.js
+var require_learner_inspector = __commonJS({
+  "src/render/learner-inspector.js"(exports2, module2) {
+    "use strict";
+    var nextInspectorId = 0;
+    function learnerInspectorModel(node, titleForToken, titleForConstruction) {
+      if (!node || node.kind !== "token" && node.kind !== "construction") {
+        return null;
+      }
+      const isToken2 = node.kind === "token";
+      const hover = isToken2 ? titleForToken(node) : titleForConstruction(node);
+      const lines = String(hover || "").split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+      const surface = String(node.display_surface || lines[0] || node.surface || "").trim();
+      const jyutping = isToken2 ? String(node.jyutping || "").trim() : "";
+      const role = isToken2 ? String(node.role || node.label || "").trim() : "";
+      const explanation = lines.slice(1).filter(
+        (line) => !line.startsWith("role:") && !line.startsWith("syntax:") && line !== jyutping
+      );
+      const nonExplanations = /* @__PURE__ */ new Set(["Cantonese word.", "Cantonese text.", "Cantonese phrase."]);
+      const usefulExplanation = explanation.filter((line) => !nonExplanations.has(line));
+      return {
+        kind: node.kind,
+        surface,
+        jyutping,
+        role,
+        explanation: usefulExplanation.length ? usefulExplanation.join("\n") : "No contextual explanation available for this selection."
+      };
+    }
+    function createLearnerInspector({ createEl, titleForToken, titleForConstruction }) {
+      const panel = createEl("section", "canto-learner-inspector");
+      panel.hidden = true;
+      panel.id = "canto-learner-inspector-" + ++nextInspectorId;
+      panel.setAttribute("role", "region");
+      panel.setAttribute("tabindex", "-1");
+      panel.setAttribute("aria-label", "Canto Span learner inspector");
+      const heading = createEl("div", "canto-inspector-header");
+      const surface = createEl("strong", "canto-inspector-surface");
+      const closeButton = createEl("button", "canto-inspector-close", "Close");
+      closeButton.type = "button";
+      closeButton.setAttribute("aria-label", "Close learner inspector");
+      heading.appendChild(surface);
+      heading.appendChild(closeButton);
+      const metadata = createEl("div", "canto-inspector-meta");
+      const explanation = createEl("div", "canto-inspector-explanation");
+      explanation.setAttribute("aria-live", "polite");
+      panel.appendChild(heading);
+      panel.appendChild(metadata);
+      panel.appendChild(explanation);
+      let trigger = null;
+      function dismiss(restoreFocus = true) {
+        if (trigger) {
+          trigger.setAttribute("aria-expanded", "false");
+          const prior = trigger;
+          trigger = null;
+          if (restoreFocus && typeof prior.focus === "function") prior.focus();
+        }
+        panel.hidden = true;
+      }
+      function inspect(node, nextTrigger, focusOnOpen = false) {
+        if (!nextTrigger) return;
+        if (!panel.hidden && trigger === nextTrigger) {
+          dismiss(false);
+          return;
+        }
+        const model = learnerInspectorModel(node, titleForToken, titleForConstruction);
+        if (!model) return;
+        if (trigger) trigger.setAttribute("aria-expanded", "false");
+        trigger = nextTrigger;
+        trigger.setAttribute("aria-expanded", "true");
+        trigger.setAttribute("aria-controls", panel.id);
+        surface.textContent = model.surface || (model.kind === "token" ? "Word" : "Phrase");
+        const parts = [];
+        if (model.jyutping) parts.push("Jyutping: " + model.jyutping);
+        if (model.role && model.role !== "neutral") parts.push("Role: " + model.role);
+        metadata.textContent = parts.join(" · ");
+        metadata.hidden = parts.length === 0;
+        explanation.textContent = model.explanation;
+        panel.hidden = false;
+        if (focusOnOpen && typeof panel.focus === "function") panel.focus();
+      }
+      closeButton.addEventListener("click", () => dismiss());
+      return { panel, inspect, dismiss };
+    }
+    module2.exports = { learnerInspectorModel, createLearnerInspector };
+  }
+});
+
 // src/render/block-renderer.js
 var require_block_renderer = __commonJS({
   "src/render/block-renderer.js"(exports2, module2) {
     "use strict";
+    var { createLearnerInspector: makeLearnerInspector } = require_learner_inspector();
     module2.exports = function createBlockRenderer(dependencies = {}) {
       const {
         Notice,
@@ -608,7 +696,26 @@ var require_block_renderer = __commonJS({
         }
         container.appendChild(wrapper);
       }
-      function renderToken(node, container) {
+      function attachInspection(node, element, options = {}, label = "word") {
+        if (typeof options.onInspect !== "function") return;
+        element.classList.add("canto-inspectable");
+        element.setAttribute("role", "button");
+        element.setAttribute("tabindex", "0");
+        element.setAttribute("aria-expanded", "false");
+        element.setAttribute("aria-label", "Inspect " + label + ": " + (node.display_surface || nodeDisplaySurface2(node) || node.surface || label));
+        const activate = (event) => {
+          event.stopPropagation();
+          options.onInspect(node, element, event.type === "keydown");
+        };
+        element.addEventListener("click", activate);
+        element.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            activate(event);
+          }
+        });
+      }
+      function renderToken(node, container, options = {}) {
         const cls = [`canto-token`, `cs-${safeClass2(node.label)}`];
         if (node.label === "neutral") cls.push("canto-token-neutral", "canto-lexical-unknown");
         const displaySurface = node.display_surface || node.surface;
@@ -623,6 +730,7 @@ var require_block_renderer = __commonJS({
         span.setAttribute("title", learnerUiHoverTitleForToken2(node));
         if (node.jyutping) renderJyutping(span, node.jyutping);
         span.appendChild(createEl("span", "canto-hanzi", displaySurface));
+        attachInspection(node, span, options, "word");
         container.appendChild(span);
       }
       function collectConstructionLayout(node) {
@@ -644,17 +752,17 @@ var require_block_renderer = __commonJS({
         walk(node, 0);
         return { leaves, spans };
       }
-      function renderConstructionLeaf(node, container) {
+      function renderConstructionLeaf(node, container, options = {}) {
         if (!node) return;
         if (node.kind === "text") {
           container.appendChild(document.createTextNode(node.display_text || node.text));
           return;
         }
         if (node.kind === "token") {
-          renderToken(node, container);
+          renderToken(node, container, options);
         }
       }
-      function renderConstruction(node, container) {
+      function renderConstruction(node, container, options = {}) {
         const { leaves, spans } = collectConstructionLayout(node);
         const cls = ["canto-pattern", "canto-pattern-layered", `canto-construction-${safeClass2(node.type)}`];
         if (node.primary) cls.push("canto-primary-phrase", `canto-primary-${safeClass2(node.primary)}`);
@@ -667,7 +775,7 @@ var require_block_renderer = __commonJS({
           const cell = createEl("span", "canto-pattern-leaf");
           cell.style.gridColumn = `${index + 1} / ${index + 2}`;
           cell.style.gridRow = "1";
-          renderConstructionLeaf(leaf, cell);
+          renderConstructionLeaf(leaf, cell, options);
           outer.appendChild(cell);
         });
         spans.filter((span) => span.width > 0).sort((a, b) => {
@@ -680,6 +788,7 @@ var require_block_renderer = __commonJS({
           layer.style.gridRow = `${layerIndex + 2}`;
           layer.setAttribute("data-canto-construction", span.node.type);
           layer.setAttribute("title", learnerUiHoverTitleForConstructionLayer2(span.node));
+          attachInspection(span.node, layer, options, "phrase");
           layer.appendChild(createEl("span", "canto-construction-line"));
           layer.appendChild(createEl("span", "canto-pattern-label", span.node.label));
           outer.appendChild(layer);
@@ -693,7 +802,7 @@ var require_block_renderer = __commonJS({
           return;
         }
         if (node.kind === "token") {
-          renderToken(node, container);
+          renderToken(node, container, options);
           return;
         }
         if (node.kind === "construction") {
@@ -701,7 +810,7 @@ var require_block_renderer = __commonJS({
             for (const child of node.children || []) renderNode(child, container, options);
             return;
           }
-          renderConstruction(node, container);
+          renderConstruction(node, container, options);
         }
       }
       return {
@@ -720,7 +829,12 @@ var require_block_renderer = __commonJS({
         renderConstructionLeaf,
         renderConstruction,
         renderNode,
-        renderParserShadowRepairs
+        renderParserShadowRepairs,
+        createLearnerInspector: () => makeLearnerInspector({
+          createEl,
+          titleForToken: learnerUiHoverTitleForToken2,
+          titleForConstruction: learnerUiHoverTitleForConstruction2
+        })
       };
     };
   }
@@ -849,7 +963,8 @@ var require_canto_span_plugin = __commonJS({
         renderDiagnosticDetails,
         parseBlockOptions: parseBlockOptions2,
         renderNode,
-        renderParserShadowRepairs
+        renderParserShadowRepairs,
+        createLearnerInspector
       } = createBlockRenderer({
         Notice,
         diagnosticSummary: diagnosticSummary2,
@@ -1129,7 +1244,15 @@ var require_canto_span_plugin = __commonJS({
           const legend = createEl("div", "canto-context-review-boundaries");
           legend.appendChild(createEl("span", "canto-legend-normal", "Parent construction spans wrap child learner-role tokens. Hover/tap tokens for Jyutping."));
           legend.appendChild(createEl("span", "canto-legend-diagnostic", "Diagnostic mode is enabled in plugin settings: tokenization, Jyutping audit, generated slots, construction match source, and review traces are shown. Use Copy note + diagnostics to copy the whole active note with generated diagnostics at the top, Copy diagnostics only for the generated batch, Save diagnostics JSON to write both a compact acceptance summary and a companion full-diagnostics file beside the active note, or Copy block diagnostic for one block."));
+          const inspector = createLearnerInspector();
           const rendered = createEl("div", "canto-rendered");
+          block.addEventListener("keydown", (event) => {
+            if (event.key === "Escape" && !inspector.panel.hidden) {
+              event.preventDefault();
+              event.stopPropagation();
+              inspector.dismiss();
+            }
+          });
           for (const { line, analysis, context_directive: contextDirective } of analyzedLines) {
             if (contextDirective) {
               const contextMeta = createEl("div", "canto-context-directive-diagnostic canto-diagnostic-ui-only");
@@ -1145,7 +1268,7 @@ var require_canto_span_plugin = __commonJS({
             }
             renderParserShadowRepairs(analysis, rendered);
             const lineNormal = createEl("div", "canto-line canto-line-normal");
-            for (const node of analysis.nodes) renderNode(node, lineNormal, { showDiagnostics: false });
+            for (const node of analysis.nodes) renderNode(node, lineNormal, { showDiagnostics: false, onInspect: inspector.inspect });
             rendered.appendChild(lineNormal);
             const lineDiagnostic = createEl("div", "canto-line canto-line-diagnostic");
             for (const node of analysis.nodes) renderNode(node, lineDiagnostic, { showDiagnostics: true });
@@ -1154,6 +1277,7 @@ var require_canto_span_plugin = __commonJS({
           }
           block.appendChild(titleRow);
           block.appendChild(legend);
+          block.appendChild(inspector.panel);
           block.appendChild(rendered);
           element.appendChild(block);
           this.scheduleRenderedDiagnosticDetailsSync();

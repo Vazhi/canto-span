@@ -945,3 +945,62 @@ body.canto-global-diagnostics-enabled.canto-global-diagnostics-expanded .canto-s
   color: var(--canto-surface-muted, #B8C2CC);
   font-size: 0.88em;
 }
+
+
+/* On-demand learner inspector: one shared panel for all inspected spans in a block.
+   Presentation only; parser diagnostics and source text remain untouched. */
+.canto-study-block .canto-inspectable {
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.canto-study-block .canto-inspectable:focus-visible {
+  outline: 2px solid var(--interactive-accent);
+  outline-offset: 2px;
+}
+.canto-study-block .canto-construction-layer.canto-inspectable {
+  pointer-events: auto;
+  min-height: 1.2em;
+}
+.canto-study-block .canto-learner-inspector[hidden] {
+  display: none;
+}
+.canto-study-block .canto-learner-inspector {
+  margin: 0.65em 0;
+  padding: 0.8em 0.9em;
+  border: 1px solid var(--canto-surface-border, rgba(255,255,255,0.25));
+  border-radius: 8px;
+  color: var(--canto-surface-text, #F3F4F6);
+  background: #15233A;
+  line-height: 1.55;
+}
+.canto-study-block .canto-inspector-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8em;
+}
+.canto-study-block .canto-inspector-surface {
+  font-size: 1.25em;
+  overflow-wrap: anywhere;
+}
+.canto-study-block .canto-inspector-close {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0.4em 0.75em;
+  border: 1px solid var(--canto-surface-border, rgba(255,255,255,0.25));
+  border-radius: 6px;
+  background: #263A58;
+  color: #F3F4F6;
+  cursor: pointer;
+}
+.canto-study-block .canto-inspector-meta {
+  margin-top: 0.3em;
+  color: #C5D5E8;
+  font-size: 0.9em;
+  overflow-wrap: anywhere;
+}
+.canto-study-block .canto-inspector-explanation {
+  margin-top: 0.45em;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+}
