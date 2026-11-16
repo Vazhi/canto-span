@@ -840,6 +840,69 @@ var require_block_renderer = __commonJS({
   }
 });
 
+// src/render/reading-controls.js
+var require_reading_controls = __commonJS({
+  "src/render/reading-controls.js"(exports2, module2) {
+    "use strict";
+    var SUPPORTS = Object.freeze([
+      { key: "jyutping", label: "Jyutping hints" },
+      { key: "colors", label: "Grammar colors" },
+      { key: "phrases", label: "Phrase structure" }
+    ]);
+    function createReadingControls({ createEl, block, onChange = () => {
+    } }) {
+      const container = createEl("div", "canto-reader-controls");
+      container.setAttribute("role", "group");
+      container.setAttribute("aria-label", "Reading supports for this Canto Span block");
+      const visible = { jyutping: true, colors: true, phrases: true };
+      const buttons = {};
+      const originalTitles = /* @__PURE__ */ new WeakMap();
+      function syncNativeTitles() {
+        if (!block || typeof block.querySelectorAll !== "function") return;
+        const targets = [
+          [".canto-line-normal .canto-token", !visible.jyutping || !visible.colors],
+          [".canto-line-normal .canto-pattern", !visible.phrases]
+        ];
+        for (const [selector, concealed] of targets) {
+          for (const target of block.querySelectorAll(selector)) {
+            if (!originalTitles.has(target)) originalTitles.set(target, target.getAttribute("title"));
+            const title = originalTitles.get(target);
+            if (concealed || title === null) target.removeAttribute("title");
+            else target.setAttribute("title", title);
+          }
+        }
+      }
+      function setVisible(key, next) {
+        if (!Object.prototype.hasOwnProperty.call(visible, key)) return false;
+        const nextValue = Boolean(next);
+        if (visible[key] === nextValue) return false;
+        visible[key] = nextValue;
+        block.classList.toggle("canto-reader-hide-" + key, !nextValue);
+        buttons[key].setAttribute("aria-pressed", String(nextValue));
+        buttons[key].classList.toggle("canto-reader-support-on", nextValue);
+        syncNativeTitles();
+        onChange(key, nextValue);
+        return true;
+      }
+      for (const { key, label } of SUPPORTS) {
+        const button = createEl("button", "canto-reader-support canto-reader-support-on", label);
+        button.type = "button";
+        button.setAttribute("aria-pressed", "true");
+        button.addEventListener("click", () => setVisible(key, !visible[key]));
+        container.appendChild(button);
+        buttons[key] = button;
+      }
+      return {
+        container,
+        setVisible,
+        getState: () => ({ ...visible }),
+        syncNativeTitles
+      };
+    }
+    module2.exports = { SUPPORTS, createReadingControls };
+  }
+});
+
 // src/runtime-resources/presentation/role-colors.js
 var require_role_colors = __commonJS({
   "src/runtime-resources/presentation/role-colors.js"(exports2, module2) {
@@ -916,6 +979,7 @@ var require_canto_span_plugin = __commonJS({
     "use strict";
     var { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
     var createBlockRenderer = require_block_renderer();
+    var { createReadingControls } = require_reading_controls();
     var {
       BLOCK_CLASS,
       GLOBAL_COLOR_ACCESSIBILITY_CLASS,
@@ -1245,6 +1309,13 @@ var require_canto_span_plugin = __commonJS({
           legend.appendChild(createEl("span", "canto-legend-normal", "Parent construction spans wrap child learner-role tokens. Hover/tap tokens for Jyutping."));
           legend.appendChild(createEl("span", "canto-legend-diagnostic", "Diagnostic mode is enabled in plugin settings: tokenization, Jyutping audit, generated slots, construction match source, and review traces are shown. Use Copy note + diagnostics to copy the whole active note with generated diagnostics at the top, Copy diagnostics only for the generated batch, Save diagnostics JSON to write both a compact acceptance summary and a companion full-diagnostics file beside the active note, or Copy block diagnostic for one block."));
           const inspector = createLearnerInspector();
+          const reading = createReadingControls({
+            createEl,
+            block,
+            onChange: (_key, enabled) => {
+              if (!enabled) inspector.dismiss(false);
+            }
+          });
           const rendered = createEl("div", "canto-rendered");
           block.addEventListener("keydown", (event) => {
             if (event.key === "Escape" && !inspector.panel.hidden) {
@@ -1276,6 +1347,7 @@ var require_canto_span_plugin = __commonJS({
             if (normalizeSurface2(line)) renderDiagnosticDetails(analysis, rendered, expandDiagnostics);
           }
           block.appendChild(titleRow);
+          block.appendChild(reading.container);
           block.appendChild(legend);
           block.appendChild(inspector.panel);
           block.appendChild(rendered);

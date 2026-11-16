@@ -2,6 +2,7 @@
 
 const { Plugin, PluginSettingTab, Setting, Notice } = require("obsidian");
 const createBlockRenderer = require("../render/block-renderer");
+const { createReadingControls } = require("../render/reading-controls");
 const {
   BLOCK_CLASS,
   GLOBAL_COLOR_ACCESSIBILITY_CLASS,
@@ -360,6 +361,13 @@ module.exports = function createCantoSpanPlugin(dependencies = {}) {
       legend.appendChild(createEl("span", "canto-legend-normal", "Parent construction spans wrap child learner-role tokens. Hover/tap tokens for Jyutping."));
       legend.appendChild(createEl("span", "canto-legend-diagnostic", "Diagnostic mode is enabled in plugin settings: tokenization, Jyutping audit, generated slots, construction match source, and review traces are shown. Use Copy note + diagnostics to copy the whole active note with generated diagnostics at the top, Copy diagnostics only for the generated batch, Save diagnostics JSON to write both a compact acceptance summary and a companion full-diagnostics file beside the active note, or Copy block diagnostic for one block."));
       const inspector = createLearnerInspector();
+      const reading = createReadingControls({
+        createEl,
+        block,
+        onChange: (_key, enabled) => {
+          if (!enabled) inspector.dismiss(false);
+        },
+      });
       const rendered = createEl("div", "canto-rendered");
       block.addEventListener("keydown", (event) => {
         if (event.key === "Escape" && !inspector.panel.hidden) {
@@ -396,6 +404,7 @@ module.exports = function createCantoSpanPlugin(dependencies = {}) {
       }
   
       block.appendChild(titleRow);
+      block.appendChild(reading.container);
       block.appendChild(legend);
       block.appendChild(inspector.panel);
       block.appendChild(rendered);
