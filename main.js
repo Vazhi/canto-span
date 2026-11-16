@@ -350,10 +350,9 @@ var require_learner_inspector = __commonJS({
   "src/render/learner-inspector.js"(exports2, module2) {
     "use strict";
     var nextInspectorId = 0;
+    var NO_EXPLANATION = "No contextual explanation available for this selection.";
     function learnerInspectorModel(node, titleForToken, titleForConstruction) {
-      if (!node || node.kind !== "token" && node.kind !== "construction") {
-        return null;
-      }
+      if (!node || node.kind !== "token" && node.kind !== "construction") return null;
       const isToken2 = node.kind === "token";
       const hover = isToken2 ? titleForToken(node) : titleForConstruction(node);
       const lines = String(hover || "").split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
@@ -363,14 +362,14 @@ var require_learner_inspector = __commonJS({
       const explanation = lines.slice(1).filter(
         (line) => !line.startsWith("role:") && !line.startsWith("syntax:") && line !== jyutping
       );
-      const nonExplanations = /* @__PURE__ */ new Set(["Cantonese word.", "Cantonese text.", "Cantonese phrase."]);
-      const usefulExplanation = explanation.filter((line) => !nonExplanations.has(line));
+      const generic = /* @__PURE__ */ new Set(["Cantonese word.", "Cantonese text.", "Cantonese phrase."]);
+      const useful = explanation.filter((line) => !generic.has(line));
       return {
         kind: node.kind,
         surface,
         jyutping,
         role,
-        explanation: usefulExplanation.length ? usefulExplanation.join("\n") : "No contextual explanation available for this selection."
+        explanation: useful.length ? useful.join("\n") : NO_EXPLANATION
       };
     }
     function createLearnerInspector({ createEl, titleForToken, titleForConstruction }) {
@@ -390,17 +389,97 @@ var require_learner_inspector = __commonJS({
       const metadata = createEl("div", "canto-inspector-meta");
       const explanation = createEl("div", "canto-inspector-explanation");
       explanation.setAttribute("aria-live", "polite");
+      const actions = createEl("div", "canto-inspector-actions");
+      const practiceButton = createEl("button", "canto-inspector-practice", "Try recall");
+      practiceButton.type = "button";
+      const revealButton = createEl("button", "canto-inspector-reveal", "Reveal answer");
+      revealButton.type = "button";
+      revealButton.hidden = true;
+      const recallPrompt = createEl("div", "canto-inspector-recall-prompt");
+      recallPrompt.hidden = true;
+      recallPrompt.setAttribute("aria-live", "polite");
+      actions.appendChild(practiceButton);
+      actions.appendChild(revealButton);
       panel.appendChild(heading);
       panel.appendChild(metadata);
       panel.appendChild(explanation);
+      panel.appendChild(recallPrompt);
+      panel.appendChild(actions);
       let trigger = null;
+      let currentModel = null;
+      let recalling = false;
+      let previousMetadataHidden = false;
+      const concealedTitles = /* @__PURE__ */ new Map();
+      const concealedElements = /* @__PURE__ */ new Set();
+      function maskElement(element) {
+        if (!element || concealedElements.has(element)) return;
+        concealedElements.add(element);
+        if (typeof element.getAttribute === "function" && typeof element.removeAttribute === "function") {
+          concealedTitles.set(element, element.getAttribute("title"));
+          element.removeAttribute("title");
+        }
+        if (element.classList && typeof element.classList.add === "function") {
+          element.classList.add("canto-recall-concealed");
+        }
+      }
+      function resetRecall() {
+        if (!recalling) return;
+        for (const element of concealedElements) {
+          if (concealedTitles.has(element)) {
+            const saved = concealedTitles.get(element);
+            if (saved === null) element.removeAttribute("title");
+            else element.setAttribute("title", saved);
+          }
+          if (element.classList && typeof element.classList.remove === "function") {
+            element.classList.remove("canto-recall-concealed");
+          }
+        }
+        concealedElements.clear();
+        concealedTitles.clear();
+        recalling = false;
+        metadata.hidden = previousMetadataHidden;
+        explanation.hidden = false;
+        recallPrompt.hidden = true;
+        practiceButton.hidden = false;
+        revealButton.hidden = true;
+      }
+      function startRecall() {
+        if (!trigger || !currentModel || panel.hidden || recalling || practiceButton.disabled) return;
+        recalling = true;
+        previousMetadataHidden = metadata.hidden;
+        maskElement(trigger);
+        if (typeof trigger.closest === "function") {
+          const phrase = trigger.closest(".canto-pattern");
+          maskElement(phrase);
+          if (phrase && typeof phrase.querySelectorAll === "function") {
+            for (const child of phrase.querySelectorAll("[title]")) maskElement(child);
+          }
+        }
+        metadata.hidden = true;
+        explanation.hidden = true;
+        const parts = [];
+        if (currentModel.jyutping) parts.push("pronunciation");
+        if (currentModel.explanation !== NO_EXPLANATION) parts.push("meaning");
+        recallPrompt.textContent = "Recall the " + parts.join(" and ") + ", then reveal.";
+        recallPrompt.hidden = false;
+        practiceButton.hidden = true;
+        revealButton.hidden = false;
+        if (typeof revealButton.focus === "function") revealButton.focus();
+      }
+      function reveal() {
+        if (!recalling) return;
+        resetRecall();
+        if (typeof practiceButton.focus === "function") practiceButton.focus();
+      }
       function dismiss(restoreFocus = true) {
+        resetRecall();
         if (trigger) {
           trigger.setAttribute("aria-expanded", "false");
-          const prior = trigger;
+          const previous = trigger;
           trigger = null;
-          if (restoreFocus && typeof prior.focus === "function") prior.focus();
+          if (restoreFocus && typeof previous.focus === "function") previous.focus();
         }
+        currentModel = null;
         panel.hidden = true;
       }
       function inspect(node, nextTrigger, focusOnOpen = false) {
@@ -411,8 +490,10 @@ var require_learner_inspector = __commonJS({
         }
         const model = learnerInspectorModel(node, titleForToken, titleForConstruction);
         if (!model) return;
+        resetRecall();
         if (trigger) trigger.setAttribute("aria-expanded", "false");
         trigger = nextTrigger;
+        currentModel = model;
         trigger.setAttribute("aria-expanded", "true");
         trigger.setAttribute("aria-controls", panel.id);
         surface.textContent = model.surface || (model.kind === "token" ? "Word" : "Phrase");
@@ -422,11 +503,14 @@ var require_learner_inspector = __commonJS({
         metadata.textContent = parts.join(" · ");
         metadata.hidden = parts.length === 0;
         explanation.textContent = model.explanation;
+        practiceButton.disabled = !model.jyutping && model.explanation === NO_EXPLANATION;
         panel.hidden = false;
         if (focusOnOpen && typeof panel.focus === "function") panel.focus();
       }
       closeButton.addEventListener("click", () => dismiss());
-      return { panel, inspect, dismiss };
+      practiceButton.addEventListener("click", startRecall);
+      revealButton.addEventListener("click", reveal);
+      return { panel, inspect, dismiss, startRecall, reveal, isRecalling: () => recalling };
     }
     module2.exports = { learnerInspectorModel, createLearnerInspector };
   }
@@ -1312,8 +1396,9 @@ var require_canto_span_plugin = __commonJS({
           const reading = createReadingControls({
             createEl,
             block,
-            onChange: (_key, enabled) => {
-              if (!enabled) inspector.dismiss(false);
+            onChange: () => {
+              inspector.dismiss(false);
+              reading.syncNativeTitles();
             }
           });
           const rendered = createEl("div", "canto-rendered");

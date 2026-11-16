@@ -1050,3 +1050,49 @@ body.canto-global-diagnostics-enabled.canto-global-diagnostics-expanded .canto-s
 .canto-study-block.canto-reader-hide-phrases .canto-line-normal .canto-construction-layer {
   display: none !important;
 }
+
+
+/* Learner-initiated recall is a temporary conceal/reveal state, not scoring. */
+.canto-study-block .canto-inspector-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-top: 0.65em;
+}
+.canto-study-block .canto-inspector-practice,
+.canto-study-block .canto-inspector-reveal {
+  min-height: 44px;
+  padding: 0.45em 0.9em;
+  border: 1px solid #87A7D1;
+  border-radius: 6px;
+  background: #2B4263;
+  color: #FFFFFF;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.canto-study-block .canto-inspector-practice:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+.canto-study-block .canto-inspector-practice:focus-visible,
+.canto-study-block .canto-inspector-reveal:focus-visible {
+  outline: 2px solid var(--interactive-accent);
+  outline-offset: 2px;
+}
+.canto-study-block .canto-inspector-recall-prompt {
+  margin-top: 0.5em;
+  color: #C5D5E8;
+  font-weight: 600;
+}
+.canto-study-block .canto-inspector-recall-prompt[hidden],
+.canto-study-block .canto-inspector-explanation[hidden],
+.canto-study-block .canto-inspector-meta[hidden],
+.canto-study-block .canto-inspector-practice[hidden],
+.canto-study-block .canto-inspector-reveal[hidden] {
+  display: none !important;
+}
+.canto-study-block .canto-recall-concealed .canto-jyutping {
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
