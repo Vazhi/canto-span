@@ -305,7 +305,7 @@ module.exports = function createBlockRenderer(dependencies = {}) {
     element.setAttribute("aria-label", "Inspect " + label + ": " + (node.display_surface || nodeDisplaySurface(node) || node.surface || label));
     const activate = (event) => {
       event.stopPropagation();
-      options.onInspect(node, element);
+      options.onInspect(node, element, event.type === "keydown");
     };
     element.addEventListener("click", activate);
     element.addEventListener("keydown", (event) => {
@@ -378,7 +378,6 @@ module.exports = function createBlockRenderer(dependencies = {}) {
     outer.setAttribute("data-canto-kind", "construction");
     outer.setAttribute("data-canto-construction", node.type);
     outer.setAttribute("title", learnerUiHoverTitleForConstruction(node));
-    attachInspection(node, outer, options, "phrase");
     outer.style.gridTemplateColumns = leaves.length ? `repeat(${leaves.length}, max-content)` : "max-content";
   
     leaves.forEach((leaf, index) => {

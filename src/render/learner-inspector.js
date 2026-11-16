@@ -39,6 +39,7 @@ function createLearnerInspector({ createEl, titleForToken, titleForConstruction 
   panel.hidden = true;
   panel.id = "canto-learner-inspector-" + (++nextInspectorId);
   panel.setAttribute("role", "region");
+  panel.setAttribute("tabindex", "-1");
   panel.setAttribute("aria-label", "Canto Span learner inspector");
 
   const heading = createEl("div", "canto-inspector-header");
@@ -68,7 +69,7 @@ function createLearnerInspector({ createEl, titleForToken, titleForConstruction 
     panel.hidden = true;
   }
 
-  function inspect(node, nextTrigger) {
+  function inspect(node, nextTrigger, focusOnOpen = false) {
     if (!nextTrigger) return;
     if (!panel.hidden && trigger === nextTrigger) {
       dismiss(false);
@@ -88,6 +89,9 @@ function createLearnerInspector({ createEl, titleForToken, titleForConstruction 
     metadata.hidden = parts.length === 0;
     explanation.textContent = model.explanation;
     panel.hidden = false;
+    // The panel precedes the reading text in DOM order; keyboard activation
+    // must move focus to it so the new explanation is reachable immediately.
+    if (focusOnOpen && typeof panel.focus === "function") panel.focus();
   }
 
   closeButton.addEventListener("click", () => dismiss());

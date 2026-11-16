@@ -93,3 +93,19 @@ test("unsupported node kinds leave the inspector closed", () => {
   ui.inspect({ kind: "text", text: "hello" }, fakeElement("span"));
   assert.equal(ui.panel.hidden, true);
 });
+
+test("keyboard opening focuses the inspector while touch opening does not steal focus", () => {
+  const ui = createLearnerInspector({
+    createEl: fakeElement, titleForToken: tokenTitle, titleForConstruction: phraseTitle,
+  });
+  const a = { kind: "token", surface: "茶", label: "what", gloss: ["tea"] };
+  const first = fakeElement("span");
+  const second = fakeElement("span");
+  ui.inspect(a, first, false);
+  assert.equal(ui.panel.focused, undefined);
+  ui.inspect(a, second, true);
+  assert.equal(ui.panel.focused, true);
+  assert.equal(ui.panel.attributes.tabindex, "-1");
+  ui.dismiss();
+  assert.equal(second.focused, true);
+});
