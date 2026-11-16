@@ -109,7 +109,15 @@ function createLearnerInspector({ createEl, titleForToken, titleForConstruction 
     recalling = true;
     previousMetadataHidden = metadata.hidden;
     maskElement(trigger);
-    if (typeof trigger.closest === "function") maskElement(trigger.closest(".canto-pattern"));
+    if (typeof trigger.closest === "function") {
+      const phrase = trigger.closest(".canto-pattern");
+      maskElement(phrase);
+      // Child construction labels and neighboring tokens may have their own
+      // native titles. Suppress them during this one deliberate recall attempt.
+      if (phrase && typeof phrase.querySelectorAll === "function") {
+        for (const child of phrase.querySelectorAll("[title]")) maskElement(child);
+      }
+    }
     metadata.hidden = true;
     explanation.hidden = true;
     const parts = [];

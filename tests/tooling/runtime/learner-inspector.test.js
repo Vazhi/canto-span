@@ -187,3 +187,19 @@ test("unknown selection with neither a reliable gloss nor Jyutping cannot start 
   assert.equal(ui.isRecalling(), false);
   assert.equal(ui.panel.children[2].textContent, "No contextual explanation available for this selection.");
 });
+
+
+test("recall suppresses nested construction hover titles that could reveal the answer", () => {
+  const ui = createLearnerInspector({ createEl: fakeElement, titleForToken: tokenTitle, titleForConstruction: phraseTitle });
+  const trigger = fakeElement("span", "canto-token");
+  const parent = fakeElement("span", "canto-pattern");
+  const layer = fakeElement("span", "canto-construction-layer");
+  layer.setAttribute("title", "phrase explanation");
+  parent.querySelectorAll = (selector) => selector === "[title]" ? [layer] : [];
+  trigger.patternAncestor = parent;
+  ui.inspect({ kind: "token", surface: "飲", label: "doing", jyutping: "jam2", gloss: ["drink"] }, trigger);
+  ui.startRecall();
+  assert.equal(layer.getAttribute("title"), null);
+  ui.reveal();
+  assert.equal(layer.getAttribute("title"), "phrase explanation");
+});
