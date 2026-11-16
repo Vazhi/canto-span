@@ -1,5 +1,7 @@
 "use strict";
 
+const { createLearnerInspector: makeLearnerInspector } = require("./learner-inspector");
+
 module.exports = function createBlockRenderer(dependencies = {}) {
   const {
     Notice,
@@ -294,7 +296,27 @@ module.exports = function createBlockRenderer(dependencies = {}) {
     container.appendChild(wrapper);
   }
   
-  function renderToken(node, container) {
+  function attachInspection(node, element, options = {}, label = "word") {
+    if (typeof options.onInspect !== "function") return;
+    element.classList.add("canto-inspectable");
+    element.setAttribute("role", "button");
+    element.setAttribute("tabindex", "0");
+    element.setAttribute("aria-expanded", "false");
+    element.setAttribute("aria-label", "Inspect " + label + ": " + (node.display_surface || nodeDisplaySurface(node) || node.surface || label));
+    const activate = (event) => {
+      event.stopPropagation();
+      options.onInspect(node, element);
+    };
+    element.addEventListener("click", activate);
+    element.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        activate(event);
+      }
+    });
+  }
+
+  function renderToken(node, container, options = {}) {
     const cls = [`canto-token`, `cs-${safeClass(node.label)}`];
     if (node.label === "neutral") cls.push("canto-token-neutral", "canto-lexical-unknown");
     const displaySurface = node.display_surface || node.surface;
@@ -310,6 +332,7 @@ module.exports = function createBlockRenderer(dependencies = {}) {
   
     if (node.jyutping) renderJyutping(span, node.jyutping);
     span.appendChild(createEl("span", "canto-hanzi", displaySurface));
+    attachInspection(node, span, options, "word");
     container.appendChild(span);
   }
   
@@ -336,18 +359,18 @@ module.exports = function createBlockRenderer(dependencies = {}) {
     return { leaves, spans };
   }
   
-  function renderConstructionLeaf(node, container) {
+  function renderConstructionLeaf(node, container, options = {}) {
     if (!node) return;
     if (node.kind === "text") {
       container.appendChild(document.createTextNode(node.display_text || node.text));
       return;
     }
     if (node.kind === "token") {
-      renderToken(node, container);
+      renderToken(node, container, options);
     }
   }
   
-  function renderConstruction(node, container) {
+  function renderConstruction(node, container, options = {}) {
     const { leaves, spans } = collectConstructionLayout(node);
     const cls = ["canto-pattern", "canto-pattern-layered", `canto-construction-${safeClass(node.type)}`];
     if (node.primary) cls.push("canto-primary-phrase", `canto-primary-${safeClass(node.primary)}`);
@@ -355,13 +378,14 @@ module.exports = function createBlockRenderer(dependencies = {}) {
     outer.setAttribute("data-canto-kind", "construction");
     outer.setAttribute("data-canto-construction", node.type);
     outer.setAttribute("title", learnerUiHoverTitleForConstruction(node));
+    attachInspection(node, outer, options, "phrase");
     outer.style.gridTemplateColumns = leaves.length ? `repeat(${leaves.length}, max-content)` : "max-content";
   
     leaves.forEach((leaf, index) => {
       const cell = createEl("span", "canto-pattern-leaf");
       cell.style.gridColumn = `${index + 1} / ${index + 2}`;
       cell.style.gridRow = "1";
-      renderConstructionLeaf(leaf, cell);
+      renderConstructionLeaf(leaf, cell, options);
       outer.appendChild(cell);
     });
   
@@ -378,6 +402,7 @@ module.exports = function createBlockRenderer(dependencies = {}) {
         layer.style.gridRow = `${layerIndex + 2}`;
         layer.setAttribute("data-canto-construction", span.node.type);
         layer.setAttribute("title", learnerUiHoverTitleForConstructionLayer(span.node));
+        attachInspection(span.node, layer, options, "phrase");
         layer.appendChild(createEl("span", "canto-construction-line"));
         layer.appendChild(createEl("span", "canto-pattern-label", span.node.label));
         outer.appendChild(layer);
@@ -393,7 +418,7 @@ module.exports = function createBlockRenderer(dependencies = {}) {
       return;
     }
     if (node.kind === "token") {
-      renderToken(node, container);
+      renderToken(node, container, options);
       return;
     }
     if (node.kind === "construction") {
@@ -401,7 +426,7 @@ module.exports = function createBlockRenderer(dependencies = {}) {
         for (const child of node.children || []) renderNode(child, container, options);
         return;
       }
-      renderConstruction(node, container);
+      renderConstruction(node, container, options);
     }
   }
   
@@ -423,5 +448,10 @@ module.exports = function createBlockRenderer(dependencies = {}) {
     renderConstruction,
     renderNode,
     renderParserShadowRepairs,
+    createLearnerInspector: () => makeLearnerInspector({
+      createEl,
+      titleForToken: learnerUiHoverTitleForToken,
+      titleForConstruction: learnerUiHoverTitleForConstruction,
+    }),
   };
 };

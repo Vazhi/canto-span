@@ -52,6 +52,7 @@ module.exports = function createCantoSpanPlugin(dependencies = {}) {
     parseBlockOptions,
     renderNode,
     renderParserShadowRepairs,
+    createLearnerInspector,
   } = createBlockRenderer({
     Notice,
     diagnosticSummary,
@@ -358,7 +359,15 @@ module.exports = function createCantoSpanPlugin(dependencies = {}) {
       const legend = createEl("div", "canto-context-review-boundaries");
       legend.appendChild(createEl("span", "canto-legend-normal", "Parent construction spans wrap child learner-role tokens. Hover/tap tokens for Jyutping."));
       legend.appendChild(createEl("span", "canto-legend-diagnostic", "Diagnostic mode is enabled in plugin settings: tokenization, Jyutping audit, generated slots, construction match source, and review traces are shown. Use Copy note + diagnostics to copy the whole active note with generated diagnostics at the top, Copy diagnostics only for the generated batch, Save diagnostics JSON to write both a compact acceptance summary and a companion full-diagnostics file beside the active note, or Copy block diagnostic for one block."));
+      const inspector = createLearnerInspector();
       const rendered = createEl("div", "canto-rendered");
+      block.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !inspector.panel.hidden) {
+          event.preventDefault();
+          event.stopPropagation();
+          inspector.dismiss();
+        }
+      });
   
       for (const { line, analysis, context_directive: contextDirective } of analyzedLines) {
         if (contextDirective) {
@@ -376,7 +385,7 @@ module.exports = function createCantoSpanPlugin(dependencies = {}) {
         renderParserShadowRepairs(analysis, rendered);
   
         const lineNormal = createEl("div", "canto-line canto-line-normal");
-        for (const node of analysis.nodes) renderNode(node, lineNormal, { showDiagnostics: false });
+        for (const node of analysis.nodes) renderNode(node, lineNormal, { showDiagnostics: false, onInspect: inspector.inspect });
         rendered.appendChild(lineNormal);
   
         const lineDiagnostic = createEl("div", "canto-line canto-line-diagnostic");
@@ -388,6 +397,7 @@ module.exports = function createCantoSpanPlugin(dependencies = {}) {
   
       block.appendChild(titleRow);
       block.appendChild(legend);
+      block.appendChild(inspector.panel);
       block.appendChild(rendered);
       element.appendChild(block);
       this.scheduleRenderedDiagnosticDetailsSync();
