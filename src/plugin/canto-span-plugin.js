@@ -364,8 +364,11 @@ module.exports = function createCantoSpanPlugin(dependencies = {}) {
       const reading = createReadingControls({
         createEl,
         block,
-        onChange: (_key, enabled) => {
-          if (!enabled) inspector.dismiss(false);
+        onChange: () => {
+          // The visibility controller updates native titles first. Dismiss
+          // active recall and resynchronize to avoid restoring concealed hints.
+          inspector.dismiss(false);
+          reading.syncNativeTitles();
         },
       });
       const rendered = createEl("div", "canto-rendered");

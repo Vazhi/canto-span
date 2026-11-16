@@ -14,13 +14,23 @@ const phraseTitle = (node) => [node.surface, ...(node.gloss || [])].join("\n");
 function fakeElement(tag, className = "", value = "") {
   const listeners = {};
   const attrs = {};
+  const classes = new Set(className.split(/\s+/).filter(Boolean));
   return {
     tag, className, textContent: value, hidden: false, children: [], attributes: attrs,
+    disabled: false,
+    classList: {
+      add(name) { classes.add(name); },
+      remove(name) { classes.delete(name); },
+      contains(name) { return classes.has(name); },
+    },
     appendChild(child) { this.children.push(child); },
-    setAttribute(key, val) { attrs[key] = val; },
+    setAttribute(key, val) { attrs[key] = String(val); },
+    getAttribute(key) { return Object.prototype.hasOwnProperty.call(attrs, key) ? attrs[key] : null; },
+    removeAttribute(key) { delete attrs[key]; },
     addEventListener(type, callback) { listeners[type] = callback; },
     activate(type) { listeners[type]?.({}); },
     focus() { this.focused = true; },
+    closest() { return this.patternAncestor || null; },
   };
 }
 
@@ -108,4 +118,72 @@ test("keyboard opening focuses the inspector while touch opening does not steal 
   assert.equal(ui.panel.attributes.tabindex, "-1");
   ui.dismiss();
   assert.equal(second.focused, true);
+});
+
+
+test("recall conceals pronunciation, gloss and native titles until explicit reveal", () => {
+  const ui = createLearnerInspector({ createEl: fakeElement, titleForToken: tokenTitle, titleForConstruction: phraseTitle });
+  const trigger = fakeElement("span", "canto-token");
+  const pattern = fakeElement("span", "canto-pattern");
+  trigger.patternAncestor = pattern;
+  trigger.setAttribute("title", "茶\ncaa4\ntea");
+  pattern.setAttribute("title", "phrase meaning");
+  ui.inspect({ kind: "token", surface: "茶", label: "what", jyutping: "caa4", gloss: ["tea"] }, trigger);
+  ui.startRecall();
+  assert.equal(ui.isRecalling(), true);
+  assert.equal(ui.panel.children[1].hidden, true); // metadata
+  assert.equal(ui.panel.children[2].hidden, true); // explanation
+  assert.equal(ui.panel.children[3].hidden, false); // prompt
+  assert.equal(trigger.getAttribute("title"), null);
+  assert.equal(pattern.getAttribute("title"), null);
+  assert.equal(trigger.classList.contains("canto-recall-concealed"), true);
+  assert.equal(pattern.classList.contains("canto-recall-concealed"), true);
+  assert.equal(ui.panel.children[4].children[1].focused, true); // Reveal action
+  ui.reveal();
+  assert.equal(ui.isRecalling(), false);
+  assert.equal(trigger.getAttribute("title"), "茶\ncaa4\ntea");
+  assert.equal(pattern.getAttribute("title"), "phrase meaning");
+  assert.equal(ui.panel.children[1].hidden, false);
+  assert.equal(ui.panel.children[2].hidden, false);
+});
+
+test("changing selection or closing during recall clears stale concealment", () => {
+  const ui = createLearnerInspector({ createEl: fakeElement, titleForToken: tokenTitle, titleForConstruction: phraseTitle });
+  const first = fakeElement("span");
+  const second = fakeElement("span");
+  first.setAttribute("title", "first meaning");
+  second.setAttribute("title", "second meaning");
+  ui.inspect({ kind: "token", surface: "我", label: "who", jyutping: "ngo5", gloss: ["I"] }, first);
+  ui.startRecall();
+  ui.inspect({ kind: "token", surface: "茶", label: "what", jyutping: "caa4", gloss: ["tea"] }, second);
+  assert.equal(first.getAttribute("title"), "first meaning");
+  assert.equal(second.getAttribute("title"), "second meaning");
+  assert.equal(ui.isRecalling(), false);
+  ui.startRecall();
+  ui.dismiss();
+  assert.equal(second.getAttribute("title"), "second meaning");
+  assert.equal(second.focused, true);
+  assert.equal(ui.panel.hidden, true);
+  assert.equal(ui.isRecalling(), false);
+});
+
+test("phrase recall works without pronunciation and does not invent it", () => {
+  const ui = createLearnerInspector({ createEl: fakeElement, titleForToken: tokenTitle, titleForConstruction: phraseTitle });
+  const trigger = fakeElement("span");
+  ui.inspect({ kind: "construction", surface: "我飲茶", gloss: ["action with an object"] }, trigger);
+  ui.startRecall();
+  assert.equal(ui.isRecalling(), true);
+  assert.equal(ui.panel.children[3].textContent, "Recall the meaning, then reveal.");
+  ui.reveal();
+  assert.equal(ui.panel.children[2].textContent, "action with an object");
+});
+
+test("unknown selection with neither a reliable gloss nor Jyutping cannot start recall", () => {
+  const ui = createLearnerInspector({ createEl: fakeElement, titleForToken: tokenTitle, titleForConstruction: phraseTitle });
+  const trigger = fakeElement("span");
+  ui.inspect({ kind: "token", surface: "𠮶", label: "neutral", gloss: ["Cantonese word."] }, trigger);
+  assert.equal(ui.panel.children[4].children[0].disabled, true);
+  ui.startRecall();
+  assert.equal(ui.isRecalling(), false);
+  assert.equal(ui.panel.children[2].textContent, "No contextual explanation available for this selection.");
 });
